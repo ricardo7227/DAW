@@ -1,0 +1,132 @@
+/*GENERAL*/
+img{
+	max-width: 100%;
+	height: auto;
+}
+
+p{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: normal;
+}
+/*LINEA*/
+.linea1{
+	height: 0.8em;
+	background-color: #3586C7;
+}
+
+.linea2{
+	height: 0.8em;
+	background-color: #CC0000;
+}
+
+.linea3{
+	height: 0.8em;
+	background-color: #2E733C;
+}
+
+/*LOGO*/
+#logo{
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+
+/*NAV*/
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFF;
+}
+
+ul.nav.navbar-nav li a:hover,
+ul.dropdown-menu li:hover,
+ul.nav.navbar-nav.navbar-right li:hover{
+    background-color: #3586C7;
+}
+
+nav div.navbar-form{
+	padding-top:0.5em;
+	padding-bottom: 0.5em;
+}
+
+nav div.navbar-form a{
+	color:#ffffff;
+	text-decoration: none;
+}
+
+.form-control{
+	padding-top: 1px;
+	width: 10em;
+	display: inline;
+}
+
+.navbar-form {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+/*VENTANA LOGIN*/
+.modal-dialog{
+	width: 300px;
+}
+
+.btn-group-lg{
+	padding: 0;
+}
+
+/*PANEL LATERAL*/
+#panelLateral{
+	padding-bottom:1em;
+}
+
+/*FILA CENTRAL*/
+#fila{
+	padding-right: 0;
+}
+
+/*CARUSEL*/
+.carousel-control.left{
+	background-image: none;
+}
+
+.carousel-control.right{
+	background-image: none;
+}
+
+#carousel-example-generic{
+	padding-right: 0;
+	padding-left: 0;
+}
+
+
+/*PANEL NOTICIAS*/
+#panelNoticias {
+	padding-right: 0px;
+	padding-left: 0;
+}
+
+.noticia{
+	border: 5px solid #fff;
+}
+
+/*FOOTER*/
+#pie{
+	position: relative;
+	bottom: 0px;
+	width: 100%;
+	height: 60px;
+	background-color: #222222;
+	text-align: center;
+	margin-top:15px;
+}
+
+#pie  span > a {
+    color: #ffffff;
+}
+
+
+
+
+

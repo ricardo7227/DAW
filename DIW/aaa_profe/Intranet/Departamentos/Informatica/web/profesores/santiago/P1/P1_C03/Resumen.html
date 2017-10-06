@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Organización del texto</title></head><body>
+<div style="text-align: center;"><font style="color: rgb(51, 0, 153);" size="+3">Organización del texto</font><br>
+</div>
+
+<div><span style="font-weight: bold;">INDICE</span><br>
+<br>
+<a href="#body">Etiqueta &lt;body&gt;</a><br>
+<a href="#secciones">Secciones</a><br>
+<br>
+<br>
+<a name="body"></a>&nbsp; <span style="font-weight: bold;">Etiqueta
+&lt;body&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta body se destina ahora
+fundamentalmente a definir las acciones que se ejecutan ante
+determinados eventos. Los eventos en HTML son sucesos&nbsp; que ocurren
+en la interfaz de usuario y que se asocian a un código de programa,
+generalmente JavaScript o VBScript.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Algunos de los eventos son:<br>
+<br>
+<span style="color: red;">onload</span>.- cuando se ha descargado el
+contenido completo de la página.<br>
+<span style="color: red;">onunload</span>.- cuando el documento va a
+ser descargado.<br>
+<span style="color: red;">ononline</span>.- cuando existe conexión a
+Internet.<br>
+<span style="color: red;">onoffline</span>.- cuando no existe conexión
+a Internet.<br>
+<span style="color: red;">onafterprint</span>.- después de imprimir el
+documento.<br>
+<span style="color: red;">onbeforeprint</span>.- despues de la petición
+de impresión pero antes de imprimir el documento.<br>
+<br>
+PRÁCTICA.- <a href="03_01_alert.html">Página con mensaje</a> de saludo
+al cargarse.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si se hace referencia a un evento en la etiqueta
+body y en otra etiqueta interior prevalece la de body.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Tenemos dos etiquetas que producen un salto de
+línea: &lt;br&gt; y &lt;p&gt;.<br>
+<br>
+<a name="secciones"></a>&nbsp; <span style="font-weight: bold;">Secciones</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Con HTML 5 aparecen nuevas directivas (etiquetas)
+que diferencian más claramente las secciones del texto y lo agrupan
+según su tipo. Una sección define un área dentro del documento que se
+va a definir de un modo diferente que el resto por cuestiones de estilo.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; color: red;">&lt;section&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Define una sección. El atributo <span style="color: red;">class</span>, uno de los atributos comunes de uso general, permite definir el estilo que se aplicará a la sección. Un ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;article&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;hgroup&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;h1&gt;Fórmula 1&lt;/h1&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;h2&gt;Mi deporte favorito&lt;/h2&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/hgroup&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;p&gt;Aunque muchos no lo consideran un deporte, yo lo paso muy bien
+viendo<br>
+&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  las carreras de Fórmula 1.&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp; &lt;section&gt;<br>
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;h1&gt;Ferrari&lt;/h1&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;p&gt;Estas máquinas rojas han estado en la Fórmula 1 desde
+1950.&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/section&gt;<br>
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;section&gt;<br>
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;h1&gt;Red Bull&lt;/h1&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;p&gt;No tiene historia en F1 pero es el actual campeón.&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/section&gt;<br>
+&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/article&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; color: red;">&lt;nav&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Define un área dentro de la página qie contendrá
+información relacionada con la navegación de la página. Su contenido
+puede ser una lista de enlaces como la siguiente:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;nav&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;h3&gt;Barra de navegación&lt;/h3&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;p&gt;&lt;a href=" . . . "&gt;Nuestro producto estrella&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;p&gt;&lt;a href=" . . . "&gt;Otro producto más barato&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/nav&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; color: red;">&lt;article&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Define los límites de un artículo o componente de
+una página que se supone independiente del resto del documento. Por
+ejemplo.<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;article&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;h1&gt;Mi artículo&lt;/h1&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;p&gt;Aquí
+va el texto relativo al suceso de bla, bla, bla,.&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/article&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Una sección y un artículo se suelen confundir; una
+sección puede contener varios artículos y viceversa. Desde el punto de
+vista lógico y estructural, un artículo es un contenido independiente y
+autónomo. Una sección es un elemento que permite subdividir una página
+en diferentes áreas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; color: red;">&lt;header&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Puede contener una sección para la tabla de
+contenidos, un formulario de búsqueda o un logotipo principal. Es una
+novedad de HTML 5 que sirve para estructurar el texto.<br>
+<br>
+&nbsp;&nbsp;&nbsp; No es una etiqueta obligatoria. En muchos sitios web
+se incluyen título y subtítulo agrupándolos en un nuevo elemento
+denominado <span style="color: red;">&lt;hgroup&gt;</span>, y también una sección de navegación, tal como se muestra en el ejemplo siguiente:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;header&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;ahref="/"&gt;&lt;img src=miLogo.png alt="home"&gt;&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;hgroup&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;h1&gt;Mi título principal&lt;/h1&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;h2&gt;Mi subtítulo&lt;/h2&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/hgroup&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;nav&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;ul&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;li&gt;Inicio&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;li&gt;&lt;a
+href="noticias.html"&gt;Noticias&lt;/a&gt;&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;li&gt;&lt;a
+href="historia.html"&gt;Historia&lt;/a&gt;&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/ul&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/nav&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/header&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; color: red;">&lt;footer&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Es la parte inferior del docuento o pié, reservada
+para cierto tipo de información que requiere un formato especial y
+diferente al resto, donde se suele colocar el copyright, referencias,
+enlaces, etc. Debe entenderse como el pié de la sección precedente,
+dado que en un documento puede haber varias etiquetas &lt;footer&gt;.
+Un ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;footer&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;nav&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;p&gt;&lt;a href="/autores.html"&gt;Autores&lt;/a&gt; :<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &lt;a href="/infoadic.html"&gt;Más
+información&lt;/a&gt; :<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &lt;a
+href="/glosario.html"&gt;Glosario&lt;/a&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/nav&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;p&gt;Derechos reservados 2010 Inforbooks&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/footer&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; color: red;">&lt;aside&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Permite definir cualquier texto
+adicional independientemente del flujo principal del texto. Puede estar
+dentro o fuera de la etiqueta &lt;footer&gt; y sirve para añadir notas
+adicionales o una explicación complementaria. Su contenido debe tener
+relación con el contenido del cual depende.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; color: red;">&lt;address&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Se utiliza para incluir detalles de contacto del
+autor: dirección, e-mail, etc. Puede haber varias etiquetas address en
+el mismo documento. Normalmente se incluye dentro del elemento footer.<br>
+</div>
+
+<br>
+
+<br>
+
+</body></html>

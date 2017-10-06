@@ -1,0 +1,34 @@
+body {font-size:100%;}
+h1 {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 2em;
+  color: red;
+}
+p {
+  font-family: Georgia, serif;
+  font-size: large;
+  color: blue;
+  font-variant: small-caps;
+}
+th {font-family: verdana, trebuchet, sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    color:green;
+    line-height: 4cm;}
+td, td p {
+  font-family: Arial;
+  font-style: italic;
+  font-size: 12px;
+}
+#sediam {
+  font-family: "Courier New", Monospace;
+  font-size: xx-large;
+  color: blue;
+}
+#ident1 {
+  font-family: Times, serif;
+  font-size: 8px;
+  font-weight: 200;
+  color: orange;
+}

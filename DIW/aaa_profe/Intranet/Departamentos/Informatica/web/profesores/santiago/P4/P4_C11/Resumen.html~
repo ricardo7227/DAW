@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Páginas web</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<div id="header">
+<p id="cabecera">Páginas web</p>
+</div>
+
+<div>
+<div id="nav"><a href="#protocolo">Protocolo HTTP</a><br>
+<br>
+<a href="#formulario">Formulario HTML</a><br>
+</div>
+<div id="article">
+<h3><a name="protocolo"></a>Protocolo HTTP</h3>
+&nbsp;&nbsp;&nbsp; El protocolo HTTP establece la normativa de
+peticiones y respuestas entre cliente y servidor.<br>
+<br>
+&nbsp;&nbsp;&nbsp; HTTP es un protocolo sin estado, cada petición es
+independiente del resto y no sabe nada del cliente ni de las acciones
+que realizó anteriormente.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Estructura de los
+mensajes de cliente y servidor</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Existen dos tipos de mensajes: la petición y la
+respuesta. El formato de los mensajes está totalmente estructurado y
+según el tipo de mensaje su composición difiere ligeramente:<br>
+<ul>
+  <li>Petición.- está compuesta por el comando HTTP, las cabeceras de
+la petición, el separador entre cabecera y cuerpo (una línea en blanco,
+y opcionalmente con el cuerpo del mensaje.</li>
+  <li>Respuesta.- está compuesta por el resultado de la petición, las
+cabeceras de la respuesta, el separador entre cabecera y cuerpo (una
+línea en blanco) y opcionalmente con el cuerpo del mensaje.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Comandos HTTP</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La primera línea de una petición HTTP informa del
+comando HTTP que se quiere utilizar (es decir, el método), la dirección
+URL del recurso al que se quiere acceder y la versión HTTP que se está
+empleando. Tiene el formato:<br>
+<p class="codigo2">comando_HTTP&nbsp;&nbsp;&nbsp; dirección_URL
+&nbsp;&nbsp; versión_HTTP
+</p>
+&nbsp;&nbsp;&nbsp; Existen varios comandos o métodos HTTP pero los que
+más veremos serán Get, Post y Head.<br>
+<ul>
+  <li>Get.- se utiliza para obtener recursos del servidor.</li>
+  <li>Post.- se utiliza para enviar información al servidor.</li>
+  <li>Head.- se utiliza para obtener información sobre un recurso del
+servidor.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Cabeceras</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Existen dos tipos de cabeceras: las de petición y
+las de respuesta. La cabecera de petición se genera en el cliente
+(navegador) y la de respuesta en el servidor. En ambos casos, la
+finalidad de la cabecera es dar a conocer a la otra parte (el cliente
+al servidor y viceversa) el entorno, el software y el tipo de
+información incluida en el cuerpo del mensaje. De esta manera, la otra
+parte sabrá en qué forma debe responder. En todo caso, el formato
+general de las cabeceras es el siguiente:<br>
+<p class="codigo2">identificador_cabecera: valor
+</p>
+&nbsp;&nbsp;&nbsp; Dado que en ambos tipos de cabeceras se incluye
+mucha información común, podemos analizar el contenido de las cabeceras
+estudiando primero las cabeceras comunes y luego las particulares de
+cada tipo de mensaje.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Cabeceras comunes
+a las peticiones y a las respuestas</span><br>
+<ul>
+  <li>Cache-Control.- directivas para el control de almacenamiento en
+cache.</li>
+  <li>Connection.- información relativa al estado de la conexión
+después del envío del mensaje.</li>
+  <li>Content-Encoding.- forma de codificación de los datos incluidos
+en el mensaje.</li>
+  <li>Content-Length.- longitud en bytes del mensaje.</li>
+  <li>Content-Type.- tipo de información contenida en el mensaje.</li>
+  <li>Date.- fecha y hora local del envío del mensaje e información de
+zona horaria.</li>
+  <li>Pragma.- opciones de funcionamiento del protocolo HTTP.</li>
+  <li>Transfer-Encoding.- forma de codificación utilizada en el cuerpo
+del mensaje.</li>
+  <li>Via.- información sobre los servidores proxy y gateways.</li>
+  <li>Warning.- advertencias adicionales sobre el estado del mensaje.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Cabeceras
+particulares de la petición</span><br>
+<ul>
+  <li>Accept.- lista de tipos MIME que el cliente acepta.</li>
+  <li>Accept-Charset.- lista de juego de caracteres que acepta el
+equipo cliente.</li>
+  <li>Accept-Encoding.- codificación aceptada por el cliente.</li>
+  <li>Accept-Language.- lista de lenguajes que acepta el cliente.</li>
+  <li>Autorization.- información relativa a la autenticación.</li>
+  <li>Expect.- estado esperando.</li>
+  <li>From.- dirección de correo electrónico del cliente.</li>
+  <li>Host.- nombre y puerto del host direccionado.</li>
+  <li>If-Match.- para peticiones condicionales.</li>
+  <li>If-Modified-Since.- para peticiones condicionales.</li>
+  <li>If-None-Match.- para peticiones condicionales.</li>
+  <li>If-Range.- para peticiones condicionales.</li>
+  <li>If-Unmodified-Since.- para peticiones condicionales.</li>
+  <li>Max-Forwards.- cantidad máxima de saltos aceptada en el
+seguimiento del método TRACE.</li>
+  <li>Proxy-Authorization.- para autenticación en el servidor proxy.</li>
+  <li>Range.- rango de bytes solicitados.</li>
+  <li>Referer.- dirección URL del recurso desde donde se realizó la
+petición.</li>
+  <li>User-Agent.- datos del navegador de donde se realizó la petición.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Cabeceras de la
+respuesta</span><br>
+<ul>
+  <li>Accept-Ranges.- indica el rango de bytes administrados por el
+servidor.</li>
+  <li>Age.- estimación en segundos del tiempo transcurrido desde que se
+generó la respuesta.</li>
+  <li>Allow.- métodos opcionales que se pueden emplear para obtener el
+recurso.</li>
+  <li>Expires.- fecha en la que el recurso ya no estará disponible.</li>
+  <li>Last-Modified.- fecha de la última modificación del recurso.</li>
+  <li>Location.- dirección del recurso al que se quiere acceder.</li>
+  <li>Proxy-Authenticate.- información para la autenticación en
+servidores proxy.</li>
+  <li>Retry-After.- información sobre futura disponibilidad del recurso.</li>
+  <li>Server.- tipo y versión de HTTP en el servidor.</li>
+  <li>Vary.- información sobre el almacenamiento de cache.</li>
+  <li>WWW-authenticate.- información para el acceso a recursos
+protegidos.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Resultado de la
+petición</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Es el mensaje resumido del resultado de la petición
+que genera el servidor en sus respuestas. El formato de esta línea de
+respuesta es el siguiente:<br>
+<p class="codigo2">versión_HTTP&nbsp;&nbsp;&nbsp; código_numérico
+&nbsp;&nbsp; descripción
+</p>
+&nbsp;&nbsp;&nbsp; El código numérico tiene tres cifras y la
+descripción es un texto relacionado con el código. El dígito de la
+centena del código describe aproximadamente el tipo de respuesta:<br>
+<ul>
+  <li>1xx.- mensajes informativos.</li>
+  <li>2xx.- mensajes de operaciones que finalizaron correctamente.</li>
+  <li>3xx.- mensajes de redireccionamiento.</li>
+  <li>4xx.- mensajes de errores de cliente.</li>
+  <li>5xx.- mensajes de errores de servidor.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; En internet y libros sobre HTTP podrá encontrarse la
+lista completa de mensajes posibles. Aquí se describen los más
+habituales:<br>
+<ul>
+  <li>200 (OK) .- operación realizada correctamente.</li>
+  <li>201 (Created) .- operación realizada correctamente y se creó un
+recurso que está disponible.</li>
+  <li>202 (Accepted) .- operación realizada correctamente y se creó un
+recurso que no está disponible.</li>
+  <li>301 (Moved Permanently) .- indica que el recurso al que se quiere
+acceder no está donde pensamos pues se ha movido a otro sitio de forma
+permanente.</li>
+  <li>302 (Moved Temporarely) .- indica que el recurso al que se quiere
+acceder no está donde pensamos pues se ha movido a otro sitio de forma
+temporal.</li>
+  <li>400 (Bad Request) .- el servidor no sabe procesar la petición.</li>
+  <li>401 (Unauthorized) .- para procesar la petición se requiere
+autenticación.</li>
+  <li>403 (Forbidden) .- prohibido el acceso al recurso.</li>
+  <li>404 (Not Found) .- no se encuentra el recurso solicitado al
+servidor.</li>
+  <li>500 (Internal Server Error) .- error interno del servidor.</li>
+  <li>503 (Service Unavailable) .- el servidor no está disponible.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">PHP y HTTP</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP dispone de varias funciones para acceder a la
+información de las cabeceras HTTP. Las funciones
+apache_request_headers() y apache_response_headers() actúan
+respectivamente sobre la petición y sobre la respuesta. La función
+getallheaders() es un alias de la función apache_request_headers(). En
+todos los casos se obtiene como retorno una tabla asociativa con las
+cabeceras y los valores de cada tipo de cabecera.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En el siguiente ejemplo se obtienen las cabeceras de
+una petición:<br>
+<p class="codigo2">
+&lt;?php<br>
+&nbsp; echo "&lt;B&gt;&lt;U&gt;Funciones para leer cabeceras
+HTTP&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;&lt;BR&gt;";<br>
+&nbsp; echo "&lt;B&gt;1. Matriz devuelta por la función
+apache_request_headers() o getallheaders()&lt;/B&gt;&lt;BR&gt;";&nbsp;
+<br>
+&nbsp; $cabeceras = apache_request_headers();
+<br>
+&nbsp;&nbsp;&nbsp;
+// $cabeceras = getallheaders();<br>
+&nbsp; &nbsp; // alias de apache_request_headers()
+<br>
+&nbsp;
+foreach ($cabeceras as $header =&gt; $value) {
+<br>
+&nbsp; &nbsp; &nbsp; echo "$header: $value &lt;br&gt;";
+<br>
+&nbsp;
+}
+<br>
+&nbsp;
+print "&lt;BR&gt;&lt;B&gt;2. Matriz devuelta por la función
+apache_response_headers()&lt;/B&gt;&lt;BR&gt;";&nbsp;
+<br>
+&nbsp; $cabeceras = apache_response_headers();
+<br>
+&nbsp;
+foreach ($cabeceras as $header =&gt; $value) {
+<br>
+&nbsp; &nbsp; &nbsp; echo "$header: $value &lt;br&gt;";
+<br>
+&nbsp;
+}&nbsp;
+<br>
+?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Función header()</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La función header() permite enviar cabeceras HTTP al
+flujo de salida. Su formato es el siguiente:<br>
+<p class="codigo2">header(string cadena, bool reemplazar)
+</p>
+&nbsp;&nbsp;&nbsp; El segundo parámetro es opcional y permite
+establecer que la cabecera que se está enviando reemplaza o no (true o
+false) a una cabecera del mismo tipo preexistente. De modo
+predeterminado se presupone que reemplaza a una cabecera del mismo
+tipo. La función header() se debe utilizar antes de enviar cualquier
+salida, ya sea HTML o desde PHP. A veces se utilizan ficheros de
+inclusión que generan algún tipo de salida y que actúan antes que la
+función header() provocando que ésta genere un error. Un modo de evitar
+este tipo de problemas es mediante el uso del buffering de PHP
+(activable en el archivo php.ini) o con la función ob_start para
+activar el buffer desde el programa.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En el siguiente ejemplo se utiliza la función
+header() para crear un encabezado de tipo de contenido e indicar un
+archivo que se descarga automáticamente en el cliente:<br>
+<p class="codigo2">
+&lt;?php<br>&nbsp;&nbsp;&nbsp; // Enviaremos un documento Word que está
+<br>&nbsp;&nbsp;&nbsp;
+// en la misma carpeta que el script file110.php
+<br>&nbsp;
+header('Content-type: application/word');
+<br>&nbsp;&nbsp;&nbsp;
+// Aparecerá un cuadro de diálogo que permite
+<br>&nbsp;&nbsp;&nbsp;
+// abrir el archivo con la aplicación indicada
+<br>&nbsp;&nbsp;&nbsp;
+// abrir el archivo con otra aplicación a elegir
+<br>&nbsp;&nbsp;&nbsp;
+// guardar el archivo en disco local
+<br>&nbsp;
+header('Content-Disposition: attachment; filename="test.rtf"');
+<br>&nbsp;&nbsp;&nbsp;
+// Se lee el archivo
+<br>&nbsp;
+readfile('test.rtf');
+<br>
+?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; La función header() se debe utilizar siempre antes
+de enviar la parte del contenido del mensaje a la salida. En caso
+contrario se genera un mensaje de error informando al cliente que las
+cabeceras ya fueron enviadas anteriormente (aunque no haya sido así, ya
+que el envío de cualquier cosa que no sean cabeceras da por supuesto
+que las cabeceras ya se han mandado anteriormente). Incluso el envío de
+una línea en blanco antes que cualquier otra cosa ya no permite que
+luego se utilice la función header() para enviar cabeceras.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Variable $_SERVER</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La tabla asociativa global $_SERVER pertenece al
+grupo de variables PHP denominadas superglobales. Sus elementos
+contienen información de las cabeceras de petición y de respuesta,
+rutas de acceso a las secuencias de comandos, etc. Una variable
+superglobal o global automática está disponible en toda la secuencia de
+comandos sin necesidad de utilizar la declaración "global $_SERVER".<br>
+<br>
+&nbsp;&nbsp;&nbsp; A partir de PHP 6, por razones de seguridad, no se
+admite el uso de register_globals, que permitía registrar como
+globalestodo tipo de variables.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La variable $HTTP_SERVER_VARS, cuyo uso no se
+recomienda ya, contiene la misma información que $_SERVER sin ser
+variable superglobal.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El servidor web se encarga de llenar la tabla
+$_SERVER y, si cumple la especificación CGI 1.1, completará los
+elementos:<br>
+<ul>
+  <li>PHP_SELF .- nombre de la secuencia de comandos PHP en ejecución.</li>
+  <li>argc .- cantidad de elementos de la tabla de los argumentos pasados a la secuencia de comandos.</li>
+  <li>argv .- tabla con los argumentos pasados a la secuencia de comandos.</li>
+  <li>AUTH_TYPE .- variable relativa a la autenticación de usuarios con HTTP.</li>
+  <li>DOCUMENT_ROOT .- directorio raíz de la secuencia de comandos que se está ejecutando.</li>
+  <li>GATEWAY_INTERFACE .- especificación del CGI que ejecuta el servidor.</li>
+  <li>HTTP_ACCEPT .- contenido de la cabecera accept.</li>
+  <li>HTTP_ACCEPT_CHARSET .- contenido de la cabecera accept_charset.</li>
+  <li>HTTP_ACCEPT_LANGUAGE .- contenido de la cabecera accept_language.</li>
+  <li>HTTP_CONNECTION .- contenido de la cabecera connection.</li>
+  <li>HTTP_ACCEPT_ENCODING .- contenido de la cabecera accept_encoding.</li>
+  <li>HTTP_HOST .- contenido de la cabecera host.</li>
+  <li>HTTP_REFERER .- dirección de la página de donde se procede. No es un elemento fiable porque puede no estar definido.</li>
+  <li>HTTP_USER_AGENT .- contenido de la cabecera user_agent.</li>
+  <li>PATH_TRANSLATED .- ruta de acceso a la secuencia de comandos en
+base al sistema de archivos (no respecto a la raíz de documentos).</li>
+  <li>PHP_AUTH_PW .- variable empleada para efectuar la autenticación de usuarios con HTTP.</li>
+  <li>PATH_AUTH_USER .- variable empleada para efectuar la autenticación de usuarios con HTTP.</li>
+  <li>QUERY_STRING .- cadena pasada en la petición.</li>
+  <li>REMOTE_ADDR .- dirección IP del cliente.</li>
+  <li>REMOTE_HOST .- nombre del host desde donde el usuario hace la consulta.</li>
+  <li>REMOTE_PORT .- puerto del cliente.</li>
+  <li>REQUEST_METHOD .- método utilizado al realizar la petición. Por ejemplo GET o POST.</li>
+  <li>REQUEST_TIME .- hora de petición.</li>
+  <li>REQUEST_URI .- URI empleada para el acceso a un recurso.</li>
+  <li>SCRIPT_FILENAME .- ruta de acceso a la secuencia de comandos en ejecución.</li>
+  <li>SCRIPT_NAME .- ruta de acceso a la secuencia de comandos vigente.</li>
+  <li>SERVER_ADMIN .- contenido de la directiva SERVER_ADMIN del servidor Apache.</li>
+  <li>SERVER_NAME .- nombre del servidor.</li>
+  <li>SERVER_ADDR .- dirección IP del servidor.</li>
+  <li>SERVER_PORT .- puerto utilizado por el servidor.</li>
+  <li>SERVER_SIGNATURE .- cadena identificatoria del servidor.</li>
+  <li>SERVER_PROTOCOL .- nombre y versión del protocolo utilizado en el servidor.</li>
+  <li>SERVER_SOFTWARE .- software que utiliza el servidor web.</li>
+</ul>
+
+<h3><a name="formulario"></a>Formulario HTML</h3>
+&nbsp;&nbsp;&nbsp; Un formulario en HTML es una sección de una página
+web que delimita áreas de texto, etiquetas y controles HTML de distinto
+tipo. Típicamente, un formulario es el mecanismo para enviar
+información hacia el servidor web para su procesamiento.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En el elemento FORM se especifica:<br>
+<ul>
+  <li>ACTION .- programa que se encargará del procesamiento de los datos del formulario. Por ejemplo, ACTION="procesaform.php".</li>
+  <li>METHOD .- indica cómo se envían los datos. Las dos posibilidades son GET y POST.</li>
+  <li>enctype .- tipo MIME para el envío de los datos del formulario. Se asume el valor "aplication/x-www-form-urlencoded".</li>
+  <li>accept-charset .- juego de caracteres que acepta el servidor para gestionar el formulario enviado.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Método GET</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Los datos del formulario se concatenen a la
+dirección URI especificada en el atributo ACTION, conformándose lo que
+se llama cadena de consulta o query_string. El final de la dirección URI se indica con el símbolo ? y los diferentes pares de clave/valor se separan con el carácter &amp;.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La ventaja de GET es que la dirección URL junto con
+la cadena de claves/valores puede registrarse en los Marcadores o
+Favoritos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Método POST</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Los datso del formulario se incluyen en el cuerpo
+del mensaje que se envía al servidor. Con este método los datos tampoco
+son seguros pero al menos no se muestran en la barra de direcciones del
+navegador.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Post permite el envío de mayor cantidad de
+información, aproximadamente 2 Mb. frente a los algo más de 200 bytes
+de GET.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El uso del método POST no impide que también se
+utilice el método GET, enviando datos por los dos caminos. En este caso
+hay que tener cuidado de no utilizar el mismo nombre de variable en
+POST y en GET porque la tabla $GLOBALS perdería un dato.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Tratamiento de formularios con PHP</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP suministra un conjunto de variables globales que
+facilita la tarea de recuperar los datos enviados por el cliente al
+servidor:<br>
+<ul>
+  <li>$_POST .- tabla asociativa de las variables pasadas a la
+secuencia de comandos vigente mediante el método POST del formulario
+HTML. Es una variable superglobal.</li>
+  <li>$_GET .- tabla asociativa de variables pasadas mediante GET. Es una variable superglobal.</li>
+  <li>$_REQUEST .- tabla asociativa con los contenidos de $_GET, $_POST
+y $_QUERY, independientemente del formulario utilizado en HTML. Es una
+variable superglobal.<br>
+  </li>
+</ul>
+&nbsp;&nbsp;&nbsp; A partir de la pág. 821 hay ejemplos de
+procesamiento de formularios con el método GET, con el método POST, etc.
+</div>
+</div>
+
+<div id="footer">
+</div>
+
+</body></html>

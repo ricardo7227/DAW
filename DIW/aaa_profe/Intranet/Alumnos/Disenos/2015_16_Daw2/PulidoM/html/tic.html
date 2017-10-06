@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Ejemplo de HTML5 y CSS3">
+	<meta name="author" content="Mario Pulido">
+	<meta name="keywords" content="HTML5, CSS3, JavaScript">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--Links de Estilos-->
+	<link rel="stylesheet" href="../Software/bootstrap-3.3.5-dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="../css/estilos.css"/>
+	<!--Script para JS-->
+	<script src="../Software/js/jquery-1.9.1.min.js"></script>
+	<script src="../Software/js/bootstrap.min.js"></script>
+	<!--Titulo de la pestaña-->
+	<title>IES Enrique Tierno Galván</title>
+</head>
+
+<body>
+	<!-- Cabecera -->
+    <header>
+		<!--Navigation-->
+		<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+			<a href="../index.html">
+				<img id="logoGiratorio"  class="navbar-brand" src="../imagenes/logo.gif"></img>
+			</a>
+			<div id="menuNav" class="btn-group pull-left">
+				<button type="button" class="navbar-toggle pull-left botonMenu" data-toggle="dropdown">
+					<span class="sr-only">Desplegar / Ocultar Menu</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>	
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="../index.html">inicio</a></li>
+					<li><a href="direccion.html">dirección</a></li>
+					<li><a href="jefatura.html">jefatura</a></li>
+					<li><a href="administracion.html">administración</a></li>
+					<li><a href="departamentos.html">departamentos</a></li>
+					<li><a href="alumnos.html">alumnos</a></li>
+					<li><a href="ampa.html">ampa</a></li>
+					<li><a href="tic.html">tic</a></li>
+				</ul>	
+			</div>
+			<form class="navbar-left buscador" role="search">
+				<input type="text" class="form-control" placeholder="Buscar">							
+				<button type="submit" class="btn btn-default">Enviar</button>
+			</form>
+			
+			<div id="divLogin" class="btn-group navbar-right">				
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<img src="../imagenes/usuario.png" alt="Login"></img>
+				</a>
+				<ul class="dropdown-menu" role="menu" >
+					<li><input type="text" class="form-control" placeholder="Usuario"></li>
+					<li><input type="password" class="form-control" placeholder="Contraseña"></li>
+					<li><button type="submit" class="btn btn-default center-block">Login</button></li>						
+				</ul>
+			</div>
+		</nav>
+	</header>
+	
+	<!-- Inicio Menu -->
+	<div class="container-fluid">
+		<!-- Titulo -->
+		<div class="container-fluid row titulo">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<h1 >I.E.S. Enrique Tierno Galván </h1>
+			</div>
+		</div>
+		
+		<section class="main row">
+			<div id="menu" class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+				<div class="collapse navbar-collapse" >
+					<ul class="nav nav-pills nav-stacked">
+						<li><a href="../index.html">inicio</a></li>
+						<li><a href="direccion.html">dirección</a></li>
+						<li><a href="jefatura.html">jefatura</a></li>
+						<li><a href="administracion.html">administración</a></li>
+						<li><a href="departamentos.html">departamentos</a></li>
+						<li><a href="alumnos.html">alumnos</a></li>
+						<li><a href="ampa.html">ampa</a></li>
+						<li style="background:white" class="seleccionado"><a href="tic.html">tic</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- Contenido -->
+			<article id="contenido" class="col-xs-12 col-sm-6 col-md-6 col-lg-8">
+				<h1 class="titulosSection">TIC</h1>
+				<ul>
+					<li><a href="#">Condiciones</a></li>
+					<li><a href="#">Incidencias</a></li>
+					<li><a href="#">Reservas</a></li>
+					<li><a href="#">Tablas</a></li>
+				</ul>
+			</article>
+			<!-- Lateral Derecho -->
+			<aside class="col-xs-12 col-sm-3 col-md-3 col-lg-2"> 
+				<img id="calendarioAnual" src="../imagenes/calendario.png"/>
+				<div id="noticias" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<label>Últimas Noticias</label>
+					<marquee height="180px" scrollamount="2" scrolldelay="50" direction="up" behavior="alternate">
+						<ul>
+							<li> 
+								<a target="_blank" href="">Jornada de puertas abiertas</a>
+							</li>
+							<li> 
+								<a target="_blank" href="">Carta para los directores</a>
+							</li>
+							<li> 
+								<a target="_blank" href="">Triptico informativo</a>
+							</li>
+						</ul>
+					</marquee>
+				</div>
+			</aside>
+		</section>
+	</div>
+	
+	
+	<!-- Pie de Pagina -->
+	<footer>
+		<div class="container">
+			<div class="row">	
+				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+					<ul>
+						<li class="tituloPiePagina">Dirección</li>
+						<li>IES Enrique Tierno Galvan</li>
+						<li>Avda. Andalucía Km. 6,200</li>
+						<li>28041 Madrid - España</li>
+						<li>IES Enrique Tierno Galvan</li>
+						<li> 
+							<a href="https://maps.google.es/maps? f=d&amp;source=s_d&amp;saddr=40.370155,-3.694671&amp;daddr=&amp;geocode=&amp;sll=40.368733,-3.691664&amp;sspn=0.013357,0.01929&amp;hl=es&amp;mra=mift&amp;mrsp=0&amp;sz=16&amp;ie=UTF8&amp;t=m&amp;ll=40.368733,-3.691664&amp;spn=0.013357,0.01929" onclick="nuevaventana(&quot;https://maps.google.es/maps?f=d&amp;source=s_d&amp;saddr=40.370155,-3.694671&amp;daddr=&amp;geocode=&amp;sll=40.368733,-3.691664&amp;sspn=0.013357,0.01929&amp;hl=es&amp;mra=mift&amp;mrsp=0&amp;sz=16&amp;ie=UTF8&amp;t=m&amp;ll=40.368733,-3.691664&amp;spn=0.013357,0.01929&quot;)" target="_blank"><b>Ver Mapa</b></a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+					<ul>
+						<li class="tituloPiePagina">Teléfono</li>
+						<img src="../imagenes/telefono.png"> 91 317 00 47
+						<br/>
+						<li class="tituloPiePagina">Fax</li>
+						<img src="../imagenes/fax.png"> 91 317 35 29
+					</ul>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+					<ul>
+						<li class="tituloEmailPiePagina">Email</li>
+						<img src="../imagenes/e-mail.png">&nbsp; <a href="ies.tiernogalvan.madrid@educa.madrid.org  ">ies.tiernogalvan.madrid@educa.madrid.org</a>
+					</ul>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+					<ul>
+						<li class="tituloPiePagina">Cómo Llegar</li>
+						<li>
+							<img src="../imagenes/metro.png">San Fermin-Orcasur L3 &nbsp;<a href="../imagenes/plano.png" target="_blank" ;="">Plano</a>
+						</li>
+						<li>
+							<img src="../imagenes/bus.png">&nbsp;  18 - 22 - 59 -76 - 79 - 85 - 86 
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>

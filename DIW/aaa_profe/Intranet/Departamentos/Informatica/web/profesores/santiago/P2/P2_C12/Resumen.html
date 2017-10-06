@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>JavaScript y pseudo clases</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="estilos.css" type="text/css"></head><body>
+<h1>JavaScript y pseudo clases</h1>
+
+<a href="#css">CSS y HTML dinámico</a><br>
+
+<a href="#javascript">JavaScript para identificar navegadores</a><br>
+
+<a href="#uso">Uso de CSS desde JavaScript</a><br>
+
+<a href="#pseudo">Pseudo clases</a><br>
+
+<br>
+
+<h3><a name="css"></a>CSS y HTML dinámico</h3>
+
+&nbsp;&nbsp;&nbsp; Desde código script se puede actuar sobre los
+estilos CSS a través del modelo DOM que permite acceder a las partes de
+un documento desde un programa, es decir, desde fuera del código HTML.<br>
+<br>
+&nbsp;&nbsp;&nbsp; A las propiedades CSS se accede generalmente de la
+misma manera, utilizando su nombre de propiedad, por ejemplo, color.
+Cuando el nombre de la propiedad contiene algún guión, para usar esa
+propiedad en un script se le debe eliminar ese guión y cambiar a
+mayúsculas la letra que sigue al guión, por lo tanto, font-family
+dentro de un guión se convierte en fontFamily. Así, para acceder a la
+propiedad font-family de un elemento con identificador id1&nbsp; puede
+utilizarse el código:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  id1.style.fontFamily = "Arial";<br>
+<br>
+&nbsp;&nbsp;&nbsp; Esta instrucción JavaScript debe formar parte de alguna función del script de la página, por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;script&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  function CambiarFuente(obj) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; obj.style.fontSize = "xx-large";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/script&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;div&nbsp; onClick="CambiarFuente(this);"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  . . .<br>
+<br>
+&nbsp;&nbsp;&nbsp; Así, al hacer click sobre el texto se producirá un cambio de tamaño de la fuente.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Se puede observar que se utiliza el evento onClick()
+para llamar a una función de JavaScript que está definida dentro de un
+bloque &lt;script&gt;...&lt;/script&gt;. La instrucción siguiente,
+dentro de la función CambiarFuente(), cambia el valor de la propiedad
+font-size de CSS. Si la propiedad está definida su valor será
+reemplazado y si no está definida, el valor se le asignará directamente.<br>
+
+<h3><a name="javascript"></a>JavaScript para identificar navegadores</h3>
+
+&nbsp;&nbsp;&nbsp; El contenido de este apartado es un poco "heavy"
+para el nivel y contexto en que nos encontramos. Puede realizarse la
+lectura del original para tener una ligera idea del funcionamiento
+pero, evidentemente, el código utilizado no puede ser generado con los
+conocimientos adquiridos hasta el momento.<br>
+
+<h3><a name="uso"></a>Uso de CSS desde JavaScript</h3>
+
+&nbsp;&nbsp;&nbsp; El uso conjunto de CSS con JavaScript permite
+implementar diversos tipos de reacciones a determinados eventos que se
+producen en la interfaz (por ejemplo onClick, onMouseOut, onMouseOver,
+etc.).<br>
+<br>
+&nbsp;&nbsp;&nbsp; En el original se muestran ejemplos de determinadas reacciones a determinados eventos, como son:<br>
+<ul>
+  <li>Ampliación de texto al pasar el ratón sobre el mismo.</li>
+  <li>Ocultar y mostrar texto.</li>
+  <li>Zoom de imágenes.<br>
+
+
+  </li>
+</ul>
+<h3><a name="pseudo"></a>Pseudo clases</h3>
+
+&nbsp;&nbsp;&nbsp; Utilizando CSS con JavaScript se pueden conseguir
+estilos dinámicos. Una alternativa sin utilizar scripts es el uso de
+pseudo clases. Las pseudo clases básicas son cuatro (aunque en CSS3 se
+incluyen algunas más):<br>
+<ul>
+  <li>:link.- define el estilo de un enlace que no ha sido visitado.</li>
+  <li>:visited.- ... enlace visitado.</li>
+  <li>:active.- ... que está siendo pulsado.</li>
+  <li>:hover.- sobre el que se pasa el ratón.
+
+  </li>
+</ul>
+</body></html>

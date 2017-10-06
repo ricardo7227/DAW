@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<!-- archivo Parte 2/code/cap12041.html -->
+<head>
+<title>Uso básico del script para modificar estilos</title>
+<script>
+function CambiarSize(id, nuevoSize) {
+
+	// código común para todos los navegadores
+	// obtiene el objeto a partir del identificador
+
+	obj= document.getElementById(id);
+
+	// vemos si está disponible el objeto
+	// si no se obtiene el objeto no se
+	// puede hacer nada
+
+	if (obj) {
+		   obj.width= nuevoSize;
+	}
+
+}
+
+</script>
+</head>
+<body>
+<p>Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores.</p>
+<img id="id1" src="imag.jpg" width="50" onMouseOver="CambiarSize('id1', 200)" onMouseOut="CambiarSize('id1', 50)">
+</body>
+</html>

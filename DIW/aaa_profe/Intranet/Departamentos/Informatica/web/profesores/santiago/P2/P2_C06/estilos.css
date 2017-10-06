@@ -1,0 +1,64 @@
+header, nav, footer, article {
+  display: block;
+}
+header {
+  background: #bbffad none repeat scroll 0% 50%;
+  height: 40px;
+  text-align: center;
+  font-weight: inherit;
+  color: #6600cc;
+  font-size: xx-large;
+}
+nav {
+  background: #ffdcfa none repeat scroll 0% 50%;
+  float: left;
+  width: 20%;
+}
+article {
+  background-color: #fffcbd;
+  float: right;
+  text-align: justify;
+  width: 80%;
+}
+footer {
+  background: #c4fff6 none repeat scroll 0% 50%;
+  clear: both;
+}
+nav a {
+  font-size: 12px;
+}
+p {
+  text-indent: 1cm;
+  text-align: justify;
+}
+table {
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid black;
+/*      border-spacing: 0px 0px; */
+      border-collapse: collapse;
+}
+td, th {
+   border: 1px solid black;
+   padding: 5px;
+}
+#subrayado {
+  text-decoration: underline;
+}
+#encima {
+  text-decoration: overline;
+}
+#parpadeo {
+  text-decoration: blink;
+}
+#tachado {
+  text-decoration: line-through;
+}
+#capital {
+  text-transform: capitalize;
+}
+#mayusculas {
+  text-transform: uppercase;
+}
+#sombra {text-shadow: red 3px 4px, blue 6px 8px;
+}

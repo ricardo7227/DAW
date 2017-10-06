@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Extraer subcadenas con split()</title>
+  </head>
+  <body>
+    <script language="javascript">
+	// Lista de cadenas con distintos separadores
+	var miCadena = "HTML 5 - CSS 3, JavaScript; PHP - MySQL";
+	// Mostrar la cadena
+	document.write("CADENA COMPLETA<br><br>");
+	document.write(miCadena, "<br>");
+	// Crear la expresión regular
+	var expresion = new RegExp("[-,;]+", "g");
+	// Crear tabla con las cadenas incluidas entre los separadores
+	var tabla = miCadena.split(expresion);
+	// Mostrar los elementos de la tabla a razón de uno por cada línea
+	if (tabla == null) {
+	    document.write("La tabla está vacía. Comprobar la expresión regular");
+	} else {
+	    document.write("<br>Subcadenas encontradas:<br><br>");
+	    for (var i = 0; i < tabla.length; i++) {
+	       document.write(tabla[i], "<br>");
+	    };
+	};
+    </script>
+  </body>
+</html>

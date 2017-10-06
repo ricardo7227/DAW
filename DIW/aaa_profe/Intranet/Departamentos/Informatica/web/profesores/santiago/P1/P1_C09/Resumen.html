@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Multimedia</title></head><body>
+<div style="text-align: center;"><font style="color: rgb(51, 0, 153);" size="+3">Multimedia</font><br>
+</div>
+
+<div><span style="font-weight: bold;"></span><br>&nbsp;&nbsp;&nbsp; De
+forma genérica a los plug-ins se les denomina complementos aunque
+éstos abarcan: snap-ins, plug-ins, extensiones, etc. Las extensiones se
+consideran parte integrante del navegador mientras que el plug-in se
+percibe como un complemento auxiliar. Un plug-in actúa ante la
+presencia de un determinado tipo de archivo, lo procesa y entrega el
+resultado en una ventana de visualización.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El formato flash es muy utilizado, posee una gran
+capacidad de compresión y permite crear presentaciones muy atractivas
+con animaciones, imágenes, sonidos, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El uso de streaming permite que un archivo se
+ejecute de inmediato sin esperar a que el fichero termine de
+descargarse. Esto posibilita la reproducción de sonido y video de modo
+directo y la recepción de programas de radio y televisión que se están
+emitiendo en ese momento. Existen varios formatos que incorporan
+estreaming y diferentes programas que lo gestionan, entre ellos:
+RealPlayer, Windows Media Player y QuickTime.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El modo de relacionar un formato de archivo con un
+plug-in se realiza utilizando la especificación MIME. Cada vez que se
+incluye un archivo multimedia debe indicarse su tipo MIME para que el
+navegador sepa como tratarlo.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">Para incluir objetos puede utilizarse:</span><br>
+<br style="color: red;">
+<span style="color: red;">&nbsp;&nbsp;&nbsp; Un enlace genérico</span>
+de la forma: &lt;a href="/videos/peli.mpeg"&gt;Pelicula &lt;/a&gt;.
+Cuando se "pincha en el enlace el navegador llama al plugin o
+subprograma asociado con la extensión. No permite controlar tamaño y el
+archivo se reproduce en una ventana nueva.<br>
+<br>
+<span style="color: red;">&nbsp;&nbsp;&nbsp; La etiqueta img</span>, de
+la forma: &lt;img src="/musica/micancion.au"/&gt;. Si la extensión no
+está relacionada con ningún plugin, el archivo no se tratará.<br>
+<br style="color: red;">
+<span style="color: red;">&nbsp;&nbsp;&nbsp; La etiqueta embed</span> que, además de los atributos generales, dispone de atributos específicos:<br>
+<ul>
+  <li>src.-</li>
+  <li>type.- tipo MIME.</li>
+  <li>id.-</li>
+  <li>width.-<br>
+  </li>
+  <li>height.-</li>
+</ul>
+&nbsp;&nbsp;&nbsp; También admite atributos específicos de los plug-ins utilizados, por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;embed src="showflash.swf" quality="high"/&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">La etiqueta object</span>
+posibilita la inclusión de objetos como imágenes, vídeos, sonido,
+plugins, controles ActiveX, applets de Java, estructuras virtuales 3D,
+etc. Un ejemplo de uso es el siguiente:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;object type="application/x-shockwave-flash" data="mivideo.swf"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+width="300" height="200" border="2"&gt;&lt;/object&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Admite, entre otros, los atributos:<br>
+<ul>
+  <li>data.- especifica la dirección del recurso.</li>
+  <li>type.- tipo MIME del recurso.</li>
+  <li>name.-</li>
+  <li>usemap.- con imágenes indica el mapa interactivo asociado.</li>
+  <li>width y height.-</li>
+  <li>form.- indica el formulario propietario del objeto.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">La etiqueta param</span>
+permite pasar parámetros a los plug-ins u objetos invocados mediante la
+etiqueta object. Tiene como atributos name (nombre del parámetro) y
+value (valor del parámetro).<br>
+<br>
+&nbsp;&nbsp;&nbsp; HTML 5 incorpora dos etiquetas para gestionar vídeo y sonido: <span style="color: red;">&lt;video&gt; y &lt;audio&gt;</span>. También existe una tercera etiqueta para tratar imágenes: <span style="color: red;">&lt;figure&gt;</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">La etiqueta video</span> tiene los atributos:<br>
+<ul>
+  <li>src.-</li>
+  <li>autoplay.- la reproducción se inicia tras la descarga.</li>
+  <li>loop.-</li>
+  <li>controls.-</li>
+  <li>preload.- puede tener los valores: none, metadata o auto. Es la recomendación al navegador de cómo realizar la precarga.</li>
+  <li>width y height.-</li>
+  <li>poster.- imagen que se mostrará si el video no se puede reproducir.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Un ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;video src="mivideo.vid" autoplay controls poster="foto.jpg"&gt;&lt;/video&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">La etiqueta source</span> permite informar varios formatos para un mismo contenido y el navegador utilizará el formato que sepa interpretar. Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;video autoplay controls poster="foto.jpg"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;source
+src="video.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2" '&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;source
+src="video.ogv" type='video/ogg; codecs="theora, vorbis" '&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/video&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los atributos utilizados son los siguientes:<br>
+<ul>
+  <li>src.-</li>
+  <li>type.- tipo MIME. Si se omite la extensión del archivo marcará el tipo.</li>
+  <li>codecs.- para las ocasiones que se requiera saber como está codificado el recurso.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">La etiqueta audio</span> es específica para archivos de sonido. Sus principales atributos son:<br>
+<ul>
+  <li>src.-</li>
+  <li>autoplay.-</li>
+  <li>loop.-</li>
+  <li>controls.-</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; En el libro hay un ejemplo con un script que permite
+gestionar los posibles errores de ejecución de los ficheros de vídeo y
+audio.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">La etiqueta canvas</span>
+permite definir áreas de visualización independientes o lienzos. En
+cada página se pueden definir varios lienzos y hacer que se muestren de
+forma alternativa para pasar al primer plano y conseguir efectos
+interesantes.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cada elemento canvas, dentro de un documento HTML,
+se identifica mediante su nombre (name) y posee unas dimensiones
+determinadas (width y height). La generación de los dibujos en el
+lienzo requiere una programación específica JavaScript. El libro
+contiene varios ejemplo utilizando scripts. Ver 
+<a href="http://www.aulaclic.es/articulos/canvas_1.html">www.aulaclic.es/articulos/canvas_1.html</a><br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">La etiqueta iframe</span> permite crear frames flotantes. Admite los atributos:<br>
+<ul>
+  <li>src.-</li>
+  <li>name.-</li>
+  <li>width y height.-</li>
+  <li>sandbox.- permite definir restricciones de seguridad en el acceso
+al contenido. Permite los valores: allow-same-origin,
+allow-top-navigation, allow-forms y allow-scripts.<br>
+
+  </li>
+</ul>
+</div>
+
+<br>
+
+<br>
+</body></html>

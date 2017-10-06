@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<script type="text/javascript">
+// archivo file021.html : evento onClick
+function eventoClick(ev) {
+	// listado de las propiedades del evento
+	var texto="Evento onClick en el navegador " + 
+		navigator.appName +"\n\n";
+	// si existe el objeto event, lo utiliza
+	// en caso contrario usa el objeto pasado
+	// por parámetro
+	if (window.event) {
+		texto+= "Usa objeto event\n";	
+		for (i in event) {
+			texto+=i+ " = " + event[i]+ "\n";
+		}
+	} else {
+		texto+= "Usa objeto ev pasado por parámetro\n";
+		for (i in ev) {
+			texto+=i+ " = " + ev[i]+ "\n";
+				}
+			}
+			// muestra la lista de propiedades del
+			// objeto evento
+			alert(texto);
+} 
+		
+function eventoError(txtMsg, txtPage, iLin) {
+	 alert("JavaScript informa error en la página " + txtPage +
+		 "\nNro. línea " + iLin + "\nError: " + txtMsg);
+	 return false;
+}
+		
+window.onerror = eventoError;
+document.onmouseclick=eventoClick;
+</script>
+<!-- codificamos un error seguro: se llama a una función no 
+	existente -->
+<a href="javascript:hhh()">Click para error </a>
+		
+</BODY>
+</HTML>

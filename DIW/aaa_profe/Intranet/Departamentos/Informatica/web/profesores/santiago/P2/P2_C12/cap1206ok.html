@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<!-- archivo Parte 2/code/cap1206ok.html -->
+<head>
+<title>Cambia de propiedades de modo dinámico</title>
+<style>
+p {color: blue; font-size: 12px;}
+#id1 {padding: 50px ;
+border: thick double green;
+}
+#id2 {padding: 20px;
+border: medium outset blue;
+}
+</style>
+<script>
+function CambiarProp(id, micolor) {
+
+	// código común para todos los navegadores
+	// obtiene el objeto a partir del identificador
+
+	obj= document.getElementById(id);
+
+	// vemos si está disponible el objeto
+	// si no se obtiene el objeto no se
+	// puede hacer nada
+
+	if (obj) {
+
+
+	   obj.style.color= micolor;
+
+	}
+
+}
+
+</script>
+</head>
+<h1>Cambio dinámico de propiedades</h1>
+<body>
+<div>
+<h3>Texto 1 </h3>
+<p id="id1" onClick="CambiarProp('id1', 'red')"  onMouseOut="CambiarProp('id1', 'blue')" >
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula leo id lectus faucibus eu rhoncus nisl rutrum. Nunc orci sapien, commodo a commodo vitae, sodales ut sapien. Cras ut lacus augue, ut iaculis mauris. Suspendisse potenti. Quisque ultrices malesuada dolor, vel cursus velit posuere at. Vestibulum ac tellus at urna rhoncus luctus non vitae odio. Praesent ut eros vitae orci euismod bibendum viverra nec risus. Nam sed diam eu lacus scelerisque ultricies quis a magna. Proin tempor sagittis aliquam. Suspendisse at odio nec tortor iaculis hendrerit. Vivamus eu nisl orci. Suspendisse potenti. Duis sed neque eget est bibendum rhoncus eget id nisi. Aenean sit amet eros quis sem dictum condimentum. Ut non rutrum urna. Suspendisse nec vulputate justo
+</p>
+<h3>Texto 2 </h3>
+<p id="id2" onClick="CambiarProp('id2', 'red' )" onMouseOut="CambiarProp('id2', 'blue')" >
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula leo id lectus faucibus eu rhoncus nisl rutrum. Nunc orci sapien, commodo a commodo vitae, sodales ut sapien. Cras ut lacus augue, ut iaculis mauris. Suspendisse potenti. Quisque ultrices malesuada dolor, vel cursus velit posuere at. Vestibulum ac tellus at urna rhoncus luctus non vitae odio. Praesent ut eros vitae orci euismod bibendum viverra nec risus. Nam sed diam eu lacus scelerisque ultricies quis a magna. Proin tempor sagittis aliquam. Suspendisse at odio nec tortor iaculis hendrerit. Vivamus eu nisl orci. Suspendisse potenti. Duis sed neque eget est bibendum rhoncus eget id nisi. Aenean sit amet eros quis sem dictum condimentum. Ut non rutrum urna. Suspendisse nec vulputate justo
+</p>
+</body>
+</html>

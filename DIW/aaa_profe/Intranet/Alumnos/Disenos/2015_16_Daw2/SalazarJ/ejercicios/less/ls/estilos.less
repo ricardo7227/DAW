@@ -1,0 +1,20 @@
+
+
+@color:red;
+
+.bloque(){
+	display: block;
+	width: 4em;
+	height: 4em;	
+}
+
+.claro
+{
+	.bloque;
+	background-color: fadeout(@color,50%);
+}
+.oscuro
+{
+	.bloque;
+    background-color: fadein(@color,50%);
+}

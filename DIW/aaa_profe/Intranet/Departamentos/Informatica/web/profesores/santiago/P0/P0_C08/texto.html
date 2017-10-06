@@ -1,0 +1,506 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Texto</title></head><body style="background-color: rgb(255, 250, 220);">
+<div align="justify"><a name="marcos"></a> <font size="+1"><span style="font-weight: bold;">Marcos</span></font><br>
+&nbsp;&nbsp;&nbsp;
+Los frames o marcos son una técnica que permite insertar varios
+documentos HTML en una única ventana del navegador. Para ello la
+ventana se divide en varias zonas que reciben el nombre de frames o
+marcos. En cada uno de los marcos se insertará un contenido que
+generalmente será un documento HTML (página web) pero que también puede
+ser una imagen o cualquier otro objeto visualizable por el navegador.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El contenido de cada uno de los marcos puede ser
+cambiado sin que ello afecte al resto, lo que los convierte en
+elementos muy útiles. Como inconveniente hay que decir que son una
+extensión del HTML, es decir, no forman parte del estándard, y pueden
+dar problemas con algún tipo de navegador usado en móviles, de modo
+texto, ...<br>
+<br>
+&nbsp;&nbsp;&nbsp; Como ejemplo de uso de marcos puede visitarse la
+página http://www.chess.com (¿?).<br>
+<br>
+&nbsp;&nbsp;&nbsp; Antes de ver las etiquetas que permiten formar la
+estructura de los marcos es conveniente conocer el atributo target y la
+etiqueta base.<br>
+<br style="font-weight: bold;">
+<a name="target"></a> <font size="+1"><span style="font-weight: bold;">El
+atributo target</span></font><br>
+&nbsp;&nbsp;&nbsp; Su uso más frecuente es con la etiqueta "a" y su
+función es indicar el nombre de la ventana donde debe cargarse el
+elemento apuntado por el enlace. Un ejemplo de uso puede ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;a&nbsp;
+href="http://www.google.es"&nbsp; target="ventana_01"&gt;Buscador de
+Google&lt;/a&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; target fue creado para usarse con los frames pero
+también puede ser usado fuera de ellos. Cuando se "pincha" en un enlace
+definido con el atributo target, el navegador busca una ventana o frame
+con el nombre especificado; si existe muestra el elemento en dicha
+ventana o frame y, si no existe, se crea una&nbsp; ventana con ese
+nombre. Para ver un ejemplo <a href="08_01_target1.html">pincha aquí</a>.<br>
+<br style="font-weight: bold;">
+<a name="base"></a> <font size="+1"><span style="font-weight: bold;">La
+etiqueta base</span></font><br>
+&nbsp;&nbsp;&nbsp; Esta etiqueta permite establecer el "directorio
+activo" o dirección base de tal forma que todas las direcciones
+relativas se tendrán en cuenta a partir de esta dirección. Hasta este
+momento la dirección base coincidía con la dirección donde se encuentra
+la página web actual, de tal forma que al especificar una dirección
+relativa, el navegador añade delante la dirección de la página para
+obtener la dirección absoluta. Con esta etiqueta podemos hacer que la
+dirección base no coincida con la dirección de la página actual.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta <span style="color: red;">base</span>
+debe ser utilizada en la cabecera del documento, entre las etiquetas
+&lt;head&gt; ... &lt;/head&gt;, ya que afectará a su totalidad, y
+tendrá una forma similar a:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;<span style="color: red;">base&nbsp; href</span>="http://www.tiernogalvan.es/sitioweb"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/head&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si en el atributo <span style="color: red;">href</span>
+se especifica un nombre de fichero la dirección base será el directorio
+donde se encuentra éste. Además, las direcciones que se especifiquen en
+esta etiqueta deben ser siempre absolutas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La dirección base afecta a todas las etiquetas en
+las que se especifique una dirección relativa (img, ...).<br>
+<br>
+&nbsp;&nbsp;&nbsp; Esta etiqueta es muy útil cuando la página principal
+está en un servidor y las demás en otro, o en otro directorio.
+Especialmente útil es cuando una página tiene varios frames y las
+páginas enlazadas a las opciones de esos frames tienen que ser
+visualizadas en, por ejemplo, el frame de nombre "principal"; en este
+caso puede establecerse el nombre de este frame "principal" como
+dirección base y así no será necesario utilizar en los enlaces de los
+otros frames el atributo target para especificar dónde se tiene que
+mostrar. Esto se realiza mediante el atributo <span style="color: red;">target</span>
+de la etiqueta base. Un ejemplo sería:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;base
+target="principal"&gt;<br>
+<br style="font-weight: bold;">
+<a name="creacion"></a> <font size="+1"><span style="font-weight: bold;">Creación de páginas con frames</span></font><br>
+&nbsp;&nbsp;&nbsp; Para crear una página con frames hay que crear
+varios documentos:<br>
+<ul>
+  <li>Un documento de definición de frames con la disposición de éstos.</li>
+  <li>Tantos documentos como frames distintos existan para mostrar cada
+documento en un frame.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; El documento de definición de frames tendrá su
+número, tamaño, posición y el nombre de los documentos con el contenido.<br>
+<br style="font-weight: bold;">
+<a name="definicion"></a> <font size="+1"><span style="font-weight: bold;">Creación del documento de definición de
+frames</span></font><br>
+&nbsp;&nbsp;&nbsp; La estructura de este documento es similar a la de
+los demás. La principal diferencia es que este documento no tendrá
+contenido y por lo tanto no debe tener etiqueta body. A cambio, tendrá
+la etiqueta <span style="color: red;">frameset</span>. Luego, la
+estructura será de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;html&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+. . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;frameset&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+. . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;/frameset&gt;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &lt;/html&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; <font style="font-weight: bold;" size="+1">División
+en columnas</font><br>
+&nbsp;&nbsp;&nbsp; Para dividir la ventana del navegador en frames
+verticales se utiliza el atributo <span style="color: red;">cols</span>
+de la etiqueta frameset. El atributo toma como valores la anchura de
+los diferentes frames, separados por comas. Dichos valores pueden darse
+en pixels o porcentajes. Para hacer referencia al resto se usa el
+caracter asterisco (*), pudiendo especificarse múltiplos de éste. Un
+ejemplo un poco complejo puede ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;frameset cols="100,
+20%, 4*, 5*"&gt; . . . &lt;/frameset&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; No se recomienda utilizar más de cuatro frames para
+que cada área no sea demasiado pequeña. Dar las medidas en pixels tiene
+el inconveniente de que no se conoce la resolución del equipo utilizado
+por el usuario. Los tamaños absolutos deben utilizarse solamente en las
+ocasiones que realmente lo requieran y es muy conveniente que el tamaño
+de la última columna (o de cualquier otra) se asigne mediante "*".<br>
+<br>
+&nbsp;&nbsp;&nbsp; <font style="font-weight: bold;" size="+1">División
+en filas</font><br>
+&nbsp;&nbsp;&nbsp; El atributo utilizado es <span style="color: red;">rows</span>,
+cuyo funcionamiento es similar a cols. Si se utilizan tamaños relativos
+hay que considerar que toman como referencia el alto de la ventana, no
+de la página. Dada la dificultad de prever la altura de la ventana del
+usuario, la medida más utilizada es en porcentajes.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Pueden utilizarse simultáneamente los atributos cols
+y rows en la misma etiqueta, lo que generará una cuadrícula de frames.
+Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;frameset cols="*, 2*"
+rows="60, 300, *"&gt; . . . &lt;/frameset&gt;<br>
+<br style="font-weight: bold;">
+<a name="frame"></a> <font size="+1"><span style="font-weight: bold;">La
+etiqueta frame</span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Entre &lt;frameset&gt; y &lt;/frameset&gt; deben
+definirse tantas etiquetas <span style="color: red;">frame</span> como
+marcos haya en la página. La etiqueta frame utilizará el atributo <span style="color: red;">src</span> para identificar el documento que debe
+mostrarse en el marco.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Otro atributo de frame es <span style="color: red;">name</span>
+que permite asignar un nombre al marco o ventana y al que podremos
+hacer referencia con el atributo target o con los lenguajes de script.
+Con lo cual, una página con 4 frames podría tener la estructura
+siguiente:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &lt;frameset
+rows="15%,85%" cols="20%,80%"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &lt;frame
+name="arriba_izda" src="imagenes/Anagrama.jpeg"&gt;&lt;/frame&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &lt;frame
+name="arriba_dcha" src="titulo.html"&gt;&lt;/frame&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &lt;frame
+name="abajo_izda" src="indice.html"&gt;&lt;/frame&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &lt;frame
+name="abajo_dcha" src="texto.html"&gt;&lt;/frame<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/frameset&gt;<br>
+<br>
+cuyo resultado puede verse <a href="frames_01.html">pinchando aquí</a>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si posteriormente se desea hacer un enlace a este
+frame desde otro de la misma página habría que poner:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;a&nbsp;
+href="Documento.html"&nbsp; target="Nombre_frame"&gt;<br>
+<br style="font-weight: bold;">
+<a name="pagina"></a> <font size="+1"><span style="font-weight: bold;">Página
+completa con frames</span></font><br>
+&nbsp;&nbsp;&nbsp; El primer paso es crear el documento de definición
+de frames. El código de la página mostrada al pinchar un poco más
+arriba, y que perfectamente puede servir de ejemplo, es:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;!DOCTYPE html&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;html&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;meta
+charset="UTF-8"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;title&gt;Marcos y frames&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &lt;/head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;frameset
+rows="15%,85%" cols="20%,80%"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&lt;frame name="arriba_izda"
+src="imagenes/Anagrama.jpeg"&gt;&lt;/frame&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&lt;frame name="arriba_dcha" src="titulo.html"&gt;&lt;/frame&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&lt;frame name="abajo_izda" src="indice.html"&gt;&lt;/frame&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&lt;frame name="abajo_dcha" src="texto.html"&gt;&lt;/frame&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/frameset&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/html&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; El siguiente paso consiste en crear los documentos
+que se mostrarán en cada uno de los frames y que, en el caso del
+ejemplo anterior se concreta en los fichero: Anagrama.jpeg,
+titulo.html, indice.html y text.html. Todos estos ficheros son los que
+se están utilizando en la creación del resumen de este tema.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Es conveniente observar cómo la etiqueta base de la
+página indice.html indica que la información se muestre en el frame
+abajo_dcha:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;base
+target="abajo_dcha"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/head&gt;<br>
+<br>
+<br style="font-weight: bold;">
+<a name="atributos"></a> <font size="+1"><span style="font-weight: bold;">Atributos de la etiqueta frame </span></font><br>
+&nbsp;&nbsp;&nbsp; Otros atributos de la etiqueta frame son:<br>
+<ul>
+  <li>scrolling.- permite insertar barras de desplazamiento. Los
+valores que puede tomar son:</li>
+  <ul>
+    <li>auto: se insertan automáticamente si el espacio del frame es
+menor que el contenido. Es el valor predeterminado.<br>
+    </li>
+    <li>yes: se insertan en cualquier caso.<br>
+    </li>
+    <li>no: no se insertan barras y debe tenerse en consideración
+porque si el contenido es mayor que el continente no se podrá ver la
+totalidad del contenido.</li>
+  </ul>
+  <br>
+  <li>noresize.- impide que el usuario pueda modificar el tamaño de los
+frames pinchando y arrastrando sus bordes.<br>
+    <br>
+  </li>
+  <li>marginheight.- establece el margen superior del contenido con el
+marco y su valor debe darse
+en pixels.<br>
+    <br>
+  </li>
+  <li>marginwidth.- establece los márgenes laterales del contenido con
+el marco y el valor debe
+darse en pixels.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Generalmente es útil establecer márgenes de 0
+para frames cuya función sea la de barra de navegación. En los frames
+con contenido, sobre todo si el contenido es texto, suelen establecerse
+los márganes a 10 pixels.<br>
+<br>
+<a name="compatibilidad"></a> <font size="+1"><span style="font-weight: bold;">Compatibilidad: noframe</span></font><br>
+&nbsp;&nbsp;&nbsp; La etiqueta <span style="color: red;">noframe</span>
+tiene utilidad con aquellos navegadores que no soportan los frames.
+Debe ser utilizada dentro de la etiqueta frameset de la forma siguiente:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;frameset&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Código de
+definición de frame<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;noframe&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+Código alternativo<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;/noframe&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/frameset&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Dependiendo de si el navegador soporta o no frames
+ignorará el código de definición de frames o el código alternativo.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un ejemplo puede ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;frameset cols="200, *"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;frame src="f1.html"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;frame src="f2.html"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;noframe&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;p&gt;Esta
+página usa frames y su navegador no los soporta,<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; por favor vaya a &lt;a
+href="sinframe.html"&gt;nuestras páginas sin frames&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/body&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;/noframe&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/frameset&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Hay que tener en cuenta que dentro de la etiqueta
+noframe debe incluirse la etiqueta body.<br>
+<br>
+<a name="anidamiento"></a> <font size="+1"><span style="font-weight: bold;">Anidamiento de framesets </span></font><br>
+&nbsp;&nbsp;&nbsp; Anidando frames se consiguen estructuras más
+complejas y sofisticadas.Un ejemplo puede ser una de las versiones de
+esta página cuyo código es el siguiente:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;frameset
+rows="8%,92%"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;frame
+name="arriba" src="titulo.html"&gt;&lt;/frame&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;frameset
+cols="20%,80%"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &lt;frame name="abajo_izda" src="indice.html"
+marginwidth="10" marginheight="10" noresize&gt;&lt;/frame&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &lt;frame name="abajo_dcha" src="texto.html"
+marginwidth="10" marginheight="10" noresize&gt;&lt;/frame&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;/frameset&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/frameset&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+<br>
+&nbsp;&nbsp;&nbsp; La ventana del explorador se divide en dos filas,
+una con el 8% y otra con el 92%. La primera tiene como nombre "arriba"
+donde se mostrará la página "titulo.html". La segunda se divide a su
+vez en dos columnas, una con el 20% y nombre "abajo_izda, y la otra con
+el 80% y nombre "abajo_dcha".<br>
+<br>
+&nbsp;&nbsp;&nbsp; No existe límite en el número de niveles de
+anidamiento pero debe tenerse en cuenta que si los marcos son muy
+pequeños pueden perder efectividad.<br>
+<br>
+<a name="bordes"></a> <font size="+1"><span style="font-weight: bold;">Bordes
+de los frames</span></font><br>
+&nbsp;&nbsp;&nbsp; De forma predeterminada los frames están separados
+por unas líneas con aspecto de 3D. Las características de estas líneas
+pueden ser modificadas con los atributos <span style="color: red;">bordercolor
+y frameborder</span> de la etiqueta frame y con el atributo <span style="color: red;">border</span> de la etiqueta frameset.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El atributo bordercolor permite especificar el color
+y los valores se asignan mediante el nombre del color o utilizando la
+codificación hexadecimal, por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;frame&nbsp;
+bordercolor="red" . . .&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;frame
+bordercolor="#FF0000" . . .&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si frames contiguos tienen asignado distinto color
+de las líneas de separación el resultado es impredecible. Por otra
+parte, algunos navegadores admiten el atributo bordercolor para la
+etiqueta frameset, afectando así a todos los frames incluidos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El atributo frameborder permite mostrar u ocultar
+los bordes asignando los valores "1" (valor por defecto) o "0"
+respectivamente. Sirven aquí
+las apreciaciones anteriores: si frames contiguos tienen asignados
+valores diferentes el resultado será impredecible y este atributo puede
+utilizarse con frameset dependiendo del navegador.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El atributo border de la etiqueta frameset permite
+establecer el grosor de las líneas asignando su valor en pixels. La
+página de este resumen tiene una linea de separación de 1 pixel entre
+las filas y de 10 pixels entre las columnas.<br>
+<br>
+<a name="valores"></a> <font size="+1"><span style="font-weight: bold;">Valores
+especiales del atributo target</span></font><br>
+&nbsp;&nbsp;&nbsp; El atributo target permite mostrar el resultado de
+un enlace en el frame que se especifique. Además, este atributo puede
+tomar ciertos valores que tienen un significado especial:<br>
+<br>
+<ul>
+  <li>_blank.- el documento referenciado por el enlace se muestra en
+una ventana nueva.</li>
+  <br>
+  <li>_self.- el documento enlazado se mostrará en el mismo frame donde
+se encuentra el enlace. Es especialmente útil cuando se ha usado la
+etiqueta base para especificar un frame destino por defecto distinto del
+actual.</li>
+  <br>
+  <li>_parent.- el documento se mostrará en el frameset padre del
+actual.</li>
+  <br>
+  <li>_top.- el documento referenciado en el enlace se mostrará usando
+la ventana completa del navegador, destruyendo la estructura de frames
+existente. Debe utilizarse siempre que exista un enlace a una página
+externa a nuestro sitio web.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; En la página 317 del libro hay un gráfico
+explicativo muy bueno.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En un capítulo anterior se vió que la etiqueta meta
+podía utilizarse para cargar automáticamente otra página (o refrescar
+la misma) pasados unos segundos incluyendo en la cabecera del documento
+codigo similar al siguiente:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;meta
+http-equiv="refresh" content="5" url="http://www.tiernogalvan.es"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Esta técnica puede utilizarse para redirigir a los
+usuarios que utilizan un explorador que no soporta frames a otras
+páginas que no los usan, pasados unos segundos.<br>
+<br>
+<a name="flotantes"></a> <font size="+1"><span style="font-weight: bold;">Frames flotantes</span></font><br>
+&nbsp;&nbsp;&nbsp; Los frames flotantes son similares a los anteriores
+con la diferencia de que pueden ser insertados en cualquier lugar de
+una página web, y su función ya no será dividir la ventana del
+navegador en varias partes, sino insertar en medio de un documento HTML
+el contenido de otro en un área del tamaño que se indique.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta <span style="color: red;">iframe</span>
+permite crear frames flotantes de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;iframe&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/iframe&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Entre las dos etiquetas puede incluirse código
+alternativo para los navegadores que no soportan frames flotantes (ver
+ejemplo en el apartado siguiente).
+Estas etiquetas pueden incluirse en cualquier parte del cuerpo de una
+página, es decir, no se necesita que sea una página especial. Pueden
+insertarse tantos frames flotantes como se quiera.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <font style="font-weight: bold;" size="+1">Atributos
+de los frames flotantes</font><br>
+&nbsp;&nbsp;&nbsp; Los atributos de los frames flotantes permiten
+especificar el documento HTML&nbsp; que se mostrará en el frame, su
+tamaño, alineamiento, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El atributo <span style="color: red;">src</span> es
+de uso obligatorio y toma como valor la dirección url, absoluta o
+relativa, del documento HTML que servirá de contenido. Puede verse un
+ejemplo <a href="08_02_iframes_01.html">pinchando aquí</a>, cuyo
+código es:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;h2&gt;A
+continuación vemos un ejemplo de un frame flotante:&lt;/h2&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;iframe
+src="08_02_iframes_02.html"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+Tu navegador no soporta frames flotantes, para ver el contenido ve a
+&amp;amp;lt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; A
+HREF="08_02_iframes_02.html"&amp;amp;gt;iframe.html&amp;amp;lt;/a&amp;amp;gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;/iframe&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/body&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; El explorador asigna un tamaño por defecto al frame
+donde se visualizará todo el contenido, independientemente de su
+longitud.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Además del atributo src, la etiqueta iframe admite
+los siguientes:<br>
+<br>
+<ul>
+  <li><span style="color: red;">name</span>.- asigna un nombre al frame
+lo que permitirá referenciarlo
+usando, por ejemplo, el atributo target.</li>
+  <br>
+  <li><span style="color: red;">width y eight</span>.- permite dar un
+tamaño al frame en pixels.</li>
+  <br>
+  <li><span style="color: red;">frameborder</span>.- permite visualizar
+o quitar el borde mediante los
+valores 1 y 0 respectivamente.</li>
+  <br>
+  <li><span style="color: red;">scrolling</span>.- permite mostrar o no
+las barras de desplazamiento.
+Funciona igual que con los frames normales.</li>
+  <br>
+  <li><span style="color: red;">marginwidth y hspace</span>.- como en
+los frames normales y similar a
+las imágenes.</li>
+  <br>
+  <li><span style="color: red;">marginheight y vspace</span>.- como en
+los frames normales y similar a
+las imágenes.</li>
+  <br>
+  <li><span style="color: red;">align</span>.- funciona como con las
+imágenes y sus posibles valores
+son: left, middle, right, top y bottom.</li>
+  <br>
+  <li><span style="color: red;">border</span>.- permite especificar el
+grosor del borde en pixels.</li>
+  <br>
+  <li><span style="color: red;">bordercolor</span>.- permite
+especificar el color del borde.</li>
+</ul>
+</div>
+
+<br>
+
+<br>
+
+</body></html>

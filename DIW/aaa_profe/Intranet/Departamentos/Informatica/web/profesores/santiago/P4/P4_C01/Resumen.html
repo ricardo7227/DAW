@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Introducción al lenguaje PHP</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<div id="header">
+<p id="cabecera">Introducción al lenguaje PHP</p>
+</div>
+<div>
+<div id="nav">
+<a href="#donde">Dónde se utiliza PHP</a><br>
+<br>
+<a href="#php5">PHP 5 o PHP 6</a><br>
+<br>
+<a href="#para">Para qué se utiliza PHP</a><br>
+<br>
+<a href="#codigo">Código en el lado del servidor</a><br>
+<br>
+<a href="#bases">Bases de datos que se utilizan con PHP</a><br>
+<br>
+<a href="#que">Qué produce PHP</a><br>
+<br>
+<a href="#php">PHP no es sólo un lenguaje más</a><br>
+<br>
+<a href="#antecedentes">Antecedentes de PHP</a><br>
+<br>
+<a href="#novedades">Novedades de PHP 6</a>
+</div>
+<div id="article">
+&nbsp;&nbsp;&nbsp; PHP significa Hypertext Preprocessor, es decir,
+preprocesador de hipertexto. PHP es un lenguaje de código abierto que
+se ejecuta en el servidor y que se incrusta en las páginas HTML para
+lograr que éstas tengan contenido dinámico basándose generalmente en
+información que se recupera desde bases de datos. Las páginas con
+código PHP se procesan en el servidor para producir la página que se
+envía al cliente. Un ejemplo sería:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;!DOCTYPE html&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &lt;html&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;title&gt;Cómo se incrusta el código PHP en una página
+HTML&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp; &lt;/head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo "Esto saldrá en el navegador";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; ?&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/body&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/html&gt;</p>
+&nbsp;&nbsp;&nbsp; PHP también actúa como elemento de conexión de las páginas web con los motores de bases de datos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP es un lenguaje de código abierto y de uso gratuito.<br>
+
+<h3><a name="donde"></a>Dónde se utiliza PHP</h3>
+
+&nbsp;&nbsp;&nbsp; PHP se ejecuta sin cambios en una gran variedad de
+sistemas: servidores IIS de Windows, servidores Apache, en entornos
+Unix, Linux; Windows, Mac OS, etc.<br>
+
+<h3><a name="php5"></a>PHP 5 o PHP 6</h3>
+
+&nbsp;&nbsp;&nbsp; En este texto se tratará la versión PHP 5.3 que es
+la versión estable y de uso extendido en los servidores comerciales.
+También se verán las novedades de PHP 6.<br>
+
+<h3><a name="para"></a>Para qué se utiliza PHP</h3>
+
+&nbsp;&nbsp;&nbsp; Las secuencias de comandos de PHP se utilizan de tres formas:<br>
+<ul>
+  <li>Desarrollo de código que se ejecuta en el servidor.- esta opción,
+la más extendida, genera código HTML y precisa de un servidor y de un
+navegador.</li>
+  <li>Desarrollo de aplicaciones GUI para ejecutar en el cliente.- PHP
+con el añadido del kit de desarrollo GTK se convierte en una
+herramienta adecuada para la programación de código que se ejecuta en
+el navegador.</li>
+  <li>Secuencias de comandos para utilizar directamente en el equipo
+sin necesidad de navegador ni servidor para resolver distintos tipos de
+tareas.<br>
+
+  </li>
+</ul>
+<h3><a name="codigo"></a>Código en el lado del servidor</h3>
+
+&nbsp;&nbsp;&nbsp; PHP (como ASP.NET) pertenece al grupo de lenguajes
+que se ejecutan en el lado del servidor. Es independiente del cliente y
+tiene capacidad para contactar con distintos tipos de servidores (Bases
+de datos, SMTP, Web, Directorios, ...), procesar datos y formularios,
+generar páginas de modo dinámico en base a resultados de consultas en
+bases de datos, etc.<br>
+
+<h3><a name="bases"></a>Bases de datos que se utilizan con PHP</h3>
+
+&nbsp;&nbsp;&nbsp; Uno de los puntos fuertes de PHP es su conectividad
+a los principales sistemas de gestión de base de datos: MySQL, Ingres,
+Oracle, SQLite, Adabas, dBase, Empress, etc. etc.<br>
+
+<h3><a name="que"></a>Qué produce PHP</h3>
+
+&nbsp;&nbsp;&nbsp; PHP tiene una salida resultante clásica que es
+código HTML, es decir, el proceso de las páginas PHP en el servidor
+habitualmente genera como salida páginas HTML. Pero ésta no es la única
+posibilidad, también se pueden producir imágenes, archivos PDF,
+archivos Flash y cualquier clase de archivos de texto como XHTML o XML.
+Al procesar el servidor el código del ejemplo anterior producirá la
+siguiente salida, que es la que llega al navegador:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;!DOCTYPE html&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &lt;html&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;title&gt;Cómo se incrusta el código PHP en una página
+HTML&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp; &lt;/head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Esto saldrá en el navegador<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/body&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/html&gt;</p>
+
+&nbsp;&nbsp;&nbsp; Como se puede comprobar, al navegador solamente llega código HTML, no llega nada de código PHP.<br>
+
+<h3><a name="php"></a>PHP no es sólo un lenguaje más</h3>
+
+&nbsp;&nbsp;&nbsp; Algunas de las ventajas que le han valido su popularidad son:<br>
+<ul>
+  <li>Fácil de aprender.</li>
+  <li>Incorpora gran cantidad de funciones.</li>
+  <li>Amplia disponibilidad de secuencias de comandos pregenerados en PHP.</li>
+  <li>Gran capacidad de incrustar código PHP en las páginas HTML.</li>
+  <li>Simplicidad de su vinculación con las principales bases de datos.</li>
+  <li>Compatible con las plataformas importantes.</li>
+  <li>Código fuente abierto y gratuito.</li>
+  <li>Soporta los principales protocolos (POP3, IMAP, LDAP).</li>
+  <li>Soporte para Java, COM, CORBA.</li>
+  <li>Soporte para XML con DOM y SimpleXML.<br>
+
+  </li>
+</ul>
+<h3><a name="antecedentes"></a>Antecedentes de PHP</h3>
+
+&nbsp;&nbsp;&nbsp; PHP nace en 1.994. Junto con Apache y MySQL se
+convierte en una combinación de software abierto muy utilizado. La
+versión 5.3.6 se distribuyó en marzo de 2.011 y actualmente está
+disponible la versión PHP 6.0.0.<br>
+
+<h3><a name="novedades"></a>Novedades de PHP 6</h3>
+
+&nbsp;&nbsp;&nbsp; Las novedades de PHP 6 con respecto a las anteriores se pueden resumir en:<br>
+<ul>
+  <li>Soporte para Unicode.</li>
+  <li>Mejoras en la seguridad.</li>
+  <li>Eliminación de la funcionalidad de magic_quotes.</li>
+  <li>Definición de namespaces.</li>
+  <li>Mejoras en las interfaces orientadas a objetos.</li>
+</ul>
+</div>
+</div>
+<div id="footer">
+</div>
+</body></html>

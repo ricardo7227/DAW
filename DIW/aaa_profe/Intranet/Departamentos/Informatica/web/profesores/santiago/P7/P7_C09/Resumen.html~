@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Métodos importantes</title>
+
+  
+  
+  <script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<div id="header">
+<p id="cabecera">Métodos each(), size(), data() y removedata()</p>
+</div>
+
+<div>
+<div id="nav"> <br>
+<a href="#each">El método each()</a><br>
+<br>
+<a href="#size">El método size() y la prop. length</a><br>
+<br>
+<a href="#data">El método data()</a><br>
+<br>
+<a href="#remove">El método removeData()</a><br>
+<br>
+</div>
+<div id="article">
+Este resumen se ha realizado sobre los manuales de <a href="http://www.desarrolloweb.com/manuales/manual-jquery.html">desarrolloweb.com</a>.<br>
+<h3><a name="each"></a>El método each()</h3>
+<p>&nbsp;&nbsp;&nbsp; El método each() permite realizar acciones con
+todos
+los elementos que concuerdan con una selección realizada con la función
+$() de forma cómoda y con poco código. Con each se realiza una
+iteración por todos los elementos del DOM que se hayan seleccionado.
+Este método recibe una función que es la que se tiene que
+ejecutar para cada elemento y dentro de esa función con la variable
+"this" tenemos una referencia a ese elemento del DOM. Adicionalmente,
+la función que se envía a each, puede recibir un parámetro que es el
+índice actual sobre el que se está iterando.<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp; La siguiente instrucción:<br>
+</p>
+<p><span class="codigo">$("p").css("background-color", "#eee");
+</span></p>
+<p>&nbsp;&nbsp;&nbsp; realiza una iteración sobre todos los párrafos y
+mediante el método css() se les aplica un estilo. Si se desea aplicar
+un color a lo s párrafos impares y otro a los pares podemos utilizar el
+método each() de la forma:<br>
+</p>
+<p class="codigo">
+$("p").each(function(i){<br>
+&nbsp;&nbsp;&nbsp;if(i%2==0){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(this).css("background-color",
+"#eee");<br>
+&nbsp;&nbsp;&nbsp;}else{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(this).css("background-color",
+"#ccc");<br>
+&nbsp;&nbsp;&nbsp;}<br>
+});
+</p>
+<p>&nbsp;&nbsp;&nbsp; El resultado puede verse haciendo click <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/core/each.html" target="_blank">aquí</a>.</p>
+<p>&nbsp;&nbsp;&nbsp; Como se puede observar con la variable "this" se
+tiene acceso al elemento actual. Este elemento no es un objeto jQuery,
+así que no
+se le pueden aplicar métodos jQuery hasta que no se seleccione con la
+función $(). En el siguiente ejempo la primera línea no funcionaría
+correctamente pero la segunda si:
+</p>
+<p class="codigo">
+this.css("background-color", "#ccc");<br>
+$(this).css("background-color", "#ccc");
+</p>
+<p>&nbsp;&nbsp;&nbsp; Este sería el código fuente completo:
+</p>
+<p class="codigo">
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;title&gt;each del core de jQuery&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;script src="../jquery-1.3.2.min.js"
+type="text/javascript"&gt;&lt;/script&gt;<br>
+&nbsp;&nbsp; &lt;script&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $("p").each(function(i){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if
+(i%2==0){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$(this).css("background-color",
+"#eee");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}else{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$(this).css("background-color",
+"#ccc");<br>
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; });<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}); <br>
+&nbsp;&nbsp;&nbsp;
+&lt;/script&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&nbsp;&nbsp;
+&lt;p&gt;Primer párrafo&lt;/p&gt;<br>
+&nbsp;&nbsp;
+&lt;p&gt;Otro párrafo&lt;/p&gt;<br>
+&nbsp;&nbsp;
+&lt;p&gt;Tecer párrafo&lt;/p&gt;<br>
+&nbsp;&nbsp;
+&lt;p&gt;Uno más&lt;/p&gt;<br>
+&nbsp;&nbsp;
+&lt;p&gt;y acabo...&lt;/p&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;
+</p>
+<h3>&nbsp;&nbsp;&nbsp; Retorno de valores de la función enviada al
+método each</h3>
+&nbsp;&nbsp;&nbsp; La función enviada como parámetro a each() puede
+devolver valores y dependiendo de éstos, conseguir comportamientos
+parecidos a los conocidos break o continue de los bucles Javascript. Si
+la función devuelve "false", se consigue detener por completo el
+proceso de iteraciones de each(), como el típico "break". Si la función
+devuelve "true", se consigue pasar directamente a la
+próxima iteración del bucle, como el típico "continue".
+<p>&nbsp;&nbsp;&nbsp; Veamos un ejemplo:</p>
+<p>&nbsp;&nbsp;&nbsp; Si se dispone de varios DIV, donde cada uno tiene
+un texto.
+</p>
+<p class="codigo">
+&lt;div&gt;red&lt;/div&gt;<br>
+&lt;div&gt;blue&lt;/div&gt;<br>
+&lt;div&gt;red&lt;/div&gt;<br>
+&lt;div&gt;white&lt;/div&gt;<br>
+&lt;div&gt;red&lt;/div&gt;<br>
+&lt;div&gt;green&lt;/div&gt;<br>
+&lt;div&gt;orange&lt;/div&gt;<br>
+&lt;div&gt;red&lt;/div&gt;<br>
+&lt;div&gt;nada&lt;/div&gt;<br>
+&lt;div&gt;red&lt;/div&gt;<br>
+&lt;div&gt;blue&lt;/div&gt;
+</p>
+<p>y se quiere hacer un recorrido a esos DIV poniendo a cada uno como
+color del texto el color que aparece escrito, con dos consideraciones:</p>
+<ul>
+  <li>Si el texto del DIV es "white" no debe hacerse nada. </li>
+  <li>Si el texto del DIV es "nada" debe detenerse el bucle. </li>
+</ul>
+&nbsp;&nbsp;&nbsp; Esto se puede hacer con el siguiente código:
+<p class="codigo">$("div").each(function(i){<br>
+&nbsp;&nbsp;&nbsp;elemento = $(this);<br>
+&nbsp;&nbsp;&nbsp;if(elemento.html() == "white")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;<br>
+&nbsp;&nbsp;&nbsp;if(elemento.html() == "nada")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;<br>
+&nbsp;&nbsp;&nbsp;elemento.css("color", elemento.html());<br>
+});
+</p>
+<p>&nbsp;&nbsp;&nbsp; El resultado puede verse pulsando <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/core/each2.html" target="_blank">aquí</a>.</p>
+<h3><a name="size"></a>El método size y la propiedad length</h3>
+<p>&nbsp;&nbsp;&nbsp; El método size devuelve el número (entero) de
+elementos seleccionados con la función $(). Veamos un ejemplo:
+</p>
+<p class="codigo">
+var parrafos = $("p");
+<br>
+alert ("Hay " + parrafos.size() + " párrafos en la página");
+</p>
+<p>&nbsp;&nbsp;&nbsp; La propiedad length, que existe en cualquier
+objeto jQuery, nos sirve
+para obtener el número de elementos de la página que hemos
+seleccionado. Lo interesante de esta propiedad es que almacena
+directamente este valor, por lo que es más rápido y más aconsejable que
+calcular los elementos seleccionados con el método size(). Veamos un
+ejemplo:
+</p>
+<p class="codigo">
+var ElementosMitexto = $(".mitexto");
+<br>
+alert ("Hay " + ElementosMitexto.length + " elementos de la clase
+mitexto");
+</p>
+<p>&nbsp;&nbsp;&nbsp; El código completo de una página que hace uso de
+este
+método puede ser:
+</p>
+<p class="codigo">
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;title&gt;propiedad length del core
+jQuery&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;script src="../jquery-1.3.2.min.js"
+type="text/javascript"&gt;&lt;/script&gt;<br>
+&nbsp;&nbsp; &lt;script&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp;//selecciono todos los elementos de la clase "mitexto"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var ElementosMitexto =
+$(".mitexto");<br>
+&nbsp;&nbsp;&nbsp;//muestro el número de los párrafos encontrados<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alert ("Hay " +
+ElementosMitexto.length + " elementos
+de la clase mitexto");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+});<br>
+&nbsp;&nbsp;&nbsp;
+&lt;/script&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&nbsp;&nbsp;
+&lt;p&gt;Esto es un párrafo normal&lt;/p&gt;<br>
+&nbsp;&nbsp;
+&lt;p class="mitexto"&gt;Esto es un párrado de la clase
+"mitexto"&lt;/p&gt;<br>
+&nbsp;&nbsp;
+&lt;div&gt;Un div normal&lt;/div&gt;<br>
+&nbsp;&nbsp;
+&lt;div class="mitexto"&gt;Ahora un div de la clase
+"mitexto"&lt;/div&gt;<br>
+&nbsp;&lt;/body&gt;<br>
+&nbsp;&lt;/html&gt;<br>
+</p>
+<h3><a name="data"></a>El método data()</h3>
+&nbsp;&nbsp;&nbsp; Los métodos data() y removeData() sirven para
+almacenar, consultar y eliminar cualquier tipo de dato en elementos de
+la página. En algunas ocasiones resulta útil almacenar variables u
+objetos en
+determinados elementos de la página. Aunque quizás no es una acción muy
+corriente en los primeros pasos con jQuery, puede resultar muy útil y
+podemos encontrar herramientas y plugins que utilizan este
+mecanismo para su operativa. De modo que conviene al menos saber que
+esto es posible y conocer de qué manera se pueden utilizar los
+elementos
+de la página para guardar cosas en ellos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El método data() sirve tanto para guardar un dato en
+un
+elemento como para consultarlo. Según el número de parámetros que
+reciba, realiza una u otra acción.
+<ul>
+  <li>Si recibe un parámetro data(nombre): devuelve el valor que haya
+en el dato cuyo nombre se pasa por parámetro. </li>
+  <li>Si recibe dos parámetros data(nombre, valor): almacena un dato,
+cuyo nombre recibe en el primer parámetro, con el valor que recibe en
+el segundo parámetro. </li>
+</ul>
+&nbsp;&nbsp;&nbsp; Como data() es un método que pertenece al objeto
+jQuery, podemos
+almacenar estos pares (dato, valor) en cualquiera de los elementos
+seleccionados con $(). Veamos un ejemplo sencillo:
+<p class="codigo">&lt;div id="capa"&gt;<br>
+En esta división (elemento id="capa") voy a guardar y leer datos sobre
+este elemento.<br>
+&lt;/div&gt;
+</p>
+<p>&nbsp;&nbsp;&nbsp; Ahora se podría usar le método data() de la
+siguiente manera:
+</p>
+<p><span class="codigo">
+$("#capa").data("midato","mivalor");
+</span></p>
+<p>&nbsp;&nbsp;&nbsp; Con esta línea se guarda un dato llamado "midato"
+con el valor
+"mivalor" en el elemento con identificador (atributo id) "capa".
+</p>
+<p>&nbsp;&nbsp;&nbsp; Ahora se podrá leer ese dato en cualquier momento
+para acceder a su
+valor de la siguiente manera:
+</p>
+<p><span class="codigo">
+alert($("#capa").data("midato"));
+</span></p>
+<p>&nbsp;&nbsp;&nbsp; Para ver el resultado del ejemplo pulse <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/core/data0.html" target="_blank">aquí</a>.
+</p>
+<h3><a name="remove"></a>El método removeData()</h3>
+<p>&nbsp;&nbsp;&nbsp; Este método sirve para eliminar un dato de un
+elemento y su
+funcionamiento es tan simple como enviar por parámetro el dato que se
+quiere eliminar del elemento.</p>
+<p><span class="codigo">$("#capa").removeData("midato")
+</span></p>
+<p>&nbsp;&nbsp;&nbsp; Con esta línea se elimina el dato llamado
+"midato" del
+elemento con identificador "capa".</p>
+<h3>&nbsp;&nbsp;&nbsp; Ejemplo completo de los métodos data() y
+removeData() del Core de
+jQuery
+</h3>
+<p>
+Veamos un ejemplo completo del uso de estos métodos que acabamos de
+aprender. Se trata de una página que tiene un elemento sobre el que
+vamos a guardar datos. Además tiene tres botones para guardar un dato,
+leerlo y borrarlo. El dato que se guardará tendrá como valor lo que se
+haya escrito en un campo de texto que aparece también en la página.
+</p>
+<p>Podemos ver el 
+<a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/core/data.html" target="_blank">ejemplo en marcha en una página aparte</a>.
+</p>
+<p>Tenemos, para comenzar, un elemento de la página, que es donde vamos
+a guardar los pares dato-valor con data().
+</p>
+<p class="codigo">
+&lt;div id="division"&gt;<br>
+En esta división (elemento id="division") voy a guardar datos con la
+función data y luego los voy a leer.<br>
+&lt;/div&gt;
+</p>
+<p>Luego tendremos este formulario, que contiene el campo de texto así
+como los tres botones de los que hemos hablado.
+</p>
+<p class="codigo">
+&lt;form name="formul"&gt;<br>&nbsp;&nbsp; Escribe un valor a guardar, leer o eliminar: <br>&nbsp;&nbsp;
+&lt;input type="text" name="valor" id="valor"&gt;<br>&nbsp;&nbsp;
+&lt;br&gt;<br>&nbsp;&nbsp;
+&lt;input type="button" value="guardar dato" id="guardar"&gt;<br>&nbsp;&nbsp;
+&lt;input type="button" value="leer dato" id="leer"&gt;<br>&nbsp;&nbsp;
+&lt;input type="button" value="eliminar dato" id="eliminar"&gt;<br>
+&lt;/form&gt;
+</p>
+<p>Ahora se trata de asignar los comportamientos a estos botones con
+Javascript, haciendo uso de jQuery.
+</p>
+<p>Este sería el script para agregar el evento click al botón de
+guardar datos.
+</p>
+<p class="codigo">
+$("#guardar").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;var valor = document.formul.valor.value;<br>
+&nbsp;&nbsp;&nbsp;//Esta misma línea de código se puede codificar así
+también con jQuery<br>
+&nbsp;&nbsp;&nbsp;//var valor = $("#valor").attr("value");<br>
+&nbsp;&nbsp;&nbsp;$("#division").data("midato",valor);<br>
+&nbsp;&nbsp;&nbsp;$("#division").html('He guardado en este elemento
+(id="division") un dato llamado "midato" con el valor "' + valor + '"');<br>
+});
+</p>
+<p>Como se puede ver, primero se recibe el texto del campo de texto que
+había en el formulario. Para ello se muestran dos maneras de hacerlo:
+</p>
+<ul>
+  <li>A través de la jerarquía de objetos del navegador, con
+document.formul.valor.value </li>
+  <li>A través de su identificador, con un método de jQuery llamado
+attr() que sirve para recuperar el valor de un atributo HTML pasado por
+parámetro sobre el elemento que recibe el método. Este modo de obtener
+el atributo value del campo de texto está comentado, pues sólo lo
+quería señalar, para que se vea el modo de acceder a un elemento de
+formulario utilizando las funciones del framework Javascript jQuery. </li>
+</ul>
+Luego, se guarda el dato "midato" con el valor que se recuperó del
+atributo value del campo de texto. Para ello utilizamos el método
+data() tal como comentábamos.
+<p>Por último se muestra un mensaje en el HTML del elemento con
+id="division", por medio del método html() de jQuery, para informar
+sobre la acción que acabamos de realizar.
+</p>
+<p>Ahora mostramos el código para asignar un comportamiento al evento
+click sobre el segundo botón:
+</p>
+<p class="codigo">
+$("#leer").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;valor = $("#division").data("midato");<br>
+&nbsp;&nbsp;&nbsp;$("#division").html('En este elemento (id="division")
+leo un dato llamado "midato" con el valor "' + valor + '"');<br>
+});
+</p>
+<p>Como se puede ver, se recupera el valor del dato "midato" guardado
+sobre el elemento "#division" (etiqueta HTML con id="division"), y se
+almacena en una variable. Luego se crea un mensaje para mostrar el
+valor del dato.
+</p>
+<p>Para acabar, tenemos el código del evento click sobre el botón de
+eliminar el contenido de un dato, que hace uso de removeData().
+</p>
+<p class="codigo">
+$("#eliminar").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;$("#division").removeData("midato");<br>
+&nbsp;&nbsp;&nbsp;$("#division").html('Acabo de eliminar del elemento
+(id="division") el dato llamado "midato"');<br>
+});
+</p>
+<p>Como se verá, el método removeData() se invoca sobre el elemento que
+tiene el dato que pretendemos eliminar. Más tarde se muestra un mensaje
+informando sobre la acción que se ha realizado.
+</p>
+<p>Para comprobar el funcionamiento de estos métodos habría que crear
+un dato, escribiendo el valor en el campo de texto y pulsando el botón
+"guardar dato". Luego podríamos leer ese dato con el botón "leer dato".
+Por último podríamos eliminar el dato con el botón "eliminar dato". Si,
+una vez eliminado pulsamos sobre el botón de "leer dato" veremos que el
+valor del dato aparece como "undefined", puesto que ese dato ha sido
+borrado (esto también ocurre si no se ha guardado ningún dato todavía,
+por ejemplo cuando se acaba de cargar la página).
+</p>
+<p>Sería interesante ver el código fuente completo de esta página, para
+hacernos una idea más exacta de cómo se integrarían todos estos
+elementos.
+</p><p class="codigo">&lt;html&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;title&gt;Ejemplos de uso de la función data del
+core de jQuery&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;script src="../jquery-1.3.2.min.js"
+type="text/javascript"&gt;&lt;/script&gt;<br>
+&lt;script&gt;<br>
+$(document).ready(function(){<br>
+<br>
+&nbsp;&nbsp;&nbsp;$("#guardar").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var valor =
+document.formul.valor.value;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Esta misma línea de código se
+puede codificar así también con jQuery<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//var valor =
+$("#valor").attr("value");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#division").data("midato",valor);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#division").html('He guardado en
+este elemento (id="division") un dato llamado "midato" con el valor "'
++ valor + '"');<br>
+&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;$("#leer").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valor =
+$("#division").data("midato");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#division").html('En este
+elemento (id="division") leo un dato llamado "midato" con el valor "' +
+valor + '"');<br>
+&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;$("#eliminar").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#division").removeData("midato");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#division").html('Acabo de
+eliminar del elemento (id="division") el dato llamado "midato"');<br>
+&nbsp;&nbsp;&nbsp;});<br>
+}); <br>
+&lt;/script&gt;<br>
+&lt;/head&gt;<br>
+<br>
+&lt;body&gt;<br>
+<br>
+&lt;div id="division"&gt;<br>
+En esta división (elemento id="division") voy a guardar datos con la
+función data y luego los voy a leer<br>
+&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;form name="formul"&gt;<br>
+Escribe un valor a guardar, leer o eliminar: <br>
+&lt;input type="text" name="valor" id="valor"&gt;<br>
+&lt;br&gt;<br>
+&lt;input type="button" value="guardar dato" id="guardar"&gt;<br>
+&lt;input type="button" value="leer dato" id="leer"&gt;<br>
+&lt;input type="button" value="eliminar dato" id="eliminar"&gt;<br>
+&lt;/form&gt;<br>
+<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;
+</p>
+<p>De nuevo, dejamos el <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/core/data.html" target="_blank">enlace al ejemplo en marcha</a>. </p>
+
+</div>
+</div>
+
+<br>
+
+<br>
+
+</body></html>

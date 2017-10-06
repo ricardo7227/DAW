@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Acceso a archivos</title>
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<div id="header">
+<p id="cabecera">Acceso a archivos</p>
+</div>
+
+<div>
+<div id="nav"><a href="#entrada">Entrada/salida en archivos secuenciales</a><br>
+<br>
+<a href="#formulario">Bla bla 2</a><br>
+</div>
+<div id="article">
+&nbsp;&nbsp;&nbsp; Es muy frecuente que desde una aplicación se acceda
+al contenido almacenado en los archivos. El acceso a éstos puede ser
+secuencial o directo. Este capítulo se centrará en el manejo de
+ficheros secuenciales y los de acceso directo se tratarán en la parte 5
+de mysql.<br>
+<h3><a name="entrada"></a>Entrada/salida en archivos secuenciales</h3>
+&nbsp;&nbsp;&nbsp; PHP incluye un conjunto de funciones predefinidas
+que permiten comprobar la existencia de ficheros o directorios, abrir,
+cerrar, leer, escribir y navegar por ficheros.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">file_exists(nombre)</span> comprueba si existe
+el fichero o directorio indicado en el parámetro y devuelve TRUE o
+FALSE según corresponda. Un ejemplo de uso sería:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $var =
+"mi_fichero.php";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+file_exists($var) or die ("No existe $var");<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">fopen()</span> permite abrir un ficherolocal o de una url. Su sintaxis es:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fopen (nombre, modo [, ruta]);<br></p>
+donde el nombre puede hacer referencia a un archivo local o a uno
+remoto si tiene la forma http://... o ftp://... indicando así también
+el protocolo de acceso. El modo indica la forma de apertura y podrá
+tener los valores:<br>
+<ul>
+  <li>r.- Solo lectura. El puntero se sitúa al principio del fichero.</li>
+  <li>r+.- Lectura y escritura. El puntero se sitúa al principio del fichero.</li>
+  <li>w.- Solo escritura. Si el fichero no existe se crea y si existe se borra su contenido.</li>
+  <li>w+.- Lectura y escritura. Si el fichero no existe se crea y si existe se borra su contenido.</li>
+  <li>a.- Solo escritura (añadir). Si no existe se crea y si existe el puntero se sitúa al final.</li>
+  <li>a+.- Lectura y escritura. Si no existe se crea y si existe el puntero se sitúa al final.</li>
+  <li>x.- Solo escritura. Crea y abre el archivo para escritura
+posicionando el puntero al principio. Si ya existe genera un error de
+advertencia y devuelve FALSE.</li>
+  <li>x+.- Lectura y escritura. Crea y abre el archivo para escritura posicionando el
+puntero al principio. Si ya existe genera un error de advertencia y
+devuelve FALSE.</li>
+</ul>&nbsp;&nbsp;&nbsp; El parémetro "ruta" es opcional y se utiliza
+cuando solo si el fichero no se encuentra con el parámetro nombre. Si
+este parámetro es 1, PHP buscará en las rutas especificadas en el
+parámetro include_path del fichero de configuración php.ini.<br>
+<br>
+&nbsp;&nbsp;&nbsp; fopen() devuelve un valor que es el descriptor que
+se utilizará para realizar operaciones con el archivo. Si devuelve
+FALSE indica que no se pudo abrir el archivo. Un ejemplo:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Con @ se evita el mensaje de advertencia<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$fp = @fopen("mi_archivo.txt", "r") or die ("No existe el archivo");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // En $fp queda el descriptor del archivo, por ejemplo "Resource id #3"<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo $fp;<br>
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; Los ficheros abiertos con el protocolo HTTP
+solamente pueden ser procesados en modo lectura y por FTP pueden ser
+abiertos en lectura o escritura pero no simultaneamente.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Por último, debe considerarse que en entornos Windows para separar directorios se usa "\".<br>
+<br>
+<h3><a name="formulario"></a>Bla bla</h3>&nbsp;&nbsp;&nbsp; Bla bla &nbsp; .<br>
+</div>
+</div>
+
+<div id="footer">
+</div>
+
+</body></html>

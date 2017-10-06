@@ -1,0 +1,1312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Variables, constantes y operadores</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<div id="header">
+<p id="cabecera">Variables, constantes y operadores</p>
+</div>
+
+<div>
+<div id="nav"><a href="#paginas">Páginas PHP</a><br>
+<br>
+<a href="#permisividad">Permisividad en PHP</a><br>
+<br>
+<a href="#variables">Variables en PHP</a><br>
+<br>
+<a href="#tipos">Tipos de datos</a>
+<br>
+<br>
+<a href="#definicion">Definición de una variable</a>
+<br>
+<br>
+<a href="#constantes">Constantes</a>
+<br>
+<br>
+<a href="#expresiones">Expresiones</a>
+<br>
+<br>
+<a href="#operadores">Operadores</a>
+</div>
+<div id="article">
+<h3><a name="paginas"></a>Paginas PHP</h3>
+&nbsp;&nbsp;&nbsp; Las páginas php son páginas que combinan código HTML
+con código PHP. Las secciones con código PHP tienen la forma:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; código PHP<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; ?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; El código PHP se ejecutará en el servidor y dará
+lugar a código HTML, de tal forma que el navegador del cliente solamente
+recibirá código HTML.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los comentarios en PHP se pueden poner de tres
+formas:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+// Comentario de una línea<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* Comentario que
+puede ocupar<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; varias líneas
+*/<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; # Comentario estilo shell<br>
+</p>
+&nbsp;&nbsp;&nbsp; El código HTML y el PHP puede intercalarse
+sucesivamente. Por ejemplo:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+. . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; if ($condición) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; ?&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;b&gt;$condicion es
+TRUE.&lt;/b&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ?&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;b&gt;$condicion es
+FALSE.&lt;/b&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ?&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+</p>
+&nbsp;&nbsp;&nbsp; Cuando PHP encuentra el cierre (?&gt;) se genera la
+salida del códgo HTML que aparezca a continuación y al volver a
+aparecer la etiqueta "&lt;?php" se retoma el proceso PHP sin perder la
+secuencia de proceso previo.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Otras alternativas para identificar el código PHP
+son:<br>
+<ul>
+  <li>&lt;script language="php"&gt; . . . &lt;/script&gt;</li>
+  <li>&lt;% . . . %&gt; .- modo ASP.</li>
+  <li>&lt;? . . . ?&gt; .- modo abreviado.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Para poder utilizar el modo ASP y el abreviado debe
+modificarse el fichero de configuración php.ini. Para utilizar el modo
+ASP hay que especificar:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; asp_tags = On<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para utilizar el modo abreviado hay que comprobar
+que php.ini tiene la siguiente línea:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; sort_open_tag = On<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si se va a utilizar PHP en combinación con XML,
+deberá especificarse en la línea anterior el valor "Off".<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un error muy común al codificar PHP es olvidarse de
+poner la etiqueta de principio o la de fin de código php.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Puede incluirse el código de un fichero externo de
+la forma:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+. . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; include
+"fichero.php";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; ?&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+</p>
+&nbsp;&nbsp;&nbsp; fichero.php deberá contener las etiquetas de inicio
+y fin de código php.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En PHP las instrucciones se separan mediante punto y
+coma (;). La última instrucción no necesita terminar en punto y coma.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Dentro del código php los espacios, los tabuladores
+y el intro se toman como un único espacio. Las secuencias de espacios
+entre las partes de una sentencia serán todas como un único espacio.<br>
+<h3><a name="permisividad"></a>Permisividad en PHP</h3>
+&nbsp;&nbsp;&nbsp; PHP es bastante permisivo con las variables y tipos
+de datos aunque la recomendación es tratar de ser estricto con el uso
+de variables.<br>
+<h3><a name="variables"></a>Variables en PHP</h3>
+&nbsp;&nbsp;&nbsp; Las normas de nomenclatura de las variables son las
+siguientes:<br>
+<ul>
+  <li>El primer carácter del nombre debe ser el signo dolar ($).</li>
+  <li>El segundo carácter puede ser una letra o el guión bajo. Como
+letra se entiende a-z, A-Z y los caracteres ASCII de 127 a 255.</li>
+  <li>A partir del tercer caracter, además de letras y guión bajo, se
+pueden usar números.</li>
+  <li>No hay límites para la longitud del nombre.</li>
+  <li>PHP diferencia entre mayúsculas y minúsculas.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; En cuanto a la declaración de variables:<br>
+<ul>
+  <li>No es obligatorio declarar una variable antes de usarla.</li>
+  <li>Una variable es de un tipo o de otro dependiendo del tipo de dato
+que contenga.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Esta flexibilidad en cuanto a la declaración y tipo
+de variables favorece la posibilidad de cometer errores.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Además de las variables definidas por el usuario,
+PHP dispone de dos grupos principales de variables predefinidas:<br>
+<ul>
+  <li>Variables predefinidas del servidor o entorno.</li>
+  <li>Variables de PHP.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Las variables predefinidas del servidor son
+colocadas en la tabla $_SERVER y varían dependiendo del servidor
+utilizado y de la configuración definida. La lista completa puede verse
+utilizando la instrucción PHPInfo(), que también muestra el otro tipo
+de variable predefinida y otros datos generales de la configuración.<br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP incluye (desde la versión 4.1.0) unas matrices
+predefinidas superglobales que centralizan las variables de entorno y
+las entradas del usuario. Se puede hacer referencia a las variables de
+entorno con una sintaxis como la siguiente:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+echo $_SERVER['SERVER_PORT'];<br>
+</p>
+&nbsp;&nbsp;&nbsp; Variables predefinidas del servidor:<br>
+<ul>
+  <li>DOCUMENT_ROOT .- directorio raiz en el servidor.</li>
+  <li>HTTP_REFERER .- dirección de la página desde donde se pasó a la
+página actual.</li>
+  <li>REMOTE_ADDR .- dirección IP remota desde donde se realizó la
+petición de la página PHP.</li>
+  <li>SERVER_ADDR .- dirección IP del servidor.</li>
+  <li>SERVER_NAME .- nombre del servidor.</li>
+  <li>SERVER_PORT .- puerto que utiliza el servidor Web (por ejemplo,
+80).</li>
+  <li>SERVER_SOFTWARE .- software del servidor Web (por ejemplo,
+Apache/2.2.13)</li>
+  <li>WINDIR .- directorio del sistema operativo (por ejemplo,
+C:\WINDOWS).</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Variables predefinidas de PHP son las pertenecientes
+al intérprete PHP y en su mayor parte son tablas:<br>
+<ul>
+  <li>$GLOBALS .- referencia a todas las variables en el ámbito global.</li>
+  <li>$_SERVER .- variables del servidor vistas en el punto anterior.</li>
+  <li>$_GET .- variables GET HTTP.</li>
+  <li>$_POST .- variable POST HTTP.</li>
+  <li>$_FILES .- variables para subir archivos HTTP.</li>
+  <li>$_REQUEST .- variables de peticiones HTTP.</li>
+  <li>$_SESSION .- variables de sesión.</li>
+  <li>$_ENV .- variables de entorno.</li>
+  <li>$_COOKIE .- cookies HTTP.</li>
+  <li>$php_errormsg .- mensaje de error anterior.</li>
+  <li>$HTTP_RAW_POST_DATA .- datos POST RAW.</li>
+  <li>$http_response_header .- encabezados de respuesta HTTP.</li>
+  <li>$arge .- cantidad de argumentos pasados al script.</li>
+  <li>$argv .- matriz de argumentos pasados al script.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Una variable puede no estar inicializada y PHP le
+asignará un valor por defecto que dependerá del tipo de variable, como
+se verá más adelante. La asignación de una variable se realiza por
+valor:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var1 = "Mi cadena";&nbsp; // Asignación de una cadena<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; $var2 = 3;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Asignación de un número
+entero<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; $var3 = $var2;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; // Asignación desde una variable<br>
+</p>
+&nbsp;&nbsp;&nbsp; La asignación por valor significa que el resultado
+de la expresión que está a la derecha del signo igual se copia (asigna)
+en la dirección de memoria de la variable que está a la izquierda del
+signo igual.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Se puede asignar variables por referencia (&amp;)
+que significa que la dirección de variable que está a la derecha del
+signo igual se asigna a la variable de la izquierda. En este caso se
+tiene una variable con dos nombres, como un alias:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var4 = "Hola, qué tal ?";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; $var5 =
+&amp;$var4;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; // $var5 es un alias
+de $var4<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; echo $var5;&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Imprimirá "Hola, qué
+tal ?"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; $var5 = "PHP";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; echo $var4&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; // Imprimirá "PHP"<br>
+</p>
+&nbsp;&nbsp;&nbsp; Solamente se puede hacer referencia a una variable
+por su nombre, no es posible hacer una referencia a su valor.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un error habitual al hacer referencia a una variable
+es cambiar alguna letra minúscula por la correspondiente mayúscula o
+viceversa.<br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP permite utilizar variables sin inicializar,
+existiendo una opción para que se emita un aviso cuando esto ocurre.
+Para que PHP genere un mensaje de error, puede procederse de dos formas:<br>
+<ul>
+  <li>Incluyendo la opción en php.ini, lo que hará extensivo el control
+a todos los programas que se ejecuten en el servidor.</li>
+  <li>Incluyendo la instrucción "error_reporting(E_ALL)" al inicio del
+código y tendrá validez para el archivo en el que se incluye este
+código.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Así, el siguiente código:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+error_reporting(E_ALL);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; print "test
+&lt;br&gt;";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; $a = $b + 5;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; ?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; generará la salida:
+<p class="resul">&nbsp;test<br>
+&nbsp;Notice: Undefined
+variable: b in /var/www/practicas/practica_03_01.php on line 4<br>
+</p>
+&nbsp;&nbsp;&nbsp; PHP asigna un valor predeterminado a las variables
+que no están inicializadas dependiendo del contexto en que se utilice.
+Así, en el ejemplo anterior, a $b se le asignará el valor cero. Si el
+contexto requiere una cadena el valor predeterminado será el de la
+cadena vacía.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Más adelante se verán algunas funciones como isset()
+que permite comprobar si una variable tiene un valor asignado, o
+unset() que permite desasignar el valor de una variable. La
+recomendación es depurar el programa para que no se utilicen variables
+sin valor asignado.<br>
+<h3><a name="tipos"></a>Tipos de datos</h3>
+&nbsp;&nbsp;&nbsp; PHP no es un lenguaje ideal para uso científico
+donde se necesite gran exactitud y precisión en los cálculos. Para PHP
+los números son enteros o fracciones, y si una cadena participa en un
+cálculo la convierte a número. <br>
+<br>
+&nbsp;&nbsp;&nbsp; En PHP existen los siguientes tipos de datos:<br>
+<ul>
+  <li>Números enteros (integers).- pueden ser positivos y negativos.</li>
+  <li>Números de coma flotante (doubles).- pueden almacenar números con
+decimales.</li>
+  <li>Cadenas de caracteres (strings).- pueden almacenar cualquier
+carácter y su longitud no está limitada.</li>
+  <li>Booleanos.- pueden contener True (1) o False (0).</li>
+  <li>Matrices (arrays).- se accede utilizando un índice que empieza
+por 0.</li>
+  <li>Objetos.- tipos de datos complejos que permiten almacenar
+información (como cualquier otro tipo de datos) y funciones para
+trabajar con los datos (métodos).</li>
+  <li>Recursos.- son variables especiales que mantienen referencias a
+recursos externos a PHP (por ejemplo, una conexión a una base de datos).</li>
+  <li>NULL.- variable sin asignación.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Una variable es de un tipo o de otro dependiendo del
+último valor asignado.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Números enteros</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Para definir variables enteras pueden utilizarse
+tres formas diferentes:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var = 20;&nbsp;&nbsp;&nbsp; // Asignación en decimal<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; $var = 024;&nbsp;&nbsp; //
+Asignación en octal<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $var = 0x14;&nbsp; //
+Asignación en hexadecimal<br>
+</p>
+&nbsp;&nbsp;&nbsp; Si es necesario indicar signo, éste se colocará en
+primer lugar. Para la asignación octal se antepone el 0 y para la
+hexadecimal "0x"; en cualquier caso el contenido es el mismo.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si en una variable entera se almacena un valor
+superior al que puede soportar, la variable se convierte
+automáticamente a coma flotante.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Números de coma
+flotante</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Para la asignación puede utilizarse la sintaxis
+estándar o la exponencial:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var = 256.89; &nbsp;&nbsp; // Asignación estándar de 256,89<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $var =
+25689e-2;&nbsp; // Asignación exponencial de 256,89<br>
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Cadenas</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Hasta PHP 5.3 un caracter ocupaba un byte, pero en
+PHP 6 se incluye soporte Unicode y los caracteres en esta codificación
+pueden ocupar más de un byte. Pueden utilizarse varios tipos de
+asignaciones:<br>
+<ul>
+  <li>Cadena definida entre comillas dobles.</li>
+  <li>Cadena definida entre comillas simples.</li>
+  <li>Cadena definida por sintaxis de documento incrustado
+("&lt;&lt;&lt;"), denominada sintaxis heredoc.</li>
+  <li>Cadena definida por sintaxis de documento incrustado
+("&lt;&lt;&lt;"), denominada sintaxis nowdoc. Es una variante de
+heredoc implementada a partir de PHP 5.3.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Las dos primeras formas son las más comunes y se
+diferencian en la forma de tratar los caracteres de escape:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var = 'Permite tener comillas dobles " interiores';<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $var = "Permite tener
+comillas dobles \" interiores";</p>
+&nbsp;&nbsp;&nbsp; Si se utilizan comillas simples se pueden incluir
+comillas dobles dentro de la cadena (y viceversa). Como alternativa
+puede utilizarse la barra invertida para definir un escape. Los códigos
+de escape más utilizados son:<br>
+<ul>
+  <li>\f .- salto de página (form feed).</li>
+  <li>\n .- nueva línea (line feed).</li>
+  <li>\r .- retorno de carro (carriage return).</li>
+  <li>\t .- tabulación.</li>
+  <li>\' .- comilla simple.</li>
+  <li>\" .- comillas dobles.</li>
+  <li>\$ .- carácter dolar.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Cuando se utilizan comillas dobles para delimitar
+una cadena, PHP evalúa la cadena y verifica la existencia de variables
+en el interior de la misma, reemplazando el nombre por su valor. Para
+que no se reemplace debe "escaparse" el carácter dolar (\$).<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sintaxis heredoc</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Esta forma apareció en la versión PHP 4. Consiste en
+utilizar el símbolo de documento incrustado (&lt;&lt;&lt;) y un
+identificador de finalización de documento. El texto se trata como una
+cadena encerrada entre dobles comillas, evaluando la existencia de
+variables y reemplazando en caso afirmativo. El identificador de cierre
+debe codificarse solo y a partir de la columna 1, en caso contrario no
+sería reconocido como tal. Un ejemplo:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$nombre = "Pepe";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; $var = &lt;&lt;&lt;xxx<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ésta es una cadena
+que terminará al encontrarse &lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; las tres equis en una
+línea nueva y a partir &lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; de la primera
+columna. $nombre.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; xxx;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo $var;</p>
+&nbsp;&nbsp;&nbsp; Cuyo resultado será:
+<p class="resul">Ésta es una cadena que terminará al encontrarse<br>
+las tres equis en una
+línea nueva y a partir<br>
+de la primera
+columna. Pepe.</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sintaxis nowdoc</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Es una variante de la forma heredoc que trata a la
+cadena como si estuviera encerrada entre comillas simples, sin
+verificar la existencia de variables. La definición se hace de la
+siguiente forma:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$nombre = "Pepe";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; $var = &lt;&lt;&lt;'xxx'<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ésta es una cadena
+que terminará al encontrarse &lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; las tres equis en una
+línea nueva y a partir &lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; de la primera
+columna. $nombre.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; xxx;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo $var;</p>
+&nbsp;&nbsp;&nbsp; Cuyo resultado será:
+<p class="resul">Ésta es una cadena que terminará al encontrarse<br>
+las tres equis en una
+línea nueva y a partir<br>
+de la primera
+columna. $nombre.<span style="font-weight: bold;"></span><br>
+</p>
+&nbsp;&nbsp;&nbsp; Errores comunes a la hora de definir cadenas son:
+olvidar el caracter de cierre de cadena, codificación erronea de un
+carácter "escapado", etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Booleanos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Los valores posibles son TRUE y FALSE.
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var1 = TRUE;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; $var2 = FALSE;</p>
+&nbsp;&nbsp;&nbsp; Cualquier variable numérica que no tenga el valor 0
+desde el punto de vista de evaluación de una expresión booleana se
+considera como TRUE. Y, si se convierten variables de otros tipos a
+variable booleana se producen los resultados siguientes:<br>
+<ul>
+  <li>Valor entero .- es FALSE si la variable tiene el valor 0.</li>
+  <li>Valor de coma flotante .- es FALSE si la variable tiene el valor
+0.0.</li>
+  <li>Cadena .- es FALSE si es una cadena vacía, nula o con el valor
+"0".</li>
+  <li>Matriz .- es FALSE si la matriz no tiene elementos.</li>
+  <li>Recurso .- es TRUE si el recurso es válido.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Matrices o tablas</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Los elementos de una matriz no tienen que ser
+obligatoriamente del mismo tipo:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$tabla[0] = "Madrid";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; $tabla[1] = 125;</p>
+&nbsp;&nbsp;&nbsp; No hay obligación de definir valores a todos los
+elementos de una matriz, pueden quedar "huecos".<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para añadir un elemento puede utilizarse la
+notación:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$tabla[] = "Tordillos";</p>
+&nbsp;&nbsp;&nbsp; Que sería equivalente a:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$tabla[2] = "Tordillos";</p>
+&nbsp;&nbsp;&nbsp; Existe otro tipo de matrices, las matrices
+asociativas, en las que el índice no es un número sino una cadena, por
+ejemplo:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$tabla["España"] = "Madrid";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; $tabla["Francia"] =
+"París";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Objetos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Un objeto es una estructura que contiene propiedades
+(datos) y métodos (funciones que manipulan los datos). La sintaxis
+básica para la definición de un objeto es la siguiente:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+class persona {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; function
+mostraralgo() {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; echo "Soy un objeto persona";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; $var = new persona;&nbsp;
+// Se crea un objeto de tipo persona<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; $var-&gt;mostraralgo(); //
+Así se llama a un método del objeto<br>
+</p>
+&nbsp;&nbsp;&nbsp; El resultado será:
+<p class="resul">Soy un objeto persona</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Recursos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Los recursos son valores especiales que hacen
+referencia a una información de estado o memoria que es de origen
+externo al propio PHP. Este tipo de dato se usa para comunicarse con
+programas externos requeridos por PHP.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los recursos se crean a partir del uso de
+determinadas funciones que dan como valor de retorno un recurso que
+después se puede reutilizar para otras funciones afines. Por ejemplo,
+la función mysql_connect() devuelve un recurso cuando la conexión con
+la base de datos se realiza correctamente:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var = mysql_connect();<br>
+</p>
+&nbsp;&nbsp;&nbsp; La variable $var se puede reasignar posteriormente
+con otro recurso o con el valor NULL.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">NULL</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; El valor NULL representa a una variable sin valor
+asignado. Una variable puede ser nula por tres razones:<br>
+<ul>
+  <li>No se le ha asignado ningún valor.</li>
+  <li>Se le asignó el valor NULL.</li>
+  <li>Se anuló con la función unset().</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Un ejemplo:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var = NULL;<br>
+</p>
+<h3><a name="definicion"></a>Definición de una variable</h3>
+&nbsp;&nbsp;&nbsp; El último valor asignado a una variable es el que
+define el tipo de dato vigente de la misma.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Conversión
+automática de tipos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP permite sumar una cadena de caracteres a un
+número, por ejemplo:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var1 = 7;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $var2 = "3 lechugas";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; $var2 = $var2 +
+$var1;&nbsp;&nbsp;&nbsp; // $var2 = 10<br>
+</p>
+&nbsp;&nbsp;&nbsp; Si la variable de caractéres no empezase por un
+número se le tomaría como 0.<br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP evalúa la operación que se realiza (suma, resta,
+concatenación, ...) y el tipo de datos de los operandos adaptando éstos
+para poder realizar la operación lo mejor posible. En una operación
+aritmética con cadenas intentará obtener el valor numérico de las
+cadenas. En una operación con variables enteras y con coma flotante el
+resultado será una variable de coma flotante. En una operación de
+concatenación de cadenas (.) los números se pasarán a cadenas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Conversión forzada
+de tipos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP admite las siguientes conversiones:<br>
+<ul>
+  <li>(int), (integer) .- fuerza la conversión a entero.</li>
+  <li>(real), (double), (float) .- fuerza la conversión a coma flotante.</li>
+  <li>(string) .- fuerza la conversión a cadena de caracteres.</li>
+  <li>(array) .- fuerza la conversión a tabla.</li>
+  <li>(object) .- fuerza la conversión a objeto.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Por ejemplo:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var1 = (integer) 2.734;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Asigna 2<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; $var2 = array ('a', 'b',
+'c'); // $var2 es una tabla<br>
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Variables por
+referencia (&amp;)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Las variables por referencia a otras variables no
+tienen copias del valor de las variables referenciadas sino las
+direcciones de éstas. La asignación se hace anteponiendo el signo &amp;
+de la forma:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var1 = 400;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; $var2 = &amp;$var1;&nbsp;
+// $var2 apunta al mismo valor que $var1</p>
+&nbsp;&nbsp;&nbsp; Utilizar variables por referencia es similar a
+utilizar alias, es decir, dos o más nombres de variables apuntan a una
+misma dirección de memoria.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Variables de
+variables ($$)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Esta técnica, poco utilizada puede verse mejor con
+un ejemplo:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var = "uno";&nbsp;&nbsp;&nbsp; // asigna "uno" a $var<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; $$var = "dos";&nbsp;&nbsp;
+// asigna "dos" a $uno<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; print
+($var);&nbsp;&nbsp;&nbsp; // visualiza "uno"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; print
+($uno);&nbsp;&nbsp;&nbsp; // visualiza "dos"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; print ($$var);&nbsp;&nbsp;
+// visualiza "dos"</p>
+&nbsp;&nbsp;&nbsp; A diferencia de las variables por referencia, aquí
+se están definiendo dos variables ($var y $uno) que ocupan dos
+direcciones de memoria diferentes y dos contenidos diferentes. <br>
+<br>
+&nbsp;&nbsp;&nbsp; Un caso más especial es la sintaxis de variables de
+variables aplicada para matrices ya que pueden surgir ambigüedades. Al
+escribir $$var[0] el índice puede corresponder a $var o a $$var. Para
+evitar confusiones deberemos escribir ${$var[0]} o ${$var}[0] según
+corresponda.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Ámbito de las
+variables</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; En PHP existen variables locales y variables
+globales. Cuando una variable se define dentro de una función es, de
+manera predeterminada, una variable local, es decir, no es accesible
+desde fuera de la función. Si la variable se define fuera de la función
+su ámbito es global y será visible desde todas las funciones.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Una función puede acceder a una variable definida en
+la parte principal del programa. Existen varias formas de poder hacerlo:<br>
+<ul>
+  <li>Definición de global.- aunque parezca redundante, PHP obliga a
+definir explicitamente dentro de la función a las variables globales
+para poder utilizarlas dentro de la función.</li>
+  <li>Uso de la matriz $GLOBALS.- para evitar la definición de global
+puede utilizarse la matriz asociativa que posee todas las variables
+globales. $GLOBALS es una superglobal. Superglobal es un conjunto de
+variables que son globales de modo automático, no hace falta definirlas
+como globales dentro de una función.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; A continuación se muestra un ejemplo con tres
+funciones: una trata una variable como local y las otras dos como
+global, definida en cada función con un método diferente.<br>
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;?php
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Globales
+(ejemplo file006.php)
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; function
+PruebaSinGlobal() {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; $var++;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+echo "Prueba sin global. \$var&nbsp; :". $var .
+"&lt;BR&gt;"; /* ¿qué valor muestra $var? */
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; // al no haber definición global y no usar
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; // $GLOBALS, $var se trata como una variable local
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; // por eso imprime 1 en lugar de 21
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; function
+PruebaConGlobal() {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+global $var;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+$var++;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+echo "Prueba con global. \$var&nbsp; :". $var .
+"&lt;BR&gt;"; /* ¿qué valor muestra $var? */
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+// $var ya no es local, se trata como global&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+// imprime 21&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; function
+PruebaConGlobals()
+{<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+$GLOBALS["var"]++;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+echo "Prueba con GLOBALS. \$var&nbsp; :".
+$GLOBALS["var"] . "&lt;BR&gt;";<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; /* ¿qué valor muestra $var? */
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+// $var ya no es local, se trata comno
+global&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+// imprime 22
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $var = 20; /*
+variable global */&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+PruebaSinGlobal();
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+PruebaConGlobal();
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+PruebaConGlobals();&nbsp;
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; Las variables mantinen su ámbito aunque el código
+HTML interrumpa la secuencia del código PHP. Lo importante es
+únicamente la secuencia del código PHP.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Variables estáticas</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Si se desea que una variable local de una función
+conserve su valor para la siguiente vez que se llame a la función, debe
+declararse como estática (static). Un ejemplo sería:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; function
+pruebaLocal() {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; static $var;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; echo "Valor de la variable estatica: " . ++$var .
+"&lt;br&gt;";</p>
+<p class="codigo">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; pruebaLocal();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; pruebaLocal();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; pruebaLocal();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; ?&gt;</p>
+&nbsp;&nbsp;&nbsp; Cuyo resultado será:<br>
+<p class="resul">
+Valor de la variable estatica: 1<br>
+Valor de la variable estatica: 2<br>
+Valor de la variable estatica: 3<br>
+</p>
+<h3><a name="constantes"></a>Constantes</h3>
+&nbsp;&nbsp;&nbsp; Una constante es un identificador de un dato que no
+cambia de valor durante la ejecución de un programa. El intento de
+cambiar su valor provocará un error. Para definir constantes se utiliza
+la función define() de la forma:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+define ("pi", 3.14159);</p>
+&nbsp;&nbsp;&nbsp; Para saber si una constante está definida o no,
+puede utilizarse la función defined() que devolverá TRUE si la
+constante está definida y FALSE en caso contrario. Por ejemplo:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; define ("const1",
+23);<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; if
+(defined("const1")) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+echo "const1
+esta definida y tiene como valor: " . const1 . "&lt;br&gt;";<br>
+&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "const1 no esta
+definida. &lt;br&gt;";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if
+(defined("const2")) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; echo "const2
+esta definida y tiene como valor: " . const2;<br>
+&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+echo "const2 no esta
+definida.";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Cuyo resultado será:<br>
+<p class="resul">const1 esta definida y tiene como valor: 23<br>
+const2 no esta definida.<br>
+</p>
+&nbsp;&nbsp;&nbsp; La nomenclatura de los nombres de constantes difiere
+de la de las variables; los nombres de constantes no tienen que empezar
+por el signo $, pueden empezar por una letra o por un guión bajo,
+seguidos de letras, números o guiones bajos. Se entiende por letra los
+caracteres de la a-z, A-Z y los caracteres ASCII del 127 al 255.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Otras características de las constantes son:<br>
+<ul>
+  <li>El ámbito de una constante es global sin necesidad de usar global
+ni $GLOBALS.</li>
+  <li>Aunque se defina en una función su ámbito es global.</li>
+  <li>Las constantes solamente pueden ser de tipo carácter, entero,
+coma flotante o booleano.</li>
+  <li>Una constante no puede reinicializarse.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Constantes
+predefinidas</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La lista completa de constantes predefinidas depende
+de las extensiones que se hayan cargado, aunque hay algunas que siempre
+están presentes, estando entre las más utilizadas las siguientes:<br>
+<ul>
+  <li>PHP_VERSION .- versión de PHP.</li>
+  <li>PHP_OS .- nombre del sistema operativo en ejecución.</li>
+  <li>TRUE .- valor verdadero (1).</li>
+  <li>FALSE .- valor falso (nada).</li>
+  <li>E_ERROR .- errores de interpretación que no se pueden recuperar.</li>
+  <li>E_PARSE .- indica que el interprete se detuvo en un error de
+sintaxis de la secuencia de comandos, del que no se puede recuperar.</li>
+  <li>E_ALL .- representa a todas las constantes que empiezan por E.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; PHP suministra, además, otras constantes que se
+pueden utilizar en el código, pero que su disponibilidad depende de las
+extensiones utilizadas en la configuración.<br>
+<ul>
+  <li>__LINE__ .- número de línea del archivo.</li>
+  <li>__FILE__ .- nombre completo del archivo vigente.</li>
+  <li>__DIR__ .- directorio del archivo vigente.</li>
+  <li>__FUNCTION__ .- nombre de la función.</li>
+  <li>__CLASS__ .- nombre de la clase.</li>
+  <li>__METHOD__ .- nombre del método de la clase.</li>
+  <li>__NAMESPACE__ .- nombre del espacio de nombres vigente.<br>
+  </li>
+</ul>
+<h3><a name="expresiones"></a>Expresiones</h3>
+&nbsp;&nbsp;&nbsp; Para PHP una expresión es cualquier cosa que posee o
+produce un valor. El valor resultante de la evaluación de una expresión
+nos da un valor simple de uno de los seis tipos de datos existentes.
+Los valores simples también se conocen como escalares: entero, coma
+flotante, cadena y booleano, mientras que las matrices y los objetos se
+consideran valores de tipo compuesto.<br>
+<h3><a name="operadores"></a>Operadores</h3>
+&nbsp;&nbsp;&nbsp; Los operadores indican la operación a realizar con
+las expresiones, variables o constantes para obtener un nuevo valor.
+Una clasificación puede ser:<br>
+<ul>
+  <li>Aritméticos .- para realizar operaciones matemáticas.</li>
+  <li>De asignación .- para realizar asignaciones.</li>
+  <li>De comparación .- para establecer comparaciones.</li>
+  <li>De ejecución .- para ejecutar código almacenado.</li>
+  <li>De incremento/decremento .- para incrementar/decrementar valores.</li>
+  <li>Cadenas .- para combinar cadenas.</li>
+  <li>Lógicos .- para realizar operaciones lógicas.</li>
+  <li>Bit a bit .- para operaciones de activación y desactivación de
+bits.</li>
+  <li>De arrays .-&nbsp; para operaciones con matrices.</li>
+  <li>De omisión de errores .- para omitir mensajes de error.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operadores
+aritméticos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Hay que tener en cuenta que PHP no es el lenguaje
+apropiado para realizar operaciones complejas de gran precisión. Los
+operadores existentes son:<br>
+<ul>
+  <li>Suma, resta y multiplicación: +, -, *.</li>
+  <li>División: /. Devuelve un valor de coma flotante (float), salvo
+que los dos operadores sean enteros y divisibles. Si se quiere obtener
+un resultado entero se puede utilizar la función intval().</li>
+  <li>Módulo: %. Si los operandos son de tipo float se trunca su parte
+decimal antes de realizar la operación. El signo del módulo es el signo
+del primer operando.</li>
+  <li>Negación: operador unario (-).</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Funciones
+matemáticas</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP incluye varias extensiones matemáticas, cada una
+con un considerable número de funciones: BCMath, GMP, Math y
+Statistics. El uso de las funciones tiene el siguiente formato:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$resultado = sqrt($valor);</p>
+&nbsp;&nbsp;&nbsp; Una lista de las funciones más comunes, disponibles
+en PHP de forma estándar, puede ser:<br>
+<ul>
+  <li>abs .- valor absoluto.</li>
+  <li>acos .- arco coseno.</li>
+  <li>acosh .- coseno hiperbólico inverso.</li>
+  <li>asin .- arco seno.</li>
+  <li>asinh .- seno hiperbólico inverso.</li>
+  <li>atan2 .- arco tangente de dos variables.</li>
+  <li>atan .- arco tangente.</li>
+  <li>base_convert .- conversión de números a distintas bases.</li>
+  <li>bindec .- binario a decimal.</li>
+  <li>ceil .- redondeo hacia arriba.</li>
+  <li>cos .- coseno.</li>
+  <li>cosh .- coseno hiperbólico.</li>
+  <li>dechex .- decimal a hexadecimal.</li>
+  <li>decoct .- decimal a octal.</li>
+  <li>deg2rad .- convierte un número en grados a su correspondiente en
+radianes.</li>
+  <li>exp .- calcula el exponencial del número e.</li>
+  <li>floor .- redondea hacia abajo.</li>
+  <li>fmod .- retorna el resto de una división.</li>
+  <li>getrandmax .- muestra el mayor valor random posible devuelto por
+la función rand().</li>
+  <li>hexdec .- hexadecimal a decimal.</li>
+  <li>hypot .- calcula la hipotenusa de un triángulo rectángulo.</li>
+  <li>is_finite .- comprueba si un valor es válido (finito).</li>
+  <li>is_infinite .- comprueba si un valor es infinito.</li>
+  <li>is_nan .- comprueba si un valor no es un número.</li>
+  <li>log10 .- logaritmo en base 10.</li>
+  <li>log .- logaritmo natural.</li>
+  <li>max .- devuelve el valor mayor de una lista.</li>
+  <li>min .- devuelve el menor valor de una lista.</li>
+  <li>mt_getrandmax .- muestra el mayor valor random posible devuelto
+por la función mt_rand().</li>
+  <li>mt_rand .- genera un valor random mediante un mecanismo mejorado
+respecto a la función rand().</li>
+  <li>mt_srand .- define el generador de números random para la función
+mt_rand().</li>
+  <li>octdec .- octal a decimal.</li>
+  <li>pi .- devuelve el valor de pi.</li>
+  <li>pow .- expresión exponencial.</li>
+  <li>rad2deg .- convierte un valor en radianes a su correspondiente en
+grados.</li>
+  <li>rand .- genera un número entero aleatorio.</li>
+  <li>round .- redondea un valor numérico con coma.</li>
+  <li>sin .- seno.</li>
+  <li>sinh .- seno hiperbólico.</li>
+  <li>sqrt .- raíz cuadrada.</li>
+  <li>srand .- define el generador de números random para la función
+rand().</li>
+  <li>tan .- tangente.</li>
+  <li>tanh .- tangente hiperbólica.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operadores de
+asignación</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Aunque el operador de asignación más conocido es el
+signo =, también existen los siguientes: +=, -=, *=, /=, %= (módulo) y
+.= (concatenación).<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operadores de
+comparación</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Los típicos: ==, !=, &lt;, &gt;, &lt;= y &gt;=. Y
+además:<br>
+Identidad: === .- verdadero si son iguales y del mismo tipo de dato.<br>
+Ternario (?:) : (exp1) ? (exp2) : (exp3) .- Si exp1 es TRUE se evalúa
+exp2 y si es FALSE se evalúa exp3. Desde la versión PHP 5.3 se puede
+omitir exp2 y entonces, si exp1 es TRUE se evalua exp1 y si es FALSE se
+evalua exp3.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Unos ejemplos serían:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;?php
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $var1 = 12;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $var2 = "12
+gatos";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; // Aquí
+PHP considera una comparación numérica<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo $var1
+==&nbsp; $var2; // resultado Verdadero<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo $var1
+!=&nbsp; $var2; // resultado Falso<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo $var1 ===
+$var2; // resultado Falso<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $var1 = "12";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $var2 = "12
+gatos";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //
+Aquí PHP considera una comparación de cadenas<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo $var1
+==&nbsp; $var2; // resultado Falso<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo $var1
+!=&nbsp; $var2; // resultado Verdadero<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo $var1 ===
+$var2; // resultado Falso<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //
+Ternario (esta evaluación da TRUE)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ($var1 !=
+$var2) ? ($var1 = "ES CIERTO") : ($var1 = "ES FALSO");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo
+$var1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// resultado ES CIERTO<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; ?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operador de
+ejecución</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP suministra un operador de ejecución a través de
+la comilla invertida (`, el caracter que está situado en el teclado a
+la derecha de la "P"). Un ejemplo es:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+echo "&lt;pre&gt;" . `ls -l` . "&lt;/pre&gt;";</p>&nbsp;&nbsp;&nbsp;
+Este operador abre un expléndido abanico de posibilidades al conectar
+php con los scripts del intérprete de comandos. Por ejemplo, para
+visualizar el nombre grabado en el fichero agenda.dat podemos utilizar
+el código:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var = `cat agenda.dat`;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo $var;<br>
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operadores de
+incremento/decremento</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Existen dos operadores, ++ y -- y cada uno de ellos
+puede actuar antes o después de la operación de devolución (asignación)
+de la variable. Ejemplos típicos son: ++$var, $var++, --$var y $var--.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Estos operadores no tienen efecto en variables
+booleanas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operadores de
+cadenas</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; El operador de concatenación es un punto (.) y el de
+concatenación y asignación ".=".<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operadores lógicos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Los operadores lógicos se emplean generalmente con
+expresiones que devuelven valores lógicos: TRUE o FALSE. Existen los
+siguientes, según orden de precedencia de mayor a menor: !, &amp;&amp;,
+||, and, xor y or.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La diferencia entre and y &amp;&amp; (u or y ||) es
+el orden de precedencia en expresiones compuestas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operadores bit a
+bit</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Las operaciones de bit son básicamente operaciones
+aritméticas realizadas mediante manipulación a nivel de bit. Los
+operandos están limitados a variables enteras.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los operadores existentes son:<br>
+<ul>
+  <li>&amp; .- AND lógico.</li>
+  <li>| .- OR lógico.</li>
+  <li>^ .- XOR lógico u OR exclusivo.</li>
+  <li>~ .- NOT lógico.</li>
+  <li>&lt;&lt; .- desplazamiento a la izquierda.</li>
+  <li>&gt;&gt; .- desplazamiento a la derecha.<br>
+  </li>
+</ul>
+&nbsp;&nbsp;&nbsp; Pueden verse ejemplos en la pág. 643.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operadores de
+tablas</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Hay que tener en cuenta que los operandos van a ser
+matrices. Las posibles operaciones, sus nombres y resultado son las
+siguientes:<br>
+<ul>
+  <li>$a + $b - Unión - Unión de $a y $b: se incluyen todos los
+elementos de
+la matriz $a más los de $b que tengan claves (índices) que no existan
+en $a.</li>
+  <li>$a == $b - Comparación de igualdad - TRUE cuando $a tiene las
+mismas
+claves (índices) y valores que $b.</li>
+  <li>$a === $b - Comparación de identidad - TRUE cuando $a tiene los
+mismos
+claves/valores que $b y el mismo orden y tipo.</li>
+  <li>$a != $b - Comparación de desigualdad - TRUE si $a distinta de $b.</li>
+  <li>$a &lt;&gt; $b - Comparación de desigualdad - TRUE si $a distinta
+de $b.</li>
+  <li>$a !== $b - Comparación de identidad inversa - TRUE si $a no es
+idéntica a $b.<br>
+  </li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operador de
+omisión de error</span><span style="font-weight: bold;"></span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Este operador resulta práctico para depurar
+programas y consiste en evitar que se genere un mensaje de error y
+continúe la ejecución del programa anteponiendo una arroba (@) a la
+instrucción. Un ejemplo sería:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;?php
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //
+Operador de omisión de errores (file016.php)
+<br>
+&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; $var1 = 3;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $var2 = 0;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //
+La siguiente instrucción no genera error
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //
+aunque sea una divisón por cero
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $huboerror =
+"Variable vacía: Error en instrucción";
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $nohuboerror =
+"Variable con valor";
+<br>
+&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; @$resultado = $var1 /
+$var2;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo
+(empty($resultado))? $huboerror: $nohuboerror;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; El operador @ se utiliza solo en expresiones, es
+decir, donde se espera recibir un valor como respuesta.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Precedencia de
+operadores</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; A continuación se exponen los diferentes operadores,
+su categoría y cual se trata primero a igualdad de prioridad, ordenados de mayor a menor prioridad:<br>
+<br>
+<table style="text-align: left;" align="center" border="1" cellpadding="2" cellspacing="0" width="500">
+  <tbody>
+    <tr align="center">
+      <td style="vertical-align: top;">OPERADOR<br>
+      </td>
+      <td style="vertical-align: top;">CATEGORÍA<br>
+      </td>
+      <td style="vertical-align: top;">ASOCIATIVIDAD<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">clone, new<br>
+      </td>
+      <td style="vertical-align: top;">clone y new<br>
+      </td>
+      <td style="vertical-align: top;">N/A<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">[<br>
+      </td>
+      <td style="vertical-align: top;">Array<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">++, --<br>
+      </td>
+      <td style="vertical-align: top;">Incremento/decremento<br>
+      </td>
+      <td style="vertical-align: top;">N/A<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">~, - (int), (float), (string),<br>
+(array), (object), (bool), @<br>
+      </td>
+      <td style="vertical-align: top;">Tipos<br>
+      </td>
+      <td style="vertical-align: top;">N/A<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">instanceof<br>
+      </td>
+      <td style="vertical-align: top;">Tipos<br>
+      </td>
+      <td style="vertical-align: top;">N/A<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">!<br>
+      </td>
+      <td style="vertical-align: top;">Lógico<br>
+      </td>
+      <td style="vertical-align: top;">Derecha<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">*, /, %<br>
+      </td>
+      <td style="vertical-align: top;">Aritmético<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">+, -, .<br>
+      </td>
+      <td style="vertical-align: top;">Aritmético y cadena<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&lt;&lt;, &gt;&gt;<br>
+      </td>
+      <td style="vertical-align: top;">Bit<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&lt;, &lt;=, &gt;, &gt;=,
+&lt;&gt;<br>
+      </td>
+      <td style="vertical-align: top;">Comparación<br>
+      </td>
+      <td style="vertical-align: top;">N/A<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">==, !=, ===, !==<br>
+      </td>
+      <td style="vertical-align: top;">Comparación<br>
+      </td>
+      <td style="vertical-align: top;">N/A<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&amp;<br>
+      </td>
+      <td style="vertical-align: top;">Bit y referencias<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">^<br>
+      </td>
+      <td style="vertical-align: top;">Bit<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">|<br>
+      </td>
+      <td style="vertical-align: top;">Bit<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&amp;&amp;<br>
+      </td>
+      <td style="vertical-align: top;">Lógico<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">||<br>
+      </td>
+      <td style="vertical-align: top;">Lógico<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">?:<br>
+      </td>
+      <td style="vertical-align: top;">Ternario<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">=, +=, -=, *=, /=, .=, %=,<br>
+&amp;=, |=, ^=, &lt;&lt;=, &gt;&gt;=<br>
+      </td>
+      <td style="vertical-align: top;">Asignación<br>
+      </td>
+      <td style="vertical-align: top;">Derecha<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">and<br>
+      </td>
+      <td style="vertical-align: top;">Lógico<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">xor<br>
+      </td>
+      <td style="vertical-align: top;">Lógico<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">or<br>
+      </td>
+      <td style="vertical-align: top;">Lógico<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">,<br>
+      </td>
+      <td style="vertical-align: top;">Usos diversos<br>
+      </td>
+      <td style="vertical-align: top;">Izquierda<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Puede contemplarse que los operadores &amp;&amp; y
+|| tienen mayor prioridad que los operadores de asignación mientras que
+and y or tienen menor.
+</div>
+</div>
+
+<div id="footer">
+</div>
+
+</body></html>

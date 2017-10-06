@@ -1,0 +1,25 @@
+body {font-size: 100%;}
+h1 {font-family:georgia, serif;
+    font-style: italic;
+    font-size: 2em;
+    color:red;}
+p  {font-family:georgia, serif;
+    font-size: large;
+    color:blue;
+    font-variant:small-caps;}
+th {font-family: verdana, trebuchet, sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    color:green;
+    line-height: 4cm;}
+td, td p {font-family:arial, sans-serif;
+          font-style: italic;
+          font-size: 12px;
+          color:maroon;}
+#id01 {font-family:"Courier New", monospace;
+       font-size: xx-large;
+       color:blue;}
+#id02 {font-family:times, serif;
+       font-size: 8px;
+       font-weight: 200;
+       color: orange;}

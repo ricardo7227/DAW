@@ -1,0 +1,16 @@
+table	{border: 1cm solid red;
+	border-spacing: 1cm 0.5cm;
+	empty-cells: hide;
+/*	border-collapse: collapse; */
+	}
+th	{font-size: 2em;
+	letter-spacing: 3px;
+	}
+td	{border: 2px solid blue;
+	font-family: Georgia, serif;
+	font-style: small-caps;
+	font-size: 1.2em;
+	}
+td.importe {text-align: right;
+	font-family: "Courier New", monospace;
+	}

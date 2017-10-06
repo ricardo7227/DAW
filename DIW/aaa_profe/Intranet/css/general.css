@@ -1,0 +1,423 @@
+body {
+  font-family: Times New Roman;
+  background-image: url(../Comun/imagenes/fondo_web.jpg);
+  background-size: cover;
+  background-repeat: none;
+  font-size: 16px;
+  width: 99%;
+  margin-top: 4px;
+}
+hr {
+  width: 550px;
+  size: 5px;
+  color: white;
+}
+#centro {
+  margin: auto;
+  width: 1000px;
+}
+#secc1 {
+  margin-bottom:3px;
+  border: 5px ridge #666666;
+  border-radius:5px;
+  background-position:  center center;
+  height: 150px;
+  background-image: url(../Comun/imagenes/cabecera.jpg);
+  background-size:100%;
+  width: 990px;
+}
+#idioma {
+  position:relative;
+  float: left;
+  width: 100px;
+  top:122px;
+  left:829px;
+}
+#login {
+  position:relative;
+  float:right;
+  font-size: 12px;
+  font-family: Tahoma;
+  font-weight:bold;
+  color:#EEE;
+  width: 130 px;
+  height: 50px;
+  top:5px;
+  margin-right:30px;
+}
+#login input {
+  font-size: 12px;
+  font-family: Tahoma;
+  font-weight:bold;
+  border-radius:5px;
+}
+#boton_login {
+  margin-left: 2px;
+}
+.centrado {
+  text-align: center;
+}
+#buscador{
+  text-align:right;
+  border-radius:5px;
+  border: 5px ridge #666666;
+  background: #208ED8;
+  background: -moz-linear-gradient(#208ED8,#FFFFFF);
+  background: -webkit-linear-gradient(#208ED8,#FFFFFF);
+  background: -o-linear-gradient(#208ED8,#FFFFFF);
+  background: -ms-linear-gradient(#208ED8,#FFFFFF);
+  background: linear-gradient(#208ED8,#FFFFFF);
+  font-family: Times New Roman;
+  font-size: 12px;
+  color: #0000FF;
+  padding:5px;
+  font-weight: bold;
+  margin-top:5px;
+  width:990px;
+  height:25px;
+}
+#buscador span{
+  float:left;
+  margin-top:5px;
+}
+#senda {
+  border-radius:5px;
+  border: 5px ridge #666666;
+  background: #208ED8;
+  background: -moz-linear-gradient(#208ED8,#FFFFFF);
+  background: -webkit-linear-gradient(#208ED8,#FFFFFF);
+  background: -o-linear-gradient(#208ED8,#FFFFFF);
+  background: -ms-linear-gradient(#208ED8,#FFFFFF);
+  background: linear-gradient(#208ED8,#FFFFFF);
+  font-family: Times New Roman;
+  font-size: 12px;
+// Color de las letras de la senda
+  color: #000000;
+  padding:5px;
+  font-weight: bold;
+  margin-bottom:3px;
+  width:980px;
+}
+#cuerpo {
+  border-color: #666600;
+  border-width: 2px;
+  width: 1000px;
+  height: 730px;
+}
+#cuerpo-izda {
+  border: 5px ridge #666666;
+  background: #208ED8;
+  background: -moz-linear-gradient(#208ED8,#FFFFFF);
+  background: -webkit-linear-gradient(#208ED8,#FFFFFF);
+  background: -o-linear-gradient(#208ED8,#FFFFFF);
+  background: -ms-linear-gradient(#208ED8,#FFFFFF);
+  background: linear-gradient(#208ED8,#FFFFFF);
+  border-radius:5px;
+  width: 200px;
+  float: left;
+  height: 720px;
+  font-size: 13px;
+}
+.slideshow{
+  margin:15px;
+  border-radius:5px;
+  border: 2px solid white;
+  width:170px;
+  height:170px;
+  margin-left:15px;
+}
+	
+#cuerpo-centro {
+  font-style:italic;
+  text-align:center;
+// Color de las letras de la sección 6
+  color:#000000;
+  font-weight:bold;
+  border: 5px ridge #666666;
+  border-radius:5px;
+  width: 550px;
+  float: left;
+  background:url(../Comun/imagenes/cuerpo_centro.jpg);
+  background-size:100%;
+  height: 700px;
+  overflow: auto;
+  margin-left:5px;
+  margin-right:5px;
+  padding: 10px;
+}
+#cuerpo-centro h1{
+// Color del título de la sección 6
+  color:#000000;
+}
+#cuerpo-centro ul li a{
+  text-align:center;
+  text-decoration:none;
+}
+#cuerpo-centro ul li p{
+  text-align:left;
+}
+#cuerpo-centro ul li span p{
+  text-align:center;
+  color:#FFFFFF;
+}
+ul.lista_grande {
+
+  font-size: 25px;
+  font-weight: bold;
+//  color: #2a002a;
+  color: #000000;
+  font-style: italic;
+  list-style:none;
+}
+#cuerpo-dcha {
+  border: 5px ridge #666666;
+  background: #208ED8;
+  background: -moz-linear-gradient(#208ED8,#FFFFFF);
+  background: -webkit-linear-gradient(#208ED8,#FFFFFF);
+  background: -o-linear-gradient(#208ED8,#FFFFFF);
+  background: -ms-linear-gradient(#208ED8,#FFFFFF);
+  background: linear-gradient(#208ED8,#FFFFFF);
+  border-radius:5px;
+  width: 190px;
+  height: 720px;
+  float: left;
+}
+.recuadro-dcha{
+              width: 168px;
+              height: 60px;
+              margin-left:5px;
+              margin-top:10px;
+	      border-radius:5px;
+              border: 2px solid white;
+              padding: 2px 4px 2px 4px;
+}
+#noticias{
+  border-radius:5px;
+  border: 2px solid white;
+  width:148px;
+  height:290px;
+  margin-top:10px;
+  margin-left:5px;
+/*  color:#EEE; */
+  color: black;
+  font-size:20px;
+  font-weight:bold;
+  padding:10px 14px 15px 14px;
+  font-family: Tahoma;
+  text-align:center;
+}
+#sponsor{
+  margin-top:10px;
+  border-radius:5px;
+  border: 2px solid white;
+  width:156px;
+  height:115px;
+  margin-left:5px;
+  color:black;
+/* color:#EEE; */
+  font-size:20px;
+  font-weight:bold;
+  padding:10px 10px 10px 10px;
+  font-family: Tahoma;
+  text-align:center;
+}
+#sponsor img{
+  height:58px;
+  width:160px;
+}
+#cuerpo-dcha ul li{
+  position:relative;
+  list-style:none;
+  left:-20px;
+  border-bottom: 1px solid #000;
+  margin-top:10px;
+}
+#cuerpo-dcha ul li:first-child{
+  border-top:none;
+}
+#cuerpo-dcha ul li:last-child{
+  border-bottom:none;
+}
+#cuerpo-dcha ul li a{
+  font-family: Tahoma;
+  font-size: 13px;
+  color: #0000FF;
+/*  font-weight:bold; */
+  text-decoration:none;
+  -webkit-transition: color .2s ease-in-out;
+  -moz-transition: color .2s ease-in-out;
+  -o-transition: color .2s ease-in-out;
+  -ms-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
+}
+#cuerpo-dcha ul li a:hover{
+  color: #B2357F;
+  font-family: Tahoma;
+  font-size: 13px;
+  font-weight:bold;
+  text-decoration:none;
+}
+#pie {
+  background: #208ED8;
+  background: -moz-linear-gradient(#208ED8,#FFFFFF);
+  background: -webkit-linear-gradient(#208ED8,#FFFFFF);
+  background: -o-linear-gradient(#208ED8,#FFFFFF);
+  background: -ms-linear-gradient(#208ED8,#FFFFFF);
+  background: linear-gradient(#208ED8,#FFFFFF);
+  border-radius:5px;
+  border: 5px ridge #666666;
+  margin-top: 3px;
+  width: 990px;
+  color:#0000FF;
+  font-size: 12px;
+  text-align: center;
+  font-family: Times New Roman;
+  height: 23px;
+  padding-top: 7px;
+}
+  /* el menú en si mismo */
+  .mi-menu  {
+    border: 5px ridge #666666;
+    border-radius: 5px;
+    list-style-type: none;
+    margin: 0 auto; /* si queremos centrarlo */
+    padding: 0;
+    /* la altura y su ancho dependerán de los textos */
+    height: 40px; 
+    width: 990px;
+    /* el color de fondo */
+  background: #208ED8;
+  background: -moz-linear-gradient(#208ED8,#FFFFFF);
+  background: -webkit-linear-gradient(#208ED8,#FFFFFF);
+  background: -o-linear-gradient(#208ED8,#FFFFFF);
+  background: -ms-linear-gradient(#208ED8,#FFFFFF);
+  background: linear-gradient(#208ED8,#FFFFFF);
+  }
+
+  /* si es necesario, evitamos que Blogger dé problemas con los saltos de l�nea cuando escribimos el HTML */
+  .mi-menu  br { display:none; }
+
+  /* cada item del menu */
+  .mi-menu  li {
+    display: block;
+    float: left; /* la lista se ve horizontal */
+    height: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  .mi-menu li a {
+    border-left: 1px solid #000;
+    border-right: 1px solid #666;
+// Color de las opciones del menú
+    color: #000000;
+    display: block;
+    font-family: Tahoma;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 28px;
+    padding: 0 13px;
+    margin: 6px 0;
+    text-decoration: none;
+    /* animamos el cambio de color de los textos */
+    -webkit-transition: color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    -ms-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+  }
+.mi-menu * :link {
+    color: #000000;
+}
+.mi-menu * :visited {
+    color: #000000;
+}
+  /* eliminamos los bordes del primer y el último */
+  .mi-menu li:first-child a { border-left: none; }
+  .mi-menu li:last-child a { border-right: none; }
+  /* efecto hover cambia el color */
+  .mi-menu li:hover > a { color: #B2357F; }
+
+  /* los submenús */
+  .mi-menu ul {
+    border-radius:10px;
+    left: 0;
+    margin: 0;
+    opacity: 0; /* no son visibles */
+    position: absolute;
+    top: 40px; /* se ubican debajo del enlace principal */
+    /* el color de fondo */
+  background: #208ED8;
+  background: -moz-linear-gradient(#208ED8,#FFFFFF);
+  background: -webkit-linear-gradient(#208ED8,#FFFFFF);
+  background: -o-linear-gradient(#208ED8,#FFFFFF);
+  background: -ms-linear-gradient(#208ED8,#FFFFFF);
+  background: linear-gradient(#208ED8,#FFFFFF);
+    /* animamos su visibildiad */
+    -moz-transition: opacity .25s ease .1s;
+    -webkit-transition: opacity .25s ease .1s;
+    -o-transition: opacity .25s ease .1s;
+    -ms-transition: opacity .25s ease .1s;
+    transition: opacity .25s ease .1s;
+	z-index:999999;
+  }
+  
+   .mi-menu ul li ul{
+	border-radius:10px;
+	left: 145px;
+	margin: 0;
+	opacity: 0; /* no son visibles */
+	position: absolute;
+	top: 0; /* se ubican debajo del enlace principal */
+	/* el color de fondo */
+	background: #208ED8;
+	background: -moz-linear-gradient(#208ED8,#FFFFFF);
+	background: -webkit-linear-gradient(#208ED8,#FFFFFF);
+	background: -o-linear-gradient(#208ED8,#FFFFFF);
+	background: -ms-linear-gradient(#208ED8,#FFFFFF);
+	background: linear-gradient(#208ED8,#FFFFFF);
+	/* animamos su visibildiad */
+	-moz-transition: opacity .25s ease .1s;
+	-webkit-transition: opacity .25s ease .1s;
+	-o-transition: opacity .25s ease .1s;
+	-ms-transition: opacity .25s ease .1s;
+	transition: opacity .25s ease .1s;
+	z-index:999999;
+  }
+  /* son visibes al poner el cursor encima */
+  .mi-menu li:hover > ul { opacity: 1; }
+  
+  .mi-menu li ul li:hover > ul li ul{ opacity: 1; }
+
+   /* cada uno de los items de los submen�s */
+  .mi-menu ul li {
+    height: 0; /* no son visibles */
+    overflow: hidden;
+    padding: 0;
+    /* animamos su visibildiad */
+    -moz-transition: height .25s ease .1s;
+    -webkit-transition: height .25s ease .1s;
+    -o-transition: height .25s ease .1s;
+    -ms-transition: height .25s ease .1s;
+    transition: height .25s ease .1s;
+  }
+  .mi-menu li:hover > ul li {
+    height: 36px; /* los mostramos */
+    overflow: visible;
+    padding: 0;
+  }
+  .mi-menu ul li a {
+    margin-left:-25px;
+	margin-top:0;
+	margin-bottom:0; 
+	margin-right:0;
+    border: none;
+    border-bottom: 1px solid #111;
+
+    /* el ancho dependerá de los textos a utilizar */
+    padding: 5px 20px;
+    width: 130px;
+  }
+  /* el último no tiene un borde */
+  .mi-menu ul li:last-child a { border: none; }

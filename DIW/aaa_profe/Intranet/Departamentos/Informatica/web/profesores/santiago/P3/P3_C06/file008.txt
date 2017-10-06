@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file008.html -->
+<html>
+<head>
+<script type="text/javascript">
+function validarEmail(str1) {
+// crea el objeto RegExp
+var expregMail = new RegExp("^[a-z0.9._-]+@{1}[a-z0.9.-]{2,}[.]{1}[a-z]{2,5}$", "i");
+return expregMail.test(str1);
+}
+var strEmail = "xxx@yyy.com";
+document.write(strEmail, " Validación: ", validarEmail(strEmail), "<br />");
+strEmail = "xxx44yyy.com";
+document.write(strEmail, " Validación: ", validarEmail(strEmail), "<br />");
+strEmail = "juan@ . co.uk";
+document.write(strEmail, " Validación: ", validarEmail(strEmail), "<br />");
+strEmail = "juan@telefonica.net";
+document.write(strEmail, " Validación: ", validarEmail(strEmail), "<br />");
+</script>
+</head>
+<body>
+</body>
+</html>

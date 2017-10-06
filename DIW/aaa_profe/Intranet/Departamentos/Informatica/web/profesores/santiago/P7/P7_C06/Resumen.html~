@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>El núcleo o core de jQuery</title>
+
+  
+  
+  <script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<div id="header">
+<p id="cabecera">El núcleo o core de jQuery</p>
+</div>
+
+<div>
+<div id="nav"> <br>
+<a href="#core">El core de jQuery</a><br>
+<br>
+<a href="#funcion">Función jQuery o función $()</a><br>
+<br>
+<a href="#otros">Otros usos de la función $()</a><br>
+<br>
+</div>
+<div id="article">
+Este resumen se ha realizado sobre los manuales de <a href="http://www.desarrolloweb.com/manuales/manual-jquery.html">desarrolloweb.com</a>.<br>
+<h3><a name="core"></a>El core de jQuery</h3>
+<p>&nbsp;&nbsp;&nbsp; El core o núcleo de jQuery es la base sobre la
+que se trabaja para hacer
+cualquier cosa con jQuery. Contiene una serie de clases y métodos
+útiles para las aplicaciones. Integra desde funciones que serán útiles
+en cualquier
+script, por sencillo que sea, hasta funciones menos recurridas pero que
+facilitan la labor de crear código limpio, corto y
+reutilizable.</p>
+<p>&nbsp;&nbsp;&nbsp; El Core se usa con objetos, clases,
+datos, etc, pero realmente lo que más se utiliza es la función
+jQuery, que es el pilar fundamental sobre el que se basarán las
+aplicaciones.
+</p>
+<p>&nbsp;&nbsp;&nbsp; El Core tiene las funciones clasificadas en
+diversos apartados: <br>
+</p>
+<ul>
+  <li><span style="font-weight: bold;">$() (La función jQuery:</span>
+Es
+la función principal de jQuery. Su utilidad principal es obtener
+elementos de la página.</li>
+  <li><span style="font-weight: bold;">Accesorios de objetos:</span> Es
+una gama de funciones de diversa y variada utilidad, que sirven de
+utilidad para trabajar con objetos, tales como iterar con cada uno
+de sus elementos, saber su tamaño, longitud, el selector o contexto con
+el que se obtuvo, obtener todos sus elementos DOM que contenga, etc.</li>
+  <li><span style="font-weight: bold;">Trabajo con datos:</span>
+Funciones
+útiles para trabajar con datos y asociarlos a elementos,
+una forma de guardar información adicional a elementos de la página.
+También tiene diversas funciones para trabajar con colas y administrar
+la salida y entrada de sus elementos.</li>
+  <li><span style="font-weight: bold;">Plugins:</span> Funciones que
+permiten extender los elementos jQuery para incorporar
+nuevos métodos.</li>
+  <li><span style="font-weight: bold;">Interoperabilidad:</span>
+Funciones que permiten que jQuery no tenga problemas de compatibilidad
+con otras librerías Javascript que también suelen utilizar la función
+dólar $().</li>
+</ul>
+<h3><a name="funcion"></a>Función jQuery o función $()</h3>
+<p>&nbsp;&nbsp;&nbsp; El funcionamiento del Core de jQuery se basa en
+esta
+función. La función jQuery sirve para hacer varias cosas, según los
+parámetros que le pasemos. El uso más simple es seleccionar elementos o
+grupos de elementos de una página web, pero también sirve para crear
+elementos sobre la marcha o para hacer un <a href="http://www.desarrolloweb.com/articulos/callback-funciones-jquery.html">callback
+de funciones</a>. Esta función se invoca también con el símbolo dólar
+$(),
+lo que simplifica y ahorra código mejorando el peso y rendimiento de
+los scripts.</p>
+<p>&nbsp;&nbsp;&nbsp; Veamos los distintos usos de esta función, según
+los parámetros que
+reciba.
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Función jQuery
+enviando un selector y un contexto</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Este uso de la función sirve para seleccionar
+elementos de la página.
+Recibe una expresión y se encarga de seleccionar todos los elementos de
+la página que corresponden con ella, devolviendo un <b>objeto jQuery</b>
+donde se encuentran todos los elementos de la página seleccionados y
+extendidos con las funcionalidades del framework. Adicionalmente y de
+manera opcional,
+puede especificarse un contexto de actuación para seleccionar única y
+exlusivamente los elementos correspondientes de ese
+contexto.<br>
+<p>&nbsp;&nbsp;&nbsp; El primer parámetro es el selector. Veamos un
+ejemplo:
+</p>
+<p class="codigo">
+var elem1 = $("#elem1");<br>
+var elem2 = jQuery("#elem2");</p>
+<p>&nbsp;&nbsp;&nbsp; Con estas líneas de código se seleccionan los
+elementos (objetos) de la página cuyo "id" se especifica y se guardan
+en las variables elem1 y elem2, pudiéndo solicitarse los métodos o
+funciones de esos objetos. Por ejemplo:</p>
+<p><span class="codigo">
+elem1.css("background-color", "#ff9999");
+</span></p>
+<p>&nbsp;&nbsp;&nbsp; Este método css() no forma parte del core, pero
+sirve para cambiar
+atributos CSS de un elemento, entre otras cosas. Así pues, con esa
+línea se cambia el color de fondo del elemento seleccionado
+anteriormente y guardado en la variable elem1.</p>
+<p>&nbsp;&nbsp;&nbsp; Otro ejemplo:
+</p>
+<p class="codigo">
+var divs = $("div");<br>
+divs.css("font-size", "32pt");
+</p>
+<p>&nbsp;&nbsp;&nbsp; Aquí se seleccionan todas las etiquetas DIV de la
+página, y se las coloca un tamaño de letra de 32pt.
+</p>
+<p>&nbsp;&nbsp;&nbsp; Un ejemplo completo sería:</p>
+<p class="codigo">&lt;html&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;title&gt;función jquery&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;script src="../jquery-1.3.2.min.js"
+type="text/javascript"&gt;&lt;/script&gt;<br>
+&nbsp;&nbsp; &lt;script&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var elem1 = $("#elem1");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //equivale a: var elem1 =
+jQuery("#elem1");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+elem1.css("background-color", "#ff9999");<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; var divs = $("div");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //podríamos haber escrito: var elem1 =
+jQuery("#elem1");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; divs.css("font-size",
+"32pt");<br>
+&nbsp;&nbsp;&nbsp;&nbsp; });<br>
+<br>
+&nbsp;&nbsp;&nbsp;
+&lt;/script&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&nbsp;&nbsp;
+&lt;div id="elem1"&gt;Este elemento se llama elem1&lt;/div&gt;<br>
+&nbsp;&nbsp;
+&lt;div id="elem2"&gt;Este otro elemento se llama elem2&lt;/div&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;
+</p>
+<p>&nbsp;&nbsp;&nbsp; Puede utilizarse un segundo parámetro para
+indicar el contexto. Con él se puede conseguir seleccionar elementos
+que
+pertenecen a una zona concreta del documento. Por defecto el
+contexto es la página entera, pero se puede restringir de la forma:
+</p>
+<p class="codigo">
+var inputs = $("input",document.forms[0]);<br>
+inputs.css("color", "red");
+</p>
+<p>&nbsp;&nbsp;&nbsp; Con la primera línea se seleccionan todos los
+elementos
+INPUT que pertenecen al primer formulario de la página. Se devolverá un
+objeto jQuery que contiene todos los input seleccionados. Con la
+segunda línea, invocando el método css() sobre el objeto jQuery
+recibido, se cambia el color del texto de esos elementos.</p>
+<p>&nbsp;&nbsp;&nbsp; Otro ejemplo en el que se seleccionan todos los
+párrafos del DIV con id="div1" sería:
+</p>
+<p class="codigo">
+var parrafos_div1 = $("p","#div1");<br>
+parrafos_div1.hide()
+</p>
+<p>&nbsp;&nbsp;&nbsp; En la segunda línea se aplica el método hide()
+sobre el objeto jQuery
+que contiene los párrafos seleccionados, con lo que se consigue que se
+oculten. Para ejecutar el ejemplo completo pulsar <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/core/jquery-function-contexto2.html" target="_blank">aquí</a>. </p>
+<p>&nbsp;&nbsp;&nbsp; Material adiccional: <a href="http://www.desarrolloweb.com/articulos/videotutorial-funcion-jquery-core.html">Video
+sobre la función $</a>.</p>
+<h3><a name="otros"></a>Otros usos de la función $()</h3>
+&nbsp;&nbsp;&nbsp; La función $() tiene distintas aplicaciones
+dependiendo de los parámetros utilizados.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Función jQuery
+pasando código HTML como parámetro</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La función $() admite como parámetro una cadena de
+código HTML sin errores. La función creará los elementos
+correspondientes al código y podrán ser añadidos a la página web.
+Veamos un ejemplo:<br>
+<p class="codigo">var nuevosElementos = $("&lt;div&gt;Elementos
+que creo en &lt;b&gt;tiempo de ejecución&lt;/b&gt;.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;h1&gt;En ejecución...&lt;/h1&gt;&lt;/div&gt;");<br>
+nuevosElementos.appendTo("body");
+</p>
+<p>&nbsp;&nbsp;&nbsp; El método appendTo() no pertenece al
+Core pero permite ilustrar el ejemplo. El código completo puede ser:</p>
+<p class="codigo">&lt;html&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;title&gt;función jquery&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;script src="../jquery-1.3.2.min.js"
+type="text/javascript"&gt;&lt;/script&gt;<br>
+&nbsp;&nbsp; &lt;script&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var nuevosElementos =
+$("&lt;div&gt;Estos elementos
+..&lt;/b&gt;.&lt;h1&gt;Título...&lt;/h1&gt;&lt;/div&gt;");<br>
+&nbsp; &nbsp; &nbsp; &nbsp; nuevosElementos.appendTo("body");<br>
+&nbsp;&nbsp;&nbsp;&nbsp; });<br>
+&nbsp;&nbsp;
+&lt;/script&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&lt;p&gt;Esto es el cuerpo de la página, que tiene poca
+cosa...&lt;/p&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;
+</p>
+<p>&nbsp;&nbsp;&nbsp; cuyo resultado puede verse haciendo click <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/core/jquery-function-crear-elementos.html" target="_blank">aquí</a>.</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Función jQuery
+pasando elementos como parámetro</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Otro posible valor que se le puede enviar a la
+función jQuery es un
+elemento o una jerarquía de elementos del DOM, para extenderlos con las
+funcionalidades que aporta el framework para los elementos. Por
+ejemplo:
+<p class="codigo">var documento = $(document.body);<br>
+documento.css("background-color", "#ff8833");
+</p>
+<p>&nbsp;&nbsp;&nbsp; cuyo resultado puede verse haciendo click <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/core/jquery-function-elementos.html" target="_blank">aquí</a>.<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp; La variable document.body corresponde
+con un elemento del DOM de Javascript, que crea automáticamente el
+navegador y hace referencia al documento de la página. Con ello se
+obtiene un objeto que es el cuerpo de la página
+(document.body) al que se le añaden todas las funcionalidades del
+framework jQuery para los elementos. </p>
+<p>&nbsp;&nbsp;&nbsp; Así pues, en la línea siguiente, se invoca el
+método css() sobre la
+variable "documento", que es el propio documento de la página
+extendido. Por eso el método css(), que es de jQuery(), funciona sobre
+ese objeto. </p>
+<p>&nbsp;&nbsp;&nbsp; Lo siguiente no funciona porque se intenta lanzar
+un
+método de jQuery directamente sobre el objeto DOM sin haberlo
+extendido:
+</p>
+<p class="codigo">
+document.body.css("background-color", "#ff8833");
+</p>
+<p>&nbsp;&nbsp;&nbsp; No funcionará porque no podemos llamar a un
+método jQuery sobre un
+objeto DOM, si es que no lo hemos extendido con la función $(). Esta
+función acepta documentos XML y objetos Window, aunque no son
+propiamente elementos del DOM.</p>
+<p>&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Función jQuery
+pasando una función como parámetro</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La función $() también admite como parámetro una
+función y entonces lo que se obtiene es una función callback que se
+invoca
+automáticamente cuando el DOM está listo.</p>
+<p>&nbsp;&nbsp;&nbsp; En esa función puede colocarse cualquier código,
+que se ejecutará sólo
+cuando el DOM esté listo para recibir comandos que lo modifiquen. Así,
+esta función permite hacer cualquier cosa
+que afecte al DOM dentro de la página. Un ejemplo:</p>
+<p class="codigo">$(function (){<br>
+&nbsp;&nbsp;&nbsp;//Aquí puede hacerse cualquier cosa con el DOM<br>
+});
+</p>
+<p>&nbsp;&nbsp;&nbsp; Este callback sería una abreviatura del visto
+anteriormente:</p>
+<p class="codigo">$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp;//Aquí puedo hacer cualquier cosa con el DOM<br>
+});
+</p>
+<p>&nbsp;&nbsp;&nbsp; Incluso pueden hacerse varios callback, para
+agregar distintas
+acciones a realizar cuando el DOM está listo, las veces que se quiera,
+igual que cuando se define el evento ready() sobre el objeto document.
+</p>
+<p>&nbsp;&nbsp;&nbsp; Un ejemplo:
+</p>
+<p class="codigo">
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;title&gt;función jquery&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;script src="../jquery-1.3.2.min.js"
+type="text/javascript"&gt;&lt;/script&gt;<br>&nbsp;&nbsp; &lt;script&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;
+$(function (){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var documento = $("p");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; documento.css("background-color", "#ff8833");<br>&nbsp;&nbsp;&nbsp;&nbsp;
+});<br>&nbsp;&nbsp;&nbsp;&nbsp;
+$(function (){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var documento = $("b");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; documento.css("color", "#fff");<br>&nbsp;&nbsp;&nbsp;&nbsp;
+});<br>
+//si colocase aquí este código, no funcionaría, porque el DOM no
+estaría listo para realizar acciones<br>
+//var documento = $("p");<br>
+//documento.css("background-color", "#ff8833");<br>&nbsp;&nbsp; &lt;/script&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&lt;p&gt;&lt;b&gt;Párrafo&lt;/b&gt;!!&lt;/p&gt;<br>
+&lt;p&gt;Otro &lt;b&gt;párrafo&lt;/b&gt;&lt;/p&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;
+</p>
+<p>&nbsp;&nbsp;&nbsp; cuyo resultado puede verse haciendo click <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/core/jquery-function-callback.html" target="_blank">aquí</a>. </p>
+
+</div>
+</div>
+
+<br>
+
+<br>
+
+</body></html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Conceptos básicos de CSS</title></head><body>
+<div style="text-align: center;"><font style="color: rgb(51, 0, 153);" size="+3">Conceptos básicos de CSS</font><br>
+</div>
+
+<div><a href="#css">¿ Qué es CSS ?</a><br>
+<a href="#interrelacion">Interrelación HTML y estilos</a><br>
+<a href="#cascada">¿ Por qué se denomina hoja de estilo en
+cascada ?</a><br>
+<br>
+<a name="css"></a>&nbsp;&nbsp;&nbsp; <font style="font-weight: bold;" size="+1">¿ Qué es CSS ?</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; CSS viene de Cascade Style Sheets, es decir, hojas
+de estilo en cascada, y es una codificación que permite asignar estilo
+a los documentos HTML. W3C creó el estándar CSS y la versión actual
+recomendada es la 2.1, encontrándose la versión CSS 3 en desarrollo,
+con una implementación parcial en los navegadores.<br>
+<br>
+&nbsp;&nbsp;&nbsp; A partir de HTML 4 toda la codificación de estilo
+pudo separarse de la codificación HTML y almacenarse en archivos
+independientes. Gracias a CSS un mismo documento HTML se puede
+visualizar aplicando diferentes estilos, dependiendo, por ejemplo, del
+medio utilizado.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando se utiliza CSS, una etiqueta HTML cualquiera,
+por ejemplo, &lt;h1&gt; o &lt;p&gt;, no debería incluir información
+sobre cómo será visualizado su contenido, solamente debe servir para
+acotar el texto al que se aplica. La información de estilo deberá
+incluirse en una hoja de estilo.<br>
+<br>
+<a name="interrelacion"></a>&nbsp;&nbsp;&nbsp; <font style="font-weight: bold;" size="+1">Interrelación HTML y estilos</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Ver ejemplo de pag. 203. Comprobar que el estilo
+está definido dentro de la etiqueta &lt;head&gt; y que cada vez que se
+quiere hacer referencia al estilo definido se utiliza el <span style="color: red;">atributo class</span>, de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;p class="cabecera"&gt; . . . &lt;/p&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Hay tres formas de definir los estilos:<br>
+<ul>
+  <li>Definición en linea.- dentro de cada etiqueta.</li>
+  <li>Hoja de estilos interna.- dentro de la etiqueta head.</li>
+  <li>Hoja de estilos externa.- accesible con link.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">La hoja de estilo interna</span>
+tiene el siguiente aspecto:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;head&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;title&gt;Primer ejemplo CSS&lt;/title&gt;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;style
+type="text/css"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+p.cabecera {font-weight: bold; font-style: italic; font-size: small;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;/style
+&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/head&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+<br>
+&nbsp;&nbsp;&nbsp; El formato de la etiqueta style permite indicar el
+tipo MIME y el medio de destino de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;style type=" Tipo MIME
+" media=" Medio destino "&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; El atributo <span style="color: red;">type</span>
+por lo general es "text/css" pero el <span style="color: red;">media</span>
+admite los valores siguientes:<br>
+<ul>
+  <li>all.- todo tipo.</li>
+  <li>aural.- combinación de síntesis de voz y efectos de sonido.</li>
+  <li>braille.- dispositivos de este tipo.</li>
+  <li>embossed.- dispositivos de salida braille.</li>
+  <li>handheld.- dispositivos de este tipo, pantallas pequeñas y ancho
+de banda limitado.</li>
+  <li>print.- para impresora o previsualizaciones.</li>
+  <li>projection.- dispositivos de proyección.</li>
+  <li>screen.- pantalla.</li>
+  <li>tty.- dispositivos de caracteres fijos o teletipos.</li>
+  <li>tv.- televisión.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Un documento puede incluir varios estilos orientados
+para los diferentes medios.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">La hoja de estilo externa</span>
+es un documento externo con las definiciones de estilo, que se enlaza
+al documento HTML mediante una etiqueta link:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;link
+rel="stylesheet" type="text/css" href="miestilo.css"/&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/head&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; La gran ventaja de éste método es que una sola hoja
+de estilos puede ser utilizada por (y afectar a) múltiples documentos
+HTML.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">La definición en línea</span>
+es la utilizada en la parte 1 del libro, con las etiquetas incluyendo
+el estilo.<br>
+<br>
+<a name="cascada"></a>&nbsp;&nbsp;&nbsp; <font style="font-weight: bold;" size="+1">¿ Por qué se denomina hoja de
+estilo en cascada ?</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; La denominación "en cascada" proviene del hecho de
+que las definiciones pueden ser múltiples y una definición puede
+reemplazar a otra previa. El estándar CSS define las siguientes reglas
+para determinar qué estilo debe utilizar cuando se encuentra con casos
+de múltiples definiciones:<br>
+<ul>
+  <li>Si no hay definiciones se utiliza la hoja de estilo estándar del navegador.</li>
+  <li>Las definiciones de hoja de estilo externa (&lt;link ...&gt;) reemplazarán a las definiciones predeterminadas del navegador.</li>
+  <li>Las definiciones de hoja de estilo interna (&lt;style&gt;) reemplazarán a las anteriores.</li>
+  <li>Las definiciones de estilo en línea reemplazarán a las anteriores.</li>
+  <li>Si en algún nivel se utiliza la notificación "!important", esa declaración prevalecerá sobre el resto.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Un ejemplo de uso de !important puede ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  th {background-color: #ADFFF0 !important;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  . . .<br>
+
+
+</div></body></html>

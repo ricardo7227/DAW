@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>JavaScript avanzado</title>
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+</head>
+<body>
+  <header>
+JavaScript avanzado
+  </header>
+  <nav>
+<a href="#conceptos">Conceptos básicos</a><br>
+<a href="#modelo">El modelo DOM</a><br>
+<a href="#gestion">Gestión de eventos</a><br>
+<a href="#web">Web Storage</a><br>
+<a href="#api">API de geolocalización</a><br>
+  </nav>
+  <article>
+<br>
+<h3><a name="conceptos"></a>Conceptos básicos</h3>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Tipos de datos en
+JavaScript, arrays, operadores, etc</span>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Existen 6 tipos de datos: number, string, boolean,
+undefined, null y object.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Un dato de tipo number es un número entero o decimal
+comprendido entre Number.MAX_VALUE y Number.MIN_VALUE. También
+pertenecen a este tipo los valores Infinity, -Infinity y NaN.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Es conveniente conocer las conversiones implícitas y
+explícitas que pueden realizarse cuando se utilizan operadores de
+comparación, aritméticos, etc.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Otra forma de crear arrays es:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; var&nbsp; mitabla1 = []<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; var&nbsp; mitabla2 =
+[dato1,&nbsp;dato2,&nbsp; ...];
+</p>
+
+&nbsp;&nbsp;&nbsp; Otras forma de crear objetos:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; var&nbsp; persona = new Object();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; persona.nombre = "Santiago";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; persona.edad&nbsp;&nbsp; = 53;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; persona.envejecer = function(){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+persona.envejecer++;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; }</p>
+
+<p class="codigo"><br>
+</p>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; var&nbsp;
+persona&nbsp; = {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; nombre: Santiago,<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; edad: 53,<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; envejecer: function() {this.edad++;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; ;</p>
+
+<span style="font-family: monospace;"><span style="font-weight: bold;"></span></span>&nbsp;&nbsp;&nbsp;
+Existen dos bucles específicos que permiten iterar sobre las
+propiedades de los objetos y sobre los valores de las mismas, son los
+bucles for ... in y for&nbsp; each&nbsp; ... in respectivamente.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Integración de
+JavaScript con HTML</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Aparte de la ya conocida forma de encerrar el código
+JavaScript entre las etiquetas &lt;script&gt;, &lt;/script&gt;, existen
+otras dos muy utilizadas: una como valor de oyentes de los eventos de
+los elementos HTML y otra haciendo referencia a un archivo
+independiente, como se muestra en el siguiente ejemplo:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;!-- Codigo en
+oyentes de eventos --&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;img src='balon.jpg'
+onmouseover="this.src='pelota.jpg';"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; onmouseout ="this.src='balon.jpg';"/&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;!-- Codigo incluido --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;script
+src="mi_codigo.js"&gt;&lt;/script&gt;</p>
+
+<p class="western" align="justify">&nbsp;&nbsp;&nbsp; Generalmente se
+recomienda colocar
+el código JavaScript en un archivo independiente para mejorar su
+mantenimiento y aprovechar las funcionalidades de caché de los
+navegadores. </p>
+
+<h3><a name="modelo"></a>El modelo DOM</h3>
+
+&nbsp;&nbsp;&nbsp; Algunas propiedades de document son:<br>
+
+<ul>
+
+  <li>head.- hace referencia al elemento head.</li>
+  <li>body.- hace referencia al elemento body.</li>
+  <li>characterSet.- informa del juego de caracteres.</li>
+  <li>title.- hace referencia al título.</li>
+  <li>location.- contiene un objetode tipo Location cuyas propiedades
+ofrecen
+información sobre la URL y sus métodos sirven para cargar otros
+documentos de forma automática.</li>
+  <li>readyState.- con los valores loading, interactive y complete,
+informa del estado de carga de la página.<br>
+  </li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Existen los métodos: getElementsByClassName("clase")
+que obtiene todos los elementos de la clase especificada,
+querySelector("selector_css") que devuelve el primer elemento que
+coincide con el selector y querySelectorAll("selector_css") que
+devuelve un nodeList muerto (no de modifica dinámicamente) con todos
+los elementos que coinciden con el selector.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Cada nodo de un documento tiene asociado un objeto
+de tipo Node; si además es un nodo de tipo elemento dispondrá de las
+propiedades y métodos de Element; si además se trata de un elemento
+HTML dispondrá de las de HTMLElement; y finalmente, dependiendo de qué
+tipo de elemento se trate dispondrá de las específicas como puede ser
+HTMLParagraphElement o HTMLImageElement.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp;
+Algunas propiedades de lectura que permiten conocer la posición de un
+elemento son: offsetParent, offsetHeight, offsetWidth, offsetTop y
+offsetLeft.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La propiedad attributes gestiona un namedNodeMap
+compuesto por objetos de tipo Attr que tienen las propiedades name y
+value. Los namedNodeMap disponen de los métodos getNamedItem(nombre)
+para obtener el atributo llamado nombre, setNamedItem(objeto_atributo)
+para añadir o sustitutir un atributo asignándole
+un objeto de tipo Attribute. Para crear un nodo de tipo atributo
+también se dispone del método createAttribute(nombre) de document,
+siendo nombre una cadena (no un objeto).<br>
+
+<h3><a name="gestion"></a>Gestión de eventos</h3>
+
+&nbsp;&nbsp; Los eventos son avisos que genera el navegador en
+respuesta a actuaciones del usuario o del propio sistema. Los elementos
+pueden tener asociados oyentes de eventos, que son funciones que se
+ejecutan cuando el elemento es notificado del evento.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Las notificaciones de los eventos viajan por el
+árbol DOM partiendo desde el elemento document buscando el elemento que
+ha sido el disparador del aviso, y después de vuelta al elemento
+document. El elemento disparador o blanco del evento se denomina
+target. El modelo de propagación permite a cada elemento del DOM
+relacionado con un evento reaccionar antes o después de que lo haga el
+target. La comunicación del evento se divide en tres fases: captura,
+destino y propagación.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Hay varias formas de asociar oyentes de eventos a
+elementos. Una de las más recomendadas consiste en utilizar el método
+"addEventListener" del elemento, que tiene la sintaxis:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+elemento.addEventListener("nombre_de_evento", funcion, fase);</p>
+
+siendo la fase un valor booleado con el significado: true para
+ejecución en fase de captura y false (o nada) para ejecución en fase de
+propagación. Un ejemplo completo puede ser el siguiente:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;!-- Fichero html
+--&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;HTML&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;HEAD&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &lt;SCRIPT
+src="controlEventos.js"&gt;&lt;/SCRIPT&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/HEAD&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;BODY&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;TABLE&gt;
+<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&lt;TR&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+&lt;TD&gt;Elemento 0,0&lt;/TD&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;TD&gt;Elemento 0,1&lt;/TD&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+&lt;TD&gt;Elemento 0,2&lt;/TD&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&lt;/TR&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&lt;TR&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+&lt;TD&gt;Elemento 1,0&lt;/TD&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+&lt;TD&gt;Elemento 1,1&lt;/TD&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+&lt;TD&gt;Elemento 1,2&lt;/TD&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&lt;/TR&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/TABLE&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/BODY&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;HTML&gt;</p>
+
+<p class="codigo"><br>
+</p>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Fichero controlEventos.js<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.addEventListener("readystatechange", cargarEventos, false);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; function cargarEventos(evento) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.getElementsByTagName("TR")[0].addEventListener("click",
+funciontr, true);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+document.getElementsByTagName("TD")[0].addEventListener("click",
+funciontd);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; function funciontr (evento) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; alert("entra
+en funcion por tr");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+evento.stopPropagation();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; function funciontd () {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; alert("entra
+en funcion por td");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+</p>
+
+que incluye la gestión de un evento en su fase de captura, la de otro
+en fase de propagación y la eliminación de la propagación de uno de
+ellos. Existen más métodos de los eventos, como preventDefault que
+anula el comportamiento implícito de, por ejemplo, un "&lt;a href
+...&gt;" o que aparezca el carácter correspondiente a la tecla pulsada
+en un campo de texto.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Se recomienda un recorrido por los distintos
+eventos, sus propiedades y métodos.<br>
+
+<h3><a name="web"></a>Web Storage</h3>
+
+&nbsp;&nbsp;&nbsp; Actualmente existen tres técnicas&nbsp; para
+almacenar información en local: almacenamiento local, almacenamiento de
+sesión e IndexedDB. Las dos primeras son prácticamente iguales con la
+diferencia de que en la primera los datos son permanentes y se pueden
+compartir entre los documentos provenientes del mismo origen (protocolo
++ dominio + puerto) y en la segunda los datos se borran al cerrar la
+ventana del navegador y sólo se pueden ver en los documentos cargados
+en la misma ventana (documento principal y sus iframes).<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El almacén local está disponible a través de la
+propiedad window.localStorage mientras que el de sesión está disponible
+en window.sessionStorage. Estas propiedades contienen un objeto de tipo
+Storage, con las propiedades y métodos que más adelante se enunciarán.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Las bases de datos IndexedDB permiten un tratamiento
+(cración, acceso, etc.) como el de cualquier base de datos.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">El objeto Storage</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Su única propiedad es length que indica cuántos
+pares nombre/valor hay en el almacén.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Se puede acceder a los elementos del almacén
+mediante la sintaxis de corchetes indicando el nombre del par
+correspondiente. Además, dispone de los siguientes métodos:<br>
+
+<ul>
+
+  <li>getItem(nombre).- devuelve el valor del par identificado por
+nombre.</li>
+  <li>setItem(nombre, valor).- crea, o modifica si ya existe, el par
+especificado por nombre y valor.</li>
+  <li>removeItem(nombre).- borra del almacén el par identificado por
+nombre.</li>
+  <li>key(indice).- contiene el nombre del par que ocupa la posición
+índice dentro del almacén.</li>
+  <li>clear().- borra todos los pares del almacén.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">El evento storage</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Cada vez que se produce una modificación en el
+almacén se genera un evento de tipo storage, que en el caso del
+almacenamiento local se comunica a todas las ventanas del navegador que
+contiene documentos procedentes del mismo origen, y que en el caso del
+almacenamiento de sesión se comunica sólo a los documentos de ese
+origen cargados en la misma ventana que el que la que provocó el cambio.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Este evento se asigna al objeto window y su función
+oyente recibe como argumento un objeto de tipo Event ampliado con ls
+siguientes propiedades:<br>
+
+<ul>
+
+  <li>key.- nombre del par que ha efectuado el cambio.</li>
+  <li>oldValue.- valor del par antes de ser modificado.</li>
+  <li>newValue.- nuevo valor del par.</li>
+  <li>storageArea.- referencia al objeto de tipo Storage que ha sido
+modificado.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Al vaciar el almacén con clear() se produce un único
+evento.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; A continuación se muestra un ejemplo que permite
+crear, borrar, consultar, listar, etc. pares nombre/valor del almacen:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Código HTML:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &lt;!DOCTYPE html&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;html&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;meta charset="utf-8" /&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;title&gt;Administración del
+Storage&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;script
+src='Mantenimiento.js'&gt;&lt;/script&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp; &lt;/head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp; &lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label for='nombre'&gt;Nombre:
+&lt;/label&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;input type='text' id='nombre'
+/&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;br /&gt;&lt;br /&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label
+for='valor'&gt;Valor.....: &lt;/label&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;input type='text' id='valor'
+/&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;br /&gt;&lt;br /&gt;&lt;br
+/&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;button
+id='anadir'&gt;Añadir&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;button id='borrar'&gt;Borrar
+variable&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;button
+id='consultar'&gt;Consultar&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;button
+id='modificar'&gt;Modificar&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;br /&gt;&lt;br /&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;button
+id='listado'&gt;Listado&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;button
+id='borrar_listado'&gt;Borrar
+listado&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;button
+id='borrar_almacen'&gt;Borrar
+almacén&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;br /&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;p id='parrafo'&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp; &lt;/body&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/html&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Código javaScript:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; function f_anadir () {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; var
+nombre=document.getElementById('nombre').value;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; var
+valor=document.getElementById('valor').value;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (nombre === '' || valor ===
+'') {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; alert('Debe
+introducir algo en
+nombre y en valor');<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+window.localStorage.setItem(nombre,valor);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; function f_borrar () {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+window.localStorage.removeItem(document.getElementById('nombre').value);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; function f_consultar () {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.getElementById('valor').value =
+window.localStorage.getItem(document.getElementById('nombre').value);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; function f_modificar () {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; var
+nombre=document.getElementById('nombre').value;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; var
+valor=document.getElementById('valor').value;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (nombre === '' || valor ===
+'') {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; alert('Debe
+introducir algo en
+nombre y en valor');<br>
+&nbsp;&nbsp;&nbsp; // Se podría controlar que exista la variable<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+window.localStorage.setItem(nombre,valor);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; function f_listado () {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; for (var i=0;
+i&lt;window.localStorage.length; i++){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+insertar(window.localStorage.key(i),window.localStorage[window.localStorage.key(i)]);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; function insertar(nombre,valor){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; var mensaje =
+document.getElementById('parrafo').innerHTML;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; mensaje +=
+'&lt;br&gt;&lt;strong&gt;Nombre:&lt;/strong&gt; '+ nombre;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; mensaje += '&lt;strong&gt; Valor
+actual:&lt;/strong&gt; '+ valor;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.getElementById('parrafo').innerHTML =
+mensaje;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; function f_borrar_listado () {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.getElementById('parrafo').innerHTML = '';<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; function f_borrar_almacen () {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; window.localStorage.clear();<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; function cargarEventos(evento) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.getElementById('anadir').addEventListener('click', f_anadir,
+false);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.getElementById('borrar').addEventListener('click', f_borrar,
+false);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.getElementById('consultar').addEventListener('click',
+f_consultar, false);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.getElementById('modificar').addEventListener('click',
+f_modificar, false);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.getElementById('listado').addEventListener('click', f_listado,
+false);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.getElementById('borrar_listado').addEventListener('click',
+f_borrar_listado, false);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.getElementById('borrar_almacen').addEventListener('click',
+f_borrar_almacen, false);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; document.addEventListener("readystatechange",
+cargarEventos, false);<br>
+</p>
+
+<h3><a name="api"></a>API de geolocalización</h3>
+
+&nbsp;&nbsp;&nbsp; Una de las APIs relacionadas con
+HTML5 que el W3C se está encargando de especificar es la de
+geolocalización, cuyo objetivo es solicitar al agente de usuario (el
+navegador) información sobre su posición (latitud, longitud,
+dirección, velocidad, …). Sin embargo, esta API no indica cómo
+puede obtener el navegador esa información. Consecuentemente queda en manos de
+los fabricantes de dispositivos/navegadores establecer cuál va a ser
+ese sistema.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Actualmente se aprovechan los parámetros
+aportados por los sensores del dispositivo (GPS, GSM, brújula digital,
+...), el SSID recopilado por Google, la dirección IP (recogida en los
+enrutadores) y otros tipos de señales de radio como Bluetooth y RFID.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La API de geolocalización está disponible para
+JavaScript a través del objeto navigator.geolocation que dispone de los
+métodos getCurrentPosition(), watchPosition() y clearWatch().
+</article>
+<footer></footer>
+</body>
+</html>

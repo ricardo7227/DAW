@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+		<title>Web Insti</title>		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!--Estilos Bootstrap*/-->
+		<link rel="stylesheet" type="text/css" href="bootstrap.min.css" >
+		<script src="Software/js/jquery-1.9.1.min.js"></script>
+		<script src="Software/js/bootstrap.min.js"></script>
+		
+		<style>
+			body{background: #FFF9AE;}			
+			.cabecera
+			{
+				border-style: solid; border-color: #6EFFED; border-width: 3px;  height: 156px; 
+				font-size: 2.8em; font-family:monospace; font-style: oblique; 
+			}
+			
+			.marco1{border-style: solid; border-color: #6EFFED; border-width: 3px; font-family:monospace; font-style: oblique; font-size: 1.1em;}
+			.marco2{border-style: solid; border-color: #6EFFED; border-width: 3px; font-family:monospace; font-style: oblique; font-size: 1em; text-align: justify;}
+			.menu{background: #EDFDDB; width: 200px; padding: 2%; font-size: 23px; font-weight: bold; text-decoration: underline;}
+			
+			.foto1{height: 150px;}
+			.foto2{padding: 15px 0px 0px 0px; margin-left: 38%; }
+			.encabezado{font-size: 2.4em;text-align:center;}
+			.enseñanza{color: blue; font-size: 1.3em; text-decoration: underline; list-style:none;}
+			.justify{text-align: justify;}
+			.peke{font-size: 0.8em;}
+			ul{ list-style-type:circle;}
+			@media only screen and (max-width: 925px)			
+			{
+				.cabecera{width: 900px;}
+				.marco1{width: 240px;}
+				.marco2{width:660px; position: absolute; left: 240px;}	
+				.foto2{ margin-left: 35%; }
+			}
+			
+			@media only screen and (max-width: 825px)			
+			{
+				.cabecera{width: 800px; font-size:  2.4em; height:136px;}
+				.marco1{width: 240px;}
+				.marco2{width:560px; position: absolute; left: 240px;}				
+				.encabezado{font-size: 2.1em}
+				.foto1{height: 130px;}	
+				.foto2{ margin-left: 32%; }
+			}
+			
+			@media only screen and (max-width: 725px)			
+			{
+				.cabecera{width: 700px; font-size:  2.1em; height:136px;}
+				.marco1{width: 200px;}
+				.marco2{width:500px; position: absolute; left: 200px;}	
+				.menu{width: 160px;}
+				.encabezado{font-size: 2.1em}
+				.foto1{height: 130px;}
+				.foto2{ margin-left: 29%; }
+			}
+			
+			@media only screen and (max-width: 625px)			
+			{
+				.cabecera{width: 600px; font-size: 1.7em; height:116px;}
+				.marco1{width: 170px; font-size: 0.9em;}
+				.marco2{width:430px; position: absolute; left: 170px; font-size: 0.9em;}	
+				.menu{width: 130px; font-size: 1.2em;}
+				.enseñanza{ font-size: 1.2em;}
+				.encabezado{font-size:1.7em}
+				.foto1{height: 110px;}	
+				.foto2{ margin-left: 26%; }
+			}
+			
+			@media only screen and (max-width: 525px)			
+			{
+				.cabecera{width: 500px; font-size: 1.4em; height:116px;}
+				.marco1{width: 170px; font-size: 0.9em;}
+				.marco2{width:330px; position: absolute; left: 170px; font-size: 0.9em;}	
+				.menu{width: 130px; font-size: 1.2em;}
+				.enseñanza{ font-size: 1.12em;}
+				.encabezado{font-size:1.7em}
+				.foto1{height: 110px;}	
+				.foto2{ margin-left: 18%; }
+			}	
+			
+			@media only screen and (max-width: 425px)			
+			{
+				.cabecera{width: 400px; font-size: 1.1em; height:86px;}
+				.marco1{width: 400px; font-size: 0.9em; }
+				.marco2{width:400px; font-size: 0.9em; position: absolute; left: 0px; top: 433px;}			
+				.menu{width: 150px; font-size: 1.3em;}
+				.enseñanza{ font-size: 1.2em;}
+				.encabezado{font-size: 1.4em}
+				.foto1{height: 80px;}	
+				.foto2{ margin-left: 16%; }
+			}
+			
+			@media only screen and (max-width: 335px)			
+			{
+				.cabecera{width: 305px; font-size: 0.80em; height:66px;}
+				.marco1{width: 305px; font-size: 0.9em; }
+				.marco2{width:305px; font-size: 0.85em; position: absolute; left: 0px; top: 422px;}			
+				.menu{width: 130px; font-size: 1.2em;}
+				.enseñanza{ font-size: 1.05em;}
+				.encabezado{font-size: 1.4em}
+				.foto1{height: 60px;}
+				.foto2{ margin-left: 10%; }
+			}
+
+		
+		</style>
+	</head>
+	
+	<body >
+		<div class="container-fluid">
+			<div class="row">
+				<header class="cabecera">
+					<span>
+						<img src="Fotos/Anagrama.bmp" class="foto1" alt="Logo"/> 	 Instituto Enrique Tierno Galván
+					</span>		
+				</header>				
+			
+				<section class="marco1 col-lg-3 col-md-3 col-sm-3 col-xs-3 "> 
+					<article class="justify">
+						<br>
+						<u>Horario de mañana:</u> de 8:30 a 14:30. <br>
+						Recreo de 11:15 a 11:45. <br> <br>
+						<u>Horario vespertino:</u> de 15:30 a 21:30. <br>
+						Recreo de 18:15 a 18:45. <br> <br>
+					</article>					
+
+					<nav class="menu"> 
+						<a>Inicio</a>						
+						<a href="TiernoGalvan.html#destino">Bibliografía</a> 	
+						<a>Como llegar</a>
+						<a>Secretaría</a>							
+						<a>Erasmus</a>														
+					</nav>
+					
+					<br>
+					<article class="justify">
+						<u>Teléfono: 91 317 00 47 </u> <br> <br>
+							<span class="peke">Esta página recogerá las aportaciones y modificaciones realizadas por los alumnos del Centro.</span>		
+						<br>
+					</article>					
+				</section>				
+
+				<section class="marco2 col-lg-9 col-md-9 col-sm-9 col-xs-9">
+					<img src="Fotos/Insti.jpeg" class="foto2" alt="Fachada"/> 
+					<h1 class="encabezado"> <u>Enseñanzas</u>  </h1> <br>
+					
+					<ul>
+						<li class="enseñanza">Educación Secundaria Obligatoria</li>				
+							<li>Primero de E.S.O.</li>
+							<li>Segundo de E.S.O.</li>
+							<li>Tercero de E.S.O.</li>
+							<li>Cuarto de E.S.O.</li>																										
+					</ul>
+					
+						
+					<ul>
+						<li class="enseñanza">Bachillerato</li>				
+							<li>Ciencias y Tecnología(por la mañana)</li>
+							<li>Humanidades y Ciencias Sociales(por la mañana)</li>																																	
+					</ul>
+					
+					<ul>
+						<li class="enseñanza">Ciclos de Grado Medio </li>				
+							<li>Equipos electrónicos de consumo(por la mañana)</li>
+							<li>Instalaciones eléctricas y automáticas(por la mañana)</li>
+							<li>Instalaciones de producción de calor(por la mañana; solo 2º curso)</li>
+							<li>Instalaciones frigoríficas y de climatización(por la mañana; solo 2º curso)</li>	
+							<li>Instalaciones de producción de calor, frigoríficas y de climatización(por la mañana y por la tarde)</li>	
+							<li>Carrocería(por la mañana)</li>								
+					</ul>
+					
+					<ul>
+						<li class="enseñanza">Ciclos de Grado Superior </li>				
+							<li>Administración de sistemas informáticos en red(por la tarde)</li>
+							<li>Desarrollo de aplicaciones web(por la mañana)</li>		
+							<li>Mantenimiento de instalaciones térmicas y de fluidos(por la tarde)</li>
+							<li>Automoción(por la tarde)</li>	
+					</ul>
+					
+					<ul>
+						<li class="enseñanza">Programas de Cualificación Profesional Inicial</li>				
+							<li>Operaciones auxiliares de montaje de instalaciones en edificios(por la tarde)</li>
+							<li>Operaciones de fontanería y calefacción-climatización(por la tarde)</li>		
+							<li>Operaciones auxiliares en mantenimiento de vehículos(por la tarde)</li>						
+					</ul>					
+				</section>
+			</div>	
+		</div>
+	</body>
+</html>

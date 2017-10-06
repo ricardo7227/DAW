@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+<SCRIPT type="text/javascript">
+// archivo Parte 3/code/file019.html
+// función para precargar imágenes 
+// en una tabla en memoria
+function precarga() {
+	// carga la matriz a partir de los parámetros
+	// de llamada a la función
+	for (var iIndex = 0; iIndex<precarga.arguments.length;iIndex++) {
+		mImags[iIndex] = new Image();
+		mImags[iIndex].src = precarga.arguments[iIndex]; 
+	}
+}
+
+function cambiarFoto(iIndex) {
+	// cambia la foto 
+ 	document.images["Beatles"].src = mImags[iIndex].src;
+}
+
+// crea una matriz global
+var mImags = new Array();
+// carga una lista variable de imágenes
+precarga("john.jpg","paul.jpg","george.jpg","ringo.jpg");
+</SCRIPT>
+</HEAD>
+<BODY>
+<a href="#" onmouseover="cambiarFoto(0)">John Lennon</a><br>
+<a href="#" onmouseover="cambiarFoto(1)">Paul McCartney</a><br>
+<a href="#" onmouseover="cambiarFoto(2)">George Harrison</a><br>
+<a href="#" onmouseover="cambiarFoto(3)">Ringo Starr</a><br>
+<img src="john.jpg" name="Beatles">
+</BODY>
+</HTML>

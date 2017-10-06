@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>HTML5</title>
+    <script>
+        function obtenerPosicion(){
+                 var opciones = {
+                     enableHighAccuracy: true,
+                     timeout: 10000,
+                     maximumAge: 30000};
+                 navigator.geolocation.getCurrentPosition(gestionarExito,gestionarFracaso,opciones);
+        }
+        function gestionarExito(posicion){
+                 var nombre;
+                 document.getElementById('timestamp').innerHTML=posicion.timestamp;
+                 document.getElementById('latitude').innerHTML =posicion.coords.latitude;
+                 document.getElementById('longitude').innerHTML=posicion.coords.longitude;
+                 document.getElementById('accuracy').innerHTML =posicion.coords.accuracy;
+                 document.getElementById('altitude').innerHTML =posicion.coords.altitude;
+                 document.getElementById('altitudeAccuracy').innerHTML=posicion.coords.altitudeAccuracy;
+                 document.getElementById('heading').innerHTML  =posicion.coords.heading;
+                 document.getElementById('speed').innerHTML    =posicion.coords.speed;
+        }
+        function gestionarFracaso(error){
+                 alert('Se ha producido el siguiente error\n' + error.message);
+        }
+    </script>       
+  </head>
+  <body>
+    <button onclick='obtenerPosicion();'>Obtener posici&oacute;n</button>
+    <table>
+      <tr>
+        <th>Propiedad</th><th>Valor</th>
+      </tr>	
+      <tr><td>timestamp</td><td id="timestamp">--</td></tr>
+      <tr><td>coords.latttude</td><td id="latitude">--</td></tr>
+      <tr><td>coords.longitude</td><td id="longitude">--</td></tr>
+      <tr><td>coords.accuracy</td><td id="accuracy">--</td></tr>
+      <tr><td>coords.altitude</td><td id="altitude">--</td></tr>
+      <tr><td>coords.altitudeAccuracy</td><td id="altitudeAccuracy">--</td></tr>
+      <tr><td>coords.heading</td><td id="heading">--</td></tr>
+      <tr><td>coords.speed</td><td id="speed">--</td></tr>
+    </table>
+  </body>
+</html>

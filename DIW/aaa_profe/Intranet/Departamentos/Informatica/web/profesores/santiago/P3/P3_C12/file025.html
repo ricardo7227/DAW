@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<HTML>
+<BODY>
+<script type="text/javascript">
+// archivo Parte 3/code/file025.html
+// función que valida si el valor introducido
+// es correcto
+function importeOK(valor) {
+	if (valor == null) {return false;}
+	if (isNaN(valor)) {return false;}
+	if ((valor >= 5) && (valor < 1000)) { return true;}
+	return false;
+};
+var strImporte;
+// bucle hasta que el valor introducido sea 
+// correcto
+do {
+	strImporte = prompt("Introduzca el valor de la transferencia.\nEl valor debe estar entre 5 y 999 euros", 10);
+} while (!importeOK(strImporte));
+
+// se muestra el valor introducido
+// en el cuadro de entrada de datos
+document.write("La transferencia será de "+strImporte+" euros");
+</script>
+</body>
+</html>

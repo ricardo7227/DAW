@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<!-- archivo Parte 2/code/cap1201.html -->
+<head>
+<title>Uso básico del script para modificar estilos</title>
+<script>
+
+// ObtenerValor()
+// la función recibe dos parámetros:
+// identificador del elemento y
+// nombre de la propiedad de la que
+// se quiere conocer el valor que
+// tiene asignado
+
+function ObtenerValor(id, prop) {
+
+	// código común para todos los navegadores
+	// obtiene el objeto a partir del identificador
+
+	obj= document.getElementById(id);
+
+	// vemos si está disponible el objeto
+	// si no se obtiene el objeto no se
+	// puede hacer nada
+
+	if (obj) {
+		// ahora se debe determinar qué
+		// código se utiliza
+
+		// si está disponible la propiedad
+		// currentStyle estamos con IE u Opera
+
+		if (obj.currentStyle) {
+
+			// la propiedad nos llega en forma CSS
+			// debemos quitarle el guión y ponerle
+			// la letra siguiente en mayúscula
+
+			if (prop.indexOf("-") != -1){
+			    // tiene guión, lo quitaremos
+				posguion = prop.indexOf("-");
+				nombreprop = prop.substr(0,posguion) +
+							 prop.charAt(posguion+1).toUpperCase() +
+							 prop.substr(posguion+2);
+			}
+			// se busca el estilo actual de la propiedad
+			ret = obj.currentStyle[nombreprop];
+
+			// devuelve el valor obtenido y
+			// la función finaliza
+			return '(IE/Opera/) : ' +  prop + ':' + ret;
+		}
+
+		// Vemos si tenemos disponible
+		// la propiedad getComputedStyle
+		// esto sirve para Mozilla/Chrome/Safari
+		// el nombre de la propiedad se usa
+		// sin necesidad de quitar el guión
+
+		if (window.getComputedStyle) {
+			obj2 = window.getComputedStyle(obj,null);
+			ret = obj2.getPropertyValue(prop);
+
+			// devuelve el valor obtenido y
+			// la función finaliza
+			return '(Mozilla/Chrome/Safari/) : ' +  prop + ':' + ret;
+		}
+	}
+
+	// no se pudo obtener nada
+	return "No se pudo acceder al objeto elemento";
+}
+
+</script>
+</head>
+<h1>Países</h1>
+<body id="id1" onClick="alert(ObtenerValor('id1','background-color'));">
+<div id="id2" onClick="alert(ObtenerValor('id2','font-family'));">
+<ol>
+<li id="id3" onClick="alert(ObtenerValor('id3','margin-left'));">Alemania</li>
+<li>Francia</li>
+<li>Italia</li>
+<li>Bélgica</li>
+<li>España</li>
+<li>Portugal</li>
+<li>Reino Unido</li>
+<li>Dinamarca</li>
+</ol>
+</div>
+</body>
+</html>

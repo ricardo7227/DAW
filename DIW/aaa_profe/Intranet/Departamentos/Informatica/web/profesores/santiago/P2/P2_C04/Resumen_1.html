@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html><head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Herencia y cascada</title>
+  <link title="Estilos" rel="stylesheet" href="estilos.css" type="text/css">
+</head>
+<body>
+<header>
+Herencia y cascada
+</header>
+<nav>
+<a href="#herencia">Herencia</a><br>
+<a href="#cascada">Cascada</a><br>
+<a href="#prioridad">Prioridad en etiquetas link</a><br>
+<a href="#especificidad">Especificidad</a><br>
+</nav>
+<article>
+<h3><a name="herencia"></a>Herencia</h3>
+
+&nbsp;&nbsp;&nbsp; La herencia es el mecanismo que permite asignar a
+los hijos algunas de las propiedades del padre. Por ejemplo, si la
+etiqueta div tiene asignado un determinado estilo, éste se propaga a
+los elementos contenidos dentro de div pero no a las etiquetas de fuera
+ni a la etiqueta padre body.<br>
+
+<h3><a name="cascada"></a>Cascada</h3>
+
+&nbsp;&nbsp;&nbsp; El concepto de cascada es la capacidad de definir
+los estilos a partir de diferentes orígenes, que se unifican para dar
+como resultado un estilo determinado.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El origen de la definición de los estilos puede ser
+cualquiera de los siguientes, ordenados por prioridad de elección:<br>
+
+<ul>
+
+  <li>Estilos definidos por el autor.</li>
+  <li>Estilos de usuario.</li>
+  <li>Estilos del agente de usuario.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Los estilos definidos por el autor son los estilos
+que el autor incluye en el propio documento o a través de las hojas de
+estilo. Es la presentación elegida por el autor.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Los estilos de usuario son los especificados por el
+usuario del documento a partir de un conjunto de hojas de estilo
+locales que se seleccionan en las opciones del navegador.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Los estilos del agente usuario son los estilos
+aplicados de manera predeterminada cuando no hay otros estilos
+especificados para un elemento del documento. Suelen ser definiciones
+básicas, por ejemplo texto en color negro sobre fondo blanco, etc.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La prioridad de aplicación de los estilos sigue el
+orden especificado anteriormente, salvo que se utilice la palabra clave
+"!important", por ejemplo:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; div {color: red
+!important;}<br>
+
+<h3><a name="prioridad"></a>Prioridad en etiquetas link</h3>
+
+&nbsp;&nbsp;&nbsp; Cuando se utiliza más de una hoja independiente, con
+código que se aplica a un mismo elemento, el archivo especificado en
+último lugar tiene prioridad sobre el anterior.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Además, si en un fichero externo se define una
+propiedad individual de un elemento que no está redefinida en ninguno
+de los demás ficheros externos, en el documento HTML se aplicará ese
+valor siguiendo el mecanismo de herencia.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La determinación de la prioridad de aplicación es la siguiente:<br>
+<ol>
+  <li>Se ordenan las definiciones por peso (importancia) y origen.</li>
+  <li>Los estilos de autor reemplazan a (tienen prioridad sobre) los estilos de usuario.</li>
+  <li>Los estilos de usuario reemplazan los estilos del agente de usuario.</li>
+  <li>Las definiciones "!important! reemplazan a las definiciones normales.</li>
+  <li>Ordenar las definiciones por la especificidad del selector: los selectores más específicos reemplazan a los más generales.</li>
+  <li>Se ordenan las definiciones especificadas.</li>
+  <li>Si dos definiciones tienen el mismo peso, origen y especificidad,
+se elige la última que haya aparecido. Las definiciones de hoja de
+estilo importadas se consideran antes que las definiciones de la propia
+hoja de estilo.<br>
+
+
+  </li>
+</ol>
+<h3><a name="especificidad"></a>Especificidad </h3>
+&nbsp;&nbsp;&nbsp; Si tenemos dos definiciones como las siguientes:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; div&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {color: blue;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  div p&nbsp;&nbsp;  {color: green;}<br>
+<br>
+&nbsp;&nbsp;&nbsp; para una etiqueta &lt;p&gt;, la segunda definición
+es más específica que la primera porque exige que, además, se encuentre
+dentro de una etiqueta &lt;div&gt;. (?).<br>
+<br>
+&nbsp;&nbsp;&nbsp; W3C suministra una metodología para calcular el valor o nivel de especifidad de una declaración:<br>
+<ol>
+  <li>Contar la cantidad de identificadores de atributos en el selector y asignar ese valor a las centenas del resultado.</li>
+  <li>Contar la cantidad de otros atributos y pseudo clases en el selector y asignar ese valor a las decenas del resultado.</li>
+  <li>Contar la cantidad de nombres de elementos y pseudo elementos en el selector y asignar ese valor a las unidades del resultado.</li>
+</ol>
+</article>
+</body>
+</html>

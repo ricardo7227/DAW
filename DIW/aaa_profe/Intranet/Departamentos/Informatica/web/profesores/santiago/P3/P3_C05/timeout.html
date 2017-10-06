@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Objeto Date</title>
+</head>
+<body>
+  <script languaje="javascript">
+    function TituloDinamico() {
+             var miFecha = new Date();
+             var hor = miFecha.getHours();
+             var min = miFecha.getMinutes();
+             var seg = miFecha.getSeconds();
+             document.title = "Hora actual: " + hor + ":" + min + ":" + seg;
+             window.status  = "Hora actual: " + hor + ":" + min + ":" + seg; // ???
+             var miTimer = setTimeout ("TituloDinamico()", 1000);
+    }
+    TituloDinamico();
+  </script>
+</body>
+</html>

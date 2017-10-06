@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Instalación y configuración</title>
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<div id="header">
+<p id="cabecera">Instalación y configuración</p>
+</div>
+<div>
+<div id="nav">
+<a href="#procedimientos">Procedimientos de instalación</a><br>
+<br>
+<a href="#paquetes">Paquetes integrados</a><br>
+<br>
+<a href="#max">Instalación en MaX (Ubuntu)</a><br>
+</div>
+<div id="article">
+&nbsp;&nbsp;&nbsp; Es habitual trabajar con Linux y la trilogía Apache,
+MySQL y PHP, lo que ha dado en llamarse LAMP. En Windows también se
+puede instalar WAMP aunque puede optarse por usar IIS en vez de Apache.<br>
+
+<h3><a name="procedimientos"></a>Procedimientos de instalación</h3>
+
+&nbsp;&nbsp;&nbsp; Pueden instalarse los paquetes de forma individual o bien a través de un paquete que integre LAMP.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">PHP</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP se puede descargar de www.php.net/downloads.php o desde http://windows.php.net/snapshots<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">MySQL</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; MySQL es el servidor de base de datos preferido para
+el entorno PHP - Apache y que permite que las aplicaciones web puedan
+acceder rápida y flexiblemente a los datos almacenados. Puede
+descargarse desde www.mysql.com, siendo la página actual de descarga
+http://dev.mysql.com/downloads/ o
+http://downloads.mysql.com/snapshots.php.<br>
+
+<h3><a name="paquetes"></a>Paquetes integrados</h3>
+
+&nbsp;&nbsp;&nbsp; Los paquetes integrados integran toda la instalación
+de Apache, MySQL y PHP en una sola herramienta. Esta característica
+facilita la tarea de instalación ya que todo se realiza en un único
+paso y las aplicaciones quedan configuradas para su funcionamiento
+inmediato.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Hay varios paquetes integrados disponibles, todos
+gratuitos y con una configuración estandar que sirve para el uso
+habitual:<br>
+<ul>
+  <li>AppServ 2.6</li>
+  <li>AppServ 2.5.10</li>
+  <li>XAMPP 1.7.4</li>
+  <li>Wampserver 2.1</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Cada uno de estos paquetes está compuesto por
+diferentes versiones y utilidades que pueden consultarse en la pág. 605.<br>
+
+<h3><a name="max"></a>Instalación en MaX (Ubuntu)</h3>
+
+&nbsp;&nbsp;&nbsp; En primer lugar puede comprobarse si está instalado
+y ejecutándose Apache. Una de las formas más sencillas de comprobación
+es abrir el navegador y especificar la dirección: "localhost". Deberá
+aparecer una página web, que si no se ha modificado corresponde al
+fichero /var/www/index.html.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para comprobar si está instalado PHP puede
+modificarse dicha página introduciendo el código del capítulo 1 y
+cambiando la extensión de la misma por .php. A continuación habrá que
+especificar en el navegador la dirección http://localhost/index.php. La
+página deberá contener el texto correspondiente introducido desde PHP.
+Si no es así, seguramente habrá que instalar PHP .<br>
+<br>
+&nbsp;&nbsp;&nbsp; En www.php.net se encuentra la última versión
+estable (PHP 5.3.10), del 2 de febrero de 2012. Desde Synaptic la
+versión accesible es la 5.3.2.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Error común: el navegador muestra una página en blanco</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Este error, bastante común, está descrito en la pág. 606.
+</div>
+</div>
+<div id="footer">
+</div>
+</body>
+</html>

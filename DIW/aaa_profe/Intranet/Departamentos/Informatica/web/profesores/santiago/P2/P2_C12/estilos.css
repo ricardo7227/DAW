@@ -1,0 +1,60 @@
+body {
+  border-style: ridge;
+  border-width: 1px;
+  margin: auto;
+}
+header, nav, footer, article {
+  display: block;
+}
+header {
+  border-style: ridge;
+  background-color: #bbffad;
+  height: 80px;
+  text-align: center;
+  font-weight: bold;
+  color: #6600cc;
+  font-size: xx-large;
+  border-bottom-width: 1px;
+  text-transform: uppercase;
+}
+#cabecera {
+  position: relative;
+  top: -20px;
+}
+nav {
+  padding: 2px;
+  float: left;
+  width: 20%;
+  padding-bottom: 92%;
+  background-color: #ffdcfa;
+  background-image: url("imagenes/Muneco_04.jpg");
+  background-size: 73px 52px;
+  background-repeat: no-repeat;
+  background-position: 0cm 8cm;
+  background-attachment: fixed;
+  font-size: 12px;
+}
+article {
+  border-style: ridge;
+  padding: 1%;
+  background-color: #fffcbd;
+  background-image: url("imagenes/Muneco_03.jpg");
+  background-size: 146px 103px;
+  background-repeat: no-repeat;
+  background-position: 100% 7cm;
+  background-attachment: fixed;
+  float: right;
+  width: 77%;
+  border-left-width: 2px;
+  text-align: justify;
+}
+footer {
+  background: #c4fff6 none repeat scroll 0% 50%;
+  clear: both;
+  padding-left:20px;
+  font-size: 10px;
+}
+footer:after {
+  content: "By Santiago Alonso";
+}
+

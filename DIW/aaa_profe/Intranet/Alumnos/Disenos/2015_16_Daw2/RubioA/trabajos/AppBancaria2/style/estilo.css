@@ -1,0 +1,47 @@
+body{
+}
+
+.cabecera{
+	text-align:center;
+}
+.cabecera a{
+	text-decoration: none;
+}
+.contenedor{
+	text-align: center;
+	padding: 50px;
+}
+
+.notas{
+  width: 300px;
+  height: 200px;
+  margin:50px;
+  padding: 25px;
+}
+
+.icono{
+	text-align: center;
+}
+
+.formulario{
+	margin:100px;
+	padding:75px;
+	width:auto;
+	height:auto;
+}
+.formulario input{
+	width:450px;
+}
+.formulario select{
+	width:450px;
+}
+.formulario textarea{
+	width:450px;
+}
+
+.invisible{
+	display:none;
+}
+.visible{
+	display:inline-block;
+}

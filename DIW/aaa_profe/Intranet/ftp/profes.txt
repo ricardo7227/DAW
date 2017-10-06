@@ -1,0 +1,10 @@
+##############################################
+########## Profesores colaboradores ##########
+##############################################
+
+     NOMBRE           DEPARTAMENTO         APOYO             E-MAIL
+-------------------   ------------   ---------------------   ------------------------------
+Santiago Alonso     - Informática  - Coordinador           - sagsag@hotmail.es
+Elena Ramos         - Inglés       - Traducciones          - ecramosi@gmail.com
+Marta Melo          - Informática  - Bases de datos        - marta.melo@educa.madrid.org
+Remedios Bravo      - Informática  - Servicios de servidor - 

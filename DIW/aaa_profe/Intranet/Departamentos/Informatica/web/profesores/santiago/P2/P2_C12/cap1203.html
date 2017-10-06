@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<!-- archivo Parte 2/code/cap1203.html -->
+<head>
+<title>Uso básico del script para modificar estilos</title>
+<style>
+#id1 {font-size: 'large'; color: blue;}
+</style>
+<script>
+function CambiarFuente(id, nuevoSize) {
+
+	// código común para todos los navegadores
+	// obtiene el objeto a partir del identificador
+
+	obj= document.getElementById(id);
+
+	// vemos si está disponible el objeto
+	// si no se obtiene el objeto no se
+	// puede hacer nada
+
+	if (obj) {
+		   obj.style.fontSize= nuevoSize;
+	}
+
+}
+
+</script>
+</head>
+<body>
+<p id="id1" onMouseOver="CambiarFuente('id1', 'xx-large')" onMouseOut="CambiarFuente('id1','large')" >Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores.</p>
+
+</body>
+</html>

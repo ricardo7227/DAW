@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <head>
+<link rel="stylesheet" type="text/css" href="jef_seg.css">
+      <title>FAQ</title>
+   </head>
+   <body class="seg_faq_general">
+   <p class="seg_faq_textini">Página de Ayuda para el uso de la aplicación del registro de las programaciones de los profesores</p>
+   <dl>
+	<dt class="seg_faq_enc1">Común</dt>
+      <dd class="seg_faq_enc2">Este es el inicio de la web:<br><br>
+	  <img src="imagen/imagenesfaq/index.png" width="600px" height="400px"></img><br>
+	  </dd>
+      <dt class="seg_faq_enc1">Consulta</dt>
+      <dd class="seg_faq_enc2">- Al pulsar en consultas, le saldrá la siguiente pantalla, debe escoger la opción que corresponda a la consulta que desea hacer.<br><br>
+	  <img src="imagen/imagenesfaq/consultas.png" width="600px" height="400px"></img><br><br>
+		- Si pulsa la opción PROFESORES,la forma de rellenarlo es la siguiente:<br><br>
+		 <img src="imagen/imagenesfaq/consultas1.png" width="600px" height="400px"></img><br><br>
+		- Si pulsa la opción JEFE DE DEPARTAMENTO,la forma de rellenarlo es la siguiente:<br><br>
+		 <img src="imagen/imagenesfaq/consultas2.png" width="600px" height="400px"></img><br><br>
+		- Si pulsa la opción JEFE DE ESTUDIOS/DIRECCIÓN,la forma de rellenarlo es la siguiente:<br><br>
+		 <img src="imagen/imagenesfaq/consultas3.png" width="600px" height="400px"></img><br><br>
+		- Al pulsar el botón consultar, le saldrá en una nueva pantalla las consultas realizadas, con el encabezado con los datos solicitados:
+		<br><br>
+		<img src="imagen/imagenesfaq/consulta2.png" width="475px" height="275px"></img><br><br>
+		- Para realizar una nueva busqueda, pulse el botón la flecha de atras.
+		<br><br>
+		- Para salir, pulse el icono de la casa, e irá al index de la aplicación</dd>
+      <dt class="seg_faq_enc1">Registro</dt>
+      <dd class="seg_faq_enc2">
+		Para registrar un seguimiento, siga las instrucciones de la siguiente imagen:<br><br>
+		<img src="imagen/imagenesfaq/registro.png" width="550px" height="350px"></img><br><br>
+		<br><br>
+		-Pulse en Registrar
+		<br><br>
+		Le saldrá una imagen similar a esta:<br><br>
+		<img src="imagen/imagenesfaq/registro2.png" width="475px" height="275px"></img><br><br>
+		- Para realizar un nuevo registro, pulse el botón la flecha de atras.
+		<br><br>
+		- Para salir, pulse el icono de la casa, e irá al index de la aplicación</dd>
+   </dl>
+   <p class="seg_faq_textpie">Situe el ratón encima de las opciones para que le aparezca el contenido</p>
+   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+   <script>
+      function init()
+      {
+         $('dd').addClass('seg_faq_esconder');
+         $('dl').on('mouseenter', 'dt', mostrarDetalles);
+		 
+      }
+
+      function mostrarDetalles()
+      {
+         $(this).next()
+            .slideDown()
+            .siblings('dd').slideUp();
+      }
+
+      init();
+   </script>
+   </body>
+</html>

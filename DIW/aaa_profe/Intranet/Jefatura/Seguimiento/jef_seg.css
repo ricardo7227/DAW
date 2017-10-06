@@ -1,0 +1,265 @@
+/*CSS dedicado al seguimiento de las programaciones*/
+
+.seg_ini_general{
+width:1200px;
+margin-left:200px;
+margin-right:200px;
+background: url('imagen/fondo_web.jpg');
+}
+
+.seg_ini_enc0{
+text-align:center;
+border-style: ridge;
+height: 150px;
+width:1000.5px;
+text-transform: uppercase;
+background-color:#D3D3D3;
+font-family:monospace;
+}
+
+.seg_ini_enc1{
+border-style: ridge;
+width:500px;
+position:relative;
+font-family:monospace;
+text-align:center;
+background: url('imagen/fondo.png');
+float:left;
+line-height:80px;
+border-right-width:thin;
+font-size:25px;
+font-weight:bold;
+text-decoration:none;
+}
+
+
+.seg_ini_enc2{
+border-style: ridge;
+width:500px;
+position:relative;
+font-family:monospace;
+text-align:center;
+background: url('imagen/fondo.png');
+float:left;
+line-height:80px;
+border-left-width:thin;
+font-size:25px;
+font-weight:bold;
+}
+
+
+
+.seg_ini_enc4{
+border-style: ridge;
+width:1000.5px;
+height:400px;
+background-color:beige;
+font-family:monospace;
+font-size:20px;
+font-weight:bold;
+display:block;
+}
+
+.seg_ini_enc5{
+border-style: ridge;
+width:1000.5px;
+height:400px;
+background-color:beige;
+font-family:monospace;
+font-size:17px;
+font-weight:bold;
+display:none;
+text-align:center;
+}
+
+#seg_ini_id1{
+font-size:20px;
+font-family:monospace;
+
+}
+
+#seg_ini_id2{
+font-family:monospace;
+font-size:13px;
+font-weight:bold;
+}
+
+#seg_ini_id3{
+font-family:monospace;
+font-size:10px;
+font-weight:bold;
+text-transform:uppercase;
+text-align:center;
+}
+
+/*Página de consulta*/
+.seg_cons_enc0{
+text-align:center;
+border-style: ridge;
+height: 125px;
+width:1001.5px;
+text-transform: uppercase;
+background-color:#D3D3D3;
+font-family:monospace;
+}
+
+.seg_cons_enc1{
+border-style: ridge;
+width:333px;
+position:relative;
+font-family:monospace;
+text-align:center;
+background: url('imagen/fondo.png');
+float:left;
+line-height:80px;
+border-right-width:thin;
+font-size:25px;
+font-weight:bold;
+text-decoration:none;
+cursor: pointer;
+}
+
+
+.seg_cons_enc2{
+border-style: ridge;
+width:333px;
+position:relative;
+font-family:monospace;
+text-align:center;
+background: url('imagen/fondo.png');
+float:left;
+line-height:80px;
+border-left-width:thin;
+border-right-width:thin;
+font-size:25px;
+font-weight:bold;
+cursor: pointer;
+}
+.seg_cons_enc3{
+border-style: ridge;
+width:333px;
+position:relative;
+font-family:monospace;
+text-align:center;
+background: url('imagen/fondo.png');
+float:left;
+line-height:80px;
+border-left-width:thin;
+font-size:25px;
+font-weight:bold;
+cursor: pointer;
+}
+.seg_cons_enc4{
+border-style: ridge;
+width:1001.5px;
+height:700px;
+background-color:beige;
+font-family:monospace;
+font-size:20px;
+font-weight:bold;
+display:block;
+}
+
+.seg_cons_enc5{
+border-style: ridge;
+width:1000.5px;
+height:600px;
+background-color:beige;
+font-family:monospace;
+font-size:17px;
+font-weight:bold;
+display:none;
+text-align:center;
+padding-top:100px;
+}
+/*Consultajefe,consultaest,consultaprof*/
+.seg_cons2_enc0{
+text-align:center;
+border-style: ridge;
+height: 125px;
+position:relative;
+width:1000px;
+text-transform: uppercase;
+background-color:#D3D3D3;
+font-family:monospace;}
+
+
+.seg_cons2_enc1{
+border-style: ridge;
+width:1000.5px;
+position:relative;
+font-family:monospace;
+text-align:center;
+background: beige;
+float:left;
+line-height:25px;
+border-right-width:thin;
+font-size:17px;
+font-weight:bold;
+text-decoration:none;
+padding-top:20px;
+}
+
+.link{  text-decoration: none;
+  cursor: pointer;
+  display: block;
+}
+a:link {text-decoration:none;color:white;}
+a:visited {text-decoration:none;color:white;}
+.seg_cajas{
+width:350px;
+text-align:center;
+}
+
+
+/*FAQ*/
+
+.seg_faq_general{
+   background: url('fondo_web.jpg');
+   margin: auto;
+   margin-top:30px;
+   width: 750px;
+}
+
+.seg_faq_enc1{
+   background: #e3e3e3;
+   border-bottom: 1px solid #c5c5c5;
+   border-top: 1px solid white;
+   cursor: pointer;
+   font-weight: bold;
+   font-size: 1.5em;
+   line-height: 3em;
+   font-family:monospace;
+   text-align: center;
+   color:blue;
+}
+.seg_faq_enc2{
+   margin: 0;
+   padding: 1em 0;
+   font-family:monospace;
+   background: beige;
+   font-weight:bold;
+   text-align: center;
+}
+.seg_faq_textini{
+   font-weight:bolder;
+   text-align: center;
+   font-family:monospace;
+	font-size:25px;
+}
+.seg_faq_textpie{
+   font-weight:bolder;
+   text-align: center;
+   font-family:monospace;
+	font-size:15px;
+}
+.seg_faq_esconder
+{
+   display: none;
+}
+
+
+
+
+
+

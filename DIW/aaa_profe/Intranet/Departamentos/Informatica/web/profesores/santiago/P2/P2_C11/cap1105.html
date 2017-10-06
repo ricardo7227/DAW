@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<!-- archivo Parte 2/code/cap1105.html -->
+<head>
+<title>Contador de elementos</title>
+<style>
+li:before {content: counter(lista) ": ";
+		   counter-increment: lista 10;}
+</style>
+</head>
+<h1>Países</h1>
+<body>
+<ol style="counter-reset: lista 90;
+		list-style-type: none;" >
+<li>Alemania</li>
+<li>Francia</li>
+<li>Italia</li>
+<li>Bélgica</li>
+<li>España</li>
+<li>Portugal</li>
+<li>Reino Unido</li>
+<li>Dinamarca</li>
+</body>
+</html>

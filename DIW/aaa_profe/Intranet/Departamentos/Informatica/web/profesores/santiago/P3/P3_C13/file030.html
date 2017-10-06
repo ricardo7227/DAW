@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file030.html -->
+<html>
+<body>
+<script type="text/javascript">
+
+function opcionTelefono(lista) {
+	 lista.form.telefono.style.visibility="hidden";
+	 //  Para España requiere el número de teléfono
+	 if (lista.options[lista.selectedIndex].value == 1) {
+	 	lista.form.telefono.style.visibility="visible";
+	 	lista.form.telefono.select();
+	 }
+}
+
+</script>
+<form name="miForm1" method="get" action="otraPage.html">
+Elegir país o países a los que se envían los pedidos:
+<select name="miLista" size="5" onChange="opcionTelefono(this)">
+<option value="0">Andorra</option>
+<option value="1">España</option>
+<option value="2">Francia</option>
+<option value="3">Italia</option>
+<option value="4">Portugal</option>
+</select>
+<input type="text" name="telefono" value="informar teléfono aquí" style="visibility:hidden">
+<input type="submit" value="Enviar">
+</form>
+</body>
+</html>

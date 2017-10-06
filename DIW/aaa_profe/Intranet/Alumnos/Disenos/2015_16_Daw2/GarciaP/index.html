@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <title>IES Tierno Galván</title>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+        <meta name="description" content="Web IES Tierno Galván"/>
+		<meta name="author" content="Pablo Garcia"/>
+        <meta name="keywords" content="Tierno Galván, Instituto, IES, secundaria, Madrid"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<!--Bootstrap-->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<!--CSS-->
+		<link rel="stylesheet" href="estilo.css"/>
+		
+    </head>
+	
+	<body>
+		<div class="container">
+			<header>
+				<div class="linea1 col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+				<div class="linea2 col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+				<div class="linea3 col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                <div class="container">
+					<a href="index.html">
+						<figure class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<img id="logo" src="imagenes/logo.png" class="img-responsive" alt="Logo IES Tierno Galván"/>
+						</figure>	
+					</a>
+				</div>
+                            
+				<!-- Menú Nav -->
+				<nav class="navbar navbar-inverse">
+					<!-- Logotipo y Menu Nav cuando la página está contraida -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+							<span class="sr-only">Desplegar navegación</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					
+					<!-- Menu Nav página normal-->
+					<div class="collapse navbar-collapse navbar-ex1-collapse">
+						<ul class="nav navbar-nav">
+							<li><a href="#">Enlace #1</a></li>
+							<li><a href="#">Enlace #2</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Menú #1 <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Acción #1</a></li>
+									<li><a href="#">Acción #2</a></li>
+									<li><a href="#">Acción #3</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Acción #4</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Acción #5</a></li>
+								</ul>
+							</li>
+						</ul>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#"><figure><img src="imagenes/español.png" alt="Español"></figure></a></li>
+							<li><a href="#"><figure><img src="imagenes/ingles.png" alt="Inglés"></figure></a></li>
+							
+							<!-- Formulario de búsqueda -->
+							<li>
+								<form class="navbar-form navbar-left">
+									<input type="text" class="form-control" placeholder="Buscar">
+									<button type="submit" class="btn btn-default">Buscar</button>
+								</form>
+							</li>
+							
+							<!-- Inicio sesion -->
+							<li>
+								<div class="navbar-form navbar-top">
+									<a href="#ventana" class="" data-toggle="modal">Iniciar sesión <span class="glyphicon glyphicon-user"></span></a>
+                            
+									<div class="modal fade" id="ventana">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<!-- Header de la ventana -->
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													<h2 class="modal-tittle">Iniciar sesión</h2>
+												</div>
+                                        
+												<!-- Contenido de la ventana -->
+												<div class="modal-body">
+													<form class="form-signin" action="index_profe.html">
+														<label for="inputUsuario" class="sr-only">Usuario</label>
+														<input type="text" id="inputUsuario" class="form-control" placeholder="Usuario" required="" autofocus="">
+														<label for="inputPassword" class="sr-only">Contraseña</label>
+														<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="">	
+														<div class="checkbox">
+															<label>
+																<input type="checkbox" value="remember-me"> Mantener la sesión iniciada
+															</label>
+														</div>
+														<button class="btn btn-lg btn-primary btn-block" type="submit" value="index_profe.html">Inicia sesión</button>
+													</form>
+												</div>
+                                    
+												<!-- footer de la ventana -->
+												<div class="modal-footer"></div>
+											</div>
+										</div>
+									</div>
+								</div> 
+							</li>
+							<!-- Fin Inicio sesion -->
+						</ul>
+						
+					</div>
+				</nav>
+				<!-- Fin Menú Nav -->
+			</header>
+		
+			<div id="fila" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-md-push-3 col-lg-push-3">
+			
+			
+				<!-- Camino de migas -->
+				<ol class="breadcrumb"> 
+					<li><a href="index.html">Inicio</a></li>
+				</ol>
+			
+				<!-- Carousel-->
+				<div id="carousel-example-generic" class="carousel slide col-xs-12 col-sm-12 col-md-12 col-lg-12" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+					</ol>
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<figure>
+								<img src="imagenes/img1.jpg" alt="Ies Tierno Galván - Entrada principal"/>
+							</figure>	
+						</div>
+						<div class="item">
+							<figure>
+								<img src="imagenes/img2.jpg" alt="Ies Tierno Galván - Patio"/>
+							</figure>	
+						</div>
+						<div class="item">
+							<figure>
+								<img src="imagenes/img3.jpg" alt="Ies Tierno Galván - Cerezo"/>
+							</figure>
+						</div>
+					</div>
+
+					<!-- Controls -->
+					<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+				<!-- Fin Carousel-->
+				
+				<!-- Noticias -->
+				<aside id="panelNoticias" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="noticia col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="linea1 col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+						<h3>Noticia 1</h3>
+						<p>Vis id minim dicant sensibus. Pri aliquip conclusionemque ad, ad 
+						malis evertitur torquatos his. Has ei solum harum reprimique, id illum saperet tractatos his.</p>
+					</div>
+					<div class="noticia col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="linea2 col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+						<h3>Noticia 2</h3>
+						<p>Vis id minim dicant sensibus. Pri aliquip conclusionemque ad, ad 
+						malis evertitur torquatos his. Has ei solum harum reprimique, id illum saperet tractatos his.</p>
+					</div>
+					<div class="noticia col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="linea3 col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+						<h3>Noticia 3</h3>
+						<p>Vis id minim dicant sensibus. Pri aliquip conclusionemque ad, ad 
+						malis evertitur torquatos his. Has ei solum harum reprimique, id illum saperet tractatos his.</p>
+					</div>
+					
+				</aside>
+			<!-- Fin Noticias-->
+			
+			</div>
+			<!-- Panel lateral-->
+			<aside id="panelLateral" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-md-pull-9 col-lg-pull-9">
+                <a href="#" target="_blank" class="list-group-item">
+                    <h4 class="list-group-item-heading"><span>Enlace 1</span></h4>
+                    <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras massa dui, egestas vitae pellentesque ut, accumsan quis leo. Sed ac feugiat massa.</p>
+                </a>
+                <a href="#" target="_blank" class="list-group-item">
+                    <h4 class="list-group-item-heading"><span>Enlace 2</span></h4>
+                    <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras massa dui, egestas vitae pellentesque ut, accumsan quis leo. Sed ac feugiat massa.</p>
+                </a>
+				<a href="http://www.madrid.org/cs/Satellite?pagename=ComunidadMadrid/Home" target="_blank" class="list-group-item">
+					<figure>
+						<img src="imagenes/sponsor1.png" alt="Comunidad de Madrid"/>
+					</figure>
+				</a>
+				<a href="http://www.educa2.madrid.org/educamadrid/" target="_blank" class="list-group-item">
+					<figure>
+						<img src="imagenes/sponsor2.png" alt="EducaMadrid"/>
+					</figure>
+				</a>
+				<a href="http://www.educa2.madrid.org/web/tiernogalvan/erasmus" target="_blank" class="list-group-item">
+					<figure>
+						<img src="imagenes/erasmus.png" alt="Erasmus"/>
+					</figure>
+				</a>
+			</aside>
+			<!-- Fin Panel lateral-->
+
+
+			
+			<footer id="pie" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="container">
+					<span><a href="#">Español</a> · <a href="#">Inglés</a> | <a href="#">Mapa Web</a> | <a href="#">Contacto</a></span>
+				</div>
+			</footer>	
+		</div>
+	</body>
+</html>

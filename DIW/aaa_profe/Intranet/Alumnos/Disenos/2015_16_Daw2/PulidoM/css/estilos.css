@@ -1,0 +1,336 @@
+/*Estilos generales de la pagina*/
+html,body { 
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+}
+ 
+body {
+  display: table;
+  width: 100%;
+  background: #BDECB6;
+	background-size: cover;
+}
+
+ footer {
+   height: 100px;
+ }
+ 
+/*Estilos del navigation*/
+.nav {
+	padding-top: 0.2em;
+}
+
+.navbar {	
+	height: 80px;
+	margin-bottom: 0px;
+}
+
+.navbar-toggle {
+	margin-top: 21px;
+}
+
+.nav-pills li a{
+	border-radius: 400px 400px 400px 400px;
+}
+
+/*Estilo para Logo Giratorio*/
+#logoGiratorio{
+    height: 90px;
+    margin-top: -5px;
+}
+
+/*Estilo de toolbar icono de Menu*/
+.botonMenu {
+	border: 0.2em solid white !important
+}
+
+/*Estilos para el toolbar del buscador*/
+.buscador{
+	padding-top: 25px;
+	width: 50%;
+	min-width:18em;
+	display: inline-block;
+}
+
+.buscador input, .buscador button {
+	display: inline-block;  
+	height: 1.8em;
+}
+.buscador input{
+	width: 75%;
+}
+.buscador button {
+	width: 15%;
+	min-width:4em;
+	padding: 0px;
+}
+
+/*Estilo de toolbar al pulsar en icono de Login*/
+#menuNav ul {
+	top: 3.4em;	
+	position: fixed;
+	z-index: 10000;
+	border: 0.2em solid #9B9B9B;
+	border-radius: 4px 4px 4px 4px;		
+}
+
+#divLogin ul {
+    top: 30px;
+    z-index: 10000;
+    border: 0.2em solid #9B9B9B;
+    border-radius: 4px 4px 4px 4px;
+    margin-left: -10em;
+}
+
+#divLogin img {
+	width: 8%;
+}
+
+.btn-group, .btn-group-vertical{
+	display: initial;
+}
+
+/*Estilos para ocultar elementos en la vita de pantallas pequeñas*/
+#logoGiratorio{
+	display:none;
+}
+
+/*Estilos del contenido de la pagina*/
+.main  #contenido{
+	border: 3px solid black;
+	border-radius: 10px 10px 10px 10px;
+}
+
+.titulo {
+	margin-top: 12px;
+	border-radius: 10px 10px 10px 10px;
+	background-color: white;
+	text-align: center;
+}
+
+section {
+	height: 439px;
+}
+
+section  #menu{
+	margin-top: 12px;
+	margin-right: -10px;
+	margin-left: -10px;
+}
+
+section div ul {
+    list-style-type:none;  	
+	text-align: center;
+}
+
+section div#menu ul li {
+	text-transform:capitalize; 
+	font-size: 1em;
+	font-style: italic;
+    font-weight: bold;
+    border-radius: 400px 400px 400px 400px;
+    border-style: solid;
+    border-width: 3px;
+    border-color:black;
+	text-align:center;
+	background-color:rgba(130, 239, 88, 0.64);
+	width: 100%;
+}
+
+.seleccionado a{
+	color: black;
+}
+
+article#contenido ul {
+    list-style-type:none;  	
+	text-align: center;
+}
+
+article#contenido ul li {
+	text-transform:capitalize; 
+	font-size: 1em;
+	font-style: italic;
+    font-weight: bold;
+    border-radius: 400px 400px 400px 400px;
+    border-style: solid;
+    border-width: 3px;
+    border-color:black;
+	text-align:center;
+	background-color:rgba(130, 239, 88, 0.64);
+	width: 100%;
+	display: inline;
+	padding: 5px;
+}
+
+article#contenido ul li:hover {
+	background-color: white;
+}
+
+article#contenido ul li a:hover {
+	text-decoration:none;
+	
+}
+
+article {
+	margin-top: 12px;
+	margin-right: 10px;
+	height: 94%;
+
+}
+
+.titulosSection{
+	text-align:center;
+	color:#337ab7;
+}
+
+.imagenes{
+	height:46%;
+	width:32%;
+	padding:15px 15px 15px 15px;
+}
+
+aside {
+    border: 3px solid black;
+	border-radius: 10px 10px 10px 10px;
+	background-color:rgba(130, 239, 88, 0.64);
+	margin-top: 12px;
+	height: 94%;
+}
+
+aside form label {
+	margin-left: 5%;
+	margin-bottom: 1%;
+	margin-top: 1%;
+	font-style: italic;
+}
+
+aside form input {
+	margin-left: 4%;
+	border-radius: 10px 10px 10px 10px;
+	width:90%;
+}
+
+aside article label {
+	color: black;
+	text-decoration: underline;
+	margin-bottom: 5%;
+	font-size: 1.5em;
+	margin-left: 5%
+}
+
+aside article marquee a {
+	color: black;
+}
+
+#calendario{
+	text-align: center;
+}
+
+#calendarioAnual{
+	width: 11em;
+    margin-left: 38%;
+    margin-left: 38%;
+    margin-top: 2em;
+}
+
+#noticias {
+    color: black;
+    font-style: italic;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 5%;
+    text-align: center;
+	height: 12em
+}
+
+/*Pie de Pagina - Footer*/
+footer {
+	display: table-row;
+    background: black;
+    text-align: center;
+    color: white;
+	font-style: italic;
+	font-size: 9px;
+    font-weight: bold;
+}
+
+footer ul {
+    list-style-type:none;    
+}
+
+footer ul li{
+	color:white;
+    text-decoration: none;
+}
+
+footer ul a{
+	color: white;
+}
+
+.tituloPiePagina {
+    font-size: 2em;
+    text-decoration: underline;
+	margin-top: 2%;
+}
+
+.tituloEmailPiePagina {
+    font-size: 2em;
+    text-decoration: underline;
+}
+
+/*Elemento a mostrar y estilos modificados cuando la pantalla supera 768px de larga*/
+@media (min-width: 768px){
+
+	.btn-group, .btn-group-vertical {
+		position: initial;
+	}
+	
+	#logoGiratorio{
+		display:block;
+	}
+		
+	/*Estilos para que el Login aparezca en la barra y se oculte el icono*/
+	#divLogin img{
+		display:none;
+	}
+	#divLogin ul {
+		display: block;
+		width: 33%;
+		top: 0em;
+		background-color: #222;
+		border: none;
+		margin-top: 1em;
+	}
+	#divLogin ul li, #divLogin ul li input, #tdivLogin ul li button{
+		display:inline;
+		
+	}
+	#divLogin ul li input{
+		width: 35%;
+	}
+	#divLogin ul li button{
+		float: right;
+		margin-right: 0.2em;
+	}	
+	#calendarioAnual{
+		margin-left: 0;
+	}
+
+}
+
+/*Elemento a mostrar y estilos modificados cuando la pantalla supera 992px de larga*/
+@media (min-width: 992px ){
+	/*Aumento del tamaño de fuente*/
+	body{
+		font-size: 16px;		
+	}	
+
+	#calendarioAnual{
+		margin-left: 8%;
+	}
+}
+@media (min-width: 1152px){	
+
+}
+	

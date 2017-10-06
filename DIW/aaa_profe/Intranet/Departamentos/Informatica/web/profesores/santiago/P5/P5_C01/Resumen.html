@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Conceptos de bases de datos</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<div id="header">
+<p id="cabecera">Conceptos de bases de datos</p>
+</div>
+
+<div>
+<div id="nav">
+<a href="#definicion">Definición de base de datos</a><br>
+<br>
+<a href="#motivos">Motivos para usar una base de datos</a><br>
+<br>
+<a href="#conceptos">Conceptos básicos sobre bases de datos</a><br>
+<br>
+<a href="#sgbd">SGBD: Sistemas de gestión de bases de datos</a><br>
+<br>
+<a href="#php">PHP y SGBD</a><br>
+</div>
+<div id="article"><h3><a name="definicion"></a>Definición de base de datos</h3>
+&nbsp;&nbsp;&nbsp; Una base de datos es una colección de datos con información de cualquier tipo.<br>
+<h3><a name="motivos"></a>Motivos para usar una base de datos</h3>
+&nbsp;&nbsp;&nbsp; Algunos conceptos que justifican el uso de bases de datos pueden ser:<br>
+<ul>
+  <li>Almacenamiento.- puede almacenarse electrónicamente.</li>
+  <li>Accesibilidad.- depende del formato en que se guarde.</li>
+  <li>Organización.- pueden utilizarse claves o índices que eviten duplicidad de datos y faciliten las búsquedas.</li>
+  <li>Manipulación.- facilita la modificación, borrado e inserción de datos.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Resumiendo, las bases de datos facilitan la manipulación, localización y organización de los datos.<br><h3><a name="conceptos"></a>Conceptos básicos sobre bases de datos</h3>
+&nbsp;&nbsp;&nbsp; Las bases de datos pueden consistir en uno o varios
+archivos que contienen los datos y otros archivos con los índices. Los
+archivos de datos se pueden estructurar en otros archivos llamados
+tablas que a su vez están compuestos por campos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Las tablas de las bases de datos almacenan datos
+sobre un tipo de objeto o entidad (personas, contratos, movimientos,
+etc.). Las tablas a su vez están formadas por registros y estos por
+campos.<br><h3><a name="sgbd"></a>SGBD: Sistemas de gestión de bases de datos.</h3>
+&nbsp;&nbsp;&nbsp; Un sistema de gestión de bases de datos representa
+una infraestructura con la que se almacenan, recuperan y administran
+los datos de una base de datos. Además, debe mantener la integridad de
+los datos almacenados, es decir, controlar que los datos se guardan
+manteniendo unas condiciones establecidas de vinculación y cumpliendo
+las restricciones que se hayan definido. También se ocupan de
+suministrar la conectividad con una amplia gama de lenguajes de
+programación y de garantizar la seguridad del acceso a los datos
+implementando el control de acceso en función de los permisos de cada
+usuario.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Bases de datos relacionales</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Las tablas que componen una base de datos deben
+organizarse de manera que no pierdan las relaciones existentes entre
+los datos. Como guia de diseño de una base de datos deben seguirse las
+siguientes pautas:<br>
+<ul>
+  <li>En cada fila de datos no deben aparecer grupos repetitivos.</li>
+  <li>Todos los elementos de una determinada columna son del mismo tipo de dato y representan la misma clase de dato.</li>
+  <li>Cada columna tiene su nombre, que es el nombre del campo.</li>
+  <li>Todas las filas de una tabla son diferentes.</li>
+  <li>Cada fila debe tener un campo o conjunto de campos que sirva de clave de identificación.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Tipos de relaciones</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Entre las tablas de una base de datos pueden existir las siguientes relaciones:<br>
+<ul>
+  <li>Uno a uno.- un registro de una tabla solo se vincula con un registro de otra.</li>
+  <li>Uno a muchos.- un registro de una tabla se vincula con varios de otra.</li>
+  <li>Muchos a muchos.- varios registros de una tabla se vinculan con varios de otra.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Claves</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Las claves se utilizan como identificadores de los
+registros y para clasificar las consultas. Existen dos tipos de claves:
+claves primarias y claves externas. Las claves primarias son únicas y
+pueden estar compuestas por varios campos. Las claves externas se
+utilizan en las relaciones como valor de búsqueda en las tablas hijas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Índices</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Los índices se utilizan para especificar campos de
+búsqueda que no son claves primarias ni externas. La creación de
+índices incrementa la carga de procesamiento y de accesos al disco en
+el momento de la actualización de la tabla, pero si interviene en
+muchas consultas puede resultar ventajoso su uso.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Es conveniente que los índices correspondan a columnas con no demasiados caracteres.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En cualquier caso, a la hora de diseñar tablas deben
+tenerse en consideración los siguientes tipos de datos: índices, claves
+primarias, claves externas, campos que se usan en combinación de tablas
+(joins), campos sobre los que se realizan búsquedas (where) y campos
+sobre los que se realizan clasificaciones (order by).<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Integridad de datos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La integridad de datos significa que en la base de
+datos no hay datos obsoletos o incorrectamente relacionados debido a
+actuaciones incompletas o fallidas. La integridad de datos se puede
+asegurar mediante la comprobación de uno o más de los siguientes
+mecanismos:<br>
+<ul>
+  <li>Integridad de entidades.- ningún valor de la clave primaria puede ser nulo.</li>
+  <li>Integridad
+referencial.- ningún registro de una tabla hija tendrá una clave
+externa que no exista como clave primaria en la tabla padre.</li>
+  <li>Integridad de dominio.- los valores de un campo cumplen con una descripción de dominio (longitud, formato, ...).</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Guia para la normalización de bases de datos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; El proceso de optimización del diseño de una base de
+datos se denomina normalización de la base de datos. La normalización
+evita las inconsistencias, los errores de actualización y ayuda a
+eliminar las redundancias. Se considera que una base de datos tiene un
+diseño normalizado cuando se alcanza al menos el tercer nivel de
+normalización o tercera forma normal:<br>
+<ul>
+  <li>Primera forma normal.- cada campo solo contiene un valor. No hay campos que contengan tablas.</li>
+  <li>Segunda forma normal.- todos los atributos no claves dependen de
+la clave principal. En caso contrario debería generarse una nueva tabla
+con los campos que no dependen de la clave principal.</li>
+  <li>Tercera forma normal.- todos los atributos no claves dependen de
+manera no transitiva de la clave principal. En caso contrario deberá
+crearse una nueva tabla con los campos que dependen transitivamente de
+la clave principal.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Existen casos prácticos en los que una
+desnormalización controlda puede suponer una mejora en las prestaciones
+de los accesos. Por ejemplo, si para realizar una determinada operación
+deben realizarse muchos accesos, puede resultar ventajoso una
+redundancia controlada de datos.<br><h3><a name="php"></a>PHP y SGBD</h3>
+&nbsp;&nbsp;&nbsp; PHP puede conectarse prácticamente con todos los
+principales sistemas de gestión de bases de datos y en diferentes
+entornos operativos. Entre los sistemas de bases de datos más empleados
+están: SQLite, MySQL, mSQL, Microsoft SQL Server, Oracle y PostgreSQL.
+</div>
+</div>
+
+<div id="footer">
+</div>
+
+</body></html>

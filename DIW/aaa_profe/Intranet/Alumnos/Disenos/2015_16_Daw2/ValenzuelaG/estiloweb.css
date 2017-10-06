@@ -1,0 +1,62 @@
+*{font-family: arial;}
+#cabecera.page-header{
+	margin-top: 0;
+	text-align: center;
+	color: #FFFFFF;;
+	font-family: Dream Orphans;
+	background-image: url(img/fondo.png);
+    background-repeat: no-repeat;
+
+
+}
+#cuerpo{
+	text-align:center;
+}
+#login{
+    
+	color:#FFFFFF;
+	position:absolute;
+	top: 50px;
+	left: 950px;
+}
+#banderas{
+	position:absolute;
+	top: 100px;
+	left: 1300px
+}
+#menu{
+	background-color:#0404B4;
+}
+#menu a{
+	color:#FFFFFF;
+	margin-bottom: 0;
+}
+
+#menuDesplegable li a{
+	
+	color:#000099;
+
+}
+#menuDesplegable2 li a{
+	
+	color:#000099;
+
+}
+#destacados a{
+	
+   color:#000099;
+
+}
+#destacados {
+	color:#FFFFFF;
+	background-color:#0404B4;
+}
+
+#pie{
+	clear:left;
+	text-align: center;
+	color:#000099;
+	border-top: 1px solid #0404B4;
+
+}
+

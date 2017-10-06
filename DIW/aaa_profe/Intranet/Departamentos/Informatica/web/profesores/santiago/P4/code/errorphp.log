@@ -1,0 +1,24 @@
+<logerror>
+	<fechahora>18-10-2009 20:54:32 (CEST)</fechahora>
+	<error>512</error>
+	<mensaje>Coordenada 0 en el eje x 1 no es numérica: se asume 0</mensaje>
+	<archivo>C:\AppServ\www\PHP6\file147.php</archivo>
+	<linea>83</linea>
+</logerror>
+
+<logerror>
+	<fechahora>18-10-2009 20:55:57 (CEST)</fechahora>
+	<error>512</error>
+	<mensaje>Coordenada 0 en el eje x 1 no es numérica: se asume 0</mensaje>
+	<archivo>C:\AppServ\www\PHP6\file147.php</archivo>
+	<linea>83</linea>
+</logerror>
+
+<logerror>
+	<fechahora>18-10-2009 20:55:57 (CEST)</fechahora>
+	<error>256</error>
+	<mensaje>Los dos parámetros deben ser de tipo matriz</mensaje>
+	<archivo>C:\AppServ\www\PHP6\file147.php</archivo>
+	<linea>71</linea>
+</logerror>
+

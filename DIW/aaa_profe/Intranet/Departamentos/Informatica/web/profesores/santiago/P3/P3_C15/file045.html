@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file045.html -->
+<html>
+<head>
+	<title>Documento de prueba</title>
+</head>
+<body>
+<p onclick="fun1(event)">Un texto cualquiera</p>
+<script type="text/javascript">
+function fun1(evt) {
+   if (evt.type == "click")  {
+   alert("Click recibido en (" + evt.clientX + "," + evt.clientY + 
+		")");
+   }
+}
+</script>
+</body>
+</html>

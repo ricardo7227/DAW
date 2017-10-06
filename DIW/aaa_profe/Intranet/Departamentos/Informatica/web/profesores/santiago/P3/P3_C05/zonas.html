@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file005.html -->
+<html>
+<head>
+<title>Hora mundial</title>
+<script language="JavaScript">
+
+// la fecha del día en la zona del
+// cliente web
+var fechaHoy = new Date();
+
+// ¿dónde estoy?
+// calculo el desfase en el huso horario
+// para hacer luego el ajuste con la selección
+// de la etiqueta select
+
+var desfase = -(Math.round(fechaHoy.getTimezoneOffset()/60)) + 12;
+
+/********************************************************************
+ *	función :	getHoraLocal
+ *	Calcula la hora en la zona seleccionada
+ *******************************************************************/
+
+function getHoraLocal() {
+	var fechaHoy = new Date();
+
+    // ajusta el desfase horario respecto a la zona seleccionada
+    // la hora de España (Madrid, Barcelona, etc) es el índice 13,
+    // por lo que se deberá restar 13
+    // si se seleccionase Alaska que es el índice 3
+    // el resultado sería restar 3 - desfase del cliente = -10hs 
+    // respecto a España (península)
+	var zh = document.form1.zonas.selectedIndex - desfase;
+
+	// suma (o resta) las horas de desfase respecto a
+	// a la hora local del cliente
+	fechaHoy.setHours(fechaHoy.getHours() + zh);
+
+	// Informa la hora local del huso horario elegido
+	document.form1.horaLocal.value = fechaHoy.toLocaleString();
+
+}
+
+</script>
+</head>
+<body>
+<center> <H1> Zonas del horario internacional  </H1> </center>
+<form name="form1">
+<table>
+<tr>
+<th>Zonas horarias</th>
+<td>
+<select name="zonas" onchange="getHoraLocal()">
+
+<option value="-12"> Línea internacional de fecha del oestel
+<option value="-11"> Isla Midway, Samoa
+<option value="-10"> Hawai
+<option value="-9"> Alaska
+<option value="-8"> Hora del pacífico (USA y Canadá)
+<option value="-7"> Hora de las montañas rocosas (USA y Canadá)
+<option value="-6"> América central
+<option value="-5"> Hora central (USA y Canadá)
+<option value="-4"> Hora del Atlántico (Canadá)
+<option value="-3"> Buenos Aires, Asunción, Brasilia, Montevideo
+<option value="-2"> Atlántico central
+<option value="-1"> Azores
+<option value="0"> Hora del meridiano de Greenwich, Londres, Dublín
+<option value="+1" selected> París, Madrid, Barcelona, Roma
+<option value="+2"> El Cairo
+<option value="+3"> Nairobi
+<option value="+4"> Bakú
+<option value="+5"> Ekaterimburgo
+<option value="+6"> Astana
+<option value="+7"> Bangkok
+<option value="+8"> Ulán Bator
+<option value="+9"> Tokio
+<option value="+10"> Sidney
+<option value="+11"> Islas Salomón
+<option value="+12"> Wellington
+
+</select>
+</td>
+</tr>
+<tr>
+<td>La hora en esta zona es :</td>
+<td><input type="text" name="horaLocal" size="80"> </td>
+</tr>
+</table>
+<script language="JavaScript">
+	window.document.form1.horaLocal.value = fechaHoy.toLocaleString();
+</script>
+</form>
+</body>
+</html>

@@ -1,0 +1,146 @@
+@CHARSET "ISO-8859-1";
+#tic_CntMenu {
+	width: 100%;
+	height: 35px;
+	border-bottom: 4px solid black;
+	background-color: black;
+	font-family: Tahoma;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 9pt;
+	padding: 0;
+	margin-top: 0px;
+}
+
+#tic_CntMenu div {
+	width: 32.9%;
+	height: 100%;
+	float: left;
+	margin-top: 0px;
+	padding-top: 2px;
+	background-color: grey;
+	
+}
+
+#tic_CntMenu a {
+	display: block;
+	color: white;
+	margin-left: 4px;
+	height: 100%;
+	text-decoration: none;
+}
+
+#tic_h2 {
+	font-family: Tahoma;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16pt;
+	color: #666666;
+}
+
+.tic_tabla {
+	width: 100%; 
+	text-align:left;
+	border-spacing: 0px;
+	border-collapse: 10px;
+	font-family: Tahoma;
+	font-style: normal;
+	font-size: 10pt;
+}
+.tic_TDcabecera {
+	border: #434343 solid 1px;
+	background-color: #666666;
+	color: white;
+	width: 100%;
+}
+
+.tic_TDetiqueta {
+	border-left: #434343 solid 1px;
+	border-bottom: #434343 solid 1px;
+	background-color: #666666;
+	color: white;
+	width: 25%;
+	padding: 5px;
+}
+
+.tic_TDcontent {
+	border-bottom: #434343 solid 1px;
+	border-right: #434343 solid 1px;
+	width: 75%;
+	background-color: #E0E0E0;
+	color: black;
+	text-align:center;
+}
+.tic_TDetiqueta2 {
+	border-left: #434343 solid 1px;
+	border-bottom: #434343 solid 1px;
+	background-color: #666666;
+	color: white;
+	width: 15%;
+	padding: 5px;
+}
+.tic_TDcontent2-1 {
+	border-bottom: #434343 solid 1px;
+	width: 25%;
+	background-color: #E0E0E0;
+	color: black;
+	text-align:center;
+}
+
+.tic_TDcontent2-2 {
+	border-bottom: #434343 solid 1px;
+	border-right: #434343 solid 1px;
+	width: 45%;
+	background-color: #E0E0E0;
+	color: black;
+	text-align:center;
+}
+
+
+.tic_TDalerta {
+	border-bottom: #434343 solid 1px;
+	border-right: #434343 solid 1px;
+	border-left: #434343 solid 1px;
+	width: 100%;
+	height: 25px;
+	background-color: #E0E0E0;
+	font-weight: normal;
+	color: black;
+	text-align:center;
+}
+
+#tic_alerta {
+	display: none;
+}
+
+.tic_inputOculto {
+	display:none; 
+	visibility:hidden;
+}
+.tic_enlace{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	width: 100px;
+	border: 1px solid black;
+	background-color: grey;
+	border-radius: 5px;
+}
+
+
+.tic_enlace a{
+	font-family: Tahoma;
+	font-style: normal;
+	font-size: 11pt;
+	color: white;
+	text-decoration: none;
+	padding: 3px 15px 3px 15px;
+}
+
+
+
+
+
+
+
+

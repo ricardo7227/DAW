@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Formularios HTML</title>
+
+  
+</head><body>
+<div style="text-align: center;"><font style="color: rgb(51, 0, 153);" size="+3">Formularios HTML</font><br>
+</div>
+
+<div><span style="font-weight: bold;"></span><br>
+&nbsp;&nbsp;&nbsp; El
+uso de formularios implica resolver los aspectos siguientes: diseño del
+formulario, validación primaria en el cliente y tratamiento de los
+datos en el servidor. Los formularios se definen con la etiqueta <span style="color: red;">&lt;form&gt; ... &lt;/form&gt;</span> que tiene
+dos atributos obligatorios:<br>
+<ul>
+  <li><span style="color: red;">action</span>.- indica qué aplicación
+procesará los datos del formulario en el servidor.</li>
+  <li><span style="color: red;">method</span>.- indica el modo de
+transmisión de los datos. El modo GET utiliza la dirección URL para
+pasar los nombres y valores de los campos mientras que el modo POST
+envía los datos como parte de la entrada estándar (no visible en la
+URL).</li>
+</ul>
+&nbsp;&nbsp;&nbsp; La etiqueta form tiene como atributos opcionales:<br>
+<ul>
+  <li><span style="color: red;">enctype</span>.- define el mecanismo de
+codificación.</li>
+  <li><span style="color: red;">name</span>.-</li>
+  <li><span style="color: red;">target</span>.- para indicar una
+ventana de destino diferente a la que se utilizó para el envío de los
+datos.</li>
+  <li><span style="color: red;">accept</span>.- tipo MIME que
+especifica el tipo de archivos que se pueden subir.</li>
+  <li><span style="color: red;">accept-charset</span>.- especifica el
+juego de caracteres que el servidor utiliza para gestionar los datos
+del formulario.</li>
+  <li><span style="color: red;">autocomplete</span>.-</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Los eventos relacionados con una acción son:<br>
+<ul>
+  <li><span style="color: red;">onclick</span>.-</li>
+  <li><span style="color: red;">ondblclick</span>.-</li>
+  <li><span style="color: red;">oninputchange</span>.- se activa cuando
+cambia el contenido de alguno de
+los elementos del formulario.</li>
+  <li><span style="color: red;">onmousedown</span>.- al pulsar el botón
+del ratón.</li>
+  <li><span style="color: red;">onmousemove</span>.-</li>
+  <li><span style="color: red;">onmouseout</span>.- cuando el puntero
+del ratón sale del área de un
+elemento.</li>
+  <li><span style="color: red;">onmouseover</span>.- cuando el puntero
+pasa por el área de un elemento.</li>
+  <li><span style="color: red;">onmouseup</span>.- cuando se suelta el
+botón del ratón.</li>
+  <li><span style="color: red;">onkeydown</span>.-</li>
+  <li><span style="color: red;">onkeypress</span>.- cuando se pulsa y
+se suelta una tecla.</li>
+  <li><span style="color: red;">onkeyup</span>.- cuando se suelta una
+tecla.</li>
+  <li><span style="color: red;">onreset</span>.- al reiniciar los
+elementos del formulario mediante un
+botón reset.</li>
+  <li><span style="color: red;">onsubmit</span>.- al enviar los datos
+del formulario mediante el botón
+submit.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; A nivel formulario están los eventos:<br>
+<ul>
+  <li><span style="color: red;">onblur</span>.- cuando un elemento
+pierde el foco.</li>
+  <li><span style="color: red;">onchange</span>.- cuando cambia un
+elemento.</li>
+  <li><span style="color: red;">onfocus</span>.- cuando un elemento
+recibe el foco.</li>
+  <li><span style="color: red;">onselect</span>.- cuando se selecciona
+un elemento.</li>
+  <li><span style="color: red;">onreset</span>.- cuando se reinician
+los elementos del formulario
+mediante el botón reset.</li>
+  <li><span style="color: red;">onsubmit</span>.-</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Las etiquetas relativas a elementos del formulario
+son: <span style="color: red;">button, details, fieldset, label,
+legend, input, option, optgroup,
+select y textarea</span>.<br>
+<ul>
+  <li><span style="color: red;">input</span>.- mediante el atributo
+type permite definir una gran
+variedad de elementos:</li>
+  <br>
+  <ul>
+    <li>text.- valor predeterminado. Caja de texto.</li>
+    <li>password.-</li>
+    <li>hidden.-</li>
+    <li>checkbox.-</li>
+    <li>radio.-</li>
+    <li>submit.-</li>
+    <li>reset.-</li>
+    <li>image.-</li>
+    <li>file.-</li>
+    <li>telephone.- para introducir el teléfono. Hay un ejemplo en el
+libro con un script de validación.</li>
+    <li>url.- para introducir URL's. Añade automáticamente http://.</li>
+    <li>email.- para introducir direcciones de correo. Realiza una validación
+automáticamente.</li>
+    <li>color.- para introducir colores. Muestra una paleta de colores.
+Utiliza
+el formato RGB.</li>
+    <li>number.- para introducir números enteros. Admite los atributos
+min, max
+y step.</li>
+    <li>range.- para introducir números. Admite min, max y step.
+Muestra una
+barra deslizable.</li>
+    <li>datetime.- muestra controles específicos para introducir la
+fecha y la
+hora.</li>
+    <li>date.- entrada de fecha.</li>
+    <li>month.- envía año y mes.</li>
+    <li>week.- envía año y número de semana.</li>
+    <li>time.- para introducir la hora.</li>
+    <li>search.- similar a text pero cambia la estética.</li>
+  </ul>
+  <br>
+&nbsp;&nbsp;&nbsp; Además de type, la etiqueta input tiene otros
+atributos:<br>
+  <br>
+  <ul>
+    <li>accept.- lista de tipos MIME relacionados con type=file.</li>
+    <li>alt.-</li>
+    <li>autocomplete.-</li>
+    <li>checked.- indica si el elemento está seleccionado inicialmente.</li>
+    <li>disabled.-</li>
+    <li>formaction.- dirección URL que se utiliza al activar el
+elemento.</li>
+    <li>formenctype.- modo de envío de los datos.</li>
+    <li>formnovalidate.- indica si el formulario no se valida antes de
+enviarse
+los datos.</li>
+    <li>formtarget.- ventana de destino.</li>
+    <li>height.- altura del control de datos.</li>
+    <li>list.- identificador de una lista definida con datalist.</li>
+    <li>max.- valor máximo que se puede introducir.</li>
+    <li>maxlength.- longitud máxima de la entrada.</li>
+    <li>min.-</li>
+    <li>multiple.- indica si se permiten valores múltiples.</li>
+    <li>name.-</li>
+    <li>pattern.- expresión regular que permite validar la entrada de
+datos.</li>
+    <li>placeholder.- texto guia para el usuario.</li>
+    <li>readonly.-</li>
+    <li>required.-</li>
+    <li>size.- cantidad de caracteres de la ventana de control.</li>
+    <li>src.-</li>
+    <li>step.- establece los valores posibles dentro de un rango.</li>
+    <li>type.-</li>
+    <li>value.- valor que devuelve el control.</li>
+    <li>width.-</li>
+  </ul>
+  <br>
+  <li><span style="color: red;">label</span>.- asigna un título al
+control de datos. Admite los
+atributos:</li>
+  <br>
+  <ul>
+    <li>form.- para indicar el formulario propietario.</li>
+    <li>for.- para indicar a qué control pertenece.</li>
+  </ul>
+  <br>
+  <li><span style="color: red;">textarea</span>.- similar a "input
+type=text" pero pudiendo ocupar
+varias líneas. Admite los atributos:<br>
+    <br>
+    <ul>
+      <li>autofocus.- indica si el elemento recibe el foco de forma
+automática al </li>
+      <li>cargarse la página.</li>
+      <li>cols.- número de columnas.</li>
+      <li>disabled.-</li>
+      <li>form.- nombre del formulario relacionado.</li>
+      <li>maxlength.-</li>
+      <li>name.-</li>
+      <li>placeholder.- texto guia.</li>
+      <li>readonly.-</li>
+      <li>required.-</li>
+      <li>rows.-</li>
+      <li>wrap.- comportamiento al llegar al final de la línea.<br>
+        <br>
+      </li>
+    </ul>
+  </li>
+  <li><span style="color: red;">select</span>.- utilizada para definir
+listas desplegables. Admite los
+atributos:<br>
+  </li>
+  <br>
+  <ul>
+    <li>autofocus.- indica si el elemento recibe el foco
+automáticamente al </li>
+    <li>cargarse la página.</li>
+    <li>disabled.-</li>
+    <li>form.- nombre del formulario relacionado.</li>
+    <li>multiple.-</li>
+    <li>name.-</li>
+    <li>size.-</li>
+  </ul>
+  <br>
+  <li><span style="color: red;">option</span>.- define los elementos de
+la lista. Admite como atributos:</li>
+  <br>
+  <ul>
+    <li>disabled.-</li>
+    <li>label.-</li>
+    <li>selected.-</li>
+    <li>value.- valor que devuelve la opción.</li>
+  </ul>
+  <br>
+  <li><span style="color: red;">optgroup</span>.- permite agrupar
+opciones de la etiqueta option para
+facilitar la elección de un valor. Permite, por ejemplo, deshabilitar
+todo un grupo de opciones. Admite los atributos:</li>
+  <br>
+  <ul>
+    <li>disabled.-</li>
+    <li>label.- indica la etiqueta del grupo.</li>
+  </ul>
+  <br>
+  <li><span style="color: red;">datalist</span>.- permite definir una
+lista de opciones. Se utiliza en
+conjunto con "input list=" . . . ", que define el control de entrada de
+datos, para definir los valores de los elementos.<br>
+    <br>
+  </li>
+  <li><span style="color: red;">button</span>.- permite definir botones
+de tipo submit, reset o button.
+Admite
+los atributos:<br>
+    <ul>
+      <br>
+      <li>autofocus.-</li>
+      <li>disabled.-</li>
+      <li>form.-</li>
+      <li>formaction.- dirección URL que se utiliza al activar el
+elemento.</li>
+      <li>formenctype.- modo de envío de datos.</li>
+      <li>formnovalidate.- indica que el formulario no se valida antes
+del envío de datos.</li>
+      <li>formtarget.- ventana de destino.</li>
+      <li>name.- nombre de la variable asociada al elemento.</li>
+      <li>value.- valor que devuelve.</li>
+    </ul>
+    <br>
+  </li>
+  <li><span style="color: red;">fieldset</span>.- permite agrupar datos
+como ayuda al usuario dibujando
+un borde de límite alrededor de los elementos incluidos. Admite los
+atributos:</li>
+  <br>
+  <ul>
+    <li>disabled.-</li>
+    <li>form.-</li>
+    <li>name.-</li>
+  </ul>
+  <br>
+  <li><span style="color: red;">legend</span>.- dentro del bloque
+fieldset, actúa como un título para el
+grupo de controles.<br>
+    <br>
+  </li>
+  <li><span style="color: red;">progress</span>.- permite representar
+barras de progreso de tareas en
+ejecución. Incluyendo una etiqueta span se muestra un número del nivel
+de avance. Admite los atributos:<br>
+    <br>
+    <ul>
+      <li>max.- valor máximo para terminar la tarea.</li>
+      <li>value.- indica el grado de avance de la tarea.</li>
+    </ul>
+    <br>
+  </li>
+  <li><span style="color: red;">meter</span>.- permite representar un
+valor escalar dentro de un rango
+determinado o de un valor fraccional. Por ejemplo puede servir para
+indicar el grado de carga de la batería. Admite los atributos:<br>
+    <br>
+    <ul>
+      <li>max.- por defecto vale 10.</li>
+      <li>min.- por defecto es 0.</li>
+      <li>value.- valor vigente.</li>
+      <li>low.- valor bajo.</li>
+      <li>high.- valor alto.</li>
+      <li>optimum.- valor optimo.</li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+<br>
+
+<br>
+
+</body></html>

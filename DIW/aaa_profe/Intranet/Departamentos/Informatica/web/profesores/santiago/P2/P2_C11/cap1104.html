@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<!-- archivo Parte 2/code/cap1104.html -->
+<head>
+<title>Contador de elementos</title>
+<style>
+h2:before {content: counter(prop) ". propiedad: ";
+			counter-increment: prop 10;
+			counter-reset: valor 200;}
+h3:before {content: counter(prop) "." counter(valor) ": valor ";
+			counter-increment: valor 5;}
+</style>
+</head>
+<body>
+<h1>Propiedades</h1>
+<h2>Color</h2>
+<h3>Red</h3>
+<h3>Green</h3>
+<h3>Blue</h3>
+<h2>Font-family</h2>
+<h3>Times</h3>
+<h3>Arial</h3>
+<h3>Courier</h3>
+<h2>Font-style</h2>
+<h3>Normal</h3>
+<h3>Italic</h3>
+<h3>Oblique</h3>
+</body>
+</html>

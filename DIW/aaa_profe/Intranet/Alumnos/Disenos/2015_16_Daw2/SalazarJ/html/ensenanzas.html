@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>IES Enrique Tierno Galván</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">		
+		<meta name="author" content="Jonathan Salazar Lozano">
+		<meta name="description" content="Diseño pagina Web I.E.S. Enrique Tierno Galvan">
+        <meta name="keywords" content="Enrique, Tierno, Galvan, IES">
+		
+		<!--Estilos Bootstrap-->
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" >	  
+		<script src="../js/jquery-1.9.1.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		
+		<!--Links de fuentes de google-->
+		<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+		
+		<!--Estilos CSS-->	
+		<link rel="stylesheet" type="text/css" href="../css/estilos.css" />
+	  
+	</head>
+	<body>
+		<div id="pagina" class="container-fluid">	
+		
+			<!-- Barra de navegacion con menu y login-->
+			<nav id="toolbar" class="navbar navbar-inverse navbar-fixed-top">	
+					<div class="row">
+						<!--Icono de menu  y menu desplegable-->
+						<div class=" col-xs-2 col-sm-2 col-md-0 col-lg-0">
+							<div class="btn-group pull-left" id="toolbar-menu">				
+								<img src="../imagenes/menu_b.png" alt="boton-menu" class="navbar-left dropdown-toggle" data-toggle="dropdown" />				
+								<ul class="dropdown-menu" role="menu" >
+									<li><a href="html/jefatura.html">Jefatura</a></li>
+									<li class="divider"></li>
+									<li><a href="html/secretaria.html">Secretaria</a></li>
+									<li class="divider"></li>
+									<li><a href="html/direccion.html">Dirección</a></li>
+									<li class="divider"></li>
+									<li><a href="html/ensenanzas.html">Enseñanzas</a></li>
+									<li class="divider"></li>
+									<li><a href="html/departamentos.html">Departamentos</a></li>
+									<li class="divider"></li>
+									<li><a href="html/ampa.html">AMPA</a></li>
+									<li class="divider"></li>
+									<li><a href="html/tic.html">TIC</a></li>
+									<li class="divider"></li>
+									<li><a href="documentos/Propaganda_14_15_ESO.pdf">El Centro</a></li>
+								</ul>
+							</div>	
+						</div>
+						<!--Buscador-->
+						<div class=" col-xs-7 col-sm-7 col-sm-pull-1 col-md-6 col-md-pull-2 col-lg-6 col-lg-pull-2">
+							<form class="navbar-left "  id="toolbar-buscador">
+								<input type="text" class="form-control" placeholder="Introduce palabras clave">							
+								<button type="submit" class="btn btn-default">Buscar</button>
+							</form>
+						</div>
+						<!--Icono de login y login desplegable -->
+						<div class=" col-xs-2 col-xs-push-1 col-sm-2 col-sm-push-1 col-md-5 col-lg-5">					
+							<div class="btn-group" id="toolbar-login">				
+								<img src="../imagenes/login_b.png" alt="login" class="pull-right dropdown-toggle" data-toggle="dropdown"/>			
+								<ul class="dropdown-menu pull-right" role="menu" >
+										<li><input type="text" class="form-control" placeholder="Usuario"></li>
+										<li><input type="text" class="form-control" placeholder="Contraseña"></li>
+										<li><button type="submit" class="btn btn-default center-block">Login</button></li>
+										
+								</ul>
+							</div>
+						</div>
+					</div>
+				</nav>
+			
+			<!--Cabecera -->
+			<header>			
+				<div class="row">					
+							<div id="titulo" class="col-xs-12 col-sm-11 col-sm-push-0 col-md-11 col-md-push-0 col-lg-11 col-lg-push-1">
+								<h1><img src="../imagenes/Anagrama.png" class="center-block" alt="Logo" id="logo" />I.E.S. Enrique Tierno Galván </h1>
+							</div>
+							<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+								<a href="#"><img src="../imagenes/BanderaEsp.jpg" class="bandera pull-right" alt="IdiomaEspañol" /></a>
+								<a href="#"><img src="../imagenes/BanderaUk.jpg" class="bandera pull-right" alt="IdiomaIngles" /></a>
+							</div>
+				</div>			
+			</header> 
+			
+			<!--Cuerpo de la pagina-->
+			<div id="cuerpo" class="container">
+			
+				<!--Navegador para pantallas grandes que incluye el logo giratorio-->
+				<div id="nav" class="row">
+				
+					<!--Opciones del lado izquierdo-->
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center">
+						<div id="izq" class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="jefatura.html">
+									<div class="opc">
+										Jefatura
+									</div>
+								</a>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="secretaria.html">
+									<div class="opc">
+										Secretaria
+									</div>
+								</a>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="direccion.html">
+									<div class="opc">
+										Dirección
+									</div>
+								</a>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="../documentos/Propaganda_14_15_ESO.pdf">
+									<div class="opc">
+										El Centro
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					
+					<!--Logo central-->
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<img id="logo-gif" class="center-block" src="../imagenes/logo.gif" alt="Logo Giratorio"/>
+					</div>
+					
+					<!--Opciones del lado derecho-->
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center">
+						<div id="der" class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="ensenanzas.html">
+									<div class="opc">
+										Enseñanzas
+									</div>
+								</a>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="departamentos.html">
+									<div class="opc">
+										Departamentos
+									</div>
+								</a>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="ampa.html">
+									<div class="opc">
+										AMPA
+									</div>
+								</a>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="tic.html">
+									<div class="opc">
+										TIC
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!--Logo para pantallas pequeñas y medianas-->
+				<div id="FotoTierno">
+					<img src="../imagenes/foto_tierno.jpg" class="center-block" alt="Foto Tierno Galvan" />
+				</div>
+				
+				<!--Camino de migas-->
+				<div class="container" id="migas">
+					<ol class="breadcrumb  center-block">
+						<li><a href="../index.html">Inicio</a></li>
+						<li class="active">Enseñanzas</li>
+					</ol>
+				</div>
+				
+				<!--Contenido de la pagina-->
+				<div id="contenido" class="row">
+					<section  id="submenu" class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+						<h3 class="titulo_seccion">AREA DE ENSEÑANZAS</h3>
+						<div class="list-group">
+						   <a href="#" class="list-group-item">E.S.O</a>
+							<a href="#" class="list-group-item">Bachillerato</a>
+							<a href="#" class="list-group-item">Formación Profesional</a>
+							<a href="#" class="list-group-item">Horarios</a>							  
+						</div>				
+					</section>
+					<section class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+						<h3 class="titulo_seccion">Contenido1</h3>
+						<p>Aqui se mostraria el contenido de los subenlaces</p>
+					</section>
+					<section class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+						<h3 class="titulo_seccion">Contenido2</h3>
+						<p>Aqui se mostraria el contenido de los subenlaces</p>
+					</section>	
+				</div>
+			</div>
+			
+			<!--Pie de página-->
+			<footer class="row" id="pie">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+					<p>También puede interesarte:</p>
+				</div>
+				
+				<!--Imagenes pie de pagina-->
+				<div class="col-xs-6 col-sm-4 col-md-3  col-lg-2 col-lg-offset-0 col-lg-push-0">
+					<a href="#" target="_blank"><img src="../imagenes/Calendario_escolar.jpg" alt="Calendario Escolar"/></a>						
+				</div>
+				<div class="col-xs-6 col-sm-4 col-md-3 col-md-offset-1  col-md-push-0 col-lg-2 col-lg-offset-0 col-lg-push-0">
+					<a href="#" target="_blank"><img src="../imagenes/Libros_texto.jpg" alt="Libros de texto" /></a>				
+				</div>
+				<div class="col-xs-6 col-sm-4 col-md-3 col-md-offset-1 col-md-push-0 col-lg-2 col-lg-offset-0 col-lg-push-0">
+					<a href="https://sede.educacion.gob.es/catalogo-tramites/becas-ayudas-subvenciones/para-estudiar.html" target="_blank"><img src="../imagenes/becas.gif" alt="Becas" /></a>
+				</div>
+				<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 col-lg-offset-0 col-lg-push-0">
+					<a href="#" target="_blank"><img src="../imagenes/periodico.jpg" alt="Periodico" /></a>
+				</div>
+				<div id="clear">
+				</div>
+				<div class="col-xs-6 col-sm-4 col-md-3 col-md-offset-1  col-md-push-0 col-lg-2 col-lg-offset-0 col-lg-push-0">
+					<a href="#" target="_blank"><img src="../imagenes/erasmusLogo.jpg" alt="Erasmus" /></a>
+				</div>
+				<div class="col-xs-6 col-sm-4 col-md-3 col-md-offset-1  col-md-push-0 col-lg-2 col-lg-offset-0 col-lg-push-0">
+					<a href="#" target="_blank"><img src="../imagenes/btLogo.jpg" alt="Bolsa de trabajo" /></a>
+				</div>			
+			</footer>
+		</div>	
+	</body>
+</html>
+
+
+
+
+				
+		

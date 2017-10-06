@@ -1,0 +1,29 @@
+#Contac_direccion
+		{
+			text-align:left;
+			width:330px;
+			height:130px;
+			font-size:15px;
+			list-style-type: none;
+		}
+	.Contac_titulo
+		{
+			font-size:18px;
+			text-decoration:underline;
+			padding-bottom:9px;
+		}
+	.Contac_lista
+		{
+			list-style-type: none;
+			margin-left:-15px;
+		}
+	#Contac_Div
+		 {
+			margin-left:22px;
+			text-align:left;
+		 }
+	#Contac_Comollegar
+		{
+			margin-left:22px;
+			text-align:left;
+		}

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file017.html -->
+<html>
+<head>
+<title>(popup auxiliar) Selección de un valor para el formulario principal</title></head>
+<script type="text/javascript">
+function asignarPaís(txtCode) {
+	if (window.opener) {
+		if (window.opener.document.form1){
+			window.opener.document.form1.campo1.value=txtCode;
+		}
+	        return;	
+	}
+	alert("La ventana principal ya no existe");	
+} 
+</script>
+<ul>
+<center>Elija un país: </center>
+<li><a href="javascript:asignarPaís('España')">España</a></li>
+<li><a href="javascript:asignarPaís('Francia)">Francia</a></li>
+<li><a href="javascript:asignarPaís('Portugal')">Portugal</a></li>
+<li><a href="javascript:asignarPaís('Italia')">Italia</a></li>
+<li><a href="javascript:asignarPaís('UK')">UK</a></li>
+</ul>
+<br>
+<a href="javascript:window.close()">Cerrar popup</a>
+</html>

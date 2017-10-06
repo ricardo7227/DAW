@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<HTML>
+<BODY>
+<script type="text/javascript">
+// archivo Parte 3/code/file022.html :
+document.onmousemove = obtenerPosMouse;
+var pX = 0;
+var pY = 0;
+function obtenerPosMouse(e) {
+	if (document.all) {
+		// detecta que es un navegador IE
+		pX = event.offsetX;
+		pY = event.offsetY;
+	} else {
+		// resto de navegadores
+		pX = e.pageX;
+		pY = e.pageY;
+	}
+	// actualiza el título al cambiar la posición del ratón
+	document.title = "coordenadas del ratón (x:"+pX+" y:" +pY+")";
+
+
+	// actualiza barra de estado
+	window.status = "coordenadas del ratón (x:"+pX+" y:" +pY+")";
+}
+</script>
+</BODY>
+</HTML>

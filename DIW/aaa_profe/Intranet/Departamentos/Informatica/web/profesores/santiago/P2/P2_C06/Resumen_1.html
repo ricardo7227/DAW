@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Formateo de texto</title>
+  <link title="Estilos" rel="stylesheet" href="estilos.css" type="text/css">
+</head>
+<body>
+<header>
+Formateo de texto
+</header>
+<nav>
+<a href="#horizontal">Alineación horizontal (text-align)</a><br>
+
+<a href="#alineacion">Alineación vertical (vertical-align)</a><br>
+
+<a href="#sangria">Sangría del texto (text-indent)</a><br>
+
+<a href="#flotantes">Elementos flotantes</a><br>
+
+<a href="#espaciado">Espaciado de letras y palabras</a><br>
+
+<a href="#mayusculas">Mayúsculas y minúsculas (text-transform)</a><br>
+
+<a href="#decoracion">Decoración de texto (subrayar, tachar, etc)</a><br>
+
+<a href="#propiedades">Propiedades CSS vs. atributos en tablas HTML</a><br>
+</nav>
+<article>
+<br>
+<h3><a name="horizontal"></a>Alineación horizontal (text-align)</h3>
+<p>La propiedad text-align de CSS puede tomar cuatro
+valores: left, right, center o justify. La alineación suele realizarse
+sobre párrafos pero también puede llevarse a efecto sobre celdas de
+tablas. Un ejemplo:<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p {text-align: justify}<br>
+
+<h3><a name="vertical"></a>Alineación vertical (vertical-align)</h3>
+
+<p>La propiedad vertical-align puede tomar los valores:</p>
+
+<ul>
+
+  <li>baseline.- valor predeterminado. El texto utiliza la línea base
+para alinearse respecto a otros objetos que lo rodean.</li>
+  <li>sub.- el texto desciende al nivel utilizado por los subíndices.</li>
+  <li>super.- ... por los superíndices.</li>
+  <li>top.- la parte superior de la línea o elemento se alinea con la
+parte superior de su elemento padre.</li>
+  <li>text-top.- la parte superior de la línea o elemento se alinea con
+la parte superior del texto de su elemento padre.<br>
+  </li>
+  <li>middle.- el medio del texto se alinea con la línea media de los
+elementos que lo rodean.<br>
+  </li>
+  <li>bottom.- ... la parte inferior del elemento padre.</li>
+  <li>text-bottom.- la parte inferior de la línea o elemento se alinea
+con la parte inferior del texto de su elemento padre.</li>
+  <li>length.- el elemento subirá (positivo) o bajará (negativo) según
+el valor asignado.</li>
+  <li>percentage.- el elemento subira o bajara un porcentaje relativo a
+la altura de la línea.<br>
+  </li>
+</ul>
+
+<h3><a name="sangria"></a>Sangría del texto (text-indent)</h3>
+
+<p>La propiedad text-indent permite definir la sangría de la primera
+línea del texto. Se puede asignar con valores de longitud (cm, in, px,
+etc.) o porcentajes respecto al ancho del elemento.<br>
+</p>
+
+<h3><a name="flotantes"></a>Elementos flotantes</h3>
+
+<p>La propiedad float admite como valores right, left y none que
+permite situar el elemento a la derecha, izquierda o en el lugar que
+aparezca definido.&nbsp; Un ejemplo:<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; img {float: right;}<br>
+
+<p>La propiedad clear complementa a float y permite bajar el elemento,
+generalmente texto, hasta que el margen izquierdo esté libre, o el
+derecho o ambos. Los posibles valores son:&nbsp; right, left, both o
+none.<br>
+</p>
+
+<h3><a name="espaciado"></a>Espaciado de letras y palabras </h3>
+
+<p>Las propiedades letter-spacing y word-spacing permiten especificar
+el espacio entre letras y palabras respectivamente. En ambos casos se
+puede especificar un valor específico (2.em, 3px, etc) o uno relativo;
+un valor negativo estrecha el espaciado y uno positivo lo amplía.</p>
+
+<p>La propiedad white-space define cómo se gestionan las secuencias de
+espacios en blanco dentro de un elemento y los posibles valores son:</p>
+
+<ul>
+
+  <li>normal</li>
+  <li>nowrap</li>
+  <li>pre</li>
+  <li>pre-line</li>
+  <li>pre-wrap</li>
+  <li>inherit<br>
+  </li>
+</ul>
+
+<h3><a name="mayusculas"></a>Mayúsculas y minúsculas (text-transform)</h3>
+
+<p>La propiedad text-transform permite modificar el texto. Los valores
+que puede tomar son:</p>
+
+<ul>
+
+  <li>capitalize.- <span id="capital">fuerza que la primera letra de
+cada palabra sea
+mayúscula.</span></li>
+  <li>uppercase.- <span id="mayusculas">fuerza todo el texto a
+mayúsculas.</span></li>
+  <li>lowercase.- fuerza todo el texto a minúsculas.<br>
+  </li>
+</ul>
+
+<h3><a name="decoracion"></a>Decoración de texto (subrayar, tachar, etc)</h3>
+
+<p>La propiedad text-decoration puede tomar los siguientes valores:</p>
+
+<ul>
+
+  <li>none.- valor por defecto.</li>
+  <li>underline.- <span id="subrayado">subrayado</span>.</li>
+  <li>overline.- línea por <span id="encima">encima</span>.</li>
+  <li>blink.- <span id="parpadeo">parpadeo</span>.</li>
+  <li>line-through.- <span id="tachado">tachado</span>.</li>
+</ul>
+
+<p>La propiedad text-shadow permite crear un efecto de sombra. El
+formato de esta propiedad es el siguiente:<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <span id="sombra">text-shadow:
+[color]
+distancia_horizontal distancia_vertical [, ...]</span><br>
+
+<p>Como se puede observar puede repetirse, separando con una coma, los
+valores relacionados con cada capa de la sombra (color, dist.
+horizontal y dist. vertical). El color es opcional y las distancias son
+valores en unidades de longitud (px, pc, em, px, etc.).<br>
+</p>
+
+<h3><a name="propiedades"></a>Propiedades CSS vs. atributos en tablas
+HTML<br>
+</h3>
+
+<p>Aunque la tendencia es el uso de CSS, aún existe mucho código de
+presentación en tablas. A continuación se muestra la equivalencia entre
+ambos enfoques:<br>
+</p>
+
+<table>
+
+  <thead> <tr>
+    <th>ASPECTO</th>
+    <th>ATRIBUTO HTML</th>
+    <th>PROPIEDAD CSS</th>
+  </tr>
+  </thead> <tbody>
+    <tr>
+      <td rowspan="2">Alineación</td>
+      <td>align</td>
+      <td>text-align</td>
+    </tr>
+    <tr>
+      <td>valign</td>
+      <td>vertical-align</td>
+    </tr>
+    <tr>
+      <td>Ancho</td>
+      <td>width</td>
+      <td>width y table-layout</td>
+    </tr>
+    <tr>
+      <td>Bordes</td>
+      <td>border</td>
+      <td>border</td>
+    </tr>
+    <tr>
+      <td>Espaciado en celdas</td>
+      <td>cellpadding</td>
+      <td>padding</td>
+    </tr>
+    <tr>
+      <td>Espaciado entre celdas</td>
+      <td>cellspacing</td>
+      <td>border-spacing</td>
+    </tr>
+  </tbody>
+</table>
+<p>Para definir los bordes de una tabla y sus elementos dependientes se
+pueden utilizarlas propiedades <span style="color: red;">border</span>.
+Por ejemplo:<br>
+</p>
+<p>table {border: 3px solid black;}<br>
+</p>
+<p>La propiedad <span style="color: red;">border-spacing</span> permite especificar la distancia entre
+dos celdas consecutivas, especificando el espaciado horizontal y el
+vertical. Por ejemplo:<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; table&nbsp;
+{border-spacing: 3px 3px;}<br>
+
+<p>La propiedad <span style="color: red;">padding</span> permite ajustar el espaciado entre el contenido y el borde.</p>
+<p>La propiedad <span style="color: red;">border-collapse</span> permite eliminar el espacio entre los bordes asignando el valor collapse. El valor por defecto es separate. Por ejemplo:<br>
+</p>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  table, table *&nbsp; {border-collapse: collapse;}<br>
+<p>La propiedad <span style="color: red;">empty-cells</span> permite controlar el comportamiento de las celdas vacías. Admite los valores:</p>
+<ul>
+  <li>show.- muestra la celda aunque esté vacía.</li>
+  <li>hide.- oculta la celda si está vacía.</li>
+</ul>
+<p>La propiedad <span style="color: red;">table-layout</span> determina cómo hace el agente de usuario para dimensionar la tabla. Puede tener los valores:</p>
+<ul>
+  <li>auto.- valor predeterminado. El ancho de la columna se ajusta al
+necesario para mostrar el elemento más ancho (teniendo en cuenta si se
+puede separar en varias líneas).<br>
+  </li>
+  <li>fixed.- fijo. El diseño horizontal solo depende del ancho de la
+tabla y del ancho de las columnas, no del contenido de las celdas.<br>
+  </li>
+  <li>inherit.- aceptado solo en algunos navegadores. El valor de la propiedad se hereda del elemento padre.<br>
+  </li>
+</ul>
+<p>Las tablas pueden tener títulos definidos por la etiqueta
+&lt;caption&gt; y CSS tiene la capacidad para establecer la alineación
+y el posicionamiento de la leyenda del título mediante la propiedad <span style="color: red;">caption-side</span>, que tiene como valores posibles:
+top (arriba), bottom (abajo) o inherit (heredado). La alineación de la
+etiqueta caption se controla mediante la propiedad text-align o
+vertical-align.</p>
+</article>
+</body>
+</html>

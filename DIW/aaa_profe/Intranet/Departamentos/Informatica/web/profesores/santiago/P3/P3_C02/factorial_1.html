@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Script</title>
+  <script  languaje="javascript">
+// Función y llamada iniciales y más fáciles de entender
+     function  factorial (n) {
+               if ( n == 1) { 
+                  return (1);
+                } else {
+                  return ( n * factorial ( n - 1 ));
+               }
+     }
+  </script>
+</head>
+<body>
+  <script type="text/javascript">
+    var resultado = 0;
+    resultado = factorial (5);
+    document.write ("Factorial de 5 = " + resultado);
+  </script>
+</body>
+</html>

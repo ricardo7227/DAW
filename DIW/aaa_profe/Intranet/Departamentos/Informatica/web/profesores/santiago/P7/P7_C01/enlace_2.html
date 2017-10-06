@@ -1,0 +1,18 @@
+<html>
+<head>
+      <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+      <title>Segundo script con jQuery</title>
+      <script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+      <script>
+	$(document).ready(function(){
+		$("a").click(function(evento){
+			alert("Has pulsado el enlace pero...\nsu funcionamiento está anulado");
+			evento.preventDefault();
+		});
+	});
+      </script>
+</head>
+<body>
+  <a href="http://www.desarrolloweb.com">No irás a DesarrolloWeb.com</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file038.html -->
+<html>
+<head>
+	<title>Ejemplo de inserción</title>
+</head>
+<body>
+<p>Texto existente en HTML</p>
+
+<script type="text/javascript">
+
+var nuevoPárrafo = document.createElement("p");
+var textoPárrafo = document.createTextNode("Añadir este texto desde JavaScript");
+nuevoPárrafo.appendChild(textoPárrafo);
+var anteriorPárrafo = document.getElementsByTagName("p")[0];
+document.body.insertBefore(nuevoPárrafo, anteriorPárrafo);
+</script>
+</body>
+</html>

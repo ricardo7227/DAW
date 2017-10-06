@@ -1,0 +1,18 @@
+*{
+	font-family: arial;
+
+}
+
+table{
+	background-color: LightSteelBlue ;
+	border: solid 1px LightSlateGrey ;
+}
+td{
+	padding: 5px;
+}
+th{
+	padding: 8px;
+	font-size: 20px;
+	background-color: LightSlateGrey ;
+	color: white;
+}

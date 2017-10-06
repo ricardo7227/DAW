@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<!-- archivo Parte 2/code/cod0204.html -->
+<head>
+	<title>Uso básico de estilo</title>
+</head>
+<body>
+Aplicación de estilo en selectores<br />
+Los estilos se pueden aplicar sobre toda directiva HTML que tenga representación visual y, para cumplir esos fines, pueda tener atributos de estilo asociados.
+Hemos visto cómo aplicar un estilo a un selector determinado, por ejemplo:<br />
+p {background: blue}<br />
+Esto implica que todos los párrafos tendrán fondo azul. Muchas veces no queremos que todos los selectores de un tipo determinado tengan el mismo estilo y esto se puede ajustar mediante la definición de clases a nivel de selector, por ejemplo:<br />
+p.resaltado {background: blue}<br />
+p.normal {background: yellow}<br />
+
+La solución es simple, se define el selector y se define un nombre especial después del punto (por ejemplo, resaltado). Luego, para utilizar este estilo en el documento HTML se utiliza el atributo class dentro de la etiqueta &lt;P&gt;, por ejemplo:<br />
+&lt;p class=resaltado&gt;Esto saldrá en fondo azul.&lt;/p&gt;<br />
+&lt; class=normal&gt;Esto saldrá en fondo amarillo.&lt;/p&gt;<br />
+<br />
+El esquema de la sintaxis es el siguiente:<br />
+selector.nombreclase {propiedad: valor;...<br />
+						 propiedad:valor}<br />
+
+</body>
+</html>
+</body>
+</html>

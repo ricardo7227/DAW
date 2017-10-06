@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>PHPMyAdmin</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<div id="header">
+<p id="cabecera">PHPMyAdmin</p>
+</div>
+
+<div>
+<div id="nav">
+<a href="#instalacion">Instalación de MySQL y PHPMyAdmin</a><br>
+<br>
+<a href="#phpmyadmin">PHPMyAdmin: una herramienta de administración</a>
+</div>
+<div id="article">
+<h3><a name="instalacion"></a>Instalación de MySQL y PHPMyAdmin</h3>
+&nbsp;&nbsp;&nbsp; La instalación de MySQL se describe en el capítulo
+11 de la Guia de Ubuntu Server.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para comprobar si el servidor de MySQL se está
+ejecutando puede teclearse como usuario root la instrucción:<br>
+<p class="codigo">netstat -tap | grep mysql<br>
+</p>
+&nbsp;&nbsp;&nbsp; Si está en ejecución se mostrará una línea similar a
+la siguiente:<br>
+<p class="resul">tcp&nbsp; 0&nbsp; 0&nbsp;
+localhost.localdo:mysql&nbsp;&nbsp; *:*&nbsp;&nbsp;
+ESCUCHAR<br>
+</p>
+&nbsp;&nbsp;&nbsp; Si no está en ejecución puede lanzarse con la
+instrucción:<br>
+<p class="codigo">/etc/init.d/mysql restart<br>
+</p>
+&nbsp;&nbsp;&nbsp; Para entrar al intérprete de mysql puede ejecutarse
+la instrucción:<br>
+<p class="codigo">mysql -u root -p<br>
+</p>
+&nbsp;&nbsp;&nbsp; A continuación pide la clave; por defecto durante la
+instalación de MySQL se da de alta al usuario root sin contraseña pero
+si no se conecta puede
+cambiarse la contraseña del root de MySQL con:<br>
+<p class="codigo">dpkg-reconfigure mysql-server-5.1<br>
+</p>&nbsp;&nbsp;&nbsp; La instrucción exit abandona el intérprete. El
+servicio se detiene con "/etc/init.d/mysql stop".<br>
+<br>
+&nbsp;&nbsp;&nbsp; Algunas instrucciones a teclear pueden ser:<br>
+<p class="codigo">
+SHOW DATABASES;<br>
+CREATE DATABASE banca;<br>
+SHOW TABLES;<br>
+CREATE TABLE banca.clientes (dni VARCHAR(8), nom VARCHAR(30), nac DATE,
+sal INT);<br>
+DESCRIBE banca.clientes;<br>
+LOAD DATA INFILE '/home/santiago/Mysql/clientes' INTO TABLE
+banca.clientes;<br>
+DELETE FROM banca.clientes;<br>
+INSERT INTO banca.clientes VALUES ('12345678', 'Pedro', '1963-10-12',
+50000);<br>
+SELECT * FROM banca.clientes;<br>
+SELECT * FROM banca.clientes WHERE nac &gt; '1970-10-23';<br>
+UPDATE banca.clientes SET nac = '1960-10-30' WHERE dni = '41111111';<br>
+SELECT nom, nac FROM banca.clientes;<br>
+SELECT DISTINC nom FROM banca.clientes;<br>
+ORDER nom, sal FROM banca.clientes ORDER BY sal [DESC], nac [DESC];<br>
+SELECT COUNT(*) FROM banca.clientes WHERE sal &gt; 1500;<br>
+DROP DATABASE banca;<br>
+</p>
+&nbsp;&nbsp;&nbsp; Por defecto las bases de datos se crean en
+/var/lib/mysql<br>
+<br>
+&nbsp;&nbsp;&nbsp; La instalación de PHPMyAdmin se describe en el
+capítulo 12 de la Guia de Ubuntu Server.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Debe comprobarse si se encuentra instalado el
+paquete phpmyadmin. Durante su instalación se solicita la siguiente
+información:<br>
+<ul>
+  <li>Servidor web a configurar: Apache2.</li>
+  <li>Desea configurar la base de datos para phpmyadmin con
+dbconfig-common ? SI (Activado).</li>
+  <li>Contraseña del usuario de administración de la base de datos: la
+de root.</li>
+  <li>Contraseña de aplicación MySQL para phpmyadmin: la de root.</li>
+  <li>Paso siguiente para la instalación de la base de datos: ignorar.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Una vez instalado se ejecuta desde el navegador
+mediante la dirección "http://localhost/phpmyadmin".<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Dos de los ficheros de configuración más
+importantes son:<br>
+<ul>
+  <li>/etc/phpmyadmin/config.inc.php</li>
+  <li>/etc/phpmyadmin/apache.conf</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Si durante la ejecución aparece el error:
+"Respuesta: la conexión para controluser, como está definida en su
+configuración, fracasó", puede solucionarse modificando en el fichero
+/etc/phpmyadmin/config.inc.php las dos líneas siguientes:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+$cfg['Servers'][$i]['controluser'] = $dbuser;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+$cfg['Servers'][$i]['controlpass'] = $dbpass;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para que queden de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+$cfg['Servers'][$i]['controluser'] = '';&nbsp;&nbsp; // Comilla simple
+repetida<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+$cfg['Servers'][$i]['controlpass'] = '';&nbsp;&nbsp; // Comilla simple
+repetida<br>
+<h3><a name="phpmyadmin"></a>PHPMyAdmin: una herramienta de administración</h3>
+&nbsp;&nbsp;&nbsp; PHPMyAdmin es una herramienta desarrollada en PHP
+que permite administrar MySQL dentro del entorno web. Con esta
+herramienta se puede:<br>
+<ul>
+  <li>Crear y eliminar bases de datos.</li>
+  <li>Crear, modificar y eliminar tablas.</li>
+  <li>Eliminar, modificar o añadir campos a una tabla.</li>
+  <li>Ejecutar sentencias SQL.</li>
+  <li>Administrar y crear índices y privilegios.</li>
+  <li>Administrar usuarios y múltiples servidores.</li>
+  <li>Cargar tablas a partir de archivos de texto.</li>
+  <li>Exportar datos a distintos formatos.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; PHPMyAdmin es código abierto cuya estructura sigue las líneas generales básicas:<br>
+<ul>
+  <li>Todos los datos de configuración se encuentran en /etc/phpmyadmin/config.inc.php.</li>
+  <li>Todos los archivos PHP incluyen tres archivos de inclusión:
+header.inc.php (el diseño), libraries/common.lib.php (funciones más
+comunes) y config.inc.php (archivo de configuración).</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Usuarios de PHPMyAdmin</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Para iniciar una sesión se pone en el navegador la
+dirección http://localhost/phpmyadmin y se introduce el usuario y
+contraseña solicitados, que será validado por el servidor MySQL, en el
+que deberá estar dado de alta.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En la ventana principal se muestra la versión de
+PHPMyAdmin, la del servidor MySQL, la del cliente, el usuario que ha
+iniciado la sesión ,etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Una descripción de la herramienta puede verse a partir de la página 992.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Es interesante observar que cuando se realiza cualquier operación se muestra la sentencia SQL que se ejecuta.
+</div>
+</div>
+
+<div id="footer">
+</div>
+
+</body></html>

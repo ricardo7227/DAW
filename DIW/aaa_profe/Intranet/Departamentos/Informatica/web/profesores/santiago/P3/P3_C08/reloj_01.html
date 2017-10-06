@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pagina llamante</title>
+  <script language="javascript">
+  function llamarPopup(){
+             var mipopup = window.open("reloj_02.html", "miReloj", "height=200,width=150,left=1000,top=300");
+    }
+  </script>
+</head>
+<body>
+Esta es la pagina llamante<br>
+  <script language="javascript">
+    llamarPopup();
+    var miIntervalo = setInterval("llamarPopup()", 5000);
+  </script>
+</p>
+</body>
+</html>

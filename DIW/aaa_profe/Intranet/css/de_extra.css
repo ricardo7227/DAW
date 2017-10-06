@@ -1,0 +1,58 @@
+/* TITULO EXTRAESCOLAR */
+#tituloextraescolar {
+	color: black !important;	/* lo dejamos negro, aunque ya estubiera definido anteriormente de otra forma */
+}
+
+/* CONTENIDO REDONDEADO y POSICIONAMENTO PARA EXTRAESCOLAR */
+.extraescolar {
+	position: relative;
+	width: 565px;	/* referente al width 578px que tiene cuerpo-centro */
+	margin-left: 5px;
+    height: 250px;
+    text-align: left;
+    border: 1px solid #999999;
+    background: #DAD6F1;
+    color: #848582;
+    border-radius: 15px;
+}
+
+/* TITULO DEL CONTENIDO PARA EXTRAESCOLAR */
+.extraescolar h3 {
+	font-style: normal;
+	text-align: center;
+	color: black;
+	background: #FFF;
+}
+
+/* TAMAÑO DEL TEXTO CONTENIDO PARA EXTRAESCOLAR */
+.extraescolar ul li {
+	color: black;
+	font-size: 1.3em;
+	margin-right: 10px;
+	margin-left: 10px;
+	font-style: normal;
+	font-weight: normal;
+	text-align: justify;
+}
+
+/* LINKS DEL CONTENIDO PARA EXTRAESCOLAR, sin el subrrayado */
+.extraescolar a {
+	text-decoration:none;
+	color: #3d59b7;
+}
+
+/* azul más BRILLANTE, cuando estemos encima del LINK EXTRAESCOLAR*/
+.extraescolar a:hover {
+	color: #4782ff;
+}
+
+/* Colores y Fuente del texto presentando las ventajas de las actividades extraescolares */
+#parrafoExtra {
+	color: black;
+	font-size: 1.3em;
+	margin-right: 10px;
+	margin-left: 10px;
+	font-style: normal;
+	font-weight: normal;
+	text-align: justify;
+	}

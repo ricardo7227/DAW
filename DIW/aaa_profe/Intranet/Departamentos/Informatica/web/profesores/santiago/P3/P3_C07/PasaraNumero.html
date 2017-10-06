@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<!-- Pasa una variable alfanumérica a número -->
+<html>
+<head>
+	<title>Pasar a número</title>
+	</head>
+</head>
+<body>
+	<h1>Pasar una cadena a número</h1>
+	<script language="javascript">
+		var numero = prompt("Introduzca una cadena", 0);
+		document.write("Es un numero.: ");
+		if (isNaN(numero)){
+			document.write("NO <br>");
+		}else{
+			document.write("SI <br>");
+			var miNro1 = parseFloat(numero);
+			var miNro2 = parseInt(numero);
+			document.write("Con decimales..: "+miNro1+"<br>");
+			document.write("Entero.........: "+miNro2+"<br>");
+		}
+		document.write("3 elevado a 7 es: ");
+		var potencia = 0;
+		potencia = Math.pow(3,7);
+		document.write(potencia);
+	</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+#inaddi_clasetable {
+		border-collapse:collapse; /*Borde de la tabla*/
+		background:blue; /*Fondo de la tabla*/
+		border-left:1px solid #686868; /*Borde izquierdo*/
+		border-right:1px solid #686868; /*Borde derecho */
+		font:12px/145%; /*tamaño de las letras que están dentro de la tabla*/
+		color: white;} /*Color de las letras que están dentro de la tabla*/
+
+#inaddi_td{
+		padding:5px;/* Distancias de la tabla*/
+		font-weight:normal;
+		color:white
+}
+
+
+#inaddi_tr:hover {
+		background:#00BFFF; /*Color de las columnas cuando el ratón se situa encima de ellas*/
+		color:black
+}

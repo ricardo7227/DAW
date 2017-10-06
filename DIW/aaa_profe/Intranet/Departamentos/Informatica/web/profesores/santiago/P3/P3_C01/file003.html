@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file003.html -->
+<html>
+<head>
+<title>Primer documento (file003.html)</title>
+<script language=javascript>
+function aviso() {
+	alert("Hola, soy un mensaje generado por JavaScript");
+
+}
+</script>
+</head>
+<body>
+En este documento se muestra la interacción entre HTML y JavaScript.<br>
+Las funciones JavaScript se analizan en el momento de la invocación. <br>
+El código que no pertenezca a una función se analiza en la carga <br>
+del documento, siguiendo la propia secuencia de aparición dentro <br>
+del documento. <br>
+<script language=javascript>
+var miFecha = new Date();
+document.write("Hoy es " + miFecha.getDate() + "/" + (miFecha.getMonth()+1) + "/"  + miFecha.getYear());
+
+</script>
+<input type="button" name="clicAviso" value="Invocar funcióndel aviso"  onclick="aviso()">
+</body>
+
+
+</html>
+

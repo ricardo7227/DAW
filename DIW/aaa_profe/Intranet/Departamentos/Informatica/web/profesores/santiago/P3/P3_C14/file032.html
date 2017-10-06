@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file032.html -->
+<html>
+<head>
+<script type="text/javascript">
+// con esta función se mantiene el espacio ocupado
+// por el bloque <div>
+function ejemploVisibility(valor) {
+	 document.getElementById("miId").style.visibility=valor;
+}
+// con esta función no se mantiene el espacio ocupado
+// cuando el valor sea none
+function ejemploDisplay(valor) {
+	 document.getElementById("miId").style.display=valor;
+}
+</script>
+</head>
+<body>
+<div id="miId">
+A esta zona le cambiaremos el estilo <br />
+de la visibilidad utilizando <br />
+las dos propiedades disponibles<br />
+</div>
+<br />
+<b>Cambios de visibilidad:</b><br />
+<a href="javascript:ejemploVisibility('visible');">Con propiedad Visibility(visible)</a><br />
+<a href="javascript:ejemploVisibility('hidden');">Con propiedad Visibility(hidden)</a><br />
+<a href="javascript:ejemploDisplay('none');">Con propiedad Display(none)</a><br />
+<a href="javascript:ejemploDisplay('block');">Con propiedad Display(block)</a><br />
+</body>
+</html>

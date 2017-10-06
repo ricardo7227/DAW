@@ -1,0 +1,19 @@
+#####################################################
+###### Fichero de configuración del sitio web #######
+#####################################################
+# Nombre del servidor
+servidor=localhost
+# Usuario de acceso a la base de datos
+usuariobd=phpuser
+# Contraseña del usuario
+password=phpp@asswd1011
+# Nombre de la base de datos
+nombrebd=basedatos
+# Directorio absoluto de la web
+dir_web_absoluto=/var/www
+# Directorio relativo de la web
+dir_web_relativo=
+# Directorio absoluto del ftp anonimo
+dir_ftp_absoluto=/var/www/ftp
+# Directorio relativo del ftp anonimo
+dir_ftp_relativo=ftp

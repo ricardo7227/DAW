@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+
+
+
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Objeto window</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<h1>Objeto window</h1>
+<a href="#bom">Modelo BOM</a><br>
+<a href="#objeto">Objeto window</a><br>
+<a href="#frames">Frames</a><br>
+<br>
+
+<h3><a name="bom"></a>Modelo BOM</h3>
+
+&nbsp;&nbsp;&nbsp; BOM, de Browser Object Model o modelo de objeto
+navegador, permite acceder y modificar las propiedades de las ventanas
+del navegador. Este modelo permite realizar diversas acciones sobre los
+elementos de una página HTML, por ejemplo, redimensionar y mover la
+ventana del navegador, modificar el texto que se muestra en los
+controles HTML, cambiar el contenido de las propiedades de los objetos
+del modelo, etc.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Este modelo, a diferencia del modelo DOM, no está
+totalmente estandarizado entre los navegadores, aunque existan muchos
+puntos en común. Es un modelo jerárquico cuya estructura es la
+siguiente:<br>
+
+<br>
+
+<img class="imagenCentrada" style="width: 582px; height: 136px;" src="modeloBom.jpeg">
+<h3><a name="objeto"></a>Objeto window</h3>
+
+&nbsp;&nbsp;&nbsp; El objeto principal del modelo BOM es el objeto
+window, que es el objeto de nivel superior dentro de la jerarquía de
+una página HTML. La notación de objetos permite referirse a los
+subobjetos del objeto window sin necesidad de incluir el prefijo
+window. Así, las dos instrucciones siguientes son similares:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+window.document.write("OK");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write("OK");
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Métodos del objeto
+window</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Como métodos del objeto window están:<br>
+
+<ul>
+
+  <li>focus() .- permite forzar el foco de la ventana.</li>
+  <li>clearInterval .- detiene la ejecución de un proceso con
+temporizador definido previamente con setInterval().</li>
+  <li>clearTimeout() .- suspende el temporizador iniciado con
+setTimeout().</li>
+  <li>blur() .- método inverso a focus().</li>
+  <li>open() .- Abre una ventana con la página especificada.</li>
+  <li>close() .- cierra la ventana del navegador. No requiere
+confirmación si la ventana se abrió con el método open() de JavaScript.</li>
+  <li>home() .- abre la página de inicio del visitante desde nuestro
+sitio web.</li>
+  <li>print() .- imprime la ventana vigente abriendo previamente la
+ventana de diálogo de la impresora.</li>
+  <li>scrollTo() .- desplaza el contenido de la ventana a la posición horizontal y vertical (valores
+absolutos).</li>
+  <li>scrollBy() .- desplaza el contenido de la ventana a la posición horizontal y vertical (valores
+relativos a la posición actual).</li>
+  <li>resizeTo() .- redimensiona la ventana con valores fijos.</li>
+  <li>resizeBy() .- redimensiona la ventana con valores relativos a los
+actuales.</li>
+  <li>moveTo() .- mueve la ventana a las coordenadas especificadas.</li>
+  <li>moveBy() .- mueve la ventana segun valores relativos a la
+posición actual.</li>
+  <li>setInterval() .- inicia un proceso que se repite con la
+frecuencia especificada en milisegundos.</li>
+  <li>setTimeout() .- el proceso se realiza cuando pase el tiempo
+especificado en milisegundos.</li>
+  <li>stop() .- detiene la carga de la página.<br>
+</li>
+</ul>&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Métodos auxiliares para cuadros de diálogo</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El objeto window posee una serie de métodos
+complementarios que permiten la creación de distintos tipos de cuadros
+de diálogo:<br>
+<ul>
+  <li>alert() .- genera un cuadro con un mensaje y sin ningún valor de retorno.</li>
+  <li>confirm() .- genera un cuadro de diálogo con un icono de pregunta
+y con los botones "Aceptar" y "Cancelar" que permiten devolver true o
+false respectivamente.</li>
+  <li>prompt() .- presenta un cuadro de diálogo de entrada de datos.
+Devuelve el valor introducido o null si se pulsa el botón Cancelar o se
+cierra el cuadro de diálogo.<br>
+  </li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Propiedades del
+objeto window</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Las propiedades del objeto window, que no son
+subobjetos, son las siguientes:<br>
+
+<br>
+
+<ul>
+
+  <li>closed.- valor booleano que indica si la ventana está cerrada.</li>
+  <li>defaultStatus.- texto que se muestra por defecto en la barra de
+estado cuando no se está realizando ninguna acción.</li>
+  <li>name.- contiene el nombre de la ventana.</li>
+  <li>innerWidth.- ancho interno de la ventana (disponible en Netscape y
+Firefox).</li>
+  <li>innerHeight.- altura interna de la ventana (disponible ...).</li>
+  <li>outerWidth.- ancho externo de la ventana (...).</li>
+  <li>outerHeight.- altura externa de la ventana (...).</li>
+  <li>screenLeft.- indica la posición del margen izquierdo de la
+pantalla (IE).</li>
+  <li>screenX.- idem para Netscape y Firefox.</li>
+  <li>screenTop.- indica la posición del margen superior de la pantalla
+(IE).</li>
+  <li>screenY.- idem para Netscape y Firefox.</li>
+  <li>status.- texto que aparece en la barra de estado.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Objeto navigator</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El objeto navigator, subobjeto de window, suministra
+información del navegador en uso. Las propiedades del navegador vigente
+pueden conocerse con un código como el siguiente:<br>
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+for (variable in window.navigator) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+document.write(variable + " --&gt; " + window.navigator[variable] +
+"&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  }
+</p>
+
+&nbsp;&nbsp;&nbsp; Las propiedades del objeto navigator son de solo lectura y contienen la siguiente información:<br>
+<ul>
+  <li>
+appCodeName.- nombre de código de la aplicación.</li>
+  <li>
+appName.- nombre del navegador (lo identifica).</li>
+  <li>
+appVersion.- versión del navegador.</li>
+  <li>
+appMinorVersion.- versión menor de la aplicación.</li>
+  <li>
+cpuClass.- tipo de procesador.</li>
+  <li>
+platform.- tipo de sistema.</li>
+  <li>plugins.- lista de complementos instalados. IE devuelve una lista
+vacía. Al ser una matriz de valores se puede obtener la lista
+recorriendo sus elementos hasta window.navigator.plugins.length.</li>
+  <li>userProfile.- perfil del usuario.</li>
+  <li>systemLanguage.- en IE, idioma del sistema. En otros navegadores se utiliza la propiedad language.</li>
+  <li>userLanguage.- en IE, idioma del navegador. En otros navegadores se utiliza la propiedad language.</li>
+  <li>userAgent.- cadena descriptiva completa del navegador.</li>
+  <li>onLine.- valor booleano que indica el estado de conexión del navegador.</li>
+  <li>coockieEnabled.- valor booleano que indica si se aceptan ficheros cookie.</li>
+  <li>mimeTypes.- tabla de tipos de archivo MIME aceptados por el
+navegador. IE devuelve un elemento vacío. La lista se puede obtener
+recorriendo los elementos de la tabla hasta
+window.navigator.mimeTypes.length.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Aunque las diferentes propiedades pueden no tener la
+información esperada en los distintos navegadores, existe homogeneidad
+frente a las siguientes: appCodeName, appName, appVersion, userAgent,
+language y platform.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Objeto screen</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; El objeto screen contiene la información relacionada
+con la capacidad física de la pantalla: resolución y color. Sus
+propiedades son:<br>
+<ul>
+  <li>width.- ancho total en pixeles.</li>
+  <li>height.- altura total en pixeles.</li>
+  <li>availWidth.- ancho disponible en pixeles. No se tienen en cuenta las barras.</li>
+  <li>availHeigth.- altura disponible en pixeles. No se tienen en cuenta las barras.</li>
+  <li>colorDepth.- profundidad del color. La cantidad de colores es el resultado de elevar 2 a la profundidad de color.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Objeto location</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Las propiedades del objeto location contienen información relativa a la dirección de la página actual:<br>
+<ul>
+  <li>hostname.- nombre del dominio.</li>
+  <li>href.- dirección completa de la página.</li>
+  <li>hash.- referencia que recibió el click en la página.</li>
+  <li>pathname.- ruta de acceso a la página sin el nombre del dominio.</li>
+  <li>port.- número de puerto.</li>
+  <li>protocol.- tipo de protocolo de la conexión.</li>
+  <li>search.- cadena compuesta por los parámetros de la página.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; La propiedad search contiene la cadena de caracteres
+de los parámetros de la página, es decir, lo que aparece en la
+dirección de la página después del carácter ?, que tiene la forma
+nombre=valor, con el caracter &amp; para separar los parámetros. Podría
+crearse una función encargada de separar los parámetros y sus valores.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La propiedad href permite realizar un redireccionamiento de forma simple:<br>
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+...<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; window.location.href = "http://www.tiernogalvan.es";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; ...
+</p>
+&nbsp;&nbsp;&nbsp; El objeto location tiene dos métodos:<br>
+<ul>
+  <li>reload() .- recarga la página vigente. Es equivalente a pulsar la opción Actualizar del navegador.</li>
+  <li>replace() .- carga otra página cuya dirección se pasa como parámetro.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Objeto history</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; El objeto history posee métodos y propiedades que permiten acceder al historial de páginas visitadas:<br>
+<ul>
+  <li>back() .- accede a la página anterior. Similar a pulsar la opción Atrás.</li>
+  <li>forward() .- accede a la página siguiente. Similar a pulsar la opción Siguiente.</li>
+  <li>go() .- permite acceder a una página concreta del historial
+mediante un salto especificado como parámetro mediante un número
+positivo o negativo. Por ejemplo, para retroceder dos páginas sería:
+go(-2).<br>
+  </li>
+  <li>length.- propiedad que indica el número de páginas registradas en el historial.<br>
+  </li>
+</ul>
+&nbsp;&nbsp;&nbsp; Ejemplos sencillos para acceder a la página anterior mediante el uso de los métodos go() y back() serían:<br>
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+...<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &lt;a href="javascript:window.history.back()"&gt;Página anterior&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; ...<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;input type=button value="Atrás" onclick="history.go(-1)"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  ...<br>
+
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Cambiar el tamaño de una ventana</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; JavaScript tiene dos métodos que permiten modificar
+el tamaño de la ventana. El método resizeTo() cambia las dimensiones de
+la ventana con valores definidos en pixeles con una sintaxis como la
+siguiente:<br>
+
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+resizeTo(pAncho, pAlto);<br>
+
+</p>
+
+&nbsp;&nbsp;&nbsp; Otro modo para cambiar el tamaño es mediante el
+método resizeBy() que utiliza como parámetros pAncho y pAlto, pero en
+este caso estos parámetros se utilizan para modificar los valores
+vigentes del tamaño de la pantalla. Si los parámetros son negativos el
+tamaño se reduce. Un cero en uno de los dos parámetros significa que la
+dimensión correspondiente no se modifica. La sintaxis es:<br>
+
+
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+resizeBy(pAncho, pAlto);<br>
+
+</p>
+
+
+&nbsp;&nbsp;&nbsp; Para modificar el tamaño y hacer que ocupe toda la
+pantalla debe obtenerse el tamaño máximo de la pantalla a partir del
+objeto screen y utilizar esos valores como parámetros del método
+resizeTo():<br>
+
+
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+resizeTo(screen.availWidth, screen.availHeight);<br>
+
+</p>
+
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Cambiar la posición de una ventana</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; JavaScript permite mover la pantalla de modo
+absoluto (moveTo()) o relativo a la posición vigente (moveBy())
+expresando los parámetros en pixeles. El valor 0,0 corresponde a la
+esquina superior izquierda de la ventana. La sintaxis de ambos métodos
+es la siguiente:<br>
+
+
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+moveTo(pX, pY);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; moveBy(desplX, desplY);<br>
+
+</p>
+
+
+&nbsp;&nbsp;&nbsp; Con moveBy() pueden utilizarse parámetros negativos, cero o positivos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para obtener la posición de la pantalla, IE dispone
+de las propiedades screenLeft y screenTop y Firefox/Netscape de las
+propiedades screenX y screenY. Dichas propiedades del objeto window son
+de solo lectura y no pueden utilizarse para modificar la posición de la
+pantalla.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Imprimir la pantalla</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; El método print() del objeto window abre un cuadro
+de diálogo de impresión para seleccionar la impresora, ajustar la
+configuración y seleccionar el número de páginas y de copias. Un
+ejemplo puede ser:<br>
+
+
+
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;a href="javascript: window.print()"&gt;Imprimir la ventana&lt;/a&gt;<br>
+
+</p>
+
+
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Ventanas emergentes (popups)</span><br>
+<br>
+
+&nbsp;&nbsp;&nbsp; Las ventanas emergentes suelen tener un tamaño
+reducido y se abren automáticamente a partir de alguna acción del
+usuario. Su uso es muy variado, para añadir ayudas de contexto, para
+abrir una imagen, para mostrar un mensaje, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El método open() del objeto window permite abrir una ventana popup:<br>
+
+
+
+
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+var winpopup = window.open(popUrl, popNombre, popOpcion)<br>
+
+</p>
+
+
+
+
+&nbsp;&nbsp;&nbsp; donde:<br>
+<ul>
+  <li>popUrl.- es la dirección URL de la ventana popup.</li>
+  <li>popNombre.- es el nombre de la ventana.</li>
+  <li>popOpcion.- es la cadena de caracteres que contiene una lista de
+opciones de apertura de la ventana. Las opciones se codifican siguiendo
+el formato: opcion1=valor1, opcion2=valor2, ... La coma actua como
+separador entre las opciones.</li>
+</ul>
+&nbsp;&nbsp;&nbsp;&nbsp; Las opciones de apertura son las siguientes:<br>
+<ul>
+  <li>directories: valor yes/no. Añade o no una barra de links.</li>
+  <li>menubar: valor yes/no. Añade o no una barra de menús.</li>
+  <li>status: valor yes/no. Añade o no una barra de estado.</li>
+  <li>location: valor yes/no. Añade o no una barra de direcciones.</li>
+  <li>scrollbars: valor yes/no/auto. Añade o no las barras de desplazamiento.</li>
+  <li>resizable: valor yes/no. Permite o no el redimensionamiento.</li>
+  <li>height: altura en pixeles.</li>
+  <li>width: ancho en pixeles.</li>
+  <li>left: posicionamiento del margen izquierdo.</li>
+  <li>top: posicionamiento del margen superior.</li>
+  <li>fullscreen: valor yes/no. Pantalla completa o no, solo en IE.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Comunicación entre ventanas</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando se utiliza el método open() para abrir una
+ventana se obtiene, como retorno de la función, un objeto de tipo
+window; esta variable permite posteriormente la comunicación entre las
+ventanas, por ejemplo, con la ventana popup abierta.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Ver ejemplo de la pág. 482.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">El objeto opener</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; El objeto opener es un subobjeto de window que da
+acceso a la ventana padre (ventana desde la que se abrió la ventana
+vigente). Al acceder a ese objeto se puede trabajar sobre el objeto
+document, que permite acceder a toda la página.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Ver ejemplo de pag. 482.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Precaución al usar popups</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Dado que los popups se utilizan con frecuencia para
+incluir anuncios publicitarios no deseados, y que los navegadores
+incluyen la opción de bloqueo de ventanas emergentes, debe evitarse el
+uso de ventanas emergentes para los tratamientos importantes del sitio
+web.<br>
+
+<h3><a name="frames"></a>Frames</h3>
+
+&nbsp;&nbsp;&nbsp; Los frames permiten realizar una subdivisión de la
+página. Las etiquetas HTML que permiten la creación de frames son
+&lt;frameset&gt; y &lt;frame&gt;. Desde el punto de vista de
+JavaScript, puede establecerse comunicación entre los distintos frames
+pues son elementos que dependen del objeto window.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Con código HTML una página con tres frames, dos
+dentro de un frameset y otro en otro frameset, podría tener la forma:<br>
+
+
+
+
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;frameset&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;frameset&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;frame name="frame11" src="frame11.html"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;frame name="frame12" src="frame12.html"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/frameset&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;frame name="frame21" src="frame21.html"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/frameset&gt;<br>
+
+</p>
+&nbsp;&nbsp;&nbsp; y para cargar una página en uno de los frames se utilizaría una instrucción como la siguiente:<br>
+
+
+
+
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;a href="pagina.html" target="frame12"&gt;Cambiar frame&lt;/a&gt;<br>
+
+</p>
+&nbsp;&nbsp;&nbsp; Con el atributo target puede especificarse el frame
+donde se visualizará la página pero también admite los valores:<br>
+<ul>
+  <li>_parent .- identifica el área definida por la etiqueta frameset.<br>
+  </li>
+  <li>_top .- identifica el nivel principal y se reemplazará toda la definición de frames de la página vigente.<br>
+  </li>
+  <li>_blank .- identifica una página nueva.<br>
+  </li>
+</ul>
+&nbsp;&nbsp;&nbsp; Con JavaScript también se puede direccionar a un frame utilizando los objetos parent o top de la forma:<br>
+
+
+
+
+
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; parent.frames["frame21"].window.location.href="pagina.html";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  top.frames["frame21"].window.location.href="pagina.html";<br>
+</p>
+&nbsp;&nbsp;&nbsp; Esta sintaxis permite cambiar un frame por otro.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El objeto parent representa a la ventana definida
+por la etiqueta &lt;frameset&gt; de nivel superior y la matriz de
+frames contiene la lista de frames contenidos en ese frameset. La
+propiedad window.location.href permite definir la página que se
+incluirá en el frame referenciado, en este caso frame21.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El objeto top representa la ventana de nivel más
+alto, por lo que podemos utilizar este objeto para cargar una página en
+el frame frame21 desde frame11; frame11 pertenece a otro frameset por
+lo que para acceder a frame21 hay que utilizar el camino del objeto top
+pues por el objeto parent no lo encontraríamos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Toda la información de un frame es accesible desde
+cualquier otro frame, por ejemplo, la definición de una función. Esto
+es posible pero teniendo en cuenta ciertas limitaciones desarrolladas
+por razones de seguridad: dos frames pueden comunicarse si pertenecen
+al mismo dominio. Es el navegador el que prohibe el acceso a los datos
+de otro frame de un dominio diferente.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Etiqueta iframe</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Los frames definidos mediante la etiqueta
+&lt;iframe&gt; suelen utilizarse para definir áreas de anuncios. Su
+ventaja es que la carga de la página no se retrasa por el contenido de
+la etiqueta iframe. Un ejemplo de uso sería:<br>
+
+
+
+
+
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;iframe src="http://www.dominio.es/pagina.html" ... &lt;/iframe&gt;<br>
+
+</p>
+&nbsp;&nbsp;&nbsp; La alternativa con código JavaScript sería:<br>
+
+
+
+
+
+
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;script language="javascript" src="http://www.dominio.es/anuncio.js"&gt;&lt;/script&gt;<br>
+
+</p>
+&nbsp;&nbsp;&nbsp; El archivo anuncio.js contiene las instrucciones
+JavaScript para el anuncio publicitario; el inconveniente de este
+enfoque es que un problema en la carga de este archivo afecta al resto
+de la página.<br>
+
+</body></html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Diseño de la web del instituto"/>
+    <meta name="author" content="YingYingHu"/>
+	<meta name="keywords" content="IES, Enrique Tierno Galvan, ETG, instituto, madrid, IES, Bachillerato, Formación profesional, Formación profesional Básica, DAW, DAM, ASIR"/>
+    
+    <title>Inicio</title>
+    
+    <!-- CSS de Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    
+    <!-- CSS personalizado 
+    <link href="css/estilo.css" rel="stylesheet"/>-->
+	
+    <!-- Uso de Less -->
+	<link rel="stylesheet/less" type="text/css" href="estilo.less" />
+	<script type="text/javascript" src="js/less.min.js"></script>
+    
+</head>
+<body>
+	<!-- HEADER SECTION -->
+	<nav id="navegacion">
+		<!-- Fixed navbar -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="index.html">
+                        <img src="images/logo2.png" alt="Logo_ETG"/>
+                        <span id="Instituto">IES Enrique Tierno Galván</span>
+                    </a>
+				</div>
+                 <!-- Menu Content -->
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+                        <!-- Content INICIO -->
+						<li class="dropdown active"><a href="#">INICIO</a></li>
+                        <!-- Content EL CENTRO -->
+                        <li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown">EL CENTRO <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Historia del centro</a></li>
+								<li><a href="#">Bolsa de trabajo</a></li>
+								<li><a href="#">Proyectos internacionales</a></li>
+                                <li><a href="#">Galeria multimedia</a></li>
+							</ul>
+                        </li>  
+                        <!-- Content ORGANIZACION -->                        
+                        <li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button">ORGANIZACIÓN <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Secretaria</a></li>
+                                <li><a href="#">Direccion</a></li>
+                                <li><a href="#">Jefatura de estudios</a></li>
+                                <li><a href="#">Administración</a></li>
+                                <li><a href="#">Departamentos</a></li>
+                                <li><a href="#">AMPA</a></li>
+                            </ul>
+                        </li>
+                        <!-- Content ENSEÑANZA -->
+                         <li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button">ENSEÑANZAS <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Educacion Secundaria</a></li>
+                                <li><a href="#">Bachillerato</a></li>
+                                <li><a href="#">Formación básica</a></li>
+                                <li><a href="#">Formación profesional</a></li>
+                            </ul>
+                        </li>
+                         <!-- Content PRACTICAS -->
+                        <li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button">PRACTICAS <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="html/practicas/geolocalizacion/geolocalizacion.html">Geololización</a></li>
+                                <li><a href="html/practicas/storage/storage.html">Memoria Storage</a></li>
+                                <li><a href="html/practicas/less/less.html">Funciones de Less</a></li>
+								<li><a href="html/practicas/jquery/jquery.html">Enlace de JQuery</a></li>
+                                <li><a href="html/practicas/php/php.html">Formulario PHP</a></li>
+                                <li><a href="html/practicas/ajax/ajax.html">Ejercicio de Ajax</a></li>
+								<li><a href="html/practicas/menu/menu.html">Contenido intranet/entranet</a></li>
+								<li><a href="html/practicas/checklist/checklist.html">Chequeos y método heurístico</a></li>
+                            </ul>
+                        </li>
+                         <!-- Content CONTACTO -->
+                        <li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button">CONTACTO <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Horario de Atención</a></li>
+                                <li><a href="#">Localización</a></li>
+                            </ul>
+                        </li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</nav>
+	
+	<!-- HEADERWRAP SECTION -->
+    <div id="headerwrap">
+        <img src="interface/etg-home.jpg" alt="Imagen_ies"/>
+	</div>
+    
+	<!-- PORTFOLIO SECTION -->
+	<main id="portfolio">
+		<div class="container" > 
+			<div class="row" >
+				<!-- Main Section -->
+                <div class="col-md-9">
+					<div class="well">
+						<section id="contenido">
+							<h1 class="section-header">Últimas noticias</h1>
+							<!-- Section Content -->
+							<article>
+								<header>
+									<h2 class="article-header"><a href="src/documents/news/Examenes_sep.pdf">Examenes de Septiembre, 2015 (ESO y BACH)</a></h2>
+									<time datetime="2011-09-01">
+									Publicado el 1 de septiembre de 2015
+									</time>
+								</header>
+								<br/>
+								<p>Información sobre los examenes y examenes de pendientes de Septiembre de 2015 de los cursos de ESO y BACH. </p>
+							</article>
+							<hr/>	
+							<article>
+								<header>
+									<h2 class="article-header"><a href="src/documents/news/Examenes_sep_fp.pdf">Examenes de Septiembre, 2015 (FP)</a></h2>
+									<time datetime="2015-09-01">
+										Publicado el 1 de septiembre de 2015
+									</time>
+								</header>
+								<br/>
+								<p>Información sobre los examenes y examenes de pendientes de Septiembre de 2015 de los cursos de formación profesional. </p>
+							</article>
+							<hr/>
+							<article>
+								<header>
+									<h2 class="article-header"><a href="src/documents/news/Libros_texto.pdf">Libros de texto 2015-16</a></h2>
+									<time datetime="2015-06-30">
+										Publicado el 30 de junio de 2015
+									</time>
+								</header>
+								<br/>
+								<p>Publicaciones de libros de textos del año 2015-16. Cursos de secundaria y formación profesional. </p>
+							</article>
+							<hr/>
+							
+							<!-- Pager List-->
+							<ul class="pager">
+								<li class="previous">
+									<a href="#">&larr; Anterior</a>
+								</li>
+								<li>
+									<ul class="pagination">
+										<li class="active"><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+									</ul>
+								</li>
+								<li class="next">
+									<a href="#">Siguiente &rarr;</a>
+								</li>
+							</ul>
+						</section>
+					</div>
+                </div>
+                <!-- Right Aside -->
+                <div class="col-md-3">
+					<div class="well">
+						<aside id="lateral"> 
+							<h1 class="section-header">Enlaces de interés</h1>
+							<div class="enlaces text-center">
+								<a href="http://www.madrid.org/cs/Satellite?c=CM_Agrupador_FP&cid=1109266187254&idConsejeria=1109266187254&idListConsj=1109265444710&language=es&pagename=ComunidadMadrid%2FEstructura&pid=1109265444699" target="_blank">
+								<img src="interface/links/madrid-educacion.png" alt="Comunidad de Madrid. Consejeria de Educación, Juventud y Deporte" title="Comunidad de Madrid. Consejeria de Educación, Juventud y Deporte"></a>
+								<hr>
+								<a href="http://www.madrid.org/cs/Satellite?pagename=PortalEducacion%2FPage%2FEDUC_home&amp;language=es" target="_blank">
+								<img src="interface/links/cm_educacion.jpeg" alt="+ educación" title="+ educación"></a>
+								<hr>	
+								<a href="http://www.educa2.madrid.org/educamadrid/" target="_blank">
+								<img src="interface/links/educamadrid.bmp" alt="EducaMadrid" title="EducaMadrid"></a>
+								<hr>																		
+								<a href="http://www.madrid.org/inforjoven/" target="_blank">
+								<img src="interface/links/infor-joven.jpg" alt="InforJoven" title="InforJoven"></a>
+								<hr>
+								<a href="http://www.madrid.org/fp" target="_blank">
+								<img src="interface/links/logo_fp.png" alt="FP de Madrid" title="FP de Madrid"></a>
+								<hr>
+								<a href="http://www.todofp.es" target="_blank">
+								<img src="interface/links/logo-todo-fp.png" alt="Todo FP" title="Todo FP"></a>
+								<hr>
+								<a href="http://gestiona.madrid.org/wpad_pub/run/j/Inicio.icm" target="_blank">
+								<img src="interface/links/portal-escolar.gif" alt="Portal escolar" title="Portal escolar"></a>	
+							</div>
+						</aside>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	
+	<!-- FOOTER -->
+	<footer id="foot">
+		<div class="container">
+			<div class="row">
+				Dirección: Av. Andalucía, Km. 6,200. 28041 Madrid<br/>
+				Telf. 913170047 – 913171972; Fax. 913173529<br/>
+				Correo: ies.tiernogalvan.madrid@educa.madrid.org<br/>
+			</div>
+		</div>
+	</footer>
+	
+	<!-- SCRIPT JS -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  </body>
+</html>

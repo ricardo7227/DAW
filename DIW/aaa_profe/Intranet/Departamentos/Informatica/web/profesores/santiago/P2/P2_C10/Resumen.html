@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Posicionamiento y diseño</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="estilos.css" type="text/css"></head><body>
+<h1>Posicionamiento y diseño</h1>
+
+<a href="#propiedades">Propiedades relacionadas con el posicionamiento</a><br>
+
+<a href="#posicionamiento">Posicionamiento de los elementos</a><br>
+
+<a href="#flotacion">Flotación de los elementos</a><br>
+
+<a href="#tamano">Control del tamaño de un elemento</a><br>
+
+<a href="#superposicion">Superposición de elementos</a><br>
+
+<a href="#control">Control de la visibilidad del elemento</a><br>
+
+<a href="#diseno">El diseño mediante la propiedad display</a><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Existen 4 modelos de posicionamiento de los
+elementos dentro de la página web: estático, relativo, absoluto y fijo.
+Su comportamiento puede diferir de unos navegadores a otros.<br>
+
+<h3><a name="propiedades"></a>Propiedades relacionadas con el
+posicionamiento</h3>
+
+&nbsp;&nbsp;&nbsp; Las principales propiedades de esta categoría son
+las siguientes:
+<ul>
+
+  <li><span style="color: red;">position</span>.- esta propiedad no
+define la posición sino el modo en
+que se
+colocan los elementos de un documento HTML dentro de la ventana del
+navegador. Los valores permitidos son los siguientes:<br>
+    <br>
+    <ul>
+      <li><span style="color: red;">static</span>.- valor
+predeterminado. El elemento se coloca según el
+flujo natural de los elementos, sin afectarle el valor de otras
+propiedades
+como top, bottom, etc.</li>
+      <li><span style="color: red;">fixed</span>.-
+el elemento se colocará en una posición fijada por
+las
+propiedades de distancia a los bordes de la ventana (top, bottom, left
+y right). Los elementos siguientes se visualizarán como si éste no
+existiera, aunque se situará sobre los demás, como si fuera el último
+en colocarse. Además, no se desplaza con las barras de desplazamiento.<br>
+      </li>
+      <li><span style="color: red;">relative</span>.- el elemento
+se colocará en una posición relativa a
+la que le
+correspondería en el posicionamiento por defecto (estatico) y en base a
+distancias indicadas por las propiedades top, bottom, left o right, que
+pueden tener valores positivos o negativos. Los elementos siguientes
+dejarán el espacio correspondiente al elemento como si su posición
+fuera estática.<br>
+      </li>
+      <li><span style="color: red;">absolute</span>.- el elemento se
+colocará en una posición relativa
+al primer
+elemento padre (de nivel superior en la jerarquía) que tenga un
+posicionamiento diferente a static y en base a distancias indicadas por
+la propiedad top, bottom, left o right, que pueden tener valores
+positivos o negativos. Los demás elementos se comportan de forma
+similar a fixed.<br>
+      </li>
+    </ul>
+  </li>
+  <br>
+  <li><span style="color: red;">top, bottom, left y right</span>.-
+establecen el margen del elemento
+respecto
+a su posición normal. Pueden tener los valores auto (predeterminado y
+que asume el valor normal que le corresponde al elemento), unidades de
+longitud o porcentajes referidos al elemento contenedor. Por ejemplo:
+top: 0; left: 0; position: absolute; corresponde a la esquina superior
+izquierda de la ventana.</li>
+  <br>
+  <li><span style="color: red;">z-index</span>.- indica el nivel de
+profundidad en la colocación
+superpuesta
+de elementos en la ventana (pila de elementos). Cuanto mayor sea el
+nivel asignado más arriba aparecerá.</li>
+  <br>
+  <li><span style="color: red;">visibility</span>.- especifica si el
+elemento es visible o no. El valor
+predeterminado es visible. Los demás valores posibles son: hidden
+(oculto) o collapse (aplicable para ocultar filas y columnas de
+tablas).<br>
+  </li>
+</ul>
+
+<h3><a name="posicionamiento"></a>Posicionamiento de los elementos</h3>
+
+&nbsp;&nbsp;&nbsp; El posicionamiento de los elementos se controla con
+cuatro propiedades específicas que indican las distancias a cada uno de
+los cuatro lados: <span style="color: red;">top, bottom, left y right</span>,
+cuyo comportamiento
+depende fundamentalmente del valor de la propiedad position.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para informar cualquiera de estas cuatro propiedades
+se utiliza el formato: lado: distancia/porcentaje. Por ejemplo:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; top: 50px;<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; left: 30px;<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El posicionamiento estático (static) es el más
+sencillo porque el elemento se coloca en el sitio que le corresponde
+según su flujo natural. Las propiedades top, bottom, etc. no se tienen
+en cuenta.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El posicionamiento relativo (relative) se utiliza
+para colocar el elemento en una posición diferente a la que le tocaría
+siguiendo el flujo natural. La nueva posición utiliza las propiedades
+top, left, etc. para desplazar el elemento respecto al lugar que
+ocuparía
+normalmente. Debe observarse que se respeta el espacio que el elemento
+ocuparía si su posicionamiento fuera estático. Si se utilizan
+porcentajes, serán relativos a las longitudes del propio elemento, es
+decir, con "right: 10%" el elemento se mostrará un diez por ciento de
+su propia longitud desplazado hacia la izquierda de su posición normal.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El posicionamiento absoluto es similar al relativo
+con la diferencia que las distancias son relativas al borde de la
+ventana de visualización. No se respeta el espacio que el elemento
+ocuparía si tuviera un posicionamiento estático. Si los valores se dan
+en porcentajes serán relativos a la longitud del propio elemento (?).<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Finalmente, el posicionamiento fijo es similar al
+absoluto (en cuanto a posicionamiento) con la diferencia de que éste no
+varía su posición cuando se mueven las barras de desplazamiento. No se
+respeta el espacio que el elemento ocuparía si tuviera un
+posicionamiento estático.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Las propiedades de posicionamiento determinan el
+tamaño de un elemento en el caso de que no se especifique el tamaño del
+mismo pero sí,
+por ejemplo, las propiedades left y right (o top y bottom (?)).<br>
+
+<h3><a name="flotacion"></a>Flotación de los elementos</h3>
+
+&nbsp;&nbsp;&nbsp; La propiedad <span style="color: red;">float </span>permite
+definir el posicionamiento de un elemento de un modo que modifica el
+flujo normal del contenido de la página. Cuando se utiliza la propiedad
+float el elemento flota hasta el margen especificado. Sus posibles
+valores son: left, right y none. El valor none equivale al flujo
+natural de posicionamiento de los elementos en la página.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Lo interesante de esta propiedad es que si hay otros
+elementos en la página tienden a colocarse en el margen opuesto,
+quedando la página con menos espacios en blanco.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Si se desea evitar la flotación de un elemento de
+forma que su posición no dependa de la flotación del elemento anterior,
+puede utilizarse la propiedad <span style="color: red;">clear</span>,
+vista anteriormente (para colocar texto alrededor de imágenes) y que
+admite los valores: right, left y both.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La propiedad float se puede utilizar para crear
+columnas de elementos, basta con utilizar en cada uno de ellos "float:
+left".<br>
+
+<h3><a name="tamano"></a>Control del tamaño de un elemento</h3>
+
+&nbsp;&nbsp;&nbsp; El tamaño de un elemento se puede controlar desde
+distintas propiedades, dependiendo en parte del tipo de elemento (por
+ejemplo, no es lo mismo una imagen que un texto). No obstante, en CSS
+existe un grupo de propiedades específicas de uso general para
+determinar el tamaño de un elemento, como son <span style="color: red;">width y height</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; CSS también permite definir límites mínimos y
+máximos para el tamaño e los elementos, que pueden impedir la
+visualización incorrecta de algunos elementos. Las propiedades
+disponibles son:<br>
+<ul>
+  <li>min-width.- ancho mínimo.</li>
+  <li>max-width.- ancho máximo.</li>
+  <li>min-height.-altura mínima.</li>
+  <li>max-height.- altura máxima.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Los valores que se pueden asignar a estas propiedades son similares a los de width y height.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si el tamaño de un elemento se define de modo
+independiente al contenido, puede existir el riesgo de que el área
+contenedora quede pequeña y se produzca una situación de overflow. La
+propiedad CSS que permite controlar este comportamiento es overflow,
+que puede tomar los valores:<br>
+<ul>
+  <li>visible.- el contenido se muestra completo aunque exceda su área contenedora.</li>
+  <li>hidden.- el contenido se recorta para limitarlo a su área
+contenedora. La parte que quede fuera de la parte recortada no puede
+visualizarse de ninguna manera.</li>
+  <li>scroll.- el contenido se muestra dentro de su área contenedora y
+se habilitan barras de desplazamiento para poder visualizar todo el
+contenido.</li>
+  <li>auto.- el comportamiento se deja en manos del agente de usuario (en base a su configuración de la condición de overflow).<br>
+
+  </li>
+</ul>
+<h3><a name="superposicion"></a>Superposición de elementos</h3>
+
+&nbsp;&nbsp;&nbsp; CSS permite la superposición de elementos, formando
+pilas de elementos que ocupan áreas comunes de visualización. Para ello
+se utiliza un tercer eje (el eje z) que permite percibir el documento
+como una pila de hojas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para controlar la pila de elementos se utiliza la propiedad <span style="color: red;">z-index</span>, cuyo formato es:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  z-index: valor;<br>
+<br>
+&nbsp;&nbsp;&nbsp; El valor es un número que indica la posición en la
+pila: 0 para el de más abajo, 1 para el siguiente, 2 para el siguiente,
+etc. También se pueden asignar valores negativos. Si no se especifica
+se presupone el valor 0.<br>
+
+<h3><a name="control"></a>Control de la visibilidad del elemento</h3>
+
+&nbsp;&nbsp;&nbsp; La propiedad <span style="color: red;">visibility</span> permite controlar si un elemento es visible o no. Admite los valores:<br>
+<ul>
+  <li>visible.- valor por defecto.</li>
+  <li>hidden.- el elemento no se muestra.</li>
+  <li>collapse.- en elementos de filas o columnas contrae los bordes.
+Si el elemento no tiene filas ni columnas su comportamiento es el mismo
+que hidden.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Otra manera de ocultar un elemento es mediante el uso de la propiedad <span style="color: red;">display</span>
+con el valor none, como se muestra en el apartado siguiente. La
+diferencia que existe es que con "visibility: hidden;" el elemento
+sigue ocupando espacio en la página mientras que con "display: none;"
+no se genera su caja contenedora y, por lo tanto, no ocupa ningún
+espacio.<br>
+<br>
+&nbsp;&nbsp;&nbsp; "display: none;" se complementa generalmente con
+código JavaScript, que permite mostrar/ocultar elementos cuando el
+usuario realiza alguna acción, por ejemplo, al pulsar un botón.<br>
+
+<h3><a name="diseno"></a>El diseño mediante la propiedad display</h3>
+
+&nbsp;&nbsp;&nbsp; La propiedad <span style="color: red;">display</span> define el tipo de caja que generará el elemento. Admite los siguientes valores:<br>
+<ul>
+  <li>inline.- valor por defecto. Genera una caja en la misma línea,
+sin saltos de línea ni antes ni después del elemento. Un elemento
+inline ocupa solo el espacio necesario que necesita el contenido.</li>
+  <li>none.- no se genera ningún tipo de caja, por lo que el elemento no se visualiza.</li>
+  <li>block.- se genera una caja de bloque con un salto de línea antes
+y otro después del elemento.Un elemento de bloque ocupa todo el espacio
+hasta el final de la línea, aunque su contenido no ocupe todo el
+espacio.</li>
+  <li>list-item.- el elemento generará una caja de bloque (block) y una de línea (inline) para la marca de lista.</li>
+  <li>table.- el elemento se comporta como una tabla, con un salto de línea antes y después del elemento.</li>
+  <li>inherit.- el elemento hereda el valor de la propiedad del elemento padre.</li>
+  <li>inline-block.- se genera una caja de bloque presentada como una
+caja inline. Lo interesante de esta opción es que al ser un bloque se
+puede informar medidas de tamaño.</li>
+  <li>inline-table.- se genera una caja en línea sin saltos de línea, como la etiqueta &lt;table&gt;.<br>
+  </li>
+  <li>run-in.- se genera una caja en línea o una caja de bloque dependiendo del contexto.<br>
+  </li>
+  <li>table-caption.- el elemento se comporta como un encabezamiento de tabla (&lt;caption&gt;).<br>
+  </li>
+  <li>table-cell.- el elemento se comporta como una celda de una tabla.<br>
+  </li>
+  <li>table-column.- el elemento se comporta como una columna de una tabla.<br>
+  </li>
+  <li>table-column-group.- el elemento se comporta como un grupo de columnas de una tabla (&lt;colgroup&gt;).<br>
+  </li>
+  <li>table-footer-group.- el elemento se comporta como un pie de grupo de filas de una tabla.<br>
+  </li>
+  <li>table-header-group.- el elemento se comporta como un encabezado de grupo de filas de una tabla.<br>
+  </li>
+  <li>table-row.- el elemento se comporta como una fila de tabla.<br>
+  </li>
+  <li>table-row-group.- el elemento se comporta como un grupo de filas de una tabla.<br>
+  </li>
+</ul>
+&nbsp;&nbsp;&nbsp; Como se ve, la propiedad display tiene un conjunto
+de valores relacionados con la creación de tablas que permite presentar
+contenido en forma de tabla prescindiendo de las etiquetas table, tr,
+etc. de HTML. Ver ejemplos de la página 336 y sucesivas.<br>
+
+</body></html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<!-- archivo Parte 2/code/cap1001.html -->
+<head>
+<title>Posicionamiento con uso de porcentajes</title>
+<style>
+#id1 {width: 200px;
+	height: 100px;
+	border: 4pt black dashed;
+	background-color: yellow;
+	position: static;
+	overflow: scroll;}
+#id2 {
+	height: 100px;
+	border: 4pt black dashed;
+	background-color: yellow;
+	position: absolute;
+	overflow: scroll;
+	left: 10%;
+	right: 20%;
+	}
+#id3 {width: 200px;
+	height: 100px;
+	border: 4pt black dashed;
+	background-color: yellow;
+	position: absolute;
+	overflow: scroll;
+	right: 10px;}
+</style>
+</head>
+<h1>Posicionamiento con uso de porcentajes</h1>
+<body>
+<div>
+<h3>Párrafo sin posicionamiento</h3>
+<p id=id1>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula leo id lectus faucibus eu rhoncus nisl rutrum. Nunc orci sapien, commodo a commodo vitae, sodales ut sapien. Cras ut lacus augue, ut iaculis mauris. Suspendisse potenti. Quisque ultrices malesuada dolor, vel cursus velit posuere at. Vestibulum ac tellus at urna rhoncus luctus non vitae odio...
+</p>
+<h3>Párrafo con posicionamiento absolute 10% left y 20% right</h3>
+<p id=id2>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula leo id lectus faucibus eu rhoncus nisl rutrum. Nunc orci sapien, commodo a commodo vitae, sodales ut sapien. Cras ut lacus augue, ut iaculis mauris. Suspendisse potenti. Quisque ultrices malesuada dolor, vel cursus velit posuere at. Vestibulum ac tellus at urna rhoncus luctus non vitae odio...
+</p>
+<h3>Otro párrafo con posicionamiento absolute 10px</h3>
+<p id=id3>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula leo id lectus faucibus eu rhoncus nisl rutrum. Nunc orci sapien, commodo a commodo vitae, sodales ut sapien. Cras ut lacus augue, ut iaculis mauris. Suspendisse potenti. Quisque ultrices malesuada dolor, vel cursus velit posuere at. Vestibulum ac tellus at urna rhoncus luctus non vitae odio...
+</p>
+</body>
+</html>

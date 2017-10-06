@@ -1,0 +1,633 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Objeto String</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<h1>Objeto String</h1>
+
+<a href="#gestion">Gestión de cadenas de texto</a><br>
+
+<a href="#objeto">Objeto String</a><br>
+
+<a href="#expresiones">Expresiones regulares</a><br>
+
+<br>
+
+<h3><a name="gestion"></a>Gestión de cadenas de texto</h3>
+
+&nbsp;&nbsp;&nbsp; Para declarar una cadena de caracteres se utilizan
+las sintaxis:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var variable =
+"cadena";&nbsp;&nbsp; // Con comillas dobles<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var variable =
+'cadena';&nbsp;&nbsp; // Con comillas simples<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Si la cadena contiene comillas, estas deberán ir
+precedidas de un caracter de escape (\), por ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var miCadena =
+"El titulo del libro es \"JavaScript\"";</p>
+
+&nbsp;&nbsp;&nbsp; Para unir o concatenar dos o más cadenas se utiliza
+el operador "+". Si el contenido de alguna de las cadenas es numérico
+se transforma temporalmente en cadena para poder realizar la
+concatenación. Por ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var miCad1 =
+"El titulo del libro es: ";<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var miCad2 = "\"JavaScript\"";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var miCad&nbsp; = miCad1 +
+miCad2;<br>
+</p>
+
+<h3><a name="objeto"></a>Objeto String</h3>
+
+&nbsp;&nbsp;&nbsp; Las cadenas de caracteres son objetos de tipo
+String, con sus métodos y propiedades que facilitan su manipulación.
+Por ejemplo, la propiedad length contiene la longitud en bytes de la
+cadena. Una característica es que para su creación no es necesario
+utilizar el operador new.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El acceso a los métodos y propiedades de un objeto
+String se hace mediante la notación de puntos conocida. Por ejemplo,
+miCadena.length contiene la longitud de miCadena.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Una cadena se puede expresar mediante su nombre de
+variable (por ejemplo, miCadena) o directamente por la propia cadena de
+caracteres, lo que permite una codificación como la siguiente:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var intLongitud = "El
+titulo del libro es: \"JavaScript\"".length;</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Métodos más comunes</span><br>
+
+<br>
+
+<ul>
+
+  <li>charAt().- accede a un carácter de la cadena, utilizando un
+índice que comienza por 0.</li>
+  <li>charCodeAt().- devuelve el valor numérico decimal del código
+ASCII correspondiente a un carácter de la cadena.</li>
+  <li>fromCharCode().- devuelve los caracteres ASCII que corresponden a
+los códigos decimales (separados por comas).</li>
+  <li>substring().- devuelve una subcadena de una cadena a partir de
+una posición de inicio y fin.</li>
+  <li>slice().- es equivalente al método substring().</li>
+  <li>substr().- devuelve una subcadena de una cadena a partir de una
+posición de inicio y una longitud.</li>
+  <li>indexOf().- devuelve la posición de inicio de una subcadena en
+una cadena. Si la subcadena no está contenida en la cadena el valor
+devuelto es -1.</li>
+  <li>lastIndexOf().- devuelve la posición de inicio de la última
+subcadena en una cadena. Si no existe devuelve -1.</li>
+  <li>toLowerCase().- convierte a minúsculas.</li>
+  <li>toUpperCase().- convierte a mayúsculas.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Para la codificación y decodificación de caracteres
+especiales existen las funciones escape() y unescape().<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Métodos vinculados
+al formateo HTML</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Existe un conjunto de métodos para el objeto String
+que está relacionado con las etiquetas HTML de formateo de texto. Por
+ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var miCadena = "Esta es la
+cadena";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; document.write
+(miCadena.bold());&nbsp;&nbsp; // Dará como resultado &lt;b&gt;Esta es
+la cadena&lt;/b&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Es decir, el mecanismo de las funciones que se
+describirán a continuación consiste en añadir etiquetas HTML a las
+cadenas de caracteres. Con este esquema existen los siguientes métodos:<br>
+
+<ul>
+
+  <li>anchor().- crea las etiquetas &lt;a name="parámetro"&gt; cadena
+&lt;/a&gt;. Así, la instrucción "La cadena".anchor("elname") generaría
+el código: &lt;a name="elname"&gt; La cadena &lt;/a&gt;<br>
+  </li>
+  <li>big().- genera &lt;big&gt; La cadena &lt;/big&gt;.</li>
+  <li>blink().- genera &lt;blink&gt; La cadena &lt;/blink&gt;.</li>
+  <li>bold().- genera &lt;b&gt; La cadena &lt;/b&gt;.</li>
+  <li>fixed().- genera &lt;tt&gt; La cadena &lt;/tt&gt;.</li>
+  <li>fontcolor(miColor).- genera &lt;font color="miColor"&gt; La
+cadena &lt;/font&gt;.</li>
+  <li>fontsize(miSize).- genera &lt;font size="miSize"&gt; La cadena
+&lt;/font&gt;.</li>
+  <li>italics().- genera &lt;i&gt; La cadena &lt;/i&gt;.</li>
+  <li>link(url).- similar a anchor(). Genera &lt;a href="url"&gt; La
+cadena &lt;/a&gt;. Por ejemplo, "Pincha
+aquí".link("www.tiernogalvan.es") generará &lt;a
+href="www.tiernogalvan.es"&gt;Pincha aquí&lt;/a&gt;.</li>
+  <li>small().- genera &lt;small&gt; La cadena &lt;/small&gt;.</li>
+  <li>strike().- genera &lt;strike&gt; La cadena &lt;/strike&gt;.</li>
+  <li>sup().- genera &lt;sup&gt; La cadena &lt;/sup&gt;.</li>
+  <li>sub().- genera &lt;sub&gt; La cadena &lt;/sub&gt;.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Hay que tener en cuenta que aunque disponemos de
+estos métodos, la tendencia debe ser que todo lo referente a estilos se
+sitúe en ficheros CSS.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Acceso a los
+caracteres de una cadena</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método charAt() permite acceder a un caracter de
+una cadena. Para recorrer todos los caracteres de una cadena puede
+utilizarse el siguiente código:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var miCadena = "Esta es la
+cadena";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; for (var i = 0; i &lt;
+miCadena.length; i++) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+document.write(miCadena.charAt(i));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; El método charAt() es un método de lectura por lo
+que la siguiente instrucción sería incorrecta:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; miCadena.charAt(2) =
+"C";&nbsp; // Es incorrecto.</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Código ASCII</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método de lectura charCodeAt() devuelve el valor
+decimal correspondiente al caracter que ocupa la posición pasada en el
+parámetro (el primero es el 0) dentro de la cadena. Así, no es dificil
+conocer los códigos decimales de la tabla ASCII correspondientes a
+todos los caracteres de una cadena. Basta recorrer la cadena de forma
+similar al ejemplo anterior. Un ejemplo utilizando este método sería:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write ("Esta es
+la cadena".charCodeAt(2));<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; que en este caso concreto mostraría: 116.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método fromCharCode() permite definir una cadena
+a partir de los códigos decimales ASCII:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var miCadena =
+String.fromCharCode(201, 115, 116, 97)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; // El valor asignado a
+miCadena es "Esta"<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Tabla de caracteres</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para que el navegador sepa la tabla de caracteres
+que debe utilizar y el idioma utilizado en la página, puede añadirse el
+siguiente código:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;?xml version="1.0"
+encoding="ISO-8859-1"?&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;html
+xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-ES" lang="es"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Subcadenas</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método substring() permite extraer una subcadena
+de una cadena. Admite como parámetros la posición inicial y la final
+(que no se incluye en la extracción) de la subcadena. Por ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var miCadena = "Esta es la
+cadena";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; document.write
+(miCadena.substring(1,3));&nbsp;&nbsp; // Dará como resultado st</p>
+
+&nbsp;&nbsp;&nbsp; El método slice() es equivalente a substring().<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método substr() es parecido; el segundo parámetro
+indica la longitud de la subcadena.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Búsqueda dentro de
+una cadena</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método lastIndexOf() devuelve el índice de la
+posición de la última subcadena coincidente con el texto buscado que
+aparece dentro de una cadena. Si no hay coincidencias devuelve -1. Un
+par de ejemplos:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var str1 = "Texto1
+Texto2".lastIndexof("Tex");&nbsp;&nbsp; // Devuelve 7<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var str2 = "Texto1
+Texto2".lastIndexOf("TTT");&nbsp;&nbsp; // Devuelve -1</p>
+
+&nbsp;&nbsp;&nbsp; Este método puede ser útil para obtener la extensión
+del nombre de un fichero.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método indexOf() es similar solo que devuelve la
+posición de la primera aparición de una subcadena dentro de la cadena.
+Opcionalmente se puede indicar un punto de partida de la búsqueda.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Conversión a
+mayúsculas o minúsculas</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Los métodos toLowerCase() y toUpperCase() permiten
+pasar una cadena a minúsculas o mayúsculas respectivamente. Un ejemplo
+de uso puede ser para comparar dos cadenas sin que se diferencien las
+mayúsculas de las minúsculas. Estos métodos combinados con substring(),
+substr() y charAt() permiten cambiar subcadenas.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Evaluación de una
+cadena</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La función eval() permite evaluar una cadena de
+caracteres, ejecutándo el código y devolviendo el resultado. Entre sus
+utilidades se encuentra la de ejecutar un código creado de manera
+dinámica dentro de una variable de tipo String. Veamos un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var numpag = 10;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; document.write
+(eval("numpag"));&nbsp; // Visualiza el contenido de numpag: 10<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var var1 = "numpag";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Modo indirecto (sin comillas)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write
+(eval(var1)); &nbsp; &nbsp;&nbsp; // Visualiza el contenido de numpag:
+10<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write (eval("20 +
+4");&nbsp;&nbsp; // Visualiza 24</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Escape de
+caracteres</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Algunos caracteres requieren el uso de caracteres de
+escape para no generar problemas en su utilización dentro de una página
+web. Algunos de los casos más usuales son las comillas, las vocales
+acentuadas, etc.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La función escape() codifica la cadena de forma que
+los caracteres especiales quedan representados mediante el formato %H,
+siendo H el número hexadecimal correspondiente. Para recuperar una
+cadena codificada, a su formato original, se utiliza la función
+unescape(), que devuelve una cadena limpia con los caracteres
+"escapados" convertidos a su valor real. Un ejemplo sería:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var miCadena1 = "áéíóú
+aeiou &amp;%'";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; document.write
+(escape(miCadena1) + "&lt;br&gt;");&nbsp; // Devuelve
+%E1%E9%ED%F3%FA%20aeiou%20%26%25%27<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; var miCadena2 =
+unescape(miCadena1);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write
+(miCadena2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; //
+Devuelve áéíóú aeiou &amp;%'<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; cuyo resultado se muestra a continuación:<br>
+
+<p class="resul">
+<script language="javascript">
+    var miCadena1 = "áéíóú aeiou &%'";
+    document.write (escape(miCadena1) + "<br>");  // Devuelve %E1%E9%ED%F3%FA%20aeiou%20%26%25%27
+    var miCadena2 = unescape(miCadena1);
+    document.write (miCadena2);                   // Devuelve áéíóú aeiou &%'
+  </script></p>
+
+<h3><a name="expresiones"></a>Expresiones regulares</h3>
+
+&nbsp;&nbsp;&nbsp; Las expresiones regulares simplifican ciertas
+manipulaciones de cadenas, verificaciones de formatos (e-mails,
+teléfonos, DNI's, ...), extracciones de subcadenas, etc. Veamos un
+ejemplo que valida una cadena de texto en la que solamente se aceptarán
+letras y espacios y cuya longitud no sobrepasará los 20 caracteres:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;html&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script
+type="text/javascript"&gt;<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; function
+esVálido(str1){<br>
+&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// se crea la expresión regular
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;&nbsp; var expreg = new RegExp("^[a-zA-Z ]{1,20}$","g");
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;&nbsp; if (expreg.test(str1)){
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return str1 + " es OK";
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;&nbsp; } else {
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return str1 + " es KO";
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // KO:
+por tener un número
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+document.write(esVálido("1Ricardo"), "&lt;BR /&gt;");
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // OK
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+document.write(esVálido("Juan"), "&lt;BR /&gt;");
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // KO:
+por tener un acento
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+document.write(esVálido("José"), "&lt;BR /&gt;");
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// OK
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+document.write(esVálido("Carlos Alberto Salas"), "&lt;BR /&gt;");
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // KO:
+demasiado largo
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+document.write(esVálido("Carlos Alberto Salas Fuentes"), "&lt;BR
+/&gt;");
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &lt;/script&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &lt;/head&gt;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;body&gt;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/body&gt;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/html&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado es:<br>
+
+<p class="resul">
+1Ricardo es KO<br>
+Juan es OK<br>
+José es KO<br>
+Carlos Alberto Salas es OK<br>
+Carlos Alberto Salas Fuentes es KO<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; El uso de las expresiones regulares tiene el
+problema de dominar la definición de la cadena de texto que describe la
+validación deseada. Una vez conseguida, se utilizará el método test del
+objeto RegExp que devolverá verdadero o falso dependiendo de si la
+cadena en cuestión cumple con la cadena de verificación.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Definición de
+expresiones regulares</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para crear un objeto RegExp es preciso definir una
+expresión regular. Para crear una instancia al objeto se utiliza la
+sintaxis:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var expreg = new RegExp
+(cadenaExpReg, opción);</p>
+
+&nbsp;&nbsp;&nbsp; El parámetro cadenaExpReg es la cadena de texto de
+la expresión regular, que se analizará más adelante. El parámetro
+opción
+puede tener uno de estos valores:<br>
+
+<ul>
+
+  <li>g.- indica el proceso en toda la cadena.</li>
+  <li>i.- no diferencia entre mayúsculas y minúsculas.</li>
+  <li>gi.- combinación de las dos opciones anteriores.</li>
+  <li>"".- indica no aplicar ninguna de las opciones.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; También está permitida, para crear un objeto RegExp,
+la siguiente sintaxis:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var expreg =
+/cadena_ExpReg/opción;</p>
+
+&nbsp;&nbsp;&nbsp; Los caracteres que pueden utilizarse en una
+expresión regular son:<br>
+
+<ul>
+  <li>^ .- inicio de cadena.</li>
+  <li>$ .- fin de cadena.</li>
+  <li>. .- cualquier carácter.</li>
+  <li>[xyz] .- grupo de caracteres permitido.</li>
+  <li>[a-z], [A-Z], [0-9] .- rango de caracteres válidos.</li>
+  <li>[^rango] .- rango de caracteres NO válido.</li>
+  <li>x|y .- El carácter x o el carácter y.</li>
+  <li>( ) .- permiten agrupar caracteres.</li>
+  <li>* .- el carácter precedente se acepta de 0 a n veces.</li>
+  <li>+ .- el carácter precedente se acepta de 1 a n veces.</li>
+  <li>? .- el carácter precedente se acepta de 0 a 1 vez.</li>
+  <li>{n} .- el carácter precedente se acepta solo n veces.</li>
+  <li>{n, } .- el carácter precedente se acepta al menos n veces.</li>
+  <li>{n, m} .- el carácter precedente se acepta entre n y m veces.</li>
+  <li>\ .- carácter escape.</li>
+  <li>\b .- límite de palabra (espacio, salto de línea, inicio o fin de cadena).</li>
+  <li>\B .- cualquier carácter que no sea límite de palabra.</li>
+  <li>\d .- indica dígitos. Es similar a [0-9].</li>
+  <li>\D .- indica NO dígitos. Es similar a [^0-9].</li>
+  <li>\s .- indica caracteres de espaciado (espacio, tabulador o salto
+de página).</li>
+  <li>\S .- indica cualquier carácter que no sea de espaciado.</li>
+  <li>\w .- indica cualquier carácter alfanumérico (incluye el guión
+bajo (_)).</li>
+  <li>\W .- cualquier carácter que no sea alfanumérico ni el guión bajo.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Ver ejemplos en página 445.<br>
+&nbsp;&nbsp;&nbsp; En
+http://codexexempla.org/articulos/2008/exp_regulares_2/ex_reg_01.htm
+hay un comprobador de expresiones regulares.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">El método test()
+del objeto RegExp</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El objeto RegExp tiene el método test() para
+verificar si una cadena pasada como parámetro cumple con la expresión
+regular; si cumple devuelve true y si no devuelve false.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Un ejemplo de una función que compruebe si una
+cadena corresponde a un NIF menor de 80000000-X podría ser:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; function validarNIF
+(cadena) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; expresion = new RegExp
+("^[0-7][0-9]{7}-[A-Z]$", "g");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; valido = (expresion.test (cadena));<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; return (valido);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo funcionamiento puede comprobarse pinchando <a href="validarNIF.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">El método exec()
+del objeto RegExp</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método exec() devuelve la primera coincidencia
+encontrada dentro de una cadena pasada como parámetro en base a la
+expresión regular utilizada. Permite así extraer cierta información de
+dentro de un texto: dnis, teléfonos, direcciones de correo, ...<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">El método match()
+del objeto String</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método match() es similar a exec() con la
+particularidad de que, en vez de devolver la primera aparición,
+devuelve una tabla con tantos elementos como datos existan en el texto
+que coincidan con la expresión regular correspondiente. El método
+match() utiliza como parámetro una expresión regular pues define
+automáticamente un objeto RegExp.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Un ejemplo de uso sería:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var strCadena = "Este es
+el texto a analizar. En concreto bla, bla, bla, ...";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; var misDNIs =
+strCadena.match("[0-7][0-9]{7}-[A-Z]", "g");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write (misDNIs);<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">El método split()
+del objeto String</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método split() permite obtener una tabla con las
+subcadenas detectadas entre los separadores expecificados (sin
+incluirlos).<br>
+<br>
+
+&nbsp;&nbsp;&nbsp; Un ejemplo de uso sería:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Lista de cadenas con
+distintos separadores<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; var miCadena = "HTML 5 -
+CSS 3, JavaScript; PHP - MySQL";<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Mostrar la cadena<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; document.write("CADENA COMPLETA&lt;br&gt;&lt;br&gt;");<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; document.write(miCadena, "&lt;br&gt;");<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Crear la expresión regular<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; var expresion = new RegExp("[-,;]+", "g");<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Crear tabla con las cadenas incluidas entre los separadores<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; var tabla = miCadena.split(expresion);<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Mostrar los elementos de la tabla a razón de uno por cada línea<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (tabla == null) {<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; document.write("La tabla está vacía. Comprobar la
+expresión regular");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } else {<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; document.write("&lt;br&gt;Subcadenas
+encontradas:&lt;br&gt;&lt;br&gt;");<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; for (var i = 0; i &lt; tabla.length; i++) {<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write(tabla[i], "&lt;br&gt;");<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; };<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; };<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado puede verse pinchando <a href="split.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">El método
+replace() del objeto String</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método replace() del objeto String permite
+reemplazar caracteres dentro de una cadena de texto. Funciona en
+colaboración con una expresión regular. Puede utilizarse para insertar
+ciertas etiquetas HTML en un texto. Ver ejemplos de pag. 450.
+</body></html>

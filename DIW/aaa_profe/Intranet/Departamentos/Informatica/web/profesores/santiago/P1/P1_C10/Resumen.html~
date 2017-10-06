@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Interactividad y Web Storage</title>
+
+  
+</head><body>
+<div style="text-align: center;"><font style="color: rgb(51, 0, 153);" size="+3">Interactividad y Web Storage</font><br>
+</div>
+
+<div><span style="font-weight: bold;"></span><br>
+&nbsp;&nbsp;&nbsp; El
+modelo o estructura DOM (Document Object Model), incorporado a HTML 5,
+permite gestionar cada componente de la página web desde código de
+programa. Es un estándar que permite acceder a los objetos de un
+documento y trabajar sobre sus propiedades mediante un conjunto de
+métodos y funciones.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">La etiqueta details</span>
+permite incluir soporte nativo y eliminar la necesidad del uso de
+código Javascript específico. Suministra un área que se puede expandir
+o reducir como muestra el siguiente ejemplo:<br>
+<br>
+<table border="2">
+<tr>
+  <td>
+<br/>
+&nbsp;&nbsp;&nbsp; &lt;details open&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;summary&gt;Detalles del libro Curso
+de Excel&lt;/summary&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;p&gt;El libro tiene 400 páginas y
+está compuesto por 12 capítulos.&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;p&gt;Capítulo 1.-
+Introducción.&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;p&gt;Capítulo 2.- La hoja de
+cálculo&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;/details&gt;<br/><br/>
+  </td>
+  <td>
+<br/>
+    <details open>
+       <summary>Detalles del libro Curso de Excel</summary>
+       <p>&nbsp;&nbsp;&nbsp;El libro tiene 400 páginas y está compuesto por 12 capítulos.</p>
+       <p>&nbsp;&nbsp;&nbsp;Capítulo 1.- Introducción.</p>
+       <p>&nbsp;&nbsp;&nbsp;Capítulo 2.- La hoja de cálculo</p>
+    </details>
+<br/>
+  </td>
+</tr>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta details puede contener opcionalmente la <span style="color: red;">etiqueta summary</span>
+que representa el resumen de los detalles que se mostrarán a
+continuación. Los contenidos del elemento dependiente summary se pueden
+expandir o reducir por el simple paso del ratón sobre el área. El
+atributo <span style="color: red;">open</span> de la etiqueta details indica si el contenido se muestra expandido; si se omite, el contenido quedará oculto.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="color: red;">Las etiquetas menu y command</span>,
+que aún no están plenamente implementadas en los navegadores aunque ya
+están definidos en el estándar, permiten crear barras de herramientas y
+menús de contexto con iconos y código asociados para ejecutar scripts
+cuando se activan.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta menu define un menú de opciones cuyo
+tipo se concreta con el atributo type a través de uno de los tres
+valores siguientes:<br>
+<ul>
+  <li>context menu.- menú de contexto.</li>
+  <li>toolbar.- barra de herramientas.</li>
+  <li>list.- lista de acciones.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Cada opción del menú incluye una etiqueta command
+que tiene un atributo onclick que permite indicar el nombre de una
+función de script que resolverá el evento.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta command tiene como atributos
+principales: type (tipo), label (etiqueta) e icon (elemento). El
+atributo type puede tener los valores:<br>
+<ul>
+  <li>radio.- muestra un botón de opciones.<br>
+  </li>
+  <li>checkbox.- muestra una casilla de verificación.<br>
+  </li>
+  <li>command.- muestra un botón.<br>
+  </li>
+</ul>
+&nbsp;&nbsp;&nbsp; El atributo disabled permite desactivar un comando y
+el atributo checked, con el valor checked, indica que el comando está
+seleccionado (para los tipos radio y checkbox).<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un ejemplo:<br>
+<br>
+<table border="2">
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;menu type="toolbar"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;li&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;menu label="Archivo"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;button type="button"
+onclick="fnuevo()"&gt;Nuevo...&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;button type="button"
+onclick="fabrir()"&gt;Abrir...&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;button type="button"
+onclick="fguardar()"&gt;Guardar&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;button type="button"
+onclick="fguardarcomo()"&gt;Guardar...&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/menu&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;li&gt;<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;menu label="Editar"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;button type="button"
+onclick="fcopia()"&gt;Copiar&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;button type="button"
+onclick="fcorta()"&gt;Cortar&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;button type="button"
+onclick="fpega()"&gt;Pegar&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;button type="button"
+onclick="fguardarcomo()"&gt;Guardar...&lt;/button&gt;<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/menu&gt;<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;li&gt;<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;menu label="Ayuda"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;li&gt;&lt;a
+href="help.html"&gt;Ayuda&lt;/a&gt;&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;li&gt;&lt;a href="acerca.html"&gt;Acerca
+de&lt;/a&gt;&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/menu&gt;<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/menu&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  . . .<br>
+</td>
+<td>
+</td>
+</tr>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Faltaría por definir las funciones citadas en el código.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para almacenar datos en el cliente pueden utilizarse varias técnicas:<br>
+<ul>
+  <li>Cookies.- archivos que se almacenan en el equipo del navegador.</li>
+  <li>Web storage.- almacenamiento de variables y valores mediante
+sessionStorage y localStorage, que persisten durante la sesión o
+indefinidamente, respectivamente.</li>
+  <li>Web SQL.- se crea una base de datos en el cliente, con un máximo de 5 Mb, a la que se accede mediante código estándar SQL.<br>
+  </li>
+</ul>
+
+</div>
+<br>
+</body></html>

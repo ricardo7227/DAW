@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file006.html -->
+<html>
+<head>
+<script type="text/javascript">
+
+function esVálido(str1){
+// se crea la expresión regular
+	var expreg = new RegExp("^[a-zA-Z ]{1,20}$","g");
+	if (expreg.test(str1)){
+		return str1 + " es OK";
+	} else {
+		return str1 + " es KO";
+	}
+}
+// KO: por tener un número
+document.write(esVálido("1Ricardo"), "<BR />");
+// OK
+document.write(esVálido("Juan"), "<BR />");
+// KO: por tener un acento
+document.write(esVálido("José"), "<BR />");
+// OK
+document.write(esVálido("Carlos Alberto Salas"), "<BR />");
+// KO: demasiado largo
+document.write(esVálido("Carlos Alberto Salas Fuentes"), "<BR />");
+
+
+</script>
+</head>
+<body>
+</body>
+</html>

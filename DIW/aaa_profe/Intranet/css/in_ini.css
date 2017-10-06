@@ -1,0 +1,19 @@
+.imagenes_enlaces_importantes {
+//                   height: 20%;
+                   float: left;
+                   margin: 3%;
+}
+.imagenes_enlaces_importantes img {
+                   width: 100%;
+                   height: 100%;
+}
+.imagenes_enlaces {background-color: white;
+                   color: black;
+                   width: 44%;
+                   height: 20%;
+                   float: left;
+                   margin: 3%;
+}
+.imagenes_enlaces img { width: 100%;
+                        height: 100%;
+}

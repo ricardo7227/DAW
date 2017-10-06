@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file042.html -->
+<html>
+<head>
+	<title>Documento de prueba</title>
+</head>
+<body>
+	<h1 id="idh1" style="color:red">Un texto cualquiera</h1>
+	<p id="idp1" style="color:green">Un párrafo de prueba</p>
+	<p id="idp2"style="color:blue">otro párrafo de prueba</p>
+<script type="text/javascript">
+	var v1 = document.getElementById("idh1");
+	// etiqueta obtenida
+	document.write(v1.tagName + "<br>");
+
+	// le cambiamos la letra
+	v1.style.fontFamily = "Courier";
+
+	// etiqueta obtenida
+	var v2 = v1.nextSibling;
+	document.write(v2.tagName + "<br>");
+
+	// le cambiamos la letra
+	v2.style.fontFamily = "Arial";
+
+</script>
+</body>
+</html>

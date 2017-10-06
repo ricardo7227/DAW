@@ -1,0 +1,54 @@
+
+.iniadconbody /*body*/
+{
+background:url(fondo_web.jpg);
+}
+.iniadconfm1/*fm1*/ { background-color: white;}	
+
+
+.iniadconmenu1 /*menu1*/{ 
+	color: #0000FF;
+	font: bold 15pt Times New Roman;
+}
+
+
+.iniadconh1/*h1*/{
+color:white;
+}
+
+
+.iniadconmenu2 /*menu2*/{
+	color: #738FBF;
+	font: bold 8pt verdana;
+}
+.iniadconmenu2:hover {
+color: orange;
+}
+.iniadconfondo/*fondo*/
+{
+
+margin:10px;
+color:white;
+font: bold 11pt Times New Roman;
+}
+.iniadconclase/*clase*/
+{
+background-color:#5858FA;
+margin:15px;
+}
+
+.iniadcon_titulos/*parr33*/
+{
+color:#00FFFF;
+font-weight:bold;
+}
+
+.iniadcon_nombres/*parr34*/
+{
+font-weight:bold;
+}
+.iniadcon_nombres:hover
+{
+color:orange;
+}
+

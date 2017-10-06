@@ -1,0 +1,583 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Formularios</title>
+
+  
+</head><body style="background-color: rgb(255, 250, 220); width: 851px;">
+<div style="text-align: center; color: rgb(0, 0, 153); background-color: rgb(200, 230, 255);"><font size="+3"><span style="font-weight: bold;">FORMULARIOS</span><br>
+</font></div>
+
+<div align="left">
+<br>
+<font size="+1"><span style="font-weight: bold;">INDICE</span></font><br>
+<br>
+<a href="#formularios">Formularios en HTML</a><br>
+<a href="#controles">Controles de formularios</a><br>
+<a href="#otros">Otros controles</a><br>
+<a href="#usar">Cómo usar los datos de un formulario</a><br>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp; HTML ofrece la posibilidad de crear formularios
+e insertar cajas de texto, botones de opción y otros controles que
+permiten interactuar con el usuario.<br>
+<br>
+<a name="formularios"></a> <font size="+1"><span style="font-weight: bold;">Formularios en HTML</span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Quizá las primeras páginas que hicieron uso de
+esta posibilidad fueran las de los buscadores, que utilizaron
+formularios muy sencillos, con un solo elemento conocido como caja de
+texto, donde se introduce la cadena a buscar.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los formularios pueden contener gran diversidad de
+elementos que permiten un amplio abanico de posibilidades y les
+confieren gran versatilidad; un formulario no es más que un conjunto de
+elementos que permiten al usuario introducir datos de forma sencilla.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta que permite crear formularios es <span style="color: red;">&lt;form&gt; ... &lt;/form&gt;</span>,
+dentro de la que se pueden insertar todos los controles. Un ejemplo de
+un formulario básico, que contiene solamente una
+caja de texto, es el siguiente:<br>
+<br>
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+      <td>&nbsp;&nbsp; &lt;form&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Nombre: &lt;input
+type="text"/&gt;<br>
+&nbsp;&nbsp;
+&lt;/form&gt;<br>
+      </td>
+      <td align="center">
+      <form>Nombre: <input type="text"></form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; La novedad con respecto a las páginas anteriores es
+que en este caso el
+usuario puede introducir un texto y enviarlo al pulsar Intro. Para
+enviar el texto a algún sitio hay que utilizar el atributo <span style="color: red;">action</span>; en el ejemplo anterior el texto que
+se introduzca no se envía a ningún sitio.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En los casos en los que el formulario conste de más
+de un control deberá incluirse un botón de envío de la información.
+Para formularios con un único elemento no es necesario y se
+sobreentiende que al pulsar Intro se quiere enviar.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta <span style="color: red;">input</span>
+permite insertar varios tipos de controles entre los que se encuentra
+el botón de envío, para el que habrá que especificar <span style="color: red;">type="submit"</span>. El texto por defecto del
+botón depende del navegador pero puede especificarse con el atributo <span style="color: red;">value</span>.<br>
+<br>
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+      <td>&nbsp;&nbsp; &lt;form&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Nombre: &lt;input
+type="text"/&gt;&lt;br/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;br/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;input type="submit"
+value="ENVIAR"/&gt;<br>
+&nbsp;&nbsp;
+&lt;/form&gt;<br>
+      </td>
+      <td align="center"><format>Nombre: <input type="text"><br>
+      <br>
+      <input value="ENVIAR" type="submit"></format> </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Dentro de la misma página pueden existir varios
+botones con lo que se hace recomendable el uso del atributo <span style="color: red;">name</span> que permita al servidor conocer cuál
+se ha pulsado. Un ejemplo típico puede ser la inserción de botones de
+movimiento que permitan diferenciar entre aariba, abajo, izquierda y
+derecha. Así, una etiqueta input más completa tendría la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;input type="submit"
+value="arriba" name="b_arriba"/&gt;<br>
+<br>
+<a name="controles"></a> <font size="+1"><span style="font-weight: bold;">Controles de formularios</span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Todos los controles que pueden insertarse en un
+formulario permiten introducir información: unas veces en forma de
+texto de una o varias líneas, oculto o visible, otras en forma de
+elección de una opción, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los controles que pueden crearse con la etiqueta
+input se diferencian mediante el atributo type que puede tomar los
+valores: <span style="color: red;">text, password, radio, checkbox,
+submit, image, reset, file y hidden</span>. Además del atributo type,
+esta etiqueta puede tomar otros atributos que dependen del valor
+asignado a type, es decir, que dependen del tipo de control. Algunos de
+los atributos comunes son <span style="color: red;">name</span>,
+mencionado anteriormente y que se recomienda utilizar siempre y <span style="color: red;">align</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Cajas de texto</span><br>
+<br>
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+      <td>&nbsp;&nbsp;&nbsp; type="text" </td>
+      <td align="center">
+      <form>Texto: <input size="30" maxlength="25" value="size 30 maxlength 25" type="text"></form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Atributos:<br>
+<ul>
+  <li><span style="color: red;">name</span>.- asigna un nombre al
+control.</li>
+  <li><span style="color: red;">size</span>.- tamaño de la caja. El
+valor predeterminado es "20".</li>
+  <li><span style="color: red;">maxlength</span>.- número máximo de
+caracteres que se pueden escribir.
+No hay límite por defecto.</li>
+  <li><span style="color: red;">value</span>.- texto que aparecerá por
+defecto y que se suele utilizar
+para especificar instrucciones o la respuesta más probable.</li>
+  <li><span style="color: red;">align</span>.- admite los valores top,
+middle, bottom, left y right, que
+permite alinear el control con relación a la línea de texto en la que
+se encuentra.<br>
+  </li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Cajas de texto
+para claves</span><br>
+<br>
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+      <td>&nbsp;&nbsp;&nbsp; type="password" </td>
+      <td align="center">
+      <form>Password: <input size="30" maxlength="25" value="size 30 maxlength 25" type="password"></form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Similares a las cajas de texto pero al escribir se
+mostrarán asteriscos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Botones de elección</span><br>
+<br>
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+      <td>
+      <form>&nbsp;&nbsp;&nbsp; type="radio" </form>
+      </td>
+      <td align="center">Sexo: &nbsp;&nbsp; <input name="sexo" value="hombre" type="radio"> Hombre&nbsp;&nbsp; <input name="sexo" value="mujer" checked="checked" type="radio"> Mujer </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Este tipo de controles tiene dos estados: ON o
+seleccionado y OFF o no seleccionado, siendo el valor inicial de todos
+ellos OFF. Puede seleccionarse un botón inicialmente mediante el
+atributo <span style="color: red;">checked</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El ejemplo tiene el código:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Sexo:
+&amp;nbsp;&amp;nbsp; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;input
+type="radio" <span style="color: red;">name</span>="sexo" <span style="color: red;">value</span>="hombre"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+Hombre&amp;nbsp;&amp;nbsp; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;input
+type="radio" name="sexo" value="mujer" <span style="color: red;">checked</span>="checked"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Mujer <br>
+<br>
+donde se puede comprobar que el atributo name coincide para asignar un
+nombre al grupo y el atributo value asigna un nombre diferente a cada
+botón. Así, se pueden crear varios grupos diferentes de botones dentro
+del mismo formulario.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando se envía la información del formulario al
+servidor, de los grupos de botones se envía el nombre del grupo y el
+nombre del botón seleccionado. En el caso del ejemplo se enviaría:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+sexo=mujer&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; o<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; sexo=hombre<br>
+<br>
+&nbsp;&nbsp;&nbsp; Además de los atributos vistos, también tiene <span style="color: red;">align</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Cajas de selección</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; type="checkbox"<br>
+<br>
+&nbsp;&nbsp;&nbsp; Similares a los botones de elección pero permiten
+seleccionar varias de las opciones existentes. Cada caja puede tener
+dos valores: seleccionado o no seleccionado. Para que inicialmente se
+encuentren seleccionados hay que utilizar el atributo <span style="color: red;">checked</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un ejemplo:<br>
+<br>
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+      <td> Deportes favoritos:&lt;br/&gt;&lt;br/&gt;<br>
+&lt;form&gt;<br>
+&lt;input type="checkbox" name="bicicleta"/&gt;Bicicleta&lt;br/&gt;<br>
+&lt;input type="checkbox" name="tenis"/&gt;Tenis&lt;br/&gt;<br>
+&lt;input type="checkbox" name="futbol"/&gt;Fútbol&lt;br/&gt;<br>
+&lt;input type="checkbox" name="atletismo"/&gt;Atletismo<br>
+&lt;/form&gt;<br>
+      </td>
+      <td>Deportes favoritos:<br>
+      <br>
+      <form> <input name="bicicleta" type="checkbox">Bicicleta<br>
+        <input name="tenis" type="checkbox">Tenis<br>
+        <input name="futbol" type="checkbox">Fútbol<br>
+        <input name="atletismo" type="checkbox">Atletismo </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Puede observarse como, a diferencia de los botones
+de elección, el atributo <span style="color: red;">name</span> de las
+cajas de selección son independientes.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Con las cajas de selección también puede utilizarse
+el atributo <span style="color: red;">value</span> que, aunque no es
+imprescindible, a veces puede resultar conveniente. En el ejemplo
+anterior, si se seleccionan&nbsp; los deportes Tenis y Atletismo, al
+servidor se le enviará la siguiente información:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; tenis=ON&amp;atletismo=ON<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si se utiliza el atributo value, al enviar la
+información se sustituye el valor ON por el asignado en value. Por
+ejemplo, si el input relativo al atletismo fuera:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;input type="checkbox"
+name="atletismo" value="SI"/&gt;Atletismo<br>
+<br>
+&nbsp;&nbsp;&nbsp; La información enviada por el navegador sería:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; tenis=ON&amp;atletismo=SI<br>
+<br>
+&nbsp;&nbsp;&nbsp; También puede utilizarse el atributo <span style="color: red;">align</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Imágenes </span><br>
+<br>
+&nbsp;&nbsp;&nbsp; HTML permite una alternativa para insertar un botón
+de envío personalizado al permitir utilizar la imagen que se desee.
+Para insertar este tipo de control se utiliza el atributo <span style="color: red;">type="image"</span> junto con <span style="color: red;">src</span>="Fichero_con_imagen".<br>
+<br>
+&nbsp;&nbsp;&nbsp; Pueden utilizarse (aunque deben ser comprobados) los
+atributos <span style="color: red;">width, height, vspace, hspace y
+border</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Las imágenes de los formularios tienen una función
+extra ya que el navegador envía, cuando el usuario pulsa sobre una
+imagen, las coordenadas x e y sobre las que se ha pulsado, en relación
+a la esquina superior izquierda de la imagen, como si fueran parte de
+la información del formulario. De esta forma, el servidor puede
+realizar diferentes instrucciones dependiendo del lugar de la imagen
+donde se ha pulsado. De hecho este es un método alternativo para crear
+una imagen mapa; para ello basta con usar un código como el siguiente:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;form&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;input
+type="image" src="Imagenmapa.gif"/&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/form&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; El servidor será el que analice la información
+enviada por el navegador y ejecute las instrucciones programadas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Otro atributo que admite el type="image" es <span style="color: red;">name</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Botón de
+inicialización de controles</span><br>
+<br>
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+      <td>&nbsp;&nbsp;&nbsp; type="reset" </td>
+      <td align="center">
+      <form>Texto: <input size="30" maxlength="25" value="size 30 maxlength 25" type="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset"></form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Restablece a sus valores originales los controles
+del formulario.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El atributo <span style="color: red;">value</span>
+permite cambiar el texto del botón. También admite el atributo <span style="color: red;">name</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Botón genérico</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; type="button"<br>
+<br>
+&nbsp;&nbsp;&nbsp; Existe la posibilidad de crear un botón genérico,
+sin ninguna función predefinida. Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;input type="button"
+value="Pulseme"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; La acción a realizar deberá ser codificada en
+lenguajes de script como JavaScript o VBScript. Para insertar el código
+de estos lenguajes se utiliza el atributo <span style="color: red;">onclick</span>:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;input type="button"
+value="Texto del botón" onclick="Código_de_script"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;input type="button"
+value="Cerrar la ventana" onclick="window.close();"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; cuyo resultado puede verse <a href="11_02_script.html">pulsando aquí</a>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Otro ejemplo, que permite utilizar un botón como un
+enlace sería:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;input type="button"
+value="Cargar otra página"<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+onClick="window.location.replace('11_01_basico.html');"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; cuyo resultado puede verse <a href="11_03_script.html">pulsando aquí</a>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; HTML 4.0 introduce la etiqueta <span style="color: red;">button</span> para insertar botones. Dispone del
+atributo <span style="color: red;">type</span>
+con tres valores: submit (envío), reset (reiniciar controles) y button
+(genérico). La innovación de esta etiqueta es que permite insertar en
+el botón imágenes o texto formateado con código HTML. Un ejemplo sería:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;button type="reset"
+name="restablecer"&gt;Restablecer&lt;img src="Imagen.gif"
+alt=""&gt;&lt;/button&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; El texto y la imagen entre la instrucción de inicio
+y la de fin se insertarán en el botón.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Campos ocultos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; type="hidden"<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los campos ocultos son un tipo de control que
+únicamente sirve para incluir información adicional entre los datos del
+formulario. Es un control invisible.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los atributos <span style="color: red;">value y name</span>
+indican los datos y el nombre. Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;input type="hidden"
+name="funcion" value="enviar_mail"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Innovaciones de
+Microsoft</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Microsoft introduce en la etiqueta input una serie
+de atributos comunes a todos los tipos de controles:<br>
+<ul>
+  <li>title.- mostrará un bocadillo explicativo con el texto
+correspondiente.</li>
+  <li>tabindex y notab.- permiten cambiar el orden en que recibirán el
+foco los diferentes controles o elementos al pulsar la tecla TAB.</li>
+  <li>readonly y disabled.- permiten leer solamente y deshabilitar los
+controles, generalmente de texto.<br>
+  </li>
+</ul>
+<a name="otros"></a> <font size="+1"><span style="font-weight: bold;">Otros
+controles</span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Cajas de texto
+multilínea: TEXTAREA</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Son similares a las cajas de texto, con la ventaja
+de que permiten escribir varias líneas. Una vez que estemos escribiendo
+texto dentro de este elemento, la tecla Intro llevará el cursor al
+principio de la siguiente línea.La etiqueta usada para insertar un
+control de este tipo es <span style="color: red;">&lt;textarea&gt; ...
+&lt;/textarea&gt;</span>, que admite varios atributos:<br>
+<br>
+<ul>
+  <li><span style="color: red;">name</span>.- asigna un nombre al
+elemento y será enviado por el
+navegador.</li>
+  <li><span style="color: red;">rows</span>.- número de líneas.</li>
+  <li><span style="color: red;">cols</span>.- número de columnas.</li>
+  <li><span style="color: red;">wrap</span>.- permite controlar el
+comportamiento del cursor al llegar
+al final de la línea. Admite los valores:</li>
+  <ul>
+    <li><span style="color: red;">OFF</span>.- el texto se desplaza
+hacia la izquierda y el cursor no
+saltará a la línea siguiente hasta que se pulse Intro.</li>
+    <li><span style="color: red;">SOFT</span>.- cuando se llega al
+final del área reservada se produce un
+salto de línea. Cuando el navegador envíe el texto volverá a colocarlo
+en una sola línea.</li>
+    <li><span style="color: red;">HARD</span>.- igual al anterior pero
+al mandar la información el
+navegador al servidor enviará también los saltos de línea, como si el
+usuario hubiera pulsado Intro al llegar al final de cada línea.<br>
+    </li>
+  </ul>
+</ul>
+&nbsp;&nbsp;&nbsp; El texto llano que se sitúe dentro de la etiqueta
+textarea será mostrado como contenido inicial del cuadro de texto.<br>
+<br>
+&nbsp;&nbsp;&nbsp; textarea también admite los atributos: <span style="color: red;">align, disabled, readonly, tabindex, notab y title</span>.<br>
+<br>
+<form>&nbsp;&nbsp;&nbsp; <textarea cols="60" rows="3" name="opinion">Escriba
+una opinión acerca de la calidad de este resumen.</textarea>
+</form>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Listas
+desplegables
+</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Permite elegir una o varias de las opciones
+mostradas. Se definen mediante la etiqueta <span style="color: red;">&lt;select&gt;
+... &lt;/select&gt;</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Las opciones se insertan mediante la etiqueta
+<span style="color: red;">option</span>. Ésta admite la etiqueta <span style="color: red;">selected</span> que permite establecer la
+opción u opciones seleccionadas por defecto.<br>
+<br>
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+      <td> &lt;select name="color" size="3" multiple&gt;<br>
+&lt;option selected/&gt;Rojo<br>
+&lt;option/&gt;Amarillo<br>
+&lt;option selected/&gt;Verde<br>
+&lt;option/&gt;Azul<br>
+&lt;/select&gt;<br>
+      </td>
+      <td align="center">
+      <form>
+        <select name="color" size="3" multiple="multiple">
+        <option selected="selected">Rojo </option>
+        <option>Amarillo </option>
+        <option selected="selected">Verde </option>
+        <option>Azul </option>
+        </select>
+      </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Otros atributos de la etiqueta select son:<br>
+<br>
+<span style="color: red;">size</span>.- permite establecer el número de
+opciones de la lista que se mostrarán.<br>
+<span style="color: red;">multiple</span>.- permite que se seleccionen
+varias opciones de la lista.<br>
+<span style="color: red;">align, disabled, title</span>.- ya conocidas
+y que debe probarse su funcionamiento con select y con option.<br>
+<br>
+<a name="usar"></a> <font size="+1"><span style="font-weight: bold;">Cómo
+usar los datos de un formulario</span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Para hacer llegar los datos desde el navegador del
+cliente hasta el servidor es necesario poner en acción unas programas
+llamados CGI's, que se ejecutan en el servidor y que pueden estar
+escritos en una gran diversidad de lenguajes de programación.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para enviar la información al servidor la etiqueta
+form dispone del atributo <span style="color: red;">action</span> para
+especificar la URL del programa CGI al que tiene que enviar los datos.
+Además hay que utilizar el atributo <span style="color: red;">method</span>
+para indicar la forma en que se enviarán los datos. Este atributo puede
+tomar dos valores: <span style="color: red;">get y post</span>. Un
+ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;form method="post"
+action="http://www.tiernogalvan.es/cgi-bin/programa_cgi"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . . código
+con controles . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/form&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; El navegador mandará al programa_cgi del equipo y
+directorio especificado los datos del formulario codificados con un
+código especial cuyotipo MIME es&nbsp;
+application/x-www-form-urlencoded. La etiqueta form tiene un atributo,
+enctype, que permite cambiar el tipo de codifocación. Si no se quiere
+utilizar ninguna se puede escribir:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;form
+enctype="text/plain" method="post" . . .&gt; . . . &lt;/form&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; No usar codificación puede causar problemas al
+enviar caracteres especiales como son las letras acentuadas, pero puede
+ser útil en otras al no tener que decodificar el mensaje.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Formularios sin
+CGI's</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Una alternativa a los CGI's son los lenguajes de
+script, que permiten interactuar con el navegante sin hacer uso del
+servidor. Existe otra posibilidad más simple que consiste en enviar los
+datos del formulario a una dirección de correo. Para ello hay que
+utilizar los atributos <span style="color: red;">action, method y
+enctype</span> de la siguiente manera:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;form action="mailto:sagsag@hotmail.es"
+enctype="text/plain" method="post"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;!-- . . . --&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/form&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Al pulsar sobre el botón de envío el navegador
+advertirá al usuario y si acepta mandará un correo con la información.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Envío de ficheros
+usando formularios</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Para enviar ficheros desde el ordenador del usuario
+hay que utilizar en primer lugar el atributo <span style="color: red;">enctype="multipart/form-data"</span>
+y después el atributo <span style="color: red;">action</span> para
+especificar la URL del programa que recibirá el fichero en el servidor
+y realizará el tratamiento adecuado. También hay que utilizar un
+control&nbsp; definido con la etiqueta <span style="color: red;">input</span>
+con <span style="color: red;">type="file"</span> que el navegador
+mostrará como una caja de texto junto con un botón que permitirá buscar
+y elegir el fichero a enviar.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un ejemplo puede ser:<br>
+<br>
+<table border="1" width="100%">
+  <tbody>
+    <tr>
+      <td> &lt;form enctype="multipart/form-data"<br>
+&nbsp; action="http://localhost"&gt;<br>
+&nbsp; Enviar el fichero:<br>
+&nbsp; &lt;input type="file" name="fichero"&gt;&lt;br/&gt;<br>
+&nbsp; &lt;input type="submit" value="Enviar fichero"&gt;<br>
+&lt;/form<br>
+      </td>
+      <td>
+      <form enctype="multipart/form-data" action="http://localhost">
+&nbsp;&nbsp;&nbsp;Enviar el fichero:<br>
+&nbsp;&nbsp;&nbsp;<input name="fichero" type="file"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input value="Enviar fichero" type="submit"> </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+ <br>
+  PRÁCTICA.- Hacer un formulario que incluya todos los tipos de
+controles.<br>
+PRÁCTICA.- Igual pero mediante las herramientas del editor.<br>
+PRÁCTICA.- Crear un botón con un texto y una imagen.<br>
+PRÁCTICA.- Enviar los datos de un formulario a una dirección de correo.<br>
+PRÁCTICA.- Simular el envío de un fichero.<br>
+</div>
+
+</body></html>

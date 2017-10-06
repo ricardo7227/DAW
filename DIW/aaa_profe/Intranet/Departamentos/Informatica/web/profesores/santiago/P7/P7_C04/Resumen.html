@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Ajax</title>
+
+  
+  
+  <script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<div id="header">
+<p id="cabecera">Ajax</p>
+</div>
+
+<div>
+<div id="nav"><a href="#ejemplo">Primer ejemplo</a><br>
+<br>
+<a href="#parametros">Parámetros</a><br>
+<br>
+<a href="#mensaje">Mensaje de carga</a><br>
+<br>
+</div>
+<div id="article">
+Este resumen se ha realizado sobre los manuales de <a href="http://www.desarrolloweb.com/manuales/manual-jquery.html">desarrolloweb.com</a>.
+<br>
+<br>
+<h3><a name="ejemplo"></a>Primer ejemplo</h3>
+<p>&nbsp;&nbsp;&nbsp; Una de las ventajas de los <a href="http://www.desarrolloweb.com/articulos/listado-distintos-framework-javascript.html">frameworks
+Javascript</a> es que permiten desarrollar scripts que hacen uso de
+Ajax de una manera muy fácil y compatible con los distintos
+navegadores. El primer ejemplo va a ser muy sencillo, consiste en traer
+un contenido con Ajax al pulsar un enlace. Su funcionamiento puede
+verse pulsando <a href="ejemploAjax.html">aquí</a>.</p>
+<p>&nbsp;&nbsp;&nbsp; El enlace será:<br>
+</p>
+<p class="codigo">&lt;a href="#" id="enlaceajax"&gt;Haz
+clic!&lt;/a&gt;
+</p>
+<p>&nbsp;&nbsp;&nbsp; Se añade el código correspondiente:</p>
+<p class="codigo">$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp; $("#enlaceajax").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //elimino el
+comportamiento por
+defecto del enlace<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+evento.preventDefault();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Aquí
+pondría el código de la
+llamada a Ajax<br>
+&nbsp;&nbsp;&nbsp;&nbsp; });<br>
+})
+</p>
+<p>&nbsp;&nbsp;&nbsp; A continuación se añade una capa donde mostrar el
+contenido que va a venir desde el servidor al realizar la llamada Ajax,
+y que puede tener como id "destino". Y finalmente, el código que
+realizará la llamada a Ajax puede tener la forma:</p>
+<p class="codigo">$("#destino").load("contenidoAjax.html");
+</p>
+<p>&nbsp;&nbsp;&nbsp; Así, utilizando el método load() se carga el
+contenido de "contenidoAjax.html", pasado como parámetro, en el
+elemento con id "destino". Para que el ejemplo funcione puede ser
+necesario que el equipo tenga lanzado el servicio de servidor Apache ya
+que la llamada por Ajax se hace por http y el archivo que se carga
+tiene que enviarlo un servidor web.</p>
+<p>&nbsp;&nbsp;&nbsp; El código completo quedaría de la forma:<br>
+</p>
+<p class="codigo">&lt;html&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;title&gt;Ajax Simple&lt;/title&gt;<br>
+&lt;script src="jquery-1.9.1.min.js"
+type="text/javascript"&gt;&lt;/script&gt;&nbsp;&nbsp;&nbsp;<br>
+&lt;script&gt;<br>
+$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp;$("#enlaceajax").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evento.preventDefault();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#destino").load("contenidoAjax.html");<br>
+&nbsp;&nbsp;&nbsp;});<br>
+})<br>
+&lt;/script&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+<br>
+&lt;a href="#" id="enlaceajax"&gt;Haz clic!&lt;/a&gt;<br>
+&lt;br&gt;<br>
+&lt;div id="destino"&gt;&lt;/div&gt;<br>
+<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;
+</p>
+<p>&nbsp;&nbsp;&nbsp; jQuery tiene muchos otros métodos para realizar
+conexiones por Ajax, que pueden servir para muchos otros casos de
+trabajo, pero este es uno de los más sencillos que sirve perfectamente
+para una primera demostración.</p>
+<h3><a name="parametros"></a>Parámetros</h3>
+&nbsp;&nbsp;&nbsp; Con el
+método load() visto en el ejemplo anterior pueden utilizarse parámetros
+opcionales. La página que se carga con Ajax puede recibir parámetros
+por la URL y que se pueden especificar con la notación de propiedades y
+valores de jQuery ya conocida:<br>
+<p class="codigo">{nombre: "Pepe", edad: 45}
+</p>
+<p>&nbsp;&nbsp;&nbsp; Así se enviarían a la página los
+datos nombre y edad, con los valores "Pepe" y 45. Esos datos viajarían
+en la URL, por el método "POST".
+</p>
+<div class="nota"><b>Nota:</b> Desde jQuery 1.3 también se pueden
+enviar los parámetros a la página a cargar con Ajax por medio de una
+variable de tipo string, en lugar de una notación de objetos como hemos
+comentado. Cuando se use un string para especificar los parámetros a
+enviar en el request http, éstos viajan por el método GET. Cuando se
+utiliza una notación de objetos como la que hemos visto, los datos
+viajan por el método POST. </div>
+<p>
+<b>Función callback</b>: como otros métodos de jQuery, podemos
+especificar opcionalmente una función a ser ejecutada cuando se termine
+de ejecutar el método. En este caso, cuando se termine la llamada Ajax,
+se pueden hacer acciones, como borrar un mensaje típico de
+"cargando...".
+<br>
+</p>
+<div class="nota"><b>Nota:</b> En un artículo anterior ya comentamos el
+habitual uso de <a href="http://www.desarrolloweb.com/articulos/callback-funciones-jquery.html">funciones
+callback en jQuery</a>. </div>
+<br>
+Ahora veamos un código donde hacemos uso de estos dos parámetros:
+<p class="codigo">$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp;$("#enlaceajax").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evento.preventDefault();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#destino").load("recibe-parametros.php",
+{nombre: "Pepe", edad: 45}, function(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("recibidos
+los datos por ajax");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&nbsp;});<br>
+})
+</p>
+<p>En este caso estamos cargando con load() una página PHP llamada
+"recibe-parametros.php". Estamos pasando los parámetros "nombre" y
+"edad" a una página, que podremos recoger por GET. Además, hemos
+colocado una función callback en la que simplemente hacemos un alert(),
+que se ejecutará cuando la llamada a Ajax haya terminado.
+</p>
+<p>Este sería el código fuente de "recibe-parametros.php":
+</p>
+<p class="codigo">
+Recibido el siguiente dato:<br>
+&lt;br&gt;<br>
+Nombre: &lt;?php echo $_POST["nombre"];?&gt;<br>
+&lt;br&gt;<br>
+Edad: &lt;?php echo $_POST["edad"];?&gt;
+</p>
+<p>Podemos <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/ajax-simple-pasoparametros.html" target="_blank">ver este ejemplo en una página aparte</a>. </p>
+<p>Con esto hemos podido comprobar lo sencillo que es realizar con
+jQuery una carga de contenidos que se reciben por Ajax. Como decía,
+existen muchas otras maneras de hacer conexiones Ajax con jQuery, como
+el ejemplo del artículo siguiente que nos enseña a <a href="http://www.desarrolloweb.com/articulos/ajax-jquery-mensaje-carga.html">mostrar
+un mensaje de carga miestrás esperamos la respuesta Ajax del servidor</a>.
+Además, para complementar esta información, también podéis ver el <a href="http://www.desarrolloweb.com/articulos/video-ajax-jquery.html">vídeo
+de Ajax con jQuery</a>.
+</p>
+<h3><a name="mensaje"></a>Mensaje de carga</h3>
+<p>&nbsp;&nbsp;&nbsp; Es muy habitual mostrar un mensaje (como
+"Cargando ...") o una imagen de carga (como la de <a href="http://www.desarrolloweb.com/de_interes/generador-imagenes-carga-ajax-690.html">Ajax
+Loader</a>) mientras el usuario espera la respuesta Ajax del servidor.
+Pulse <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/ajax-con-cargando.html" target="_blank">aquí</a> para ver un ejemplo. De esta forma se
+advierte al usuario que la solicitud ha sido realizada para que no
+pulse más veces sobre el enlace o botón de envío de datos y provoque
+repetidas e innecesarias llamadas al servidor que pueden derivar en
+diversos problemas.<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp; Como primer paso, creamos el código HTML de la
+página que realiza la solicitud:</p>
+<p class="codigo">&lt;a href="#" id="enlaceajax"&gt;Haz
+clic&lt;/a&gt;<br>
+&lt;div id="cargando" style="display:none; color:
+green;"&gt;Cargando...&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;div id="destino"&gt;&lt;/div&gt;
+</p>
+<p>&nbsp;&nbsp;&nbsp; Este código contiene tres elementos:</p>
+<ul>
+<li>El enlace que activa la llamada a Ajax.</li>
+<li>Una capa que mostrará el mensaje y que inicialmente está oculta.
+Podría contener un gif animado, una imagen , ...</li>
+<li>La capa "destino" donde se mostrará la respuesta a la solicitud
+Ajax.</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp; El siguiente código mostrará y ocultará el
+mensaje, además de realizar la llamada a Ajax:
+</p>
+<p class="codigo">$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp;$("#enlaceajax").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evento.preventDefault();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#cargando").css("display",
+"inline");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#destino").load("pagina-lenta.php",
+function(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#cargando").css("display",
+"none");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&nbsp;});<br>
+})</p>
+&nbsp;&nbsp;&nbsp; El código recoge el método "ready" para que el
+código se ejecute una vez cargada la página, el evento click, previene
+el funcionamiento predeterminado del enlace, muestra el mensaje,
+realiza la llamada y haciendo uso del callback oculta el mensaje cuando
+el servidor ha devuelto la respuesta adecuada.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El código de la página PHP que se recibe por Ajax
+"pagina-lenta.php" es el siguiente:
+<p class="codigo">&lt;?php<br>
+&nbsp;&nbsp;&nbsp; sleep(3);<br>
+&nbsp;&nbsp;&nbsp;
+echo ("He tardado 3 segundos en ejecutar esta p&amp;aactute;gina...");<br>
+?&gt;
+</p>
+<p>En realidad no tiene nada en especial. Simplemente se hace un
+sleep(3) para ordenarle a PHP que espere 3 segundos antes de terminar
+de procesar la página y enviarla al cliente. Así se consigue que la
+solicitud http tarde un poco en ser respondida y pueda verse el mensaje
+de carga durante un poco más de tiempo en la página.
+</p>
+<p>Finalmente, se pone de nuevo el <a href="http://www.desarrolloweb.com/articulos/ejemplos/jquery/ajax-con-cargando.html" target="_blank">enlace para ver este ejercicio en marcha</a>.
+</p>
+<p>Si te ha interesado este ejemplo y quieres obtener una ayuda
+adicional para crear tus propios scripts en Ajax, te recomendamos ver
+el <a href="http://www.desarrolloweb.com/articulos/video-ajax-jquery.html">vídeo
+donde explicamos como hacer Ajax con jQuery</a>. </p>
+<br>
+
+</div>
+</div>
+
+<br>
+
+<br>
+
+<div id="footer">
+</div>
+
+</body></html>

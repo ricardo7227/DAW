@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Elementos de la interfaz de usuario</title>
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="estilos.css" type="text/css">
+
+</head><body>
+<h1>Elementos de la interfaz de usuario</h1>
+
+<a href="#cursores">Cursores</a><br>
+
+<a href="#colores">Colores de la interfaz</a><br>
+
+<a href="#fuentes">Fuentes</a><br>
+
+<br>
+&nbsp;&nbsp;&nbsp; En las interfaces de usuario se utilizan una serie
+de elementos, como iconos, colores y fuentes, que son propios del
+sistema y que poseen características que se definen a nivel de la
+plataforma al configurar el sistema, por ejemplo, los colores asignados
+a cada parte de la interfaz de usuario y el tipo de letra que se usa en
+cada área. Desde CSS pueden aprovecharse esas definiciones de
+propiedades en la presentación de las páginas web.<br>
+
+<h3><a name="cursores"></a>Cursores</h3>
+
+&nbsp;&nbsp;&nbsp; La propiedad <span style="color: red;">cursor</span>
+permite establecer qué tipo de cursor se debería utilizar cuando el
+cursor del ratón está encima de un elemento específico de la página
+web. Su formato es:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  cursor: valor;<br>
+<br>
+&nbsp;&nbsp;&nbsp; El valor puede ser uno de los valores simbólicos que
+se detallan más adelante o la dirección url de una imagen personalizada
+de extensión .cur. En este último caso el formato queda:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  cursor: url("fichero.cur");<br>
+<br>
+&nbsp;&nbsp;&nbsp; La propiedad puede tener múltiples valores. Siempre
+tiene prioridad el primero de la lista, pero si no está disponible se
+utiliza el siguiente. Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  cursor: url("primero.cur"), &nbsp; url("segundo.cur");<br>
+<br>
+
+&nbsp;&nbsp;&nbsp; Los valores estándard de la propiedad cursor son:<br>
+<ul>
+  <li>auto.- a elección del agente de usuario.</li>
+  <li>crosshair.- el cursor toma la forma de un signo + de tamaño más grande.</li>
+  <li>default.- cursor predeterminado de la plataforma (generalmente el puntero de la flecha).</li>
+  <li>help.- el cursor que indica que existe una ayuda (una interrogación grande).</li>
+  <li>move.- forma de cuatro flechas para indicar que el elemento se puede mover.</li>
+  <li>pointer.- una mano apuntando.</li>
+  <li>progress.- cursor que indica una operación en marcha (un reloj de arena).</li>
+  <li>text.- cursor que se utiliza para indicar que se puede introducir texto.</li>
+  <li>wait.- puntero de espera (reloj de arena).</li>
+  <li>x-resize.- siendo x una de las combinaciones: n, s, e, w, ne, se,
+nw o sw. Se utiliza para indicar que el elemento puede ser
+redimensionado. La letra indica el sentido del punto cardinal.</li>
+  <li>url.- dirección de un recurso de tipo cursor.<br>
+
+  </li>
+</ul>
+<h3><a name="colores"></a>Colores de la interfaz</h3>
+
+&nbsp;&nbsp;&nbsp; Además de las formas vistas de asignar colores a los
+elementos, existen los siguientes valores simbólicos, que se
+especifican tal cual aparecen a continuación:<br>
+<ul>
+  <li>ActiveBorder.- color del borde de la ventana activa.</li>
+  <li>ActiveCaption.- color del texto del título de la ventana activa.</li>
+  <li>AppWorkspace.- color de fondo de un interfaz de documento múltiple.</li>
+  <li>Background.- color del fondo del escritorio.</li>
+  <li>ButtonFace.- color de la cara del botón.</li>
+  <li>ButtonHighlight.- color del área de sombra oscura del borde de los botones 3D.</li>
+  <li>ButtonShadow.- color de la sombra del borde de los botones 3D.</li>
+  <li>ButtonText.- color del texto del botón.</li>
+  <li>CaptionText.- color del texto en títulos y cuadros.</li>
+  <li>GrayText.- color del texto no habilitado.</li>
+  <li>Highlight.- color que indica que el elemento está seleccionado.</li>
+  <li>HighlightText.- color que indica que el texto está seleccionado.</li>
+  <li>InactiveBorder.- . . . (ver pag. 369).<br>
+  </li>
+  <li>InactiveCaption.- . . .</li>
+  <li>InactiveCaptionText.- . . .</li>
+  <li>InfoBackground.- . . .</li>
+  <li>InfoText.- . . .</li>
+  <li>Menu.- . . .</li>
+  <li>MenuText.- . . .</li>
+  <li>Scrollbar.- . . .</li>
+  <li>ThreeDDarkShadow.- . . .</li>
+  <li>ThreeDFace.- . . .</li>
+  <li>ThreeDHighlight.- . . .</li>
+  <li>ThreeDLightShadow.- . . .</li>
+  <li>ThreeDShadow.- . . .</li>
+  <li>Window.- . . .</li>
+  <li>WindowsFrame.- . . .</li>
+  <li>WindowText.- . . .</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Un ejemplo sería:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;h1&nbsp; style="background-color:&nbsp; window;"&gt; . . . &lt;/h1&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Usando estos valores, si se cambia la configuración del sistema cambiará el aspecto de las páginas.<br>
+
+<h3><a name="fuentes"></a>Fuentes</h3>
+
+&nbsp;&nbsp;&nbsp; Del mismo modo que pueden utilizarse colores del
+sistema, pueden utilizarse fuentes desde la propiedad font e CSS. La
+lista de nombres de fuentes disponible es la siguiente:<br>
+<ul>
+  <li>caption.- . . .</li>
+  <li>icon.- . . .</li>
+  <li>menu.- . . .</li>
+  <li>message-box.- . . .</li>
+  <li>small-caption.- . . .</li>
+  <li>status-bar.- . . .</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;p&nbsp; style="font:&nbsp; caption;"&gt; . . . &lt;/p&gt;
+</body></html>

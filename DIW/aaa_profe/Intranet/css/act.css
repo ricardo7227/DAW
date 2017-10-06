@@ -1,0 +1,75 @@
+		#ActSubCont
+		{
+			align:left;
+			text-align:left;
+		}
+		#ActSubForm
+		{
+			font-size:15px;
+			border:5px;
+			margin:25px 20px 20px 50px;
+		}
+		#ActSubNum
+		{
+			<!--padding:0px 0px 0px 10px;-->
+		}
+		.ActSubEjem
+		{
+			font-size:10px;
+			font-style:italic;
+			margin:0px 0px 0px 0px;
+		}
+		#ActSubErrorPrincipal
+		{
+			font-size:15px;
+			color:red;
+		}
+		.ActSubError
+		{
+			font-size:10px;
+			color:red;
+			margin:0px 0px 0px 9px;
+		}
+		#ActSubButt
+		{
+			margin:5px 0px 8px 20px;
+		}
+		.ActSubForCol1
+		{
+			width:150px;
+			align:RIGHT;
+		}
+		
+		a#ActConEnlace
+		{
+			color:#0000FF;
+			text-decoration:none;
+		}
+	
+		.ActConDep:hover {
+			background-color: #F4C347;
+		}
+		.ActConDep
+		{
+			border: 3px outset #cccccc;
+			width: 350px;
+			font-size: 17px;
+		}
+		.ActConDepCont
+		{
+			<!--text-align:left;-->
+			padding:2px 15px 2px 15px;
+			margin-left:3px;
+			border: 2px ridge white;
+			width: 348px;
+			font-size: 12px;
+		}
+		.ActConTodosDep
+		{
+			margin:25px 10px 5px 105px;
+		}
+		.ActConAct:hover
+		{
+			background-color: white;
+			color: black;
+		}

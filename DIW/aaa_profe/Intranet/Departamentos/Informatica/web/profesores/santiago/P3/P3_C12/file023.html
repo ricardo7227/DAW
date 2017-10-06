@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title> Detección del click del ratón </title>
+<script type="text/JavaScript">
+// archivo Parte 3/code/file023.html : 
+
+function mouseClick1() {
+	// Internet Explorer
+	if ((event.button==2)||(event.button==3)) {
+		alert("Clic del botón secundario.");
+	} else {
+		alert("Clic del botón principal.");
+	}
+}
+function mouseClick2(e){
+	// Mozilla Firefox
+	if(e.which==3){
+		alert("Clic del botón secundario.");
+	} else {
+		alert("Clic del botón principal.");
+	}
+}
+// Internet Explorer
+if (document.all) {
+	document.onmousedown=mouseClick1;
+}
+// Mozilla Firefox
+if (window.sidebar) {
+	document.captureEvents(Event.mousedown);
+	document.onmousedown = mouseClick2;
+}
+</script>
+</head>
+Detecta si hubo clic del botón primario o secundario
+</html>

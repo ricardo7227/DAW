@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Objeto String</title>
+</head>
+<body>
+<p class="resul">
+  <script language="javascript">
+    var miCadena1 = "áéíóú aeiou &%'";
+    document.write (escape(miCadena1));  // Devuelve %E1%E9%ED%F3%FA%20aeiou%20%26%27%25
+    var miCadena2 = unescape(miCadena1);
+    document.write (miCadena2);          // Devuelve áéíóú aeiou &%'
+  </script>
+</p>
+</body>
+</html>

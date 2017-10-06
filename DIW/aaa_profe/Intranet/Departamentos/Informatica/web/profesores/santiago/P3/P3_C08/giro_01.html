@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pagina llamante</title>
+  <script language="javascript">
+  var mipopup;
+  function girarPopup(){
+/*           alert("1");
+           var miFecha = new Date();
+           var segundos = miFecha.getSeconds();
+           document.write(segundos);
+           var px = Math.ceil(Math.sin(segundos * 50) * 20);
+           var py = Math.ceil(Math.cos(segundos * 50) * 20);
+           document.write(px);
+           document.write(py);*/
+           mipopup.moveTo(10,500);
+//           miGiro.focus();
+    }
+  </script>
+</head>
+<body>
+Esta es la pagina llamante<br>
+  <script language="javascript">
+    mipopup = window.open("giro_02.html", "", "height=200,width=150,left=500,top=300");
+//    girarPopup();
+//    var miIntervalo = setInterval("girarPopup()", 5000);
+  </script>
+  <a href="javascript:mipopup.moveTo(100,100);mipopup.focus();">Mover ventana</a>
+</p>
+</body>
+</html>

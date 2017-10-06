@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Hipertexto</title>
+
+  
+</head><body>
+<div style="text-align: center;"><font style="color: rgb(51, 0, 153);" size="+3">Hipertexto</font><br>
+</div>
+
+<div><span style="font-weight: bold;"></span><br>
+&nbsp;&nbsp;&nbsp; La etiqueta <span style="color: red;">&lt;a&gt;</span>.
+Al parecer los anclas quedan obsoletos. Para hacer referencia a
+direcciones relativas puede hacerse uso de la etiqueta &lt;base&gt;
+para fijar el directorio de referencia. La dirección completa para
+enlazar con un documento es:<br>
+<br>
+&nbsp;&nbsp;&nbsp; http://Equipo.Dominio[:puerto]/Ruta de acceso al
+directorio/Nombre_pagina[#Nombre_sección]<br>
+<br>
+&nbsp;&nbsp;&nbsp; Otros atributos de la etiqueta &lt;a&gt; son:<br>
+<ul>
+  <li><span style="color: red;">rel</span>.- controla la clase de
+enlaces que se pueden usar.</li>
+  <li><span style="color: red;">media</span>.- tipo de medio del
+destino.</li>
+  <li><span style="color: red;">hreflang</span>.- idioma del recurso
+enlazado.</li>
+  <li><span style="color: red;">accesskey</span>.- permite definir un
+acceso directo por teclado hacia un enlace.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; La etiqueta <span style="color: red;">&lt;abbr&gt;</span>
+permite indicar una abreviatura; cuando se utiliza el atributo title se
+muestra su contenido en la barra de estado del navegador.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta <span style="color: red;">&lt;bdo&gt;</span>,
+junto con el atributo <span style="color: red;">dir</span>, sirve para
+mostrar el contenido escrito de derecha a izquierda. Los valores que
+admite el atributo dir son <span style="color: red;">rtl y ltr</span>.
+Un ejemplo es:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;p&gt;&lt;bdo dir="rtl"&gt;Esto sale
+al revés&lt;/bdo&gt; Esto sale bien&lt;/p&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Existe una serie de etiquetas muy similares entre si
+y con una
+funcionalidad muy simple: sirven para dar un estilo de letra especial a
+un fragmento de texto. La diferencia es el tipo de letra que se utiliza
+en cada caso.
+Son las etiquetas &lt;cite&gt;, &lt;em&gt;, &lt;dfn&gt;,
+&lt;strong&gt;, &lt;code&gt;, &lt;samp&gt;, &lt;kbd&gt; y &lt;var&gt;.<br>
+<br>
+<ul>
+  <li><span style="color: red;">cite</span>.- <cite>permite indicar citas, que en general se muestran en
+cursiva.</cite></li>
+  <li><span style="color: red;">code</span>.- <code>ideal para mostrar código de programa. El tipo tiene ancho
+fijo.</code></li>
+  <li><span style="color: red;">dfn</span>.- para indicar definiciones. Muestra en cursiva.</li>
+  <li><span style="color: red;">em</span>.- para dar enfasis. Se muestra en cursiva.</li>
+  <li><span style="color: red;">i</span>.- modo diferenciado. Normalmente se muestra en cursiva.</li>
+  <li><span style="color: red;">ins y del</span>.- muestran texto como insertado o borrado (subrayado o
+tachado).</li>
+  <li><span style="color: red;">kbd</span>.- indica una entrada de teclado. Se muestra con ancho fijo.</li>
+  <li><span style="color: red;">mark</span>.- indica texto marcado. Suele aparecer con el fondo amarillo.</li>
+  <li><span style="color: red;">q</span>.- permite indicar anotaciones. Se suele representar entre
+comillas. Admite el atributo cite para indicar una dirección url.</li>
+  <li><span style="color: red;">s</span>.- permite tachar una parte del texto.</li>
+  <li><span style="color: red;">samp</span>.- para mostrar ejemplos. Se usa una letra más pequeña.</li>
+  <li><span style="color: red;">span</span>.- por si sola no tiene significado. Permite marcar un texto
+al que se aplicarán los atributos class o style; mejor class pues evita
+el uso de la codificación directa.</li>
+  <li><span style="color: red;">strong</span>.- permite dar más importancia a una parte del texto. Se
+suele mostrar en negrita.</li>
+  <li><span style="color: red;">sup y sub</span>.- superíndice y subíndice.</li>
+  <li><span style="color: red;">time</span>.- para codificar fechas y hora para que sean comprendidos
+sin ambiguedades. La parte legible para la máquina debe estar asignada
+al atributo datetime. También admite el atributo pubdate para indicar
+que la fecha y la hora corresponden a las de publicación del artículo.</li>
+  <li><span style="color: red;">var</span>.- para representar variables. generalmente en cursiva.</li>
+  <li><span style="color: red;">wbr</span>.- indica que si es necesario
+se puede hacer un salto de línea en ese punto.<br>
+  </li>
+</ul>
+</div>
+</body></html>

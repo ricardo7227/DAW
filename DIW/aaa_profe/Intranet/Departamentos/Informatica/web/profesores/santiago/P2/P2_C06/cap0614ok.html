@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<!-- archivo Parte 2/code/cap0614ok.html -->
+<head>
+<title>Estilo en tablas</title>
+
+<style>
+table 	{border:  1cm solid red;
+		padding: 2px;
+		border-spacing: 0.5cm 1cm;
+		table-layout: fixed;
+		}
+table * {border:  2px solid blue;}
+th 		{font-family: Georgia, serif; font-size: 2em; letter-spacing: 3px;}
+td 		{font-family: Georgia, serif; font-size: 1.2em; font-variant: small-caps;}
+td.imp  {text-align: right; font-family: "Courier New", monospace; empty-cells:hide;}
+</style>
+</head>
+<h1>Estilo en tablas</h1>
+<body>
+
+<table>
+<tr><th>Fecha</th><th>Gasto</th><th>Importe</th></tr>
+<tr><td>10-02-2011</td><td>Seguro del coche</td><td class="imp">500</td></tr>
+<tr><td>14-02-2011</td><td>Cuota hipoteca</td><td class="imp">1.400</td></tr>
+<tr><td>01-03-2011</td><td>Préstamo </td><td class="imp">200</td></tr>
+<tr><td>01-03-2011</td><td>Falta informar </td><td class="imp"></td></tr>
+<tr><td>12-03-2011</td><td>Reparación auto</td><td class="imp">480</td></tr>
+<tr><td colspan=2>Total</td><td class="imp">2.589</td></tr>
+</table>
+
+</body>
+</html>

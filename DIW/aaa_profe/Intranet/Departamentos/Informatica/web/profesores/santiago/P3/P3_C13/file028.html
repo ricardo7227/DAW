@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file028.html -->
+<html>
+<head>
+<script type="text/javascript">
+function asteriscos() {
+	document.forms["miFormulario"].elements["miDato"].value = "*****";
+}
+function guardarDatoOculto() {
+	// se guarda algún dato
+	// que se quiera hacer llegar al servidor
+	// junto con el formulario
+	// sin que se vea en pantalla
+	document.forms["miFormulario"].elements["miDatoOculto"].value = "algún dato";
+
+}
+</script>
+</head>
+<body onload="guardarDatoOculto()";
+<form name="miFormulario" method="post" action=otraPage.html">
+Introduzca su usuario: <input type="text" name="miDato" value="su username..." onfocus="this.value=''"/>
+<input type="button" value="Asteriscos" onclick="asteriscos();">
+<input type="hidden" name="miDatoOculto">
+<input type="submit" value="Enviar">
+</form>
+</body>

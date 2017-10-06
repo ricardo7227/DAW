@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Propiedades de fuentes</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="estilos.css" type="text/css"></head><body>
+<h1>Propiedades de fuentes</h1>
+
+<a href="#fuentes">Fuentes</a><br>
+
+<a href="#propiedades">Propiedades asociadas a las fuentes de texto</a><br>
+
+<a href="#espaciados">Espaciados</a><br>
+
+<a href="#tipos">Tipos de fuentes</a><br>
+
+<a href="#tamano">Tamaño de la fuente</a><br>
+
+<a href="#unidades">Unidades de medida</a><br>
+
+<a href="#problema">El problema del redimensionamiento del texto</a><br>
+
+<a href="#estilo">Estilo de la fuente</a><br>
+
+<a href="#font">Propiedad simplificadora font</a><br>
+
+<a href="#uso">Uso de fuentes del sistema</a><br>
+
+<a href="#notodo">No todo es CSS ni todo son párrafos &lt;p&gt;</a><br>
+
+<br>
+
+<h3><a name="fuentes"></a>Fuentes (letras)</h3>
+
+&nbsp;&nbsp;&nbsp; Un tipo de fuente o letra es una familia de uno o
+más conjuntos de diseños de letras creadas con unidad de estilo; cada
+conjunto está compuesto por un grupo coordinado de glifos o caracteres.
+Un conjunto de fuentes determinado no solo incluye un alfabeto de
+letras, cifras y signos de puntuación sino que también puede incluir
+símbolos de diverso tipo.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Cada fuente, independientemente del tipo, comparte
+una serie de características comunes que sirven para definirla:<br>
+
+<ul>
+
+  <li>Altura de las mayúsculas.</li>
+  <li>Altura de las minúsculas.</li>
+  <li>Ascendente.- distancia entre la altura de las minúsculas y la de
+las mayúsculas.</li>
+  <li>Descendente.- distancia entre la base de las letras y el extremo
+inferior de letras como la g, p, y, ...</li>
+  <li>Inclinación.- ángulo de inclinación de un tipo.</li>
+  <li>Glifo.- representación gráfica de un carácter.</li>
+  <li>Línea base.- línea sobre la que se apoya el glifo.<br>
+  </li>
+</ul>
+
+<h3><a name="propiedades"></a>Propiedades asociadas a las fuentes de
+texto</h3>
+
+&nbsp;&nbsp;&nbsp; Las principales propiedades de esta categoría son:<br>
+
+<ul>
+
+  <li>font-family.- fuente a utilizar. Pueden especificarse
+varias. Cada fuente corresponde a uno de los siguientes tipos: serif,
+sans-serif,&nbsp; cursive,&nbsp; fantasy&nbsp; y
+monospace.</li>
+  <li>font-style.- estilo de la fuente: normal, italic y oblique.</li>
+  <li>font-variant.- permite elegir entre normal y small-caps
+(versalita).</li>
+  <li>font-weight.- grosor de la fuente: normal, bold, bolder, lighter,
+100, 200, etc.</li>
+  <li>font-size.- tamaño de la fuente. Se pueden indicar valores
+absolutos (xx-small, x-small, small, medium, large, x-large, xx-large),
+valores relativos (larger, smaller), valores específicos de tamaño o
+porcentajes respecto a la fuente del contenedor.<br>
+  </li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; La propiedad font permite establecer de modo
+concentrado todas las características de la fuente.<br>
+
+<h3><a name="espaciados"></a>Espaciados</h3>
+
+&nbsp;&nbsp;&nbsp; Hay dos tipos de espaciados:<br>
+
+<ul>
+
+  <li>line-height.- espaciado vertical. Distancia entre dos líneas base
+sucesivas.</li>
+  <li>letter-spacing.- espacio entre caracteres.<br>
+  </li>
+</ul>
+
+<h3><a name="tipos"></a>Tipos de fuentes</h3>
+
+&nbsp;&nbsp;&nbsp; CSS gestiona cinco tipos de familias de fuentes
+dentro de las que existen grandes conjuntos de fuentes genéricas:<br>
+
+<ul>
+
+  <li>Serif.- tipos de letras con cierta ornamentación. Se suelen
+utilizar en el cuerpo del texto. Dentro de las fuentes genéricas serif
+encontramos estas familias de fuentes: Times New Roman, Bodoni,
+Garamond, etc.</li>
+  <li>Sans-serif.- tipos de letras simples, sin ornamentación y muy
+legibles. Suelen utilizarse en encabezados. Engloban a las familias de
+fuentes: Trebuchet, Arial, Verdana, Helvética, etc.</li>
+  <li>Cursive.- tipos de letras ornamentadas. Suelen utilizarse para
+simular textos manuscritos. Engloban a las familias: Zapf-Chancery,
+Adobe Poetica, etc.</li>
+  <li>Monospace.- caracteres del mismo ancho. Se utiliza para
+representar código de programa. Los tipos de letras pueden ser Serif o
+Sans-serif. Engloba a las familias de fuentes: Courier, Courier New,
+Prestige, etc.</li>
+  <li>Fantasy.- muy ornamentado. Suelen utilizarse en logos. Engloba a
+las familias: Cottonwood, Western, etc.</li>
+</ul>&nbsp;&nbsp;&nbsp; Por lo general, con font-family se especifica la fuente y el tipo de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  p&nbsp; {font-family: Arial, Sans-serif;}<br>
+<br>
+&nbsp;&nbsp;&nbsp; así,  el agente usuario intentará utilizar Arial y si
+no puede utilizará otra fuente Sans-Serif.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La propiedad font-family permite indicar el tipo de
+familia de fuentes elegido, por ejemplo:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p {font-family:
+Sans-Serif;}<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; según la configuración, se elegirá alguna de las
+fuentes de ese tipo: Verdana, Arial, etc.<br>
+<h3><a name="tamano"></a>Tamaño de la fuente</h3>
+
+&nbsp;&nbsp;&nbsp; El tamaño de la fuente se controla normalmente con
+la propiedad font-size. El valor por defecto es de 16 px. Existen dos
+modos de establecer el tamaño:<br>
+
+<ul>
+
+  <li>Modo absoluto.- mediante un valor concreto, por ejemplo:
+font-size: 14 px.
+Tiene como ventaja que se asegura el tamaño de visualización aunque se
+impide el redimensionamiento del texto en el navegador por parte del
+usuario.</li>
+  <li>Modo relativo.- mediante un valor referente al tamaño de la
+fuente en ese momento, por ejemplo: font-size: 120%. Tiene como
+ventajas que mantiene las proporciones con el entorno y permite
+redimensionamiento en el navegador por parte del usuario aunque la
+visualización final puede no ser la adecuada.<br>
+  </li>
+</ul>
+
+<h3><a name="unidades"></a>Unidades de medida </h3>
+
+&nbsp;&nbsp;&nbsp; Existen las siguientes unidades de medida:<br>
+
+<ul>
+
+  <li>Palabra clave de tamaño absoluto: xx-small, small, medium, large,
+x-large y xx-large. Estos valores los toma el agente de usuario y los
+convierte en valores reales de tamaño.</li>
+  <li>Tamaño absoluto: utiliza unidades de medida como px (pixels) o pt
+(puntos).</li>
+  <li>Palabra clave de tamaño relativo: larger y smaller.</li>
+  <li>Porcentaje relativo: valor de porcentaje relativo al tamaño de la
+fuente vigente.</li>
+  <li>Tamaño relativo: valor comparado con la fuente vigente expresado
+en em o ex, que son los tamaños de la letra m y x. Por ejemplo 1.5ex.<br>
+  </li>
+</ul>
+
+<h3><a name="problema"></a>El problema del redimensionamiento del texto</h3>
+
+&nbsp;&nbsp;&nbsp; Cuando se utilizan tamaños absolutos el
+redimensionamiento del texto puede funcionar con unos navegadores si y
+con otros no. Una solución parcial es utilizar em como unidad de tamaño
+de fuente, pero el redimensionamiento no es igual en todos los
+navegadores.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Otra solución es utilizar el siguiente truco con la
+etiqueta body:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; body&nbsp;&nbsp;
+{font-size: 100%;}<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; h1&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; {font-size: 2em;}<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; h2&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; {font-size: 1.5em;}<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p&nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; {font-size: 0.8em;}<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Así, se obtendrá el mismo resultado en todos los
+navegadores.<br>
+
+<h3><a name="estilo"></a>Estilo de la fuente</h3>
+
+&nbsp;&nbsp;&nbsp; El estilo de fuente se controla mediante las
+siguientes propiedades:<br>
+
+<ul>
+
+  <li>font-style.- permite elegir entre normal, italic (cursiva) y
+oblique.</li>
+  <li>font-variant.- permite elegir entre normal y small-caps
+(versalita).</li>
+  <li>font-weight.- permite elegir la oscuridad de la fuente mediante
+los valores: normal, bold, bolder, lighter y un valor entre 100 (más
+clara) y 900 (más oscura). El valor normal es 400. El valor bold
+corresponde al 700. Con bolder y lighter se aumenta o disminuye
+respectivamente el valor heredado. Ver ejemplos en pag. 249.<br>
+  </li>
+</ul>
+
+<h3><a name="font"></a>Propiedad simplificadora font</h3>
+
+&nbsp;&nbsp;&nbsp; La propiedad font permite asignar varios valores de
+propiedades de fuentes en una única propiedad; las propiedades que se
+pueden informar dentro de esta propiedad concentradora son: font-style,
+font-variant, font-weight, font-size, line height y font-family, es
+decir, todas las relacionadas con las fuentes.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La propiedad se especifica sin indicar los nombres
+de las propiedades sino solamente los valores, por ejemplo:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p&nbsp;&nbsp; {font:
+12px&nbsp; sans-serif;}<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p&nbsp;&nbsp; {font:
+120%&nbsp; sans-serif;}<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p&nbsp;&nbsp; {font:
+x-large/120%&nbsp; Arial&nbsp; sans-serif;}<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p&nbsp;&nbsp; {font:
+200&nbsp; oblique&nbsp; large&nbsp; Western;}<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p&nbsp;&nbsp; {font:
+small-caps&nbsp; normal&nbsp; 140%/120%;}<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Cuando se utiliza el símbolo "/" es para especificar
+tamaño de fuente / altura de línea. Cuando no se especifica alguno de
+los valores de las propiedades de fuente se utilizará el valor vigente.
+La palabra clave "normal" se aplica a font-style y a font-weight.<br>
+
+<h3><a name="uso"></a>Uso de fuentes del sistema</h3>
+
+&nbsp;&nbsp;&nbsp; En la propiedad font puede hacerse referencia a las
+fuentes utilizadas por diferentes elementos del sistema:<br>
+<ul>
+  <li>caption: fuente utilizada en los controles con título (botones, listas, etc.).</li>
+  <li>icon: fuente utilizada para dar nombre a los iconos.</li>
+  <li>menu: fuente utilizda en los menús.</li>
+  <li>message-box: fuente utilizada en los cuadros de diálogo.</li>
+  <li>small-caption: fuente utilizada para los controles pequeños.</li>
+  <li>status-bar: fuente utilizada en la barra de estado de la ventana.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Un ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  p&nbsp;&nbsp;&nbsp;  {font: message-box;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  div {font: menu;}<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Al utilizar el valor que hace referencia a un
+elemento del sistema se asigna, en un único paso, todas las propiedades
+de esa fuente.<br>
+
+
+<h3><a name="notodo"></a>No todo es CSS ni todo son párrafos &lt;p&gt;</h3>
+
+&nbsp;&nbsp;&nbsp; Además de la etiqueta p existen otras que permiten
+atribuir propiedades diferenciadas a una parte de los párrafos o a
+cierto tipo de párrafos:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;span&gt;,
+&lt;code&gt;, &lt;address&gt;, &lt;abbr&gt;, &lt;cite&gt;, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Además, pueden asignarse estilos personalizados a estas etiquetas.
+</body></html>

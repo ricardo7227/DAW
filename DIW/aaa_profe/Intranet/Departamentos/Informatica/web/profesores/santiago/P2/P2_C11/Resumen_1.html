@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Contenido autogenerado</title>
+  <link title="Estilos" rel="stylesheet" href="estilos.css" type="text/css">
+</head>
+<body>
+<header>
+<p id="cabecera">Contenido autogenerado</p>
+</header>
+<nav>
+<a href="#propiedad">Propiedad content</a><br>
+<a href="#pseudo">Pseudo elementos</a><br>
+</nav>
+<article>
+<h3><a name="propiedad"></a>Propiedad content</h3>
+&nbsp;&nbsp;&nbsp; La propiedad <span style="color: red;">content</span>
+suministra el contenido utilizado por alguno de los pseudo elementos
+(:before y :after). Aunque su uso no está limitado, según el estándar
+debería utilizarse dentro de los pseudo elementos citados. Esta
+propiedad se aparta del esquema que propone que CSS se encarga del
+estilo y se desentiende del contenido; al ser una propiedad que genera
+contenido es un caso atípico dentro de CSS. Su formato es muy simple:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; content: "contenido";<br>
+<br>
+&nbsp;&nbsp;&nbsp; El contenido debe ser texto simple, y así se tomará
+aunque incluya, por ejemplo, etiquetas HTML. El texto se mostrará con
+los atributos heredados de su elemento padre. Una alternativa de
+formato es la siguiente:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; content: url('dirección
+URL de un soporte media');<br>
+<br>
+&nbsp;&nbsp;&nbsp; Así, dos ejemplos válidos serían:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p:before {content:
+"Contenido generado automáticamente";}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; div.clase:after {content:
+url('audio.wav');}<br>
+<h3><a name="pseudo"></a>Pseudo elementos</h3>
+&nbsp;&nbsp;&nbsp; Los pseudo elementos permiten asignar propiedades
+para áreas especiales de un documento con límites diferentes a los
+estándar. Los pseudo elementos disponibles son:<br>
+<ul>
+  <li><span style="color: red;">:first-line</span>.- primera línea.</li>
+  <li><span style="color: red;">:first-letter</span>.- primera letra.</li>
+  <li><span style="color: red;">:before</span>.- antes del elemento.</li>
+  <li><span style="color: red;">:after</span>.- después del elemento.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; El pseudo elemento se coloca como un sufijo del
+selector. En CSS3 los pseudo elementos comenzarán con dos puntos (:),
+dado que la codificación con un punto (.) se destina a las pseudo
+clases.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando dentro del contenido de la propiedad content
+quieran incluirse las dobles comillas como parte de la cadena a
+insertar, deberá utilizarse el objeto <span style="color: red;">open-quote
+y close-quote</span> en la forma:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p {content: "El libro se
+titula " open-quote "Mio Cid" close-quote " y tiene 1.000 páginas";}<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Dentro de la propiedad content puede incluirse el
+objeto <span style="color: red;">counter</span>
+para numerar automáticamente una lista de elementos. Con counter se
+gestionan contadores que podrán reiniciarse o incrementarse
+automáticamente. El formato del contador es el siguiente:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; content:&nbsp; "Texto
+opcional" counter (nombre_variable) " : ";<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para que el contador se incremente automáticamente
+se utiliza la propiedad <span style="color: red;">counter-increment</span>
+que tiene el formato:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; counter-increment:&nbsp;
+nombre_variable&nbsp; valor_incremento;<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El valor de incremento predeterminado es 1. Veamos
+un ejemplo:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; counter-increment:
+contador&nbsp; 2;<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para que el contador se reinicie se utiliza la
+propiedad <span style="color: red;">counter-reset</span>, que tiene la
+forma:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; counter-reset:&nbsp;
+nombre_variable&nbsp; valor_reinicializacion;<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El valor de reinicialización predeterminado es 1.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; En una misma propiedad counter-increment o
+counter-reset pueden incrementarse/reiniciarse varias variables. Un
+ejemplo:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; counter-increment: vara
+2&nbsp; varb 3;<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Mediante el objeto counter pueden numerarse listas,
+personalizando los valores de inicio, incremento, etc. Un ejemplo puede
+ser el siguiente:<br>
+
+<br>
+
+<table>
+
+  <thead> <tr>
+    <th>CODIGO </th>
+    <th>RESULTADO </th>
+  </tr>
+  </thead> <tbody>
+    <tr>
+      <td>&nbsp;&nbsp;&nbsp;
+. . .<br>
+&nbsp;&nbsp; &lt;style&gt;<br>
+&nbsp; &nbsp; &nbsp; li:before&nbsp;&nbsp; {content:&nbsp;
+counter(lista)&nbsp; ": ";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+counter-increment: lista&nbsp; 10;}<br>
+&nbsp;&nbsp; &lt;/style&gt;<br>
+&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp; &lt;ol&nbsp; style="counter-reset: lista 90;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+list-style-type: none;"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;li&gt;Tordillos&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;li&gt;Coca de Alba&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;li&gt;Peñarandilla&lt;/li&gt;<br>
+&nbsp;&nbsp; &lt;/ol&gt;<br>
+      </td>
+      <td>
+      <ol style="counter-reset: lista 90; list-style-type: none;">
+        <li class="ej">Tordillos</li>
+        <li class="ej">Coca de Alba</li>
+        <li class="ej">Peñarandilla</li>
+      </ol>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</article>
+<footer>
+</footer>
+</body>
+</html>

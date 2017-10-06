@@ -1,0 +1,16 @@
+<?xml version='1.0' ?>
+<!DOCTYPE DEPARTAMENTO [
+<!ELEMENT DEPARTAMENTO (FUNCIÓN, UBICACIÓN, EMPLEADOS)>
+<!ATTLIST DEPARTAMENTO nombre CDATA #REQUIRED>
+<!ELEMENT  FUNCIÓN (#PCDATA)>
+<!ELEMENT  UBICACIÓN (#PCDATA)>
+<!ELEMENT  EMPLEADOS (#PCDATA)>   
+]>    
+
+<DEPARTAMENTO  nombre="Contabilidad">
+<FUNCIÓN>Mantener los registros contables de la empresa</FUNCIÓN>
+<UBICACIÓN>Av. Diagonal 200, 08000 Barcelona</UBICACIÓN>
+<EMPLEADOS>Juan Salas</EMPLEADOS>
+<EMPLEADOS>Enrique Fuentes</EMPLEADOS>
+<EMPLEADOS>Clara Correa</EMPLEADOS>
+</DEPARTAMENTO> 

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Valentin Sorin Minca">
+
+        <title>I.E.S. Enrique Tierno Galvan</title>
+		
+		<!-- Include jQuery files-->
+		<script src="../jquery/jquery.js"></script>
+		<script type="text/javascript" src='../js/bootstrap.min.js'></script>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="../css/styles.css" rel="stylesheet">
+		
+		<!-- Custom Fonts -->
+		<!-- Fonts para los iconos sociales-->
+		<link rel="stylesheet" href="../fonts/social/font.css" type="text/css" charset="utf-8" />
+		
+	</head>
+	
+	<body>
+		<div id="contenedor">
+			<!-- Barra de navegacion -->
+			<nav>
+				<!--Menu de log in-->
+				<div  class="hidden-xs">
+					<ul id="menu-secundario-mio">
+						<li><button type="button" class="btn btn-info btn-lg button-menu-secundario-mio" data-toggle="modal" data-target="#myModal">Profesores</button></li>
+						<li><button type="button" class="btn btn-info btn-lg button-menu-secundario-mio" data-toggle="modal" data-target="#myModal">Alumnos</button></li>
+						<li><button type="button" class="btn btn-info btn-lg button-menu-secundario-mio" data-toggle="modal" data-target="#myModal">Personal</button></li>
+						<li><button type="button" class="btn btn-info btn-lg button-menu-secundario-mio" data-toggle="modal" data-target="#myModal">Visitante</button></li>
+						<li><button type="button" class="btn btn-info btn-lg button-menu-secundario-mio"  onClick="parent.location='../content/registro.html'">Nuevo usuario</button></li>
+					</ul>
+				</div>
+				
+				<!--Ventana modal para el login -->
+				
+				<div id="myModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+
+						
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Por favor, introduzca sus datos:</h4>
+							</div>
+							<div class="modal-body">
+								<div class="login-form">
+								  <form action="login.php" method="post">
+									<fieldset>
+									  <div class="clearfix">
+										<input type="text" placeholder="Nombre de usuario">
+									  </div>
+									  <div class="clearfix">
+										<input type="password" placeholder="Contraseña">
+									  </div>
+									  <button class="btn primary" type="submit">Ingresar!</button>
+									</fieldset>
+								  </form>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<div id="nav-container-mio" class="container-fluid">
+					
+					<!--Menu principal-->
+					
+						<a href="../index.html"  class="visible-xs izquierda-mio">
+							<img src="../images/logo_transparente_80x63.png" alt="Logo">
+						</a>
+						
+					<!--This div will be visible only in xs viewport for mobile view-->
+					<div>
+						
+						<div id="menu-hamburguer-mio" class="dropdown visible-xs">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<button type="button" id="nav-button-mio"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+							</a>
+							<ul class="dropdown-menu" id="menu-principal-xs-mio">
+								<li><a class="vinculo-menu-mio-xs" href="#">El Instituto</a></li>
+								<li><a class="vinculo-menu-mio-xs" href="#">Admision</a></li>
+								<li><a class="vinculo-menu-mio-xs" href="#">Eventos</a></li>
+								<li><a class="vinculo-menu-mio-xs" href="#">Contacto</a></li>
+							</ul>
+						</div>
+						<div id="menu-hamburguer-mio" class="dropdown visible-xs">
+							<a class="dropdown-toggle" data-toggle="dropdown" id="vinculo-login-xs-mio" href="#">LogIn</a>
+							<ul class="dropdown-menu" id="menu-principal-xs-mio">
+								<li><a class="vinculo-menu-mio-xs" href="#">Profesores</a></li>
+								<li><a class="vinculo-menu-mio-xs" href="#">Alumnos</a></li>
+								<li><a class="vinculo-menu-mio-xs" href="#">Personal</a></li>
+								<li><a class="vinculo-menu-mio-xs" href="#">Visitante</a></li>
+								<li><a class="vinculo-menu-mio-xs" href="registro.html">Nuevo usuario</a></li>
+							</ul>
+						</div>
+					</div>
+					<!--This menu will be visible in larger then xs viewport-->
+					
+						
+
+					<a href="../index.html" class="hidden-xs izquierda-mio"><img class="izquierda-mio" src="../images/logo_transparente_80x63.png" alt="Logo"><span id="nombre-instituto-mio">I.E.S. Enrique Tierno Galván</span></a>
+						<ul id="nav-menu-mio" class="hidden-xs">
+							
+							<li class="dropdown">
+								<a class="dropdown-toggle vinculo-menu-principal-mio" data-toggle="dropdown" href="#">El Instituto<img src="../images/flecha_abajo_15x10.png" alt="flecha_abajo"></a>
+								<ul class="dropdown-menu">
+									<li><a class="vinculo-menu-mio" href="../content/direccion.html"><span>Dirección</span></a></li>
+									<li><a class="vinculo-menu-mio" href="../content/secretaria.html"><span>Secretaría</span></a></li>
+									<li><a class="vinculo-menu-mio" href="../content/instalaciones.html"><span>Instalaciónes</span></a></li>
+									<li><a class="vinculo-menu-mio" href="../content/oferta_educativa.html"><span>Oferta educativa</span></a></li>
+								</ul>
+							</li>
+								
+							<li class="dropdown">
+								<a class="dropdown-toggle vinculo-menu-principal-mio" data-toggle="dropdown" href="#">Admision<img src="../images/flecha_abajo_15x10.png" alt="flecha_abajo"></a>
+								<ul class="dropdown-menu">
+									<li><a class="vinculo-menu-mio" href="../content/admision_fp.html"><span>Formación Profesional</span></a></li>
+									<li><a class="vinculo-menu-mio" href="../content/admision_es.html"><span>Educacion Secundaria</span></a></li>
+									<li><a class="vinculo-menu-mio" href="../content/admision_b.html"><span>Bachiller</span></a></li>
+								</ul>
+							</li>					
+							<li class="hidden-md hidden-sm">
+								<a class="vinculo-menu-principal-mio" href="../content/eventos.html">Eventos</a>
+							</li>
+							<li class="hidden-sm">
+								<a class="vinculo-menu-principal-mio" href="content/contacto.html">Contacto</a>
+							</li>
+							<li class="hidden-sm">
+								<div id="buscar-mio">
+									<form class="navbar-form" role="search">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="Buscar..." name="srch-term" id="search-caja-mio">
+											<div class="input-group-btn">
+												<button type="submit" id="search-button-mio"></button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</li>
+							
+							<li id="banderas-mio" class="hidden-xs">
+								<a href="#"><img src="../images/es.png" alt="bandera_es"></a>
+								<a href="#"><img src="../images/en.png" alt="bandera_en"></a>
+							</li>
+							
+						</ul>
+				</div>	
+				
+			</nav>
+			
+			
+			
+			<!--Cuerpo principal-->
+			<div id="cuerpo-mio" class="container-fluid">
+				<div id="div-temporal-mio">
+					<a href="../index.html" ><img src="../images/banana.png" alt="Banana"></a>
+				</div>
+				<h2 style="padding:0;margin:20px auto;text-align:center;">Admision FP calendario de matriculacion, información, etc.</h2>
+			</div>	
+			
+			<!--Pie-->
+			<div id="pie-mio">
+				<div id="div-patrocinadores-mio" class="hidden-xs">
+					<h3>Nuestros patrocinadores:</h3>
+					<ul>
+						<li><a href="http://www.madrid.org/cs/Satellite?c=CM_Agrupador_FP&cid=1109266187254&idConsejeria=1109266187254&idListConsj=1109265444710&language=es&pagename=ComunidadMadrid%2FEstructura" title="Comunidad de Madrid" title="Comunidad de Madrid"><img src="../images/madrid.jpg"></a></li>
+						<li><a href="http://www.mecd.gob.es/portada-mecd/" title="Ministerio de Educación, Cultura y Deporte"><img src="../images/gobierno.jpg"></a></li>
+					</ul>
+				</div>
+				<div id="div-sitemap-mio" class="hidden-md hidden-sm hidden-xs">
+					<span><a href="content/sitemap.html"><h3>SiteMap</h3></a></span>
+				</div>
+				<div id="div-social-mio" class="hidden-xs">
+					<h3>Estamos en:</h3>
+					<ul>	
+						<li><a href="http://www.facebook.com" class="facebook" title="Facebook"></a></li>
+						<li><a href="http://www.twitter.com" class="twitter" title="Twitter"></a></li>
+						<li><a href="http://www.google.com" class="google" title="Google+"></a></li>
+						<li><a href="http://www.linkedin.com" class="linkedin" title="LinkedIn"></a></li>
+					</ul>
+				</div>
+				
+				<!--SOLO PARA VISTA XS BOTONES SOCIALES CENTRADOS-->
+				<div id="div-social-xs-mio" class="visible-xs">
+					<ul>	
+						<li><a href="http://www.facebook.com" class="facebook" title="Facebook"></a></li>
+						<li><a href="http://www.twitter.com" class="twitter" title="Twitter"></a></li>
+						<li><a href="http://www.google.com" class="google" title="Google+"></a></li>
+						<li><a href="http://www.linkedin.com" class="linkedin" title="LinkedIn"></a></li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>	

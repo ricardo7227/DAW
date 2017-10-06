@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file015.html -->
+<html>
+<head>
+
+<script type="text/javascript">
+function miPopup(txtPag, iAncho, iAltura, txtOpt) {
+	var iTop=(screen.height - iAltura) / 2;
+	var iLeft=(screen.width - iAncho) / 2;
+	var miPopup = window.open(txtPag,"","top="+iTop+
+		",left="+iLeft+", width="+iAncho+
+		",height="+iAltura+","+txtOpt);
+if (miPopup) {
+	miPopup.focus();
+	} else {
+		alert("Popup bloqueado")
+	}
+	}
+	</script>
+	
+</HEAD>
+<BODY>
+<a href="javascript:miPopup('popup.html', 200, 100, 'resizable=no, location=no, menubar=no, status=no, scrollbars=no, menubar=no')">Abrir ventana popup</a>
+</body>
+</html>

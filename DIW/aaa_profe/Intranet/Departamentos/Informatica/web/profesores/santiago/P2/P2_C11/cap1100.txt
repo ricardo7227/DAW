@@ -1,0 +1,2 @@
+Otro objeto que se puede utilizar dentro de la propiedad content es el objeto counter para numerar automáticamente una lista de elementos. La ventaja del uso de los contadores  de este tipo es la mayor flexibilidad comparada con las listas estándar de HTML; por ejemplo, se puede comenzar desde cualquier número.
+El objeto counter se utiliza para gestionar un contador numérico que se puede incrementar y/o reinicializar automáticamente. El formato del contador es el siguiente:

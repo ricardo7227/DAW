@@ -1,0 +1,192 @@
+/*
+ * Author: Ying Ying Hu
+ * Project Name: WebIES
+ * Version: 1.0
+ */
+  
+  
+/* FONTS */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700,900);
+
+
+/* OVERALL ASPECT */
+
+body {
+	background-color: #f2f2f2;
+	font-family: "Lato";
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+	margin-top: 70px;
+}
+
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway";
+    color: #333;
+}
+
+/* Paragraph & Typographic */
+p {
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+
+time {
+	color: #999;
+	font-size:small;
+}
+
+.centered {
+    text-align: center;
+}
+
+.section-header {
+  padding-bottom: 9px;
+  margin: 20px 0 20px;
+  border-bottom: 2px solid #eeeeee;
+}
+
+/* Links */
+a {
+    color: #f85c37;
+    word-wrap: break-word;
+	transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+a:hover,
+a:focus {
+    color: #7b7b7b;
+    text-decoration: none;
+    outline: 0;
+}
+
+a:before,
+a:after {
+	transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+ hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
+
+/* ==========================================================================
+   Header Sections
+   ========================================================================== */
+
+   
+.navbar {
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.navbar-header {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.navbar-inverse {
+	background: #2d2d2d;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+	background: #ff7878;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #eee;
+	font-weight: bolder;
+	font-size: 22px;
+	letter-spacing: 1px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.navbar-inverse .navbar-brand img {
+	height:40px;
+	width: auto;
+	padding-right:10px;
+}
+
+.navbar-inverse {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.dropdown-menu {
+    background: #2d2d2d;
+    border-bottom: 4px solid #ff7878;
+	
+}
+
+.dropdown-menu > li > a {
+    color:#fff;
+  }
+
+
+/* ==========================================================================
+   HeaderWrap Sections
+   ========================================================================== */
+
+ 
+#headerwrap img{
+	margin-top: -20px;
+	padding-top:20px;
+	text-align:center;
+	width: 100%;
+    height: auto;
+    opacity: 0.9;
+}
+
+
+/* ==========================================================================
+   Presentation Sections
+   ========================================================================== */
+
+   
+#ul [class="listheader"] {
+	list-style:square;
+}
+
+  
+/* ==========================================================================
+   Portfolio Sections
+   ========================================================================== */
+
+
+/* Dark Grey Wrap */
+#portfolio {
+	background: #e0e0e0;
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+
+#portfolio h4 {
+	font-weight: 700;
+}
+ 
+.enlaces a > img {
+
+	vertical-align: text-top;
+	height: auto;
+	max-width: 150px;
+}
+
+  
+/* ==========================================================================
+   Footer Sections
+   ========================================================================== */
+
+#foot {
+	background: #2d2d2d;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}

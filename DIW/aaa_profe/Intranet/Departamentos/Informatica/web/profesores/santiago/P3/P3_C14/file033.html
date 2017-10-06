@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file033.html -->
+<html>
+<head>
+<script type="text/javascript">
+function inicializarMicroAyuda() {
+	if (document.getElementById) {
+		document.write("<div id=\"divMicro\"></div>");
+	}
+}
+
+function microAyuda(textoAyuda) {
+	// el evento onmousemove produce la llamada
+	// a esta función con el texto de ayuda de
+	// cada uno de los elementos
+	if (document.getElementById) {
+		// obtener el elemento con Id = divMicro
+		var miDiv=document.getElementById("divMicro");
+
+		// se asigna el texto correspondiente
+		// al elemento que motivó la llamada a
+		// esta función
+		miDiv.innerHTML= textoAyuda;
+
+		// se hace que el elemento sea visible
+		miDiv.style.visibility="visible";
+
+		// posicionamiento de la microayuda
+		// se obtienen los valores de la
+		// posición vigente del ratón
+
+		// se desplaza un poco a la derecha
+		var X=coordX+5;
+		// se desplaza un poco hacia abajo
+		var Y =coordY+25;
+		// asignamos los valores del
+		// posicionamiento
+		miDiv.style.top=Y+"px";
+		miDiv.style.left=X+"px";
+	}
+
+}
+
+function ocultarMicroAyuda() {
+	// ocultar la microyuda es simplemente
+	// cambiar su visibilidad
+	if (document.getElementById) {
+		document.getElementById("divMicro").style.visibility="hidden";
+	}
+}
+
+// variables para contener las coordenadas del
+// ratón
+var coordX = 0;
+var coordY = 0;
+
+// se define una función para gestionar
+// los movimientos del ratón en
+// cada momento
+document.onmousemove= obtenerCoordenadasMouse;
+
+function obtenerCoordenadasMouse(e) {
+	if (document.all) {
+		coordX=event.x+document.body.scrollLeft;
+		coordY=event.y+document.body.scrollTop;
+	} else {
+		coordX=e.pageX;
+		coordY=e.pageY;
+	}
+}
+</script>
+<style type="text/css">
+#divMicro {
+	position: absolute;
+	font-family: times;
+	font-weight: bold;
+	font-style: italic;
+	font-size:12pt;
+	border:4px solid #000;
+	background-color:#FFF;
+	color:#000;
+	padding:4px;
+	visibility: hidden;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+	inicializarMicroAyuda();
+</script>
+Enlaces para el ejemplo que muestra microayudas en los enlaces:
+<ul>
+<li><a href="http://www.inforbooks.com/cataleg.php" onmousemove="microAyuda('Sitio web de Inforbooks<br>consulta del catálogo')" onmouseout="ocultarMicroAyuda()" >Editorial Inforbooks</li>
+<li><a href="http://www.amazon.com" onmousemove="microAyuda('Compre los libros de Inforbooks <br>en Amazon ')" onmouseout="ocultarMicroAyuda()" >Compra de libros en Amazon</li>
+<li><a href="http://www.inforbooks.com/online.php" onmousemove="microAyuda('Libros online <br>en Inforbooks')" onmouseout="ocultarMicroAyuda()" >Libros online</li>
+<li><a href="http://www.inforbooks.com/novetats.php" onmousemove="microAyuda('Los últimos libros publicados<br>por la Editorial Inforbooks')" onmouseout="ocultarMicroAyuda()" >Novedades del mes</li>
+</ul>
+</body>
+</head>

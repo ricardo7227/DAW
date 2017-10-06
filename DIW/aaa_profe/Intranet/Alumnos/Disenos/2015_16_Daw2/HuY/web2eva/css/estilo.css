@@ -1,0 +1,26 @@
+/* Author: Ying Ying Hu
+ * Project Name: WebIES
+ * Version: 3.0.Compress */
+@import "http://fonts.googleapis.com/css?family=Lato:300,400,700,900";
+@import "http://fonts.googleapis.com/css?family=Raleway:400,300,700,900";
+body{font-family:"Lato";font-weight:400;font-size:16px;background-color:#fbfbfb;margin-top:70px}
+h1,h2,h3,h4,h5,h6{font-family:"Raleway"}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+time{color:#999;font-size:small}
+a{color:#f85c37;word-wrap:break-word;transition:color .1s ease-in,background .1s ease-in}
+a:hover,a:focus{color:#7b7b7b;text-decoration:none;outline:0}
+a:before,a:after{transition:color .1s ease-in,background .1s ease-in}
+.section-header{color:#666;font-size:18px;font-weight:700;padding-bottom:9px;margin:20px 0;border-bottom:3px solid #999}
+.article-header{font-size:18px;font-weight:700;margin:20px 0 5px}
+.navbar-header{padding-top:5px;padding-bottom:5px}
+.navbar-inverse{font-size:14px;font-weight:700;background:#2d2d2d;padding-top:10px;padding-bottom:10px}
+.navbar-inverse .navbar-nav > .active > a{background:#ff7878;color:#fff}
+.navbar-brand{padding-top:0;padding-bottom:0}
+.navbar-inverse .navbar-brand img{height:40px;width:auto;padding-right:10px}
+.dropdown-menu{background:#2d2d2d;border-bottom:4px solid #ff7878}
+.dropdown-menu > li > a{color:#fff}
+#Instituto{color:#fff;font-size:20px;font-weight:700;letter-spacing:1px}
+#headerwrap img{width:100%;height:auto}
+#portfolio{background:#d9d9d9;padding-top:40px;padding-bottom:20px}
+.enlaces a > img{max-width:150px;height:auto}
+#foot{color:#ccc;background:#2d2d2d;padding-top:30px;padding-bottom:30px}

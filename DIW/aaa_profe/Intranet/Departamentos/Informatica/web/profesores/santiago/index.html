@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Material de trabajo - Santiago Alonso</title>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Sistemas y Programación Web" />
+        <meta name="keywords" content="Sistemas, Hardware, HTML5, CSS3, JavaScript, BootStrap, Less" />
+	<meta name="author" content="Santiago Alonso" />
+	<!-- Para que la página se redimensione sin problemas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Carga de jquery -->
+	<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<!-- Carga de bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <script src="js/bootstrap.min.js"></script>
+	<!-- Mis estilos -->
+        <link title="Estilos personales" rel="stylesheet" href="estilos.css" type="text/css">
+        <script>
+            $(document).ready(function(){
+		$(".bloque").click(function(evento){
+			evento.preventDefault();
+			$(".capitulos").hide("slow");
+		});
+		$("#a_html4").click(function(evento){
+			$("#cap_html4").show(1000);
+		});
+		$("#a_html5").click(function(evento){
+			$("#cap_html5").show(1000);
+		});
+		$("#a_css").click(function(evento){
+			$("#cap_css").show(1000);
+		});
+		$("#a_javascript").click(function(evento){
+			$("#cap_javascript").show(1000);
+		});
+		$("#a_php").click(function(evento){
+			$("#cap_php").show(1000);
+		});
+		$("#a_mysql").click(function(evento){
+			$("#cap_mysql").show(1000);
+		});
+		$("#a_seo").click(function(evento){
+			$("#cap_seo").show(1000);
+		});
+		$("#a_jquery").click(function(evento){
+			$("#cap_jquery").show(1000);
+		});
+		$("#a_materiales").click(function(evento){
+			$("#cap_materiales").show(1000);
+		});
+                $("#a_presentacion").click(function(evento){
+                        $("#cap_pesentacion").show(1000);
+		});
+		$("#a_infor").click(function(evento){
+			$("#cap_infor").show(1000);
+		});
+		$("#a_cableado").click(function(evento){
+			$("#cap_cableado").show(1000);
+		});
+		$("#a_cajas").click(function(evento){
+			$("#cap_cajas").show(1000);
+		});
+		$("#a_placas").click(function(evento){
+			$("#cap_placas").show(1000);
+		});
+		$("#a_proces").click(function(evento){
+			$("#cap_proces").show(1000);
+		});
+		$("#a_memorias").click(function(evento){
+			$("#cap_memorias").show(1000);
+		});
+		$("#a_fuentes").click(function(evento){
+			$("#cap_fuentes").show(1000);
+		});
+		$("#a_discos").click(function(evento){
+			$("#cap_discos").show(1000);
+		});
+		$("#a_perifericos").click(function(evento){
+			$("#cap_perifericos").show(1000);
+		});
+		$("#a_bios").click(function(evento){
+			$("#cap_bios").show(1000);
+		});
+		$("#a_clonar").click(function(evento){
+			$("#cap_clonar").show(1000);
+		});
+
+		cambiarImagen();
+		function cambiarImagen(){
+			$("#login").fadeOut(6000, function() {
+				$("#login").fadeIn(6000, cambiarImagen());
+			});
+		};
+            });
+            function mostrar_modulo (num){
+                var tabla_m = new Array();
+                var tabla_a = new Array();
+                var i = 0;
+                tabla_m = document.getElementsByClassName("modulo");
+                for (i=0;i<tabla_m.length;i++){
+                    tabla_m[i].style.display = "none";
+                }
+                tabla_m[num].style.display="inline";
+                
+                tabla_a = document.getElementsByClassName("auxiliar");
+                for (i=0;i<tabla_a.length;i++){
+                    tabla_a[i].style.display = "none";
+                }
+                tabla_a[num].style.display="inline";
+                
+            }
+        </script>
+</head>
+<body>
+ <div id="pagina" class="container-fluid">
+
+    <header>
+        <div class="row">
+            <div id="logo" class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                 <img class="img-responsive" alt="Logo Tierno Galván" title="Tierno Galván" src="Comun/LetrasLogo.gif">
+            </div>
+            <div class="col-lg-2 col-lg-push-8 col-md-2 col-md-push-8 col-sm-2 col-sm-push-8 col-xs-6"><img id="login" alt="Suzuki Intruder" class="img-responsive" src="Comun/Suzuki_01.jpg"></div>
+            <div id="texto_cabecera" class="col-lg-8 col-lg-pull-2 col-md-8 col-md-pull-2 col-sm-8 col-sm-pull-2 col-xs-12">
+                Programación&nbsp;&nbsp;&nbsp;Web<br />
+                Sistemas - Hardware
+            </div>
+        </div>
+    </header>
+
+    <nav>
+	<div class="row">
+            <ul>
+                <li><a href="#" onclick="javascript:mostrar_modulo(0)">Mis datos</a></li>
+		<li><a href="#" onclick="javascript:mostrar_modulo(1)">DIW</a></li>
+		<li><a href="#" onclick="javascript:mostrar_modulo(2)">DWEC</a></li>
+                <li><a href="#" onclick="javascript:mostrar_modulo(3)">SISTEMAS I</a></li>
+		<li><a href="#" onclick="javascript:mostrar_modulo(4)">SISTEMAS II</a></li>
+		<li><a href="#" onclick="javascript:mostrar_modulo(5)">HARDWARE</a></li>
+            </ul>
+	</div>
+    </nav>
+    <div id="cuerpo" class="row">
+	<aside class="col-lg-3 col-md-3 col-sm-3 hidden-xs">
+            <div id="auxiliar_mis_datos" class="auxiliar">
+                <!--h4>Mi material auxiliar</h4-->
+            </div>
+            <div id="auxiliar_diw" class="auxiliar">
+                <h4>Material auxiliar DIW</h4>
+                <a href="http://www.w3schools.com/tags/"> Listado alfabético de etiquetas y atributos</a><br/>
+                <a href="http://validator.w3.org"> Validador de código</a><br/>
+                <a href="http://librosweb.es/bootstrap_3/capitulo_1.html"> Diseño responsive con bootstrap</a><br />
+                <a href="http://bid.ub.edu/es/31/gonzalez2.htm"> Buen artículo sobre RWD</a><br />
+                <a href="http://devcode.la/tutoriales/web-starter-kit-de-google/"> Web Starter Kit de Google para chequear resoluciones</a><br/>
+                <a href="http://www.blogtecnologico.net/tutorial-seo/"> Tutorial de SEO</a><br />
+                <a href="http://www.w3c.es/Traducciones/es/WAI/intro/accessibility">Accesibilidad de la Web</a><br />
+                <a href="http://www.codexexempla.org/traducciones/pautas-accesibilidad-contenido-web-2.0.htm">Pautas de Accesibilidad</a><br />
+                <a href="Materiales/une_1398032004.pdf">Norma UNE 139803:2004 de Accesibilidad</a><br />
+                <a href="DIW/complementos/Resumen_paralaweb.pdf">Resumen Diseño de Interfafes (RAMA)</a><br />
+                <a href="http://www.smashingmagazine.com/tag/web-design/"> Ejemplos de diseño Web</a><br/>
+            </div>
+            <div id="auxiliar_dwec" class="auxiliar">
+                <h4>Material auxiliar DWEC</h4>
+                <a href="http://www.w3schools.com/tags/"> Listado alfabético de etiquetas y atributos</a><br/>
+            </div>
+            <div id="auxiliar_sistemas_i" class="auxiliar">
+                <h4>Material auxiliar Sistemas I</h4>
+                <a href="Sistemas/Ubuntu.pdf">Ubuntu Server</a><br />
+                <a href="Sistemas/WAdmin_Total.pdf">Administración de Windows 2008 (completo)</a><br />
+                <a href="Sistemas/WAdmin_I.pdf">Administración de Windows 2008 (Parte 1)</a><br />
+                <a href="Sistemas/WAdmin_II.pdf">Administración de Windows 2008 (Parte 2)</a><br />
+                <a href="Sistemas/WAdmin_III.pdf">Administración de Windows 2008 (Parte 3)</a><br />
+                <a href="Sistemas/WAdmin_IV.pdf">Administración de Windows 2008 (Parte 4)</a><br />
+                <a href="Sistemas/ActiveDirectory_2008.pdf">Windows 2008. Active Directory</a><br />
+                <a href="Sistemas/Windows_2012.pdf">Windows Server 2012 R2</a><br />
+		<a href="https://www.youtube.com/watch?v=r8mDFV0Aioo">Video: Warriors of the net</a>
+		 (<a href="Sistemas/Guerreros_de_la_red.mp4">local</a>)
+
+            </div>
+            <div id="auxiliar_sistemas_ii" class="auxiliar">
+                <h4>Material auxiliar Sistemas II</h4>
+            </div>
+            <div id="auxiliar_hardware" class="auxiliar">
+                <h4>Material auxiliar Hardware</h4>
+            </div>
+            <h4>Material auxiliar transversal</h4>
+            <a href="Materiales/guia-proyecto-web-12-semanas.pdf"> Proyecto web en 12 semanas</a><br/><br/>
+            <a href="http://www.htmlya.com.ar/"> Cursos Ya con ejemplos y ejercicios</a><br/>
+            <a href="http://www.codecademy.com/"> Cursos Codecademy interactivos</a><br/>
+            <a href="http://librosweb.es/"> Libros Web</a><br/><br/>
+            <a href="http://websitesetup.org/html5-cheat-sheet/"> HTML5 Cheat Sheet (chuleta)</a>&nbsp;&nbsp;&nbsp;
+            <a href="../Materiales/cheat-sheet-html5.pdf"> (en pdf)</a><br/>
+            <a href="http://www.smashingmagazine.com/wp-content/uploads/images/css3-cheat-sheet/css3-cheat-sheet.pdf"> CSS3 Cheat Sheet (chuleta)</a>&nbsp;&nbsp;&nbsp;<a href="../Materiales/cheat-sheet-css3.pdf"> (en pdf)</a><br/>
+            <a href="http://www.caniuse.com/"> Herramienta Can I use ...</a><br/>
+            <a href="https://developer.mozilla.org/es/"> Mozilla Developer Network (MDN)</a><br/>
+            <a href="https://www.video2brain.com/es/tutorial/utilidades-para-maquetacion-web"> Video de utilidades para maquetar</a><br/>
+            <a href="https://www.video2brain.com/es/tutorial/que-es-maquetar-una-web"> Video qué es maquetar una web</a><br/>
+            <br/>
+            <a href="http://www.desarrolloweb.com/manuales/"> Manuales de desarrollo web</a><br />
+            <a href="http://mmc.igeofcu.unam.mx/LuCAS/Manuales-LuCAS/doc-curso-html/doc-curso-html/index.html"> Curso completo de html</a><br />
+            <a href="http://www.desarrolloweb.com/de_interes/listo-curso-completo-html5-microsoft-6439.html"> Curso de Microsoft de HTML 5</a><br />
+            <a href="http://geneura.ugr.es/~victor/cursillos/javascript/js_intro.html"> Curso de JavaScript. Document</a>&nbsp;&nbsp;&nbsp;
+            <a href="Materiales/DOM/Document/Document.pdf"> (en pdf)</a><br /><br>
+            <a href="http://www.codehunt.com">Cursos y tutoriales</a><br />
+            <a href="http://www.programmr.com">Cursos y tutoriales de diversos lenguajes</a><br />
+	</aside>
+	<section id="centro" class="col-lg-5 col-md-5 col-sm-7 col-xs-9">
+            <div id="mis_datos" class="modulo">
+                <p class="bloque">MIS DATOS</p><br />
+                <p>Profesor de Informática desde el año 1.985 y con destino en el 
+                    IES Enrique Tierno Galván desde 1.988. Imparto clases en los Ciclos 
+                    de Grado Superior DAW y ASIR, en los módulos de Sistemas, Diseño de 
+                    interfaces web, Desarrollo web en entorno cliente y Hardware.
+                </p>
+                <p>He ejercido como Jefe de Estudios, Administrador, Coordinador 
+                    T.I.C., etc.
+                </p>
+                <p>Un saludo
+                </p>
+            </div>
+            <div id="diw" class="modulo">
+                <p class="bloque">DIW</p>
+                <div>
+                    Capítulo 1.- <a href="DIW/01-usabilidad/slides/export/usabilidad-reveal-slides.html">Usabilidad</a><br />
+                    Capítulo 2.- <a href="DIW/02-accesibilidad/slides/export/accesibilidad-reveal-slides.html">Accesibilidad</a><br />
+                    Capítulo 3.- <a href="DIW/03-rwd/slides/export/rwd-reveal-slides.html">Responsive Web Design</a><br />
+                    Capítulo 4.- <a href="DIW/04-less/slides/export/less-reveal-slides.html">Less</a><br />
+                    Capítulo 5.- <a href="DIW/05-bootstrap/slides/export/bootstrap-reveal-slides.html">Bootstrap</a><br />
+                </div>
+            </div>
+            <div id="dwec" class="modulo">
+                <p class="bloque">DESARROLLO WEB</p>
+                <div id="parte_0">
+                    <div>
+                        <br>
+                        <a href="#" id="a_html4" class="bloque">Parte 0: HTML 4</a>
+                    </div>
+
+                    <div id="cap_html4" class="capitulos">
+                        <br />
+                        <ul>
+                            <li>Capítulo 1.- <a href="P0/P0_C01/Resumen.pdf">Introducción al
+lenguaje HTML</a></li>
+                            <li>Capítulo 2.- <a href="P0/P0_C02/Resumen.pdf">La primera
+página web</a></li>
+                            <li>Capítulo 3.- <a href="P0/P0_C03/Resumen.pdf">Formato de
+texto y caracteres especiales</a></li>
+                            <li>Capítulo 4.- <a href="P0/P0_C04/Resumen.html">Listas y
+comentarios en HTML</a></li>
+                            <li>Capítulo 5.- <a href="P0/P0_C05/Resumen.html">Imágenes y
+color en el WWW</a></li>
+                            <li>Capítulo 6.- <a href="P0/P0_C06/Resumen.html">Creación de
+tablas HTML</a></li>
+                            <li>Capítulo 7.- <a href="P0/P0_C07/Resumen.html">HTML avanzado</a></li>
+                            <li>Capítulo 8.- <a href="P0/P0_C08/Resumen.html">Marcos o frames</a></li>
+                            <li>Capítulo 9.- <a href="P0/P0_C09/Resumen.html">Vídeo, sonido
+y multimedia</a></li>
+                            <li>Capítulo 10.- <a href="P0/P0_C10/Resumen.html">Applets de Java y
+controles ActiveX</a></li>
+                            <li>Capítulo 11.- <a href="P0/P0_C11/Resumen.html">Formularios</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div id="parte_1">
+                    <div>
+                        <a href="#" id="a_html5" class="bloque">Parte 1: HTML 5</a>
+                    </div>
+                    <div id="cap_html5" class="capitulos">
+                        <ul>
+                            <li>Capítulo 1.- <a href="P1/P1_C01/Resumen.html">Introducción a
+HTML</a></li>
+                            <li>Capítulo 2.- <a href="P1/P1_C02/Resumen.html">Conceptos
+básicos</a></li>
+                            <li>Capítulo 3.- <a href="P1/P1_C03/Resumen.html">Organización
+del
+texto</a></li>
+                            <li>Capítulo 4.- <a href="P1/P1_C04/Resumen.html">Agrupación del
+texto</a></li>
+                            <li>Capítulo 5.- <a href="P1/P1_C05/Resumen.html">Hipertexto</a></li>
+                            <li>Capítulo 6.- <a href="P1/P1_C06/Resumen.html">Color e
+imágenes</a></li>
+                            <li>Capítulo 7.- <a href="P1/P1_C07/Resumen.html">Tablas</a></li>
+                            <li>Capítulo 8.- <a href="P1/P1_C08/Resumen.html">Formularios</a></li>
+                            <li>Capítulo 9.- <a href="P1/P1_C09/Resumen.html">Multimedia</a></li>
+                            <li>Capítulo 10.- <a href="P1/P1_C10/Resumen.html">Interactividad
+y Web Storage</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="parte_2">
+                    <div>
+                        <a href="#" id="a_css" class="bloque">Parte 2: CSS</a>
+                    </div>
+                    <div id="cap_css" class="capitulos">
+                        <ul>
+                            <li>Capítulo 1.- <a href="P2/P2_C01/Resumen.html">Conceptos
+básicos de CSS</a></li>
+                            <li>Capítulo 2.- <a href="P2/P2_C02/Resumen_1.html">Definición de
+estilos</a></li>
+                            <li>Capítulo 3.- <a href="P2/P2_C03/Resumen_1.html">Valores y
+unidades</a></li>
+                            <li>Capítulo 4.- <a href="P2/P2_C04/Resumen_1.html">Herencia y
+cascada</a></li>
+                            <li>Capítulo 5.- <a href="P2/P2_C05/Resumen_1.html">Propiedades de
+fuentes</a></li>
+                            <li>Capítulo 6.- <a href="P2/P2_C06/Resumen_1.html">Formateo de
+texto</a></li>
+                            <li>Capítulo 7.- <a href="P2/P2_C07/Resumen_1.html">Formateo de
+listas</a></li>
+                            <li>Capítulo 8.- <a href="P2/P2_C08/Resumen_1.html">Bordes,
+márgenes y rellenos</a></li>
+                            <li>Capítulo 9.- <a href="P2/P2_C09/Resumen_1.html">Colores y
+fondos</a></li>
+                            <li>Capítulo 10.- <a href="P2/P2_C10/Resumen_1.html">Posicionamiento
+y diseño</a></li>
+                            <li>Capítulo 11.- <a href="P2/P2_C11/Resumen_1.html">Contenido
+autogenerado</a></li>
+                            <li>Capítulo 12.- <a href="P2/P2_C12/Resumen_1.html">JavaScript y
+pseudo clases</a></li>
+                            <li>Capítulo 13.- <a href="P2/P2_C13/Resumen_1.html">Estilo de
+impresión</a></li>
+                            <li>Capítulo 14.- <a href="P2/P2_C14/Resumen_1.html">Elementos de
+la interfaz de usuario</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="parte_3">
+                    <div>
+                        <a href="#" id="a_javascript" class="bloque">Parte 3: JavaScript</a>
+                    </div>
+                    <div id="cap_javascript" class="capitulos">
+                        <ul>
+                            <li>Capítulo 1.- <a href="P3/P3_C01/Resumen_1.html">Introducción al
+                          lenguage</a></li>
+                            <li>Capítulo 2.- <a href="P3/P3_C02/Resumen_1.html">Conceptos básicos</a></li>
+                            <li>Capítulo 3.- <a href="P3/P3_C03/Resumen_1.html">Programación
+                          orientada a objetos</a></li>
+                            <li>Capítulo 4.- <a href="P3/P3_C04/Resumen_1.html">Objeto Array</a></li>
+                            <li>Capítulo 5.- <a href="P3/P3_C05/Resumen_1.html">Objeto Date</a></li>
+                            <li>Capítulo 6.- <a href="P3/P3_C06/Resumen_1.html">Objeto String</a></li>
+                            <li>Capítulo 7.- <a href="P3/P3_C07/Resumen_1.html">Objeto Math</a></li>
+                            <li>Capítulo 8.- <a href="P3/P3_C08/Resumen_1.html">Objeto window</a></li>
+                            <li>Capítulo 9.- <a href="P3/P3_C09/Resumen_1.html">Cookies</a></li>
+                            <li>Capítulo 10.- <a href="P3/P3_C10/Resumen_1.html">Objeto Image</a></li>
+                            <li>Capítulo 11.- <a href="P3/P3_C11/Resumen_1.html">Gestión de
+                          eventos</a></li>
+                            <li>Capítulo 12.- <a href="P3/P3_C12/Resumen_1.html">Gestión del
+                          teclado y del ratón</a></li>
+                            <li>Capítulo 13.- <a href="P3/P3_C13/Resumen_1.html">Objeto form</a></li>
+                            <li>Capítulo 14.- <a href="P3/P3_C14/Resumen_1.html">DHTML y objeto
+                          document</a></li>
+                            <li>Capítulo 15.- <a href="P3/P3_C15/Resumen_1.html">DOM</a></li>
+                            <li>Capítulo 16.- <a href="P3/P3_C16/Resumen_1.html">Ajax y
+                          JavaScript</a></li>
+                            <li>Capítulo 17.- <a href="P3/P3_C17/Resumen.html">JavaScript avanzado</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="parte_4">
+                  <div>
+                    <a href="#" id="a_php" class="bloque">Parte 4: PHP 5 y 6</a>
+                  </div>
+                  <div id="cap_php" class="capitulos">
+                    <ul>
+                      <li>Capítulo 1.- <a href="P4/P4_C01/Resumen.html">Introducción al
+                    lenguage PHP</a></li>
+                      <li>Capítulo 2.- <a href="P4/P4_C02/Resumen.html">Instalación y
+                    configuración</a></li>
+                      <li>Capítulo 3.- <a href="P4/P4_C03/Resumen.html">Variables,
+                    constantes y operadores</a></li>
+                      <li>Capítulo 4.- <a href="P4/P4_C04/Resumen.html">Estructuras de
+                    control</a></li>
+                      <li>Capítulo 5.- <a href="P4/P4_C05/Resumen.html">Matrices (arrays)</a></li>
+                      <li>Capítulo 6.- <a href="P4/P4_C06/Resumen.html">Manipulación de
+                    cadenas</a></li>
+                      <li>Capítulo 7.- <a href="P4/P4_C07/Resumen.html">Funciones</a></li>
+                      <li>Capítulo 8.- <a href="P4/P4_C08/Resumen.html">Clases y objetos</a></li>
+                      <li>Capítulo 9.- <a href="P4/P4_C09/Resumen.html">Páginas web</a></li>
+                      <li>Capítulo 10.- <a href="P4/P4_C10/Resumen.html">Sesiones y cookies</a></li>
+                      <li>Capítulo 11.- <a href="P4/P4_C11/Resumen.html">Acceso a archivos</a></li>
+                      <li>Capítulo 12.- <a href="P4/P4_C12/Resumen.html">XML</a></li>
+                      <li>Capítulo 13.- <a href="P4/P4_C13/Resumen.html">Control de
+                    excepciones</a></li>
+                      <li>Capítulo 14.- <a href="P4/P4_C14/Resumen.html">Email con PHP</a></li>
+                      <li>Capítulo 15.- <a href="P4/P4_C15/Resumen.html">Código seguro con
+                    PHP</a></li>
+                      <li>Capítulo 16.- <a href="P4/P4_C16/Resumen.html">Depuración de
+                    código PHP</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div id="parte_5">
+                  <div>
+                    <a href="#" id="a_mysql" class="bloque">Parte 5: MySQL</a>
+                  </div>
+                  <div id="cap_mysql" class="capitulos">
+                    <ul>
+                      <li>Capítulo 1.- <a href="P5/P5_C01/Resumen.html">Conceptos de bases
+                    de datos</a></li>
+                      <li>Capítulo 2.- <a href="P5/P5_C02/Resumen.html">Lenguaje SQL</a></li>
+                      <li>Capítulo 3.- <a href="P5/P5_C03/Resumen.html">Tipos de datos en
+                    MySQL</a></li>
+                      <li>Capítulo 4.- <a href="P5/P5_C04/Resumen.html">PHPMyAdmin</a></li>
+                      <li>Capítulo 5.- <a href="P5/P5_C05/Resumen.html">Uso de MySQL desde
+                    PHP</a></li>
+                      <li>Capítulo 6.- <a href="P5/P5_C06/Resumen.html">Funciones MySQL
+                    para PHP</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div id="parte_6">
+                    <div>
+                        <a href="#" id="a_seo" class="bloque">Parte 6: SEO</a>
+                    </div>
+                    <div id="cap_seo" class="capitulos">
+                        <ul>
+                            <li>Capítulo 1.- <a href="P6/P6_C01/Resumen.html">Conceptos básicos</a></li>
+                            <li>Capítulo 2.- <a href="P6/P6_C02/Resumen.html">Conceptos fundamentales</a></li>
+                            <li>Capítulo 3.- <a href="P6/P6_C03/Resumen.html">Optimización básica</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="parte_7">
+                    <div>
+                        <a href="#" id="a_jquery" class="bloque">Parte 7: jQuery</a>
+                    </div>
+                    <div id="cap_jquery" class="capitulos">
+            <ul>
+              <li>Capítulo 1.- <a href="P7/P7_C01/Resumen.html">Introducción</a></li>
+              <li>Capítulo 2.- <a href="P7/P7_C02/Resumen.html">Clases y propiedades CSS con jQuery</a></li>
+              <li>Capítulo 3.- <a href="P7/P7_C03/Resumen.html">Efectos y callback</a></li>
+              <li>Capítulo 4.- <a href="P7/P7_C04/Resumen.html">Ajax</a></li>
+              <li>Capítulo 5.- <a href="P7/P7_C05/Resumen.html">jQuery CDN o hosting local de las librerías</a></li>
+              <li>Capítulo 6.- <a href="P7/P7_C06/Resumen.html">El núcleo o core de jQuery</a></li>
+              <li>Capítulo 7.- <a href="P7/P7_C07/Resumen.html">Métodos each(), size(), data() y removeData()</a></li>
+              <li>Capítulo 8.- <a href="P7/P7_C08/Resumen.html">Selectores</a></li>
+            </ul>
+                  </div>
+                </div>
+
+    <div id="parte_8">
+      <div>
+        <a href="#" id="a_materiales" class="bloque">Materiales diversos</a>
+      </div>
+      <div id="cap_materiales" class="capitulos">
+<ul>
+  <li>Texto parte 0: <a href="Comun/parte_0.pdf">HTML 4</a></li>
+  <li>Texto parte 1: <a href="Comun/parte_1.pdf">HTML 5</a></li>
+  <li>Texto parte 2: <a href="Comun/parte_2.pdf">CSS</a></li>
+  <li>Texto parte 3: <a href="Comun/parte_3.pdf">JavaScript</a></li>
+  <li>Texto parte 4: <a href="Comun/parte_4.pdf">PHP 5 y 6</a></li>
+  <li>Texto parte 5: <a href="Comun/parte_5.pdf">MySQL</a></li>
+  <li>Texto parte 6: <a href="Comun/parte_6.pdf">SEO</a></li>
+  <li>Web parte 7: <a href="http://www.desarrolloweb.com/manuales/manual-jquery.html">jQuery</a> (<a href="Materiales/manual-jquery.pdf">pdf</a>)</li>
+  <li>Texto <a href="Comun/partes_123456.pdf">Completo (partes 1 a 6)</a></li>
+  <li><a href="Materiales/El-gran-libro-de-HTML5-CSS3-y-Javascript.pdf">El gran libro de HTML 5, CSS 3 y JavaScript</a></li>
+  <li><a href="Comun/practicas.pdf">Prácticas evaluables</a></li>
+  <li><a href="Comun/direcciones.html">Direcciones de interés</a></li>
+  <li><a href="Materiales/tutorial_Photoshop.pdf">Tutorial de Photoshop</a></li>
+</ul>
+      </div>
+    </div>
+    <br />
+  </div>
+            <div id="sistemas_i" class="modulo">
+                <p class="bloque">SISTEMAS I</p>
+                <div>
+                    <a href="Sistemas/Usuario_Ubu.pdf">Ubuntu 14.04. Guia del usuario</a><br />
+                    <a href="Sistemas/Implantacion_Ubu.pdf">Ubuntu 14.04. Administración del sistema</a><br />
+                    <a href="Sistemas/Usuario.pdf">MaX 6.5. Guia del usuario</a><br />
+                    <a href="Sistemas/Implantacion.pdf">MaX 6.5. Administración de sistemas</a><br />
+                    <a href="Sistemas/Avanzado.pdf">MaX 6.5. Servicios avanzados</a><br />
+                    <a href="Sistemas/W2008_I.pdf">Resumen Windows 2008 Active Directory</a><br>
+                    <a href="Sistemas/W2008_II.pdf">Resumen Windows 2008 Administración</a><br>
+                </div>
+            </div>
+            <div id="sistemas_ii" class="modulo">
+                <p class="bloque">SISTEMAS II</p>
+                <div id="sis_ii_u_0">
+                    <div>
+                        <br>
+                        <a href="#" id="a_presentacion" class="bloque">Unidad 0: Presentación</a>
+                    </div>
+
+                    <div id="cap_presentacion" class="capitulos">
+                        <br />
+                        <ul>
+                            <li><a href="Sistemas_ii/U00_Presentacion/Presentacion_2015.pdf">
+                                    Presentación de las unidades</a></li>
+                            <li><a href="Sistemas_ii/U00_Presentacion/Organizacion_mvs.pdf">
+                                    Organización de las máquinas virtuales</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                
+                
+                
+                
+                <div>
+                    Unidad 0.- <a href="Sistemas_ii/U00_Presentacion/Presentacion_2015.pdf">Presentación</a><br />
+                    Unidad 1.- <a href="Sistemas_ii/U00_Presentacion/Presentacion_2015.pdf">Presentación</a><br />
+                 </div>
+                
+                
+                
+            </div>
+
+   <div id="hardware" class="modulo">
+    <div id="hard_1">
+        <br />
+    <p class="bloque">HARDWARE</p>
+
+     <div>
+       <br>
+       <a href="#" id="a_infor" class="bloque">Parte 0: Información general</a>
+     </div>
+
+     <div id="cap_infor" class="capitulos">
+
+<ul>
+  <li>1.- <a href="Hardware/General/Programacion.pdf">Contenidos</a></li>
+  <li>2.- <a href="Hardware/General/Calificacion.pdf">Calificación</a></li>
+  <li>3.- <a href="Hardware/General/NormasEntregaTrabajos.pdf">Presentación de trabajos</a></li>
+  <li>4.- <a href="Hardware/General/DocumentarPracticas.pdf">Guión a utilizar para la realización de las prácticas</a></li>
+  <li>5.- <a href="Hardware/General/Herramientas.pdf">Contenido de las cajas de herramientas</a></li>
+</ul>
+
+      </div>
+   </div>
+
+   <div id="hard_2">
+     <div>
+       <a href="#" id="a_cableado" class="bloque">Parte 1: Cableado de red</a>
+     </div>
+     <div id="cap_cableado" class="capitulos">
+<ul>
+  <li>1.- <a href="http://guimi.net/monograficos/G-Cableado_estructurado/G-CEnode1.html">Tipos de cable e instalación</a></li>
+  <li>2.- <a href="http://informatica.iescuravalera.es/iflica/gtfinal/libro/">Instalación de una red cableada I</a></li>
+  <li>2.- <a href="http://html.rincondelvago.com/instalacion-de-una-red.html">Instalación de una red cableada II</a></li>
+  <li>3.- <a href="http://www.slideshare.net/mejiaff/cableado-estructurado-de-red">Cableado estructurado</a></li>
+  <li>4.- <a href="http://www.pasarlascanutas.com/cable_cruzado/cable_cruzado.htm">Conector RJ45</a></li>
+  <li>5.- <a href="http://www.slideshare.net/lasensible/materiales-para-instalar-una-red-lan">Unidades didácticas sobre elementos de red</a></li>
+</ul>
+      </div>
+    </div>
+
+   <div id="hard_3">
+     <div>
+       <a href="#" id="a_cajas" class="bloque">Parte 2: Cajas y tornillería</a>
+     </div>
+     <div id="cap_cajas" class="capitulos">
+<ul>
+  <li>1.- <a href="http://80.24.233.45/contenidos/CFGS2/Tema_3_Cajas_Ordenador.pdf">Tipos de cajas</a>
+          &nbsp;&nbsp;(<a href="Hardware/Cajas/CajasOrdenador.pdf">pdf local</a>)
+  </li>
+  <li>2.- <a href="Hardware/Cajas/Caja.pptx">Curso - Tipos de cajas (formato pptx)</a></li>
+  <li>3.- <a href="http://es.wikipedia.org/wiki/Caja_de_computadora">Caja de ordenador (en Wikipedia)</a></li>
+  <li>4.- <a href="http://es.wikipedia.org/wiki/Factor_de_forma">Factor de forma de las cajas</a></li>
+  <li>5.- <a href="http://www.coolmod.com/list/1508/4/2/1/CAJAS.htm">Cajas y precios</a></li>
+  <li>6.- <a href="http://www.configurarequipos.com/doc485.html">Consideraciones para elegir una caja</a></li>
+  <li>7.- <a href="Hardware/Cajas/Tornillos.pdf">Tornillos más usuales</a></li>
+  <li>8.- <a href="http://alt-tab.com.ar/la-biblia-de-los-tornillos-de-pc/">La biblia de los tornillos</a></li>
+  <li>9.- <a href="http://en.wikipedia.org/wiki/Computer_case_screws">Los tornillos en Wikipedia</a></li>
+  <li>10.- <a href="http://www.pccomponentes.com/kit_basico_de_tornilleria_para_montaje_de_pc.html?gclid=CN3W5cq2-LsCFUzHtAod_TIAvg">
+                   Precio de los tornillos</a></li>
+  <li>11.- <a href="Hardware/Cajas/Manipulacion.pdf">Consideraciones de manipulación</a></li>
+  <li>12.- <a href="Hardware/Cajas/P01_CajasTornillos.pdf">Práctica sobre cajas y tornillos</a></li>
+</ul>
+      </div>
+    </div>
+
+   <div id="hard_4">
+     <div>
+       <a href="#" id="a_placas" class="bloque">Parte 3: Placas base</a>
+     </div>
+     <div id="cap_placas" class="capitulos">
+<ul>
+  <li>1.- <a href="http://80.24.233.45/contenidos/CFGS2/Tema_3_Cajas_Ordenador.pdf">La placa base</a>
+          &nbsp;&nbsp;(<a href="Hardware/PlacasBase/PlacaBase.pdf">pdf local</a>)
+  </li>
+  <li>2.- <a href="Hardware/PlacasBase/Placa_Base.pptx">Curso - La placa base (formato pptx)</a></li>
+  <li>3.- <a href="http://es.wikipedia.org/wiki/Placa_base">La placa base (en Wikipedia)</a></li>
+  <li>4.- <a href="Hardware/PlacasBase/Manipulacion.pdf">Consideraciones de manipulación</a></li>
+  <li>5.- <a href="Hardware/PlacasBase/ConRoe1333-D667_R1.0.pdf">Ej. documentación placa (eq. aula d21)</a></li>
+  <li>6.- <a href="Hardware/PlacasBase/9127c10-t.pdf">Ej. documentación placa (MATSONIC MS9127 aula d21)</a></li>
+  <li>7.- <a href="Hardware/PlacasBase/P01_PlacaBase.pdf">Práctica sobre placas base</a></li>
+</ul>
+      </div>
+    </div>
+
+   <div id="hard_5">
+     <div>
+       <a href="#" id="a_proces" class="bloque">Parte 4: Procesadores</a>
+     </div>
+     <div id="cap_proces" class="capitulos">
+<ul>
+  <li>1.- <a href="http://80.24.233.45/contenidos/CFGM2/tema05microprocesador.pdf">Microprocesadores</a>
+          &nbsp;&nbsp;(<a href="Hardware/Procesadores/microprocesador.pdf">pdf local</a>)
+  </li>
+  <li>2.- <a href="Hardware/Procesadores/CPU.pptx">Curso - Microprocesadores (formato pptx)</a></li>
+  <li>3.- <a href="http://es.wikipedia.org/wiki/Microprocesador">El microprocesador (en Wikipedia)</a></li>
+  <li>4.- <a href="http://www.intel.la/content/www/xl/es/processors/processor-numbers.html">Nomenclatura y tipos</a></li>
+  <li>5.- <a href="Hardware/Procesadores/Manipulacion.pdf">Consideraciones de manipulación</a></li>
+  <li>6.- <a href="Hardware/Procesadores/P01_Procesador.pdf">Práctica sobre microprocesadores</a></li>
+</ul>
+      </div>
+    </div>
+
+   <div id="hard_6">
+     <div>
+       <a href="#" id="a_memorias" class="bloque">Parte 5: Memorias</a>
+     </div>
+     <div id="cap_memorias" class="capitulos">
+<ul>
+  <li>1.- <a href="http://80.24.233.45/contenidos/CFGS2/Memorias_ASI.pdf">Funcionamiento teórico</a>
+          &nbsp;&nbsp;(<a href="Hardware/Memorias/TeoriaMemorias.pdf">pdf local</a>)</li>
+  <li>2.- <a href="http://80.24.233.45/contenidos/CFGM2/tema06ram.pdf">Memoria RAM</a>
+          &nbsp;&nbsp;(<a href="Hardware/Memorias/RAM.pdf">pdf local</a>)</li>
+  <li>3.- <a href="Hardware/Memorias/Memoria_Principal.pptx">Curso - Memoria Principal (formato pptx)</a></li>
+  <li>4.- <a href="http://es.wikipedia.org/wiki/Memoria_de_acceso_aleatorio">Memoria de acceso aleatorio (en Wikipedia)</a></li>
+  <li>4.- <a href="Hardware/Memorias/Manipulacion.pdf">Consideraciones de manipulación</a></li>
+  <li>5.- <a href="Hardware/Memorias/P01_Memoria.pdf">Práctica sobre memorias</a></li>
+</ul>
+      </div>
+    </div>
+
+   <div id="hard_7">
+     <div>
+       <a href="#" id="a_fuentes" class="bloque">Parte 6: Fuentes de alimentación</a>
+     </div>
+     <div id="cap_fuentes" class="capitulos">
+<ul>
+  <li>1.- <a href="http://80.24.233.45/contenidos/CFGS2/Tema_4_FuentesAlimentacion.pdf">Fuentes de alimentación</a>
+          &nbsp;&nbsp;(<a href="Hardware/Fuentes/FuenteAlimentacion.pdf">pdf local</a>)</li>
+  <li>2.- <a href="Hardware/Fuentes/MedidasElectricas.ppt">Medidas eléctricas</a></li>
+  <li>3.- <a href="http://www.youtube.com/watch?v=pxmFz5rAl5o">Video de comprobación</a></li>
+  <li>4.- <a href="http://www.extreme.outervision.com/psucalculatorlite.jsp">Programa para cálculo de potencia</a></li>
+  <li>4.- <a href="Hardware/Fuentes/Manipulacion.pdf">Consideraciones de manipulación</a></li>
+  <li>5.- <a href="Hardware/Fuentes/P01_Fuente.pdf">Práctica sobre fuentes de alimentación</a></li>
+</ul>
+      </div>
+    </div>
+
+   <div id="hard_8">
+     <div>
+       <a href="#" id="a_discos" class="bloque">Parte 7: Dispositivos de almacenamiento. Discos duros</a>
+     </div>
+     <div id="cap_discos" class="capitulos">
+<ul>
+  <li>1.- <a href="http://80.24.233.45/contenidos/CFGM2/tema09almacenamiento.pdf">Dispositivos de almacenamiento</a>
+          &nbsp;&nbsp;(<a href="Hardware/Discos/UnidadesAlmacenamiento.pdf">pdf local</a>)</li>
+  <li>2.- <a href="Hardware/Discos/UnidadesAlmacenamiento.pptx">Unidades de almacenamiento (pptx)</a></li>
+  <li>3.- <a href="Hardware/Discos/DiscosSSD.pdf">Discos SSD</a></li>
+  <li>4.- <a href="http://es.wikipedia.org/wiki/Disco_duro">Disco duro en wikipedia</a></li>
+  <li>5.- <a href="http://es.wikipedia.org/wiki/Partici%C3%B3n_de_disco">Particiones MBR</a></li>
+  <li>6.- <a href="http://es.wikipedia.org/wiki/Tabla_de_particiones">Tabla de particiones MBR</a></li>
+  <li>7.- <a href="http://zator.com/Hardware/">Descripción minuciosa del MBR</a></li>
+  <li>8.- <a href="http://en.wikipedia.org/wiki/GUID_Partition_Table">Tabla de particiones GUID (GPT)</a></li>
+  <li>9.- <a href="Hardware/Discos/Direcciones.pdf">Direcciones de interés</a></li>
+  <li>10.- <a href="Hardware/Discos/Manipulacion.pdf">Consideraciones de manipulación</a></li>
+  <li>11.- <a href="Hardware/Discos/P01_Discos.pdf">Práctica sobre unidades de almacenamiento</a></li>
+</ul>
+      </div>
+    </div>
+
+   <div id="hard_9">
+     <div>
+       <a href="#" id="a_perifericos" class="bloque">Parte 8: Periféricos</a>
+     </div>
+     <div id="cap_perifericos" class="capitulos">
+<ul>
+  <li>1.- <a href="http://80.24.233.45/contenidos/CFGM2/tema10perifericos.pdf">Periféricos</a>
+          &nbsp;&nbsp;(<a href="Hardware/Perifericos/perifericos.pdf">pdf local</a>)</li>
+</ul>
+      </div>
+    </div>
+
+   <div id="hard_10">
+     <div>
+       <a href="#" id="a_bios" class="bloque">Parte 9: La BIOS</a>
+     </div>
+     <div id="cap_bios" class="capitulos">
+<ul>
+  <li>1.- <a href="http://80.24.233.45/contenidos/CFGM2/tema07setup.pdf">La BIOS</a>
+          &nbsp;&nbsp;(<a href="Hardware/Bios/Bios.pdf">pdf local</a>)</li>
+  <li>2.- <a href="http://es.wikipedia.org/wiki/Extensible_Firmware_Interface#Plataformas_que_utilizan_UEFI">(U)EFI</a></li>
+</ul>
+      </div>
+    </div>
+
+   <div id="hard_11">
+     <div>
+       <a href="#" id="a_arranque" class="bloque">Parte 10: Programas gestores de arranque</a>
+     </div>
+     <div id="cap_arranque" class="capitulos">
+<ul>
+  <li>1.- <a href="#">Programas gestores de arranque</a></li>
+</ul>
+      </div>
+    </div>
+
+   <div id="hard_12">
+     <div>
+       <a href="#" id="a_clonar" class="bloque">Parte 11: Clonación de particiones y discos</a>
+     </div>
+     <div id="cap_clonar" class="capitulos">
+<ul>
+  <li>1.- <a href="#">Utilidades del sistema operativo: tar y dd</a></li>
+  <li>2.- <a href="#">Clonación en local: partclone, partimage, ntfsclone, ...</a></li>
+  <li>3.- <a href="#">Clonación en red: backharddi y clonezilla</a></li>
+</ul>
+      </div>
+    </div>
+
+   <div id="trabajos">
+     <div>
+       <br /><br />
+       <a href="#" id="a_trabajos" class="bloque">Trabajos entregados</a>
+     </div>
+    </div>
+    <br />
+  </div>
+        </section>
+	<aside class="col-lg-4 col-md-4 col-sm-2 col-xs-3">
+            <div class="row">
+            <a class="mis-libros col-lg-4 col-md-4 col-sm-6 col-xs-12" href="Sistemas/Usuario_Ubu.pdf"><img class="img-responsive" alt="Guia de usuario de Ubuntu" src="Sistemas/imagenes/Usuario_Ubu.jpeg"></a>
+            <a class="mis-libros col-lg-4 col-md-4 col-sm-6 col-xs-12" href="Sistemas/Implantacion_Ubu.pdf"><img class="img-responsive" alt="Implantacion de sistemas en Ubuntu" src="Sistemas/imagenes/Implantacion_Ubu.jpeg"></a>
+            <a class="mis-libros col-lg-4 col-md-4 col-sm-6 col-xs-12" href="Sistemas/Usuario.pdf"><img class="img-responsive" alt="Guia de usuario de Max" src="Sistemas/imagenes/Usuario_I.jpeg"></a>
+            <a class="mis-libros col-lg-4 col-md-4 col-sm-6 col-xs-12" href="Sistemas/Implantacion.pdf"><img class="img-responsive" alt="Implantacion de sistemas en Max" src="Sistemas/imagenes/Implantacion_I.jpeg"></a>
+            <a class="mis-libros col-lg-4 col-md-4 col-sm-6 col-xs-12" href="Sistemas/Avanzado.pdf"><img class="img-responsive" alt="Servicios avanzados en Max" src="Sistemas/imagenes/Avanzado_I.jpg"></a>
+            <a class="mis-libros col-lg-4 col-md-4 col-sm-6 col-xs-12" href="Sistemas/W2008_I.pdf"><img class="img-responsive" alt=" Resumen Windows Server 2008. Active directory" src="Sistemas/imagenes/W2008_AD_Res.jpeg"></a><br>
+            <a class="mis-libros col-lg-4 col-md-4 col-sm-6 col-xs-12" href="Sistemas/ActiveDirectory_2008.pdf"><img class="img-responsive" alt="Windows Server 2008. Active directory" src="Sistemas/imagenes/W2008_AD_Ori.jpeg"></a>
+            <a class="mis-libros col-lg-4 col-md-4 col-sm-6 col-xs-12" href="Sistemas/W2008_II.pdf"><img class="img-responsive" alt="Resumen Windows Server 2008. Administracion" src="Sistemas/imagenes/W2008_Admin_Res.jpeg"></a><br>
+            <a class="mis-libros col-lg-4 col-md-4 col-sm-6 col-xs-12" href="Sistemas/WAdmin_Total.pdf"><img class="img-responsive" alt="Windows Server 2008. Administración" src="Sistemas/imagenes/W2008_Admin_Ori.jpeg"></a>
+            <a class="mis-libros col-lg-4 col-md-4 col-sm-6 col-xs-12" href="Sistemas/Windows_2012.pdf"><img class="img-responsive" alt="Windows Server 2012. Active directory" src="Sistemas/imagenes/W2012_I.jpeg"></a><br>
+            <a class="mis-libros col-lg-4 col-md-4 col-sm-6 col-xs-12" href="Sistemas/Windows_2012.pdf">Original: 2012</a>
+            </div>
+        </aside>
+    </div> <!-- Fin de la fila de asides y section -->
+    <footer class="row">
+   By Santiago Alonso
+    </footer>
+  </div>
+</body>
+</html>

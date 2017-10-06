@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<!-- archivo Parte 2/code/cap0705ok.html -->
+<head>
+<title>Tabla con listas</title>
+<style type="text/css">
+ol, ul      {font-size: 20px; text-transform: uppercase;}
+li          {font-size: 12px; text-transform:capitalize;}
+.c1 li      {list-style-type: upper-roman;
+ 			list-style-position: outside;}
+.c2 li		{display:inline;
+			border: 2px solid black;
+			background-color: yellow;
+			text-align: center;}
+.c3 li		{list-style-image:url("mano.gif");}
+.c4 li		{list-style-type: disc;
+ 			list-style-position: inside;}
+li:hover	{background-color: white; }
+</style>
+</head>
+<body>
+<table border="5">
+<tr>
+<td>
+  <ol class="c1">finalistas
+      <li>alemania</li>
+      <li>argentina</li>
+      <li>francia</li>
+      <li>italia</li>
+   </ol>
+</td>
+<td>
+  <ul class="c2">finalistas
+      <li>alemania</li>
+      <li>argentina</li>
+      <li>francia</li>
+      <li>italia</li>
+  </ul>
+</td>
+</tr>
+<tr>
+<td>
+  <ul class="c3">finalistas
+	   <li>alemania</li>
+	   <li>argentina</li>
+	   <li>francia</li>
+       <li>italia</li>
+  </ul>
+</td>
+<td>
+  <ol class="c4">finalistas
+       <li>alemania</li>
+	   <li>argentina</li>
+       <li style="list-style-image:url('mano.gif');">francia</li>
+       <li>italia</li>
+  </ol>
+</td>
+</tr>
+</table>
+</body>
+</html>

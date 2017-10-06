@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- archivo Parte 2/code/cap1207ok.html -->
+<html>
+<head>
+<style type="text/css">
+#id1, #id2, #id3, #id4 {visibility:hidden;
+	border: medium dashed red;
+	display: inline-block;
+	text-decoration: underline;
+	font-variant: small-caps;
+	font-size: 14px;
+	color: blue;}
+h3:before {content: "Pregunta: ¿";}
+h3:after {content: "?";}
+p:first-letter {font-family: Georgia; font-size: 18px;}
+
+</style>
+<script>
+function CambiarVisible(id) {
+
+	// código común para todos los navegadores
+	// obtiene el objeto a partir del identificador
+
+	obj= document.getElementById(id);
+
+	// vemos si está disponible el objeto
+	// si no se obtiene el objeto no se
+	// puede hacer nada
+
+	if (obj) {
+
+		   obj.style.visibility= 'visible';
+	}
+}
+function CambiarOculto(id) {
+	obj= document.getElementById(id);
+	if (obj) {
+		   obj.style.visibility= 'hidden';
+	}
+}
+</script>
+
+</head>
+<body>
+<h1>Preguntas con respuestas ocultas</h1>
+
+<h3 onClick="CambiarVisible('id1')">Cuántos meses tiene el año</h3>
+<p id="id1" onClick="CambiarOculto('id1')" >12</p>
+<h3 onClick="CambiarVisible('id2')">Quién ganó la liga 2010-2011</h3>
+<p id="id2" onClick="CambiarOculto('id2')" >Barcelona</p>
+<h3 onClick="CambiarVisible('id3')">Siempre que llovió paró</h3>
+<p id="id3" onClick="CambiarOculto('id3')" >No sé, ahora acá está lloviendo.</p>
+<h3 onClick="CambiarVisible('id4')">Porqué las respuestas están ocupando espacio aunque no se vean</h3>
+<p id="id4" onClick="CambiarOculto('id4')" >El texto no visible está ocupando espacio porque no es display:none sino visibility:hidden.</p>
+<div>Haga clic sobre la pregunta para conocer la respuesta y haga clic sobre la respuesta para que se oculte.</div>
+</body>
+
+</html>

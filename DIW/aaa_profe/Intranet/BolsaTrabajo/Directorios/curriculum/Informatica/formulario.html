@@ -1,0 +1,180 @@
+<HTML>
+<HEAD><TITLE>Formulario Curriculum Vitae</TITLE></HEAD>
+<BODY TEXT="#000000" BGCOLOR="#6699FF" LINK="#0000FF" VLINK="#800080">
+<hr>
+<font face="Arial" align="right" size="+2" color="#000066">Formulario Curriculum Vitae</font>
+<hr>
+
+
+
+<form method ="POST" action="resultado.php" >
+
+<B><FONT SIZE=-1 COLOR="#000080">Documento de identidad nacional (o pasaporte)</FONT></B></td>
+<td><input type="TEXT" name="DNI" VALUE="Text" size="14" maxlength="12"></td></tr>
+
+<TABLE>
+<tr>
+<td><B><FONT COLOR="#000080" SIZE=-1>Apellidos</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="Apellidos" size="20" maxlength="30"></TD>
+<TD><B><FONT COLOR="#000080" SIZE=-1>Nombre</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="Nombre" VALUE=""size="15" maxlength="30"></TD></tr>
+</table>
+
+<table>
+<tr>
+<td><B><FONT COLOR="#000080" SIZE=-1>Sexo</FONT></B></td>
+<TD><font size=-1>Hombre</font><INPUT TYPE="radio" NAME="Sexo" VALUE="Hombre"><font size=-1>Mujer</font><INPUT TYPE="radio" NAME="Sexo" VALUE="Mujer"></TD>
+<td width=20></td>
+<td><b><FONT COLOR="#000080" SIZE=-1>Estado civil</FONT></B></TD>
+<TD><SELECT NAME="EstadoCivil"><OPTION SELECTED><OPTION><FONT SIZE=-1>Soltero<OPTION>Casado</SELECT></FONT></TD>
+<td width=20></td>
+<td><B><FONT COLOR="#000080" SIZE=-1>Nacionalidad</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="Nacionalidad" VALUE=""size="15" maxlength="30"></TD>
+</tr>
+</table>
+<TABLE>
+<tr>
+<tr>
+<td><b><FONT COLOR="#000080" SIZE=-1>Fecha de nacimiento:</FONT></b></td><td><input type="date" name="fecha" value="2011-01-01"></td>
+</tr>
+<td><B><FONT COLOR="#000080" SIZE=-1>Lugar de Nacimiento</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="LugarNacimiento" size="10" maxlength="30"></TD>
+<TD><B><FONT COLOR="#000080"><FONT SIZE=-1>Pa&iacute;s de nacimiento</FONT></FONT></B></TD>
+<td><INPUT TYPE="TEXT" NAME="PaisNacimiento" VALUE=""size="10" maxlength="30"></TD>
+</tr>
+</table>
+<p>
+<B><U><FONT FACE="Arial,Helvetica">DIRECCION</FONT></U></B>
+<P><br>
+<B><FONT COLOR="#000080" SIZE=-1>Domicilio&nbsp;</FONT></B>
+<INPUT TYPE="TEXT" NAME="Domicilio" size="50" maxlength="60">
+<table>
+<tr>
+<TD><B><FONT COLOR="#000080" SIZE=-1>C&oacute;digo Postal</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="CodigoPostal" size="5" maxlength="5"></TD>
+<TD><B><FONT COLOR="#000080" SIZE=-1>Localidad</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="Localidad" size="20" maxlength="20"></TD>
+<TD><B><FONT COLOR="#000080" SIZE=-1>Pa&iacute;s</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="Pais" size="20" maxlength="20"></TD>
+</TR>
+</table>
+<table>
+<TR>
+<TD><B><FONT COLOR="#000080" SIZE=-1>Tel&eacute;fono&nbsp;</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="Telefono" size="11" maxlength="11"><INPUT TYPE="TEXT" NAME="Telefono2" size="11" maxlength="11"></TD>
+<TD><B><FONT COLOR="#000080" SIZE=-1>E-Mail</FONT></B></TD><td><INPUT NAME="desde" size="30" value="anonimo@anonimo.es"></TD>
+</tr>
+</table>
+<P><br>
+<B><U><FONT FACE="Arial,Helvetica">FORMACION</FONT></U></B>
+<P><B><FONT COLOR="#000080" SIZE=-1>Si usted es un estudiante, complete
+por favor los campos siguientes:</FONT></B>&nbsp;
+<p>
+<TABLE>
+<TR>
+<TD><B><FONT COLOR="#000080" SIZE=-1>Estudios</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="EstudiosSinAcabar" VALUE="" size="25" maxlength="40"></TD>
+<TD><B><FONT COLOR="#000080" SIZE=-1>Universidad</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="UniversidadSinAcabar" VALUE="" size="25" maxlength="40"></TD>
+</tr><tr>
+<TD><B><FONT COLOR="#000080" SIZE=-1>A&ntilde;o previsto<br>graduaci&oacute;n</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="FinalPrevisto" VALUE="" size="4" maxlength="4"></TD>
+</TR>
+</table>
+<P><B><FONT COLOR="#000080" SIZE=-1>Si usted ha acabado sus estudios de la universidad, complete por favor los campos siguientes:</FONT></B>&nbsp;
+<p><br>
+<B><FONT COLOR="#000080" SIZE=-1>El grado m&aacute;s alto obtenido</FONT></B>
+<INPUT TYPE="radio" NAME="Grado" VALUE="Graduado"><FONT SIZE=-1>Graduado&nbsp;<INPUT TYPE="radio" NAME="Grado" VALUE="Licenciado">Licenciado&nbsp;<INPUT TYPE="radio" NAME="Grado" VALUE="Doctor">Doctor</FONT>
+<TABLE>
+<TR>
+<TD><B><FONT COLOR="#000080" SIZE=-1>Estudios</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="EstudiosAcabados" size="25" maxlength="40"></TD>
+<TD><B><FONT COLOR="#000080" SIZE=-1>A&ntilde;o de la graduaci&oacute;n</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="Final" size="4" maxlength="4"></TD>
+</TR>
+<TR>
+<TD><B><FONT COLOR="#000080" SIZE=-1>Universidad&nbsp;</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="Universidad" size="25" maxlength="40"></TD>
+</TR>
+</table>
+<P><B><FONT COLOR="#000080" SIZE=-1>Si usted no ha estudiado en una universidad, complete por favor los campos siguientes:</FONT></B>&nbsp;
+<P>&nbsp;
+<TABLE>
+<TR>
+<TD>
+<B><FONT COLOR="#000080" SIZE=-1>Estudios</FONT></B>
+<TD><INPUT TYPE="TEXT" NAME="Estudios" VALUE="" size="25" maxlength="40"></TD>
+<TD><B><FONT COLOR="#000080" SIZE=-1>A&ntilde;o de finalizaci&oacute;n
+de&nbsp; los estudios</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="FinalizacionEstudios" VALUE="" size="4" maxlength="4"></TD>
+</TR>
+<TR>
+<TD><B><FONT COLOR="#000080" SIZE=-1>¿D&oacute;nde?&nbsp;</FONT></B></TD>
+<TD><INPUT TYPE="TEXT" NAME="LugarEstudios" size="25" maxlength="40"></TD>
+</TR>
+</TABLE>
+
+<p><br>
+<B><U><FONT FACE="Arial,Helvetica">IDIOMAS</FONT></U></B>
+<p><br>
+<B><FONT COLOR="#000080" SIZE=-1>Lengua Materna&nbsp;</FONT></B><INPUT TYPE="TEXT" NAME="LenguaMaterna" size="10" maxlength="20">
+
+<TABLE>
+<TR>
+<TD><CENTER><B><FONT COLOR="#0000FF" SIZE=-1>Idioma</FONT></B></CENTER></TD>
+<TD><CENTER><B><FONT COLOR="#0000FF" SIZE=-1>Escritura</FONT></B></CENTER></TD>
+<TD><CENTER><B><FONT COLOR="#0000FF" SIZE=-1>Lectura</FONT></B></CENTER></TD>
+<TD><CENTER><B><FONT COLOR="#0000FF" SIZE=-1>Compresi&oacute;n Oral</FONT></B></CENTER></TD>
+</TR>
+<tr>
+<TD><font size="-1" color="#000080"><b>Inglés</b></font></TD>
+<TD><SELECT NAME="EuskeraEscri"><OPTION SELECTED><OPTION>Nulo<OPTION>Bajo<OPTION>Regular<OPTION>Alto<OPTION>Muy Alto</SELECT></CENTER></TD>
+<TD><SELECT NAME="EuskeraLeido"><OPTION SELECTED><OPTION>Nulo<OPTION>Bajo<OPTION>Regular<OPTION>Alto<OPTION>Muy Alto</SELECT></CENTER></TD>
+<TD><SELECT NAME="EuskeraComprOral"><OPTION SELECTED><OPTION>Nulo<OPTION>Bajo<OPTION>Regular<OPTION>Alto<OPTION>Muy Alto</SELECT></CENTER></TD>
+</tr>
+<tr>
+<TD><font size="-1" color="#000080"><b>Francés</b></font></TD>
+<TD><SELECT NAME="InglesEscri"><OPTION SELECTED><OPTION>Nulo<OPTION>Bajo<OPTION>Regular<OPTION>Alto<OPTION>Muy Alto</SELECT></CENTER></TD>
+<TD><SELECT NAME="InglesLeido"><OPTION SELECTED><OPTION>Nulo<OPTION>Bajo<OPTION>Regular<OPTION>Alto<OPTION>Muy Alto</SELECT></CENTER></TD>
+<TD><SELECT NAME="InglesComprOral"><OPTION SELECTED><OPTION>Nulo<OPTION>Bajo<OPTION>Regular<OPTION>Alto<OPTION>Muy Alto</SELECT></CENTER></TD>
+</tr>
+<tr>
+<TD><input type="text" name="Idioma3" size=10 maxlength=10></TD>
+<TD><SELECT NAME="Idioma3Escri"><OPTION SELECTED><OPTION>Nulo<OPTION>Bajo<OPTION>Regular<OPTION>Alto<OPTION>Muy Alto</SELECT></CENTER></TD>
+<TD><SELECT NAME="Idioma3Leido"><OPTION SELECTED><OPTION>Nulo<OPTION>Bajo<OPTION>Regular<OPTION>Alto<OPTION>Muy Alto</SELECT></CENTER></TD>
+<TD><SELECT NAME="Idioma3ComprOral"><OPTION SELECTED><OPTION>Nulo<OPTION>Bajo<OPTION>Regular<OPTION>Alto<OPTION>Muy Alto</SELECT></CENTER></TD>
+</tr>
+<tr>
+<TD><input type="text" name="Idioma4" size=10 maxlength=10></TD>
+<TD><SELECT NAME="Idioma4Escri"><OPTION SELECTED><OPTION>Nulo<OPTION>Bajo<OPTION>Regular<OPTION>Alto<OPTION>Muy Alto</SELECT></CENTER></TD>
+<TD><SELECT NAME="Idioma4Leido"><OPTION SELECTED><OPTION>Nulo<OPTION>Bajo<OPTION>Regular<OPTION>Alto<OPTION>Muy Alto</SELECT></CENTER></TD>
+<TD><SELECT NAME="Idioma4ComprOral"><OPTION SELECTED><OPTION>Nulo<OPTION>Bajo<OPTION>Regular<OPTION>Alto<OPTION>Muy Alto</SELECT></CENTER></TD>
+</tr>
+</table>
+<p><br>
+<B><U><FONT FACE="Arial,Helvetica">CONOCIMIENTOS INFORMATICOS</FONT></U></B>
+<br>
+
+<p>
+<B><U><FONT FACE="Arial,Helvetica">OTROS CONOCIMIENTOS Y EXPERIENCIA PROFESIONAL</FONT></U></B>
+<br>
+&nbsp;
+<p><br>
+<center><textarea name="Comentarios" rows="10" cols="70" WRAP></textarea></center>
+<hr>
+<table width="660" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td align="right" class="texto"><b>Curriculum en fichero<br>
+      (formato Word<br>
+      para Windows o PDF)</b></td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><input class="campo" type="File" size="30" maxlength="50" name="FICHERO" value></td>
+  </tr>
+</table>
+&nbsp;
+<p>&nbsp;</p>
+<p>
+<input type="submit" value="Envio de Formulario"><input type="reset" value="Limpiar Formulario">
+</form>
+</body>
+</html>

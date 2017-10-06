@@ -1,0 +1,72 @@
+Cambiar de color un párrafo al hacer click sobre él (tema 12, ejercicio 1206ok.html):
+	El párrafo se puede definir de la forma:
+		<p id="parrafo" onclick="cambiaraRojo('parrafo', 'red')"> . . . </p>
+	Y la función:
+	  function cambiaraRojo(nombre, color){
+					// código común para todos los navegadores
+					// obtiene el objeto a partir del identificador
+				obj= document.getElementById(parrafo);
+					// vemos si está disponible el objeto
+					// si no se obtiene el objeto no se puede hacer nada
+				if (obj) {
+						obj.style.color= micolor;
+				}
+		}
+
+La visibilidad de un elemento se controla con visibility y con display (Pág. 330).
+	<a href="javascript:void()" onmouseover="ocultar()">Pulse para ocultar</a>
+	
+	function ocultar(){
+		object.style.display="none";
+	}
+	
+	Ver el siguiente código completo:
+	
+		<html>
+		<head>
+		<script type="text/javascript">
+		function demoDisplay()
+		{
+		document.getElementById("p1").style.display="none";
+		}
+
+		function demoVisibility()
+		{
+		document.getElementById("p2").style.visibility="hidden";
+		}
+		</script>
+		</head>
+		<body>
+
+		<p id="p1">This is some text.</p>
+		<p id="p2">This is some text.</p>
+
+		<input type="button" onclick="demoDisplay()" value="Hide text with display property" />
+		<input type="button" onclick="demoVisibility()" value="Hide text with visibility property" />
+
+		</body>
+		</html>
+	
+Cambiar el texto de la barra de título:
+	document.title=" . . . ";
+	
+Cambiar el texto de la barra de estado:
+	window.status=" . . . ";
+
+Ejecutar una función al pasar por encima de un hipervínculo.
+		<a href="#" onmouseover="cambiarFoto(0)">John Lennon</a>
+
+Ejecutar código JavaScript al pulsar un hipervínculo:
+		<a href="javascript:miPopup('popup.html', 200, 100, 'resizable=no, scrollbars=no')">Abrir ventana</a>
+
+Ejecutar una función al pulsar algo:
+		document.onclick=funcion
+		
+Detectar qué botón se ha pulsado:
+		Funciones de la pág. 507 y 508.
+
+Preguntar si ha ocurrido un evento (pág 501):
+		if  (window.event) { . . . }
+		
+Reproduce una canción al pulsar sobre un hiperenlace, al pulsar un botón o al pasar con el ratón por encima de un hiperenlace (pag. 512).
+		

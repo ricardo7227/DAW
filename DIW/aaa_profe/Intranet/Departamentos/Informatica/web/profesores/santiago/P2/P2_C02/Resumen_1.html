@@ -1,0 +1,459 @@
+<! DOCTYPE html>
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Definición de estilos</title>
+  <style type="text/css">
+
+header, nav, footer, article {
+    display:block;
+  }
+
+
+header {
+    text-align: center;
+    background:#BBFFAD;
+  }
+
+
+nav {
+    float:left;
+    width:20%;
+    background:#FFDCFA;
+  }
+
+
+article {
+    background-color : #FFFCBD;
+    float : right;
+    text-align : justify;
+    width : 80%;
+  }
+
+
+footer {
+    clear:both;
+    background:#C4FFF6;
+  }
+
+</style>
+</head><body>
+<header>
+<br/>
+<font style="color: rgb(51, 0, 153);" size="+3">Definición de estilos</font><br><br/>
+</header>
+<nav>
+<a href="#introduccion">Introducción</a><br>
+<a href="#etiqueta">Etiqueta &lt;style&gt;</a><br>
+<a href="#estructura">Estructura de un documento HTML</a><br>
+<a href="#herencia">Herencia del estilo</a><br>
+<a href="#clases">Pseudo clases</a><br>
+<a href="#elementos">Pseudo elementos</a><br>
+<a href="#hojas">Hojas de estilo en funcionamiento</a><br>
+<a href="#comentarios">Comentarios en CSS</a><br>
+<a href="#modos">Modos para asignar estilos</a><br>
+</nav>
+<article>
+<a name="introduccion"></a>&nbsp;&nbsp;&nbsp; <font
+style="font-weight: bold;" size="+1">Introducción</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; CSS funciona mediante la definición de reglas o
+declaraciones sobre el estilo de uno o más elementos. Las hojas de
+estilo están compuestas por una o más reglas aplicadas a un documento
+HTML. Cada regla está compuesta por dos partes:<br>
+<ul>
+<li>selector.- especifica los elementos afectados por la declaración
+que le sigue. Puede indicar distintos tipos de información: una
+etiqueta HTML, una clase definida por el usuario, un nombre de un
+identificador, un elemento compuesto por etiqueta y clase, etc.</li>
+<li>declaración.- establece las propiedades y valores que definen el
+estilo. Es una lista de uno o más pares "propiedad: valor", finalizados
+en punto y coma (;)&nbsp; y encerrada entre llaves ({. . .}).</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Formato:&nbsp;&nbsp; selector {declaración . . .}<br>
+<br>
+&nbsp;&nbsp;&nbsp; Ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; body &nbsp;&nbsp;&nbsp;
+{color: red;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; background: blue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; font-family: Arial;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; border: thin dotted black;}<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cada propiedad suele tener asignado un valor pero
+puede tener más de uno. Observar como la disposición de las reglas en
+el ejemplo facilitan su lectura.<br>
+<br>
+<a name="etiqueta"></a>&nbsp;&nbsp;&nbsp; <font
+style="font-weight: bold;" size="+1">Etiqueta &lt;style&gt;</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta style es una de las permitidas dentro
+del bloque &lt;head&gt; y permite definir los estilos de los diferentes
+elementos del documento. Un ejemplo de asignación de estilos a la
+etiqueta body y a la etiqueta table sería:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;title&gt;Título de la
+página&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;style type="text/css"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; body&nbsp;&nbsp; {color:
+white;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; background: black;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; font-family: Arial;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; font-size: large;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; table&nbsp;&nbsp; {color:
+black;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; background: white;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; font-family: Verdana;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; font-size: x-large;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; font-style: italic;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/style&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/head&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Otros atributos de la etiqueta style son:<br>
+<ul>
+<li>media.- dispositivo de visualización al que se aplica el estilo.
+Por defecto se toma all.</li>
+<li>title.- para identificar las hojas de estilo por su nombre.</li>
+<li>scoped.- valor booleano; si se informa indica que los estilos van
+dirigidos al subárbol dependiente del elemento padre al que se define
+el estilo; lo contrario sería aplicarlo a todo el documento.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; En el ejemplo anterior se utiliza un selector
+(etiqueta) por cada declaración ({ . . . }), pero puede aplicarse una
+misma declaración a una lista de selectores separados por comas, de la
+forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; h1, h2, h3, h4&nbsp;&nbsp; {color:red;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+background: white;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+font-family: Helvetica;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+font-size: x-large;}<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si se desea que una declaración afecte solamente a
+una parte de los selectores, pueden definirse clases a nivel de
+selector. Por ejemplo, si se desea que el contenido de algunas celdas
+de una tabla esté alineado al centro y el de otras no, puede hacerse de
+la siguiente forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;style type="text/css"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; td.centro&nbsp;&nbsp;
+{text-align: center;}<br>
+&nbsp;&nbsp;&nbsp; &lt;/style&gt;<br>
+&nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &lt;td&gt;Esto no está centrado&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;td class="centro"&gt;Esto sale
+centrado&lt;/td&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Puede definirse un estilo para una clase y utilizar
+ésta para diferentes selectores. Partiendo el ejemplo anterior, puede
+utilizarse la clase "centro" para centrar el contenido de celdas de
+tablas (td), de párrafos (p), etc., de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;style type="text/css"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; .centro&nbsp;&nbsp; {text-align:
+center;}<br>
+&nbsp;&nbsp;&nbsp; &lt;/style&gt;<br>
+&nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &lt;td&gt;Esto no está centrado&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;td class="centro"&gt;Esto sale
+centrado&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;p&gt;Esto no sale centrado&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;p class="centro"&gt;Esto sale centrado&lt;/p&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los estilos definidos para un selector también
+afectan a las clases de ese selector. Si, por ejemplo, se define el
+color de la letra azul para el selector "p" y se define alineamiento al
+centro para "p.centro", la letra de los párrafos de la clase centro
+también se mostrará en color azul.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para definir un estilo para un identificador
+concreto (atributo id) se utiliza la forma:<br>
+<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;style&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+#nombre_id&nbsp;&nbsp; { . . . }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/style&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;p id="nombre_id&gt; .
+. . &lt;/p&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para que un estilo se aplique a todas las etiquetas
+puede utilizarse:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; * { . . . }<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para crear un estilo para una etiqueta que depende
+estrictamente de otras se usa, por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; tr&nbsp; td&nbsp; ol
+{background: black;}<br>
+<br>
+&nbsp;&nbsp;&nbsp; En este caso el estilo se aplicará a las etiquetas
+ol que dependan directamente de una etiqueta td que, a su vez, dependa
+de una tr, sin que existan otras etiquetas por medio. ¡Ojo!, estas
+etiquetas no se separan por comas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si se quiere contemplar la posibilidad de que
+existan ciertas etiquetas entre tr y ol puede utilizarse:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; tr&nbsp; *&nbsp; ol&nbsp;
+{ . . . }<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para limitar el estilo a un selector (incluso clase
+de selector) con unas determinadas propiedades, se puede usar alguna de
+las siguientes formas:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; etiqueta[atributo="valor"]
+{ . . . }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+etiqueta.clase[atributo1="valor1"][atributo2="valor2"] ... { . . . }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+td.centro[border="2"][color="green"]&nbsp; {width: 100%;}<br>
+<br>
+<a name="estructura"></a>&nbsp;&nbsp;&nbsp; <font
+style="font-weight: bold;" size="+1">Estructura de un documento HTML</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Un documento HTML está compuesto por elementos
+(etiquetas) organizados jerárquicamente. Dentro de la jerarquía pueden
+diferenciarse varias relaciones:<br>
+<ul>
+<li>ancestros y descendientes.</li>
+<li>padres e hijos.</li>
+<li>hermanos.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Ver estructura de la página 220.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para especificar relaciones entre ancestros y
+descendientes se listan los elementos separados por espacios, como ya
+se ha visto anteriormente. Por ejemplo, para asignar un estilo a un
+elemento li de un elemento ol de la clase c2 de una etiqueta div,
+pondremos:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; div.c2&nbsp; ol&nbsp;
+li&nbsp; { . . . }<br>
+<br>
+&nbsp;&nbsp;&nbsp; un ejemplo para especificar utilizando la relación
+padre-hijo sería:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; div.c2 &gt; ol&nbsp; { . .
+. }<br>
+<br>
+&nbsp;&nbsp;&nbsp; La relación de hermanos se expresa mediante el
+carácter +. Por ejemplo, para designar al elemento p hermano del
+elemento table se utiliza:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; table + p { . . . }<br>
+<br>
+&nbsp;&nbsp;&nbsp; Y combinando lo anterior, para designar a los
+hermanos table y p que dependan de un padre div:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; div&nbsp; &gt;&nbsp; table
++ p<br>
+<br>
+<a name="herencia"></a>&nbsp;&nbsp;&nbsp; <font
+style="font-weight: bold;" size="+1">Herencia del estilo</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Las propiedades que no corresponden al fondo son
+heredables de
+elementos padre a elementos hijo. Se consideran propiedades de fondo
+aquellas como background-color, image, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando la misma propiedad heredable está definida a
+nivel de un
+elemento padre y de un hijo, el estilo (para el hijo) tomará la
+propiedad del hijo.<br>
+<br>
+<a name="clases"></a>&nbsp;&nbsp;&nbsp; <font
+style="font-weight: bold;" size="+1">Pseudo clases</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; CSS define un conjunto de pseudo clases que permiten
+asignar atributos a determinadas circunstancias de un elemento del
+documento.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta a tiene las siguientes pseudo clases:<br>
+<ul>
+<li>:link.- indica el estilo para un enlace aún no visitado.</li>
+<li>:visited.- enlace visitado.</li>
+<li>:active.- enlace activo.</li>
+<li>:hover.- enlace sobre el que se encuentra el puntero del ratón.</li>
+<li>:focus.- enlace que actualmente tiene el foco.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; El estilo para las pseudo clases se especifica de la
+siguiente forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; :link&nbsp; {color: red; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; El orden de las definiciones es muy importante dado
+que cuando se cumple más de una condición el estilo que se aplica es el
+que aparece en último término. Un ejemplo en el que concurren varias
+condiciones es el caso de un enlace visitado sobre el que se encuentra
+el puntero del ratón. Conviene que las pseudo clases :hover y :focus se
+especifiquen después de :link y :visited.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La pseudo clase :first-child sirve para asignar un
+estilo al primer hijo de un elemento. Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p:first-child
+{text-indent: 15px;}<br>
+<br>
+&nbsp;&nbsp;&nbsp; La psedo clase :lang permite asignar un estilo
+dependiendo del lenguaje que se utilice en el documento. Requiere que
+se indique el código del lenguaje, por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p:lang(sp) { . . . }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p:lang(en) { . . . }<br>
+<br>
+&nbsp;&nbsp;&nbsp; CSS 3 incorpora otras pseudo clases como:
+:last-child, :only-child, :only-of-type, :target, etc.<br>
+<br>
+<a name="elementos"></a>&nbsp;&nbsp;&nbsp; <font
+style="font-weight: bold;" size="+1">Pseudo elementos</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; CSS 3 incorpora pseudo elementos que permiten
+referirnos a partes de un elemento:<br>
+<ul>
+<li>:first-line.- primera línea de un elemento. Solo afecta a un
+conjunto limitado de propiedades: las relacionadas con la fuente, el
+color, el fondo, word-spacing, letter-spacing, text-decoration,
+vertical-align, text-transform, line-height, text-shadow y clear. El
+concepto de primera línea depende del ancho de la ventana y de si se
+implementan o no etiquetas de salto de línea.</li>
+<li>:first-letter.- primera letra.</li>
+<li>:before.- permite añadir un contenido que precede al contenido
+del elemento que se aplica.</li>
+<li>:after.- permite añadir un contenido al final del elemento al que
+se aplica.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; CSS 3 dispone del pseudo elemento :selection para
+hacer referencia al elemento seleccionado.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un ejemplo (ver pag. 225):<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;style
+type="text/css"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+p.decorado:first-line&nbsp;&nbsp;&nbsp;
+{text-decoration: underline;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; color: red;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+p.decorado:first-letter {font-size: 5em;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; border: solid 2px blue;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+p.decorado:after&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{content: ' FIN DEL TEXTO SIMULADO';}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+p.yo:before&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{content: 'Periodista: ';}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+p.el:before&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{content: 'A.L.: ';}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/style&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; cuyo resultado puede verse <a href="cap0202.html">pinchando
+aquí</a>.<br>
+<br>
+<a name="hojas"></a>&nbsp;&nbsp;&nbsp;&nbsp; <font
+style="font-weight: bold;" size="+1">Hojas
+de estilo en funcionamiento</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Ver ejemplo de la pág. 226.<br>
+<br>
+<a name="comentarios"></a>&nbsp;&nbsp;&nbsp; <font
+style="font-weight: bold;" size="+1">Comentarios en CSS</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Para incluir comentarios para documentar los estilos
+se hace de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;style
+type="text/css"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; /* Esto es un
+comentario */<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/style&gt;<br>
+<br>
+<a name="modos"></a>&nbsp;&nbsp;&nbsp; <font style="font-weight: bold;"
+size="+1">Modos para asignar estilos</font><br>
+<br style="font-weight: bold;">
+<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; Etiqueta
+&lt;style&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Incluyendo la etiqueta style en la cabecera de la
+página, como en la mayor parte de los ejemplos incluidos en este tema.<br>
+<br style="font-weight: bold;">
+<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; Etiqueta
+&lt;link&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Se sitúa en la cabecera de la página y permite hacer
+uso de una hoja de estilos externa. El formato es:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;link&nbsp; rel="stylesheet"&nbsp; type="text/css"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; href="Nombre/URL_fichero.css"/&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/head&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; El fichero .css u hoja de estilos externa contendrá
+las declaraciones de estilos en la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; selector_1 {declaracion
+...;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; selector_2 {declaracion
+...;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+<br>
+&nbsp;&nbsp;&nbsp; es decir, lo que en el apartado anterior se sitúa
+dentro de la etiqueta style.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia @import</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Permite importar definiciones de estilos ubicadas en
+otros archivos. Se usa dentro de la etiqueta style y debe estar ubicada
+en primer lugar. Un ejemplo es:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;style
+type="text/css"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+@import url("mas_estilos.css");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+h1 {font-family: Arial;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/style&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/head&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Atributo style
+(inline)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Este método es el utilizado en la parte 1 del libro.
+Consiste en incluir el estilo dentro de cada etiqueta. Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;p&nbsp; style="color:
+red;"&gt; . . . &lt;/p&gt;
+</article>
+<footer>
+<address>By Santiago Alonso</address>
+</footer>
+</body></html>

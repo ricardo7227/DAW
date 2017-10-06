@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>match()</title>
+  </head>
+  <body>
+    <script language="javascript">
+      var strCadena = prompt("Introduzca un texto con números", "");
+      var misDNIs = strCadena.match(/\b[0-9]+\b/g);
+//      var misDNIs = strCadena.match("^[0-9]+$", "g");
+      document.write (misDNIs);
+    </script>
+  </body>
+</html>

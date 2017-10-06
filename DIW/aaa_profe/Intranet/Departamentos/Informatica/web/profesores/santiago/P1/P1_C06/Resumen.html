@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Color e imágenes</title></head><body>
+<div style="text-align: center;"><font style="color: rgb(51, 0, 153);" size="+3">Color e imágenes</font><br>
+</div>
+
+<div><span style="font-weight: bold;"></span><br>
+&nbsp;&nbsp;&nbsp; Puede especificarse el color del texto mediante la
+etiqueta <span style="color: red;">font</span> y el atributo <span style="color: red;">color</span>, de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;font color="color"&gt;<br>
+<br>
+donde el color puede codificarse de varias formas (nombre, #rrvvaa).<br>
+<br>
+&nbsp;&nbsp;&nbsp; La <span style="color: red;">función rgb</span>
+también permite definir los
+colores mediante el formato:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; rgb (n1, n2, n3);<br>
+<br>
+&nbsp;&nbsp;&nbsp; Es recomendable especificar los colores haciendo uso
+de estilos CSS. A casi todos los elementos HTML se les puede aplicar
+propiedades (valores de atributos) de estilos que implican colores. Las
+propiedades de estilo más comunes son color (principal) y
+background-color (fondo). Así, es frecuente ver codificaciones como:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;p style="color:
+red; background-color=yellow;"&gt; <span style="color: red; background-color: yellow;">Esto saldrá en rojo con
+fondo
+amarillo</span> &lt;/p&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;span style="color:
+red; background-color=yellow;"&gt; <span style="color: red; background-color: yellow;">
+Esto saldrá en rojo con fondo amarillo</span> &lt;/span&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; En el entorno de los estilos los parámetros se
+denominan propiedades en vez de atributos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Relacionadas con colores existen las siguientes propiedades: <span style="color: red;">color,
+background-color, background, border, border-color, border-top,
+border-right, border-bottom, border-left, border-top-color,
+border-bottom-color, border-right-color, border-left-color, outline y
+outline-color</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Formatos de archivos gráficos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Los tres formatos de archivos gráficos utilizados en Internet son: <span style="color: red;">gif, jpeg y png</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El formato GIF usa el algoritmo de compresión LZW
+que no pierde calidad si el máximo de colores usados es de 256. Entre
+sus características están: rapida descompresión, permite fondos
+transparentes, animación sencilla y enlazado.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El formato JPEG se usa fundamentalmente en
+fotografía y usa un algoritmo de compresión público y más sofisticado
+(superior en un 25%). Soporta más de 16 millones de colores y la
+pérdida de calidad está en función del nivel de compresión. La pérdida
+de calidad es acumulativa con las compresiones. Entre sus
+características está la presentación progresiva de la imagen o
+entrelazado.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El formato PNG tiene como características la alta
+calidad y el grado de compresión (algo menor que en el formato JPEG).
+Admite formatos de color verdadero y entrelazado pero carece de la
+posibilidad de animación.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los diferentes programas de edición gráfica
+gestionan la transparencia asignandola a uno o varios colores o a la
+capa inferior.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La animación (admitida por GIF) es un mecanismo que
+muestra una secuencia pequeña de imágenes de forma repetida.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta &lt;<span style="color: red;">img</span>&gt; permite insertar imágenes. El atributo <span style="color: red;">src</span> permite especificar el nombre de la imagen o el programa que la genera. Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;img src="imagenes/coche.gif /&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;img src="http://www.servidor.es/programa.php" /&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Además de los formatos vistos, pueden mostrarse
+documentos (archivos PDF o XML), mapas de bits animados (APNG, GIF's
+animados), gráficos vectoriales animados, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Las dimensiones de la imagen se especifican con los atributos <span style="color: red;">width y height</span> de img o de la etiqueta <span style="color: red;">style</span>.
+Aunque el tamaño puede darse en porcentaje, se aconseja utilizar como
+medida los pixels. El borde también puede caracterizarse con la
+etiqueta style de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;img src="imagen.png" <span style="color: red;">style="border:3px solid red; "</span> width="100px" height="100px" /&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para asignar el ancho de los bordes pueden utilizarse las propiedades <span style="color: red;">border-width, border-top-width, border-bottom-width, border-right-width y border-left-width</span>; para el estilo: <span style="color: red;">border-style, border-top-style, border-bottom-style, border-right-style y border-left-style</span>; para el color: <span style="color: red;">border-color, border-top-color, border-bottom-color, border-right-color y border-left-color</span>. Para asignar múltiples valores en una única instrucción pueden utilizarse las propiedades <span style="color: red;">border, border-top, border-bottom, border-right y border-left</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para alinear imágenes se pueden utilizar las propiedades CSS siguientes<span style="color: red;">: float (right o left) y vertical-align (text-bottom, text-top, middle, baseline (por defecto), super, sub, top y bottom)</span>. Un ejemplo puede ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;p&gt;Aquí va el texto &lt;img src="imagen.jpg"
+style="vertical-align: middle;" /&gt; y aquí sigue &lt;/p&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Con los mapas interactivos pueden formarse barras de botones con sus correspondientes enlaces.<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+
+<br>
+
+<br>
+
+</body></html>

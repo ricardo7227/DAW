@@ -1,0 +1,640 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Tablas (arrays)</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<div id="header">
+<p id="cabecera">Tablas (arrays)</p>
+</div>
+
+<div>
+<div id="nav"><a href="#tablas">Tablas y PHP</a><br>
+<br>
+<a href="#tipos">Tipos de tablas</a><br>
+<br>
+<a href="#definicion">Definición de tablas</a><br>
+<br>
+<a href="#imprimir">Funciones para imprimir tablas: print_r()</a><br>
+<br>
+<a href="#trabajar">Funciones para trabajar con tablas</a><br>
+<br>
+<a href="#resumen">Resumen de las principales funciones de tablas</a>
+</div>
+<div id="article">
+&nbsp;&nbsp;&nbsp; PHP permite que los elementos de una tabla sean de
+diferentes tipos de datos.<br>
+<h3><a name="tablas"></a>Tablas y PHP</h3>
+&nbsp;&nbsp;&nbsp; Las principales variables de PHP están almacenadas
+en matrices: $_SERVER, $_GET, $_POST, $_SESSION, $_ENVIRONMENT, etc.)<br>
+<h3><a name="tipos"></a>Tipos de tablas</h3>
+&nbsp;&nbsp;&nbsp; Según el tipo de índice, las tablas se pueden
+clasificar en escalares o asociativas. Atendiendo al número de
+dimensiones tendremos: unidimensionales o vectores y multidimensionales.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Tablas escalares</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Tienen índices enteros. El índice también se llama
+clave y empieza por cero. La asignación puede hacerse de la forma:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$tabla[0] = "Enero";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $tabla[11] =
+"Diciembre";<br>
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Tablas asociativas
+o hash</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; El índice o clave de la matriz será una cadena. Un
+ejemplo de asignaciónsería:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$Capital[Francia] = "París";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$Capital[Italia]&nbsp; = "Roma";<br>
+</p>
+&nbsp;&nbsp;&nbsp; Cada elemento contiene dos clases de datos: la clave
+del elemento y el propio elemento.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Tablas
+unidimensionales</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Tienen un único indice.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Tablas
+multidimensionales</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Tienen más de un índice y está permitido que se
+combinen índices escalares con índices asociativos.<br>
+<h3><a name="definicion"></a>Definición de tablas</h3>
+&nbsp;&nbsp;&nbsp; La creación de una tabla y la asignación de valores
+a los elementos uno a uno ya la conocemos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Constructor
+array() en tablas unidimensionales</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; array() es una construcción del lenguaje que permite
+crear tablas. Su sintaxis es:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$tabla = array(valores ...);<br>
+</p>
+&nbsp;&nbsp;&nbsp; Opcionalmente se puede indicar la clave del indice
+para almacenar el valor con una clave determinada, utilizando el
+operador =&gt;. Por ejemplo:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$tabla = array("Enero" =&gt; "Reyes Magos", ..., "Diciembre" =&gt;
+"Navidad");<br>
+</p>
+&nbsp;&nbsp;&nbsp; Un ejemplo completo, que utiliza código PHP para
+insertar elementos de una tabla en el código HTML, es el siguiente:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;HTML&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;HEAD&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+&lt;TITLE&gt;Definición de matrices&lt;/TITLE&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/HEAD&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;BODY&gt;&nbsp;&nbsp;&nbsp;
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;CENTER&gt;&lt;H3&gt;Uso del constructor
+array()(ejemplo file036.php)&lt;/H3&gt;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;?php&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$Estad=array("Alemania","Austria","Bélgica");
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; ?&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;TABLE BORDER="1"
+CELLPADDING="1"
+CELLSPACING="2"&gt;
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &lt;TR
+ALIGN="center" &gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+&lt;TD&gt;Elemento&lt;/TD&gt;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;?php
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for
+($ind=0;$ind&lt;count($Estad);$ind++)
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+echo"&lt;TD&gt;$ind&lt;/TD&gt;";
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+?&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/TR&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;TR
+ALIGN="center" &gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;TD&gt;Valor&lt;/TD&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&lt;?php
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+for
+($ind=0;$ind&lt;count($Estad);$ind++)
+<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp; echo
+"&lt;TD&gt; $Estad[$ind] &lt;/TD&gt;";
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+?&gt;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/TR&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &lt;/TABLE&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/BODY&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/HTML&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; En el ejemplo se ha utilizado la función count() que
+devuelve el número de elementos de la tabla (sin contar los elementos
+vacíos). Si la variable que se le pasa a count() no es una tabla
+devuelve el valor 1.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Las tablas que pueden tener elementos vacíos deben
+ser recorridas con foreach mejor que con un for, para no tratar dichos
+elementos.<br>
+<br>
+<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; Constructor array()
+para tablas multidimensionales</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; El constructor array() puede, a su vez, hacer
+referencia a un constructor array() interno para crear tablas
+multidimensionales. La sintaxis genérica sería:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$tabla = array(array(valores ...), array(valores ...), ...);<br>
+</p>
+&nbsp;&nbsp;&nbsp; Veamos dos ejemplos, uno con una tabla escalar y
+otro con una tabla asociativa:<br>
+<p class="codigo2">&lt;?php
+<br>
+&nbsp;&nbsp;&nbsp; // Matriz escalar de dos dimensiones creada con
+array
+<br>
+&nbsp; $Estad1 = array(array("Alemania","Berlín",557046,78420000),<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+array("Austria","Viena",83849,7614000),<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+array("Bélgica","Bruselas",30518,9932000));<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Esto es lo mismo que haber hecho esto:<br>
+&nbsp;&nbsp;&nbsp; // fila 0<br>
+&nbsp; $Estad2 [0] [0] = "Alemania";
+<br>
+&nbsp;
+$Estad2 [0] [1] = "Berlín";
+<br>
+&nbsp;
+$Estad2 [0] [2] = 557046;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+&nbsp;
+$Estad2 [0] [3] = 7842000;
+<br>
+&nbsp;&nbsp;&nbsp;
+// fila 1
+<br>
+&nbsp; $Estad2 [1] [0] = "Austria";&nbsp;
+<br>
+&nbsp;
+$Estad2 [1] [1] = "Viena";
+<br>
+&nbsp;
+$Estad2 [1] [2] = 83849;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+&nbsp;
+$Estad2 [1] [3] = 7614000;
+<br>
+&nbsp;&nbsp;&nbsp;
+// fila 2
+<br>
+&nbsp;
+$Estad2 [2] [0] = "Bélgica";&nbsp;
+<br>
+&nbsp;
+$Estad2 [2] [1] = "Bruselas";
+<br>
+&nbsp;
+$Estad2 [2] [2] = 30518;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+&nbsp;
+$Estad2 [2] [3] = 9932000;
+<br>
+&nbsp;&nbsp;&nbsp;
+// Matriz asociativa de dos dimensiones creada con array
+<br>
+&nbsp;
+$Estad3 = array(
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp; "Alemania" =&gt; array(
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "Capital"
+=&gt; "Berlín",
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "Extensión"
+=&gt; 557046,
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "Habitantes"
+=&gt; 78420000
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ),
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp; "Austria" =&gt; array(
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+"Capital" =&gt; "Viena",
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "Extensión"
+=&gt; 83849,
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "Habitantes"
+=&gt; 7614000
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ),
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp; "Bélgica" =&gt; array(
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+"Capital" =&gt; "Bruselas",
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "Extensión"
+=&gt; 30518,
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "Habitantes"
+=&gt; 9932000
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; )
+<br>
+&nbsp;
+);
+<br>
+&nbsp;&nbsp;&nbsp; // Esto es lo mismo que haber hecho esto:
+<br>
+&nbsp;
+$Estad4 ["Alemania"] ["Capital"] &nbsp;&nbsp; = "Berlín";
+<br>
+&nbsp;
+$Estad4 ["Alemania"] ["Extensión"]&nbsp; = 557046;&nbsp;&nbsp;&nbsp;
+&nbsp;<br>
+&nbsp;
+$Estad4 ["Alemania"] ["Habitantes"] = 7842000;
+<br>
+&nbsp; $Estad4 ["Austria"]&nbsp; ["Capital"]&nbsp;&nbsp;&nbsp; =
+"Viena";
+<br>
+&nbsp;
+$Estad4 ["Austria"]&nbsp; ["Extensión"]&nbsp; =
+83849;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+&nbsp;
+$Estad4 ["Austria"]&nbsp; ["Habitantes"] = 7614000;
+<br>
+&nbsp; $Estad4 ["Bélgica"]&nbsp; ["Capital"]&nbsp;&nbsp;&nbsp; =
+"Bruselas";
+<br>
+&nbsp;
+$Estad4 ["Bélgica"]&nbsp; ["Extensión"]&nbsp; =
+30518;&nbsp;&nbsp;&nbsp; &nbsp;<br>
+&nbsp;
+$Estad4 ["Bélgica"]&nbsp; ["Habitantes"] = 9932000;&nbsp;&nbsp;&nbsp;
+&nbsp;
+<br>
+?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; Un error muy generalizado en la sintaxis de las
+matrices consiste en cambiar los corchetes por paréntesis.<br>
+<h3><a name="imprimir"></a>Funciones para imprimir tablas: print_r()</h3>
+&nbsp;&nbsp;&nbsp; print_r() utiliza como argumento cualquier tipo de
+dato y lo imprime; funciona de forma recursiva de tal forma que si se
+trata de una tabla imprime todos sus elementos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La función var_dump() visualiza más detalles como
+son el tipo y el tamaño.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un ejemplo sería:<br>
+<p class="codigo2">&lt;?php
+<br>
+&nbsp;&nbsp;&nbsp; // Impresión de matrices (archivo file162.php)
+<br>
+&nbsp;
+$miarray = array("Yes" &nbsp; =&gt; "Sí",
+<br>
+&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"News"&nbsp; =&gt; "Noticias",
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"Paper" =&gt; "Papel");
+<br>
+&nbsp;
+print "Impresión con print_r()&lt;BR&gt;&lt;BR&gt;";
+<br>
+&nbsp;
+print_r($miarray);
+<br>
+&nbsp;
+print "&lt;BR&gt;&lt;BR&gt;Impresión con
+var_dump()&lt;BR&gt;&lt;BR&gt;";
+<br>
+&nbsp;
+var_dump($miarray);
+<br>
+?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; Cuyo resultado sería:<br>
+<p class="resul">
+Impresión con print_r()<br>
+<br>
+Array
+( [Yes] =&gt; Sí [News] =&gt; Noticias [Paper] =&gt; Papel
+)
+<br>
+<br>
+Impresión con var_dump()<br>
+<br>
+array(3) { ["Yes"]=&gt; string(2) "Sí" ["News"]=&gt; string(8)
+"Noticias" ["Paper"]=&gt; string(5) "Papel"}<br>
+
+</p><h3><a name="trabajar"></a>Funciones para trabajar con tablas</h3>
+&nbsp;&nbsp;&nbsp; PHP dispone de funciones que permiten realizar las siguientes tareas con las tablas:<br>
+<ul>
+  <li>Cambio del tamaño.</li>
+  <li>Proceso secuencial de todos sus elementos.</li>
+  <li>Búsqueda de elementos.</li>
+  <li>Ordenación.</li>
+  <li>Inversión.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Tamaño de la tabla</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Las funciones <span style="color: red;">count()</span> y su alias <span style="color: red;">sizeof()</span>
+devuelven la cantidad de elementos de una tabla. No debe confundirse la
+cantidad de elementos con el valor máximo del indice puesto que pueden
+existir elementos vacíos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para reducir el tamaño de una tabla puede utilizarse la función <span style="color: red;">array_slice()</span>
+que admite como parámetros la propia tabla, la posición desde donde se
+procesa y la cantidad de elementos. Esta función es muy flexible y
+permite cortar una tabla de diversas maneras.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">array_shift()</span>
+devuelve el primer elemento de la tabla y actua sobre la tabla
+eliminando el primer elemento y desplazando todos los demás a la
+posición anterior. Las funciones array_shift() y array_unshift()
+permiten implementar las listas de tipo colas (mecanismo FIFO: primero
+que entra primero que sale).<br>
+<br>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">array_pop()</span>
+devuelve el último elemento de una tabla y actua sobre la tabla
+eliminándolo. Las funciones array_pop() y array_push() permiten
+implementar las pilas (mecanismo LIFO: ultimo en entrar primero en
+salir).<br>
+<br>
+&nbsp;&nbsp;&nbsp; El operador <span style="color: red;">"+"</span>
+permite unir dos o más tablas. Las claves comunes no se duplican,
+únicamente deja el primer elemento leido, tanto si las claves son
+numéricas como cadenas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">array_merge()</span>
+tambien permite unir tablas. Los parámetros de la función son las
+tablas que se van a unir en una sola, que es el resultado de la
+función. Los elementos se añaden por el final, comenzando con la tabla
+informada como primer parámetro. Esta función elimina elementos comunes
+cuando haya elementos con claves de cadena duplicados, dejando el
+último leido. Si las tablas tienen claves numéricas no se elimina
+ningún elemento.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">array_merge_recursive()</span>
+combina tablas sin perder elementos. Añade las tablas una tras otra y
+si se encuentran claves de cadena duplicadas se genera una nueva
+dimensión en la matriz albergando así todos los elementos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">array_unshift()</span>
+permite añadir elementos al principio de la tabla, desplazando los
+existentes hacia el final. La función devuelve el número de elementos
+de la tabla una vez actualizada.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">array_pad()</span>
+permite añadir elementos de relleno (valores constantes), tanto por el
+principio como por el final de la tabla. Devuelve la matriz resultado.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Intersección de tablas</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">array_intersect()</span>
+devuelve una tabla que será la intersección de las pasadas como
+parámetros, es decir, devuelve una tabla con los elementos comunes de
+las otras. En la comparación no se toman en cuenta las claves pero los
+elementos se comparan con el operador "===".<br>
+<br>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">array_intersect_assoc()</span>
+permite hacer la intersección de matrices pero, en este caso, debe
+haber coincidencia, además de en valores, en clave (sea indice numérico
+o cadena asociativa).<br>
+<br>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">array_unique()</span>
+crea una tabla a partir de otra original tomando solamente los
+elementos no duplicados, tanto si la tabla es escalar como asociativa,
+y utilizando en la comparación el operador "===".<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Creación de tablas a partir de variables comunes (compact()) y viceversa (extract())</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">compact()</span>
+permite crear una tabla a partir de nombres de variables del ámbito
+vigente. La tabla tendrá tantos elementos como variables informadas en
+la llamada a la función y cada elemento tendrá como clave el nombre de
+la variable y como valor el valor de la variable.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">extract()</span>
+toma como argumento una tabla asociativa y crea las variables
+correspondientes. Esta operación puede tener ciertas incidencias y
+colisiones por lo que la función cuenta con las siguientes opciones:<br>
+<ul>
+  <li>EXTR_OVERWRITE.- si existe una variable con el mismo nombre reemplaza su valor por el actual.</li>
+  <li>EXTR_SKIP.- si hay una variable con el mismo nombre el elemento actual no se procesa.</li>
+  <li>EXTR_PREFIX_SAME.- si hay una variable con el mismo nombre, al actual se le añade un prefijo.</li>
+  <li>EXTR_PREFIX_ALL.- se añade un prefijo a todos los nombres de variables generados.</li>
+  <li>EXTR_PREFIX_INVALID.- se añade un prefijo a todos los nombres de variables que resulten inválidos para PHP.</li>
+  <li>EXTR_IF_EXIST.- extrae el elemento solamente si existe una variable con el mismo nombre de la clave.</li>
+  <li>EXTR_REFS.- Genera variables como referencias.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Un ejemplo sería:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+extract($miTabla, EXTR_PREFIX_SAME, "bis");<br>
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Proceso secuencial de toda la tabla</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La estructura de control foreach está especialmente
+diseñada para tratar matrices, tanto escalares como asociativas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La estructura de control for combinada con la
+función count() es práctica para recorrer matrices secuenciales pero no
+para recorrer matrices asociativas o no secuenciales. Para tratar con
+tablas no secuenciales (y también secuenciales) PHP cuenta con un
+conjunto de funciones especiales de navegación:<br>
+<ul>
+  <li>current() .- tiene como alias pos(). Devuelve el valor del
+elemento vigente de la tabla pasada como parámetro. Si se ha llegado al
+final de la tabla o si la tabla está vacía, la función devuelve False.</li>
+  <li>key() .- devuelve la clave del elemento vigente.</li>
+  <li>next() .- devuelve el elemento siguiente al vigente de la tabla pasada como parámetro o False.</li>
+  <li>prev() .- devuelve el elemento anterior al vigente de la tabla pasada como parámetro o False.</li>
+  <li>reset() .- devuelve el primer elemento de la tabla y se posiciona en el primer elemento como elemento vigente.</li>
+  <li>end() .- coloca el puntero interno de la tabla en el último elemento.</li>
+  <li>each() .- devuelve una tabla de cuatro elementos con claves 0, 1,
+key y value, con la clave del elemento en los elementos 0 y key y el
+valor del elemento en los elementos 1 y value. Después avanza una
+posición en el puntero interno de la tabla. Si el puntero interno
+apunta a la última posiciónde la tabla, la función devuelve false. </li>
+</ul>
+&nbsp;&nbsp;&nbsp; La función <span style="color: red;">array_walk()</span>
+aplica una determinada función de usuario a toda una matriz en una
+única llamada. La función array_walk() pasa a la función de usuario el
+elemento de la tabla, su clave y datos adicionales de usuario de manera
+sucesiva y automática.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Búsqueda de un elemento de la tabla</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Algunas funciones permiten filtrar o encontrar la información deseada en las tablas;<br>
+<ul>
+  <li>preg_grep() .- devuelve una tabla con los elementos que cumplen el criterio fijado (patrón, plantilla o expresión).</li>
+  <li>array_search() .- busca un valor en una tabla y, si lo encuentra, devuelve su clave.</li>
+  <li>in_array().- permite averiguar si existe un valor en una tabla devolviendo true o false según corresponda.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Ordenar una tabla</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP suministra un conjunyo de funciones especiales
+para resolver distintos tipos de ordenamientos de tablas. En algunas de
+las funciones que se describirán a continuación se utilizan como
+prefijos las letras r, a, k y u con los significados:<br>
+<ul>
+  <li>k .- la función trabaja sobre las claves.</li>
+  <li>a .- ordenación según los valores.</li>
+  <li>r .- ordenamiento inverso (de mayor a menor).</li>
+  <li>u .- interviene una función de usuario.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Así, tenemos:<br>
+<ul>
+  <li>sort() .- ordena los valores de la tabla.</li>
+  <li>rsort() .- ordena los valores de la tabla de forma inversa.</li>
+  <li>asort() .- ordena la tabla respetando la relación de clave con
+valor. El ordenamiento se realiza sobre los valores no sobre los
+índices.</li>
+  <li>arsort() .- similar a asort() pero siguiendo ordenamiento inverso.</li>
+  <li>ksort() .- ordena alfanuméricamente las claves de la tabla, respetando la relación de clave con valor.</li>
+  <li>krsort() .- similar a ksort() pero siguiendo ordenamiento inverso.</li>
+  <li>usort() .- ordena los valores de la tabla utilizando una función de usuario que se pasará como segundo parámetro.</li>
+  <li>uksort() .- ordena las claves de la tabla utilizando una función
+de usuario pasada como segundo parámetro y manteniendo la correlación
+entre clave y valor.</li>
+  <li>uasort() .- ordena las claves de una tabla usando una función de usuario, manteniendo la correlación de clave y valor.</li>
+  <li>array_multisort() .- ordena varias tablas en un solo paso.</li>
+  <li>natcasesort() .- ordena una tabla sin diferenciar minúsculas de
+mayúsculas y manteniendo el orden natural. Mantiene la relación
+clave/valor.</li>
+  <li>natsort() .- ordena una tabla manteniendo el orden natural, es decir, manteniendo la relación clave/valor.</li>
+  <li>shuffle() .- reordena aleatoriamente una tabla. No devuelve una tabla sino que trabaja sobre la misma.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Las funciones que devuelven como resultado otra
+tabla se consideran no destructivas pues dejan la tabla original sin
+cambios. Las que operan sobre la tabla original modificándolo se
+consideran destructivas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Inversión de una tabla</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La función array_reverse() invierte una tabla sin mantener el valor de las claves.<br>
+<h3><a name="resumen"></a>Resumen de las principales funciones de tablas</h3>
+<ul>
+  <li>array().- crea una tabla.</li>
+  <li>array_change_key_case().- cambia las claves de una tabla.</li>
+  <li>array_chunk().- divide una tabla en partes.</li>
+  <li>array_combine().- crea una tabla a partir de dos, una de claves y otra de valores.</li>
+  <li>array_count_values().- cuenta los valores de una tabla.</li>
+  <li>array_diff_assoc().- devuelve una tabla que es la diferencia de otras dos, comprobando las claves.</li>
+  <li>array_diff_key().- devuelve una tabla con la diferencia de otras dos tomando en cuenta solo las claves.</li>
+  <li>array_diff_uasocc().- devuelve una tabla diferencia de otras dos comprobando las claves con una función de usuario.</li>
+  <li>array_diff_ukey().- devuelve una tabla diferencia de otras dos
+teniendo en cuenta solo las claves y mediante una función de usuario.</li>
+  <li>array_diff().- obtiene la diferencia de tablas.</li>
+  <li>array_fill().- crea una tabla a partir de un valor.</li>
+  <li>array_fill_keys().- crea una tabla a partir de una tabla de claves y con un valor.</li>
+  <li>array_filter().- filtra elementos usando una función de usuarios.</li>
+  <li>array_flip().- intercambia las claves de una tabla con sus valores.</li>
+  <li>array_intersect().- obtiene la intersección de tablas.</li>
+  <li>array_intersect_assoc().- obtiene la intersección de dos tablas comprobando las claves.</li>
+  <li>array_intersect_key().- obtiene la tabla intersección teniendo en cuenta solo las claves.</li>
+  <li>array_intersect_uassoc().- obtiene la tabla intersección comprobando las claves con una función de usuario.</li>
+  <li>array_intersect_ukey().- obtiene la tabla intersección teniendo en cuenta solo las claves y mediante una función de usuario</li>
+  <li>array_key_exist().- comprueba si existe una clave.</li>
+  <li>array_keys().- devuelve todas las claves de la matriz.</li>
+  <li>array_map().- aplica una función a todos los elementos de una o varias tablas.</li>
+  <li>array_merge_recursive().- combina una o más tablas de forma recursiva.</li>
+  <li>array_merge().- combina una o más tablas.</li>
+  <li>array_multisort().- ordena varias tablas.</li>
+  <li>array_pad().- rellena una tabla a una longitud determinada con un valor.</li>
+  <li>array_pop().- quita el último elemento.</li>
+  <li>array_product().- calcula el producto de los valores de una tabla.</li>
+  <li>array_push().- añade elementos al final de la tabla.</li>
+  <li>array_rand().- elige uno o más elementos de forma aleatoria.</li>
+  <li>array_reduce().- aplica iterativamente una función a una tabla obteniéndose un valor único.</li>
+  <li>array_replace().- reemplaza los elementos de una tabla de modo recursivo a partir de una o más tablas.</li>
+  <li>array_replace_recursive().- reemplaza los elementos de una tabla de modo recursivo a partir de una o más tablas.</li>
+  <li>array_reverse().- invierte una tabla.</li>
+  <li>array_search().- busca un valor y devuelve su clave.</li>
+  <li>array_shift().- elimina el primer elemento.</li>
+  <li>array_slice().- extrae una parte de la tabla.</li>
+  <li>array_splice().- elimina una parte de la tabla y la reemplaza por otros valores.</li>
+  <li>array_sum().- calcula el sumatorio de los valores de la tabla.</li>
+  <li>array_udiff_assoc().- obtiene una tabla diferencia.</li>
+  <li>array_udiff_uassoc().- obtiene una tabla diferencia.</li>
+  <li>array_udiff().- obtiene una tabla diferencia.</li>
+  <li>array_uintersect_assoc().- obtiene la intersección de dos tablas.</li>
+  <li>array_uintersect_uassoc().- obtiene la intersección de dos tablas.</li>
+  <li>array_uintersect().- obtiene la intersección de dos tablas.</li>
+  <li>array_unique().- elimina los valores duplicados de una tabla.</li>
+  <li>array_unshift().- añade uno o más elementos al principio de la tabla.</li>
+  <li>array_values().- devuelve todos los valores de una tabla.</li>
+  <li>array_walk().- aplica una función de usuario a cada elemento de la tabla.</li>
+  <li>array_walk_recursive().- aplica de modo recursivo una función de usuario a cada elemento de la tabla.</li>
+  <li>asort().- ordena una tabla respetando la relación de clave con
+valor. El ordenamiento se realiza sobre los valores, no sobre los
+índices.</li>
+  <li>arsort().- similar a asort() pero ordenando de mayor a menor.</li>
+  <li>compact().- crea una tabla a partir de los nombres de variables y de sus valores.</li>
+  <li>in_array().- comprueba si existe un valor en una tabla.</li>
+  <li>key().- obtiene una clave de una tabla.</li>
+  <li>ksort().- ordena alfanuméricamente las claves de una tabla.</li>
+  <li>krsort().- similar a ksort() pero ordenando de mayor a menor.</li>
+  <li>list().- asigna variables como si fueran una tabla.</li>
+  <li>natcasesort().- ordena sin diferenciar mayúsculas de minúsculas.</li>
+  <li>natsort().- ordena una tabla manteniendo el orden natural.</li>
+  <li>rsort().- similar a sort() pero ordenando de mayor a menor.</li>
+  <li>shuffle().- reordena aleatoriamente una tabla.</li>
+  <li>sort().- ordena los valores de la tabla.</li>
+  <li>usort().- ordena los valores de una tabla utilizando una función de usuario.</li>
+  <li>uksort().- ordena las claves de una tabla utilizando una función de usuario.</li>
+  <li>uasort().- ordena las claves de una tabla usando una función de usuario.</li>
+</ul>
+
+</div>
+</div>
+
+<div id="footer">
+</div>
+
+</body></html>

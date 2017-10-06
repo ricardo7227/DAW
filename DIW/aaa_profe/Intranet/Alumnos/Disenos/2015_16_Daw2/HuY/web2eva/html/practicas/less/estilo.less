@@ -1,0 +1,27 @@
+@color: blue;
+
+.centrado {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#portfolio{
+    background: tint(@color, 50%); 
+}
+
+#less{
+    background: tint(@color, 80%); 
+}
+
+#lobo{
+    background: shade(@color, 50%); 
+    color: lighten(hsl(90, 80%, 50%), 40%);
+
+	img {
+		.centrado;
+        width: 600px;
+        heigth: auto;
+	}
+}
+

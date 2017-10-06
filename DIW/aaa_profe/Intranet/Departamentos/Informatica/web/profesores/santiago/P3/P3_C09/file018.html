@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file018.html -->
+<html>
+<head><title>Ejemplo del uso de cookies </title>
+<script type="text/JavaScript">
+
+function leerCookie(nombre) {
+	// si la propiedad no tiene información se
+	// devuelve null
+	if (document.cookie.length== 0) {
+		// no hay cookie registrado
+		alert('no hay cookie');
+		return;
+	}
+	// separación de la cadena en grupos
+	// clave=valor
+	var sep1 = new RegExp("; ", "g");
+	var listaCookies = document.cookie.split(sep1);
+	for (var i = 0; i < listaCookies.length ; i++) {
+		// separar la parte de clave de
+		// la parte valor (separador =)
+		var sep2 = new RegExp("=", "g");
+		var cookie = listaCookies[i].split(sep2);
+		// se compara el nombre de cookie
+		// con el nombre buscado
+		if (cookie[0] == nombre) {
+			// se aplica la función unescape
+			// para reponer los caracteres
+			// originales
+			document.form1.color.selectedIndex = cookie[1];
+			// vemos si hay reemplazo
+			alert('reemplaza '+ cookie[1]);
+			return;
+
+		}
+	}
+}
+
+function escribirCookie() {
+
+	// escribe (o sobreescribe) la cookie color
+	document.cookie = "color=" + document.form1.color.selectedIndex;
+	// vemos lo que se escribe
+	alert(document.cookie);
+
+}
+
+</script>
+</head>
+<body onload="leerCookie('color')">
+<center> <H1> Elección de colores </H1> </center>
+<hr>
+<form name="form1">
+<select name="color" onchange="escribirCookie()">
+<option value="R"> Rojo
+<option value="V"> Verde
+<option value="A"> Azul
+<option value="N"> Negro
+<option value="Y"> Amarillo
+</select>
+</form>
+</body>
+</html>

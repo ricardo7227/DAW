@@ -1,0 +1,20 @@
+#reservas_izquierda{
+	text-align:left;
+	font-size: 14px;
+}
+.reservas_margen_izq{
+	margin-left:25px;
+}
+.reservas_subrayado{
+	text-decoration: underline;
+	color:black;
+}
+.reservas_color{
+	color:black;
+}
+.reservas_li{
+	line-height:21px;
+}
+#horarios_reserva{
+	margin-left:10px;
+}

@@ -1,0 +1,23 @@
+  /* Estilos del cuerpo-centro para el menú Multimedia */
+  #cuerpo-multimedia {
+      background: #208ED8;
+      background: -moz-linear-gradient(#208ED8,#FFFFFF);
+      background: -webkit-linear-gradient(#208ED8,#FFFFFF);
+      background: -o-linear-gradient(#208ED8,#FFFFFF);
+      background: -ms-linear-gradient(#208ED8,#FFFFFF);
+      background: linear-gradient(#208ED8,#FFFFFF);
+      width:990px;
+      height: 720px;
+      border: 5px ridge #666666;
+      border-radius:5px;
+      font-style:italic;
+      text-align:center;
+      color:#000000;
+      font-weight:bold;}
+
+   /* Estilos del formulario Multimedia-Imágenes y formulario Multimedia-Vídeos */
+    #formImg,#formImg2,#formImg3,#formVid1,#formVid2{text-align:left;}
+	h2{color:white; text-align:center;text-shadow: 2px 1px black;}
+	legend{color:white;font-size:18px;text-shadow: 1px 1px black;}
+	fieldset{background-color:#CED8F6;}
+	#enlaceguia{ text-decoration:none; text-align:right; font-family:Tahoma;font-size:13px;color:black;}

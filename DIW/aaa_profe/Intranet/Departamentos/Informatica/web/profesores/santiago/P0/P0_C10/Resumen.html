@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Java y ActiveX</title>
+
+  
+</head><body style="background-color: rgb(255, 250, 220); width: 851px;">
+<div style="text-align: center; color: rgb(0, 0, 153); background-color: rgb(200, 230, 255);"><font size="+3"><span style="font-weight: bold;">Applets de Java y Controles
+ActiveX</span><br>
+</font></div>
+
+<div align="left">
+<br>
+<font size="+1"><span style="font-weight: bold;">INDICE</span></font><br>
+<br>
+<a href="#java">Java en las páginas web</a><br>
+<a href="#insercion">Inserción de applets Java</a><br>
+<a href="#object">El nuevo estándard: la etiqueta object</a><br>
+<a href="#activex">ActiveX: la tecnología del futuro</a><br>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp; Estos dos nuevos elementos permiten insertar
+contenidos activos e interactuar con el usuario.<br>
+<br>
+<a name="java"></a> <font size="+1"><span style="font-weight: bold;">Java
+en las páginas web</span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Con Java se podrá insertar contenido multimedia con
+mayor libertad y se consigue una interactuación completa con el
+usuario. Java es un lenguaje de programación desarrollado por Sun
+Microsystems. En la página de Sun (www.sun.com) pueden encontrarse
+tutoriales y otros materiales gratuitos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Una de las ventajas de este lenguaje es la
+posibilidad de hacer pequeños programas y ejecutarlos desde dentro de
+las páginas web. Estos programas se llaman applets. No es necesario
+conocer este lenguaje para aprovechar sus características en las
+páginas web. Existen gran cantidad de applets gratuitos que se
+distribuyen a través de Internet y que pueden ser utilizados libremente
+en las páginas. La propia compañia Sun M. ha creado una página
+(http://Java.sun.com/applets/index.html) en la que se muestran ejemplos
+y se distribuyen gratuitamente gran cantidad de applets. Otra forma de
+buscar applets es introducir en un buscador el texto "Java applets".<br>
+<br>
+<a name="insercion"></a> <font size="+1"><span style="font-weight: bold;">Inserción de applets Java</span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Para insertar un applet de Java se utilizan las
+etiquetas <span style="color: red;">&lt;applet&gt; ... &lt;/applet&gt;</span>
+y su funcionamiento es similar a la inserción de imágenes. El applet
+aparecerá en el lugar exacto que se inserte. Los tres atributos
+OBLIGATORIOS de esta etiqueta son: <span style="color: red;">width,
+eight y code</span> que se utiliza para especificar el archivo que
+contiene el applet. Por lo tanto, un ejemplo de inserción de un applet
+en cualquier lugar de la página tendrá la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;applet&nbsp;
+code="Nombre_applet.class"&nbsp; width="ancho"&nbsp;
+eight="alto"&gt;&lt;/applet&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si no se especifica alguno de los tres atributos
+obligatorios el applet no se ejecutará.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Y un ejemplo completo de uso de un applet podría ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;html&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;title&gt;Applet sonoro&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;applet
+code="SoundEjemplo.class" width="450" height="50"&lt;/applet&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/body&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;/html&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Como puede observarse los applets Java tienen
+extensión .class.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando el navegador encuentra el código anterior
+procede a bajar el fichero especificado (si éste no se encuentra en el
+propio ordenador, que no es el caso) y reserva un rectángulo de las
+dimensiones especificadas donde se mostrará el applet. A continuación
+llama a una máquina virtual Java (JVM) que será la que ejecute el
+applet. Así, cuando el cursor se sitúe dentro del rectángulo,, el
+control pasará al applet que será el encargado de realizar las
+operaciones oportunas.<br>
+<br>
+<font size="+1"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;
+Especificación de la dirección del applet</span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; El atributo code permite especificar el nombre del
+fichero pero no admite nombres de directorios ni direcciones URL; esta
+función la realiza el atributo <span style="color: red;">codebase</span>,
+de forma que si el applet se encuentra en el directorio "applets" el
+código a utilizar será:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;applet
+codebase="applets/" code="SoundEjemplo.class" width="450"
+eight="50"&lt;/applet&gt;<br>
+<br>
+<!--
+<applet code="Clock.class" eight="150" codebase="http://java.sun.com/applets/jdk/1.4/demo/applets/Clock/" align="right" hspace="10" width="155"></applet>
+-->
+<!--
+<applet code="clock.class" archive="clock.jar" eight="150" codebase="http://www.joescat.com/java" align="right" hspace="10" width="155"></applet>
+-->
+<applet code="clock.class" eight="150" codebase="java" align="right" hspace="10" width="155"></applet>
+&nbsp;&nbsp;&nbsp; Y si el fichero está en
+Internet tendrá la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;applet
+code="Clock.class" width="155" eight="150"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+codebase="http://java.sun.com/applets/jdk/1.4/demo/applets/Clock/"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &lt;/applet&gt;<br>
+<br>
+&nbsp;&nbsp; En la mayor parte de las ocasiones, los autores de los
+applets permiten su uso desde el servidor donde se encuentran pero no
+permiten su copia, aunque ésto no suponga ningún inconveniente.<br>
+<br>
+<font size="+1"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;
+Otros atributos de la etiqueta applet</span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Además de los cuatro atributos vistos anteriormente,
+existen:<br>
+<br>
+<ul>
+  <li><span style="color: red;">name</span>.- permite especificar el
+nombre del elemento y posibilita
+hacer referencia a él desde otros lugares de la página.</li>
+  <br>
+  <li><span style="color: red;">align</span>.- controla el alineamiento
+con relación al texto
+circundante. Los
+posibles valores son: left, center y right. (no me ha funcionado).</li>
+  <br>
+  <li><span style="color: red;">vspace y hspace</span>.- establece los
+márgenes superior e inferior y
+laterales entre el texto que bordea al applet y el applet.</li>
+  <br>
+  <li><span style="color: red;">alt</span>.- permite asignar un texto
+alternativo para cuando el
+navegador tiene problemas para ejecutar el applet.</li>
+  <br>
+  <li><span style="color: red;">archive</span>.- permite especificar un
+archivo auxiliar para el applet
+donde se pueden insertar las imágenes, sonidos, ... necesarios para la
+ejecución del applet. Fue pensado para tener en un archivo comprimido
+todos los archivos auxiliares del applet.</li>
+  <br>
+  <li><span style="color: red;">mayscript</span>.- no tiene ningún
+valor asignado y su significado es
+que el applet puede ser accedido usando código JavaScript.</li>
+  <br>
+  <li><span style="color: red;">title</span>.- permite especificar un
+texto que será mostrado en un
+bocadillo al pasar con el ratón por encima del applet.</li>
+</ul>
+<font size="+1"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; La
+etiqueta <span style="color: red;">param</span></span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Esta etiqueta consta de una única instrucción
+&lt;param&gt; (no existe &lt;/param&gt;), debe incluirse dentro de la
+etiqueta &lt;applet&gt; ... &lt;/applet&gt; y su función es definir los
+parámetros para el applet. Los parámetros son propiedades específicas
+de cada applet que permiten modificar sus características; constan de
+un nombre y un valor que son indicados usando los atributos <span style="color: red;">name y value</span> de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;applet code="
+Nombre_applet.class " width="ancho" height="alto"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param
+name=" Nombre_parametro " value=" Valor_param "&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/applet&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cada etiqueta param define&nbsp; un parámetro y
+puede haber tantas como sea necesario. Por lo general, los applets que
+se distribuyen gratuitamente tienen un gran número de parámetros para
+que puedan adecuarse a las necesidades de los programadores y suelen ir
+acompañados de alguna documentación.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un applet muy conocido es Animator.class que toma un
+conjunto de imágenes y las va mostrando de forma ordenada para crear un
+efecto de animación. Éste era el único método antes de que aparecieran
+los GIF's animados. En la página 372 hay un ejemplo de utilización de
+este applet.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <font size="+1"><span style="font-weight: bold;">Alternativas
+a los applets Java</span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Para aquellos navegadores que no soportan los
+applets de Java puede incluirse dentro de la etiqueta applet, además de
+las etiquetas param, otro código alternativo que sera ejecutado por
+estos navegadores&nbsp; y no por los que lo soportan. Un ejemplo podría
+ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;applet code="Animator.class"
+width="55" height="68" alt="Lo siento, no puede ver el applet"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param
+name="imagesource" value="."&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param name="endimage"
+value="10"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param name="pause"
+value="100"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param name="pauses"
+value="2500|100|100|100|100|100|100|100|100|100"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;img
+src="T5.gif" width="55" height="68" alt="Duke te saluda"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;/applet&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Como se ve, también puede utilizarse el atributo <span style="color: red;">alt</span>. Los navegadores sin soporte Java verán
+una imagen de Duke estática, sin movimiento.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un resumen de los atributos de la etiqueta applet y
+de la subetiqueta param es el siguiente:<br>
+<ul>
+  <li>applet.- etiqueta usada para insertar applets.</li>
+  <li>code.- indica el archivo que contiene el código.</li>
+  <li>width.- ancho.</li>
+  <li>height.- alto.</li>
+  <li>codebase.- especifica el directorio/URL donde se encuentra el
+archivo indicado en code.</li>
+  <li>alt.- texto alternativo.</li>
+  <li>name.- nombre del applet. Función informativa y para poder
+identificarlo.</li>
+  <li>align.- alineamiento.</li>
+  <li>vspace y hspace.- márgenes.</li>
+  <li>archive.- para especificar un archivo comprimido que contenga
+todos los archivos auxiliares que necesite el applet.</li>
+  <li>mayscrip.- especifica que el applet puede ser usado desde un
+lenguaje de script.</li>
+  <li>tittle.- para dar un título que será mostrado en un bocadillo al
+pasar con el puntero por encima.</li>
+  <li>param name="..." value="...".- para especificar parámetros.<br>
+  </li>
+  <li>[codigo html alternativo].- código HTML alternativo para
+navegadores que no soportan applets.</li>
+</ul>
+<br>
+<a name="object"></a> <font size="+1"><span style="font-weight: bold;">El
+nuevo estándard: la etiqueta <span style="color: red;">object</span></span></font><br>
+&nbsp;&nbsp;&nbsp; El consorcio W3C creó la etiqueta object que
+introdujo en el estándard HTML 3.2 para incluir varios tipos de
+ficheros multimedia, applets de Java, controles ActiveX, documentos
+HTML o prácticamente cualquier otro tipo de objeto. Por ejemplo, para
+incluir un vídeo AVI puede utilizarse el código:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;object
+data="video/Peli.mpeg" type="video/mpeg" width="350" height="263"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;img
+src="imagenes/Foto_02.jpeg" width="350" height="263" alt="[Mi casa]"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/object&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuyo resultado puede verse <a href="10_01_video.html">pinchando aquí</a>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Dentro de la etiqueta object puede incluirse código
+alternativo para los navegadores que no reconozcan esta etiqueta.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Puede verse más información sobre esta etiqueta en
+la dirección:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+http://www.w3.org/TR/WD-object-970218<br>
+<br>
+&nbsp;&nbsp;&nbsp; Una lista completa de los atributos que admite la
+etiqueta object es la siguiente:<br>
+<ul>
+  <li>id.- identificador</li>
+  <li>declare.- indica que el objeto va a ser declarado pero no
+instanciado.</li>
+  <li>classid.- URL con una implementación para el objeto.</li>
+  <li>codebase.- URL donde se encuentran las implementaciones.</li>
+  <li>data.- URL del objeto.</li>
+  <li>type.- tipo de objeto.</li>
+  <li>codetype.- tipo de objeto según el atributo classid</li>
+  <li>standby.- texto que se muestra mientras se carga el objeto.</li>
+  <li>align.- especifica la alineación. Los posibles valores son:
+texttop, middle, textmiddle, baseline, textbottom, left, center y right.</li>
+  <li>width.- ancho.</li>
+  <li>heigh.- alto.</li>
+  <li>border.- grosor del borde.</li>
+  <li>hspace y vspace.- espacio entre el texto de alrededor y el objeto.</li>
+  <li>usemap.- mapa de la imagen.</li>
+  <li>shapes.- zonas con enlaces.</li>
+  <li>name.- utilizado para los formularios.</li>
+  <li>title.- utilizado como aviso en ciertas circunstancias.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <font size="+1"><span style="font-weight: bold;">Inserción
+de un applet Java
+</span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; La forma de insertar un applet Java utilizando la
+etiqueta object es similar a como se hacía con la etiqueta applet.
+Dentro de la etiqueta object también se incluirán las etiquetas param
+necesarias.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta param admite aquí dos nuevos atributos:<br>
+<br>
+<ul>
+  <li>valuetype.- especifica el tipo de valor que recibirá el
+parámetro. Sus posibles valores son:</li>
+  <br>
+  <ul>
+    <li>data: identifica a las cadenas de caracteres.</li>
+    <li>ref: el valor es una dirección URL que indica donde están
+almacenados los valores para dicho parámetro.</li>
+    <li>object: el valor es el nombre de otro objeto del mismo
+documento
+precedido del caracter #.</li>
+    <br>
+  </ul>
+  <li>type.- especifica el tipo mime del valor asignado a este atributo
+con value.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; El ejemplo de la sección "Alternativas a los applets
+Java", utilizando la etiqueta object quedaría de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;object
+codetype="application/octet-stream" classid="JavaTM:Animator.class"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+width="55" height="68" alt="Lo siento, no puede ver el applet"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param
+name="imagesource" value="."&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;param name="endimage"
+value="10"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;param name="pause"
+value="100"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;param name="pauses"
+value="2500|100|100|100|100|100|100|100|100|100"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;img
+src="T5.gif" width="55" height="68" alt="Duke te saluda"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/object&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Como puede observarse, la complejidad añadida con
+respecto a la etiqueta applet es la utilización del atributo codetype
+para indicar el tipo mime del applet, que es necesario para indicar al
+navegador el tipo de objeto y que pueda decidir, dependiendo de si
+soporta la tecnología, bajar o no el archivo.<br>
+<br>
+<a name="activex"></a> <font size="+1"><span style="font-weight: bold;">ActiveX:
+la tecnología del futuro </span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; El objetivo de la tecnología ActiveX es similar a la
+de los plug-ins, insertar objetos de diferente tipo en una página web,
+aunque va más allá al añadir mayores posibilidades de interacción y
+comunicación con programas externos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; ActiveX está compuesto por dos tipos de objetos:
+controles activos (Active controls) y documentos activos (Active
+documents). Estos últimos permiten insertar documentos con formato PDF,
+DOC, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los controles ActiveX guardan parecidos con los
+objetos para plug-ins y con los applets Java aunque presenta algunas
+mejoras con respecto a ambos. Como ocurría con los plug-ins, los
+controles y documentos de ActiveX pueden ser insertados en una página
+web, sin embargo no requieren de un pequeño programilla para cada tipo
+de objeto ActiveX; esta nueva tecnología ha sido denominada como
+auto-contenida porque cada objeto tiene suficiente información para
+ejecutarse sin ayuda de ninguna aplicación.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Podemos crear nuestros propios controles o usar los
+creados por otros programadores que nos los venden o distribuyen de
+forma gratuita. Existen herramientas que convierten esta programación
+en un juego de niños; destacan las creadas por Microsoft y distribuidas
+a través de www.mirosoft.com/ie/.<br>
+<br>
+<font size="+1"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;
+Inserción
+de un control ActiveX</span></font><br>
+<br>
+&nbsp;&nbsp;&nbsp; Un ejemplo de inserción de un control ActiveX puede
+ser el siguiente:<br>
+<br>
+<table align="right" border="1">
+  <tbody>
+    <tr>
+      <td width="70%">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;object
+width="200"
+height="300"<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+classid="clsid:99B42120-6EC7-11CF-A6C7-00AA00A47DD2"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param name="angle"
+value="55"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param name="alignment"
+value="2"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param name="backstyle"
+value="3"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param name="caption"
+value="Curso WEBMASTER"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param name="fontname"
+value="Arial"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param name="fontsize"
+value="30"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param name="fontbold"
+value="1"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param name="backcolor"
+value="#006600"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;param name="forecolor"
+value="#FFFFFF"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; [Para visualizar el
+control
+ActiveXTM necesita un navegador<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; de las
+últimas versiones.]<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/object&gt; </td>
+      <td><object classid="clsid:99B42120-6EC7-11CF-A6C7-00AA00A47DD2" height="300" width="200"> <param name="angle" value="55"> <param name="alignment" value="2"> <param name="backstyle" value="3"> <param name="caption" value="Curso WEBMASTER"> <param name="fontname" value="Arial"> <param name="fontsize" value="30"> <param name="fontbold" value="1"> <param name="backcolor" value="#006600"> <param name="forecolor" value="#FFFFFF"> [Para visualizar el control
+ActiveXTM
+necesita un navegador de las últimas versiones.]</object> <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; El valor del atributo classid es el que identifica
+el tipo de control ActiveX que se inserta. Este código es complejo y
+está fuera de los objetivos de este manual.<br>
+<br>
+&nbsp;&nbsp;&nbsp; caption: contiene el texto a mostrar.<br>
+&nbsp;&nbsp;&nbsp; angle: el ángulo.<br>
+&nbsp;&nbsp;&nbsp; etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Puede probarse a cambiar los valores de los
+parámetros y comprobar el resultado.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Existe un plug-in para Netscape, Ncompass, que añade
+a este navegador la posibilidad de entender controles y documentos
+ActiveX.<br>
+<br>
+PRÁCTICA.- Hacer una página que contenga un applet de Java.<br>
+PRÁCTICA.- Hacer una página que contenga el applet Animator.class.<br>
+PRÁCTICA.- Incluir un vídeo en una página web.<br>
+PRÁCTICA.- Página con un ActiveX.<br>
+</div>
+
+</body></html>

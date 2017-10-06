@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Conceptos básicos</title></head><body>
+<div style="text-align: center; width: 870px;"><font style="color: rgb(51, 0, 153);" size="+3">Conceptos básicos</font><br>
+</div>
+
+<div style="width: 870px;"><br>
+&nbsp;&nbsp;&nbsp; El libro utiliza como sinónimos etiqueta, elemento y
+directiva HTML.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si para un atributo se omite su valor podrán
+utilizarse indistintamente las sintaxis:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; atributo=""<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; atributo<br>
+<br>
+&nbsp;&nbsp;&nbsp; Se recuerda que el valor del atributo puede
+incluirse entre comillas simples o dobles.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La solución para los caracteres especiales es el uso
+de juegos de caracteres especializados que incluso pueden utilizar
+estándares de 16 bits. El modo de definir el juego de caracteres es
+mediante la etiqueta <span style="color: red;">&lt;meta charset=" . . . "&gt;</span> para indicar el
+estándard elegido, por ejemplo, UNICODE (UTF-8).<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para superar los problemas de algún caracter puntual
+puede utilizarse la codificación ya conocida. Por ejemplo la letra ñ
+puede codificarse de las siguientes formas:<br>
+<br>
+&nbsp;&nbsp;&nbsp; Formato decimal: &amp;#241<br>
+&nbsp;&nbsp;&nbsp; Formato hexadecimal: &amp;#F1<br>
+&nbsp;&nbsp;&nbsp; Por nombre: &amp;ntilde;<br>
+<br>
+&nbsp;&nbsp;&nbsp; El apéndice B contiene tablas con las diferentes codificaciones.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Atributos comunes a todas las etiquetas:<br>
+<ul>
+  <li><span style="color: red;">accesskey</span>.- permite definir un acceso directo de teclado para que el elemento reciba el foco.</li>
+  <li><span style="color: red;">class</span>.- permite definir una clase a la etiqueta que después se puede asociar a una clase CSS.</li>
+  <li><span style="color: red;">contextmenu</span>.- permite asociar un menú de contexto que deberá estar definido en una etiqueta MENU.</li>
+  <li><span style="color: red;">contenteditable</span>.- valor booleano que indica si el contenido delimitado por la etiqueta se puede modificar.</li>
+  <li><span style="color: red;">dir</span>.- indica la direccionabilidad del elemento.</li>
+  <li><span style="color: red;">draggable</span>.- indica si el elemento puede ser arrastrado (y soltado).</li>
+  <li><span style="color: red;">hidden</span>.- elemento oculto que podrá visualizarse con código JavaScript.</li>
+  <li><span style="color: red;">id</span>.- identificador. No admite espacios.</li>
+  <li><span style="color: red;">lang</span>.- idioma del elemento.</li>
+  <li><span style="color: red;">spellcheck</span>.- indica si se comprueba la gramática y ortografía.</li>
+  <li><span style="color: red;">style</span>.- estilo.</li>
+  <li><span style="color: red;">tabindex</span>.- orden de tabulación.</li>
+  <li><span style="color: red;">title</span>.- microayuda para el elemento.</li>
+  <li><span style="color: red;">eventos</span>.- puede asociarse una larga lista de eventos para
+ejecutar un script relacionado, por ejemplo: <span style="color: red;">onclick, ondblclick,
+onmouseup, onmouseover, onfocus, onplay, onreset, etc</span>.</li>
+</ul>&nbsp;&nbsp;&nbsp; Etiqueta <span style="color: red;">&lt;html&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Etiqueta <span style="color: red;">&lt;head&gt;</span>.- contiene las etiquetas title, base, link, meta e isindex.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Etiqueta <span style="color: red;">&lt;title&gt;</span>.- los programas buscadores asignan a esta etiqueta un valor muy alto.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Etiqueta <span style="color: red;">&lt;base&gt;</span>.-
+permite especificar el directorio base para las referencias relativas.
+Admite los atributos target, para especificar un nombre de destino
+válido para hiperenlaces y formularios, y href o dirección URL válida
+que se utilizará como dirección base. Muy utilizada para probar las
+páginas <br>
+en una ubicación diferente a la definitiva.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Etiqueta <span style="color: red;">&lt;link&gt;</span>.- permite establecer enlaces con otros recursos. Admite como atributos:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">rel</span>.- indica el tipo de enlace. Para hojas de estilo el valor es stylesheet.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">href</span>.- especifica la dirección del documento enlazado.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">hreflang</span>.- lenguaje del recurso.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">title</span>.- para asignar un nombre a la relación.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">type</span>.- tipo de documento.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">media</span>.- tipo de dispositivo.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Etiqueta <span style="color: red;">&lt;meta&gt;</span>.- es un contenedor de metainformación relacionada con el documento. Debe tener siempre uno de estos tres atributos: <span style="color: red;">name, charset o http-equiv</span>. Sus atributos más usados son:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">name</span>.- identifica el tipo de información, por ejemplo: application-name, keywords, description, author, generator y robots.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">charset</span>.- conjunto de caracteres del documento.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">content</span>.- indica los metadatos. Depende del tipo de etiqueta meta.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">http-equiv</span>.-
+para indicar alguna directiva pragma: content-languaje, content-type,
+default-style,refresh, set-cookie, prefetch, expires y no-cache.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Etiqueta <span style="color: red;">&lt;style&gt;</span>.- permite incluir información sobre el estilo dentro del propio documento. Admite los atributos:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">type</span>.- indica el lenguaje de estilo. Por defecto se presupone "test/css".<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">media</span>.- indica a qué medio se aplica. Por defecto es "all".<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">title</span>.- define una hoja de estilo alternativa.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Etiqueta <span style="color: red;">&lt;script&gt;</span>.- usada para delimitar código de JavaScript. Admite como atributos:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">charset</span>.- conjunto de caracteres del script.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">src</span>.- dirección donde se encuentra el script.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">type</span>.- lenguaje utilizado en el script. Por defecto es Javascript.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">async</span>.- indica si el script se ejecuta inmediatamente.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <span style="color: red;">defer</span>.- indica que el script se ejecuta cuando se termine la carga de la página.<br>
+</div>
+
+<br>
+
+<br>
+
+</body></html>

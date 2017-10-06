@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
+<g>
+	<defs>
+		<circle id="SVGID_1_" cx="15" cy="15" r="13.656"/>
+	</defs>
+	<use xlink:href="#SVGID_1_"  overflow="visible" fill="#FF00FF"/>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<g clip-path="url(#SVGID_2_)">
+		
+			<ellipse fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="10" cx="15.042" cy="15.042" rx="2.905" ry="11.68"/>
+		
+			<ellipse fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="10" cx="15.042" cy="15.042" rx="11.68" ry="2.905"/>
+		
+			<ellipse transform="matrix(0.707 -0.7072 0.7072 0.707 -6.2312 15.0454)" fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="10" cx="15.043" cy="15.043" rx="2.905" ry="11.679"/>
+		
+			<ellipse transform="matrix(0.7071 0.7071 -0.7071 0.7071 15.0429 -6.2304)" fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="10" cx="15.042" cy="15.043" rx="2.905" ry="11.679"/>
+		<circle cx="16.732" cy="24.293" r="0.911"/>
+	</g>
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="15.3999" y1="12.4688" x2="15.3999" y2="-1.5288">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0"/>
+	</linearGradient>
+	<path opacity="0.65" clip-path="url(#SVGID_2_)" fill="url(#SVGID_3_)" d="M0.293,12.298c0,0,12.803-11.096,30.214,0.171
+		c0,0-0.768-13.998-15.619-13.998C0.037-1.529,0.293,12.298,0.293,12.298z"/>
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="15.0239" y1="31.6729" x2="15.0239" y2="17.6748">
+		<stop  offset="0" style="stop-color:#000000;stop-opacity:0"/>
+		<stop  offset="0.7758" style="stop-color:#000000;stop-opacity:0.9636"/>
+		<stop  offset="1" style="stop-color:#000000"/>
+	</linearGradient>
+	<path opacity="0.5" clip-path="url(#SVGID_2_)" fill="url(#SVGID_4_)" d="M29.739,17.846c0,0-12.035,11.096-29.446-0.171
+		c0,0,0.768,13.998,15.619,13.998C30.764,31.673,29.739,17.846,29.739,17.846z"/>
+	<use xlink:href="#SVGID_1_"  overflow="visible" fill="none" stroke="#000000" stroke-width="0.25" stroke-miterlimit="10"/>
+</g>
+</svg>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Sorteo</title>
+   <script type="text/javascript">
+	function aleatorio() {
+		var ini = eval(document.formulario.inicial.value);
+		var fin = eval(document.formulario.final.value);
+		var resul = Math.floor((Math.random() * (fin - ini + 1)) + ini);
+		document.getElementById("parrafo").innerHTML = "<h2>El número aleatorio es el... " + resul + "</h2>";
+	}
+   </script>
+ </head>
+ <body>
+<h1>NÚMERO ALEATORIO</h1>
+<form name="formulario">
+Número inicial (incluido).:
+<input type="text" name="inicial" value="0" size="4"><br />
+Número final (incluido)....:
+<input type="text" name="final" value="0" size="4"><br />
+<br />
+<input type="button" value="Calcular" id="boton" onclick="javascript:aleatorio()">
+<br /><br />
+<p id="parrafo"></p>
+ </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ordenar tabla</title>
+</head>
+<body>
+  <script language="javascript">
+    var elemento = new Array();
+    var filas = prompt ("Numero de filas", 2);
+    var col = prompt ("Numero de columnas", 2);
+    for (var i = 0; i < filas; i++) {
+      elemento [i] = new Array();
+      for (var j = 0; j < col; j++) {
+        elemento[i][j] = prompt("Elemento ( " + (i+1) + ", " + (j+1) + " )", "Valor");
+      }
+    }
+    document.write("<h2>ORDENACION DE TABLAS<h2><br>");
+    document.write("<h3>Antes de ordenar</h3>");
+    for (var i = 0; i < filas; i++) {
+      document.write("Fila " + (i+1) + ": ");
+      document.write(elemento[i].join(" - ") + "<br>");
+    }
+    document.write("<h3>Despues de ordenar por filas</h3>");
+    for (var i = 0; i < filas; i++) {
+      document.write("Fila " + (i+1) + ": ");
+      elemento[i].sort();
+      document.write(elemento[i].join(" - ") + "<br>");
+    }
+  </script>
+</body>
+</html>

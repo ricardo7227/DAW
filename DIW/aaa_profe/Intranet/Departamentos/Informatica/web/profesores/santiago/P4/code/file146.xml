@@ -1,0 +1,27 @@
+<horas_extras>
+	<persona>
+		<nombre>Juan</nombre>
+		<apellido>Santiago</apellido>
+		<turno>tarde</turno>
+		<horas>20</horas>
+		<horas>4</horas>
+	</persona>
+	<persona>
+		<nombre>Carlos</nombre>
+		<apellido>Santos</apellido>
+		<turno>tarde</turno>
+		<horas>15</horas>
+	</persona>
+	<persona>
+		<nombre>Ernesto</nombre>
+		<apellido>Ibarra</apellido>
+		<turno>noche</turno>
+		<horas>10</horas>
+	</persona>
+	<persona>
+		<nombre>Ricardo</nombre>
+		<apellido>Paladino</apellido>
+		<turno>tarde</turno>
+		<horas>20</horas>
+	</persona>
+</horas_extras>

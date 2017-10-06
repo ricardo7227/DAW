@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Barra de estado con texto deslizante</title>
+
+  
+  
+  <script language="javascript">
+    // Variables globales
+    iDesplaz = 0;
+    txtMensaje = "";
+    // Esta función se llama una vez al cargarse la página
+    // define el mensaje y pone en marcha el proceso iterativo
+    function crearMensaje() {
+      // Se crea un elemento inicial con 10 espacios
+      txtMensaje = "";
+      for (i = 1; i <= 10; i++) {
+        txtMensaje += " ";
+      }
+      txtMensaje += "/// Texto deslizante: OJO con el navegador ///";
+      // Comienza el proceso iterativo
+      hacerDeslizamiento();
+    }
+    function hacerDeslizamiento() {
+      // En cada ejecución cambia la posición de inicio de la cadena
+      var txtDisplay = txtMensaje.substring(iDesplaz, txtMensaje.length);
+      // Coloca el texto en la barra de estado y en el título
+      window.status = txtDisplay;
+      document.title = txtDisplay;
+      iDesplaz ++;
+      // Al llegar al final empezar desde 1
+      if (iDesplaz > txtMensaje.length) { iDesplaz = 1;}
+      // Pone en marcha el timer
+      setTimeout("hacerDeslizamiento()", 200);
+    }
+  </script>
+</head><body onload="crearMensaje()">
+<br>
+
+<h1>Observar la barra de estado y el título!!</h1>
+
+<br>
+
+<br>
+
+</body></html>

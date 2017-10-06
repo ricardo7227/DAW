@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file040.html -->
+<html>
+<head>
+	<title>Ejemplo de inserción</title>
+</head>
+<body>
+<p>Texto original  en HTML</p>
+<script type="text/javascript">
+var nuevoPárrafo = document.createElement("p");
+var textoPárrafo = document.createTextNode("Este texto desde JavaScript se usa como reemplazo");
+nuevoPárrafo.appendChild(textoPárrafo);
+var párrafoOriginal = document.body.getElementsByTagName("p")[0];
+párrafoOriginal.parentNode.replaceChild(nuevoPárrafo, párrafoOriginal);
+</script>
+</body>
+</html>

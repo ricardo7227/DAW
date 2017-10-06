@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Colores y fondos</title>
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="estilos.css" type="text/css">
+
+</head><body>
+<h1>Colores y fondos</h1>
+
+<a href="#propiedades">Propiedades asociadas al color y al fondo</a><br>
+
+<a href="#color">Color en los elementos</a><br>
+
+<a href="#imagenes">Imágenes como fondo</a><br>
+
+<a href="#background1">Propiedad background</a><br>
+
+<a href="#background2">Propiedad background-size</a><br>
+
+<br>
+
+<h3><a name="propiedades"></a>Propiedades asociadas al color y al fondo</h3>
+
+<p>&nbsp;&nbsp; Las principales propiedades de esta categoría son:<br>
+</p>
+
+<ul>
+
+  <li>color.- color del elemento.</li>
+  <li>background-color.- color del fondo.</li>
+  <li>background-image.- define la imagen de fondo. Utiliza como valor
+una direccción url.</li>
+  <li>background-attachment.- indica si la imagen se desplaza o queda
+fija al
+utilizar las barras de desplazamiento. Admite los valores scroll y
+fixed.</li>
+  <li>background-repeat.- indica la forma en que se repite la imagen de
+fondo: repeat-x (horizontalmente), repeat-y (verticalmente), no-repeat
+(no se repite) o repeat ( se repite horizontal y verticalmente.)
+(opción por defecto).</li>
+  <li>background-position.- define la posición inicial de la imagen de
+fondo.</li>
+  <li>background.- para especificar los valores anteriores en una única
+propiedad (no importa el orden), por ejemplo:</li>
+</ul>
+
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+background:&nbsp; red&nbsp; url(imagen.jpeg)&nbsp; scroll&nbsp; repeat-y<br>
+</p>
+
+<h3><a name="color"></a>Color en los elementos</h3>
+
+&nbsp;&nbsp;&nbsp; La mayor parte de los elementos de un documento HTML
+tiene dos atributos relacionados con el color, el color del frente o
+del primer plano y el color del fondo, que se gestionan con las
+propiedades <span style="color: red;">color y background-color</span>. La forma de especificar el color
+es la que ya se ha visto con anterioridad. Un ejemplo puede ser:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <span id="ejemp01">p&nbsp;
+{color: blue;
+background-color: yellow;}</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Si se quiere expandir el color del fondo, puede
+utilizarse la propiedad padding. El ejemplo anterior expandido 10 px
+quedaría de la forma:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <span id="ejemp02">p&nbsp;
+{color: blue;
+background-color: yellow; padding: 10px;}</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El color de fondo se expande a la zona de relleno
+(padding) pero no a las zonas de borde (border) o margen (margin).<br>
+
+<h3><a name="imagenes"></a>Imágenes como fondo</h3>
+
+&nbsp;&nbsp;&nbsp; Para utilizar una imagen como fondo de la página se utiliza la propiedad <span style="color: red;">background-image</span> de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  #idimagen&nbsp; {background-image: url("mi_imagen.jpeg");}<br>
+
+<br>
+&nbsp;&nbsp;&nbsp; Cuando la imagen es más pequeña que el fondo a
+cubrir, por defecto la imagen se repetirá horizontal y verticalmente
+pero este comportamiento puede modificarse con el uso de la propiedad <span style="color: red;">background-repeat</span> que admite los valores:&nbsp; repeat-x, repeat-y, no-repeat y repeat (por defecto). <br>
+<br>
+&nbsp;&nbsp;&nbsp; Otra propiedad que permite definir el comportamiento
+de la imagen de fondo es <span style="color: red;">background-attachement</span>, que admite los
+valores: scroll y fixed. Con scroll, la imagen se desplaza junto al
+contenido cuando se hace uso de las barras de desplazamiento. Con fixed
+la imagen no se desplaza, permanece siempre en el mismo sitio.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Por defecto la imagen se sitúa en la esquina superior izquierda de la zona en la que actúa. La propiedad <span style="color: red;">background-position</span>
+permite controlar el posicionamiento de la imagen y sus valores se
+pueden especificar de tres formas diferentes: con dos porcentajes, con
+dos palabras clave o con dos distancias. El primer valor hace
+referencia al desplazamiento horizontal y el segundo al vertical. Si
+solo se especifica un valor será considerado como desplazamiento
+horizontal y el vertical se tomara como centrado. Como palabras clave
+pueden utilizarse: left top, left center, left bottom, center top,
+center center, center bottom, right top, right center y right bottom.
+Puden combinarse en la misma declaración un porcentaje y una distancia
+pero no pueden combinarse palabras clave con otro tipo de medidas.<br>
+
+<h3><a name="background1"></a>Propiedad background</h3>
+
+&nbsp;&nbsp;&nbsp; La propiedad background es una propiedad
+concentradora de las propiedades: background-color, background-image,
+background-repeat, background-attachement y background-position. El
+orden es indiferente y no es obligatorio informar de todos los valores.
+Un ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; background:&nbsp; red&nbsp; repeat-y&nbsp; left;<br>
+
+<h3><a name="background2"></a>Propiedad background-size</h3>
+
+&nbsp;&nbsp;&nbsp; La propiedad background-size es nueva en CSS3 y define el tamaño de las imágenes de fondo. Un ejemplo de uso:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  div&nbsp; {background-size: 100px&nbsp; 100px;}<br>
+<br>
+
+</body></html>

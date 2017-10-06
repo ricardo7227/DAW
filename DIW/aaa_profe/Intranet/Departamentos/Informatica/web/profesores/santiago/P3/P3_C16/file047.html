@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file047.html -->
+<html>
+<script type="text/javascript">
+function comprobarAjax() {
+	var miObj = null;
+	if (window.XMLHttpRequest) {
+		// Gestión de Ajax con Mozilla Firefox y
+		// otros navegadores
+		miObj = new XMLHttpRequest();
+	} else if (window.ActiveXObject) {
+		// Gestión de Ajax con Internet Explorer
+		miObj = new ActiveXObject("Microsoft.XMLHTTP");
+	} else {
+		// atención, el objeto XMLHttpRequest
+		// no se puede gestionar en este navegador
+		alert("El navegador no admite el uso de Ajax");
+		return;
+	}
+
+	miObj.open("GET",
+		"http://www.inforbooks.com/cataleg.php", false);
+	miObj.send(null);
+
+	// gestión de una llamada sincrónica
+	// que bloquea la ejecución hasta
+	// que se recibe la respuesta
+	if (miObj.readyState == 4) {
+
+			// utiliza la respuesta para asignar datos
+			// a un elemento en pantalla
+			document.getElementById("respuesta").innerHTML =
+			 miObj.responseText;
+
+			// si la respuesta fuese código javaScript
+			// se procesa con eval
+			// eval(miObj.responseText);
+	} else {
+		document.getElementById("respuesta").innerHTML = 
+			"No hay respuesta";
+	}
+}
+</script>
+<body>
+<a href="javascript:comprobarAjax()">Comprobar Ajax</a>
+<div id="respuesta"></div>
+</html>

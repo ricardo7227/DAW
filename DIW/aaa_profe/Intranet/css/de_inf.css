@@ -1,0 +1,11 @@
+/*Alineacion imagenes*/
+#img_dept_inf{float:left;margin-right:10px;}
+/*Botones*/
+.boton_cambio{margin:0px; background:#FFF; border-top:1px solid black;border-bottom:none; border-left: none; border-right:none;}
+.nuestromodulos,.primercurso{border-left: 1px solid black !important;border-right: 1px solid black !important;}
+.nuestroprofes,.segundocurso{margin-left:-3px;border-right: 1px solid black !important;}
+/*Tabla con divs*/
+.divTable {display:  table;font-size:12px;width:538px;background-color:#fff;border: 1px solid black !important;}
+.divRow{display:table-row;width:538px;}
+.divCell{float:left;display:table-column;width:258px;padding:5px;border-top:1px solid black;height:25px;} 
+.divCell2{border-left:1px solid black;float:left;display:table-column;width:245px;padding:0px;}

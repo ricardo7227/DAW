@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>DOM</title>
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<h1>DOM</h1>
+
+<a href="#dom">DOM: Modelo de objeto Documento</a><br>
+
+<a href="#bom">DOM o BOM</a><br>
+
+<a href="#estructura">Estructura de un documento HTML</a><br>
+
+<a href="#objetos">Objetos DOM</a><br>
+
+<a href="#node">Node</a><br>
+
+<a href="#nodelist">NodeList</a><br>
+
+<a href="#namednode">NamedNodeMap</a><br>
+
+<a href="#document">Document</a><br>
+
+<a href="#element">Element</a><br>
+
+<a href="#ejemplos">Ejemplos</a>
+<br>
+
+<br>
+
+<h3><a name="dom"></a>DOM: Modelo de objeto Documento</h3>
+
+&nbsp;&nbsp;&nbsp; El modelo de objeto documento, DOM, es un estandard
+para representar el documento independientemente del navegador que se
+utilice. Esto permite acceder a un documento mediante un conjunto de
+objetos, propiedades, métodos y eventos, lo que facilita la
+modificación dinámica del contenido de una página web mediante código
+de script.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El estandar DOM ha tenido varias fases de
+desarrollo, lo que ha dado lugar a distintos niveles, siendo en estos
+momentos el 2 el nivel más aceptado.<br>
+
+<h3><a name="bom"></a>DOM o BOM</h3>
+
+&nbsp;&nbsp;&nbsp; El modelo de objeto de navegador, BOM, se suele
+confundir con DOM pero no es lo mismo. Mientras DOM se centra en el
+documento, el modelo BOM incluye acceso a todas las áreas del
+navegador. Además, BOM es bastante específico de cada navegador
+mientras que DOM pretende ser totalmente independiente del navegador.<br>
+
+<h3><a name="estructura"></a>Estructura de un documento HTML</h3>
+
+&nbsp;&nbsp;&nbsp; Ver pág. 558.<br>
+
+<h3><a name="objetos"></a>Objetos DOM</h3>
+
+&nbsp;&nbsp;&nbsp; La estructura de un documento se basa en que existe
+un nodo de nivel superior denominado nodo raiz debajo del que se
+desarrollan los nodos dependientes. Dada esta estructura, DOM necesita
+definir tres objetos base:<br>
+
+<ul>
+
+  <li>Nodo.- cada objeto del documento se define en un objeto Node.
+Existen distintos tipos de nodos.</li>
+  <li>NodeList.- es la lista de objetos Node.</li>
+  <li>NamedNodeMap.- este objeto permite acceder a todos los objetos
+Node utilizando el nombre en lugar de un índice.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Tipos de nodos</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Todos estos objetos son nodos que heredan las
+propiedades y métodos del objeto Node pero la mayor parte de ellos
+además poseen métodos y propiedades propios:<br>
+
+<ul>
+
+  <li>Document.- nodo raiz del documento.</li>
+  <li>DocumentType.- DTD o esquema del documento.</li>
+  <li>DocumentFragment.- almacenamiento temporal para secciones del
+documento.</li>
+  <li>EntityReference.- una referencia a una entidad del documento.</li>
+  <li>Element.- un elemento del documento.</li>
+  <li>Attr.- un atributo de un elemento del documento.</li>
+  <li>ProcessingInstruction.- una instrucción de procesamiento.</li>
+  <li>Comment.- un comentario en el documento.</li>
+  <li>Text.- texto que forma un nodo hijo de un elemento.</li>
+  <li>CDATASection.- sección de CDATA dentro del documento.</li>
+  <li>Entity.- una entidad en el DTD.</li>
+  <li>Notation.- una notación definida en el DTD.<br>
+  </li>
+</ul>
+
+<h3><a name="node"></a>Node</h3>
+
+&nbsp;&nbsp;&nbsp; El objeto Node contiene métodos y atributos que se
+pueden utilizar para todos los tipos de nodos.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Propiedades de Node</span><br>
+
+<ul>
+
+  <li>attributes.</li>
+  <li>childNodes.</li>
+  <li>firstChild.</li>
+  <li>lastChild.</li>
+  <li>nextSibling.</li>
+  <li>nodeName.</li>
+  <li>nodeType.</li>
+  <li>nodeValue.</li>
+  <li>ownerDocument.</li>
+  <li>parentNode.</li>
+  <li>previousSibling.</li>
+  <li>Etc.<br>
+  </li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Principales
+métodos de Node</span><br>
+
+<ul>
+
+  <li>appendChild(n).- añade n al final de la lista y lo devuelve.</li>
+  <li>cloneNode(n).- devuelve un duplicado de n.</li>
+  <li>hasChildNodes().- retorna un valor booleano dependiendo de si el
+nodo tiene nodos hijos.</li>
+  <li>insertBefore(n1, n2).- inserta n1 antes de n2.</li>
+  <li>removeChild(n).- elimina n.</li>
+  <li>replaceChild(n1, n2).- reemplaza n2 por n1. <br>
+  </li>
+</ul>
+
+<h3><a name="nodelist"></a>NodeList</h3>
+
+&nbsp;&nbsp;&nbsp; El objeto NodeList contiene un grupo ordenado de
+nodos a los que se accede por un índice. Sus propiedades son:<br>
+
+<ul>
+
+  <li>item(i).- devuelve el nodo i de la lista.</li>
+  <li>length.- cantidad de nodos de la lista. <br>
+  </li>
+</ul>
+
+<h3><a name="namednode"></a>NamedNodeMap</h3>
+
+&nbsp;&nbsp;&nbsp; El objeto NamedNodeMap representa una colección no
+ordenada de nodos que se recuperan por nombre.<br>
+
+<h3><a name="document"></a>Document</h3>
+
+&nbsp;&nbsp;&nbsp; El tipo de nodo Document representa a todo el
+documento. Es el nodo raíz del árbol jerárquico DOM.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Propiedades del
+nodo Document</span><br>
+
+<ul>
+
+  <li>doctyp.</li>
+  <li>documentElement.- elemento raiz de ESTE documento.<br>
+  </li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Métodos del nodo
+Document</span><br>
+
+<ul>
+
+  <li>createAttribute(atr).- crea el atributo atr.</li>
+  <li>createElement(etiq).- crea el elemento etiq.</li>
+  <li>createTextNode(texto).- crea un nodo de tipo Text con el texto
+correspondiente.</li>
+  <li>getElementById(id).- devuelve el elemento con identificador id.</li>
+  <li>getElementsByTagName(etiq).- devuelve un NodeList con los
+elementos del documento que tienen como etiqueta etiq.</li>
+  <li>Etc.<br>
+  </li>
+</ul>
+
+<h3><a name="element"></a>Element</h3>
+
+&nbsp;&nbsp;&nbsp; El tipo de nodo Element amplía el objeto Node con
+varios métodos y propiedades.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Propiedades del
+nodo Element</span><br>
+
+<ul>
+
+<li>tagname.</li>
+
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Métodos del nodo
+Element</span><br>
+
+<ul>
+
+<li>getAttribute(atr).- devuelve el valor del atributo atr.</li>
+  <li>getAttributeNode(atr).- devuelve un nodo que contiene el atributo atr.</li>
+  <li>getElementsByTagName(etiq).- devuelve un objeto NodeList con los descendientes de etiq.</li>
+  <li>removeAttribute(atr).- elimina el atributo atr.</li>
+  <li>removeAttributeNode(atr).- elimina el atributo atr y lo devuelve.</li>
+  <li>setAttribute(atributo, valor).- asigna valor a atributo.</li>
+  <li>setAttributeNode(atr).- añade un nodo atributo.<br>
+
+  </li>
+</ul>
+<h3><a name="ejemplos"></a>Ejemplos</h3>
+
+&nbsp;&nbsp;&nbsp; Ver pág. 572 y siguientes.<br>
+
+<br>
+
+</body></html>

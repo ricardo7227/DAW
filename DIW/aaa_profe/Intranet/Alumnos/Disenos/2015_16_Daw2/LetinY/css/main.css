@@ -1,0 +1,670 @@
+
+/****************************FUENTES*****************************/
+@font-face{
+	font-family:nexaBold;
+	src:url(../font/nexa/nexaBold.otf);
+
+}
+
+@font-face{
+	font-family:varela;
+	src:url(../font/varela/VarelaRound-Regular.ttf);
+}
+
+/*************************ESTILOS INDEX**************************/
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	
+}
+body{
+	
+  	background: #ded4d4;
+  	font-family: varela;
+}
+h2{
+	text-align: center;
+}
+
+#todo{
+	width:100%;
+	}
+
+/*****************************MENU*************************/
+	
+	#menu{
+		width:100%;
+		background: #3498db;
+		overflow: hidden;
+	}
+		#menuM{
+			width:10%;
+			margin:2%;
+			float: left;
+		}
+			#menuM img{
+				width:100%;
+			}
+		#menuTitulo{
+			display: none;
+		}
+		#menuBuscar{
+			width:4%;
+			margin: 3%;
+			float: right;
+		}
+			#menuBuscar img{
+				width:100%;
+				
+			}			
+		#menuAcceso{
+			width:4%;
+			margin: 3%;
+			float: right;
+		}
+			#menuAcceso img{
+				width: 100%;
+				
+			}
+		#menuIdioma{
+			width: 4%;
+			margin: 3%;
+			float: right;
+		}
+			#menuIdioma img{
+				width:100%;
+				
+			}
+			#menuUsuario{
+			width:4%;
+			margin: 3%;
+			float: right;
+		}
+			#menuUsuario img{
+				width:100%;
+				
+			}
+	#menuDerecha{
+		width:90%;
+		margin:0% 5%;
+		padding:10%;
+		background: #3498db;
+		float:left;
+		font-size:1em;
+		display: none;
+	}
+		#menuDerecha li{
+			font-family: varela;
+			list-style: none;
+			padding-top: 2%;
+		}
+		#menuDerecha>ul>li{
+			border-bottom: 1px solid #fff;
+		}
+		#menuDerecha li>ul>li{
+			padding-left: 10%;
+			display:none;
+		}
+		#menuDerecha a{
+			color: white;
+			text-decoration: none;
+		}
+		#menuDerecha span{
+			float: right;
+			color: white;
+		}
+
+/********************************PORTADA***************************/					
+	#banner>img{
+		width:100%;
+		height:auto;
+	}
+	.btn {
+		width:40%;
+		margin:30%;
+		margin-top:40%;
+		position: absolute;
+  		-webkit-border-radius: 4;
+ 		 -moz-border-radius: 4;
+		  border-radius: 4px;
+		  -webkit-box-shadow: 2px 2px 8px #000000;
+		  -moz-box-shadow: 2px 2px 8px #000000;
+		  box-shadow: 2px 2px 8px #000000;
+		  font-family: Arial;
+		  color: #ffffff;
+		  font-size: 1.5em;
+		  background: #ff9900;
+		  text-decoration: none;
+		}
+
+			.btn:hover {
+			  background: #fca63c;
+			  text-decoration: none;
+			}
+				.btn img{
+					width: 100%;
+				}
+/***********************BANNER******************************/
+	#bnr1{
+		display: none;
+	}
+	.banner{
+
+		background: #669999;
+		overflow: hidden;
+	}
+	#bannerInf{
+		background: #339966; 
+	}
+	#bannerInsB{
+		background: #e67e22;
+	}
+	#bannerCon{
+		background: #ff3333;
+	}
+	#bannerAct{
+		background: #333366;
+	}
+	.artBanner{
+		
+		width:100%;
+
+		overflow: hidden;
+		
+	}
+		
+	.txtBanner{
+		width: 50%;
+		margin-left: 5%;
+		padding:2%;
+		float: left;
+	}
+		.txtBanner li{
+			padding:1%;
+			color:rgba(255,255,255,0.9);
+			font-family: varela;
+			font-size:1.2em;
+			list-style: none;
+		}
+	.titBanner>h2{
+			padding: 4%;
+			color: white;
+			font-family: varela;
+			font-weight: bold;
+			font-size: 2.2em;
+			text-align: center;
+			
+		}
+		#tituloInsB{
+			text-shadow: 9px 6px 5px rgba(162, 49, 38, 0.61);
+		}
+		#tituloConB{
+			text-shadow: 9px 6px 5px rgba(162, 49, 38, 0.61);
+		}
+		#tituloOrg{
+			text-shadow: 9px 6px 5px rgba(95, 115, 115, 0.61);
+		}
+		#tituloAct{
+			text-shadow: 9px 6px 5px rgba(27, 27, 53, 0.61);
+		}
+	.imgBanner{
+		margin-right: 5%;
+		width: 40%;
+		float: left;
+	}
+		.imgBanner>img{
+			width: 120%;
+			height: auto;
+		}
+/******************************VENTANA GRANDE****************************/
+	
+	.instituto{
+		width: 80%;
+		margin:4% 10% ;
+		font-size: 12px;
+	}
+	.contInstituto{
+		width:100%;
+		margin:auto;
+		background: #fff;
+		border-radius: 3% 3%;
+		padding:3% 0 0 0%;
+		-webkit-box-shadow: 0px 0px 5px 5px rgba(209,207,209,1);
+		-moz-box-shadow: 0px 0px 5px 5px rgba(209,207,209,1);
+		box-shadow: 0px 0px 5px 5px rgba(209,207,209,1);
+		overflow: hidden;
+	}
+	.artInstituto{
+		
+		border-top:1px solid rgba(0, 0, 0, 0.4);
+		border-bottom:1px solid rgba(0, 0, 0, 0.4);
+		float:left;
+		overflow: hidden;
+		
+	}
+		.imgInstituto{
+			width:70%;
+			height:90%;
+			margin:0 15%;
+			padding:5% 0;
+			vertical-align: middle;
+			float:left;
+		}
+		.imgInstituto>img{
+			
+			width:100%;
+			height:170px;
+		}
+			
+		.txtInstituto{	
+			width:80%;
+			height:90%;
+			margin:0% 10%;
+			padding:4%;
+			color:rgba(0, 0, 0, 0.7);
+			float:left;
+			text-align: left;
+			
+			}
+			.txtInstituto p{
+				font-size: 1.3em; 
+				list-style: none;
+				margin-top: 3%;
+			}
+			.txtInstituto h2{
+				text-align: center;
+				font-size: 1.5em; 
+			}
+	.masInf{
+		width:100%;
+		padding:1% 1% 1% 10%;
+		float:left;
+		
+	}
+		.masInf span{
+
+			font-size:1.4em;
+			font-weight: bold;
+		}
+	.infTxt{
+		float:left;
+		vertical-align: middle;
+	}
+	.flecha{
+		width:15%;
+		float: right;	
+	}
+	
+	 #artIns, #artHis,#artEns{
+		background: rgb(248, 184, 127);
+	}
+	#artDir, #artJef,#artSec,#artDep{
+		background: #97c3c6;
+	}
+	#artCon, #artCon,#artCon,#artCon{
+		background: #e27c71;
+	}
+	#artAmp, #artAmp,#artAmp,#artAmp{
+		background: rgba(102, 102, 153, 0.73);
+	}
+	/******************PIE DE PAGINA***************/
+.pie{
+		width:100%;
+		margin: 3% 0;
+		padding: 2% 0%;
+		background: #3498db;
+		color: white;
+		font-family: varela;
+
+	}
+	.pie a{
+		text-decoration: none;
+		color: white;
+	}
+	.pieAll{
+		width: 40%;
+		margin: auto;
+	}
+	.pieAll>span{
+		margin-left:40%;
+		font-size: 1.3em; 
+		font-weight: bold;
+	}
+	
+	.flaticon-navigate2:before{
+		font-size: 1.3em;
+		margin-left: -20px;
+		vertical-align: middle;
+	}
+	
+/***************************VENTANA PEQUEÑA*****************************/
+	.allSmall{
+		width:90%;
+		height:auto;
+		margin:auto;
+		margin-top: 4%;
+		margin-bottom: 4%;
+		background:#fff;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		-webkit-box-shadow: 0px 0px 81px -23px rgba(0,0,0,0.62);
+		-moz-box-shadow: 0px 0px 81px -23px rgba(0,0,0,0.62);
+		box-shadow: 0px 0px 81px -23px rgba(0,0,0,0.62);
+		overflow: hidden;
+	}
+	
+	.imgSmall{
+		width:100%;
+		background-color: #44D68D;
+	}
+	.imgSmall>img{
+		width:100%;
+		margin:auto;
+	}
+	.txtSmall{
+		width:100%;
+		height:50%;
+		padding:1% 5%;
+		border-top:1px solid rgba(0,0,0,0.62);
+		border-bottom:1px solid rgba(0,0,0,0.62);
+		position: relative;
+	}
+		.txtSmall h2{
+			margin: 0;
+			text-align: center;
+		}
+		.txtSmall p{
+			margin: auto;
+			padding:2%;
+			font-size: 14px;
+		}
+	.masInfSmall{
+		width:100%;
+		padding:1% 1% 1% 10%;
+		float:left;
+		
+	}
+	.masInfSmall span{
+		font-size:1.1em;
+		font-weight: bold;
+	}
+	.infTxtSmall{
+		width: 85%;
+		float:left;
+		vertical-align: middle;
+	}
+	.plus{
+		width:15%;
+		float: right;	
+	}
+	#imgPer{
+		width:70%;
+		margin:0 15%;
+	}
+		
+		/****************************VENTANA TWEETER****************************/
+#tweets{
+	width:90%;
+	margin:4%;
+}
+#tweets img{
+	width:60%;
+	margin:0 20%;
+}
+#txtTweeter{
+	border-bottom: none;
+}
+#tweet-widget-0{
+	width:100%;
+	margin: auto;
+}
+/************************************FOOTER WEB******************/
+	.pieWeb{
+		width:100%;
+		background: #3498db;
+		overflow: hidden;
+		color: white;
+	}
+	.pieWebTxt{
+		margin:10%;
+		width:80%;	
+		
+	}
+	.pieWebTxt li{
+		font-size: 1em;
+		list-style: none;
+		padding: 0.3%;
+	}
+	.pieWebCont{
+		width: 70%;
+		margin:3% 10%;
+	}
+	.pieWebCont img{
+		width: 16%;
+		height: auto;
+	}
+	
+/*********************************************************************************************
+***************************MENOS DE 600PX***************************************************
+*********************************************************************************************/
+@media only screen and (max-width: 599px) {
+  .instituto{
+  	width:100%;
+  	margin:5% 0px;
+
+}
+
+/*POSICION DEL CONTENIDO */
+	.vs{
+		display: none;
+	}
+	.ns{
+		display: block;
+	}
+  
+}
+/*********************************************************************************************
+***************************MIN 600PX HASTA 949***************************************************
+*********************************************************************************************/
+@media screen and (min-width: 600px) and (max-width: 949px) { 
+    /* STYLES HERE */
+#infContenido{
+	overflow: hidden;
+}
+#infIzq{
+	width: 50%;
+	float: left;
+}
+	#tweets{
+		width:90%;
+	}
+	#erasmus{
+		width: 100%;
+	}
+	#periodico{
+		width: 100%;
+	}
+#infDer{
+	width:50%;
+	float:left;
+}
+.contInstituto{
+		width:100%;	
+	}
+	.imgInstituto{
+			width:46%;
+			height:90%;
+			margin:0%;
+			padding:5% 0;
+			vertical-align: middle;
+			float:left;
+		}
+		.imgInstituto>img{
+			
+			width:100%;
+			height:170px;
+		}
+			
+		.txtInstituto{	
+			width:50%;
+			height:90%;
+			margin:2% 2%;
+			padding:4%;
+			color:rgba(0, 0, 0, 0.7);
+			float:left;
+			text-align: left;
+			
+			}
+/*TWEETER*/
+	
+
+/*POSICION DEL CONTENIDO */
+	.vs{
+		display: block;
+	}
+	.ns{
+		display: none;
+	}
+}
+/*********************************************************************************************
+***************************SUPERIOR A 950PX***************************************************
+*********************************************************************************************/
+@media screen and (min-width: 950px){
+	#cuerpo{
+		background:#efecec;
+		max-width: 951px;
+		margin: auto;
+		
+	}
+
+	#infContenido{
+	overflow: hidden;
+}
+#infIzq{
+	width: 50%;
+	float: left;
+}
+	#tweets{
+		width:90%;
+	}
+	#erasmus{
+		width: 100%;
+	}
+	#periodico{
+		width: 100%;
+	}
+#infDer{
+	width:50%;
+	float:left;
+}
+.contInstituto{
+		width:100%;	
+	}
+	.imgInstituto{
+			width:46%;
+			height:90%;
+			margin:0%;
+			padding:5% 0;
+			vertical-align: middle;
+			float:left;
+		}
+		.imgInstituto>img{
+			
+			width:100%;
+			height:170px;
+		}
+			
+		.txtInstituto{	
+			width:50%;
+			height:90%;
+			margin:2% 2%;
+			padding:4%;
+			color:rgba(0, 0, 0, 0.7);
+			float:left;
+			text-align: left;
+			
+			}
+/*TWEETER*/
+	
+#tweets img{
+	width:70%;
+	margin:0 15%;
+}
+/*.twitter-timeline {
+     min-width: 100% !important;
+     width: 100% !important;
+}*/
+/*POSICION DEL CONTENIDO */
+	.vs{
+		display: block;
+	}
+	.ns{
+		display: none;
+	}
+	/**************boton******************/
+	.btn {
+		width:25%;
+		margin:38%;
+		margin-top:30%;
+		position: absolute;
+  		-webkit-border-radius: 4;
+ 		 -moz-border-radius: 4;
+		  border-radius: 4px;
+		  -webkit-box-shadow: 2px 2px 8px #000000;
+		  -moz-box-shadow: 2px 2px 8px #000000;
+		  box-shadow: 2px 2px 8px #000000;
+		  font-family: Arial;
+		  color: #ffffff;
+		  font-size: 1.5em;
+		  background: #ff9900;
+		  text-decoration: none;
+		}
+/*******menu**********************/
+		#menuM{
+			width: 50px;
+		}
+		#menuBuscar{
+			margin-right: 10%;
+		}
+		#menuM, #menuBuscar, #menuAcceso, #menuIdioma, #menuUsuario{
+			
+			margin: 1% 3%;
+
+		}
+		#menuTitulo{
+			display: block;
+			margin-top:1%;
+			width: 40%;
+			float: left;
+		}
+		#menuTitulo a{
+			color: white;
+			text-decoration: none;
+			font-size: 2.3em;
+		}
+		
+		#menuBuscar, #menuAcceso, #menuIdioma, #menuUsuario{
+		width: 40px;
+		float: right;
+		}
+		#menuDerecha{
+			padding: 1%;
+		}
+
+		/***pie****/
+		.pieWebCont{
+			width:20%;
+		}
+		.pieWebTxt{
+			margin:3%;
+		}
+		/*****************benner*************/
+		#bnr2{
+			display: none;
+		}
+		#bnr1{
+			display: block;
+		}
+}

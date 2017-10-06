@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file012.html -->
+<html>
+<head>
+<script type="text/javascript">
+
+function formatearImporte(valor, decimales) {
+	if (decimales == 0) {
+		// sin decimales: se
+		// redondea el valor y
+		// se devuelve al programa
+		// llamante
+		return Math.round(valor);
+	}
+	// Se limitan los decimales a
+	// 6
+	decimales = Math.min(decimales, 6);
+
+	// se obtiene el multiplicador
+	// en base a la cantidad de
+	// decimales
+	var iMult = Math.pow(10, decimales);
+
+	// multiplicación del valor
+	// por el multiplicador para
+	// desplazar los decimales
+	// hacia la parte entera para
+	// aplicar round
+	var iTmp = Math.round(valor * iMult);
+
+	// volvemos a colocar la coma en el lugar
+	// correcto, y con el redondeo
+	// correcto
+	iTmp = iTmp / iMult;
+
+	// si el resultado es entero le
+	// añadimos .000000
+	if (iTmp == Math.round(iTmp)) {
+		// le añadimos la parte decimal
+		var strImporte = iTmp + ".000000";
+	}
+	else {
+		// nos aseguramos que tenga los ceros
+		// necesarios
+		var strImporte = iTmp + "000000";
+	}
+	// se devuelve el valor formateado
+	// recortado a la cantidad de decimales
+	// requeridos
+	return strImporte.substring(0, strImporte.indexOf(".")+decimales+1);
+
+}
+
+document.write(formatearImporte(500.66666, 3), "<br />");
+document.write(formatearImporte(500.66666, 0), "<br />");
+document.write(formatearImporte(500.66666, 6), "<br />");
+document.write(formatearImporte(500.66778899, 5), "<br />");
+document.write(formatearImporte(500, 2), "<br />");
+document.write(formatearImporte(0.1, 8), "<br />");
+</script>
+</head>
+<body>
+</body>
+</html>
+

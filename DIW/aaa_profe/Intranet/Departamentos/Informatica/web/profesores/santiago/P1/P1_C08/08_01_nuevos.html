@@ -1,0 +1,68 @@
+<! CODETYPE html >
+<html>
+<head>
+<title>Pruebas</title>
+<style type="text/css">
+	table		{border: thin dotted black;}
+	td		{border: thin dotted black;}
+	td.centro	{text-align: center;}
+</style>
+</head>
+<body>
+<h2>PRUEBA DE TIPOS Y ETIQUETAS EN FORMULARIOS</h2>
+<form method="get" action="localhost" target="_blank">
+<fieldset>
+<legend>Leyenda</legend>
+<table>
+<!-- -------------------------------------------------------- -->
+<!-- EL SIGUIENTE CODIGO NO TIENE NINGUN EFECTO (NO FUNCIONA) -->
+<!-- -------------------------------------------------------- -->
+<colgroup>
+ <col align="right"/>
+ <col align="right"/>
+ <col align="right"/>
+ <col align="center"/>
+</colgroup>
+<!-- ------------------------------------------------------- -->
+<thead>
+<tr>
+<th>ETIQUETA</th>
+<th>TIPO</th>
+<th>ELEMENTO</th>
+<th>FUNCIONA ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+ <td>input</td>
+ <td>telephone</td>
+ <td><input type="tel"></td>
+ <td class="centro">SI</td>
+</tr>
+<tr>
+ <td>input</td>
+ <td>email</td>
+ <td><input type="email"></td>
+ <td class="centro">SI</td>
+</tr>
+<tr>
+ <td>input</td>
+ <td>color</td>
+ <td><input type="color"></td>
+ <td class="centro">NO</td>
+</tr>
+<tr>
+ <td>meter</td>
+ <td> </td>
+ <td><meter value="20" min="0" max="100"/></td>
+ <td class="centro">NO</td>
+<tr>
+</tbody>
+</table>
+</fieldset>
+<br/>
+<br/>
+<input type="submit">
+</form>
+</body>
+</html>

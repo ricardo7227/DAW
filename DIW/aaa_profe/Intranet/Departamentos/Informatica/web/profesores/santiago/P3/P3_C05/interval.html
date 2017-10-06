@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Objeto Date</title>
+</head>
+<body>
+  <script languaje="javascript">
+    function TiempoPasado() {
+             var FechaAct = new Date();
+             var tiempo = Math.round((FechaAct.getTime() - msIni) / 1000);
+             document.title = "Segundos transcurridos: " + tiempo;
+    }
+    var FechaIni = new Date();
+    var msIni = FechaIni.getTime();
+    TiempoPasado();
+  // Actualiza el título con una llamada
+    var miTimer = setInterval ("TiempoPasado()", 1000);
+  </script>
+</body>
+</html>

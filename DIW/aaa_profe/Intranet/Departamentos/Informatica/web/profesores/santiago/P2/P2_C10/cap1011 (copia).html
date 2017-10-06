@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Prácticas con la propiedad display</title>
+  <style>
+
+.id1 {display: block;}
+#id1 {display: inline;}
+
+  </style>
+ </head>
+<body>
+ <h1>Uso de la propiedad display</h1>
+ <div>
+ <h3>Texto del párrafo 1 </h3>
+ <p class=id1>
+Este es el primer párrafo. Tiene definido "display: block" por lo tanto, debe existir un salto de línea antes y otro después del párrafo. Además, ocupará todo el espacio hasta el final de la línea (margen derecho), aunque el contenido no lo requiera.
+ </p>
+
+<h3>Texto del párrafo 2 </h3>
+ <p id=id2>
+Este es el segundo párrafo. Tiene definido "display: inline". Por lo tanto, no debe existir un salto de línea antes ni otro después del párrafo. Además, puede no ocupar todo el espacio hasta el final de la línea (margen derecho) pero bla bla bla.
+ </p>
+
+<h3>Texto del párrafo 3 </h3>
+<p>
+Este es el tercer párrafo con una primera parte inline y, lo siguiente delimitado con span,<span class="id1">con esta parte del párrafo en un bloque de tipo block y</span> con esta otra parte otra vez sin ningún formato (inline). Luego, deben aparecer tres partes.
+</p>
+<h3>Texto del párrafo 4 </h3>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula leo id lectus faucibus eu rhoncus nisl rutrum. Nunc orci sapien, commodo a commodo vitae, sodales ut sapien. Cras ut lacus augue...
+</p>
+<h3>Texto del párrafo 5 </h3>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula leo id lectus faucibus eu rhoncus nisl rutrum. Nunc orci sapien, commodo a commodo vitae, sodales ut sapien. Cras ut lacus augue...
+</p>
+<h3>Texto del párrafos 6 y 7 </h3>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula leo id lectus faucibus eu rhoncus nisl rutrum. Nunc orci sapien, commodo a commodo vitae, sodales ut sapien. Cras ut lacus augue...
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula leo id lectus faucibus eu rhoncus nisl rutrum. Nunc orci sapien, commodo a commodo vitae, sodales ut sapien. Cras ut lacus augue...
+</p>
+
+</body>
+</html>

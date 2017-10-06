@@ -1,0 +1,794 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Conceptos básicos</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<h1>Conceptos básicos</h1>
+
+<a href="#estructura">Estructura del código</a><br>
+
+<a href="#comentarios">Comentarios en el código</a><br>
+
+<a href="#nomenclatura">Nomenclatura</a><br>
+
+<a href="#activado">¿ Está activado JavaScript ?</a><br>
+
+<a href="#scripts">Scripts de JavaScript</a><br>
+
+<a href="#bloque">Bloque de instrucciones</a><br>
+
+<a href="#variables">Variables</a><br>
+
+<a href="#sentencias">Sentencias condicionales</a><br>
+
+<a href="#control">Control de bucles de ejecución</a><br>
+
+<a href="#funciones">Funciones</a><br>
+
+<a href="#ambito">Ámbito de variables: locales y globales</a><br>
+
+<a href="#evaluacion">Evaluación de una cadena de código JavaScript</a><br>
+
+<a href="#motores">JavaScript y los motores de búsqueda</a><br>
+
+<br>
+
+<h3><a name="estructura"></a>Estructura del código</h3>
+
+&nbsp;&nbsp;&nbsp; El código debe indentarse (sangrarse) adecuadamente
+para facilitar su legibilidad.
+Hay que tener muy presente que el código de cualquier programa suele
+estar sometido a constantes revisiones y debe estar bien estructurado y
+ser fácilmente legible.<br>
+
+<h3><a name="comentarios"></a>Comentarios en el código</h3>
+
+&nbsp;&nbsp;&nbsp; Podemos decir que los comentarios más que
+convenientes son prácticamente obligatorios. Deben ser concretos,
+concisos, explicando el bloque de código siguiente y no debe explicar
+lo que resulta obvio por la simple lectura de la instrucción. No deben
+contener información de seguridad puesto que son visibles con el código
+de la página.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Las dos posibilidades existentes son:<br>
+
+<ul>
+
+  <li><span class="codigo">// comentario</span>.- para comentarios de
+una sola línea.</li>
+  <li><span class="codigo">/* comentario */</span>.- para comentarios
+multilínea.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Cuando se realiza una modificación en un programa es
+conveniente añadir un comentario que indique la modificación y la fecha
+de la misma; pueden ser datos que aporten información de mantenimiento
+valiosa.<br>
+
+<h3><a name="nomenclatura"></a>Nomenclatura</h3>
+
+&nbsp;&nbsp;&nbsp; No existen reglas universales para la nomenclatura
+de objetos o entidades de un programa pero cada equipo de desarrollo
+debe seguir unas normas o criterios comunes que cada programador
+cumplirá estrictamente.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La principal regla de la nomenclatura es mantener la
+coherencia y un esquema de formato en el nombre de cada cosa (variable,
+función, objeto, módulo, etc.) La regla puede ser personal pero si es
+coherente será fácilmente entendible por los programadores.<br>
+
+<br style="font-weight: bold;">
+
+<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; Nomenclatura de
+variables</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Se debe intentar que el nombre de las variables
+tenga relación con su contenido. La separación entre palabras se indica
+con una mayúscula y se suele utilizar un prefijo que describe el tipo
+de dato, por ejemplo: txtLineaDetalle, dtFechaEntrada,
+intContadorLineas, bRetorno, etc. otros prefijos pueden ser: str, n,
+etc. No conviene utilizar prefijos que no se expliquen por si solos.<br>
+
+<br style="font-weight: bold;">
+
+<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; Nomenclatura de
+funciones</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El criterio de nomenclatura de las funciones es
+similar al de las variables; el prefijo suele indicar la acción
+principal de la función y suele provenir del inglés. Por ejemplo:<br>
+
+<ul>
+
+  <li>get.- obtiene un valor. Como ejemplos: getNro(), obtenerNro().</li>
+  <li>set.- asigna un valor. Como ejemplos: setNro(), establecerNro().</li>
+  <li>is.- devuelve verdadero o falso. Como ejemplos: isPar(), esPar().</li>
+  <li>add.- añade un elemento. Por ejemplo: addElemento(),
+agregarElemento().</li>
+  <li>print.- imprime un objeto. Por ejemplo: printFormulario(),
+imprimirFormulario().</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; A continuación del prefijo se añade la descripción
+de la función en una o más palabras que empiezan por mayúscula. Por
+ejemplo:<br>
+
+<ul>
+
+  <li>isObjetoEmpleado().- adecuado para una función que comprueba si
+un objeto es de tipo Empleado.</li>
+  <li>getColor().- adecuado para una función que obtiene el color de un
+objeto.<br style="font-weight: bold;">
+  </li>
+</ul>
+
+<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; Longitud de los
+nombres</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Por razones de legibilidad no son adecuados los
+nombres demasiado cortos, sin significado aparente, ni los demasiado
+largos (más de 16 o 18 caracteres), por el espacio que ocupan en la
+línea de edición. La excepción a esta regla son los índices utilizados
+en bucles o matrices (i, x) y las variables que contienen coordenadas
+(x, y).<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Por norma general se acepta una variable con un
+nombre de una o dos letras si es una variable transitoria que se
+utiliza y se destruye en unas pocas de líneas.<br>
+
+<br>
+
+<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; Palabras reservadas</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Como en todos los lenguajes, los nombres de
+variables o de funciones tienen la restricción de que no pueden
+utilizarse palabras reservadas.<br>
+
+<h3><a name="activado"></a>¿ Está activado JavaScript ?</h3>
+
+&nbsp;&nbsp;&nbsp; Para verificar si javaScript está activado en el
+navegador puede utilizarse el siguiente código:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script
+language=javascript&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; alert
+("Funciona JavaScript");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;noscript&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; No está
+activado JavaScript<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/noscript&gt;<br>
+</p>
+
+<h3><a name="scripts"></a>Scripts de JavaScripts</h3>
+
+&nbsp;&nbsp;&nbsp; Para incluir código JavaScript dentro de un
+documento HTML se utiliza alguno de los dos métodos siguientes:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script
+type="text/javascript"&nbsp; src="url o fichero.js" &gt;&lt;/script&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Desde el punto de vista funcional, utilizar un
+fichero externo de tipo js es lo mismo que poner el código dentro del
+documento html y es recomendable por motivos de organización,
+mantenimiento, limpieza del código y seguridad, aparte de las ventajas
+de rendimiento que representa. Cuando el navegador utiliza caché coloca
+copias de los documentos descargados desde Internet durante cierto
+tiempo; cuando el navegador detecta que una referencia la tiene en
+cache no la descarga desde el servidor sino que utiliza la copia local.
+Cuando se realicen modificaciones en el fichero .js debe tenerse en
+cuenta que el navegador tiene que actualizar el área de cache. En las
+opciones de configurador del explorador pueden borrarse los ficheros
+temporales, la caché, etc.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; O bien incluyendo el código directamente en una
+etiqueta script:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script&nbsp;
+type="text/javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;! - -<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; / /&nbsp;
+Código JavaScript<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; - - &gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+</p>
+
+<h3><a name="bloque"></a>Bloque de instrucciones</h3>
+
+&nbsp;&nbsp;&nbsp; Cada línea de código finaliza en punto y coma (;) y
+los bloques de instrucciones se encierran entre llaves. Por ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script
+type="text/javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var&nbsp;
+var1 = 5;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.write ("Hola JavaScript &lt;BR&gt;&lt;BR&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; if&nbsp;
+(var1&nbsp; &gt;&nbsp; 2)&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; document.write ("La variable var1 es igual a: ");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; document.write (var1);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; A continuación de &lt;/script&gt; puede ponerse
+&lt;noscript&gt; . . . &lt;/noscript&gt; con código HTML que se
+ejecutará cuando el navegador no admita javascript.<br>
+
+<h3><a name="variables"></a>Variables</h3>
+
+&nbsp;&nbsp;&nbsp; Reglas para la formación de nombres de variables:<br>
+
+<ul>
+
+  <li>Pueden estar compuestos por letras en mayúsculas o minúsculas,
+números y el guión bajo.</li>
+  <li>El primer carácter no puede ser un número.</li>
+  <li>JavaScript diferencia entre mayúsculas y minúsculas.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Los tipos básicos de variables son cuatro:
+indefinido, numérico, string y booleano y en cada momento será su
+contenido el que identifique su tipo, pudiendo, por ejemplo, asignar a
+una variable booleana asignarle el valor 5 pasando así a ser numérica.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para saber el tipo de una variable puede utilizarse
+el operador typeoff. Por ejemplo:<br>
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var&nbsp; var1 = 5;<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write (typeof
+(var1));<br>
+</p>
+<ul>
+<li>
+Indefinido.- es el tipo de una variable declarada sin asignarle valor;
+su valor también es indefinido. Es distinto de una variable no
+declarada, que en JavaScript provoca un error.
+</li>
+<li>
+Booleano (boolean).- puede tener como valores true o false.
+</li>
+<li>
+Numérico (number).- contienen algún tipo de valor numérico (entero,
+decimal, negativo, etc.).
+</li>
+<li>
+Cadena (string).- se definen mediante la delimitación con comillas
+("cadena"). Los valores 10 y "10" son de distinto tipo. Cuando en una
+operación aritmética interviene alguna variable de tipo string,
+JavaScript intentará convertirla en un número y si no puede el
+resultado será NaN (No an Number).</li>
+</ul>&nbsp;&nbsp;&nbsp; Para facilitar la realización de ejercicios
+puede ser interesante conocer el funcionamiento de tres tipos de
+ventanas:<br>
+<ul>
+  <li>Ventana de alerta.- muestra una cadena y un botón de "Aceptar".</li>
+  <li>Ventana de confirmación.- muestra una cadena y dos botones:
+"Aceptar" y "Cancelar". Devuelve true o false según el botón que se
+pulse.</li>
+  <li>Ventana de entrada.- muestra un mensaje y permite introducir un valor que asignará a una variable.<br>
+  </li>
+</ul>
+&nbsp;&nbsp;&nbsp; Un ejemplo utilizando estas ventanas sería:<br>
+
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; alert ("Ventana de alerta");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; alert (variable);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; conf = confirm ("Ventana de confirmación");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  entrada = prompt ("Mensaje", "Valor inicial");<br>
+
+
+</p>
+<h3><a name="sentencias"></a>Sentencias condicionales</h3>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia if</span><br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; if&nbsp; ( condición
+)&nbsp; instrucción;<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; if&nbsp; (condición ) {<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+instrucción 1;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+instrucción n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Por ejemplo:&nbsp;&nbsp;<span class="codigo">
+if&nbsp; ( var1 &gt; 3 )&nbsp; var1 = var1 - 1;</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La condición que se evalúa se encierra entre
+paréntesis y siempre devuelve un valor booleano: true o false.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operadores
+condicionales</span><br>
+
+<ul>
+
+  <li>== &nbsp;&nbsp; Igualdad (no confundir con = que es de
+asignación).</li>
+  <li>!= &nbsp; &nbsp; Desigualdad.</li>
+  <li>&gt; &nbsp; &nbsp;&nbsp; Mayor que.</li>
+  <li>&lt; &nbsp; &nbsp;&nbsp; Menor que.</li>
+  <li>&gt;=&nbsp;&nbsp;&nbsp; Mayor o igual que.</li>
+  <li>&lt;=&nbsp;&nbsp;&nbsp; Menor o igual que.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; El resultado de una comparación condicional siempre
+es true o false.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Combinación de
+condiciones</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para formar condiciones compuestas se utilizan los
+siguientes operadores lógicos:<br>
+
+<ul>
+
+  <li>&amp;&amp;&nbsp;&nbsp; Corresponde a AND (Y).</li>
+  <li>||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Corresponde a OR (O).</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Un ejemplo sería:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; if&nbsp; ( ( var1 &gt;=
+5)&nbsp; &amp;&amp;&nbsp; (var2 = 17 ) ) { . . . }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia if&nbsp;
+else</span><br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; if&nbsp; ( condición
+)&nbsp; instrucción 1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else instrucción 2;<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; if&nbsp; ( condición ) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+instrucción 1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+instrucción n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+instrucción 1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+instrucción n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia switch</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La instrucción switch permite comparar el contenido
+de una variable con diferentes valores y tiene la forma:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; switch&nbsp; ( variable ) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; case ( valor
+1): instrucción 1;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; instrucción n;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; break;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; case (valor
+2): . . .<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; break;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; default: . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operador ternario</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Puede utilizarse un método muy compacto como
+sustituto del if con la forma:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; condición&nbsp; ?&nbsp;
+instrucción si verdadero&nbsp; :&nbsp; instrucción si falso;<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Por ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var1 == 5 ?
+document.write ("IGUAL A 5") : document.write ("DISTINTO DE 5");<br>
+</p>
+
+<h3><a name="control"></a>Control de bucles de ejecución</h3>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia for</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; for&nbsp; ( condición
+inicial; condición de control; instrucción de modificación ) {<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; instrucciones;<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; {<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Por ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; for ( var&nbsp; i =
+0;&nbsp; i &lt; 10; i++){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.write (i);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Incremento /
+decremento de unidades</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La operación de sumar o restar 1 a una variable se
+presenta repetidamente en todos los programas. La forma estándar de
+escribirlo es la siguiente:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var1 = var1 + 1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var2 = var2 - 1;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; El modo abreviado para hacer lo mismo es:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var1++;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var2--;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Por extensión, también se permite la siguiente
+sintaxis:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var3 = var3 + 5;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var3+=5<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia while</span><br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; while&nbsp; ( condición ) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Por ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var saldo = 1000;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var gasto = 5;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; while&nbsp; ( saldo &gt; 0
+) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+saldo = saldo - gasto;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+gasto+=5;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+document.write (saldo);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+document.write (gasto);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia do&nbsp;
+... while</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Hace la función del until. La diferencia con la
+instrucción while anterior es que en este caso se ejecuta en primer
+lugar las instrucciones y a continuación se comprueba si la condición
+se cumple, con lo cual, las instrucciones del bucle se ejecutan al
+menos una vez. Su formato es:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; do&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }&nbsp; while&nbsp;
+(condición)<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Por ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var&nbsp; saldo = 1000;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var&nbsp; gasto = 5;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; do&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; saldo = saldo - gasto;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; gasto+= 5;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write (saldo);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write (gasto);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; } while&nbsp; (saldo &gt;
+0)
+</p>
+
+<h3><a name="funciones"></a>Funciones</h3>
+
+&nbsp;&nbsp;&nbsp; El formato de la definición de una función es el
+siguiente:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; function&nbsp;
+nombreFuncion&nbsp; ( [param1] [, param2] ...) {<br>
+&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; [ return&nbsp; valorRetorno ];<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Una función se puede asignar a una variable, por lo
+que se puede considerar otro tipo de dato.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Parámetros de la
+función</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Los parámetros de una función pueden ser cadenas,
+números, valores booleanos y objetos JavaScript o personalizados y
+pueden ser pasados como variables o como literales. Una función puede
+tener definida una lista de n parámetros y la llamada a la misma
+contener un número diferente de parámetros. Si en la llamada hay menos
+parámetros de los que dispone la función, los últimos serán asignados
+con null.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Llamada de función</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Desde el cuerpo de una función se puede llamar a
+otra, e incluso a la misma (recursión). Un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; function&nbsp; miPopup
+(N)&nbsp; {<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; alert (N);<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; return&nbsp; "OK";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Conocer la función
+llamante</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La propiedad caller informa cuál es la función
+llamante y todo su código. Un ejemplo, cuyo resultado puede verse
+pinchando <a href="caller.html">aquí</a>, es el siguiente:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script&nbsp;
+languaje="javascript"&gt;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+function&nbsp; miFuncion1 (valor)&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.write ("Soy miFuncion1 y me ha llamado -&gt; " +
+miFuncion1.caller + "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.write ("parametro -&gt; " + valor + "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+miFuncion2 (2);<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+function&nbsp; miFuncion2 (valor)&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.write ("Soy miFuncion2 y me ha llamado -&gt; " +
+miFuncion2.caller + "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.write ("parametro -&gt; " + valor + "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; return
+(OK);<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&lt;script&nbsp; languaje="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp; miFuncion1 (1);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&lt;/script&gt; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; El valor undefined indica que la función ha sido
+llamada desde el tronco principal del código.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Recursividad</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La recursividad se produce cuando una función se
+llama a sí misma. Un caso típico es la función factorial de n cuyo
+resultado es n * factorial de (n -1) cuya salida se produce cuando n
+llega a 1:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; function&nbsp; factorial
+(n) {<br>
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (n == 1) return (1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; else return ( n * factorial
+( n - 1 ));<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;body&gt;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;script
+type="text/javascript"&gt;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.write ("Factorial de 5 = " + factorial (5));<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/script&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; cuyo resultado puede verse
+pinchando <a href="factorial.html">aquí</a>. En la carpeta
+correspondiente existen varias optimizaciones de esta función
+(factorial_1.html, factorial_2.html y factorial_3.html) que partiendo
+de un código más sencillo llega a la solución expuesta anteriormente.
+Además, el problema del factorial puede resolverse sin utilizar
+recursividad.<br>
+
+<h3><a name="ambito"></a>Ámbito de variables</h3>
+
+&nbsp;&nbsp;&nbsp; Una variable declarada dentro de una función es
+local a esa función y solo existe en el contexto de la misma. Una
+variable global, declarada fuera de las funciones, tiene un ámbito de
+todo el programa, incluso dentro de las funciones. Pueden verse los
+ejemplos de la página 403 y 404.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Los parámetros de una función son tratados como
+variables locales de la función.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Finalmente decir que una variable puede representar
+a un objeto.<br>
+
+<h3><a name="evaluacion"></a>Evaluación de una cadena de código
+JavaScript</h3>
+
+&nbsp;&nbsp;&nbsp; La función eval() permite evaluar una expresión de
+tipo cadena. Por ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; iResultado = eval (cadena);<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Si "cadena" tiene una fórmula "eval" hará los
+cálculos y dejará el resultado en iResultado.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Esta función permite crear una calculadora muy
+fácilmente. Ver pag. 404.<br>
+
+<h3><a name="motores"></a>JavaScript y los motores de búsqueda</h3>
+
+&nbsp;&nbsp;&nbsp; En la sexta parte del libro, SEO, Optimización para
+los motores de búsqueda, se tratan diferentes técnicas para incentivar
+las visitas a un sitio web.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Los robots que analizan y estudian el contenido de
+las páginas no tienen en cuenta (de momento) el código JavaScript. Si
+una página se basa excesivamente en código JavaScript y con escaso
+aporte de lenguaje HTML será casi desconocida para los buscadores.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Los robots aprovechan la estructura del menú de
+navegación de cada sitio para recorrer los enlaces y descubrir las
+páginas componentes del sitio para seguir obteniendo información. Si el
+menú de navegación está codificado en JavaScript, algo habitual, el
+robot no lo tendrá en cuenta salvo que además se incluya información
+complementaria para que el robot pueda obtener esa información por
+otros medios. Por esto se recomienda que además del menú en JavaScript
+todas las páginas de nuestro sitio estén referenciadas por el modo HTML
+(con la etiqueta &lt;a href=" ... "&gt;) dentro de una página que actue
+como mapa general del sitio. De poco sirve una página perfectamente
+diseñada si es invisible para los buscadores.<br>
+
+<br>
+
+</body></html>

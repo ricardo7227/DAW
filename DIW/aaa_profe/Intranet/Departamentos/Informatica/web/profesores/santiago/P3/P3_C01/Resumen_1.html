@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Introducción al lenguaje</title>
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+</head>
+<body>
+<header>
+<p id="cabecera">Introducción al lenguaje</p>
+</header>
+<nav>
+<a href="#lenguaje">JavaScript, un lenguaje cliente</a><br>
+<a href="#hacer">Lo que JavaScript no puede hacer</a><br>
+<a href="#compatibilidad">La compatibilidad puesta en duda</a><br>
+<a href="#codificar">¿ Cómo codificar con JavaScript ?</a><br>
+<a href="#ejecucion">Ejecución de una aplicación JavaScript</a><br>
+</nav>
+<article>
+<h3><a name="lenguaje"></a>JavaScript, un lenguaje cliente</h3>
+&nbsp;&nbsp;&nbsp; La programación de JavaScript se basa en la edición
+de scripts integrados con el código HTML de la página, que pueden ser
+visualizados en cualquier navegador a través de la opción del tipo "Ver
+código fuente". Luego, no debe integrar elementos de seguridad (claves,
+cadenas de conexión a bases de datos, etc.).<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; JavaScript es un lenguaje interpretado que se
+analiza y ejecuta en el navegador del cliente. Es un lenguaje
+totalmente diferente a Java.<br>
+
+<h3><a name="hacer"></a>Lo que JavaScript no puede hacer</h3>
+
+&nbsp;&nbsp;&nbsp; El ámbito de JavaScript es el navegador cliente, lo
+que conlleva que por si solo no pueda escribir información en las bases
+de datos del servidor. Casi todas las aplicaciones web de importancia
+utilizan como soporte de la información bases de datos en el servidor y
+ésta gestión queda fuera de su alcance. Una lista de puntos que limitan
+la funcionalidad de JavaScript es la siguiente:<br>
+
+<ul>
+
+  <li>No puede acceder a los archivos almacenados en el cliente.</li>
+  <li>No puede averiguar qué software tiene instalado el equipo, a
+excepción del navegador y sistema operativo.</li>
+  <li>No tiene acceso a la lista de enlaces favoritos del cliente.</li>
+  <li>No tiene acceso a las contraseñas almacenadas.</li>
+  <li>No puede acceder a la libreta de direcciones del usuario.</li>
+  <li>No tiene acceso a datos personales.</li>
+  <li>No puede realizar lecturas de páginas de otro dominio diferente
+al que pertenezca su página.</li>
+  <li>No puede modificar el contenido de un sitio externo.</li>
+  <li>No puede autorizar la instalación automática de programas
+ejecutables.<br>
+  </li>
+</ul>
+
+<h3><a name="compatibilidad"></a>La compatibilidad puesta en duda</h3>
+
+&nbsp;&nbsp;&nbsp; JavaScript es interpretado de modo diferente según
+sea el navegador utilizado. Incluso deben tenerse en cuenta las
+diferentes versiones de cada navegador y el sistema operativo utilizado.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para que las pruebas a realizar no sean
+interminables es conveniente tomar decisiones estratégicas. Pueden
+considerarse como entornos más utilizados IE8 8 (aunque existan
+versiones más modernas) y Firefox 6.0 con lo que se reducirán
+significativamente las pruebas.<br>
+
+<h3><a name="codificar"></a>¿ Cómo codificar con JavaScript ?</h3>
+
+&nbsp;&nbsp;&nbsp; El uso de un editor que reconozca JavaScript puede
+ser de gran ayuda. Un editor especializado detectará las instrucciones
+y las funciones asignándoles un color determinado, detectará
+comentarios, variables, cadenas, etc., detectará cuando faltan o sobran
+paréntesis, llaves, comillas, etc.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Existen muchos complementos que se pueden añadir a
+los navegadores orientados especialmente al desarrollo. Por ejemplo, en
+<a href="https://addons.mozilla.org/es-ES/firefox/extensions.php">
+https://addons.mozilla.org/es-ES/firefox/extensions.php</a> hay cientos de
+extensiones de todo tipo. En este caso interesan las que estén
+relacionadas con el desarrollo web. Cada una está detallada y comentada
+y se puede encontrar soporte, por ejemplo, para gestionar cookies,
+emular distintos navegadores, depurar código de JavaScrip, ejecutar
+JavaScript en una consola auxiliar, etc. La instalación de un
+complemento o extensión es sencilla, basta con seleccionar el
+complemento y pulsar el botón "Instalar ahora". El navegador muestra
+los complementos a través de las opciones: Herramientas - Complementos.<br>
+
+<br>
+&nbsp;&nbsp;&nbsp; La extensión Web Developer es muy utilizada por los
+desarrolladores. Consiste en una barra de herramientas que se sitúa
+debajo de la barra de dirección y que presenta doce grupos de funciones:<br>
+<ul>
+  <li>Desactivar.- permite activar y desactivar JavaScript en el navegador.</li>
+  <li>Cookies.- brinda información sobre los cookies y permite su desactivación.</li>
+  <li>CSS.- permite gestionar los archivos que se aplican a la página.</li>
+  <li>Formularios.- permite visualizar y modificar los formularios de la página.</li>
+  <li>Imágenes.- permite gestionar las imágenes del documento,
+comprobar la página con y sin imágenes, verificar las dimensiones de
+las imágenes y los tamaños de los archivos correspondientes.</li>
+  <li>Informaciones.- permite resaltar directamente dentro del navegador la información del código fuente de la página.</li>
+  <li>Varios.- agrupa varias funcionalidades auxiliares (supresión del uso de cache, historial de navegación, etc.)</li>
+  <li>Resaltar.- gestiona fundamentalmente la colocación de los elementos en la página.</li>
+  <li>Tamaño.- permite ajustar el tamaño de la ventana para observar el efecto del cambio de la resolución de la pantalla.</li>
+  <li>Herramientas.- resumen de las herramientas externas.</li>
+  <li>Código fuente.- muestra el código fuente de la página vigente.</li>
+  <li>Opciones.- permite ajustar la configuración de la barra.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; En IE las herramientas de desarrollo se encuentran en "Herramientas - Herramientas de desarrollo".<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Cuando se pasan las páginas web al servidor
+correspondiente debe comprobarse el funcionamiento dado que pueden
+producirse errores por no pasar imágenes, nombres de carpetas
+diferentes, permisos inadecuados, contraseñas diferentes, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para verificar el funcionamiento en entornos no muy
+actualizados puede utilizarse algún equipo de los ya retirados con
+sistemas operativos y versiones de navegadores atrasados (Windows 98,
+Ubuntu 7.0, ...).<br>
+
+<h3><a name="ejecucion"></a>Ejecución de una aplicación JavaScript</h3>
+
+&nbsp;&nbsp;&nbsp; El código JavaScript puede aparecer en cualquier
+parte del documento HTML y pueden existir varios bloques de código. El
+orden de análisis de los bloques es el que corresponde a su posición
+física dentro del documento y el código existente dentro de funciones o
+gestores de eventos se interpreta solo si se realiza una llamada a esa
+función. Luego, un código erróneo dentro de una función puede no
+detectarse hasta que se ejecute dicha función.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Al final del tema vienen unos ejemplos que pueden
+resultar interesantes para ir entrenando la inclusión de código
+JavaScript, con funciones y eventos, dentro de un documento HTML.<br>
+</article>
+<footer>
+</footer>
+</body>
+</html>

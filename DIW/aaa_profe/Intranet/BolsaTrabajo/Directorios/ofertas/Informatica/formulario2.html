@@ -1,0 +1,65 @@
+
+<!DOCTYPE HTML>
+<html>
+<body>
+<form action=enviocv.html method="post">
+<fieldset>
+<legend>Datos del CV</legend>
+<table>
+<tr>
+<td>Nombre y Apellidos:</td><td><input type="text" name="nombreapellidos"></td>
+</tr>
+<tr>
+<td>Email:</td><td><input type="email" name="email"></td>
+</tr>
+<tr>
+<td>Teléfono:</td><td><input type="telephone" name="telefono"></td>
+</tr>
+<tr>
+<td>Fecha de nacimiento:</td><td><input type="date" name="fecha" value="2011-01-01"></td>
+</tr>
+<tr>
+<td>Nacionalidad:</td>
+<td><select>
+<option value="español" selected>Español
+<option value="comunitario" >Comunitario
+<option value="extracomunitario" >Extracomunitario
+</select>
+</td>
+</tr>
+<tr>
+<td>Especialidad:</td>
+<td>
+<input type="checkbox" name="info" />Informática<br />
+<input type="checkbox" name="telecos"/>Telecomunicaciones <br />
+<input type="checkbox" name="electro" />Electrónica <br />
+<input type="checkbox" name="sistemas" />Sistemas <br />
+</td>
+</tr>
+<tr>
+<td>Sexo:</td>
+<td>
+<input type="radio" name="sexo"  />Masculino
+	<br />
+<input type="radio" name="sexo"
+	checked="checked" />Femenino<br />
+</td>
+</tr>
+<tr>
+<td>CV detallado:</td><td><textarea name="texto" cols=60
+	rows=20></textarea></td>
+</tr>
+
+<tr>
+<td>Documentación adjunta:</td><td><input type="file"
+	name="archivo"></td>
+</tr>
+<tr>
+<td><input type="submit" name="enviar"/td>
+</tr>
+</fieldset>
+</table>
+</form>
+<a href="ejemplo01paso07.html">Volver</a>
+</body>
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Multimedia</title>
+
+  
+</head><body style="background-color: rgb(255, 250, 220); width: 851px;">
+<div style="text-align: center; color: rgb(0, 0, 153); background-color: rgb(200, 230, 255);"><font size="+3"><span style="font-weight: bold;">VIDEO,&nbsp; SONIDO&nbsp;
+Y&nbsp; MULTIMEDIA</span><br>
+</font></div>
+
+<div align="justify">
+<br style="font-weight: bold;">
+<font size="+1"><span style="font-weight: bold;">INDICE</span></font><br>
+<br>
+<a href="#sonido">Sonido, vídeo y otros ficheros externos</a><br>
+<a href="#ficheros_sonido">Ficheros de sonido</a><br>
+<a href="#ficheros_video">Ficheros de vídeo</a><br>
+<a href="#otros">Otros tipos de ficheros</a><br>
+<a href="#inline">Multimedia inline</a><br>
+<a href="#marquesinas">Marquesinas animadas</a><br>
+<a href="#controles">Controles multimedia</a><br>
+<a href="#plugins">Plug-ins y objetos incrustados</a><br>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando se habla de contenido multimedia en las
+páginas web hay que diferenciar entre contenido externo y contenido
+inline. El contenido inline lo forman aquellos elementos que se
+incluyen en la página web y las imágenes y ficheros multimedia externos
+son aquellos que se enlazan a la página y que son bajados cuando el
+usuario "pincha" en el enlace.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La multimedia inline aparece junto con el resto de
+los elementos de página lo que supone cierta comodidad para el usuario.
+La multimedia externa permite incluir más formatos de sonido, video,
+etc. ya que si el navegador no lo entiende llamará a alguna aplicación
+que le ayude.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Luego, debemos incluir multimedia inline cuando se
+encuentre en un formato de fichero entendible para la mayor parte de
+navegadores y su carga no lleve demasiado tiempo.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Es norma de ética entre los creadores de páginas web
+incluir tanto el formato como el tamaño de los archivos en el texto que
+sirve como enlace o al lado, para que sea el usuario quien decida si le
+conviene o no bajarlo.<br>
+<br style="font-weight: bold;">
+<a name="sonido"></a> <font size="+1"><span style="font-weight: bold;">Sonido,
+video y otros ficheros externos</span></font><br>
+&nbsp;&nbsp;&nbsp; Para enlazar un fichero multimedia externo a una
+página web no hay más que crear un enlace a ese documento:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;a href=" Fichero "&gt;
+Fichero multimedia &lt;/a&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando el usuario "pincha" en el enlace, el
+navegador abre el fichero correspondiente si puede y, si no puede,
+bajará el fichero e intentará abrirlo con la aplicación adecuada. Estos
+programas se llaman aplicaciones auxiliares y pueden ser configurados
+en el navegador para que dependiendo del tipo de fichero se utilice un
+programa u otro.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si el navegador no es capaz de averiguar el formato
+de un fichero mostrará un mensaje preguntando al usuario si debe
+guardar el fichero en el disco o elegir un programa que entienda el
+contenido del fichero.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para saber el tipo de contenido de un fichero el
+navegador utiliza dos informaciones: por una parte <span style="color: red;">la extensión</span> y, por otra, cuando el
+navegador obtiene una página de un servidor web mira el tipo de fichero
+mime asociado al archivo o <span style="color: red;">content-type</span>.
+Este último es un código que utilizan los servidores web para informar
+del tipo de fichero que están enviando.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Algunos ejemplos de content-type son:<br>
+<ul>
+  <li><span style="color: red;">text/plain</span>.- texto normal.</li>
+  <li><span style="color: red;">text/html</span>.- página web.</li>
+  <li><span style="color: red;">image/gif</span>.- imagen en formato
+GIF.</li>
+  <li><span style="color: red;">video/mpeg</span>.- video en formato
+MPEG.</li>
+  <li><span style="color: red;">application/msword</span>.- documento
+de Microsoft Word.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Tanto el navegador como el servidor web tienen
+tablas que relacionan las extensiones con el tipo de fichero
+(content-type) asociado; y el navegador tiene un dato adicional: la
+aplicación que debe usar con ese tipo de fichero.<br>
+<br style="font-weight: bold;">
+<a name="ficheros_sonido"></a> <font size="+1"><span style="font-weight: bold;">Ficheros de sonido</span></font><br>
+&nbsp;&nbsp;&nbsp; A continuación se exponen algunas características de
+los formatos más utilizados.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El formato <span style="color: red;">AU</span>,
+creado por Sun Microsystem, es el único que es soportado por todos los
+navegadores. Permite varios tipos de codificación de sonido, aunque el
+más popular es el llamado <span style="color: red;">u-law</span> por
+lo que a veces al formato AU se le llama u-law. Este tipo de ficheros
+tiene una calidad aceptable, pero sin ser demasiado buena a causa de la
+codificación de 8 bits que provoca un efecto parecido al del sonido
+telefónico.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Con mayor calidad están los formatos <span style="color: red;">WAVE (.wav)</span> para Windows, <span style="color: red;">AIFF</span> para Macintosh y <span style="color: red;">MPEG</span>.
+Los dos primeros solamente funcionan en sus respectivas plataformas y
+MPEG, aunque menos extendido que el formato AU, es compatible con
+multitud de plataformas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El formato <span style="color: red;">Real Audio</span>
+ha sido desarrollado específicamente para reproducir ficheros de sonido
+en Internet y en la Web. La página web de Real Audio
+(www.realaudio.com) ofrece el software necesario para crear y escuchar
+este tipo de sonido. La gran ventaja que ofrece frente al resto de los
+formatos es que, mientras que en éstos es necesario esperar a que
+llegue el fichero completo para poder escucharlo, Real Audio soporta
+una técnica conocida como streaming que permite escuchar el sonido
+según va llegando y solamente se produce una pequeña pausa al
+principio, antes de empezar a oirse. El inconveniente de este formato
+es que necesita la instalación de un servidor especial para enviar este
+tipo de ficheros y enlazarlos a la página requiere de una técnica
+especial que se describirá más adelante.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Las extensiones asociadas a cada uno de los
+distintos tipos de fichero son:<br>
+<br>
+<table style="text-align: center;" align="center" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <th>EXTENSIÓN</th>
+      <th>TIPO DE FICHERO</th>
+    </tr>
+    <tr>
+      <td>.au</td>
+      <td>AU / u-law</td>
+    </tr>
+    <tr>
+      <td>.aif / .aiff</td>
+      <td>AIFF / AIFC</td>
+    </tr>
+    <tr>
+      <td>.wav</td>
+      <td>WAVE / WAV</td>
+    </tr>
+    <tr>
+      <td>mp2</td>
+      <td>MPEG audio</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Para insertar un fichero de sonido dentro de una
+página web se hará de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;a&nbsp;
+href="Quinta_sinfonia.au"&gt;La quinta sinfonía&lt;/a&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si se desea mayor calidad que la del formato AU, que
+es el más extendido, puede considerarse ofrecer varios formatos para
+que el usuario elija qué formato bajar.<br>
+<br style="font-weight: bold;">
+<a name="ficheros_video"></a> <font size="+1"><span style="font-weight: bold;">Ficheros de vídeo</span></font><br>
+&nbsp;&nbsp;&nbsp; El formato de video estándard para Internet es MPEG,
+que permite la codificación de audio y vídeo de gran calidad en
+ficheros pequeños.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Otros formatos son AVI de Microsoft para Windows y
+QuickTime de Apple. Las extensiones asociadas a los diferentes tipos de
+ficheros son:<br>
+<br>
+<table style="text-align: center;" align="center" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <th>EXTENSIÓN</th>
+      <th>TIPO DE FICHERO</th>
+    </tr>
+    <tr>
+      <td>.mpg / .mpeg<br>
+      </td>
+      <td>MPEG<br>
+      </td>
+    </tr>
+    <tr>
+      <td>.mov<br>
+      </td>
+      <td>QuickTime<br>
+      </td>
+    </tr>
+    <tr>
+      <td>.avi</td>
+      <td>AVI<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Un ejemplo de uso podría ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;a&nbsp;
+href="los_indios.mpeg" alt="Escenas sobre indios"&gt;Los indios se
+echan al monte&lt;/a&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un truco usado en ocasiones, con el que se consigue
+un efecto interesante, consiste en convertir algún fotograma del vídeo
+a imagen y hacer que ésta sea el enlace al vídeo. Es conveniente no
+olvidar incluir el atributo alt.<br>
+<br style="font-weight: bold;">
+<a name="otros"></a> <font size="+1"><span style="font-weight: bold;">Otros
+tipos de ficheros</span></font><br>
+&nbsp;&nbsp;&nbsp; Los enlaces a archivos externos no están limitados a
+imágenes y vídeos. Internet está plagado de multitud de formatos entre
+los que destacan: archivos comprimidos ZIP (.zip o gz para Linux),
+ejecutables (.exe), archivos PDF (.pdf), multitud de imágenes creadas
+con infinidad de programas, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando se pulsa un enlace a un fichero de uno de
+estos tipos, el sistema nos dará opción a guardarlo o a abrirlo con un
+programa externo, si es un tipo de fichero conocido.<br>
+<br style="font-weight: bold;">
+<a name="inline"></a> <font size="+1"><span style="font-weight: bold;">Multimedia
+inline</span></font><br>
+&nbsp;&nbsp;&nbsp; Hasta hace muy poco el único sistema disponible para
+incluir contenido multimedia en las páginas web era a través de
+archivos externos. En la actualidad están apareciendo nuevas etiquetas
+y atributos del lenguaje HTML que permiten incluir estos contenidos
+dentro de la página.<br>
+<br>
+<font style="font-weight: bold;" size="+1">&nbsp;&nbsp;&nbsp; Video
+inline</font><br>
+&nbsp;&nbsp;&nbsp; Uno de los primeros mecanismos fue introducido por
+Microsoft Internet Explorer, incluyendo extensiones a la etiqueta img
+que permiten insertar vídeo con formato AVI. Estas extensiones fueron
+adoptadas también por el navegador Opera, pero por ningún otro (¿?), y
+tampoco por el estándard HTML 4.0. Los demás navegadores sencillamente
+ignoran este código.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La extensión en la que se basa la inclusión de vídeo
+inline es el atributo <span style="color: red;">dynsrc</span>, cuyo
+uso es similar al ya conocido src, y cuyo valor será la dirección de un
+vídeo en formato AVI. Dentro de la etiqueta img deben especificarse los
+dos atributos, src y dynsrc, de forma que si el navegador no soporta la
+inclusión de vídeo dentro de la página mostrará la imagen. Un ejemplo
+puede ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;img&nbsp;
+dynsrc="video/Peli_03.mpeg"&nbsp; src="imagenes/Foto_02.jpg" alt="[Mi
+video]"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para ver el resultado <a href="09_02_video.html">pinche
+aqui</a>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Evidentemente pueden utilizarse los demás atributos
+de la etiqueta img tales como: align, vspace, hspace, width, height,
+etc. y, además de éstos, Microsoft incorporó como acompañamiento a
+dynsrc, y que permiten realizar ciertos controles sobre el video, los
+siguientes:<br>
+<ul>
+  <li><span style="color: red;">controls</span>.- muestra el video AVI
+junto con una serie de controles
+que permiten pausarlo, iniciarlo, etc.</li>
+  <br>
+  <li><span style="color: red;">loop</span>.- toma como valor el número
+de veces que se repetirá el
+video. Con el valor "-1" se repetirá indefinidamente.</li>
+  <br>
+  <li><span style="color: red;">start</span>.- determina cuándo debe
+empezar a reproducirse el video.
+Puede tomar dos valores: "fileopen", que es el valor por defecto y que
+indica que el vídeo se reproducirá tan pronto como la página y el
+fichero con el vídeo lleguen al equipo, y "mouseover" que indica que el
+vídeo se reproducirá cuando el usuario sitúe el cursor sobre él.</li>
+  <br>
+  <li><span style="color: red;">loopdelay</span>.- (solo Internet
+Explorer ?) que especifica con el
+valor en milisegundos la pausa que se producirá entre dos reproduciones
+sucesivas automáticas del video.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; <font size="+1"><span style="font-weight: bold;">El
+atributo <span style="color: red;">lowsrc</span></span></font><br>
+&nbsp;&nbsp;&nbsp; Este atributo es una extensión de Netscape a la
+etiqueta img que permite especificar una segunda imagen que servirá de
+previsualización de la imagen final especificada con src. La
+previsualización suele ser la misma imagen pero con peor calidad, por
+ejemplo en formato JPEG con alto grado de compresión y, por lo tanto,
+de mucho menor tamaño. De esta forma la imagen se cargará mucho antes y
+el usuario podrá hacerse una idea de cómo será la imagen completa antes
+de que ésta llegue. Un ejemplo puede ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;img&nbsp;
+src="foto_alta_calidad.gif"&nbsp; lowsrc="baja_calidad.jpeg"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; lowsrc no ha sido aceptado por HTML 4.0 pero no
+causa ningún perjuicio a los navegadores que no la asumen.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En algunos casos y con un poco de imaginación,
+lowsrc puede utilizarse para crear una pequeña animación basada en dos
+imágenes (ver ejemplo en pag. 347).<br>
+<br>
+<font style="font-weight: bold;" size="+1">&nbsp;&nbsp;&nbsp; Sonido
+inline</font><br>
+&nbsp;&nbsp;&nbsp; Microsoft Internet Explorer ha introducido la
+etiqueta <span style="color: red;">bgsound</span> que permite incluir
+sonido de fondo en las páginas web. El sonido será cargado junto con la
+página y se empezará a reproducir sin intervención del usuario. Un
+ejemplo puede ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;bgsound
+src="sonido/The_wall.mp3"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta produce un efecto visual en la
+página, y se reproduce el sonido como fondo. Para ver el
+resultado <a href="09_01_sonido.html">pinche aquí</a>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Además del atributo src, que permite especificar el
+fichero a reproducir, están:<br>
+<ul>
+  <li><span style="color: red;">loop</span>.- especifica el número de
+reproducciones. El valor "-1"
+especifica de forma indefinida.</li>
+  <br>
+  <li><span style="color: red;">balance</span>.- (solo Internet
+Explorer) controla el balanceo entre los
+dos altavoces. El valor que se puede asignar está comprendido entre
+-10000 y 10000. Con -10000 el sonido solamente se oirá por un altavoz y
+con 10000 por el otro. Los valores intermedios balancearán el volumen
+entre ambos.</li>
+  <br>
+  <li><span style="color: red;">title</span>.- (solo Internet Explorer)
+solamente a nivel informativo.</li>
+  <br>
+  <li><span style="color: red;">volume</span>.- (solo Internet
+Explorer) admite un valor entre -10000 y
+0. Con el valor "0" el sonido se reproducirá al 100% de la
+configuración del usuario.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Es importante tener en cuenta que el sonido puede
+molestar al usuario y hacer que abandone la página y, por otra parte,
+que el tamaño (por lo general grande) de los ficheros de sonido puede
+incrementar desmesuradamente el tiempo de carga.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Internet Explorer soporta tres tipos de ficheros de
+sonido inline: AU, WAV y MIDI.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta bgsound no es soportada por otro tipo de
+navegadores (?), ni ha sido incluida en HTML 4.0. Existen otros
+métodos, que se verán más adelante, para incluir sonidos en las páginas
+web.<br>
+<br style="font-weight: bold;">
+<a name="marquesinas"></a> <font size="+1"><span style="font-weight: bold;">Marquesinas animadas</span></font><br>
+&nbsp;&nbsp;&nbsp; Una marquesina animada es una línea de texto que se
+desplaza por la pantalla de derecha a izquierda, de izquirda a derecha
+o en ambas direcciones alternativamente. La etiqueta específica de
+Internet Explorer que permite definir marquesinas es <span style="color: red;">marquee</span>. Esta etiqueta no ha sido aceptada
+por los demás navegadores (?) ni forma parte de HTML 4.0.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La estructura de esta etiqueta es muy sencilla:
+consta de la etiqueta de principio, el texto que se mueve y la etiqueta
+de fin. Un ejemplo puede ser:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+<marquee>&lt;marquee&gt; Me estoy
+movindo &lt;/marque&gt;</marquee>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si se muestra esta página con un navegador podrá
+observarse como el texto aparece por la derecha y se mueve hacia la
+izquierda hasta desaparecer. Y así repetidamente.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El texto de una marquesina se mostrará siempre en
+una nueva línea y con las mismas características que se mostraría sin
+ser marquesina, es decir, conservará los atributos aplicados. Veamos un
+ejemplo con un encabezado:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;
+<span style="font-weight: bold; color: rgb(51, 51, 255);">Esto se
+muestra en
+una línea
+<marquee>y esto, por
+ser marquesina, en otra</marquee>
+</span>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta marquee consta de una serie de atributos
+que permiten cambiar la apariencia de la marquesina:<br>
+<ul>
+  <li><span style="color: red;">bgcolor</span>.- permite cambiar el
+color del fondo.</li>
+  <br style="color: red;">
+  <li><span style="color: red;">height y width</span>.- determinan el
+alto y el ancho de la marquesina.
+El valor puede darse en pixels o en porcentajes y no afecta al tamaño
+del texto.</li>
+  <br style="color: red;">
+  <li><span style="color: red;">hspace y vspace</span>.- determina los
+márgenes entre la marquesina y su
+contenido.</li>
+  <br>
+  <li><span style="color: red;">align</span>.- especifica el
+alineamiento de la marquesina con respecto
+al texto que la rodea, de forma similar a como ocurre con las imágenes.
+No modifica la posición del texto dentro de la marquesina, que siempre
+se sitúa en la parte superior. Los posibles valores son: top, middle,
+bottom, left y right.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Un ejemplo de uso de estos atributos puede ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;h1&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;marquee
+align="right" bgcolor="#0000FF" height="20%" width="60%"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+ESTAMOS TAN AGUSTITO<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;/marquee&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/h1&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; cuyo resultado es el siguiente:
+<h1>
+<marquee bgcolor="#0000FF" height="20%" width="60%" align="right">ESTAMOS
+TAN AGUSTITO </marquee>
+</h1>
+&nbsp;&nbsp;&nbsp; Puede probarse a visualizar el ejemplo con Internet
+Explorer para comprobar si hay diferencias.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El comportamiento, dirección del movimiento, número
+de repeticiones, etc. del contenido de la marquesina puede modificarse
+mediante los atributos:<br>
+<ul>
+  <li><span style="color: red;">behavior</span>.- permite cambiar el
+comportamiento del contenido de la
+marquesina. Sus posibles valores son:</li>
+  <br>
+  <ul>
+    <li><span style="color: red;">scroll</span>: es el valor por
+defecto. Su comportamiento lo
+conocemos:&nbsp;&nbsp;
+      <marquee bgcolor="#0000FF" width="20%" align="right">SCROLL</marquee>
+    </li>
+    <br>
+    <li><span style="color: red;">slide</span>: el contenido deja de
+moverse cuando llega al borde
+izquierdo:&nbsp;&nbsp;
+      <marquee behavior="slide" bgcolor="#0000FF" width="20%" align="right">SLIDE</marquee>
+    </li>
+    <br>
+    <li><span style="color: red;">alternate</span>: el contenido
+rebotará en los extremos:&nbsp;&nbsp;
+      <marquee behavior="alternate" bgcolor="#0000FF" width="20%" align="right">ALTERNATE</marquee>
+    </li>
+    <br>
+  </ul>
+  <li><span style="color: red;">direction</span>.- indica la dirección
+y sus posibles valores son left
+(por defecto) y right.&nbsp;&nbsp;
+    <marquee direction="right" bgcolor="#0000FF" width="30%" align="right">DIRECTION="RIGHT"</marquee>
+  </li>
+  <br>
+  <li><span style="color: red;">loop</span>.- permite especificar el
+número de repeticiones. Los valores
+"-1" e "infinity" indican indefinidamente.&nbsp;&nbsp;
+    <marquee loop="4" bgcolor="#0000FF" width="20%" align="right">LOOP="4"</marquee>
+  </li>
+  <br style="color: red;">
+  <li><span style="color: red;">scrollamount</span>.- aunque haya
+sensación de movimiento, el contenido
+se desplaza a pequeños saltos. Con este atributo se especifica el
+número de pixels que habrá entre salto y salto. Junto con el siguiente
+permite controlar la sensación de movimiento y la
+velocidad.<br>
+    <marquee scrollamount="1" bgcolor="#0000FF" width="15%" align="right">UNO</marquee>
+&nbsp;
+    <marquee scrollamount="5" bgcolor="#0000FF" width="15%" align="right">CINCO</marquee>
+&nbsp;
+    <marquee scrollamount="10" bgcolor="#0000FF" width="15%" align="right">DIEZ</marquee>
+&nbsp;
+    <marquee scrollamount="15" bgcolor="#0000FF" width="15%" align="right">QUINCE</marquee>
+&nbsp;
+    <marquee scrollamount="20" bgcolor="#0000FF" width="15%" align="right">VEINTE</marquee>
+  </li>
+  <br>
+  <li><span style="color: red;">scrolldelay</span>.- determina el
+tiempo de espera entre salto y salto,
+en milisegundos.<br>
+    <marquee scrollamount="2" scrolldelay="200" bgcolor="#0000FF" width="40%" align="right">SCROLLAMOUNT="2" SCROLLDELAY="200"</marquee>
+&nbsp;&nbsp;&nbsp;
+    <marquee scrollamount="2" scrolldelay="50" bgcolor="#0000FF" width="40%" align="right">SCROLLAMOUNT="2" SCROLLDELAY="50"</marquee>
+  </li>
+</ul>
+<br>
+&nbsp;&nbsp;&nbsp; Además, Netscape introdujo la etiqueta <blink><span style="color: red;">&lt;blink&gt; ... &lt;/blink&gt;</span></blink>
+que
+muestra el texto parpadeando. Este efecto puede ser molesto o causar
+distracción.<br>
+<br style="font-weight: bold;">
+<a name="controles"></a> <font size="+1"><span style="font-weight: bold;">Controles multimedia</span></font><br>
+&nbsp;&nbsp;&nbsp; Existen controles multimedia que permiten insertar
+gráficos y efectos multimedia en las páginas web. Destacan, aunque aquí
+no se traten por salirse de los objetivos de este resumen:<br>
+<ul>
+  <li>behaviors.- comportamientos especiales de los controles y otros
+elementos de la página.</li>
+  <li>effects.- aplica un filtro gráfico a cualquier elemento de una
+página.</li>
+  <li>hot spot.- permite especificar acciones a realizar al pulsar en
+diferentes zonas de la ventana del navegador.</li>
+  <li>mixer.- mezcla varios ficheros de sonido WAV.</li>
+  <li>path.- permite crear movimiento de objetos por un camino
+establecido.</li>
+  <li>sequencer.- facilita el control del tiempo en los eventos de la
+página.</li>
+  <li>sprite.- sirve para crear animaciones.</li>
+  <li>sprite buttons.- sirve para crear botones animados.</li>
+  <li>structured graphics.- permite incluir gráficos que pueden ser
+cambiados de tamaño y rotados por el usuario.<br style="font-weight: bold;">
+  </li>
+</ul>
+<a name="plugins"></a> <font size="+1"><span style="font-weight: bold;">Plug-ins
+y objetos incrustados </span></font><br>
+&nbsp;&nbsp;&nbsp; Los plug-ins pueden considerarse como programas
+auxiliares que trabajan junto con el navegador ofreciéndole nuevas
+características. Por ejemplo, un plug-in de Excell permitiría mostrar
+hojas de cálculo de esta aplicación directamente en la página web, un
+plug-in de vídeo podría permitir abrir ficheros de vídeo de formatos
+distintos a los vistos, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los plug-ins se ejecutan junto con el navegador
+añadiéndole capacidades inline.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Actualmente existen numerosos plug-ins de audio y
+vídeo disponibles que añaden soporte para AU, AIFF, WAV, MIDI y
+QuickTime. Hay que tener en cuenta que si se utilizan las capacidades
+de algún plug-in en la página, los visitantes deberán acceder con un
+nevegador que admita plug-ins y que tenga el plug-in correspondiente.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los plug-ins más conocidos y usados son:<br>
+<ul>
+  <li>Acrobat Reader.- para mostrar ficheros de tipo pdf.</li>
+  <li>Shockwave.- permite reproducir vídeos generados con Macromedia
+Director.</li>
+  <li>RealAudio y RealVídeo.- para reproducir audio y vídeo en estos
+formatos especialmente diseñados para la WWW.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Junto con éstos, es posible encontrar numerosos
+plug-ins dedicados a mostrar contenido multimedia y mundos virtuales
+VRML.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <font size="+1"><span style="font-weight: bold;">Cómo
+usar los plug-ins</span></font><br>
+&nbsp;&nbsp;&nbsp; Es primer paso para usar un plug-in es crear el
+objeto que se quiere insertar en la página. El proceso de creación
+depende del tipo de objeto. Por ejemplo, para archivos de sonido y
+vídeo son necesarios programas de edición y retoque de éstos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El siguiente paso es insertar en la página, usando
+código HTML, el objeto que ha de ser usado por el plug-in. El propio
+navegador al darse cuenta que no es capaz de mostrar el objeto buscará
+entre la lista de plug-ins que tiene instalados y llamará al que sea
+capaz de tratar al objeto; si no lo encuentra mostrará un mensaje o un
+icono indicativo que puede resultar molesto para el usuario.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El término elegido para nombrar a estos objetos es
+embebded objects u objetos incrustados (o embebidos). La etiqueta con
+la que se incrusta objetos es <span style="color: red;">embed</span>
+que con el atributo <span style="color: red;">src</span> permite
+especificar el nombre o dirección del objeto. Otros atributos muy
+utilizados son <span style="color: red;">width y height</span>
+para especificar el ancho y alto del objeto en cuestión. Además, la
+etiqueta embed tiene una serie de atributos opcionales que varían
+enormemente según el plug-in.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <font size="+1"><span style="font-weight: bold;">Alternativas
+para navegadores que no soportan plug-ins</span></font><br>
+&nbsp;&nbsp;&nbsp; Si el navegador no dispone del plug-in adecuado para
+mostrar un objeto visualizará un error o un cuadro de diálogo que
+permita obtener el plug-in necesario (el atributo pluginspage=" url "
+permite especificar la dirección).<br>
+<br>
+&nbsp;&nbsp;&nbsp; Una alternativa para los navegadores que no soportan
+plug-ins es utilizar la etiqueta <span style="color: red;">&lt;noembed&gt;
+... &lt;/noembed&gt;</span> cuyo propósito puede ser:<br>
+<ul>
+  <li>Mostrar una imagen que represente el significado del objeto.</li>
+  <li>Incluir un enlace al fichero del objeto, es decir, incluirlo como
+fichero externo; de esta forma el usuario podrá verlo con el programa
+que desee.</li>
+  <li>Poner cualquier código HTML, applet de Java o elemento que ayude
+con la presentación de la página.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Un ejemplo podría ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;embed
+src="huellas.cdr"&nbsp; width="640"&nbsp; height="30"&nbsp; alt="* * *
+* *"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;noembed&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&lt;img&nbsp; src="huellas.gif"&nbsp; width="640"&nbsp; height="30"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/noembed&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los navegadores interpretarán un código u otro
+dependiendo de si entienden o no la etiqueta embed.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <font size="+1"><span style="font-weight: bold;">Sonido
+inline con la etiqueta embed</span></font><br>
+&nbsp;&nbsp;&nbsp; En el libro se trata este apartado desde el punto de
+vista de que Internet Explorer reconozca bgsound y Netscape embed pero
+probablemente, a estas alturas, ambos reconozcan las dos etiquetas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta embed admite los atributos width
+(ancho), eight (alto) y autostart (inicio de la reproducción al cargar
+la página). Si ponemos los valores de width y eight a cero es
+conveniente poner autostart a valor "true" porque no se mostrarán los
+controles de reproducción y parada:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;embed
+src="cancion.mp3"&nbsp; width="0"&nbsp; eight="0"&nbsp;
+autostart="true"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+&lt;noembed&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &lt;bgsound src="cancion.mp3"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+&lt;/noembed&gt;<br>
+</div>
+
+<br>
+
+<br>
+
+</body></html>

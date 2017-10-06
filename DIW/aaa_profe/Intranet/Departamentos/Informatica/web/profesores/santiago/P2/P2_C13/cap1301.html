@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<!-- archivo Parte 2/code/cap1301.html -->
+<head>
+<title>La impresión con CSS</title>
+<style type="text/css">
+@media print{
+/* Estilos que se aplican sólo en impresión */
+
+/* Definir los márgenes */
+/* de la primera página */
+@page :first {
+	margin-left: 1cm;
+}
+/* de la página de la izquierda */
+@page :left {
+    margin-left: 2.5cm;
+    margin-right: 2cm;
+}
+/* de la página de la derecha */
+@page :right {
+    margin-left: 2cm;
+    margin-right: 2.5cm;
+}
+
+/* El identificador portada provoca el salto de página */
+#portada {
+    page-break-after: always;
+}
+
+/* La clase cada sección comienza en página de la derecha */
+.seccion1 {
+    page-break-before: right;
+}
+
+/* Se indica que después de clase cabecera no */
+/* puede seguir un salto */
+.cabecera {
+	page-break-after: avoid;
+}
+
+/* En esta clase se indica que debe imprimir */
+/* toda en una misma página (si es posible)*/
+blockquote.nocortar {
+	page-break-inside: avoid;
+}
+
+/* Control de viudas y huérfanas */
+p {
+	widow: 2;
+	orphan: 2;
+}
+}
+/******************************/
+/* Estilo para pantalla */
+/* este color rojo se debe ver sólo en la versión en pantalla*/
+@media screen {
+h1 {color:red;}
+}
+/******************************/
+/* Estilos que se aplican siempre */
+/* estos estilos valen en todos los medios */
+@media all {
+p, li {font-family: "Times New Roman", Times, serif; font-size: 14px; }
+p {text-indent:20px;}
+p.code {font-family: courier; font-size: 14px; color:red;}
+ul.lista {list-style-type: circle;}
+blockquote {font-style: italic;}
+}
+/******************************/
+</style>
+</head>
+
+<body>
+<h1 id="portada">Impresión con CSS</h1>
+<h2 class="seccion1">Introducción</h2>
+<p>La Web es un medio para la presentación de todo tipo de documentos y CSS contribuye para que cada tipo de documento se pueda formatear del modo más adecuado para su visualización en los distintos tipos de pantallas gráficas. Este proceso es el que hemos estudiado hasta el momento en los capítulos anteriores pero ahora debemos observar las necesidades de los usuarios que quieren que el contenido en pantalla se vuelque hacia una salida impresa; esto nos ocurre frecuentemente al imprimir recibos, facturas y documentos en general que queremos mantener en papel.</p>
+<p>La impresión en papel es una de las principales opciones de salida y sobre la que ya hay décadas de experiencia pero no es la única posibilidad; un documento web se puede mostrar en distintos dispositivos de presentación, por ejemplo, teléfonos móviles, y esto representa un nuevo desafío para CSS y para los diseñadores: conseguir que un documento web mantenga el máximo nivel de calidad de presentación en los distintos medios.</p>
+<p>CSS dispone de un grupo de funcionalidades que permite personalizar el formateo de un documento para los distintos tipos de medios. Por lo tanto, el lector debe considerar que la salida impresa es sólo una de las muchas posibilidades de formateo del documento; por lo que en este capítulo lo que realmente estudiaremos no es sólo la salida impresa sino algo más general: cómo gestiona CSS la presentación en los distintos tipos de medios.</p>
+<h3 class="cabecera">Tipos de medios</h3>
+<p>CSS nos permite definir estilos orientados a un determinado tipo de medio o un grupo de tipos de medios. Cuando no se especifica nada se presupone que el estilo es válido para todos los medios (all); por ejemplo, si al definir un estilo lo hacemos para que sólo se utilice en pantallas de ordenador, se indicará que el tipo de medio  es screen.</p>
+<h2 class="seccion1">Propiedad margin</h2>
+<p>Los márgenes componen la parte externa de la página y esto no debe confundirse con el margen que se puede definir a nivel de la etiqueta &lt;BODY&gt;. Para asignar el margen de la página se utiliza la propiedad margin del mismo modo que se codifica en los ejemplos vistos anteriormente: </p>
+<p class="code">@page {size: 17cm 21cm;
+		margin: .8cm;}</p>
+<blockquote class="nocortar">No todos los navegadores soportan la regla @page por lo que debemos comprobar su funcionamiento antes de depender de que nuestro código dependa de la regla.</blockquote>
+<h2 class="seccion1">Marcas de corte</h2>
+<p>Dentro del entorno de la publicación se utilizan lo que se denominan marcas de corte, que señalan la posición de corte. Estas marcas son signos + que se imprimen en los bordes de la página. Las marcas de cruces son otros símbolos que se imprimen cerca del borde de las páginas y sirven para alinear las páginas.</p>
+<p>La propiedad marks, que aún no está soportada por los principales agentes de usuario, tiene la siguiente sintaxis:</p>
+<p class="code">marks: &lt;crop&gt; | &lt;cross&gt; | &lt;none&gt; | &lt;inherit&gt;;</p>
+
+<h2 class="seccion1">Control de los saltos de página</h2>
+<p>La impresión de documentos siempre debe saber gestionar los saltos de página, sea porque el contenido no cabe en la página física o porque se quiere provocar un cambio de página. CSS incluye tres propiedades para controlar los saltos de página:</p>
+<ul class="lista">
+<li><strong>page-break-before:</strong> Determina cómo se produce el salto de página antes de un determinado elemento y en qué lado continua el flujo de la página siguiente.</li>
+<li><strong>page-break-after:</strong> Determina cómo se produce el salto de página después de un determinado elemento y en qué lado continua el flujo de la página siguiente.</li>
+<li><strong>page-break-inside:</strong> Determina cómo se produce el salto de página desde dentro de un elemento. Por ahora, esta propiedad está soportada sólo por Opera.</li>
+</ul>
+<img alt="Imagen del libro real" src="vistalibro.jpg" height="200">
+<h3 class="cabecera">Rellenamos con texto para provocar el salto de página por cantidad de líneas</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies, orci at aliquet tempus, justo sem consequat elit, et dapibus lectus ligula quis justo. Vivamus nec nulla risus, in accumsan ipsum. Etiam gravida, lacus vitae vehicula sagittis, mauris velit tempor enim, et imperdiet magna arcu vel neque. Sed rhoncus lacinia libero a laoreet. Ut est sem, eleifend vitae rhoncus quis, sagittis lacinia dui. Integer in rhoncus tellus. Suspendisse eu elit nisi, sit amet egestas justo. Integer metus lorem, aliquet at luctus id, sollicitudin eget ante. Aenean porta, augue sit amet volutpat sodales, purus purus scelerisque dolor, sit amet sodales est dolor non nibh. Nulla nec nulla eget tortor dapibus porttitor. Vivamus in libero at lectus consequat tincidunt eu eu metus. Praesent accumsan, libero non aliquam consectetur, tortor tellus mollis sem, vitae aliquet lorem tellus vel tortor. Etiam adipiscing ultrices lectus, non eleifend magna varius quis. Praesent eget ligula tellus. Donec vel lacus orci. Nam in libero ipsum, at elementum justo. Vivamus tempus risus in mauris accumsan tempor. Aliquam libero orci, commodo eget suscipit ut, ornare vel turpis. Proin porta massa in leo lobortis sodales. Nullam scelerisque libero nec nibh tristique ac venenatis orci aliquam.</p>
+<p>Quisque sed libero quis nisl suscipit auctor. Proin quis ipsum non erat dapibus euismod. Proin vestibulum dui et orci faucibus vehicula. Nam quis vestibulum magna. Vivamus placerat consectetur urna, eu rhoncus lorem ullamcorper at. Praesent vitae magna quam. Etiam quis enim dapibus lacus tempus imperdiet. Fusce faucibus feugiat leo, id venenatis massa vulputate vel. Fusce vulputate, felis sit amet lacinia eleifend, nunc tortor laoreet mi, et porttitor augue ipsum in massa. Donec laoreet lacinia enim eu tempor. Morbi in libero sit amet augue tincidunt eleifend eu ac elit. Fusce fermentum orci et leo commodo eu sodales nulla malesuada. In hac habitasse platea dictumst. Nam velit lorem, feugiat vel feugiat et, varius non leo. Proin fringilla est et augue consectetur eget porttitor purus porttitor. Quisque felis lorem, sagittis sit amet aliquet et, varius non tortor. Nulla dignissim tincidunt fermentum.</p>
+<p>Nullam diam enim, venenatis non feugiat viverra, posuere in sapien. Duis condimentum justo vel neque vehicula sit amet egestas nisl suscipit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam libero mauris, suscipit et rhoncus at, faucibus in lacus. Nunc consequat eleifend rhoncus. Fusce ac lectus in diam sagittis gravida. Praesent vitae felis arcu, vitae tempor lacus. In eget nulla ut leo rhoncus lobortis. Donec dapibus nunc non elit ultricies sodales. Proin mi lacus, tempus ut consequat sit amet, fermentum ornare est. Sed nec urna purus, nec hendrerit libero.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies, orci at aliquet tempus, justo sem consequat elit, et dapibus lectus ligula quis justo. Vivamus nec nulla risus, in accumsan ipsum. Etiam gravida, lacus vitae vehicula sagittis, mauris velit tempor enim, et imperdiet magna arcu vel neque. Sed rhoncus lacinia libero a laoreet. Ut est sem, eleifend vitae rhoncus quis, sagittis lacinia dui. Integer in rhoncus tellus. Suspendisse eu elit nisi, sit amet egestas justo. Integer metus lorem, aliquet at luctus id, sollicitudin eget ante. Aenean porta, augue sit amet volutpat sodales, purus purus scelerisque dolor, sit amet sodales est dolor non nibh. Nulla nec nulla eget tortor dapibus porttitor. Vivamus in libero at lectus consequat tincidunt eu eu metus. Praesent accumsan, libero non aliquam consectetur, tortor tellus mollis sem, vitae aliquet lorem tellus vel tortor. Etiam adipiscing ultrices lectus, non eleifend magna varius quis. Praesent eget ligula tellus. Donec vel lacus orci. Nam in libero ipsum, at elementum justo. Vivamus tempus risus in mauris accumsan tempor. Aliquam libero orci, commodo eget suscipit ut, ornare vel turpis. Proin porta massa in leo lobortis sodales. Nullam scelerisque libero nec nibh tristique ac venenatis orci aliquam.</p>
+<p>Quisque sed libero quis nisl suscipit auctor. Proin quis ipsum non erat dapibus euismod. Proin vestibulum dui et orci faucibus vehicula. Nam quis vestibulum magna. Vivamus placerat consectetur urna, eu rhoncus lorem ullamcorper at. Praesent vitae magna quam. Etiam quis enim dapibus lacus tempus imperdiet. Fusce faucibus feugiat leo, id venenatis massa vulputate vel. Fusce vulputate, felis sit amet lacinia eleifend, nunc tortor laoreet mi, et porttitor augue ipsum in massa. Donec laoreet lacinia enim eu tempor. Morbi in libero sit amet augue tincidunt eleifend eu ac elit. Fusce fermentum orci et leo commodo eu sodales nulla malesuada. In hac habitasse platea dictumst. Nam velit lorem, feugiat vel feugiat et, varius non leo. Proin fringilla est et augue consectetur eget porttitor purus porttitor. Quisque felis lorem, sagittis sit amet aliquet et, varius non tortor. Nulla dignissim tincidunt fermentum.</p>
+<p>Nullam diam enim, venenatis non feugiat viverra, posuere in sapien. Duis condimentum justo vel neque vehicula sit amet egestas nisl suscipit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam libero mauris, suscipit et rhoncus at, faucibus in lacus. Nunc consequat eleifend rhoncus. Fusce ac lectus in diam sagittis gravida. Praesent vitae felis arcu, vitae tempor lacus. In eget nulla ut leo rhoncus lobortis. Donec dapibus nunc non elit ultricies sodales. Proin mi lacus, tempus ut consequat sit amet, fermentum ornare est. Sed nec urna purus, nec hendrerit libero.</p>
+
+</body>
+</html>

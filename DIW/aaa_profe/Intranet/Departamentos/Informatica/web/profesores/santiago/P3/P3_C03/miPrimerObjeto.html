@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mi primer Objeto</title>
+    <script languaje="javascript">
+      // Definición de un objeto
+      function persona (txtNombre, txtApellido1, txtApellido2, nEdad) {
+                        // Definición de propiedades (valores)
+                        this.nombre = txtNombre;
+                        this.apellido1 = txtApellido1;
+                        this.apellido2 = txtApellido2;
+                        this.edad = nEdad;
+                        // Definición de métodos (funciones)
+                        this.mostrar = fnVisualizar;
+      }
+      // Función relativa al método
+      function fnVisualizar ()  {
+                                with (this) {
+                                            document.write ("---------------------------------------------------", "<br>");
+                                            document.write ("|  Nombre.- <strong>", nombre, "</strong>  **<br>");
+                                            document.write ("|  Primer apellido.- <strong>", apellido1, "</strong>  **<br>");
+                                            document.write ("|  Segundo apellido.- <strong>", apellido2, "</strong>  **<br>");
+                                            document.write ("|  Edad.- <strong>", edad, "</strong>  **<br>");
+                                            document.write ("---------------------------------------------------", "<br>");
+                                }
+      }
+    </script>
+</head>
+<body>
+  <script type="text/javascript">
+    var objProfe = new persona ( "Santiago", "Alonso", "Gomez", 48 );
+    objProfe.mostrar ();
+  </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/calculadora.html -->
+<html>
+  <head>
+    <title>Calculadora de JavaScript</title>
+    <script type="text/javascript">
+        // valor guardado en memoria
+      var calcMemoria;
+        // se guarda el operando 1 en el caso de
+        // operaciones de dos operandos
+      var operando1 = 0;
+        // se guarda el operador
+        // para el caso de operaciones de dos operandos
+      var oper;
+
+/////////////////////////////////////////////////////
+      function introNro(dígito) {
+        // esta función coloca o añade un dígito
+	      // en la pantalla de la calculadora
+      	if (document.calculadora.resultado.value == '0') {
+		      document.calculadora.resultado.value = dígito;
+      	} else {
+      		document.calculadora.resultado.value += dígito;
+				}
+			}
+
+////////////////////////////////////////////////////
+function limpiarResultado() {
+	// se limpia la pantalla
+	document.calculadora.resultado.value = "0";
+}
+
+///////////////////////////////////////////////////
+function introOperador(valor) {
+	// al pulsar uno de los operadores
+	// se supone que es una operación
+	// con dos operandos, por lo que
+	// se guarda el valor actual en pantalla
+	// que será el operando 1 de la siguiente
+	// operación aritmética
+	operando1 = parseFloat(document.calculadora.resultado.value);
+
+	// se guarda el operador elegido (+, -, *, etc.)
+	oper = valor
+
+	// se limpia la pantalla
+	limpiarResultado();
+}
+
+
+///////////////////////////////////////////////////
+function mostrarResultado(valor) {
+
+	// se muestra el valor calculado en pantalla
+	document.calculadora.resultado.value = valor;
+}
+
+
+function calc1(op) {
+	// las operaciones de un único operando utilizan
+	// esta función
+	if (document.calculadora.resultado.value.length > 0)  {
+
+		// Se obtiene el valor numérico desde
+		// la ventana de la calculadora
+
+		var operando1 =
+			parseFloat(document.calculadora.resultado.value);
+
+
+		with(Math) {
+
+			// operaciones unarias previstas
+			// todas con el objeto Math
+			// se pueden añadir fácilmente
+			// otras funciones
+
+			switch (op) {
+				// raíz cuadrada
+				case "RC":mostrarResultado(sqrt(operando1));
+					break;
+				// exponente
+				case "EXP":mostrarResultado(exp(operando1));
+					break;
+				// tangente
+				case "TANG":mostrarResultado(tan(operando1));
+					break;
+					// seno
+									case "SENO":mostrarResultado(sin(operando1));
+										break;
+									// coseno
+									case "COSENO":mostrarResultado(cos(operando1));
+										break;
+									// logaritmo
+									case "LOG":mostrarResultado(log(operando1));
+										break;
+									// defecto
+									default:
+										alert("¡Operación no esperada!");
+								}
+							}
+
+						} else {
+							alert("Introducir un número");
+						}
+					}
+
+					//////////////////////////////////////////////////
+					function calc2() {
+						// Esta función se utiliza al pulsar el botón "="
+						// se utiliza el valor memorizado, el último operador y el
+						// último valor introducido
+						if ((operando1 > 0) &&
+							(document.calculadora.resultado.value.length > 0)) {
+
+							// el segundo operando está en pantalla
+							var operando2 =
+								parseFloat(document.calculadora.resultado.value);
+
+							// operaciones básicas
+						switch (oper){
+							case "+":mostrarResultado(operando1 + operando2);
+								break;
+							case "-":mostrarResultado(operando1 - operando2);
+								break;
+							case "*":mostrarResultado(operando1 * operando2);
+								break;
+							case "/":
+								if (operando2 != 0) mostrarResultado(operando1 /
+									operando2);
+								break;
+							default:
+								alert("¡Operador no esperado!");
+						}
+						// poner a cero el operando 1
+						operando1 = 0;
+						}
+					}
+					</script>
+					<head>
+					<body   text=#000000>
+					<H1> Calculadora de ejemplo </H1>
+					<form name="calculadora">
+					<table>
+					<tr> <td colspan=6> <input type="text" name="resultado" value="0">
+					</td> </tr>
+					<tr>
+					<td> <input type="button" name="RC" value="SQRT"
+						onclick="calc1(this.name);"> </td>
+					<td> <input type="button" name="EXP" value="EXP"
+						onclick="calc1(this.name);">  </td>
+					<td> <input type="button" name="LOG" value="LOG"
+						onclick="calc1(this.name);">  </td>
+					</tr>
+					<tr>
+					<td> <input type="button" name="SENO" value="SENO"
+						onclick="calc1(this.name);">  </td>
+					<td> <input type="button" name="COSENO" value="COS"
+						onclick="calc1(this.name);">  </td>
+					<td> <input type="button" name="TANG" value="TAN"
+						onclick="calc1(this.name);">  </td>
+					</tr>
+					<tr>
+					<td> <input type="button" name="limpiar" value="MC"
+						onclick="window.calcMemoria='';"> </td>
+					<td> <input type="button" name="7" value="7"
+						onclick="introNro(this.value)">  </td>
+					<td> <input type="button" name="8" value="8"
+						onclick="introNro(this.value)">  </td>
+					<td> <input type="button" name="9" value="9"
+						onclick="introNro(this.value)">  </td>
+					<td> <input type="button" name="+" value="+"
+						onclick="introOperador(this.name)"> </td>
+					</tr>
+					<tr>
+					<td> <input type="button" name="recuperar" value="MR"
+						onclick="window.document.calculadora.resultado.value=
+						window.calcMemoria;"> </td>
+					<td> <input type="button" name="4" value="4"
+						onclick="introNro(this.value)"> </td>
+					<td> <input type="button" name="5" value="5"
+						onclick="introNro(this.value)">  </td>
+					<td> <input type="button" name="6" value="6"
+						onclick="introNro(this.value)">  </td>
+					<td> <input type="button" name="-" value="-"
+						onclick="introOperador(this.name)"> </td>
+					</tr>
+					<tr>
+					<td> <input type="button" name="guardar" value="MS"
+					onclick="window.calcMemoria=
+						parseFloat(window.document.calculadora.resultado.value)"> </td>
+					<td> <input type="button" name="1" value="1"
+						onclick="introNro(this.value)">  </td>
+					<td> <input type="button" name="2" value="2"
+						onclick="introNro(this.value)">  </td>
+					<td> <input type="button" name="3" value="3"
+						onclick="introNro(this.value)">  </td>
+					<td> <input type="button" name="*" value="*"
+						onclick="introOperador(this.name)"> </td>
+					</tr>
+					<tr>
+					<td> <input type="button" name="=" value="="
+							onclick="calc2()"> </td>
+					<td> <input type="button" name="0" value="0"
+							onclick="introNro(this.value)"> </td>
+					<td> <input type="button" name="decimal" value="."
+						onclick="introNro(this.value)"> </td>
+					<td> <input type="button" name="limpiar" value="LIMPIAR"
+						onclick="window.document.calculadora.resultado.value='0';
+						window.operando1=0;"> </td>
+					<td> <input type="button" name="/" value="/"
+						onclick="introOperador(this.name)"> </td>
+					</tr>
+		</table>
+</form>
+</body>
+</html>

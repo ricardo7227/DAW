@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Formateo de listas</title>
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="estilos.css" type="text/css">
+
+</head><body>
+<h1>Formateo de listas</h1>
+
+<a href="#como">Cómo funcionan las listas</a><br>
+
+<a href="#listas">Listas CSS</a><br>
+
+<a href="#tipos">Tipos de estilo de listas CSS (list-style-type)</a><br>
+
+<br>
+
+<h3><a name="como"></a>Cómo funcionan las listas</h3>
+
+<p>La propiedad display permite crear menús horizontales (listas
+horizontales) utilizándola de la forma:<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; li&nbsp; {display: inline;}<br>
+
+<h3><a name="listas"></a>Listas CSS</h3>
+
+<p>Los estilos en las listas mediante código CSS se realiza
+principalmente mediante el uso de las propiedades:<br>
+</p>
+
+<ul>
+
+  <li>list-style-type</li>
+  <li>list-style-image</li>
+  <li>list-style-position</li>
+</ul>
+
+<p>La propiedad concentradora list-style permite asignar los valores de
+las tres propiedades anteriores.</p>
+
+<p>Para crear una lista únicamente con código CSS se hace de la forma:</p>
+
+<table>
+
+  <tbody>
+    <tr>
+      <td>&nbsp; . . .<br>
+&nbsp; &lt;style
+type="text/css"&gt;<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; .item&nbsp;
+{display: list-item;}<br>
+&nbsp; &lt;/style&gt;<br>
+&nbsp;&nbsp; . . .<br>
+&nbsp; &lt;ul&gt;Lista
+desordenada sin etiquetas li: <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;p
+class="item"&gt;Tordillos&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;p
+class="item"&gt;Macotera&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;p
+class="item"&gt;Peñarandilla&lt;/p&gt;<br>
+&nbsp;&nbsp; &lt;/ul&gt; </td>
+      <td>
+      <ul>
+Lista desordenada sin etiquetas li:&nbsp;
+        <p class="elemento">Tordillos</p>
+        <p class="elemento">Macotera</p>
+        <p class="elemento">Peñarandilla</p>
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3><a name="tipos"></a>Tipos de estilo de listas CSS
+(list-style-type)</h3>
+
+<p>La propiedad list-style-type permite seleccionar el tipo de lista,
+junto con la marca (viñeta, imagen, número, etc.) que acompaña a cada
+elemento de la lista. Los valores que puede tomar son: armenian,
+circle, cjk-ideographic, decimal, decimal-leading-zero, disc,
+lower-alpha, lower-greek, lower-latin, lower-roman, georgian, katakana,
+katakana-iroha, hebrew, hiragana, hiragana-iroha, none, square,
+upper-alpha, uper-greek, upper-latin y upper-roman.<br>
+</p>
+
+<p>Así, un ejemplo de lista numerada sería:<br>
+</p>
+
+<table>
+
+  <tbody>
+    <tr>
+      <td>&nbsp; . . .<br>
+&nbsp; &lt;style
+type="text/css"&gt;<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; .tipo1&nbsp;
+{list-style-type: decimal;}<br>
+&nbsp; &lt;/style&gt;<br>
+&nbsp;&nbsp; . . .<br>
+&nbsp; &lt;ol class="tipo1"&gt;Lista ordenada con etiquetas li: <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;li&gt;Tordillos&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;li&gt;Macotera&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;li&gt;Peñarandilla&lt;/li&gt;<br>
+&nbsp;&nbsp; &lt;/ol&gt; </td>
+      <td>
+      <ol class="tipo1">
+Lista ordenada con etiquetas li:<br>
+        <br>
+        <li>Tordillos</li>
+        <li>Macotera</li>
+        <li>Peñarandilla</li>
+      </ol>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Puede hacerse que uno o varios elementos de la lista tengan
+marcadores diferentes. Basta con meter dentro de la etiqueta li el estilo deseado.<br>
+</p>
+<p>La propiedad <span style="color: red;">list-style-position</span> permite decidir
+si las viñetas se colocarán un poquito apartadas de los elementos o no.
+Los posibles valores son: outside (apartado) o inside (integrado).<br>
+</p>
+<p>La propiedad <span style="color: red;">list-stype-image</span> permite especificar la&nbsp; dirección url de un fichero con una imagen a utilizar como viñeta. Un par de ejemplos de uso de esta propiedad son:<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  .milista {list-style-image: url("mifichero.jpg");}<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;li style="list-style-image: url("mifichero.jpg")"&gt;Tordillos&lt;li&gt;</body></html>

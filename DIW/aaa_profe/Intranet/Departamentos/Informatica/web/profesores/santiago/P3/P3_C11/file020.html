@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<HTML>
+<BODY>
+<script type="text/javascript">
+// archivo Parte 3/code/file020.html : evento onClick
+function eventoClick(ev) {
+	// listado de las propiedades del evento
+	var texto="Evento onClick en el navegador " +
+		navigator.appName +"\n\n";
+	// si existe el objeto event, lo utiliza
+	// en caso contrario usa el objeto pasado
+	// por parámetro
+	if (window.event) {
+		texto+= "Usa objeto event\n";
+		for (i in event) {
+			texto+=i+ " = " + event[i]+ "\n";
+		}
+	} else {
+		texto+= "Usa objeto ev pasado por parámetro\n";
+		for (i in ev) {
+			texto+=i+ " = " + ev[i]+ "\n";
+		}
+	}
+	// muestra la lista de propiedades del
+	// objeto evento
+	alert(texto);
+}
+document.onclick=eventoClick;
+
+</script>
+</BODY>
+</HTML>

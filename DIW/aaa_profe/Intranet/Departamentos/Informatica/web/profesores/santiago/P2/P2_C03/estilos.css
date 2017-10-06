@@ -1,0 +1,21 @@
+header, nav, footer, article {display:block;}
+header {height: 50px;
+        text-align: center;
+        background:#BBFFAD;
+        font-weight: inherit;
+        color: #6600cc;
+        font-size: xx-large;
+  	}
+nav {float:left;
+    width:20%;
+    background:#FFDCFA;
+    }
+article {background-color : #FFFCBD;
+         float : right;
+         text-align : justify;
+         width : 80%;
+         }
+footer {clear:both;
+        background:#C4FFF6;
+        }
+nav a {font-size: 12px;}

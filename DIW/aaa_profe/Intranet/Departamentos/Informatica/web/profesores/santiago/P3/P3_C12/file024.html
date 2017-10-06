@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<form name="testform">
+Valor sólo numérico : <input type="text" name="importe">
+</form>
+<script type="text/javascript">
+// archivo Parte 3/code/file024.html : 
+document.write(verNavegador(), "<br />");
+document.forms["testform"].elements["importe"].onkeypress = 
+	validarTeclado;
+
+function verNavegador() {
+	// convierte a minúsculas
+	var strNaveg = navigator.userAgent.toLowerCase();
+
+	var strTest = strNaveg.indexOf("msie");
+	if (strTest>= 0) {return "msie";};
+
+	strTest = strNaveg.indexOf("netscape");
+	if (strTest>= 0) {return "netscape";};
+
+	strTest = strNaveg.indexOf("firefox");
+	if (strTest>= 0) {return "firefox";};
+
+	strTest = strNaveg.indexOf("opera");
+	if (strTest>= 0) {return "opera";};
+
+	return false;
+}
+
+function validarTeclado(e) {
+	var strNaveg = verNavegador();
+	var tecla = "";
+	var testTecla = false;
+	var teclasOK = "0123456789";
+
+	switch (strNaveg) {
+		case "msie":
+			tecla = String.fromCharCode(event.keyCode);
+			if (teclasOK.indexOf(tecla)>=0) {testTecla = true;};
+			break;
+		case "netscape":
+			tecla = String.fromCharCode(e.which);
+			if (teclasOK.indexOf(tecla)>=0) {testTecla = true;};
+			if ((e.which == 0) && (e.keyCode> 0)  || 
+				(e.which == 8)) {
+				return true;
+			}
+			break;
+		case "firefox":
+			tecla = String.fromCharCode(e.charCode);
+			if (teclasOK.indexOf(tecla)>=0) {testTecla = true;};
+			if ((e.charCode == 0) && (e.keyCode> 0)) {
+				return true;
+			}
+			break;
+		default:
+	// no puede validar
+			return false;
+	}
+	if (testTecla) {
+		if (document.forms["testform"].elements["importe"].value.length < 2) 
+		{
+			document.forms["testform"].elements["importe"].value+=
+				tecla;
+		}
+	}
+	return false; 
+}
+</script>
+</html>

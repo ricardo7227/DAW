@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Objeto form</title>
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+</head>
+<body>
+<header>
+<p id="cabecera">Objeto form</p>
+</header>
+<nav>
+<a href="#formulario">El formulario HTML visto desde JavaScript</a><br>
+<br>
+<a href="#objeto">Objeto form</a><br>
+<br>
+<a href="#componentes">Componentes del formulario HTML</a>
+<ul>
+  <li><a href="#text">Objeto input text</a></li>
+  <li><a href="#button">Objeto input button</a></li>
+  <li><a href="#submit">Objeto input submit</a></li>
+  <li><a href="#hidden">Objeto input hidden</a></li>
+  <li><a href="#password">Objeto input password</a></li>
+  <li><a href="#radio">Objeto input radio</a></li>
+  <li><a href="#checkbox">Objeto input checkbox</a></li>
+  <li><a href="#file">Objeto input file</a></li>
+  <li><a href="#textarea">Objeto textarea</a></li>
+  <li><a href="#select">Objeto select</a></li>
+</ul>
+<a href="#seguridad">Seguridad en la entrada de datos</a><br>
+<br>
+<a href="#tipos">Tipos de ataques a la seguridad</a><br>
+</nav>
+<article>
+<h3><a name="formulario"></a>El formulario HTML visto desde JavaScript</h3>
+
+&nbsp;&nbsp;&nbsp; Los datos introducidos en los diferentes elementos
+de un formulario pueden ser validados en el navegador del cliente para
+evitar comunicaciones inecesarias con el servidor. La capacidad de
+validación en el cliente es limitada dado que, por ejemplo, no puede
+acceder a bases de datos. JavaScript puede detectar campos vacíos,
+datos no numéricos, verificar formatos mediante expresiones regulares,
+combinaciones de valores no permitidas, valores fuera de rango, fechas
+incorrectas, etc.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Los formularios son puntos de entrada a los datos de
+las aplicaciones web y por lo tanto son el primer objetivo de los
+hackers. El uso de formularios tiene asociado cierto nivel de riesgo de
+seguridad para el sitio web y los datos asociados por lo que el código
+del servidor deberá preveerlo y no confiar abiertamente en los datos
+recibidos desde los formularios del cliente.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Hay que tener en cuenta que si el usuario tiene
+deshabilitado el uso de JavaScript, los datos del formulario pueden
+llegar al servidor sin validar.<br>
+
+<h3><a name="objeto"></a>Objeto form</h3>
+
+&nbsp;&nbsp;&nbsp; Para acceder al contenido de un formulario desde
+dentro de JavaScript se puede utilizar la lista de objetos form que
+está relacionada con el objeto document. El acceso puede hacerse
+utilizando un índice o el nombre del formulario:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.forms[0]<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.forms["nombreFormulario"]</p>
+
+&nbsp;&nbsp;&nbsp; No se recomienda el acceso mediante el índice porque
+puede cambiar si se modifica la página posteriormente. También se
+admite la siguiente sintaxis:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.nombreFormulario</p>
+
+&nbsp;&nbsp;&nbsp; El objeto form es el tipo de dato que conforma el
+array forms del objeto document.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; A continuación se analizan los métodos y propiedades
+que básicamente emulan lo que puede hacerse con código HTML.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Métodos del objeto
+form</span><br>
+
+<ul>
+
+  <li>submit().- similar a la acción del botón Submit de HTML.
+Desencadena el proceso del formulario por parte de la página indicada
+en el atributo action.</li>
+  <li>reset().- similar a la acción del botón Reset. Inicializa los
+campos con sus valores originales.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Propiedades del
+objeto form</span><br>
+
+<ul>
+
+  <li>name.- nombre del formulario. Es el que se utiliza para acceder a
+la tabla de objetos forms. Es similar al atributo name de la etiqueta
+form de HTML.</li>
+  <li>action.- dirección de la página que se ejecutará al pulsar el
+botón Submit o al llamar al método submit(). Esa página recibirá los
+datos del formulario.</li>
+  <li>method.- método utilizado para enviar los datos del formulario.
+Los valores posibles son: get (los datos se envían como parámetros
+dentro de la dirección de la página de destino) y post (los datos se
+transmiten ocultos). Los inconvenientes del método get son que los
+valores, al ir en la dirección, son visibles y modificables y tienen un
+tamaño limitado que depende del servidor.</li>
+  <li>enctype.- tipo de codificación.</li>
+  <li>target.- ventana destino del formulario. Es útil en una página
+formada por múltiples ventanas.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Eventos del objeto
+form</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Un formulario puede producir dos tipos de eventos:<br>
+
+<ul>
+
+  <li>onSubmit .- se produce al enviarse el formulario al servidor.</li>
+  <li>onReset .- se produce al inicializar el formulario.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; La etiqueta &lt;FORM&gt; puede tener la forma:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;form ... action="pagina_de_envío" ... onsubmit="codigo_javascript"
+...&gt;</p>
+
+&nbsp;&nbsp;&nbsp; La forma de evitar que los datos del formulario se
+envíen a la página especificada en el atributo action es que el
+resultado del código javascript sea "return false". Así, es típico que
+dicho código tenga la forma:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+onsubmit="return validacion()"</p>
+
+&nbsp;&nbsp;&nbsp; donde validacion() es una función que devolverá true
+si los datos son válidos y false en caso contrario.<br>
+
+&nbsp;<br>
+
+&nbsp;&nbsp;&nbsp; Una ampliación sobre la forma de validación de la
+información introducida y el uso de estos eventos, que se recomienda
+leer encarecidamente, puede encontrarse en el documento <a href="http://www.librosweb.es/javascript/capitulo7/validacion.html">
+http://www.librosweb.es/javascript/capitulo7/validacion.html</a> (aquí
+en <a href="Validacion.pdf">formato pdf</a>) y en el ejemplo y
+explicación posterior de la
+pág. 517.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; De forma similar se puede utilizar "<span class="codigo">onreset="return inicializar()"</span>".<br>
+
+<h3><a name="componentes"></a>Componentes del formulario HTML</h3>
+
+&nbsp;&nbsp;&nbsp; Los elementos que se puden incluir en un formulario
+son: button, checkbox, file, hidden, password, radio, select, submit,
+text y textarea.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Todos los elementos que componen el formulario son
+accesibles desde JavaScript mediante la lista de objetos "elements" y
+utilizando el nombre asignado a través del atributo "name" (también
+puede utilizarse un índice), por ejemplo:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.forms["miFormulario"].elements["miElemento"]</p>
+
+&nbsp;&nbsp;&nbsp; Para acceder a sus propiedades:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.forms["miFormulario"].elements["miElemento"].value</p>
+
+&nbsp;&nbsp;&nbsp; Para acceder a sus métodos:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.forms["miFormulario"].elements["miElemento"].focus()</p>
+
+&nbsp;&nbsp;&nbsp; Los métodos y propiedades disponibles pueden variar
+para cada uno de los elementos HTML.<br>
+
+<h4><a name="text"></a>Objeto input text</h4>
+
+&nbsp;&nbsp;&nbsp; Este elemento puede tener la forma:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;form name="miFormulario" method="post" action="miPagina.html"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;input
+type="text" name="miDato" value="valorPredeterminado"/&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &lt;/form&gt;</p>
+
+&nbsp;&nbsp;&nbsp; Para hacer referencia a este dato desde JavaScript
+puede utilizarse la sintaxis:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.forms["miFormulario"].elements["miDato"]</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Propiedades del
+objeto</span><br>
+
+<ul>
+
+  <li>value.- contiene el valor y puede ser modificado desde JavaScript.</li>
+  <li>defaultValue.- devuelve el valor inicial.</li>
+  <li>maxLength.- devuelve el valor del atributo maxlength y es
+modificable en tiempo de ejecución.</li>
+  <li>form.- referencia directa al formulario en el que se encuentra el elemento.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Métodos del objeto</span><br>
+
+<ul>
+
+  <li>blur() .- provoca la pérdida del foco impidiendo así la
+posibilidad de escribir sobre el campo hasta que vuelva a situarse el
+cursor sobre el mismo.</li>
+  <li>focus() .- fuerza el foco sobre el campo para que se pueda
+escribir sobre él. Es útil para colocar el cursor sobre un campo que,
+por ejemplo, tiene un error de validación.</li>
+  <li>select() .- enfoca el campo yselecciona su contenido. La entrada
+de datos reemplazará el contenido completo anterior.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Eventos del objeto</span><br>
+
+<ul>
+
+  <li>onBlur() .- al perder el foco por hacer clic en otro elemento, al
+usar la tecla &lt;Tab&gt; o al llamar al método blur().</li>
+  <li>onChange() .- al cambiar el foco después de haber modificado el
+valor.</li>
+  <li>onFocus() .- al recibir el foco mediante clic, &lt;Tab&gt; o
+focus().</li>
+  <li>onKeyDown() .- al pulsar una tecla mientras tiene el foco.</li>
+  <li>onKeyPress() .- al pulsar una tecla mientras tiene el foco.
+Sucede de forma posterior a onKeyDown().<br>
+  </li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; A continuación se muestra el código y el efecto de
+utilizar el evento onfocus para limpiar un campo de entrada:<br>
+
+<br>
+
+<table style="text-align: left; width: 90%;" align="center" border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+      <td class="codigo" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&lt;form
+name="miFormulario"&gt;<br>
+&nbsp;&nbsp; &nbsp; Nombre de usuario: <br>
+&nbsp;&nbsp; &nbsp; &lt;input type="text" value="Introduzca nombre"
+onfocus="this.value=''"/&gt;<br>
+&nbsp;&nbsp; &lt;/form&gt;<br>
+      </td>
+      <td style="vertical-align: top;">
+      <form name="miFormulario"><br>
+&nbsp;&nbsp;&nbsp;Nombre de usuario: <input name="miDato" value="Introduzca nombre" onfocus="this.value=''" type="text"><br>
+      </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4><a name="button"></a>Objeto input button</h4>
+
+&nbsp;&nbsp;&nbsp; Las propiedades, métodos y eventos del apartado
+anterior también están disponibles para este objeto, con la diferencia
+que la propiedad value define el texto que aparece en el botón.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El objeto button dispone, ademas, de:<br>
+
+<ul>
+
+  <li>El método click(), que tiene el mismo efecto que hacer clic sobre
+él.</li>
+  <li>El evento onClick(), que se produce al hacer clic sobre el botón
+con el ratón, al pulsar &lt;Intro&gt; cuando tiene el foco o al
+ejecutarse el método click().<br>
+  </li>
+</ul>
+
+<br>
+
+<table style="text-align: left; width: 90%;" align="center" border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+      <td class="codigo" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&lt;form
+name="miFormulario2"&gt;<br>
+&nbsp;&nbsp; &nbsp; Nombre de usuario: <br>
+&nbsp;&nbsp; &nbsp; &lt;input type="text" value="Introduzca nombre"<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name="miDato2"
+onfocus="this.value=''"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;input type="button" value="Asteriscos"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+onclick="javascript:document.forms['miFormulario2'].<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
+elements['miDato2'].value='**********'";&gt;<br>
+&nbsp;&nbsp; &lt;/form&gt;<br>
+      </td>
+      <td style="vertical-align: top;">
+      <form name="miFormulario2"><br>
+&nbsp;&nbsp;&nbsp;Nombre de usuario: <input name="miDato2" value="Introduzca nombre" onfocus="this.value=''" type="text"><br>
+&nbsp;&nbsp;&nbsp;<input value="Asteriscos" onclick="javascript: document.forms['miFormulario2'].elements['miDato2'].value='**********';" type="button"></form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4><a name="submit"></a>Objeto input submit</h4>
+
+&nbsp;&nbsp;&nbsp; Este botón tiene los mismos métodos, eventos y
+propiedades que el objeto de tipo button y además tiene el evento
+onSubmit. Al pulsar este botón se envian los datos del formulario para
+su proceso en el servidor. Cuando se hace clic en este botón se produce
+el evento onSubmit.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp; Este botón también dispone del evento onClick
+pero se aconseja gestionarlo mediante onSubmit para no generar
+confusiones.<br>
+
+<h4><a name="button"></a>Objeto input hidden</h4>
+
+&nbsp;&nbsp;&nbsp; Con "&lt;input type="hidden" ... /&gt; se pueden
+definir datos que no se mostrarán en el formulario pero que se enviarán
+con el formulario al servidor. Ver ejemplo en pág. 522.<br>
+
+<h4><a name="button"></a>Objeto input password</h4>
+
+&nbsp;&nbsp;&nbsp; Es un campo de entrada similar al tipo text con la
+particularidad que los caracteres tecleados se ocultan mediante
+asteriscos o puntos. JavaScript incluye el objeto password que se
+ajusta a este comportamiento.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Con Firefox se puede utilizar Web Developer para
+ordenar que se muestren las contraseñas (Web Developer - Formularios -
+Mostrar contraseñas).<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Además, los navegadores actuales incluyen la gestión
+de contraseñas con posibilidad de recordarlas para su uso futuro. La
+gestión automatizada se activa cuando se utiliza un campo de tipo
+password.<br>
+
+<h4><a name="radio"></a>Objeto input radio</h4>
+
+&nbsp;&nbsp;&nbsp; Del objeto input radio recordar que para seleccionar
+una opción deberá pulsarse sobre el control. Si se desea que la leyenda
+adjunta al control sea sensible a la pulsación deberá añadirse
+la etiqueta label, de la forma:<br>
+
+<br>
+
+<table style="text-align: left; width: 90%;" align="center" border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+      <td class="codigo" style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&lt;form
+name="miFormulario3" method="get" action="pagina.html"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+type="radio" name="pago" value="1" id="efectivo"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label
+for="efectivo"&gt;Efectivo&lt;/label&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+type="radio" name="pago" value="2" id="tarjeta" checked&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label
+for="tarjeta"&gt;Tarjeta&lt;/label&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+type="radio" name="pago" value="3" id="contrarembolso"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label
+for="contrarembolso"&gt;Contrarembolso&lt;/label&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;input type="submit"
+value="Aceptar"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;/form&gt; </td>
+      <td style="vertical-align: top;"><br>
+      <form name="miFormulario3" method="get" action="pagina.html">&nbsp;&nbsp;<input name="pago" value="1" id="efectivo" type="radio"> <label for="efectivo"> Efectivo</label><br>
+&nbsp;&nbsp;<input name="pago" value="2" id="tarjeta" checked="checked" type="radio"> <label for="tarjeta"> Tarjeta</label><br>
+&nbsp;&nbsp;<input name="pago" value="3" id="contrarembolso" type="radio"> <label for="contrarembolso"> Contrarembolso</label><br>
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<input value="Aceptar" type="button"> </form>
+      <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Si se incluye el atributo checked en más de un
+elemento solamente tendrá efecto el último.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Si además se quiere añadir un botón para validar que
+se ha seleccionado una opción y la función correspondiente, tendríamos:<br>
+
+<br>
+
+<table style="text-align: left; width: 90%;" align="center" border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+      <td class="codigo" style="vertical-align: top;">&nbsp;&nbsp;
+&lt;script language="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; function comprobar(miForm) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+for (var i = 0; i &lt; miForm.pago.length; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (miForm.pago[i].checked) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+return true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+alert("Debe elegir una opción");<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; return false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp; &lt;/script&gt;<br>
+&nbsp;&nbsp; &lt;form
+name="miFormulario4" method="get" action="pagina.html"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+type="radio" name="pago" value="1" id="efectivo"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label
+for="efectivo"&gt;Efectivo&lt;/label&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+type="radio" name="pago" value="2" id="tarjeta"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label
+for="tarjeta"&gt;Tarjeta&lt;/label&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+type="radio" name="pago" value="3" id="contrarembolso"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label
+for="contrarembolso"&gt;Contrarembolso&lt;/label&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;input type="button"
+value="Validar" onclick="comprobar(this.form)"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;input type="submit"
+value="Aceptar"/&gt;<br>
+&nbsp;&nbsp; &lt;/form&gt; </td>
+      <td style="vertical-align: top;"><br>
+      <script language="javascript">
+     function comprobar(miForm) {
+             for (var i = 0; i < miForm.pagos.length; i++) {
+                 if (miForm.pagos[i].checked) {
+                    return true;
+                 }
+             }
+             alert("Debe elegir una opción");
+             return false;
+     }
+   </script>
+      <form name="miFormulario4" method="get" action="pagina.html">&nbsp;&nbsp;<input name="pagos" value="1" id="efectivo" type="radio"> <label for="efectivo"> Efectivo</label><br>
+&nbsp;&nbsp;<input name="pagos" value="2" id="tarjeta" type="radio"> <label for="tarjeta"> Tarjeta</label><br>
+&nbsp;&nbsp;<input name="pagos" value="3" id="contrarembolso" type="radio"> <label for="contrarembolso"> Contrarembolso</label><br>
+        <br>
+&nbsp;&nbsp;<input value="Validar" onclick="comprobar(this.form)" type="button">
+&nbsp;&nbsp;<input value="Aceptar" type="submit"> </form>
+      <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Puede observarse que al pulsar sobre el botón
+"Validar" se produce el evento onclick y se ejecuta la función
+comprobar(), que recorre los controles y se muestra un mensaje en el
+caso de que no haya sido seleccionado ninguno.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Recordar que el atributo disabled de las etiquetas
+input permite deshabilitar los controles, que se mostrarán en gris y no
+se permitirá su selección.<br>
+
+<h4><a name="checkbox"></a>Objeto input checkbox</h4>
+
+&nbsp;&nbsp;&nbsp; Observar el ejemplo siguiente, donde se utilizaun
+formulario con cuatro controles de tipo checkbox, uno de ellos
+desactivado. Incluye una validación para que sean uno o dos los cuadros
+seleccionados; en caso contrario muestra un mensaje de error.<br>
+
+<br>
+
+<table style="text-align: left; width: 90%;" align="center" border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;" class="codigo" width="75%">&nbsp;&lt;script
+type="text/javascript"&gt; <br>
+&nbsp;&nbsp; function comprobarOp(Miformu) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; var q = 0; <br>
+&nbsp; &nbsp; &nbsp; &nbsp; for (var i = 0; i &lt;
+Miformu.elements["regalos"].length; i++) { <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if
+(Miformu.elements["regalos"][i].checked) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+q++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+} <br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; } <br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; if (q == 0) { <br>
+&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; alert("Al menos debe
+elegir 1 opción"); <br>
+&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+Miformu.elements["regalos"][0].focus; <br>
+&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return false; <br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; } <br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; if (q &gt; 2) { <br>
+&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; alert("Puede elegir hasta
+2 opciones"); <br>
+&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+Miformu.elements["regalos"][0].focus; <br>
+&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return false; <br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; } <br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; return true; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&lt;/script&gt; <br>
+&nbsp;<br>
+&nbsp;&lt;form name="miFormulario5" method="post"
+action="otraPage.html"&gt; <br>
+&nbsp;&nbsp; &lt;input type="checkbox" name="regalos" value="1"
+id="balon" &gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;label for="balon"&gt;
+Balón&lt;/label&gt;&lt;br /&gt; <br>
+&nbsp;&nbsp; &lt;input type="checkbox" name="regalos" value="2"
+id="pelota" &gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;label for="pelota"&gt;
+Pelota&lt;/label&gt;&lt;br /&gt; <br>
+&nbsp;&nbsp; &lt;input type="checkbox" name="regalos" value="3"
+id="bici" disabled&gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;label for="bici"&gt;
+Bicicleta&lt;/label&gt;&lt;br /&gt; <br>
+&nbsp;&nbsp; &lt;input type="checkbox" name="regalos" value="4"
+id="raqueta" &gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;label for="raqueta"&gt;
+Raqueta&lt;/label&gt;&lt;br /&gt; <br>
+&nbsp;<br>
+&nbsp;&nbsp; &lt;input type="button" value="Validar"
+onclick="comprobarOp(this.form)"&gt; <br>
+&nbsp;&lt;/form&gt;<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      <br>
+      <script type="text/javascript">
+   function comprobarOp(Miformu) {
+        var q = 0;
+        for (var i = 0; i < Miformu.elements["regalos"].length; i++) {
+             if (Miformu.elements["regalos"][i].checked) {
+                q++;
+             }
+        }
+        if (q == 0) {
+           alert("Al menos debe elegir 1 opción");
+           Miformu.elements["regalos"][0].focus;
+           return false;
+        }
+        if (q > 2) {
+           alert("Puede elegir hasta 2 opciones");
+           Miformu.elements["regalos"][0].focus;
+           return false;
+        }
+        return true;
+   }
+ </script>
+      <form name="miFormulario5" method="post" action="otraPage.html">&nbsp;&nbsp;<input name="regalos" value="1" id="balon" type="checkbox"> <label for="balon"> Balón</label><br>
+&nbsp;&nbsp;<input name="regalos" value="2" id="pelota" type="checkbox">
+        <label for="pelota"> Pelota</label><br>
+&nbsp;&nbsp;<input name="regalos" value="3" id="bici" disabled="disabled" type="checkbox"> <label for="bici"> Bicicleta</label><br>
+&nbsp;&nbsp;<input name="regalos" value="4" id="raqueta" type="checkbox">
+        <label for="raqueta"> Raqueta</label><br>
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input value="Validar" onclick="comprobarOp(this.form)" type="button"> </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<h4><a name="file"></a>Objeto input file</h4>
+
+&nbsp;&nbsp;&nbsp; El tipo de entrada de datos "file" de la etiqueta
+&lt;input&gt; permite seleccionar un archivo del disco para subirlo al
+servidor. Este tipo de control lleva adjunto un botón Examinar para que
+el usuario elija la ruta de acceso del archivo. Para la transferencia
+del archivo el formulario utiliza un método de codificación mediante el
+atributo enctype de la etiqueta form, por ejemplo:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;form . . . enctype="multipart/form-data"&gt;</p>
+
+&nbsp;&nbsp;&nbsp; Esto le indica al navegador que la transmisión del
+archivo se hace por partes. Un sitio web no puede acceder a un archivo
+del disco duro del cliente sin autorización. La propiedad value de una
+etiqueta <span class="codigo">&lt;input type="file"&gt;</span> no es
+modificable ni puede tener
+valor inicial.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Con el siguiente código se puede subir un archivo
+desde el cliente al servidor:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;form method="post" action="/cgi-bin/uploads.cgi"
+enctype="multipart/form-data"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Elegir el
+documento para subir al servidor&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;input
+type="file" name="upfile"
+accept="text/html"&gt;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;input
+type="submit" value="Subir archivo"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/form&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado es el siguiente:<br>
+
+<br>
+
+<table style="text-align: left; width: 50%;" align="center" border="1" cellpadding="20" cellspacing="0">
+
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+      <form method="post" action="/cgi-bin/uploads.cgi" enctype="multipart/form-data"> Elegir el documento para subir al
+servidor<br>
+        <input name="upfile" accept="text/html" type="file">&nbsp;&nbsp;&nbsp;
+&nbsp;<input value="Subir archivo" type="submit"> </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<h4><a name="textarea"></a>Objeto textarea</h4>
+
+&nbsp;&nbsp;&nbsp; La etiqueta textarea de HTML permite introducir
+cadenas de texto largas, de varias líneas. Esta etiqueta no pertenece
+al grupo input, como los elementos anteriores.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La cadena de texto se puede definir con el atributo
+value, teniendo en cuenta que los saltos de línea se especifican con /n.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; En el siguiente ejemplo se hace una validación de la
+cantidad de caracteres introducidos:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;script language="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; function
+validar() {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; if (document.miForm6.datos6.value.length) &gt; 200 {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; alert("Excede la longitud de
+texto permitida");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;form
+name="miForm6" method="get" action="pagina.html"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+&lt;textarea name="datos6" style="width: 300px; height: 150px;"<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; onblur="validar()"
+value=""&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/textarea&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&lt;br/&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;input type="submit" value="Enviar"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/form&gt;<br>
+</p>
+
+<h4><a name="select"></a>Objeto select</h4>
+
+&nbsp;&nbsp;&nbsp; Mediante la etiqueta &lt;select&gt; definimos las
+listas desplegables. Cada elemento de la lista tiene un valor y un
+texto asociados: el usuario elige la opción por el texto y el programa
+utiliza el valor asociado para su proceso (empezando por 0).<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El objeto select tiene las propiedades:<br>
+<ul>
+  <li>size.- número de líneas u opciones que se visualizan (por defecto 1).</li>
+  <li>options.- matriz de elementos de tipo Option; cada elemento posee sus
+propiedades:</li>
+  <ul>
+    <li>value.- valor definido dentro del atributo value de la etiqueta option.</li>
+    <li>text.- texto que aparece en la lista.</li>
+    <li>defaultSelected.- valor true o false que indica si el elemento está
+seleccionado con el atributo selected en la etiqueta option.</li>
+    <li>selected.- valor booleano que indica si la línea está seleccionada.</li>
+  </ul>
+  <li>selectedIndex.- indica el índice de la primera línea seleccionada dentro de la
+lista. El índice 0 corresponde al primer elemento de la lista y -1
+indica que no hay elementos seleccionados.</li>
+  <li>multiple.- esta propiedad permite utilizar listas de selección de más
+de un elemento de la lista de opciones. Es el equivalente al atributo
+"multiple" y si no se especifica se presupone selección única.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Control de
+visibilidad por código.</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; A continuación se expone un ejemplo que utiliza una
+lista de tal forma que cuando el usuario selecciona un elemento
+particular (por ejemplo España) se requerirá que informe datos
+adiccionales (por ejemplo un teléfono). Esto se resuelve creando un
+campo que solo se hace visible cuando el usuario elige la opción España.<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &lt;!DOCTYPE HTML&gt; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;html&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;body&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;script type="text/javascript"&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; function opcionTelefono(lista) {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp;
+lista.form.telefono.style.visibility="hidden";
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; //&nbsp; Para España
+requiere el número de teléfono
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp; if (lista.options[lista.selectedIndex].value
+== 1) {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+lista.form.telefono.style.visibility="visible";
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+lista.form.telefono.select();
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+&lt;/script&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+&lt;form name="miForm1" method="get" action="otraPage.html"&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Elegir país o países a los que se envían
+los pedidos:
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;select name="miLista" size="5"
+onChange="opcionTelefono(this)"&gt;
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;option
+value="0"&gt;Andorra&lt;/option&gt;
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;option
+value="1"&gt;España&lt;/option&gt;
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;option
+value="2"&gt;Francia&lt;/option&gt;
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;option
+value="3"&gt;Italia&lt;/option&gt;
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;option
+value="4"&gt;Portugal&lt;/option&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/select&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;input type="text" name="telefono"
+value="informar teléfono aquí" style="visibility:hidden"&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;input type="submit"
+value="Enviar"&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &lt;/form&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/body&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/html&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; El resultado puede verse pinchando <a href="file030.html">aquí</a>.<br>
+
+<h3><a name="seguridad"></a>Seguridad en la entrada de datos</h3>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Primera línea de
+protección</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; JavaScript permite realizar validaciones y controles
+en el lado del clientes para establecer una primera línea de protección
+(precaria) contra las amenazar y navegantes malintencionados. Pero el
+usuario puede desactivar el uso de JavaScript en el navegador para que
+esos controles no se realicen y que los datos que se envíen al servidor
+provoquen algún error que abra una brecha de seguridad en el mismo. Un
+objetivo de los jackers es provocar fallos no esperados para buscar las
+brechas de seguridad del sitio web.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Segunda línea de
+protección</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; En el diseño de una aplicación web debe estar
+totalmente asumido que absolutamente todos los datos que entren en la
+aplicación, por cualquier medio (formularios, cookies, parámetros en la
+dirección de la página, etc.) pueden ser peligrosos y con el objetivo
+de producir fallos. En esta segunda línea de protección se deben
+verificar los datos entrantes, independientemente de lo que haya podido
+hacer el código JavaScript en el cliente.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Riesgos clásicos</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Cuando se permite que desde el cliente se envíen
+ficheros al servidor debe controlarse el tipo, el formato, etc. antes
+de su utilización. Por lo general, los lenguajes de programación
+utilizados en la parte servidor disponen de funciones de verificación
+que detectan ciertas propiedades y contenido de los archivos. No es
+suficiente validar únicamente la extensión del archivo.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Otro problema clásico son las sentencias mal
+protegidas. Por ejemplo, si para controlar el inicio de sesión del
+usuario administrador se utiliza la siguiente sentencia SQL:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+SELECT * FROM Administrador WHERE psw="parametro"</p>
+
+&nbsp;&nbsp;&nbsp; donde parametro es un dato pasado en el formulario,
+un hacker podría pasar como parámetro <span class="codigo">xxx" OR "1</span> y la sentencia
+anterior quedaría de la forma:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+SELECT * FROM Administrador WHERE psw="xxx" OR "1"</p>
+
+&nbsp;&nbsp;&nbsp; que siempre encuentra una fila de datos ya que <span class="codigo">OR "1"</span> siempre se cumple.<br>
+<br>
+&nbsp;&nbsp;&nbsp; No hay sitio web, por muy pequeño y simple que sea,
+que esté a salvo de los hackers. Y podrá ser atacado de forma manual o
+automatizada.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Los riesgos del código abierto</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; El código abierto puede ser analizado por cualquiera
+para buscar las brechas de seguridad que presenta. Una vez encontradas,
+puede rastrearse qué servidores tienen implementado dicho código. El
+siguiente paso es fácil de imaginar.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si se utiliza este tipo de software debe mantenerse
+actualizado porque generalmente las actualizaciones subsanan este tipo
+de problemas.<br>
+
+<h3><a name="tipos"></a>Tipos de ataques a la seguridad</h3>
+
+<ul>
+  <li>XSS Cross Site Scripting.- es la inserción de scripts
+(JavaScripts, VBScripts, JScripts, etc.) maliciosos en páginas web de
+sitios web en los que el usuario confía, con el objetivo de robar
+información, contraseñas, etc.</li>
+  <li>Denegación de servicio.- ataque que busca agotar (colapsar) los
+recursos de un servidor (ancho de banda, procesador, memoria, etc.)
+para impedir que los usuarios puedan acceder al servidor.</li>
+  <li>Spam.- envío masivo de mensajes no solicitados.</li>
+  <li>Spoofing.- intento de asumir la identidad de otro usuario o de
+hacer creer que se accede desde una dirección ip distinta a la real.</li>
+  <li>Phishing.- es una variedad de spoofing. Es el intento de obtención de datos personales o confidenciales de modo fraudulento.</li>
+  <li>Hijacking.- intento de tomar el control de una sesión de una aplicación web que pertenece a un usuario debidamente autenticado.</li>
+  <li>Brechas CGI.- el código CGI, normalmente en C, no tiene el nivel
+de protección que otros lenguajes del servidor, por lo que hay grandes
+posibilidades de dejar brechas de seguridad.</li>
+  <li>Troyanos.- Software malicioso integrado en un programa legítimo.</li>
+  <li>Virus.- es un programa que se puede replicar para propagarse. Su
+acción depende del tipo de virus, pueden ser inofensivos o muy
+destructivos. Se transmiten en ficheros ejecutables o en documentos
+ejecutables (macros, documentos Word, Excell, zip, etc.).</li>
+  <li>Gusanos.- son similares a los virus pero no alteran ficheros ejecutables sino que residen en memoria.</li>
+  <li>Keylogging.- software de tipo troyano o gusano que se instala en
+el usuario y captura la información tecleada por éste para después
+enviarla por la red.</li>
+</ul>
+</article>
+<footer>
+</footer>
+</body>
+</html>

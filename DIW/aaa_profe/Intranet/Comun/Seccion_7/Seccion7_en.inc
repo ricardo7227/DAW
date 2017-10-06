@@ -1,0 +1,54 @@
+<?php
+echo "
+
+<div id='cuerpo-dcha'>
+
+<!--Imagen que redirecciona a la seccion de Erasmus-->
+
+  <div id='erasmus' class='recuadro-dcha'>
+     <a href='http://www.educa2.madrid.org/web/tiernogalvan/erasmux' target='_self'> <center><img src='Erasmus/img/erasmusLogo.png'/></center></a>
+  </div>
+
+<!--Imagen que redirecciona a la seccion de periodicos-->
+
+  <div id='periodico' class='recuadro-dcha'>
+     <a href='index.php?periodico' target='_self'> <center><img src='Periodicos/periodico.jpeg'/></center></a>
+  </div>
+
+<!--Imagen que redirecciona a la Bolsa de trabajo-->
+
+  <div id='bolsa' class='recuadro-dcha'>
+      <a href='index.php?bolsa' target='_self'> <center><img src='BolsaTrabajo/btlogo.png'/></center></a>
+  </div>
+
+<div id='noticias'>Events
+<marquee behavior='alternate' direction='up' height='240px' scrolldelay=50' scrollAmount='2' onmouseover='this.stop()' onmouseout='this.start()'>
+<ul>
+  <li> <a href='Alumnos/Inicio/Premio.png' target='_blank'>Awarded student</a>
+    <br>
+  </li>
+
+  <li> <a href='http://www.madrid.org/cs/Satellite?idConsejeria=1109266187254&amp;idListConsj=1109265444710&amp;c=CM_InfPractica_FA&amp;pagename=ComunidadMadrid%2FEstructura&amp;sm=1109266100977&amp;cid=1142649238708&amp;language=es&amp;idOrganismo=1142359974952'>Scolar Calendar</a>
+    <br>
+  </li>
+
+  <li> <a href='http://www.educa2.madrid.org/web/centro.ies.tiernogalvan.madrid/inicio' target='_blank'>Official Website</a>
+    <br>
+  </li>
+
+  <!--li> <a href='http://ies.tiernogalvan.madrid.educa.madrid.org' target='_blank'>Previous Web (disused)</a>
+    <br>
+  </li-->
+
+</ul>
+</marquee>
+</div>
+<div id='sponsor'>
+	<!--Sponsors-->
+	<a href='http://www.madrid.org/'><img src='Comun/imagenes/sponsor1.png'/></a>
+	<a href='http://www.educa.madrid.org/'><img src='Comun/imagenes/sponsor2.png'/></a>
+</div>
+</div>
+";
+?>
+

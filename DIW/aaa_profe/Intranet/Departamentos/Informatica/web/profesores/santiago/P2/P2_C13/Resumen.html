@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Estilo en la impresión</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="estilos.css" type="text/css"></head><body>
+<h1>Estilo en la impresión</h1>
+
+<a href="#tipos">Tipos de medios</a><br>
+
+<a href="#configuracion">Configuración de un documento para impresión</a><br>
+
+<a href="#ejemplo">Ejemplo de estilo de impresión</a><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; A veces se necesita volcar el contenido de la
+pantalla hacia una salida impresa, como puede ocurrir con el caso de
+recibos, facturas, etc. Otras veces la visualización se hace a través
+de teléfonos móviles, lo que no deja de representar nuevos desafios
+para los diseñadores. CSS dispone de un grupo de funcionalidades que
+permite personalizar el formateo de un documento para los distintos
+tipos de medios.<br>
+
+<h3><a name="tipos"></a>Tipos de medios</h3>
+&nbsp;&nbsp;&nbsp; CSS permite definir estilos orientados a un
+determinado tipo de medio o un grupo de tipos de medios. Cuando no se
+especifica nada se presupone que el estilo es válido para todos los
+medios (all). Los tipos de medios soportados se pueden considerar como
+una lista abierta dada su rápida evolución. Los más importantes
+del momento son:<br>
+<ul>
+  <li>aural.- relacionado con la producción de voz y sonido.</li>
+  <li>braille.- dispositivos de lectura táctil.</li>
+  <li>embossed.- impresoras braille.</li>
+  <li>handheld.- para dispositivos tipo PDA.</li>
+  <li>print.- salidas impresas.</li>
+  <li>projection.- proyector de transparencias.</li>
+  <li>screen.- pantalla de ordenador.</li>
+  <li>tty.- salidas del estilo teletipo.</li>
+  <li>tv.- televisión.</li>
+  <li>all.- cualquier medio.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Para especificar el tipo de medio pueden utilizarse varias posibilidades: <span style="color: red;">la
+regla @media, el atributo media en la etiqueta style, el atributo media
+en la etiqueta link y la importación de una hoja de estilo</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La regla @media sirve para especificar que un bloque
+de estilo se aplica solo a un tipo de medio (o un grupo de tipos). La
+sintaxis tiene el formato:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  @media&nbsp; tipo_medio&nbsp; [, tipo_medio ...]&nbsp; {definición del estilo}<br>
+<br>
+&nbsp;&nbsp;&nbsp; Por ejemplo, para definir un bloque de estilo para la PDA y para el proyector, sería de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  @media&nbsp; handheld,&nbsp; projection&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; body&nbsp;
+{font-size: 'xx-large'; color: blue;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {font-size: 'large'; color:
+red;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  }<br>
+<br>
+&nbsp;&nbsp;&nbsp; Utilizando el atributo media de la etiqueta style, el formato es:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;style&nbsp; media="tipo_medio&nbsp; [, tipo_medio ...]"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/style&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Así, el ejemplo anterior quedaría de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;style&nbsp; media="handheld,&nbsp; projection"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; body&nbsp; {font-size: 'xx-large'; color: blue;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {font-size: 'large'; color:
+red;}<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;/style&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; El atributo media de la etiqueta link se usa
+enlazando con un archivo externo de definición de estilos, por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;link
+rel="stylesheet"&nbsp; href="estilos.css"&nbsp; type="text/css"&nbsp;
+media="print" /&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; También se puede importar una hoja de estilos externa utilizando la sintaxis:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  @import&nbsp; url("archivo.css")&nbsp; print;<br>
+<br>
+&nbsp;&nbsp;&nbsp; donde "print" sería el tipo de medio.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La regla @import es una orden de CSS por lo que se
+debe incluir dentro de una sección de estilo del documento.<br>
+
+<h3><a name="configuracion"></a>Configuración de un documento para
+impresión</h3>
+
+&nbsp;&nbsp;&nbsp; Hay que hablar del concepto de cuadro de página en CSS que contiene dos áreas principales:<br>
+<ul>
+  <li>Área de página.- donde se colocan todos los elementos de la página.</li>
+  <li>Área de márgenes.- zona que rodea por los cuatro lados al área de página.</li>
+</ul>
+
+
+&nbsp;&nbsp;&nbsp; La regla <span style="color: red;">@page</span>
+permite establecer el tamaño de la página, los márgenes y la
+orientación; para complementar esta definición se utiliza la propiedad
+page dentro de la definición del estilo, quedando así relacionadas las
+dos definiciones. Esta regla se usa de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  @page&nbsp; pagina1 {size: 17cm&nbsp; 21cm;}<br>
+<br>
+&nbsp;&nbsp;&nbsp; y después se referencia en la definición del estilo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  body,&nbsp; p&nbsp; {page: pagina1;}<br>
+<br>
+&nbsp;&nbsp;&nbsp; En el ejemplo se define una página con el nombre
+pagina1 con un tamaño de 17 cm. de ancho y 21 cm. de alto;
+posteriormente las etiquetas body y p hacen referencia a esa página por
+su nombre. El nombre de la página es opcional y solo es necesario si
+hay más de una definición de páginas.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Las dimensiones de la página se definen con la propiedad <span style="color: red;">size</span> que tiene dos valores: el ancho y la altura. Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  @page&nbsp; {size: 17cm&nbsp; 21cm;}<br>
+<br>
+&nbsp;&nbsp;&nbsp; También se pueden especificar los siguientes valores simbólicos:<br>
+<ul>
+  <li>auto.- valor predeterminado de la impresora vigente.</li>
+  <li>landscape.- gira la página e intercambia las dos medidas.</li>
+  <li>portrait.- reemplaza los valores predeterminados de la configuración con los valores establecidos en la propiedad size.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Dado que no todos los navegadores soportan la regla
+@page es conveniente comprobar su funcionamiento antes de depender de
+que el código dependa de la regla.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para asignar el margen de la página se utiliza la propiedad <span style="color: red;">margin</span>. Los márgenes de la página no deben confundirse con el margen que se puede definir a nivel de etiqueta body. Un ejemplo sería:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  @page&nbsp; {size:&nbsp; 17cm&nbsp; 21cm;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; margin:&nbsp; .8cm;}<br>
+<br>
+&nbsp;&nbsp;&nbsp; Las marcas de corte se utilizan para señalar la
+posición de corte y son signos + que se imprimen en los bordes de las
+páginas. La propiedad <span style="color: red;">marks</span>, que aún no está soportada por los principales agentes de usuario, tiene la sintaxis:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  marks:&nbsp; crop | cross | none | inherit ;<br>
+<br>
+&nbsp;&nbsp;&nbsp; CSS incluye tres propiedades que permiten controlar el salto de página:<br>
+<ul>
+  <li><span style="color: red;">page-break-before</span>.- determina
+como se produce el salto de página antes de un determinado elemento y
+en qué lado continua el flujo de la página siguiente.<br>
+  </li>
+  <li><span style="color: red;">page-break-after</span>.- determina como se produce el salto de página después de un determinado
+elemento y en qué lado continua el flujo de la página siguiente.</li>
+  <li><span style="color: red;">page-break-inside</span>.- determina como se produce el salto de página desde dentro de un elemento.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Los valores que admiten las dos primeras propiedades (la tercera está soportada por pocos navegadores) son:<br>
+<ul>
+  <li>inherit.- se hereda el valor del elemento padre.</li>
+  <li>auto.- permite que el agente de usuario pueda insertar saltos de página donde lo considere oportuno.</li>
+  <li>avoid.- ordena al agente de usuario que no inserte saltos de página ni antes ni después del elemento vigente.</li>
+  <li>left.- fuerza uno o varios saltos de página para obtener una página izquierda en blanco.</li>
+  <li>right.- fuerza uno o varios saltos de página para obtener una página derecha en blanco.</li>
+  <li>always.- indica al agente de usuario que fuerce un salto de página o (?) después del elemento vigente.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Por ejemplo, para forzar un salto de página antes o
+después de cada aparición de un elemento o de una clase determinados,
+se puede utilizar:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  .controlsalto&nbsp; {page-break-before: always;}<br>
+<br>
+&nbsp;&nbsp;&nbsp; y en la página se utilizaría esta clase con el código:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;p&nbsp; class="controlsalto"&gt; . . . &lt;/p&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los saltos de página no se pueden implementar dentro
+de los elementos posicionados. Por ejemplo, si tenemos un elemento div
+posicionado de modo absoluto no podremos incluir saltos de página
+dentro del bloque div.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Las propiedades CSS <span style="color: red;">widow y orphan</span> permiten controlar las líneas viudas y huérfanas respectivamente. Admiten los valores:<br>
+<ul>
+  <li>inherit.- asume el valor del elemento padre.</li>
+  <li>valor.- número entero que indica la cantidad mínima de líneas que pueden quedar dentro de un lado del párrafo.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Por ejemplo, con la siguiente codificación se indica
+que una viuda debe estar formada por al menos dos líneas; si esto no es
+posible, el párrafo se mantiene completo dentro de una página:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  p&nbsp; {widow: 2;}<br>
+<br>
+&nbsp;&nbsp;&nbsp; La impresión a dos caras puede conllevar el problema
+de tener que definir un estilo para la página izquierda y otro para la
+derecha (por cambiar los márgenes, por ejemplo). Esto se resuelve con
+las pseudo clases <span style="color: red;">:left y :right</span>:<br>
+<br>
+&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; @page&nbsp;
+:left&nbsp;&nbsp;&nbsp;&nbsp; {margin-left: 1cm; &nbsp;&nbsp;
+margin-right: 0.5cm;}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; @page&nbsp;
+:right&nbsp; {margin-left: 0.5cm;&nbsp; margin-right:&nbsp; 1cm; }<br>
+
+<h3><a name="ejemplo"></a>Ejemplo de estilo de impresión</h3>
+
+&nbsp;&nbsp;&nbsp; Ver pag. 361 y siguientes del original.
+
+</body></html>

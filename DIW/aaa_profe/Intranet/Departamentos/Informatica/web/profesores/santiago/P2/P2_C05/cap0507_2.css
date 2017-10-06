@@ -1,0 +1,19 @@
+body {font: 100%;}
+h1 {font: italic 2em georgia serif;
+  color: red;
+}
+p {small-caps large georgia serif;
+  color: blue;
+}
+th {100 14px/4cm verdana trebuchet sans-serif;
+    color:green;
+}
+td, td p {
+  font: menu;
+}
+#sediam {font: xx-large Courier Monospace;
+  color: blue;
+}
+#ident1 {font: 200 8px Times, serif;
+  color: orange;
+}

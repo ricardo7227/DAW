@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+	<title>Mostrar y Ocultar</title>
+        <script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>	
+        <script>
+	$(document).ready(function(){
+		$("#mayoria_edad").click(function(evento){
+//			No he conseguido que esta instrucción funcione bien
+		        if (!$(#mayoria_edad).attr("checked")){
+//		    if (!document.miformulario.mayoria_edad.checked) {
+			$("#formulariomayores").css("display", "none");
+		    }else{
+			$("#formulariomayores").css("display", "block");
+		    }
+		});
+	})
+	</script>
+</head>
+<body>
+<form name="miformulario">
+Nombre: <input type="text" name="nombre"><br>
+<input type="checkbox" name="mayor_edad" value="1" id="mayoria_edad"> Soy mayor de edad<br>
+<div id="formulariomayores" style="display: none;">
+Solo para mayores de edad: 
+<input type="text" name="mayores_edad">
+</div>
+</form>
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+<div id='cuerpo-centro'>
+  <h1>DISEÑOS WEB</H1>
+  <hr />
+  <div style="text-align: left;">
+    <H3><u>Curso 2015-16 DAW 2</u></H4>
+    <ul style="list-style-image:url(imagenes/ok.png);">
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/GarciaP/index.html">Pablo García Fullana</a> v</li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/GarciaA/index.html">Alberto García Uceda</a></li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/HuY/index.html">Yingying Hu</a></li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/LetinY/index.html">Yevhen Letin</a></li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/LorenzoG/index.html">Gabriel Lorenzo García</a></li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/LozanoJ/index.html">Javier Lozano Rodríguez</a></li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/MarcosA/index.html">Alberto Marcos Olmeda</a> v</li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/MincaV/index.html">Valentin Minca</a> v</li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/PenaP/index.html">Patricia Peña</a> v</li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/PulidoM/index.html">Mario Pulido Leno</a> v</li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/RecioA/index.html">Alba Recio Sansón</a> v</li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/RubioA/index.html">Alejandro Rubio Ramos</a> v</li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/SalazarJ/index.html">Jonathan Salazar Lozano</a> v</li>
+      <li> <a href="Alumnos/Disenos/2015_16_Daw2/ValenzuelaG/index.html">Guillermo Ernesto Valenzuela Alía</a> v</li>
+    </ul>
+
+  </div>
+
+</div>
+

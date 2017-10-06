@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file026.html -->
+<html>
+<head>
+<title>Incorporar sonidos</title>
+<script type="text/JavaScript">
+function Play() {
+	eval("document.sonido.play();");
+}
+</script>
+</head>
+<body>
+<center>eventos y sonidos</center>
+<embed name='sonido' src='Todo_pasa.wav' loop="0" autostart="0"> hidden="true">
+<center>
+<a href="javascript:Play()">Reprodución del sonido</a>
+<form>
+<input type="button" value="Reproducir" onclick="Play()">
+</form>
+</center>
+<A href="javascript:void()" onmouseover="Play()">Pasar el ratón para reproducir el sonido</A>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<!-- archivo Parte 2/code/cap1302.html -->
+<head>
+<title>Impresión de tablas</title>
+<base
+</head>
+<body>
+<h1>Impresión de tablas</h1>
+<h2>Tabla múltiple</h2>
+<table border="5">
+<tr>
+  <td>
+   <p>En esta celda se escribe un texto.</p>
+   <p>Otro párrafo dentro de la misma celda.</p>
+  </td>
+  <td>En esta celda se define una tabla interior:
+   <table border="3">
+   <tr>
+     <td>A</td><td>B</td>
+   </tr>
+   <tr>
+     <td>C</td>
+     <td>Esta celda define otra tabla interior:
+     <table border="1">
+   		<tr>
+     		<td>D</td><td>E</td>
+   		</tr>
+   		<tr>
+     		<td>F</td><td>G</td>
+   		</tr>
+   		</table>
+   </td>
+   </tr>
+   </table>
+  </td>
+</tr>
+<tr>
+  <td>En esta celda se define una lista con código HTML:
+   <ul>
+    <li>Windows 2000</li>
+    <li>Windows XP</li>
+    <li>Windows Vista</li>
+    <li>Windows 7</li>
+   </ul>
+  </td>
+  <td>En esta celda se incluye una imagen con enlace a otro sitio:<a href="http://www.francia.fr"><img src="francia.jpg" width="200"/></a></td>
+</tr>
+</table>
+<h2>Hoja de gastos</h2>
+<table border="4" width="100%">
+<caption>Hoja de gastos</caption>
+<thead>
+<tr><th><Mes><th>Día<th>Concepto<th>Ingreso<th>Gasto<th>Saldo</tr>
+<tbody>
+<tr><th scope=rowgroup rowspan="6" width="10%" valign="top">Enero 2011
+<tr><th colspan="5" align="right">1900
+<tr><td>1<th align="left">Alquiler<td><td align="right">500<td align="right">1400
+<tr><td>3<th align="left">Hipoteca<td><td align="right">450<td align="right">950
+<tr><td>5<th align="left">Nómina<td align="right">1800<td><td align="right">3200
+<tr><td>10<th align="left">VISA<td><td align="right">200<td align="right">3000
+<tbody>
+<tr><th scope=rowgroup rowspan="10" width="10%" valign="top">Febrero 2011
+<tr><th colspan="5" align="right">3000
+<tr><td>1<th align="left">Alquiler<td><td align="right">500<td align="right">2500
+<tr><td>3<th align="left">Hipoteca<td><td align="right">450<td align="right">2150
+<tr><td>5<th align="left">Nómina<td align="right">1800<td><td align="right">3950
+<tr><td>8<th align="left">Seguro<td><td align="right">1000<td align="right">2950
+<tr><td>10<th align="left">VISA<td><td align="right">300<td align="right">2650
+<tr><td>15<th align="left">Viaje<td><td align="right">610<td align="right">2040
+<tr><td>25<th align="left">Hs. extras<td align="right">500<td><td align="right">2540
+</table>
+<h2>Comparación del espacio entre las celdas:</h2>
+
+<h3>sin cellspacing:</h3>
+<table border="2">
+<tr>
+  <td>A</td> <td>B</td>
+</tr>
+<tr>
+  <td>C</td><td>D</td>
+</tr>
+</table>
+
+<h3>cellspacing="20":</h3>
+<table border="2" cellspacing="20">
+<tr>
+  <td>A</td><td>B</td>
+</tr>
+<tr>
+  <td>C</td><td>D</td>
+</tr>
+</table>
+</body>
+</html>

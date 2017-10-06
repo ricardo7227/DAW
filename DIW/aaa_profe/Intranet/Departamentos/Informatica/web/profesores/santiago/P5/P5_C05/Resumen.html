@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Uso de MySQL desde PHP</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<div id="header">
+<p id="cabecera">Uso de MySQL desde PHP</p>
+</div>
+
+<div>
+<div id="nav"><a href="#instalacion">Instalación de MySQL</a><br>
+<br>
+<a href="#comprobaciones">Comprobaciones previas</a><br>
+<br>
+<a href="#operaciones">Operaciones básicas con MySQL</a><br>
+<br>
+<a href="#funciones">Funciones de MySQL para PHP</a><br>
+<br>
+<a href="#seguridad">Seguridad en servidores MySQL</a><br>
+<br>
+<a href="#desarrollo">Desarrollo de una aplicación Web de bases de datos</a>
+</div>
+<div id="article">
+&nbsp;&nbsp;&nbsp; MySQL se distribuye como software libre en un
+esquema de licenciamiento dual: por un lado se ofrece como licencia GNU
+GPL y para las empresas que quieran incorporarlo en productos
+comerciales deben comprar una licencia específica. MySQL es uno de los
+sistemas de gestión de bases de datos más empleados.<br>
+<h3><a name="instalacion"></a>Instalación de MySQL</h3>
+&nbsp;&nbsp;&nbsp; La instalación puede hacerse desde Synaptic. Si se
+desea obtener una versión específica puede descargarse de
+www.mysql.com. MySQL puede no quedar habilitado de forma
+predeterminada, por lo que puede ser necesario editar el archivo de
+configuración de PHP (php.ini). PHP también debe acceder a la
+biblioteca cliente de MySQL "libmysql.dll" que se incluye en la
+distribución de PHP para que se pueda establecer la comunicación
+PHP-MySQL; esta dll debe estar disponible en la ruta de acceso (PATH)
+del entorno Windows. Muchas veces se coloca la biblioteca en la carpeta
+del sistema Windows (System32) pero no es recomendable.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Por defecto, en la instalación de MySQL, se crea un
+usuario administrador "root" sin clave que permite empezar a
+administrar. Entre las primeras operaciones estará la asignación de una
+contraseña a este usuario.<br>
+<h3><a name="comprobaciones"></a>Comprobaciones previas</h3>
+&nbsp;&nbsp;&nbsp; Para comprobar si está bien instalado PHP y MySQL se
+puede abrir una página PHP que contenga un acceso a MySQL, por ejemplo:
+<p class="codigo">&lt;?php<br>
+&nbsp; echo "&lt;b&gt;Conexión inicial con el servidor
+MySQL&lt;/b&gt;&lt;br&gt;";<br>
+&nbsp; $con = mysqli_connect("localhost", "root", "cmadrid") or<br>
+&nbsp;&nbsp;&nbsp; die("No se pudo establecer la conexión con el
+servidor MySQL");<br>
+&nbsp; echo "¡BIEN!, Conexión establecida.\n";<br>
+?&gt;
+</p>
+&nbsp;&nbsp;&nbsp; Si no se establece la conexión lo primero que hay
+que verificar es si se ha iniciado el servidor MySQL.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">No se obtiene la
+página php</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; En el funcionamiento del ejemplo anterior
+intervienen varios elementos:<br>
+<ul>
+  <li>El servidor de páginas web. Puede que funcione bien con páginas
+html pero no con páginas php.</li>
+  <li>El intérprete PHP. Si la conexión servidor web-intérprete php
+está bien configurada debería obtenerse una respuesta al realizar la
+prueba con phpinfo().</li>
+  <li>El servidor MySQL. Se encarga de ejecutar las peticiones que le
+llegan desde el cliente (PHP). Quizá haya que revisar la configuración
+que relaciona PHP con MySQL. MySQL puede funcionar desde la línea de
+comandos o desde otro cliente y no desde php.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Los elementos a revisar residen generalmente en los
+siguientes archivos:<br>
+<ul>
+  <li>http.conf.- configuración del servidor Apache.</li>
+  <li>php.ini.- configuración del interprete PHP.</li>
+  <li>my.ini o my.cnf.- configuración de MySQL.</li>
+  <li>Biblioteca elegida.- llibmysqli.dll.</li>
+  <li>Funciones utilizadas de la API de PHP en el script.<br>
+  </li>
+</ul>
+&nbsp;&nbsp;&nbsp; En la página 999 hay varios ejemplos de errores y
+soluciones posibles.<br>
+<h3><a name="operaciones"></a>Operaciones básicas con MySQL</h3>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Establecer la
+conexión con una base de datos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; MySQL funciona con una estructura cliente /
+servidor. El puerto predeterminado que utiliza MySQL para atender las
+peticiones es el 3306.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En este capítulo y en el siguiente se van a utilizar
+las funciones de las extensiones mysql y mysqli; esta última es una
+versión mejorada, con mayores funcionalidades.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La función que permite establecer la conexión con
+una base de datos es <span style="color: red;">mysqli_connect()</span>,
+cuya sintaxis es:
+<p class="codigo">bool = mysqli_connect([servidor[, usuario[,
+password]]]);<br>
+</p>
+&nbsp;&nbsp;&nbsp; La respuesta es un valor booleano que depende de si
+se establece la conexión. Los tres párametros son opcionales, si no se
+informa del servidor se presupone "localhost", si no se informa del
+usuario se tomará el propietario del proceso y si no se informa la
+password se presupondrá vacía. Como servidor puede especificarse además
+un puerto con la forma 'servidor:puerto' o una ruta de acceso,
+'/ruta1/ruta2' del localhost.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Creación de una
+base de datos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; MySQL suministra la función <span style="color: red;">mysqli_query()</span> que permite ejecutar
+instrucciones de SQL de cualquier tipo. Su sintaxis es:
+<p class="codigo">int = mysqli_query($conexion, $sentenciaSQL);<br>
+</p>
+&nbsp;&nbsp;&nbsp; $conexion es la conexión abierta con
+mysqli_connect().<br>
+&nbsp;&nbsp;&nbsp; $sentenciaSQL contiene la sentencia SQL en lenguaje
+SQL puro.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un ejemplo:
+<p class="codigo">&lt;?sql<br>
+&nbsp; echo "&lt;b&gt;Creación de una base de
+datos&lt;/b&gt;&lt;br&gt;";<br>
+&nbsp; $con = mysqli_connect("localhost", "root", "cmadrid")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die("No se pudo
+establecer la conexión");<br>
+&nbsp; $sql = 'CREATE DATABASE Agenda';<br>
+&nbsp; if (mysqli_query($con, $sql)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; echo "Se ha creado la base de datos Agenda\n";<br>
+&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; echo "Se ha producido un error al crear la
+Agenda" . <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+mysqli_error($con) . "\n";<br>
+&nbsp; }<br>
+?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Selección de una
+base de datos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La función mysqli_select_db() permite seleccionar
+una base de datos para empezar a utilizarla. Su sintaxis es:
+<p class="codigo">bool = mysqli_select_db($conexion, 'base_datos');<br>
+</p>
+&nbsp;&nbsp;&nbsp; La función devuelve un valor booleano dependiendo
+del resultado de la operación. Pueden producirse errores de diferente
+índole: que no exista la base de datos, que se encuentre bloqueada,
+etc. Un ejemplo sería:
+<p class="codigo">&lt;?sql<br>
+&nbsp; echo "&lt;b&gt;Selección de una base de
+datos&lt;/b&gt;&lt;br&gt;";<br>
+&nbsp; $con = mysqli_connect("localhost", "root", "cmadrid")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die("No se pudo
+establecer la conexión");<br>
+&nbsp; $db = mysqli_select_db($con, 'Agenda');<br>
+&nbsp; if (!$db) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; die ('No se puede seleccionar la Agenda:' .
+mysqli_error($con));<br>
+&nbsp; }<br>
+&nbsp; echo "¡ Operación de selección perfecta !";<br>
+?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Creación de una
+tabla</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Para crear una tabla en MySQL desde PHP se utiliza
+una cadena SQL con la definición de la tabla y la función
+mysqli_query() para enviar la sentencia a la base de datos activa o a
+otra base de datos utilizando el indicador de enlace correspondiente.
+La sintaxis de la instrucción es:
+<p class="codigo">$var = mysqli_query ($conexion, $instruccion[,
+$resultado]);<br>
+</p>
+&nbsp;&nbsp;&nbsp; $instruccion es una variable cuyo contenido es la
+instrucción SQL de creacción de la tabla.<br>
+&nbsp;&nbsp;&nbsp; $resultado es la constante MYSQLI_USE_RESULT o
+MYSQLI_STORE_RESULT.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sintaxis de la
+instrucción CREATE TABLE de MySQL</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La sintaxis simplificada con las claúsulas más
+habituales es:
+<p class="codigo">CREATE TABLE nombreTabla (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+nombreCampo tipoDato [[NOT ]NULL] [DEFAULT valor]<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+[AUTOINCREMENT]<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [,
+PRIMARY KEY([nombre_campo])]<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [, INDEX
+[nombre_indice] (nombre_campo)]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[, UNIQUE [INDEX] [nombre_indice] (nombre_campo)]<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [,
+FOREIGN KEY nombre_campo (nombre_indice)]<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [ . . .
+los demás campos . . .])<br>
+</p>
+<ul>
+  <li>tipoDato.- uno de los posibles tipos de datos vistos en el
+capítulo 3.</li>
+  <li>AUTOINCREMENT.- solo puede haber un campo así dentro de la tabla.</li>
+  <li>DEFAULT.- permite asignar un valor por defecto para cuando no se
+informa el campo.</li>
+  <li>NOT NULL.- no permite que quede sin informar.</li>
+  <li>NULL.- campo con valor NULL.</li>
+  <li>PRIMARY KEY.- no puede haber valores repetidos en este campo.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Un ejemplo:
+<p class="codigo">&lt;?sql<br>
+&nbsp; echo "&lt;b&gt;Creación de una tabla&lt;/b&gt;&lt;br&gt;";<br>
+&nbsp; $con = mysqli_connect("localhost", "root", "cmadrid")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die("No se pudo
+establecer la conexión");<br>
+&nbsp; $db = mysqli_select_db($con, 'Agenda');<br>
+&nbsp; if (!$db) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; die ('No se puede seleccionar la Agenda:' .
+mysqli_error($con));<br>
+&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; // Se elimina la tabla si existe<br>
+&nbsp; $sql = "DROP TABLE Personas;";<br>
+&nbsp; $tb = mysqli_query($con, $sql);<br>
+&nbsp; $sql = "CREATE TABLE 'Personas' (<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;&nbsp; 'dni' VARCHAR(8) NOT NULL,<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 'nom' VARCHAR(40)
+NOT NULL,<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 'eda' SMALLINT(3)
+NOT NULL,<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; PRIMARY
+KEY('dni'));";<br>
+&nbsp; $tb = mysqli_query($con, $sql);<br>
+&nbsp; if (!$db) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; die ('No se pudo crear la tabla Personas:' .
+mysqli_error($con));<br>
+&nbsp; }<br>
+&nbsp; echo '¡ Todo perfecto !';<br>
+?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Inserción de filas
+en una tabla</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La inserción puede hacerse con mysqli_query()
+haciendo uso de la instrucción SQL INSERT cuya sintaxis simplificada,
+con las claúsulas más habituales, sería:
+<p class="codigo">INSERT INTO nombre_tabla [(campo1, ...)] VALUES
+(valor1, ...);<br>
+</p>
+&nbsp;&nbsp;&nbsp; Un ejemplo sería:<br>
+<p class="codigo">
+&lt;?php
+<br>&nbsp; echo "&lt;B&gt;Insertar datos&lt;/B&gt;&lt;BR&gt;";<br>&nbsp; $con = mysqli_connect("localhost","root","cmadrid") or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; die ("No se puede establecer la conexión");
+<br>&nbsp; 
+$db = mysqli_select_db($con, 'Agenda');<br>&nbsp; 
+$sql = "INSERT INTO Personas (dni, nom, eda) Values ('";<br>&nbsp; $sql .= mysql_escape_string("12345678") . "', '";<br>&nbsp; $sql .= mysql_escape_string('Juan Pérez López') . "', '";<br>&nbsp; $sql .= mysql_escape_string('45') . "');";<br>&nbsp; 
+$result = mysqli_query($con, $sql) or&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp; die ("Error de aplicación: Inserción errónea");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+?&gt;
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Consultas a una base de datos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La consulta o lectura de información de una tabla o
+grupo de tablas de una base de datos se efectúa con la instrucción
+SELECT. mysqly_query() devolverá verdaderoo falso según se haya podido
+realizar la consulta o no. Si la consulta se ejecutó correctamente pero
+no se encontró ningún registro que cumpliera con el criterio de
+búsqueda, la respuesta será TRUE, es decir FALSE (cero) no significa
+que el conjunto de resultados esté vacío o no, significa que hubo un
+error en el acceso.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Algunas de las razones que pueden provocar un error de acceso son:<br>
+<ul>
+  <li>Error en la sintaxis de la sentencia SELECT.</li>
+  <li>Problema de permisos para acceder a la tabla referenciada.</li>
+  <li>La tabla no existe.</li>
+  <li>El servidor está saturado y no puede responder.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Un ejemplo:
+<p class="codigo">$sql = "SELECT * FROM Personas WHERE dni = " . $dni1 .";";<br>
+$resul = mysqli_query ($con, $sql) or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; die("Error en el acceso a la base de datos");<br>
+</p>
+&nbsp;&nbsp;&nbsp; La sintaxis simplificada con las claúsulas más habituales de la sentencia SELECT es:
+<p class="codigo">SELECT {lista_campos | *} FROM tabla<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WHERE condicion1<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; [GROUP BY (campo1, ..) [HAVING condicion2]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ORDER BY (campo2, ..) [ASC | DESC]];<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; La sentencia SELECT efectua la consulta e indica si
+hubo o no errores, pero no devuelve directamente los datos de la
+consulta. Cuando devuelve no cero (TRUE) en realidad devuelve un
+identificador del conjunto de resultados con el que debemos recurrir a
+otras funciones MySQL para navegar por esa información, por ejemplo,
+alguna de las siguientes:<br>
+<ul>
+  <li>mysqli_fetch_array(resultado[ , tipo_resultado]).- devuelve una
+matriz asociativa con los valores de una fila del conjunto de
+resultados o falso si no quedan más filas. El tipo de resultado indica
+como se entrega la matriz: MYSQL_ASSOC, MYSQL_NUM o MYSQL_BOTH.</li>
+  <li>mysqli_fetch_row(resultado).- devuelve una matriz numerada con
+los valores de una fila del conjunto de resultados o falso si no quedan
+más filas.</li>
+  <li>mysqli_fetch_object(resultado[ , tipo_resultado]).- devuelve un
+objeto a partir de una fila del conjunto de resultados o falso si no
+quedan más filas. El tipo de resultado puede tomar los valores:
+MYSQL_ASSOC, MYSQL_NUM o MYSQL_BOTH. Las propiedades del objeto son los
+campos de la fila.</li>
+</ul>
+Al ser una matriz numerada no aparecen los nombres de los campos de la
+fila de datos sino únicamente su posición relativa dentro de la fila.<br>
+&nbsp;&nbsp;&nbsp; Siguiendo con el ejemplo anterior, después de
+seleccionar un conjunto de filas, se utiliza una de las funciones
+anteriores:
+<p class="codigo">$sql = "SELECT * FROM Personas WHERE eda &gt; 35;";<br>
+$resul = mysqli_query($con, $sql) or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; die("Error en la instrucción SELECT");<br>
+while ($fila = mysqli_fetch_array($resul, MYSQL_ASSOC)) {<br>&nbsp;&nbsp;&nbsp;&nbsp; printf("D.N.I.: %s Nombre: %s Edad: %s", $fila["dni"], $fila["nom"], $fila["eda"]);<br>
+}<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Actualización de datos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La sentencia UPDATE de SQL permite realizar las
+modificaciones de los campos de una tabla en base a una determinada
+condición WHERE. La función mysqli_affected_rows() informa de cuantas
+filas se vieron afectadas por la actualización. Esta última función
+también se puede utilizar después de inserciones y eliminaciones. Un
+ejemplo sería:
+<p class="codigo">$sql = "UPDATE Personas SET nom = 'Santiago Alonso Gómez', eda = '48'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WHERE dni = '11111111';";<br>
+$resul = mysqli_query($con, $sql) or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; die("Error en la modificación de la base de datos");<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; La sintaxis simplificada de la sentencia UPDATE, con las claúsulas más habituales, tiene la forma:
+<p class="codigo">UPDATE tabla SET campo1 = valor1, ... WHERE condicion;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Eliminación de filas</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La sentencia DELETE de SQL permite eliminar filas de
+una tabla en base a una determinada condición WHERE. La función
+mysql_affected_rows() informa de cuantas filas se vieron afectadas por
+la actuación. La sintaxis simplificada de DELETE, con las claúsulas más
+habituales, es:
+<p class="codigo">DELETE FROM tabla WHERE condicion;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Un ejemplo sería:
+<p class="codigo">$sql = "DELETE FROM Personas WHERE dni = '22222222';";<br>
+$resul = mysqli_query ($con, $sql) or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; die("Error al borrar filas de la base de datos");<br>
+</p>
+
+<br>
+&nbsp;&nbsp;&nbsp; En las sentencias UPDATE y DELETE no se debe olvidar
+la claúsula WHERE pues de contrario la operación se realizará sobre
+todos los registros de la tabla.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Filas afectadas</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Si la operación SQL realizada fue INSERT, DELETE o
+UPDATE y la operación ha dado como resultado TRUE puede preguntarse a
+MySQL cuántas fueron las filas afectadas. La función
+mysqli_affected_rows() muestra dicha información:
+<p class="codigo">$filas_utilizadas = mysqli_affected_rows();<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Si hay varias conexiones activas deberá incluirse la conexión como parámetro de la función.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Con la sentencia SELECT debe utilizarse
+mysqli_num_rows($resultado). El parámetro $resultado es obligatorio y
+es el objeto resultado de la operación:
+<p class="codigo">$filas_seleccionadas = mysqli_num_rows($resultado);<br>
+
+</p>
+<h3><a name="funciones"></a>Funciones de MySQL para PHP</h3>
+&nbsp;&nbsp;&nbsp; En este capítulo se han visto las principales
+funciones de acceso a base de datos desde PHP. En el capítulo siguiente
+se incluye una lista completa de las extensiones mysql y mysqli.<br>
+<h3><a name="seguridad"></a>Seguridad en servidores MySQL</h3>
+&nbsp;&nbsp;&nbsp; El servidor MySQL recibe las peticiones, las procesa
+y devuelve los resultados al cliente. En cada petición que llega al
+servidor se verifica que el usuario que realiza la petición tiene
+permiso para mantener la conexión con la base de datos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si el usuario tiene permiso de acceso, en una
+segunda fase de control se comprueba además que el usuario tenga los
+privilegios adecuados para realizar la operación requerida sobre las
+tablas referidas en la sentencia.<br>
+<br>
+&nbsp;&nbsp;&nbsp; MySQL tiene un superusuario predeterminado (root)
+que en el momento de la instalación no posee contraseña y una de las
+primeras operaciones es asignarle una con alto grado de complejidad.<br>
+<h3><a name="desarrollo"></a>Desarrollo de una aplicación Web de bases
+de datos</h3>
+&nbsp;&nbsp;&nbsp; Con los conocimientos expuestos hasta aquí, puede realizarse una aplicación Web con acceso a bases de datos.
+</div>
+</div>
+
+<div id="footer">
+</div>
+
+</body></html>

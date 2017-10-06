@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Tablas</title></head><body style="background-color: rgb(255, 250, 220); width: 851px;">
+<div style="text-align: center; color: rgb(0, 0, 153); background-color: rgb(200, 230, 255);"><font size="+1"><span style="font-weight: bold;">HTML&nbsp; AVANZADO</span><br>
+</font></div>
+
+<div align="justify">
+<br style="font-weight: bold;">
+<font size="+1"><span style="font-weight: bold;">INDICE</span></font><br>
+<a href="#estandares">Estándares y extensiones del lenguaje HTML</a><br>
+<a href="#listas1">Listas no ordenadas</a><br>
+<a href="#listas2">Listas numeradas</a><br>
+<a href="#alineacion">Alineación</a><br>
+<a href="#meta">La etiqueta meta</a><br>
+<a href="#otras">Otras etiquetas de HTML 3.2</a><br>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp; El uso de tablas tiene como inconveniente que en
+navegadores en modo texto no se muestran correctamente.<br>
+<br style="font-weight: bold;">
+<a name="estandares"></a> <font size="+1"><span style="font-weight: bold;">Estándares y extensiones del lenguaje HTML</span></font><br>
+&nbsp;&nbsp;&nbsp; Para coordinar o estandarizar la interpretación de
+los navegadores se creó el World Wide Web Consortium (W3C). El primer
+estándard serio, reconocido por todos los navegadores fue HTML 2.0. El
+siguiente estándard importante fue HTML 3.2 y actualmente está
+totalmente reconocido HTML 4.0 y en proceso de incorporación el 5.0.
+Por otra parte, han ido surgiendo otras tecnologías como CSS,
+JavaScripts, Applets Java, Flash, etc. cuyo soporte varía de unos
+exploradores a otros.<br>
+<br>
+&nbsp;&nbsp;&nbsp; XHTML es una variante de HTML, en concreto es
+idéntica a HTML 4.0.1 pero con una serie de restricciones para ser
+compatible con XML. Las principales normas que hay que cumplir para que
+una página HTML sea compatible con XHTML son:<br>
+<ul>
+  <li>La primera línea del fichero debe ser: &lt;?xml
+version="1.0"?&gt;.</li>
+  <li>Todas las etiquetas tienen que tener instrucción de principio y
+de fin. No está permitido no poner &lt;/p&gt; o &lt;/li&gt;.</li>
+  <li>Las etiquetas de una única instrucción deben terminar en "/&gt;.
+Por ejemplo &lt;img src="f.jpg"/&gt;.</li>
+  <li>Todos los valores de los atributos deben ir entrecomillados.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Van a ir adquiriendo importancia nuevas tecnologías
+que añaden&nbsp; características como dinamismo e&nbsp; interacción con
+el usuario. Entre estas tecnologías nos encontramos con los ya
+habituales lenguajes de scripts (JavaScript y VBScript) que se insertan
+en las páginas, junto con el código HTML, y que permiten aumentar la
+interactividad con el usuario respondiendo a acciones como pulsar un
+botón, pasar con el ratón por encima de una imagen ,etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; También hay que mencionar las hojas de estilo que
+facilitan el mantenimiento de la apariencia de las páginas web y nos
+ofrecen otras posibilidades.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La suma de HTML con los lenguajes de script y las
+hojas de estilo ha sido denominado HTML dinámico.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La mayor parte de las etiquetas vistas hasta ahora
+pertenecen al estándard HTML 2.0. El W3C ha puesto un servicio público
+que permite ver si una determanada página cumple los estándares, a
+través de la página <span style="color: red;">http:validator.w3.org</span>.
+También existe un programa libre llamado Tidy que permite validar en
+local y está disponible en <span style="color: red;">http://tidy.sourceforge.net</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando queramos asegurarnos de que cierta
+información pueda verla todo el mundo debemos utilizar el stándard 2.0.
+Por lo general, cuando un navegador se encuentra con una etiqueta o
+atributo que no reconoce sencillamente lo ignora.<br>
+<br>
+&nbsp;&nbsp;&nbsp; A continuación se muestran algunas etiquetas y
+atributos aparecidos con el estándard HTML 3.2.<br>
+<br style="font-weight: bold;">
+<a name="listas1"></a> <font size="+1"><span style="font-weight: bold;">Listas
+no ordenadas</span></font><br>
+&nbsp;&nbsp;&nbsp; El atributo <span style="color: red;">type</span>,
+que puede acompañar tanto a la
+etiqueta ul, afectando a toda la lista, como a la etiqueta li, y
+afectará solamente al elemento concreto, permite elegir el símbolo que
+se muestra delante del elemento de la lista. Los posibles valores que
+puede tomar son:<br>
+<br>
+<ul>
+  <li type="circle"><span style="color: red;">circle</span>.- muestra
+una circunferencia (vacía).</li>
+  <li type="square"><span style="color: red;">square</span>.- muestra
+un cuadrado.</li>
+  <li><span style="color: red;">disk</span>.- muestra un círculo
+relleno. Es el utilizado por defecto.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Sirva como ejemplo la propia lista anterior.<br>
+<br style="font-weight: bold;">
+<a name="listas2"></a> <font size="+1"><span style="font-weight: bold;">Listas
+numeradas</span></font><br>
+&nbsp;&nbsp;&nbsp; Aquí el atributo type identifica el tipo de
+numeración. Los posibles valores que puede tomar son:<br>
+<ol start="11">
+  <li><span style="color: red;">1</span>.- numeración decimal. La
+establecida por defecto.</li>
+  <li type="a"><span style="color: red;">a</span>.- alfabético en
+minúsculas.</li>
+  <li type="A"><span style="color: red;">A</span>.- alfabético en
+mayúsculas.</li>
+  <li type="i"><span style="color: red;">i</span>.- romano en
+minúsculas.</li>
+  <li type="I"><span style="color: red;">I</span>.- romano en
+mayúsculas.</li>
+</ol>
+&nbsp;&nbsp;&nbsp; Al igual que en las listas no ordenadas, el atributo
+type puede utilizarse con la etiqueta ol o con li, como puede verse
+encima.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para estas listas también se utiliza el atributo <span style="color: red;">start</span> que permite especificar a partir de
+qué número o letra empezar a numerar. Los posibles valores son los
+números naturales (1, 2, 3, ...). En la lista anterior se ha
+especificado &lt;ol start="11"&gt;. Este atributo no puede ser
+utilizado de forma independiente para cada elemento de la lista, esa
+función la realiza el atributo <span style="color: red;">value</span>.
+Por ejemplo, puede ponerse la lista anterior con números romanos
+impares:<br>
+<ol type="I">
+  <li><span style="color: red;">1</span>.- numeración decimal. La
+establecida por defecto.</li>
+  <li value="3"><span style="color: red;">a</span>.- alfabético en
+minúsculas.</li>
+  <li value="5"><span style="color: red;">A</span>.- alfabético en
+mayúsculas.</li>
+  <li value="7"><span style="color: red;">i</span>.- romano en
+minúsculas.</li>
+  <li value="9"><span style="color: red;">I</span>.- romano en
+mayúsculas.</li>
+</ol>
+&nbsp;&nbsp;&nbsp; Finalmente, el atributo <span style="color: red;">compact</span>,
+que puede utilizarse en cualquier tipo de lista (ul, ol, menu, dir, dl)
+indica al explorador que intente comprimir la lista al máximo, aunque
+generalmente no se aprecia diferencia.<br>
+<br style="font-weight: bold;">
+<a name="alineacion"></a> <font size="+1"><span style="font-weight: bold;">Alineación</span></font><br>
+&nbsp;&nbsp;&nbsp; Ya se ha visto que algunas etiquetas como img, p,
+table, ... admiten el atributo align y que la etiqueta &lt;center&gt;
+... &lt;/center&gt; permite centrar los elementos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Con HTML 3.2 apareció la etiqueta <span style="color: red;">div</span>
+que permite hacer divisiones en las páginas web y aplicar propiedades
+individuales a cada una de estas divisiones por separado. Esta etiqueta
+admite el atributo align con los posibles valores left, center y right.
+Con HTML 4.0 se ha añadido el valor <span style="color: red;">justify</span>
+que permite alinear a ambos lados.
+Un ejemplo es esta misma página que tiene la cabecera en una división
+con alineamiento al centro y el resto en otra con alineamiento a ambos
+lados.<br>
+<br style="font-weight: bold;">
+<a name="meta"></a> <font size="+1"><span style="font-weight: bold;">La
+etiqueta meta</span></font><br>
+&nbsp;&nbsp;&nbsp; La etiqueta <span style="color: red;">meta</span>
+sirve para describir las características de la página web. Una de sus
+funciones más útiles es la carga automática de páginas web sin que
+intervenga el usuario, lo que se consigue incluyendo&nbsp; entre
+&lt;head&gt; ... &lt;/head&gt; código de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;meta&nbsp;
+http-equiv="refresh"&nbsp; content="5"&nbsp;
+url="http://es.gnome.org"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Una página con el código anterior cargará la
+especificada con url pasados 5 segundos de haberse cargado ella misma.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los buscadores tienen una serie de programas
+llamados arañas, webbots o bots que navegan por la red buscando páginas
+que contengan cierta información. Entre la información que busca el
+webbot está el autor de la página, una breve descripción de la misma,
+palabras clave que la definan, etc.Estos datos pueden introducirse en
+la página a través de la etiqueta meta, haciendo uso de los atributos <span style="color: red;">name y content</span>. Un ejemplo sería:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;meta&nbsp;
+name="author"&nbsp; content="Santiago Alonso"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;meta&nbsp;
+name="keywords"&nbsp; content="html, manual, etiqueta"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;meta&nbsp;
+name="description"&nbsp; content="El manual de html es un resumen del
+libro tal realizado por Santiago Alonso"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; La etiqueta meta tiene tres atributos: <span style="color: red;">http-equiv, name y content</span>, normalmente se
+usa una de las dos primeras para indicar el nombre de la información
+que se incluye y con content se especifica dicha información. El
+atributo http-equiv sirve para insertar información relacionada con el
+protocolo http. Un ejemplo de uso de este atributo ya se ha puesto
+anteriormente y otro podía consistir en especificar una fecha a partir
+de la cual la página no debe ser cargada. El atributo name tiene un
+significado muy general y puede ser utilizado con muchos propósitos,
+desde para enviar información a los buscadores como para dar
+información a los editores html para que incluyan información específica.<br>
+<br style="font-weight: bold;">
+
+<a name="otras"></a> <font size="+1"><span style="font-weight: bold;">Otras etiquetas de HTML 3.2</span></font><br>
+&nbsp;&nbsp;&nbsp; El estándard dice que las páginas web deben incluir
+en su primera línea el descriptor de tipo de documento, que también
+incluirá información acerca de la versión de HTML que se está
+utilizando. Como ejemplos se pueden tomar la primera línea de esta
+página, que hace referencia a la versión 4.0.1 y la que se utiliza para
+HTML 5 que es:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &lt;!DOCTYPE html&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Otras etiquetas de HTML 3.2 aún no vistas son:<br>
+<ul>
+  <li>applet.- para insertar applets de Java.</li>
+  <li>style.- usada en la cabecera para introducir el código de las hojas de estilo.</li>
+  <li>script.- para introducir código JavaScript o VBScript.</li>
+  <li>form.- permite crear formularios.</li>
+  <li>isindex.- método antiguo utilizado para crear formularios.</li>
+</ul>
+
+</div>
+
+<br>
+
+<br>
+
+</body></html>

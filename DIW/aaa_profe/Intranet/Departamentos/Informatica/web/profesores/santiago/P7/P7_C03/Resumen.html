@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Efectos y callback</title>
+
+  
+  
+  <script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<div id="header">
+<p id="cabecera">Efectos y callback</p>
+</div>
+
+<div>
+<div id="nav"><a href="#efectos">Efectos</a><br>
+<br>
+<a href="#callback">Callback</a><br>
+</div>
+<div id="article">
+Este resumen se ha realizado sobre los manuales de <a href="http://www.desarrolloweb.com/manuales/manual-jquery.html">desarrolloweb.com</a>
+<h3><a name="efectos"></a>Efectos</h3>
+&nbsp;&nbsp;&nbsp;
+Una de las características más importantes de jQuery es la obtención de
+efectos espectaculares con poco código. Existe una <a href="http://docs.jquery.com/Effects" target="_blank">librería de
+efectos</a> a disposición de los programadores. Así, conseguir un
+efecto puede consistir en una línea de código como la siguiente:<br>
+<p class="codigo">$("#capaefectos").hide("slow");
+</p>
+<p>&nbsp;&nbsp;&nbsp; Esta línea permite que el elemento con
+id="capaefectos" desaparezca de la página reduciendo su tamaño de forma
+progresiva.<br>
+&nbsp;&nbsp;&nbsp; El siguiente ejemplo consta de una capa con un texto
+y dos enlaces; uno para ocultar y el otro para mostrar la capa. El
+resultado puede verse pinchando <a href="mostrarOcultar.html">aquí</a>.<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp; El código correspondiente a la capa y a los
+enlaces es el siguiente:
+</p>
+<p class="codigo">&lt;div id="capaefectos"
+style="background-color: #cc7700; color:fff;
+padding:10px;"&gt;<br>
+Esto es una capa que nos servirá para hacer efectos!<br>
+&lt;/div&gt;<br>
+&lt;p&gt;<br>
+&lt;a href="#" id="ocultar"&gt;Ocultar la capa&lt;/a&gt; | <br>
+&lt;a href="#" id="mostrar"&gt;Mostrar la capa&lt;/a&gt; <br>
+&lt;/p&gt;<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp; A continuación se asocian los eventos
+a los dos enlaces y se codifican las llamadas a las funciones de
+Effects, que harán que se muestre y oculte la capa. </p>
+<p>&nbsp;&nbsp;&nbsp; El código Javascript, que hace uso de jQuery es
+el siguiente:
+</p>
+<p class="codigo">
+$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp; $("#ocultar").click(function(event){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; event.preventDefault();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$("#capaefectos").hide("slow");<br>
+&nbsp;&nbsp;&nbsp; });<br>
+&nbsp;&nbsp; $("#mostrar").click(function(event){<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; event.preventDefault();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $("#capaefectos").show(3000);<br>
+&nbsp;&nbsp;&nbsp;});<br>
+});
+</p>
+<p>&nbsp;&nbsp;&nbsp; En primer lugar se ha definido el evento ready
+del
+objeto $(document) y a continuación el evento click sobre cada uno de
+los dos enlaces seleccionados a través de su identificador (id).</p>
+&nbsp;&nbsp;&nbsp; Dentro de la función a ejecutar cuando se hace clic,
+se coloca la
+llamada a la función de los efectos para que se oculte lentamente o
+tarde 3 segundos en mostrarse.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El código completo de la página sería:<br>
+<p class="codigo">&lt;!DOCTYPE html<br>
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"<br>
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;<br>
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;title&gt;Efectos con jQuery&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;script src="jquery-1.9.1.min.js"
+type="text/javascript"&gt;&lt;/script&gt;&nbsp;&nbsp;&nbsp;<br>
+&lt;script&gt;<br>
+$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp; $("#ocultar").click(function(event){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; event.preventDefault();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$("#capaefectos").hide("slow");<br>
+&nbsp;&nbsp;&nbsp; });<br>
+<br>
+&nbsp;&nbsp;&nbsp; $("#mostrar").click(function(event){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; event.preventDefault();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $("#capaefectos").show(3000);<br>
+&nbsp;&nbsp;&nbsp; });<br>
+});<br>
+&lt;/script&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&lt;div id="capaefectos" style="background-color: #cc7700; color:fff;
+padding:10px;"&gt;<br>
+Esto es una capa que nos servirá para hacer efectos!<br>
+&lt;br&gt;&lt;br&gt;<br>
+Pongo este texto simplemente de prueba<br>
+&lt;/div&gt;<br>
+&lt;p&gt;<br>
+&lt;a href="#" id="ocultar"&gt;Ocultar la capa&lt;/a&gt; | <br>
+&lt;a href="#" id="mostrar"&gt;Mostrar la capa&lt;/a&gt; <br>
+&lt;/p&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+</p>
+<h3><a name="callback"></a>Callback</h3>
+&nbsp;&nbsp;&nbsp; A menudo cuando se hacen aplicaciones enriquecidas
+del lado del cliente
+con jQuery es necesario encadenar varias llamadas a
+funciones, para que una se ejecute detrás de otra (callback), creando
+un efecto
+más elaborado.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Como ejemplo vamos a tomar un caso en el que
+se desee crear una
+secuencia de efectos y cambios dinámicos en un elemento: ocultar una
+capa con un efecto
+de fundido (de opaco a transparente), luego moverla a otra posición y
+volverla a mostrar con otro efecto de fundido
+(en este caso de transparente a opaco). El código a utilizar podría ser
+el siguiente:
+<p class="codigo">$("#micapa").fadeOut(2000);<br>
+$("#micapa").css({top: 300, left:200});<br>
+$("#micapa").fadeIn(2000);
+</p>
+<p>&nbsp;&nbsp;&nbsp; En este caso se alteran las propiedades de una
+capa con
+id="micapa": primero se oculta con un fundido que dura 2 segundos con
+fadeOut(), luego se cambia su posición modificando sus atributos CSS y
+finalmente se hace otro fundido con fadeIn().</p>
+<p>&nbsp;&nbsp;&nbsp; Se ejecutan todas las sentencias y como fadeOut()
+y fadeIn() tardan dos segundos mientras que el cambio de las
+propiedades CSS es inmediato, se verá que primero se mueve la capa y
+después desaparece y vuelve a aparecer. El resultado puede verse
+pinchando <a href="callback.html">aquí</a>.</p>
+&nbsp;&nbsp;&nbsp; En el ejemplo sería conveniente crear una pila de
+funciones para que se fueran ejecutando una a continuación de la
+anterior pero una vezque ésta hubiera terminado de ejecutarse
+completamente. Para ello, debemos saber que todas las funciones o
+métodos de jQuery admiten un parámetro con el nombre de la función que
+tiene que ejecutarse después una vez finalizada la ejecución de la
+primera. A esta segunda función se le llama callback.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La forma de programarlo sería:<br>
+<p><span class="codigo">primeraFuncion ("parametros de la función",
+funcionCallback);
+</span></p>
+<p>&nbsp;&nbsp;&nbsp; Con
+este código, primero se ejecuta primeraFuncion() con sus parámetros y
+cuando acabe
+completamente, se ejecuta funcionCallback(). Éste es un ejemplo muy
+sencillo en el que la función funcionCallback() no recibe parámetros.
+En el caso de que la segunda función necesitara parámetros habrá que
+utilizar esta otra sintaxis:
+</p>
+<p class="codigo">primeraFuncion ("parametros de la funcion",
+function(){<br>
+&nbsp;&nbsp;&nbsp;funcionCallback();<br>
+});<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp; Con este código, que funciona igual que el
+anterior, pueden especificarse los parámetros que necesite
+funcionCallback().</p>
+&nbsp;&nbsp;&nbsp; Aplicando esta teoría al ejemplo anterior para que
+el cuadro con el texto no se cambie de lugar hasta que haya
+desaparecido completamente, el código sería:<br>
+<br>
+<p class="codigo">$("#micapa").fadeOut(2000, function(){<br>
+&nbsp; &nbsp;&nbsp; $("#micapa").css({'top': 300, 'left':200});<br>
+&nbsp;&nbsp;&nbsp;&nbsp; $("#micapa").fadeIn(2000);<br>
+});<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp; cuyo resultado puede comprobarse pulsando 
+<a href="callback_2.html">aqui</a>.<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp; Como se puede ver, en la llamada a fadeOut(),
+además de pasar como parámetro el tiempo, se pasa una función que
+realiza el cambio de coordenadas y la visualización de "micapa". Como
+el método css() que se encuentra como primera instrucción de la
+función callback es instantáneo, no necesita hacerse un callback para
+ejecutar el fadeIn(), sino que se puede escribir directamente en la
+siguiente línea de código. Así pues, se ve que el callback, al menos en
+este ejemplo, sólo es necesario cuando se ejecutan funciones
+que realizarán un procesamiento prolongado.
+</p>
+</div>
+</div>
+
+<br>
+<div id="footer">
+</div>
+</body></html>

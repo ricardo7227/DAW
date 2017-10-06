@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file009.html -->
+<html>
+<head>
+<script type="text/javascript">
+function imprimir(miCadena1){
+var miNro1 = parseFloat(miCadena1);
+var miNro2 = parseInt(miCadena1);
+document.write("Cadena:", miCadena1, "<br>");
+document.write("como float: ", miNro1, "<br>");
+document.write("como int : ", miNro2, "<br>");
+document.write("¿isNaN()? : ", isNaN(miCadena1), "<br><br>");
+}
+imprimir("993.35 Km");
+imprimir("30,50 kilos");
+imprimir("Peso 5000 gramos");
+imprimir("1.500.000,50 $");
+imprimir("3000/15");
+imprimir("50");
+imprimir(".66 litros");
+</script>
+</head>
+<body>
+</body>
+</html>

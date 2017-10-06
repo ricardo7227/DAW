@@ -1,0 +1,178 @@
+/*
+ * Author: Ying Ying Hu
+ * Project Name: WebIES
+ * Version: 3.0
+ */
+  
+/* FONTS */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700,900);
+
+/** Less Variables **/
+@colorBackground: #fbfbfb;
+@colorBackgroundSection: #d9d9d9;
+@colorBackgroundDark: #2d2d2d;
+@colorGrayText: #ccc;
+@colorTitle: #666;
+@colorMenuAct: #ff7878;
+@colorNav: #fff;
+@colorEnl: #f85c37;
+@colorEnlAct: #7b7b7b;
+@colorTime: #999;
+@sizeLogo: 20px;
+@sizeTitle: 18px;
+@sizeText: 16px;
+@sizeNav: 14px;
+@sizeImg: 150px;
+@weight-xl: 900;
+@weight-l: 700;
+@weight-m: 400;
+
+/* OVERALL ASPECT */
+
+body {
+    font-family: "Lato";
+	font-weight: @weight-m;
+    font-size: @sizeText;
+    background-color: @colorBackground;
+	margin-top: 70px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway"; 
+}
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+time {
+	@colorTime: #999;
+	font-size: small;
+}
+
+/* LINK EFFECT */
+
+a {
+    color: @colorEnl;
+    word-wrap: break-word;
+	transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+a:hover, a:focus {
+    color: @colorEnlAct;
+    text-decoration: none;
+    outline: 0;
+}
+
+a:before, a:after {
+	transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+/* CLASS ASPECT */
+
+.section-header {
+	color: @colorTitle;
+	font-size: @sizeTitle;
+	font-weight: @weight-l;
+	padding-bottom: 9px;
+	margin: 20px 0 20px;
+	border-bottom: 3px solid #999;
+}
+
+.article-header {
+	font-size: @sizeTitle;
+	font-weight: @weight-l;
+	margin: 20px 0 5px;
+}
+
+/* ==========================================================================
+   Header Sections
+   ========================================================================== */
+
+.navbar-header {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.navbar-inverse {
+	font-size: @sizeNav;
+	font-weight: @weight-l;
+	background: @colorBackgroundDark;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+	background: @colorMenuAct;
+	color:@colorNav;
+}
+
+.navbar-brand {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.navbar-inverse .navbar-brand img {
+	height: 40px;
+	width: auto;
+	padding-right: 10px;
+}
+
+.dropdown-menu {
+    background: @colorBackgroundDark;
+    border-bottom: 4px solid @colorMenuAct;
+	
+}
+
+.dropdown-menu > li > a {
+    color:@colorNav;
+  }
+
+#Instituto {
+  color:@colorNav;
+  font-size: @sizeLogo;
+  font-weight: @weight-l;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   HeaderWrap Sections
+   ========================================================================== */
+
+#headerwrap img{
+	width: 100%;
+    height: auto;
+}
+
+/* ==========================================================================
+   Portfolio Sections
+   ========================================================================== */
+
+#portfolio {
+  background: @colorBackgroundSection;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.enlaces a > img {
+  max-width: @sizeImg;
+  height: auto;
+  
+}
+  
+/* ==========================================================================
+   Footer Sections
+   ========================================================================== */
+
+#foot {
+	color:@colorGrayText;
+	background: @colorBackgroundDark;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}

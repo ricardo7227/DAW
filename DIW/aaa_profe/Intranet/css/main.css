@@ -1,0 +1,48 @@
+.body{
+	background: #EEE;
+	font-family: arial, helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+
+.wrapper{
+	width: 90px;
+	margin: 100px;
+	border: 1px solid #d0d0d0;
+	float:right; 
+}
+
+
+.mydiv{
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	width:50px;  /*ancho del div*/
+	height:50px; /* alto del div*/
+}
+
+
+.mydiv p{
+	padding: 25px;
+	line-height: 1.5em;
+}
+
+#p { 
+  font-family: fantasy; 
+  font-size: 20px;
+}
+
+#img{
+  float:top;
+  left: 100px;
+  width:100px;
+
+}
+
+
+
+
+
+
+

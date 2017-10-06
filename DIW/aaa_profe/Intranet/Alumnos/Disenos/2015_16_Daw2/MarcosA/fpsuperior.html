@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--
+Rellenar adecuadamente ORDENADOR
+-->
+<html lang="es">
+    <head>
+		<title>IES Tierno Galvan</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web Tierno Galval">
+        <meta name="keywords" content="HTML5, CSS3, JavaScript">
+		
+        
+        <link rel="stylesheet" type="text/css" href="css/original.css" /><!--estilo principal!-->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" ><!--estilo Menu!-->
+        <link rel="stylesheet" type="text/css" href="css/calendario.css" ><!--estilo calendario!-->	  
+        
+	  
+      <!--Estilos Bootstrap*/-->
+	  <script src="js/jquery-1.9.1.min.js"></script>
+	  <script src="js/bootstrap.min.js"></script>
+      
+    </head>
+    
+    
+    <body>
+    <div id="container-fluid">
+	<div id="agrupar">
+	
+		<header class="cheader">
+        	<div id="divlogo"><img src="imagenes/Logotierno.png" class="img-responsive" id="imglogo"></div>
+			<div id="divtextologo" class="visible-lg visible-md visible-sm hidden-xs"><h1>Enrique Tierno Galvan</h1></div>
+            <div id="divtextologo1" class="hidden-lg hidden-md hidden-sm visible-xs"><p>Enrique</p> <p>Tierno</p><p> Galvan</p></div>
+	
+		</header>
+	
+	 
+		<nav role="navigation" class="navbar navbar-default">
+			<div class="navbar-header">
+				<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand">Menu</a>
+			</div>
+ 
+			<div id="navbarCollapse" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Inicio</a></li>
+                    
+                    <li class="dropdown active">
+						<a data-toggle="dropdown" class="dropdown-toggle">Enseñanzas<b class="caret"></b></a>
+							<ul role="menu" class="dropdown-menu">
+								<li><a href="secundaria.html">Secundaria</a></li>
+								<li><a href="bachillerato.html">Bachillerato</a></li>
+                                <li><a href="fp.html">FP</a></li>
+                                <li><a href="fpmedio.html">FP GM</a></li>
+                                <li><a href="fpsuperior.html">FP GS</a></li>
+							</ul>
+					</li>
+
+					<li class="dropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle">Dirección<b class="caret"></b></a>
+							<ul role="menu" class="dropdown-menu">
+								<li><a href="equipodirectivo.html">Equipo directivo</a></li>
+								<li><a href="consejoescolar.html">Consejo escolar</a></li>
+							</ul>
+					</li>
+                    
+                    <li class="dropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle">Multimedia<b class="caret"></b></a>
+							<ul role="menu" class="dropdown-menu">
+								<li><a href="fotos.html">Fotografías</a></li>
+								<li><a href="#">Videos</a></li>
+							</ul>
+					</li>
+				
+					<li><a href="ampa.html">Ampa</a></li>
+					<li><a href="tic.html">Tic</a></li>
+                    <li>
+                    	<form  action="buscar.php" method="post">
+						<input name="palabra">
+						<input type="submit" name="buscador" value="Buscar">
+						</form>
+                    </li>
+				</ul>
+			
+			
+			</div>
+		</nav>
+	 
+	 
+    <div class="row">	
+	    <section id="idsection" class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+	
+	        <article>
+            	<p>Estás en Enseñanzas/FP GS</p>
+			   <hgroup>
+				  <h1>FP Grado Superior</h1>	
+                  <hr>
+				 
+			   </hgroup>
+               
+           	 	<p><span>Ciclos de Grado Superior (dos cursos)</span> </p>
+				
+				<p>Desarrollo de aplicaciones web</p>
+                <p><span>horario:</span> Mañana</p>
+                <p><span>Cursos:</span> 1° y 2°</p>
+                
+                <hr>
+                
+				<p>Administración de sistemas informáticos en red</p>
+                <p><span>horario:</span> Tarde</p>
+                <p><span>Cursos:</span> 1° y 2°</p>
+                 <hr>
+                
+                <p>Mantenimiento de instalaciones térmicas y de fluidos</p>
+                <p><span>horario:</span> Tarde</p>
+                <p><span>Cursos:</span> 1° y 2°</p>
+                 <hr>
+                
+                <p>Automoción</p>
+                <p><span>horario:</span> Tarde</p>
+                <p><span>Cursos:</span> 1° y 2°</p>
+                 <hr>
+                
+                
+                 
+	      </article>
+	  
+	</section>
+     <aside id="idaside" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <a href="http://www.educa2.madrid.org/educamadrid/" target="_blank"><img class="img-responsive" src="imagenes/educamadrid.png"></a>
+      
+	 </aside>
+     
+     <aside id="idaside" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <a href="erasmus.html"><img class="img-responsive" src="imagenes/logoerasmus.png"></a>
+      
+	 </aside>
+     
+     <aside id="idasidecalendario" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      
+		<div id="calendar"class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <p>Calendario</p>
+        </div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><!--Calendario!-->
+		<script src="js/jquery-ui-datepicker.min.js"></script><!--Calendario!-->
+		<script>
+			$('#calendar').datepicker({
+				inline: true,
+				firstDay: 1,
+				showOtherMonths: true,
+				monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+				dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'vie', 'Sab']
+			});
+		</script>
+      
+	</aside>
+    
+    
+     
+
+    </div><!--end row-->	  
+	  <footer id="pie">
+                IES Tierno Galvan &copy; 2015
+	  </footer>
+      
+</div>
+</div>
+      
+      
+    </body>
+</html>

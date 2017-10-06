@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Tablas</title>
+
+  
+</head><body style="background-color: rgb(255, 250, 220); width: 851px;">
+<div style="text-align: center; color: rgb(0, 0, 153); background-color: rgb(200, 230, 255);"><font size="+1"><span style="font-weight: bold;">CREACIÓN&nbsp; DE&nbsp;
+TABLAS&nbsp; HTML</span><br>
+</font></div>
+
+<div>
+<br style="font-weight: bold;">
+<font size="+1"><span style="font-weight: bold;">INDICE</span></font><br>
+<a href="#creacion">Creación de tablas</a><br>
+<a href="#borde">Borde de las tablas</a><br>
+<a href="#titulo">Título de las tablas</a><br>
+<a href="#tamano">Tamaño de las tablas</a><br>
+<a href="#alineamiento">Alineamiento de las tablas</a><br>
+<a href="#alineamiento2">Alineamiento de celdas y filas</a><br>
+<a href="#ancho">Ancho de tablas y celdas</a><br>
+<a href="#varias">Celdas que abarcan varias filas o columnas</a><br>
+<a href="#margenes">Márgenes y separación de celdas</a><br>
+<a style="outline-color: navy ! important; outline-style: dashed ! important; outline-width: 2px ! important;" href="#anidamiento">Anidamiento</a><br>
+<br style="font-weight: bold;">
+&nbsp;&nbsp;&nbsp; Las tablas, además de permitir organizar los datos,
+escondiendo sus bordes permiten estructurar las páginas. Van a dotar de
+cierta flexibilidad para decidir la disposición de los elementos de la
+página. Puede hacerse que toda la página, o una parte de ella, sea una
+tabla e ir colocando los diferentes elementos en cada celda.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El uso de tablas tiene como inconveniente que en
+navegadores en modo texto no se muestran correctamente.<br>
+<br style="font-weight: bold;">
+<a name="creacion"></a> <font size="+1"><span style="font-weight: bold;">Creación de tablas</span></font><br>
+&nbsp;&nbsp;&nbsp; Para crear una tabla se utilizan las etiquetas
+<span style="color: red;">&lt;table&gt; ... &lt;/table&gt;</span>, las
+filas se definen con <span style="color: red;">&lt;tr&gt;
+... &lt;/tr&gt;</span>, las celdas de encabezado con <span style="color: red;">&lt;th&gt; ...
+&lt;/th&gt;</span> y las celdas normales con <span style="color: red;">&lt;td&gt;
+... &lt;/td&gt;</span>. La
+diferencia entre las celdas de encabezado y las normales es que en las
+primeras el texto aparecerá resaltado y centrado y en las normales no.
+las etiquetas de fin de fila o de celda son optativas aunque
+recomendables.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un ejemplo de una tabla con 3 filas y 3 columas, con
+la primera fila dedicada a encabezado tendrá un código como el
+siguiente:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;table&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;td&gt;&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;th&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+ENCABEZADO<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/th&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;td&gt;&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;td&gt;Fila 1 Columna 1&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;td&gt;Fila 1 Columna 2&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;td&gt;Fila 1 Columna 3&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;td&gt;Fila 2 Columna 1&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;td&gt;Fila 2 Columna 2&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;td&gt;Fila 2 Columna 3&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;/table<br>
+<br>
+&nbsp;&nbsp;&nbsp; Y el resultado será el siguiente:<br>
+<br>
+<table>
+  <tbody>
+    <tr>
+      <td><br>
+      </td>
+      <th>ENCABEZADO</th>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Fila 1 Columna 1</td>
+      <td>Fila 1 Columna 2</td>
+      <td>Fila 1 Columna 3</td>
+    </tr>
+    <tr>
+      <td>Fila 2 Columna 1</td>
+      <td>Fila 2 Columna 2</td>
+      <td>Fila 2 Columna 3</td>
+    </tr>
+  </tbody>
+</table>
+<br style="font-weight: bold;">
+<a name="borde"></a> <font size="+1"><span style="font-weight: bold;">Borde
+de las tablas</span></font><br>
+&nbsp;&nbsp;&nbsp; El atributo <span style="color: red;">border</span>
+de la etiqueta table permite
+expecificar el grosor del borde en pixels. Si se especifica el atributo
+sin asignar ningún valor se tomará como borde 1 pixel. Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;table&nbsp; border="5"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; La tabla anterior con un borde de 5 pixels quedará
+de la forma:<br>
+<br>
+<table border="5">
+  <tbody>
+    <tr>
+      <td><br>
+      </td>
+      <th>ENCABEZADO</th>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Fila 1 Columna 1</td>
+      <td>Fila 1 Columna 2</td>
+      <td>Fila 1 Columna 3</td>
+    </tr>
+    <tr>
+      <td>Fila 2 Columna 1</td>
+      <td>Fila 2 Columna 2</td>
+      <td>Fila 2 Columna 3</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Algunos navegadores dan un aspecto tridimensional al
+borde de la página.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando en una fila se definen menos celdas
+(columnas) las últimas quedarán vacías, ni siquiera se dibujarán. En
+algunos casos, para que se dibujen deben estar definidas y contener un
+salto de línea o un espacio "escapado".<br>
+<br style="font-weight: bold;">
+<a name="titulo"></a> <font size="+1"><span style="font-weight: bold;">Título
+de las tablas</span></font><br>
+&nbsp;&nbsp;&nbsp; Las tablas pueden ir acompañadas en su parte
+superior o inferior de un texto llamado título. Se define mediante la
+etiqueta <span style="color: red;">&lt;caption&gt; ... &lt;/caption&gt;</span>
+que debe estar situada entre &lt;table&gt; ... &lt;/table&gt;, de la
+forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;table&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;caption&gt; Texto del título
+&lt;/caption&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &lt;/table&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; El texto del título podrá formatearse con etiquetas
+de nivel de texto, que no provocan saltos de línea. Así, no podrán
+utilizarse &lt;h1&gt;, &lt;h2&gt;, etc. pero si font. Un ejemplo con un
+título en la parte inferior, con letra más grande y negrita, sería el
+siguiente:<br>
+<br>
+<table border="5">
+  <caption style="font-weight: bold;" align="bottom"><big>Título de pie</big></caption>
+  <tbody>
+    <tr>
+      <td><br>
+      </td>
+      <th>ENCABEZADO</th>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Fila 1 Columna 1</td>
+      <td>Fila 1 Columna 2</td>
+      <td>Fila 1 Columna 3</td>
+    </tr>
+    <tr>
+      <td>Fila 2 Columna 1</td>
+      <td>Fila 2 Columna 2</td>
+      <td>Fila 2 Columna 3</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Para especificar si el título estará situado en la
+parte superior o en la inferior se utiliza el atributo <span style="color: red;">align</span> que admite como valores <span style="color: red;">top</span> y <span style="color: red;">bottom</span>.
+Por defecto toma align="top".<br>
+<br style="font-weight: bold;">
+<a name="tamano"></a> <font size="+1"><span style="font-weight: bold;">Tamaño
+de las tablas</span></font><br>
+&nbsp;&nbsp;&nbsp; Cuando al leer una página el navegador encuentra una
+tabla calcula cual debe ser la altura de cada fila y el ancho de cada
+columna para mostrar el contenido de cada una de las celdas. La altura
+queda definida por el elemento más alto y el ancho por el elemento más
+largo.<br>
+<br>
+PRÁCTICA.- Generar una tabla cuyos elementos tengan un texto corto,
+texto que ocupe varias líneas, una imagen pequeña y una imagen grande.<br>
+<br>
+<table border="5">
+  <tbody>
+    <tr>
+      <td><br>
+      </td>
+      <th>ENCABEZADO</th>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Fila 1 Columna 1</td>
+      <td>Pero aquello no fue lo peor, faltaba por verse como el nido
+de la cigüeña se venía abajo, con 30 kilos de ramas, barro y porqurías
+e iba a parar a la cabeza de don Raimundo</td>
+      <td> <img src="imagenes/logo.jpg"> </td>
+    </tr>
+    <tr>
+      <td>El ancho de cada columna se irá recalculando pasito a pasito.<br>
+      </td>
+      <td>Fila 2 Columna 2</td>
+      <td>Fila 2 Columna 3</td>
+    </tr>
+  </tbody>
+</table>
+<br style="font-weight: bold;">
+<a name="alineamiento"></a> <font size="+1"><span style="font-weight: bold;">Alineamiento de las tablas</span></font><br>
+&nbsp;&nbsp;&nbsp; El atributo <span style="color: red;">align</span>
+de la etiqueta table permite situar la tabla a la izquierda, en el
+centro o a la derecha de la ventana del navegador. Los posibles valores
+de este atributo son:<span style="color: red;"> left, center y right</span>.
+El comportamiento es similar al alineamiento de imágenes pudiendo
+organizar el texto de forma parecida y utilizar igualmente la etiqueta
+br con el atributo clear. Con el atributo center el texto no envolverá
+a la tabla.<br>
+<br>
+<table align="right" border="5">
+  <tbody>
+    <tr>
+      <td><br>
+      </td>
+      <th>ENCABEZADO</th>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Fila 1 Columna 1</td>
+      <td>Fila 1 Columna 2</td>
+      <td>Fila 1 Columna 3</td>
+    </tr>
+    <tr>
+      <td>Fila 2 Columna 1</td>
+      <td>Fila 2 Columna 2</td>
+      <td>Fila 2 Columna 3</td>
+    </tr>
+  </tbody>
+</table>
+&nbsp;&nbsp;&nbsp; En este ejemplo, la tabla utilizada anteriormente se
+ha situado a la derecha y el texto la rodea. Aquí introduciremos &lt;br
+clear="all"&gt;.<br clear="all">
+<br style="font-weight: bold;">
+<a name="alineamiento2"></a> <font size="+1"><span style="font-weight: bold;">Alineamiento de celdas y filas</span></font><br>
+&nbsp;&nbsp;&nbsp; Los objetos contenidos en las celdas pueden
+alinearse con respecto a las mismas. Existen dos tipos de alineamiento:
+vertical y horizontal que se establecen con los atributos <span style="color: red;">valign y align</span> respectivamente de las
+etiquetas td y th. Los posibles valores para valign son <span style="color: red;">top, middle y bottom</span> y los de align son <span style="color: red;">left, center y right</span>. Por defecto, las
+celdas de encabezado (th) están centradas vertical y horizontalmente y
+las normales (td) están centradas verticalmente y a la izquierda
+horizontalmente.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los atributos valign y align pueden utilizarse a
+nivel de fila con la etiqueta tr y afectarán a todas las celdas de la
+fila.<br>
+<br style="font-weight: bold;">
+<a name="ancho"></a> <font size="+1"><span style="font-weight: bold;">Ancho
+de tablas y celdas</span></font><br>
+&nbsp;&nbsp;&nbsp; El atributo <span style="color: red;">width</span>
+de la etiqueta table permite especificar en puntos el ancho de la
+tabla. Si el ancho especificado no permite visualizar los elementos de
+la tabla se ignorará el atributo width. Sería el caso de una tabla de
+500 pixels de ancho en cuyo contenido hubiera una imagen de 550 pixels,
+por ejemplo. Si el contenido de la tabla es texto el atributo width
+tiene mayor utilidad ya que el texto se adaptará al ancho
+distribuyéndose en las líneas necesarias.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La medida del ancho también puede darse en
+porcentajes con respecto al ancho de la ventana del navegador. El ancho
+de la tabla se modificará si se modifica el ancho de la ventana del
+navegador.<br>
+<br>
+<big style="font-weight: bold;">&nbsp;&nbsp;&nbsp; Tamaño de las celdas</big><br>
+&nbsp;&nbsp;&nbsp; Los atributos <span style="color: red;">width y
+height</span> permiten establecer el ancho y el alto de la celda. Estos
+atributos serán ignorados si el contenido de la celda es de mayores
+dimensiones.<br>
+<br>
+<big style="font-weight: bold;">&nbsp;&nbsp;&nbsp; El atributo nowrap</big><br>
+&nbsp;&nbsp;&nbsp; El efecto de <span style="color: red;">nowrap</span>
+en la etiqueta td es que el texto de la celda no se partirá. La celda
+se ampliará todo lo
+que sea necesario, pudiendo obligar al usuario a utilizar la barra de
+desplazamiento para tener acceso a todo el texto. Si es necesario se
+ignorarán los atributos width y
+height para que el texto de la celda no se divida. A continuación puede
+verse una tabla utilizada anteriormente con dos celdas afectadas por
+este atributo:<br>
+<br>
+<table border="5">
+  <tbody>
+    <tr>
+      <td><br>
+      </td>
+      <th>ENCABEZADO</th>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Fila 1 Columna 1</td>
+      <td nowrap="nowrap">Pero aquello no fue lo peor, faltaba por
+verse como el nido
+de la cigüeña se venía abajo, con 30 kilos de ramas, barro y porqurías
+e iba a parar a la cabeza de don Raimundo</td>
+      <td> <img src="imagenes/logo.jpg"> </td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">El ancho de cada columna se irá recalculando
+pasito a pasito.<br>
+      </td>
+      <td>Fila 2 Columna 2</td>
+      <td>Fila 2 Columna 3</td>
+    </tr>
+  </tbody>
+</table>
+<br style="font-weight: bold;">
+<a name="varias"></a> <font size="+1"><span style="font-weight: bold;">Celdas
+que abarcan varias filas o columnas</span></font><br>
+&nbsp;&nbsp;&nbsp; Dos de los atributos más interesantes que permiten
+crear tablas más complejas son <span style="color: red;">rowspan y
+colspan</span>. Se utilizan con las
+etiquetas th y td y su función es hacer que una celda ocupe varias
+columnas (colspan) o varias filas (rowspan). Veamos un ejemplo:<br>
+<br>
+<table align="right" border="5">
+  <tbody>
+    <tr>
+      <th colspan="2">Celda de dos columnas</th>
+    </tr>
+    <tr>
+      <td rowspan="2">Celda de dos filas</td>
+      <td>Fila 2 Columna 2</td>
+    </tr>
+    <tr>
+      <td>Fila 3 Columna 2</td>
+    </tr>
+  </tbody>
+</table>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;table border="5" align="right"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;th
+colspan="2"&gt;Celda de dos columnas&lt;/th&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;td
+rowspan="2"&gt;Celda de dos filas&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;td&gt;Fila 2 Columna 2&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;td&gt;Fila 3 Columna 2&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;/table&gt;<br>
+<br>
+<a name="margenes"></a> <font size="+1"><span style="font-weight: bold;">Márgenes y separación de celdas</span></font><br>
+<table align="right" border="5" cellpadding="10" cellspacing="5">
+  <tbody>
+    <tr>
+      <th colspan="2">Celda de dos columnas</th>
+    </tr>
+    <tr>
+      <td rowspan="2">Celda de dos filas</td>
+      <td>Fila 2 Columna 2</td>
+    </tr>
+    <tr>
+      <td>Fila 3 Columna 2</td>
+    </tr>
+  </tbody>
+</table>
+&nbsp;&nbsp;&nbsp; html considera cada celda independiente de las
+demás, con su propio borde, márgenes, etc. El atributo <span style="color: red;">cellspacing</span> de la etiqueta table establece
+la separación entre las celdas, que por defecto es 1. Puede utilizarse
+para anular el espaciado (0). El atributo <span style="color: red;">cellpadding</span>
+establece el margen entre el contenido de las celdas y su borde. En la
+tabla de la derecha se ha establecido cellspacing="5" y
+cellpadding="10". Anulando el borde, la separación y los márgenes puede
+conseguirse formar una imagen a partir de varios trozos de la misma.<br clear="right">
+<br>
+<a name="anidamiento"></a> <font size="+1"><span style="font-weight: bold;">Anidamiento</span></font><br>
+<table align="right" border="5">
+  <tbody>
+    <tr>
+      <th colspan="2">Celda de dos columnas</th>
+    </tr>
+    <tr>
+      <td rowspan="2">
+      <table border="1" cellspacing="0">
+        <tbody>
+          <tr>
+            <td>Elem 2, 1, 1</td>
+            <td>Elem 2, 1, 2</td>
+          </tr>
+          <tr>
+            <td>Elem 2, 2, 1</td>
+            <td>Elem 2, 2, 2</td>
+          </tr>
+          <tr>
+            <td>Elem 2, 3, 1</td>
+            <td>Elem 2, 3, 2</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+      <td>Fila 2 Columna 2</td>
+    </tr>
+    <tr>
+      <td>Fila 3 Columna 2</td>
+    </tr>
+  </tbody>
+</table>
+&nbsp;&nbsp;&nbsp; El anidamiento consiste en el uso de una etiqueta
+dentro (entre la de inicio y la de fin) de otra, de manera que los
+efectos de ambas se combinen. En la tabla de la derecha, en la celda de
+dos filas del ejemplo del apartado anterior se ha definido otra tabla
+de 3 filas y 2 columnas.<br clear="all"><br>
+PRÁCTICA.- Crear la tabla siguiente introduciendo las etiquetas y
+atributos adecuados:<br>
+<br>
+<table align="center" border="2">
+  <caption style="color: red;"><font size="+2">Superoferta viaje a
+Tordillos</font></caption> <tbody>
+    <tr>
+      <th colspan="2" rowspan="2"><br>
+      </th>
+      <th colspan="2">Hoteles 3 estrellas</th>
+      <th rowspan="2">Hoteles 4 estrellas</th>
+    </tr>
+    <tr>
+      <th>Solo alojamiento</th>
+      <th>Pensión completa</th>
+    </tr>
+    <tr>
+      <th rowspan="2">1 semana</th>
+      <th>Avión turista</th>
+      <td align="center">700 €</td>
+      <td align="center">1000 €</td>
+      <td rowspan="2" align="center">1500 €</td>
+    </tr>
+    <tr>
+      <th>Avión preferente</th>
+      <td align="center">850 €</td>
+      <td align="center">1150 €</td>
+    </tr>
+    <tr>
+      <th colspan="2">2 semanas</th>
+      <td align="center">1300 €</td>
+      <td align="center">1850 €</td>
+      <td align="center">2600 €</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+PRÁCTICA.- Crear la misma tabla haciendo uso de las herramientas del
+editor.<br>
+PRÁCTICA.- Hacer un pequño proyecto con varias páginas que mejore la
+web del centro. Seguir los pasos mencionados en el libro:
+planificación, ...<br>
+</div>
+
+</body></html>

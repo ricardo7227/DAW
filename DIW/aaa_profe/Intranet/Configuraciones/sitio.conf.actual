@@ -1,0 +1,23 @@
+#####################################################
+###### Fichero de configuración del sitio web #######
+#####################################################
+# Nombre del servidor
+servidor=localhost;
+# Usuario de acceso a la base de datos para leer SOLAMENTE
+usuario=phpuser;
+# Contraseña del usuario
+contrasenia=phpp@asswd1011;
+# Usuario de acceso a la base de datos para leer y escribir
+usuario_admin=useradmin;
+# Contraseña de usuario_admin
+contrasenia_admin=phpp@asswd1011admin;
+# Nombre de la base de datos
+nombrebd=basedatos;
+# Directorio absoluto de la web
+dirabsoluto=/var/www:
+# Directorio relativo de la web
+dirrelativo=;
+# Directorio absoluto del ftp anonimo
+dirftpabsoluto=/var/www/ftp;
+# Directorio relativo del ftp anonimo
+dirftprelativo=ftp;

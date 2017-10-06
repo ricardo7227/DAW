@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Script</title>
+  <script  languaje="javascript">
+     function  miFuncion1 (valor)  {
+               document.write ("Soy miFuncion1 y me ha llamado -> " + miFuncion1.caller + "<br>");
+               document.write ("parametro -> " + valor + "<br>");
+               miFuncion2 (2);
+     }
+     function  miFuncion2 (valor)  {
+               document.write ("Soy miFuncion2 y me ha llamado -> " + miFuncion2.caller + "<br>");
+               document.write ("parametro -> " + valor + "<br>");
+               return (OK);
+     }
+  </script>
+</head>
+<body>
+  <script type="text/javascript">
+    miFuncion1 (1);
+  </script>
+</body>
+</html>

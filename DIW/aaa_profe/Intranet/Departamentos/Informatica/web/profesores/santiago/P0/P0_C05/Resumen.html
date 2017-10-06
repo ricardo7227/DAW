@@ -1,0 +1,565 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Tema 5.- Imágenes y color</title></head><body style="background-color: rgb(255, 250, 220); width: 851px;">
+<div style="text-align: center; color: rgb(0, 0, 153); background-color: rgb(200, 230, 255);"><font size="+1"><span style="font-weight: bold;">IMÁGENES Y COLOR</span><br>
+</font></div>
+
+<div>
+<br style="font-weight: bold;">
+<font size="+1"><span style="font-weight: bold;">INDICE</span></font><br>
+<a href="#colores">Uso de colores</a><br>
+<a href="#imagenes_1">Imágenes de fondo</a><br>
+<a href="#imagenes_2">Imágenes en la página</a><br>
+<a href="#apariencia">Cómo cambiar la apariencia de las
+imágenes</a><br>
+<a href="#externas">Imágenes externas</a><br>
+<a href="#miniaturas">Miniaturas</a><br>
+<a href="#mapa">Imágenes mapa</a><br>
+<a href="#mejoras">Mejoras en las imágenes</a><br>
+<br>
+<br style="font-weight: bold;">
+<a name="colores"></a>
+<font size="+1"><span style="font-weight: bold;">Uso de colores</span></font><br>
+&nbsp;&nbsp;&nbsp; En uno de los capítulos anteriores se vieron las dos
+formas de definir el color, bien por el nombre, bien por el código de 3
+números hexadecimales. La ventaja de usar el código hexadecimal es que
+lo entienden todos los navegadores y admite más de 16 millones de
+colores. El #000000 corresponde al negro y el #FFFFFF al blanco.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para cambiar el color del fondo se utiliza el
+atributo <span style="color: red;">bgcolor de la etiqueta body</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para cambiar el color del texto y de los links se
+pueden utilizar con la etiqueta body los atributos: <span style="color: red;">text</span> para el color
+del texto normal, <span style="color: red;">link</span> para el color
+de los enlaces (por defecto es
+azul), <span style="color: red;">vlink</span> para el color de los
+enlaces visitados (por defecto es
+morado) y <span style="color: red;">alink</span> para los enlaces
+activos (en los que se ha pulsado y
+aún no se ha soltado, que por defecto es rojo).<br>
+<br style="font-weight: bold;">
+<a name="imagenes_1"></a> <font size="+1"><span style="font-weight: bold;">Imágenes
+de fondo</span></font><br>
+&nbsp;&nbsp;&nbsp; Para poner una imagen de fondo se utiliza el
+atributo <span style="color: red;">background de la etiqueta body</span>.
+La imagen se replicará
+(mosaico) por toda la página debiéndo tener en cuenta si los bordes
+deben coincidir. Por esta razón son dos los tipos de imágenes que
+suelen utilizarse:<br>
+<ul>
+  <li>Imágenes con pocos colores que muestran un logo sobre un relleno
+sólido que interfieren poco con el contenido de la página.</li>
+  <li>Imágenes cuyos bordes encajan y aparentan en su conjunto una sola
+imagen.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Si la imagen de fondo contiene colores fuertes es
+recomendable adaptar los colores del texto y de los links para
+facilitar su lectura. No debe olvidarse que el objetivo es que la
+lectura sea fácil.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Algunas direcciones con fondos e imágenes gratuitas
+son: www.specialweb.com, www.dewa.com y www.teleport.com.<br>
+<br style="font-weight: bold;">
+<a name="imagenes_2"></a> <font size="+1"><span style="font-weight: bold;">Imágenes
+en la página</span></font><br>
+&nbsp;&nbsp;&nbsp; Como ya se ha visto en algún capítulo anterior, las
+imágenes que todos los exploradores visualizan suelen ser de tipo gif o
+jpg (extensión jpg o jpeg) y la etiqueta que se utiliza para su
+inserción es <span style="color: red;">&lt;img&nbsp; src=" Fichero
+"&gt;</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando se inserta una imagen se sitúa justo en el
+lugar donde se pone la etiqueta img, independientemente de si hay texto
+alrededor o no. Por eso se llaman imágenes en línea o inline. Ver
+ejemplo de la página 131.<br>
+<br>
+&nbsp;&nbsp;&nbsp; PRÁCTICA.- Probar a colocar una imagen grande entre
+el texto. Poner un salto de línea antes y después de la imagen (pag.
+134)<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando las imágenes tienen dimensiones muy
+superiores al alto de línea es conveniente utilizar atributos que
+permitan alinear éstas en función del texto o de otras imágenes de
+alrededor. En principio, si no se utilizan atributos, la parte inferior
+de la imagen se alinea con la parte inferior de la línea. El atributo
+align de la etiqueta img permite controlar la alineación de la imagen
+con respecto al texto que la rodea o a otras imágenes y sus cinco
+posibles valores son:<br>
+<ul>
+  <li><span style="color: red;">Top</span>.- alínea la parte superior
+de la imagen con la parte
+superior de la línea. Para determinar cuál
+es el límite superior de la línea se tendrán en cuenta todos los
+elementos que la forman, anteriores y posteriores, texto o gráficos. <a href="05_01_top.html">Ejemplo</a>.<br>
+  </li>
+  <li><span style="color: red;">Middle</span>.- alínea el centro de la
+imagen con el centro de la
+línea.
+Si la línea contiene solamente texto, se considerará la base de ésta
+como centro de la línea. Si hay más elementos será el centro de la
+línea que los contiene. <a href="05_02_middle.html">Ejemplo</a>.<br>
+  </li>
+  <li><span style="color: red;">Bottom</span>.- alínea la parte
+inferior de la imagen con la parte
+inferior de la línea de texto, sin tener en cuenta más elementos de la
+linea, como pueden ser otras imágenes que pasen por debajo de la línea.
+Internet Explorer también entiende el atributo center como bottom,
+aunque no se recomiende su uso para evitar confusiones con la etiqueta
+del mismo nombre. <a href="05_03_bottom.html">Ejemplo</a>. </li>
+  <li><span style="color: red;">Left</span>.- alínea horizontalmente la
+imagen a la izquierda y el texto
+rodeará a la imagen. La imagen se insertará a la izquierda de la
+SIGUIENTE LÍNEA y el siguiente texto irá bordeando la imagen. Ver
+ejemplo de pag. 141. <a href="05_04_leftright.html">Ejemplo</a>. </li>
+  <li><span style="color: red;">Right</span>.-&nbsp; alínea
+horizontalmente la imagen a la derecha y el
+texto rodeará a la imagen. La imagen también se inserta en la siguiente
+línea, a la derecha. <a href="05_04_leftright.html">Ejemplo</a>. </li>
+</ul>
+&nbsp;&nbsp;&nbsp; Para finalizar el texto envolvente de las
+imágenes
+puede utilizarse la etiqueta <span style="color: red;">br con el
+atributo clear</span> cuyos tres
+valores posibles son left, right y all. Con left el siguiente texto irá
+a la primera línea con el margen izquierdo libre; con right irá a la
+derecha; con all a la primera línea que tenga ambos márgenes libres.
+Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;br&nbsp;
+clear="left"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los <span style="color: red;">atributos vspace y
+hspace de la etiqueta img</span>
+permiten determinar los márgenes vertical y horizontal respectivamente.
+Su valor se expresa en pixels (puntos) y suelen acompañar al atributo
+align. Un <a href="05_04_leftright.html">ejemplo</a> sería:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;img src=" Fichero
+"&nbsp; align="left"&nbsp; vspace="10" hspace="20"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para hacer que una imagen pueda utilizarse como
+enlace a otra página solamente hay que combinar las <span style="color: red;">etiquetas a e img</span>
+de la forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;a&nbsp; href="Ancla /
+Fichero / URL "&gt;&nbsp; &lt;img src=" Fichero_imagen "&gt;&nbsp;
+&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp; Así, la siguiente imagen será un enlace a la página
+de google: &nbsp;&nbsp;&nbsp;<a href="http://www.google.es"><img src="imagenes/logo_google.jpeg"></a>&nbsp;&nbsp;&nbsp; Algunos
+navegadores mostrarán un borde azul alrededor de la imagen para
+identificar que es un enlace.<br>
+<br style="font-weight: bold;">
+<a name="apariencia"></a><span style="font-weight: bold;"> </span><font size="+1"><span style="font-weight: bold;">Cómo cambiar la apariencia
+de las imágenes</span></font><br>
+&nbsp;&nbsp;&nbsp; El atributo <span style="color: red;">border</span>
+de la etiqueta img permite poner
+un borde con el grosor especificado. Por ejemplo:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;img src="Fichero.jpeg"
+border="numero_pixels"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si se utiliza el valor 0 no aparecerá borde, ni
+aunque la imagen sea un enlace. A continuación se muestra un ejemplo
+con un borde de 10 pixels:&nbsp;&nbsp;&nbsp;<img src="imagenes/logo_google.jpeg" align="middle" border="10">&nbsp;&nbsp;&nbsp;
+El color del borde
+es azul si la imagen es un enlace; en caso contrario será negro.<br>
+&nbsp;&nbsp;&nbsp; border="0" se utiliza muy frecuentemente para los
+iconos de navegación que ayudan a movernos por las páginas y suelen
+tener forma de flechas, botones, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Los atributos <span style="color: red;">width y
+height</span> permiten establecer el
+ancho y el alto de la imagen respectivamente. Si se omite uno de los
+dos valores la imagen se adaptará de forma proporcional. Veamos como
+ejemplo la imagen anterior con un ancho de 60 pixels:&nbsp;&nbsp; <img alt="Logo de Google en pequeñito" src="imagenes/logo_google.jpeg" align="middle" border="1" width="60">&nbsp;&nbsp;&nbsp;
+Con estos atributos se pueden aumentar las dimensiones de las imágenes
+(duplicando líneas) o disminuir (se borran líneas aleatoriamente). La
+método usado para aumentar o reducir las imágenes, duplicando o
+eliminando filas y columnas de pixels de forma aleatoria es rápido pero
+puede incidir en gran medida en la calidad de la imagen, sobre todo si
+ésta tiene texto, por lo que se puede hacer aconsejable el uso de
+programas de edición de imágenes para preparar las mismas.<br>
+&nbsp;&nbsp;&nbsp; Es aconsejable que se incluyan SIEMPRE LOS DOS
+atributos width y height para que el navegador tarde menos en mostrar
+la página debido a que no tendrá que hacer ningún cálculo para obtener
+las dimensiones ni tendrá que recolocar los elementos de la página a
+medida que vaya disponiendo de las imágenes.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El atributo <span style="color: red;">alt</span>
+permite especificar un texto alternativo que se mostrará en el caso de
+que no pueda mostrarse la imagen. Los tres casos en los que no se
+mostrará la imagen son: <br>
+<ul>
+  <li>El navegador trabaja en modo texto. Estos navegadores, si no
+existe esta etiqueta, mostrarán "[IMAGE]", por lo que se hace
+recomendable, si no se desea que se muestre este literal, especificar
+"alt=""".</li>
+  <li>El usuario ha desactivado en el navegador la opción "Mostrar
+imágenes de las páginas" para conseguir una navegación más rápida.</li>
+  <li>Existe algún problema en la transmisión de la imagen o el nombre
+del fichero no es correcto.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Algunos navegadores muestran el texto al situar el
+cursor encima de la imagen dentro de un cuadro de texto.<br>
+<br style="font-weight: bold;">
+<a name="externas"></a><span style="font-weight: bold;"> </span><font size="+1"><span style="font-weight: bold;">Imágenes externas</span></font><br>
+&nbsp;&nbsp;&nbsp; Son las que se proporcionan a través de un enlace.
+Las razones más importantes por las que se usan son:<br>
+<ul>
+  <li>Aunque el formato de la imagen no sea GIF ni JPEG el navegador se
+encargará de buscar la aplicación externa que pueda abrir la imagen.</li>
+  <li>Los navegadores en modo texto no pueden abrir imágenes inline
+pero pueden mostrar imágenes externas haciendo uso de algun programa de
+visualización o edición gráfica.</li>
+  <li>Las imágenes inline deben tener un tamaño reducido para que su
+descarga sea rápida pero las externas pueden pesar más ya que solamente
+serán vistas por los usuarios que lo pidan y si lo piden será porque
+les interesa, aunque tengan que esperar un poquito para que se
+descarguen. En cualquier caso, si la imagen supera los 100 Kb. debe
+indicarse su tamaño entre paréntesis junto al texto identificativo de
+la imagen.</li>
+  <li>La combinación de imágenes inline y externas permite que las
+páginas se carguen más rápidamente.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; La inserción de la imagen externa se hace de la
+forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="color: red;">&lt;a href=Imagen.xxx&gt; Imagen externa &lt;/a&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La tabla siguiente muestra los diferentes formatos
+de imágenes con su extensión y una breve descripción:<br>
+<br>
+<table style="text-align: left; width: 80%;" align="center" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr align="center">
+      <td style="vertical-align: top; font-weight: bold;" width="15%">FORMATO<br>
+      </td>
+      <td style="vertical-align: top; font-weight: bold;" width="15%">EXTENSIÓN<br>
+      </td>
+      <td style="vertical-align: top; font-weight: bold;">DESCRIPCIÓN<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">GIF<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">.gif<br>
+      </td>
+      <td style="vertical-align: top;">Imagen de 256 colores sin
+pérdidas<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">JPEG<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">.jpg&nbsp;
+.jpeg<br>
+      </td>
+      <td style="vertical-align: top;">Imagen de 16 millones de colores
+con pérdidas<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">BMP<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">.bmp<br>
+      </td>
+      <td style="vertical-align: top;">Imagen bitmap de Windows y OS/2<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">XBM<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">.xbm<br>
+      </td>
+      <td style="vertical-align: top;">Imagen bitmap de Unix<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">PICT<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">.pict<br>
+      </td>
+      <td style="vertical-align: top;">Imagen bitmap de Macintosh<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">PNG<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">.png<br>
+      </td>
+      <td style="vertical-align: top;">Portable Network Grafics de 16
+millones de colores<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">TIFF<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">.tif<br>
+      </td>
+      <td style="vertical-align: top;">Baja compresión pero gran calidad<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">XPM<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">.xpm<br>
+      </td>
+      <td style="vertical-align: top;">Imagen de Paintbrush<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando el usuario pulse sobre el texto activo el
+explorador bajará la imagen y la abrirá o ejecutará el programa que la
+muestre. <br>
+<br>
+&nbsp;&nbsp;&nbsp; Realmente la etiqueta &lt;a ...&gt; ... &lt;/a&gt;
+permite enlazar con cualquier tipo de archivo y, si el navegador no
+puede mostrarlo, dará opción a guardarlo en el equipo o a realizar la
+función que corresponda según el tipo de archivo. Así, ejecutará el
+archivo si éste es ejecutable, usará un descompresor si es un archivo
+comprimido, lo visualizará con el programa adecuado si es un vídeo, etc.<br>
+<br style="font-weight: bold;">
+<a name="miniaturas"></a><span style="font-weight: bold;"> </span><font size="+1"><span style="font-weight: bold;">Miniaturas (thumbnails)</span></font><br>
+&nbsp;&nbsp;&nbsp; Se utilizan para proporcionar una previsualización
+de una imagen completa (que será externa) usando una imagen inline de
+menor tamaño. La imagen inline es la miniatura y será o bien una
+versión de dimensiones reducidas de la imagen final o una parte de
+ella. Generalmente la propia miniatura, o un texto adjunto (o ambas
+cosas) servirán como enlace a la imagen completa.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Las miniaturas no deben obtenerse mediante el empleo
+de los atributos width y height porque la imagen sería la misma y
+tardaría el mismo tiempo en cargarse. Se trata de disponer de imágenes
+en miniatura en ficheros de menor tamaño que se cargarán más
+rápidamente.<br>
+<br>
+PRÁCTICA.- Crear una galería de imágenes para, por ejemplo, venta de coches, cuadros, ...<br>
+<br style="font-weight: bold;">
+<a name="mapa"></a><span style="font-weight: bold;"> </span><font size="+1"><span style="font-weight: bold;">Imágenes mapa</span></font><br>
+&nbsp;&nbsp;&nbsp; Permiten dividir una imagen en diferentes áreas de
+tal forma que cada área pueda ser utilizada como un enlace a un objeto
+diferente. En un principio este comportamiento se conseguía mediante el
+uso de programas especiales que residian en el servidor web. A partir
+del estándard HTML 3.2 se incluyeron etiquetas con esta función.<br>
+<br style="font-weight: bold;">
+<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; Imágenes mapa en el
+servidor</span><br>
+&nbsp;&nbsp;&nbsp; Conlleva la instalación en el servidor web de algún
+programa tipo CERN o NCSA y la realización de los pasos:<br>
+<br>
+<ol>
+  <li>Crear un archivo de configuración del mapa para indicar las zonas
+activas y los objetos a los que apuntan. El archivo generado por lo
+general tiene extensión .map.</li>
+  <li>Escribir el código HTML de forma que la imagen sea un enlace al
+archivo generado en el paso 1. Además, hay que incluir el atributo
+ISMAP en la etiqueta IMG, quedando de la forma:</li>
+</ol>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <span style="color: red;">&lt;a&nbsp;
+href=" Fichero.map "&gt; &lt;img&nbsp; src=" Fichero_imagen "&nbsp;
+ismap&gt; &lt;/a&gt;</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La ventaja de este método es que es compatible con
+cualquier navegador; los grandes inconvenientes que se necesita
+instalar un programa en el servidor y que el fichero con la
+configuración de las zonas es independiente lo que puede complicar su
+modificación.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Imágenes mapa en
+el cliente</span><br>
+&nbsp;&nbsp;&nbsp; En este caso es el navegador el que interpreta las
+zonas y averigua la dirección destino. La creación de este tipo de
+imágenes puede hacerse en dos pasos:<br>
+<ol>
+  <li>Definición de la imagen y utilización del atributo <span style="color: red;">usemap</span> para
+especificar dónde se delimitarán las zonas activas. </li>
+  <br>
+  <li>Definición del mapa de zonas a través de la etiqueta <span style="color: red;">&lt;map&nbsp; name="Nombre_mapa"&gt; ...
+&lt;/map&gt;</span></li>
+</ol>
+&nbsp;&nbsp;&nbsp; El primer paso se resuelve usando un código de la
+forma:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;img&nbsp;
+src=" Fichero_imagen "&nbsp;
+usemap="URL / Fichero#Nombre_mapa"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Debe tenerse en cuenta que el mapa de zonas puede no
+estar en la misma página en la que se hace referencia a la imagen, de
+forma similar al uso de anclas. Un caso típico se produce cuando una
+imagen mapa se muestra en diferentes páginas del sitio web y el mapa se
+especifica en el fichero index.html.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El segundo paso se inicia con la etiqueta map y el
+atributo name que permite asignar un nombre al mapa y se finaliza con
+la etiqueta &lt;/map&gt;. Entre ambas hay que definir las zonas, cada
+una mediante una etiqueta <span style="color: red;">area</span>. Esta
+etiqueta consta de cuatro atributos:<br>
+<ul>
+  <li><span style="color: red;">href</span>.- que constituye el enlace
+al objeto correspondiente.</li>
+  <li><span style="color: red;">alt</span>.- para especificar el texto
+alternativo. Importante para navegadores en modo texto y cuando no se puede mostrar la imagen.<br>
+</li>
+  <li><span style="color: red;">shape</span>.- define la forma de la
+zona. Admite los valores rect
+(rectángulo), circle (círculo) y poli (polígono).</li>
+  <li><span style="color: red;">coords</span>.- define las coordenadas
+de la zona. Estas coordenadas
+dependen de la forma de la zona y que de forma general definen las
+coordenadas de los vértices o centro del círculo y longitud del radio. </li>
+</ul>
+&nbsp;&nbsp;&nbsp; Las coordenadas del rectángulo son 4 valores
+separados por comas que corresponden a las posiciones de las esquinas
+superior izquierda e inferior derecha. Las del círculo son tres valores
+que corresponden a la posición del centro y longitud del radio. Las del
+polígono son parejas de valores que corresponden a la posición de cada
+uno de los vértices. Todos los valores se toman en pixels.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un ejemplo de mapa en una imagen de 400 x 200 puede
+ser:<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;map&nbsp;
+name="mapa"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;area
+shape="rect"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; coords="10, 10, 180, 90"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; href="arriba_izda.html"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; alt="Cuadro superior izquierdo"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;area
+shape="circle"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; coords="298, 50, 43"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; href="arriba_dcha.html"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; alt="Círculo superior derecho"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;area
+shape="poly"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; coords="5, 150, 70, 110, 330, 110, 395, 150, 330,
+195, 70, 195"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; href="abajo_centro"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; alt="Polígono inferior centro"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/map&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; Áreas similares a las anteriormente descritas pueden
+verse pinchando <a href="05_05_areas.html">aqui</a>.<br>
+<br>
+PRÁCTICA.- Con la lista con fotos de alumnos crear enlaces a los trabajos de cada uno de ellos.<br>
+PRÁCTICA.- Mostrar la vivienda a base de hacer activos los huecos de las puertas.<br>
+PRÁCTICA.- Crear una página que contenga una imagen de fondo, una
+imagen de cabecera, una imagen con botones que sirvan de menú y el resto con texto. <br>
+<br>
+&nbsp;&nbsp;&nbsp; Las coordenadas también pueden darse en porcentages,
+por ejemplo: &lt;area shape="rect" coords="0,0,50%,50%"&gt; pero debe
+probarse su funcionamiento.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Existe otro atributo, <span style="color: red;">nohref</span>, que puede utilizarse en lugar de href, para indicar que la zona no apunta a ningún sitio.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si dos o más zonas se superponen predomina la que se
+definió en primer lugar. Por esta razón, si existe alguna zona definida
+con el atributo nohref debe ir en primer lugar.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Hay que poner especial atención con las imágenes
+mapa que tienen definida su dimensión con width y height ya que al
+variar su dimensión no varía automáticamente el mapa.<br>
+<br style="font-weight: bold;">
+
+<a name="mejoras"></a><span style="font-weight: bold;"> </span><font size="+1"><span style="font-weight: bold;">Mejoras en las imágenes</span></font><br>
+<span style="font-weight: bold;"><br>
+&nbsp;&nbsp;&nbsp; Formatos GIF y JPEG</span><br>
+&nbsp;&nbsp;&nbsp; La primera versión del formato GIF se conoce como GIF87 y sus principales características son:<br>
+<ul>
+  <li>Limitada a 256 colores. Si se usan menos la imagen pesará menos.</li>
+  <li>Compresión sin pérdidas.</li>
+  <li>Idóneo para logos, iconos y todo tipo de dibujos con colores sólidos.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; GIF89 añadió las características:<br>
+<ul>
+  <li>Posibilidad de crear imágenes con entrelazado.</li>
+  <li>Transparencia.</li>
+  <li>Imágenes con movimiento.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Como inconveniente tiene la mala compresión de fotografías.<br>
+<br>
+&nbsp;&nbsp;&nbsp; El formato JPEG está pensado para utilizar con fotografías. Sus principales características son:<br>
+<ul>
+  <li>Puede almacenar 16 millones de colores y el tamaño del fichero es independiente del número de colores usados.</li>
+  <li>Dispone de un algoritmo de compresión muy eficaz.</li>
+  <li>La compresión produce pérdidas.</li>
+</ul>
+PRÁCTICA.- Comprobar con una imagen grande las diferencias de tamaño de
+los ficheros entre el formato GIF y JPEG y utilizando diferentes grados
+de compresión.<br>
+<br>
+&nbsp;&nbsp;&nbsp; De forma general suele utilizarse el formato GIF
+para imágenes pequeñas o con pocos colores como logos, etc. y el
+formato JPEG para fotografías o imágenes con muchos colores o que sean
+grandes.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Además de estos dos formatos, los navegadores
+reconocen otros, entre los que destaca el PNG, que combina las
+características de los anteriores y además:<br>
+<ul>
+  <li>Buena compresión, tanto para logos como para fotos.</li>
+  <li>Posibilidad de transparencia y entrelazado.</li>
+  <li>16 millones de colores.</li>
+  <li>Compresión sin pérdida.</li>
+  <li>Capacidad de añadir comentarios e información extra junto con la imagen.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Éste último será el sustituto del GIF pero no del JPEG que sigue siendo mejor con las fotografías.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Transparencia, entrelazado y GIF's animados</span><br>
+&nbsp;&nbsp;&nbsp; Éstas fueron las tres principales características que se añadieron a GIF89.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Las imágenes transparentes se consiguen eligiendo un
+color de la imagen que no será mostrado por el navegador. Es
+especialmente útil cuando se utiliza una página con fondos. Son
+candidatas a convertirse en transparentes aquellas imágenes con un
+color de fondo dominante.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Las imágenes entrelazadas, en vez de cargarse como
+las normales de arriba para abajo, inicialmente se muestran como una
+imagen borrosa que se va aclarando a medida que va llegando. Esto
+ocurre debido al método especial de almacenamiento de este tipo de
+imágenes. Puede ser muy útil con imágenes mapa puesto que a veces no es
+necesario ver la imagen completamente para poder elegir una opción.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En un principio la única manera de presentar
+imágenes en movimiento era haciendo uso de applets o pequeños programas
+realizados en Java o similar. Con los GIF's animados se permite
+almacenar en el mismo archivo varias imágenes que se van mostrando
+secuencialmente dando la sensación de movimiento. cada una de las
+imágenes se debe crear por separado y finalmente se juntan con algún
+programa tipo GIF Animator, GIF Movie Gear, etc.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Existen páginas con gran cantidad de GIFś animados gratuitos como:<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; http://dmoz.org/Computers/Graphics/Web/Free/Animated_GIFs<br>
+<br>
+&nbsp;&nbsp;&nbsp; Puede recomendarse que no se utilicen más de dos
+imágenes por página por el tamaño que ocupan, porque pueden ser un poco
+mareantes para el usuario y porque el navegador puede ir lento si el
+equipo no tiene demasiada memoria.<br>
+<br>
+PRÁCTICA.- Introducir en una página web alguno de estos elementos. <br>
+</div>
+
+</body></html>

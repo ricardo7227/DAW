@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Direcciones de interés</title>
+  <link title="Programacion Web" rel="stylesheet" href="../estilos.css" type="text/css">
+</head>
+<body>
+<header>
+<span id="cabecera">Direcciones de interés</span>
+</header>
+<nav>
+</nav>
+<article>
+  <br>
+  <a href="http://www.w3schools.com/tags/"> Listado alfabético de etiquetas y atributos</a><br/>
+  <a href="http://validator.w3.org"> Validador de código</a><br/>
+  <a href="http://devcode.la/tutoriales/web-starter-kit-de-google/"> Web Starter Kit de Google para chequear resoluciones</a><br/>
+  <a href="http://www.htmlya.com.ar/"> Cursos Ya con ejemplos y ejercicios</a><br/>
+  <a href="http://www.codecademy.com/"> Cursos Codecademy interactivos</a><br/>
+  <a href="http://librosweb.es/"> Libros Web</a><br/>
+  <br/>
+  <a href="http://www.smashingmagazine.com/tag/web-design/"> Ejemplos de diseño Web</a><br/>
+  <a href="http://websitesetup.org/html5-cheat-sheet/"> HTML5 Cheat Sheet (chuleta)</a>&nbsp;&nbsp;&nbsp;
+  <a href="../Materiales/cheat-sheet-html5.pdf"> (en pdf)</a><br/>
+  <a href="http://www.smashingmagazine.com/wp-content/uploads/images/css3-cheat-sheet/css3-cheat-sheet.pdf"> CSS3 Cheat Sheet (chuleta)</a>&nbsp;&nbsp;&nbsp;<a href="../Materiales/cheat-sheet-css3.pdf"> (en pdf)</a><br/>
+  <a href="http://www.caniuse.com/"> Herramienta Can I use ...</a><br/>
+  <a href="https://developer.mozilla.org/es/"> Mozilla Developer Network (MDN)</a><br/>
+  <a href="https://www.video2brain.com/es/tutorial/utilidades-para-maquetacion-web"> Video de utilidades para maquetar</a><br/>
+  <a href="https://www.video2brain.com/es/tutorial/que-es-maquetar-una-web"> Video qué es maquetar una web</a><br/>
+  <br/>
+  <a href="http://www.desarrolloweb.com/manuales/"> Manuales de desarrollo web</a><br />
+  <a href="http://mmc.igeofcu.unam.mx/LuCAS/Manuales-LuCAS/doc-curso-html/doc-curso-html/index.html"> Curso completo de html</a><br />
+  <a href="http://www.desarrolloweb.com/de_interes/listo-curso-completo-html5-microsoft-6439.html"> Curso de Microsoft de HTML 5</a><br />
+  <a href="http://geneura.ugr.es/~victor/cursillos/javascript/js_intro.html"> Curso de JavaScript. Document</a>&nbsp;&nbsp;&nbsp;
+  <a href="../Materiales/DOM/Document.pdf"> (en pdf)</a><br />
+  <a href="http://librosweb.es/bootstrap_3/capitulo_1.html"> Diseño responsive con bootstrap</a><br />
+  <a href="http://www.blogtecnologico.net/tutorial-seo/"> Tutorial de SEO</a><br />
+  <br/>
+  <a href="http://www.w3c.es/Traducciones/es/WAI/intro/accessibility">Accesibilidad de la Web</a><br />
+  <a href="http://www.codexexempla.org/traducciones/pautas-accesibilidad-contenido-web-2.0.htm">Pautas de Accesibilidad</a><br />
+  <a href="../Materiales/une_1398032004.pdf">Norma UNE 139803:2004 de Accesibilidad</a><br />
+<br><br>
+  <a href="www.codehunt.com">Cursos y tutoriales</a><br />
+  <a href="www.programmr.com">Cursos y tutoriales de diversos lenguajes</a><br />
+  <a href="www.aceptaelreto.com">Concurso de resolución de problemas</a><br />
+<br />
+</article>
+<footer>
+By Santiago Alonso
+</footer>
+</body>
+</html>

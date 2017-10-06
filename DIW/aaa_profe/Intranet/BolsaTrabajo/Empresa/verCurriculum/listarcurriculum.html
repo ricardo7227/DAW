@@ -1,0 +1,69 @@
+  
+<?php 
+$cn = mysql_connect("localhost", "root", "") or die("Error en Conexion");
+$db = mysql_select_db("basedatos", $cn);  
+echo "Conectado";
+$result = mysql_query("SELECT cv_dni, cv_apellido1, cv_apellido2, cv_nombre, cv_sexo, cv_estadocivil, cv_nacionalidad, cv_fechaNacimiento, cv_lugardenacimiento, cv_paisdenacimiento, cv_domicilio, cv_codigopostal, cv_localidad, cv_telefono, cv_telefono2, cv_email, cv_estudiossinacabar, cv_universidadsinacabar, cv_finalprevisto, cv_grado, cv_estudiosacabados, cv_finalizaciondeestudios, cv_lugardeestudios, cv_lenguamaternna, cv_inglesescrito, cv_inglesleido, cv_inglesoral, cv_francesleido, cv_francesescito, cv_francesoral FROM curricula"); 
+echo "<table border = '0'> \n"; 
+
+echo "<tr id='inaddi_tr'>
+		<td id='inaddi_td'>DNI</td>
+		<td id='inaddi_td'>Apellido 1</td>
+		<td id='inaddi_td'>Apellido 2</td>
+		<td id='inaddi_td'>Nombre</td>
+		<td id='inaddi_td'>Sexo</td>
+		<td id='inaddi_td'>Estado Civil</td>
+		<td id='inaddi_td'>Nacionalidad</td>
+		<td id='inaddi_td'>Fecha de Nacimiento</td>
+		<td id='inaddi_td'>Lugar de Nacimiento</td>
+		<td id='inaddi_td'>Pais de Nacimiento</td>
+		<td id='inaddi_td'>Domicilio</td>
+		</tr>
+		<tr id='inaddi_tr'>
+		<td id='inaddi_td'>Codigo Postal</td>
+		<td id='inaddi_td'>Localidad</td>
+		<td id='inaddi_td'>Telefono</td>
+		<td id='inaddi_td'>Telefono 2</td>
+		<td id='inaddi_td'>E-Mail</td>
+		<td id='inaddi_td'>Estudios sin Acabar</td>
+		<td id='inaddi_td'>Final previsto</td>
+		<td id='inaddi_td'>Grado</td>
+		<td id='inaddi_td'>Estudios acabados</td>
+		<td id='inaddi_td'>Finalizacion de estudios</td>
+		<td id='inaddi_td'>Lugar de estudios</td>
+		<td id='inaddi_td'>Lengua materna</td>
+		<td id='inaddi_td'>Nivel de inglés escrito</td>
+		<td id='inaddi_td'>Nivel de inglés leido</td>
+		<td id='inaddi_td'>Nivel de inglés oral</td>
+		<td id='inaddi_td'>Nivel de fraces leido</td>
+		<td id='inaddi_td'>Nivel de fraces escrito</td>
+		<td id='inaddi_td'>Nivel de fraces oral</td>
+	</tr> \n";
+ 
+while ($row = mysql_fetch_row($result)){ 
+       echo "<tr id='inaddi_tr'>
+				<td id='inaddi_td'>$row[0]</td>
+				<td id='inaddi_td'>$row[1]</td>
+				<td id='inaddi_td'>$row[2]</td>
+				<td id='inaddi_td'>$row[3]</td>
+				<td id='inaddi_td'>$row[4]</td>
+				<td id='inaddi_td'>$row[5]</td>
+				<td id='inaddi_td'>$row[6]</td>
+				<td id='inaddi_td'>$row[7]</td>
+				<td id='inaddi_td'>$row[8]</td>
+				<td id='inaddi_td'>$row[9]</td>
+				</tr>
+				<tr id='inaddi_tr'>
+				<td id='inaddi_td'>$row[10]</td>
+				<td id='inaddi_td'>$row[11]</td>
+				<td id='inaddi_td'>$row[12]</td>
+				<td id='inaddi_td'>$row[13]</td>
+				<td id='inaddi_td'>$row[14]</td>
+				<td id='inaddi_td'>$row[15]</td>
+				<td id='inaddi_td'>$row[16]</td>
+				<td id='inaddi_td'>$row[17]</td>
+				<td id='inaddi_td'>$row[18]</td>
+			</tr> \n"; 
+} 
+echo "</table> \n"; 
+?> 

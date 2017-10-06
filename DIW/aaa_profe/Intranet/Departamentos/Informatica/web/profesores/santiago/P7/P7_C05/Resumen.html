@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Servicios CDN de jQuery</title>
+
+  
+  
+  <script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<div id="header">
+<p id="cabecera">Servicios CDN de jQuery</p>
+</div>
+
+<div>
+<div id="nav"> <br>
+<a href="#servicios">Servicios CDN de jQuery</a><br>
+<br>
+<a href="#ventajas">Ventajas e inconvenientes de los CDN</a><br>
+<br>
+<a href="#optimizar">Optimizar el uso de CDN</a><br>
+<br>
+</div>
+<div id="article">
+Este resumen se ha realizado sobre los manuales de <a href="http://www.desarrolloweb.com/manuales/manual-jquery.html">desarrolloweb.com</a>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Para trabajar con jQuery puede incluirse el script
+de la librería en el HEAD de la página o utilizar el servicio CDN de
+jQuery, o de otros proveedores como Google Code, lo que comporta
+ciertas ventajas y ciertos inconvenientes. CDN significa Content
+Delivey Network (Red de entrega de contenido) y es un servicio que
+permite incluir las l ibrerías de código jQuery desde los servidores de
+algunas importantes empresas. Cuando se usa un CDN, en vez de enlazar
+con los scripts de jquery alojados en nuestro sitio web, enlazamos con
+una URL de otro dominio que los tiene alojados. Esto permite disponer
+de mayor velocidad de entrega de nuestro sitio web.<br>
+<h3><a name="servicios"></a>Servicios CDN de jQuery</h3>
+<p>&nbsp;&nbsp;&nbsp; Diversas empresas ofrecen el código de jQuery
+para enlazarlo en
+nuestros sitios web basados en el framework. Los podemos enlazar
+directamente de esos servidores, haciendo lo que se denomina
+"hotlinking". En este caso, sería un hotlinking deseable, puesto que
+estos servidores CDN están pensados justamente para ello. Esta técnica
+de "linkado en caliente" no debe utilizarse con recursos como imágenes
+porque puede considerarse como un robo de ancho de banda.</p>
+<p>&nbsp;&nbsp;&nbsp; <b>Google Code</b>: Contiene links a los
+frameworks Javascript más
+populares, con CDN de jQuery, Mootools, Prototype y muchos otros. Ver <a href="http://code.google.com/intl/es-ES/apis/libraries/" target="_blank">http://code.google.com/intl/es-ES/apis/libraries/</a>.
+En el momento de escribir este resumen, la versión que
+ofrecen como hosting CDN es la 1.11.0 y se enlaza en la URL
+http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js.</p>
+<b>&nbsp;&nbsp;&nbsp; Microsoft CDN:</b> Dispone de una red de
+contenido distribuido
+con CDN de varias librerías Javascript y Ajax, como jQuery o Modernizr.
+Encontramos más información en la dirección <a href="http://www.asp.net/ajaxlibrary/cdn.ashx" target="_blank">http://www.asp.net/ajaxlibrary/cdn.ashx</a>
+. La última versión que está disponible en estos
+momentos es http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js
+<p><b>&nbsp;CDN jQuery:</b> el propio jQuery ofrece una red CDN para
+descarga de sus librerías, a partir de la ruta
+http://code.jquery.com/jquery-1.7.1.min.js
+</p>
+&nbsp;&nbsp;&nbsp; Los CDN tienen habitualmente soporte
+para transferencia de las librerías por HTTP y HTTPS, así como para la
+descarga de las librerías en versión minimizada (indicada para sitios
+en producción) o estándar (indicada para sitios en desarrollo). Debes
+consultar los servicios CDN para obtener más información.
+<h3><a name="ventajas"></a>Ventajas e inconvenientes de los CDN</h3>
+&nbsp;&nbsp;&nbsp; Algunas ventajas del uso de CDN's:
+<ul>
+  <li><b>Mayor velocidad de entrega:</b> Los servicios CDN están
+ofrecidos por grandes empresas, con replicación de servidores y
+diversas localizaciones de entrega a lo largo del mundo. Posiblemente
+Google, o cualquiera de los otros provedores CDN, pueda enviar el
+script jQuery más rápido que tu propio servidor y lo distribuya desde
+una localización más cercana a la red del cliente que te visita.</li>
+  <li><b>Cacheado probable:</b> Es muy probable que la persona que te
+visita ya haya cacheado el script jQuery, tras la visita a otra página
+web que esté usando también el CDN de alguna de estas empresas. Por
+ello quizás no tenga ni que esperar a descargar el framework y
+utilice la copia que ya tiene en la caché del navegador.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Algunos inconvenientes:
+<ul>
+  <li><b>Necesitamos estar conectados a Internet para acceder al CDN:</b>
+Durante el desarrollo del sitio web, si estamos offline, sería
+imprescindible acceder a la copia en local de las librerías para que
+nuestra web funcione. Si necesitamos probar la web en entornos donde
+quizás no dispongamos de Internet (por ejemplo, la oficina de un
+cliente donde no sabemos si van a estar "online"), nos interesaría
+acceder a las librerías por medio de la copia en local.</li>
+  <li><b>Tenemos menor control:</b> No se puede tener control total
+sobre
+lo que se descarga como script. Claro que el script estará
+correcto, pero no podrás modificarlo si lo necesitas, ya que está en
+otro servidor. Esto generalmente no será un problema, pero hay algunos
+marcos en los que en la práctica sí interesa tener un poco más de
+control. Por ejemplo, en el caso de algunas librerías que permiten
+incluirse solo parcialmente (por ejemplo en Mootools somos capaces de
+seleccionar qué módulos del framework deseamos, o en jQueryUI qué
+widgets queremos utilizar), no será posiblea a través de la versión que
+nos traemos por el CDN.</li>
+</ul>
+<h3><a name="optimizar"></a>Optimizar el uso de CDN</h3>
+<p>&nbsp;&nbsp;&nbsp; Por lo general las ventajas del uso de CDN
+superan a los inconvenientes. Puede utilizarse algún script sencillo
+que permita utilizar el CDN si está activo y una copia local en caso
+contrario. Pueden verse varios scripts, cada uno con sus ventajas e
+inconvenientes pinchando <a href="http://www.desarrolloweb.com/articulos/carga-combinada-jquery.html">
+aquí</a>.</p>
+&nbsp;&nbsp;&nbsp; Uno de los scripts más sencillos es el siguiente:<br>
+<p class="codigo">&lt;script
+src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"&gt;&lt;/script&gt;<br>
+&lt;script&gt;<br>
+&nbsp; window.jQuery || document.write('&lt;script
+src="js/jquery-1.7.1.min.js"&gt;x3C/script&gt;')<br>
+&lt;/script&gt;
+</p>
+</div>
+</div>
+
+<br>
+
+<br>
+
+<br>
+
+</body></html>

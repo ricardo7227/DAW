@@ -1,0 +1,96 @@
+/* TITULO SALDO */
+#tituloAdmin{
+	color: black !important;
+}
+
+/* ESTILO y FONDO de las CELDAS */
+#gradient-style
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-weight: normal;
+	font-size: 13px;
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+}
+#gradient-style th
+{
+	font-size: 14px;
+	font-weight: normal;
+	padding: 8px;
+	background: #b9c9fe url('Comun/imagenes/table-images/arrow-down.png') repeat-x;
+	border-top: 2px solid #d3ddff;
+	border-bottom: 1px solid #fff;
+	color: #039;
+}
+#gradient-style td
+{
+	padding: 8px; 
+	border-bottom: 1px solid #fff;
+	color: #336;
+	border-top: 1px solid #fff;
+	background: #e8edff url('Comun/imagenes/table-images/gradback.png') repeat-x;
+}
+#gradient-style tfoot tr td
+{
+	background: #e8edff;
+	font-size: 12px;
+	color: #99c;
+}
+#gradient-style tbody tr:hover td
+{
+	background: #d0dafd url('Comun/imagenes/table-images/gradhover.png') repeat-x;
+	color: #339;
+}
+
+/* ESTILO de los LINKS */
+#gradient-style a 
+{
+	text-decoration:none;
+	color: #3d59b7;
+}
+#gradient-style a:hover 
+{
+	text-decoration:underline;
+	color: #4782ff;
+}
+
+/* COLOR del Importe TOTAL */
+#saldoTotal td
+{
+	color: black;
+}
+
+/* COLOR del ERROR en AUTORIZACION */
+#errorAutorizacion
+{
+	color: red;
+}
+
+
+.sizeAuto
+{
+	width: 100%;
+}
+
+.sizeFecha
+{
+	width: 30%;
+	text-align: left;
+}
+
+.sizeNumero
+{
+	text-align: right;
+}
+
+.sizeImporte
+{
+	text-align: right;
+}
+
+.imagenOrdenadoPosicion
+{
+	position: absolute;
+	margin-left: -15px;
+}

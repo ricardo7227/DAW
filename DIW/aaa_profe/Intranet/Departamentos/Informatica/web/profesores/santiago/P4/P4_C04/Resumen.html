@@ -1,0 +1,532 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Estructuras de control</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<div id="header">
+<p id="cabecera">Estructuras de control</p>
+</div>
+
+<div>
+<div id="nav"><a href="#condicionales">Sentencias condicionales</a><br>
+<br>
+<a href="#control">Sentencias de control de bucles</a><br>
+<br>
+<a href="#inclusion">Inclusión de ficheros</a><br>
+</div>
+<div id="article">
+<h3><a name="condicionales"></a>Sentencias condicionales</h3>
+&nbsp;&nbsp;&nbsp; PHP dispone de dos sentencias condicionales: if y
+switch ... case.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia if</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La sentencia if permite evaluar una expresión. La
+sintaxis básica es la siguiente:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+if (expresión){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; instrucción_1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; instrucción_n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; }[elseif
+(expresión){<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+instrucción_1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+. . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+instrucción_n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; }]<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . .
+.&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [else {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; instrucción_1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; instrucción_n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; }]<br>
+</p>
+&nbsp;&nbsp;&nbsp; O bien:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+if (expresión):<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; instrucción_1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; instrucción_n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; [elseif (expresión):<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+instrucción_1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+. . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+instrucción_n;]<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [else:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; instrucción_1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; instrucción_n;]<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; endif:<br>
+</p>
+&nbsp;&nbsp;&nbsp; elseif también se puede escribir "else&nbsp; if".
+Las expresiones que se evalúan en cada elseif son totalmente
+independientes. Si un bloque de instrucciones consta de una única
+instrucción pueden omitirse las llaves.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Como se ha visto, la sentencia if, al igual que
+otras sentencias del grupo de estructuras de control como son while,
+for, foreach y switch, admiten una segunda sintaxis que consiste en
+reemplazar la llave de apertura de bloque por dos puntos (:) y la llave
+de cierre de bloque por una palabra clave formada por end + nombre de
+la estructura de control (endif, endwhile, endforeach, endfor y
+endswitch).<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia switch</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La sentencia switch tiene la sintaxis:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+switch (expresión)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; case valor:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; {
+instrucción_1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+. . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+instrucción_n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+[break;]<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+. . .<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; [default:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+instrucción_1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+. . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+instrucción_n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }]<br>
+</p>
+&nbsp;&nbsp;&nbsp; La otra sintaxis válida tendrá la forma:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+switch (expresión):<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; endswitch;<br>
+</p>
+&nbsp;&nbsp;&nbsp; Si una sentencia case cumple una condición, se
+ejecuta su instrucción o bloque de instrucciones y también las de los
+case que estén debajo del que cumplió la condición, o hasta que
+encuentre una sentencia break. Así, la ejecución de una sentencia break
+es lo único que puede impedir la ejecución de las instrucciones
+incluidas en el bloque de default.<br>
+<h3><a name="control"></a>Sentencias de control de bucles</h3>
+&nbsp;&nbsp;&nbsp; PHP dispone de las siguientes sentencias de control
+de bucles: while, for, do ... [while] y foreach. Para cualquiera de las
+instrucciones, cuando un bloque de instrucciones consta de una única
+instrucción pueden omitirse las llaves.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia while</span><br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+while (expresión) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; instrucción_1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; instrucción_n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+</p>
+&nbsp;&nbsp;&nbsp; La expresión se evalúa al principio de cada
+ejecución del bloque, con lo cual puede ocurrir que el bloque no se
+ejecute ninguna vez.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia do ...
+while</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La expresión se evalúa después de cada ejecución del
+bucle. Su sintaxis es:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+do {<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+instrucción_1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+instrucción_n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; } while (expresión);<br>
+</p>
+&nbsp;&nbsp;&nbsp; La sentencia "break" permite salir del bucle en
+cualquier momento.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia for</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Tiene varias sintaxis:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+for (expr_1; expr_2; expr_3) {<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+instrucción_1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+instrucción_n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+</p>
+&nbsp;&nbsp;&nbsp; O bien:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+for (expr_1; expr_2; expr_3):<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+instrucción_1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; . . .<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+instrucción_n;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; endfor;<br>
+</p>
+&nbsp;&nbsp;&nbsp; donde:<br>
+<ul>
+  <li>expr_1 .- se utiliza para inicializar una variable y solo se
+ejecuta la primera vez.</li>
+  <li>expr_2 .- se evalúa en cada iteración; si es verdadera se ejecuta
+la instrucción o bloque de instrucciones internos de la sentencia y si
+es falsa el programa continúa en la instrucción siguiente a la
+instrucción o bloque del for.</li>
+  <li>expr_3 .- se evalúa después de cada iteración y suele utilizarse
+para incrementar/decrementar la variable que interviene en expr_2.
+Aunque puede ser cualquier tipo de expresión, lo lógico es que
+modifique el valor de la variable que se inicializó en expr_1.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Las tres expresiones son opcionales y está permitido
+el uso de la instrucción break para finalizar el bucle.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia foreach</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; El bucle foreach está relacionado con la
+manipulación de tablas y objetos. Su sintaxis es:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+foreach (expresion_tabla as $valor) sentencias;<br>
+</p>
+&nbsp;&nbsp;&nbsp; O bien:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+foreach (expresion_tabla as $clave =&gt; $valor) sentencias;</p>
+&nbsp;&nbsp;&nbsp; expresión_tabla debe ser una variable de tipo array.
+El bucle se ejecutará tantas veces como elementos tenga la tabla. Con
+la primera sintaxis, en cada repetición del bucle $valor contendrá el
+valor de un elemento de la tabla; es como si se pudiera obtener los
+valores de los elementos sin utilizar un índice. Con la segunda
+sintaxis, $valor contendrá el valor de un elemento de la tabla y $clave
+una clave (indice o valor asociado). Un ejemplo sería:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; print
+"&lt;B&gt;&lt;U&gt;Sentencia foreach (ejemplo
+file024.php)&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;";
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; print
+"&lt;BR&gt;Primer ejemplo de foreach&lt;BR&gt;";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $matriz1 =
+array("PHP 3", "PHP 4", "PHP 5", "PHP 6");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; foreach
+($matriz1 as $var1) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+print "Elemento de matriz 1: $var1&lt;br&gt;";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; print
+"&lt;BR&gt;Segundo ejemplo de foreach&lt;BR&gt;";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $matriz2["PHP
+3"] = 1998;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $matriz2["PHP
+4"] = 2000;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $matriz2["PHP
+5"] = 2004;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $matriz2["PHP
+6"] = 2010;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; foreach
+($matriz2 as $clave =&gt; $var1) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+print "Elemento de matriz 2: clave&nbsp; $clave
+año&nbsp; $var1&lt;br&gt;";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; En cualquier caso, se puede abandonar el bucle por
+medio de las instrucciones break o continue, es decir, pueden no
+procesarse todos los elementos de la tabla.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando se utiliza foreach con objetos de una clase,
+lo que se obtiene en cada bucle es una de las propiedades públicas del
+objeto. Un ejemplo sería:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;?php<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Print
+"Navegación por las propiedades de un objeto con
+foreach&lt;BR&gt;&lt;BR&gt;";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; class miObjeto<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+// las propiedades públicas son accesibles desde
+dentro y<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+// desde fuera de la clase<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; public
+$prop1 = 'contenido de la propiedad public
+prop1';<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; public
+$prop2 = 'contenido de la propiedad public
+prop2';<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; // estas propiedades no son visibles desde la
+sentencia foreach<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+// externa de la clase<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; protected
+$prop3 = 'contenido de la propiedad
+protected prop3';<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+private&nbsp;&nbsp; $prop4 = 'contenido de la
+propiedad private prop4';<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; // método interno que utiliza foreach para obtener<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+// la lista de todas las propiedades
+del objeto<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+function foreachInterno() {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "miObjeto foreach interno de
+la clase" . "&lt;BR&gt;";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foreach($this as $key =&gt;
+$value) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print
+"$key =&gt; $value" . "&lt;BR&gt;";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+// se crea un objeto de la clase miObjeto<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $obj = new
+miObjeto();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+// se recorren todas las propiedades públicas<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+// del objeto<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; foreach($obj
+as $key =&gt; $value) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+print "$key =&gt; $value" .&nbsp; "&lt;BR&gt;";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; print
+"&lt;BR&gt;";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+// ahora se llama al método de la clase<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+// que también usa la sentencia foreach<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+$obj-&gt;foreachInterno();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; ?&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; Cuyo resultado será:<br>
+<p class="resul">
+<br>
+<b>Navegación por las propiedades de un objeto con foreach </b><br>
+<br>
+prop1 =&gt; contenido de la propiedad public prop1<br>
+prop2 =&gt; contenido de la propiedad public prop2<br>
+<br>
+miObjeto foreach interno de la clase<br>
+prop1 =&gt; contenido de la propiedad public prop1<br>
+prop2 =&gt; contenido de la propiedad public prop2<br>
+prop3 =&gt; contenido de la propiedad protected prop3<br>
+prop4 =&gt; contenido de la propiedad private prop4<br>
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Estructuras
+anidadas</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Uno de los casos típicos de utilización de
+estructuras de control anidadas es el de la manipulación de tablas
+multidimensionales. Un ejemplo utilizando la instrucción foreach con
+una tabla de tres dimensiones es el siguiente:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;?php<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; print
+"&lt;B&gt;&lt;U&gt;Estructuras de control
+anidadas&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;";<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; // Matriz tridimensional<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $mat[0][0][0] = "1";<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $mat[0][0][1] = "2";<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $mat[0][1][0] = "3";<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $mat[0][1][1] = "4";<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $mat[1][0][0] = "5";<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $mat[1][0][1] = "6";<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $mat[1][1][0] = "7";<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $mat[1][1][1] = "8";<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; // estructura de control de nivel 1<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; foreach($mat as $var1) {<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; print "foreach 1 : $var1&lt;BR&gt;";<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; // estructura de control de nivel 2<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; foreach ($var1 as $var2) {<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "foreach 2:
+$var2&lt;BR&gt;";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // estructura de control de nivel
+3<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; foreach ($var2
+as $var3) {<br>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; print "foreach 3:
+$var3&lt;BR&gt;";<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; ?&gt; <br>
+</p>
+&nbsp;&nbsp;&nbsp; Se puede comprobar que los dos primeros niveles de
+las estructuras de control entregan una tabla (Array) a la estructura
+de control de menor nivel, y solo la estructura de control de menor
+nivel es la que recibe datos (1, 2, 3, 4, ...).<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia break</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La sintaxis completa de la instrucción break es:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+break [n];<br>
+</p>
+&nbsp;&nbsp;&nbsp; n hace referencia al número de anidamientos de los
+que salir. Si no se especifica, por defecto toma 1. Si n es mayor que
+el número de niveles de anidamiento existentes se producirá un error
+del tipo: "Fatal error: Cannot break ...".<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia continue</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La sentencia continue se puede utilizar dentro de
+cualquiera de las instrucciones de control y su función es permitir
+abandonar la iteración vigente de la estructura de control. Su sintaxis
+es:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+continue [n];<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; n hace referencia al número al número de niveles a saltar. Por omisión toma valor 1.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Return</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Con la instrucción return los archivos
+de inclusión pueden devolver valores al archivo llamante. El valor de
+retorno puede ser de distintos tipos, incluso puede ser un objeto o una
+tabla. Siempre es una única variable. Si se quiere retornar más de un
+valor hay que utilizar una tabla (con varios elementos) o un objeto
+(con varias propiedades). La sintaxis es:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+return nombreVariable;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; La instrucción produce un retorno a la siguiente
+instrucción del programa llamante, quedándose sin ejecutar las
+instrucciones que haya despues de "return ..." en el programa llamado.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La llamada al programa se realizará con una de las
+instrucciones: include(), include_once(), require() o require_once(), y
+tendrá la forma:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+$var = include('fichero.php');<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; $var recibirá el valor retornado por la instrucción return.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Fin de ejecución</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; PHP ofrece un mecanismo para finalizar la ejecución
+del código: exit() o die(). Cuando se utiliza exit() o die() todo lo
+que haya generado la página PHP hasta ese punto del programa se envía
+al navegador cliente y no se ejecuta nada más.<br>
+<br>
+&nbsp;&nbsp;&nbsp; exit() es una construcción del lenguaje, no una
+función, pudiéndose omitir los paréntesis cuando no haya argumentos.
+die() es un alias de exit(), funcionan exactamente igual.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Un ejemplo típico de uso es cuando no se puede establecer la conexión con una base de datos. Por ejemplo:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+...<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; if (!$conn)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; die("No se puede establecer la conexión con la base de datos");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  ...<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">goto</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La instrucción goto permite saltar directamente a
+otra sección del programa identificada mediante una etiqueta. Un
+ejemplo sería:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+...<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; goto paso1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; paso1:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; ...<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; La etiqueta se identifica con un nombre seguido de
+dos puntos (:). La bifurcación tiene las siguientes limitaciones:<br>
+<ul>
+  <li>La etiqueta referida tiene que estar dentro del mismo archivo.</li>
+  <li>Con goto no se puede salir ni entrar directamente a una función o método.</li>
+  <li>Con goto no se puede entrar directamente a un bucle pero si salir.<br>
+
+  </li>
+</ul>
+<h3><a name="inclusion"></a>Inclusión de ficheros</h3>
+&nbsp;&nbsp;&nbsp; include() y otras variantes permiten la inclusión de
+otro archivo de cualquier tipo y extensión (php, html, etc.) dentro del
+actual. Este mecanismo permite definir archivos de código que podrán
+utilizarse repetidamente, como si fueran librerías.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia include()</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Su sintaxis es:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; include("nombreArchivo");<br>
+</p>
+&nbsp;&nbsp;&nbsp; El archivo especificado se buscará en la lista de
+directorios indicados en la directiva "include_path" del fichero
+php.ini.&nbsp; nombreArchivo puede ser una dirección URL y para que
+funcione deberá estar habilitada la directiva "allow_url_fopen".<br>
+<br>
+&nbsp;&nbsp;&nbsp; El código proveniente del archivo incluido hereda
+las variables del ámbito donde se encuentra la instrucción include().
+En contrapartida, las variables definidas en el archivo incluido pueden
+utilizarse en el programa llamante como si estuvieran escritas en éste,
+teniendo en cuenta el carácter local o global de las variables. Si la
+sentencia include() se encuentra dentro de una función,&nbsp; el código
+del archivo llamado se comportará como si estuviera definido dentro de
+dicha función.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando PHP se encuentra con la instrucción include()
+abandona el modo PHP y pasa a modo HTML.&nbsp; Luego, si el fichero a
+incluir&nbsp; tiene código PHP deberá incorporar los correspondientes
+indicadores (&lt;?php ...?&gt;).<br>
+<br>
+&nbsp;&nbsp;&nbsp; Cuando se utiliza la instrucción include() dentro de
+estructuras de bucle o de control se debe codificar entre llaves aunque
+sea la única sentencia, pues en caso contrario puede generar errores.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia require()</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La instrucción require() es similar a include() con
+la diferencia de que si no encuentra el fichero especificado se produce
+un error fatal mientras que con include() se produce una advertencia y
+el programa continúa con la instrucción que sigue a include().<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia include_once()</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; include_once() es similar a include() pero la
+llamada (inclusión del código) solamente se podrá realizar una única
+vez; las demás veces se ignorará. Esto evita problemas de
+redefiniciones o asignaciones de variables.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Sentencia require_once()</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; La sentencia require_once() es similar a require()
+con la diferencia de que si el código ya se incluyó una vez no se
+volverá a incluir. Evita problemas de redefinición de variables o
+asignaciones de variables.
+</div>
+</div>
+
+<div id="footer">
+</div>
+
+</body></html>

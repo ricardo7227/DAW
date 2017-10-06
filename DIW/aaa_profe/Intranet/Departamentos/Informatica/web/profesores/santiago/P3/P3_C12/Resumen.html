@@ -1,0 +1,528 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Gestión del teclado y del ratón</title>
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<h1>Gestión del teclado y del ratón</h1>
+
+<a href="#raton">Gestión del ratón</a><br>
+
+<a href="#teclado">Gestión del teclado</a><br>
+
+<a href="#sonido">Reproducción de sonido</a><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El uso de eventos del capítulo anterior se
+complementa con el análisis de la gestión del ratón y del teclado.
+<h3><a name="raton"></a>Gestión del ratón</h3>
+
+&nbsp;&nbsp;&nbsp; El siguiente código, cuyo resultado puede
+comprobarse pinchando <a href="file022.html">aquí</a>, permite seguir
+la pista del ratón:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;!DOCTYPE
+HTML&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;HTML&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;BODY&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;script
+type="text/javascript"&gt;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+document.onmousemove = obtenerPosMouse;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var pX = 0;
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; var pY = 0;
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; function
+obtenerPosMouse(e) {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; if
+(document.all) {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+// detecta que es un navegador IE
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+pX = event.offsetX;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+pY = event.offsetY;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; } else
+{
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+// resto de navegadores
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+pX = e.pageX;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+pY = e.pageY;
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+// actualiza el título al cambiar la posición del
+ratón
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+document.title = "coordenadas del ratón (x:"+pX+"
+y:" +pY+")";
+<br>
+&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; //
+actualiza barra de estado
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+window.status = "coordenadas del ratón (x:"+pX+" y:"
++pY+")";
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/script&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/BODY&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/HTML&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Internet Explorer mantiene la posición del ratón en
+las propiedades offsetX y offsetY, mientras que el resto de los
+navegadores utiliza pageX y pageY. Los valores de coordenadas son
+relativos a la propia ventana, a la esquina superior izquierda.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Mensajes
+informativos</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span class="codigo">alert(" Mensaje ");</span>
+visualiza el mensaje y detiene
+el proceso hasta que el usuario pulse clic en el cuadro de diálogo. El
+texto que se pasa como parámetro puede incluir varias líneas utilizando
+como salto de línea los caracteres "\n". El título y el icono que se
+muestran no son personalizables.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span class="codigo">respuesta=confirm(" Mensaje ");</span>
+es similar a alert. También detiene el proceso pero muestra dos botones
+y devuelve true o false dependiendo del que se pulse. También devuelve
+false si se cierra el cuadro de diálogo con el botón Cerrar o pulsando
+ESC.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Detección del clic
+secundario del ratón</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; En el ejemplo siguiente se detecta si el clic del
+ratón proviene del botón principal o del secundario. Es necesario
+desarrollar código diferente para IE y para los demás.<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;!DOCTYPE
+HTML&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;html&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;head&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;title&gt;
+Detección del click del ratón &lt;/title&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &lt;script
+type="text/JavaScript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; function
+mouseClick1() {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+// Internet Explorer
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; if
+((event.button==2)||(event.button==3)) {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+alert("Clic del botón
+secundario.");
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; } else {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+alert("Clic del botón
+principal.");
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; function
+mouseClick2(e){
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+// Mozilla Firefox
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+if(e.which==3){
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; alert("Clic del botón
+secundario.");
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; }
+else {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; alert("Clic del botón
+principal.");
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; // Internet Explorer
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; if
+(document.all) {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; document.onmousedown=mouseClick1;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; // Mozilla Firefox
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; if
+(window.sidebar) {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+document.captureEvents(Event.mousedown);
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+document.onmousedown = mouseClick2;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/script&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/head&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Detecta si hubo clic del botón
+primario o secundario
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/html&gt;<br>
+</p>
+
+<h3><a name="teclado"></a>Gestión del teclado</h3>
+
+&nbsp;&nbsp;&nbsp; Dadas las diferencias existentes entre los
+diferentes navegadores, la gestión del teclado no suele realizarse con
+código JavaScript. A continuación se desarrolla un ejemplo con un
+cuadro de entrada de datos en el que solamente se aceptan valores
+numéricos, con un máximo de dos números. En primer lugar se averigua el
+tipo de navegador y a
+continuación se hace el tratamiento correspondiente:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;!DOCTYPE
+HTML&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;html&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;form name="testform"&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Valor sólo
+numérico : &lt;input type="text" name="importe"&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/form&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;script
+type="text/javascript"&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+document.write(verNavegador(), "&lt;br /&gt;");
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+document.forms["testform"].elements["importe"].onkeypress =&nbsp;
+validarTeclado;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; function verNavegador() {
+<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; // convierte a
+minúsculas
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var strNaveg =
+navigator.userAgent.toLowerCase();
+<br>
+&nbsp;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; var strTest =
+strNaveg.indexOf("msie");
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; if (strTest&gt;= 0)
+{return "msie";};
+<br>
+&nbsp;<br>
+&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; strTest =
+strNaveg.indexOf("netscape");
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; if (strTest&gt;= 0)
+{return "netscape";};
+<br>
+&nbsp; <br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; strTest =
+strNaveg.indexOf("firefox");
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; if (strTest&gt;= 0)
+{return "firefox";};
+<br>
+&nbsp;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; strTest =
+strNaveg.indexOf("opera");
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; if (strTest&gt;= 0)
+{return "opera";};
+<br>
+&nbsp;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; return false;
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function
+validarTeclado(e) {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; var strNaveg =
+verNavegador();
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; var tecla = "";
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; var testTecla =
+false;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; var teclasOK =
+"0123456789";
+<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; switch (strNaveg) {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; case
+"msie":
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; tecla =
+String.fromCharCode(event.keyCode);
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; if
+(teclasOK.indexOf(tecla)&gt;=0) {testTecla = true;};
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; break;
+<br>
+&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case
+"netscape":
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; tecla =
+String.fromCharCode(e.which);
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; if
+(teclasOK.indexOf(tecla)&gt;=0) {testTecla = true;};
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; if ((e.which
+== 0) &amp;&amp; (e.keyCode&gt; 0) || (e.which == 8)) {
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; return true;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; break;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case
+"firefox":
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; tecla =
+String.fromCharCode(e.charCode);
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; if
+(teclasOK.indexOf(tecla)&gt;=0) {testTecla = true;};
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; if
+((e.charCode == 0) &amp;&amp; (e.keyCode&gt; 0)) {
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; return true;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; break;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+default:
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+// no puede validar
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; return false;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; if (testTecla) {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if
+(document.forms["testform"].elements["importe"].value.length &lt;
+2) {<br>
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+document.forms["testform"].elements["importe"].value+= tecla;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; return false;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/script&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/html&gt;
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Mensaje de entrada
+de datos (método prompt())</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método prompt() del objeto window permite crear
+una ventana de entrada de datos del usuario. Si el usuario hace click
+en el botón Cancelar o pulsa la tecla ESC, el método devolverá el valor
+nulo.<br>
+
+<h3><a name="sonido"></a>Reproducción de sonido</h3>
+
+&nbsp;&nbsp;&nbsp; HTML permite la reproducción de audio y sonido
+mediante la etiqueta &lt;EMBED&gt;, que actúa colocando un complemento
+del navegador en la página que sabe cómo gestionar el tipo de archivo
+referido en la etiqueta. Los complementos más habituales de los
+navegadores se utilizan para reproducir audio y sonido.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La etiqueta &lt;EMBED&gt;, que tiene como principal
+y obligatorio el atributo src, dispone además de los siguientes:<br>
+
+<ul>
+
+  <li>src .- URL, ubicación del archivo a reproducir.</li>
+  <li>width .- ancho.</li>
+  <li>heigth .- alto.</li>
+  <li>align .- alineación.</li>
+  <li>name .- nombre.</li>
+  <li>pluginspage .- indica dónde obtener el software del plugin.</li>
+  <li>hidden .- indica si el objeto es visible o no.</li>
+  <li>href .- define un enlace para este objeto.</li>
+  <li>autostart .- reproducción automática.</li>
+  <li>loop .- número de repeticiones.</li>
+  <li>volume .- volumen.</li>
+  <li>starttime .- punto de inicio.</li>
+  <li>endtime .- punto de finalización.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; En el siguiente ejemplo el sonido se puede activar
+de tres modos distintos:<br>
+
+<ul>
+
+  <li>Al hacer clic en el enlace, mediante la llamada
+"javascript:Play()".</li>
+  <li>Al hacer clic en el botón, mediante el evento onclick.</li>
+  <li>Al pasar con el ratón sobre el segundo enlace, mediante el evento
+onmouseover.</li>
+</ul>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;!DOCTYPE HTML&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;html&gt;
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;head&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;title&gt;Incorporar sonidos&lt;/title&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;script
+type="text/JavaScript"&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function Play() {
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+eval("document.sonido.play();");
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; }
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&lt;/script&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/head&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&lt;center&gt;eventos y sonidos&lt;/center&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;embed
+name='sonido' src='Todo_pasa.wav' loop="0" autostart="0"
+hidden="true"&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;center&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;a href="javascript:Play()"&gt;Reprodución del sonido&lt;/a&gt;
+<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&lt;form&gt;
+<br>
+&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &lt;input type="button" value="Reproducir"
+onclick="Play()"&gt;
+<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&lt;/form&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&lt;/center&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;A
+href="javascript:void()" onmouseover="Play()"&gt;Pasar el ratón
+para reproducir el sonido&lt;/A&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/body&gt;
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/html&gt;
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado puede comprobarse pinchando <a href="file026.html">aquí</a>.
+</body></html>

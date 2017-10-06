@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file029.html -->
+<html>
+<body>
+<script type="text/javascript">
+// función para verificar las selecciones
+// realizadas en el grupo de controles
+// con el nombre news (cuadros de verificación)
+
+function comprobarOpciones(f) {
+// se verifica que las opciones elegidas
+// sean 1 ó 2
+	var q = 0;
+	// se cuentan las opciones seleccionadas
+	for (var i = 0; i < f.elements["news"].length; i++) {
+		if (f.elements["news"][i].checked) {q++;}
+	}
+	if (q == 0) {
+		alert("Al menos debe elegir 1 opción");
+		// se fuerza el foco en el primer elemento
+		f.elements["news"][0].focus;
+		return false;
+	}
+	if (q > 2) {
+		alert("Puede elegir hasta 2 opciones");
+		// se fuerza el foco en el primer elemento
+		f.elements["news"][0].focus;
+		return false;
+	}
+	// selección correcta
+	// no hay mensaje de alerta
+	return true;
+}
+</script>
+
+<form name="miFormulario" method="post" action="otraPage.html">
+<input type="checkbox" name="news" value="1" id="news" >
+<label for="news"> : Newsletter semanal</label><br />
+<input type="checkbox" name="news" value="2" id="avisos" >
+<label for="avisos">: Avisos urgentes</label><br />
+<input type="checkbox" name="news" value="3" id="foro" disabled>
+<label for="foro">: Artículos del foro</label><br />
+<input type="checkbox" name="news" value="4" id="version" >
+<label for="version">: Anuncio de nuevas versiones</label><br />
+
+<input type="button" value="Validar" onclick="comprobarOpciones(this.form)">
+</form>
+</body>
+</html>

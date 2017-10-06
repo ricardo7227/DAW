@@ -1,0 +1,375 @@
+/* HEADER*/
+
+/* AGREGAR FUENTE de TITULO A CSS*/
+@font-face {
+	font-family: FuenteTitulo;
+	src: url(../fonts/FuenteTitulo.ttf);
+	}
+/* AGREGAR FUENTE de BODY A CSS*/
+@font-face {
+	font-family: SanFrancisco;
+	src: url(../fonts/SanFrancisco.ttf);
+	}
+
+*{font-family: SanFrancisco;}
+
+/*****************************************************************************/
+/***************************** ESTILOS INTRANET ******************************/
+/***/
+/***/           .intranetjumbotron {
+/***/               background-color: #6a857e!important;
+/***/           }
+/***/
+/***/           .intranet h1, p {
+/***/                color: #013628;
+/***/           }
+/***/
+/***/           .intranet .btn-primary{
+/***/               background-color: #013628;
+/***/               border-color: #042f24;
+/***/           }
+/***/           .intranet .btn-primary:hover{
+/***/               background-color: #042f24;
+/***/               border-color: #042f24;
+/***/           }
+/***/
+/***/           .intranet .btn-success{
+/***/               background-color: #013628;
+/***/               border-color: #042f24;
+/***/           }
+/***/
+/***/           .intranet .btn-success:hover{
+/***/               background-color: #042f24;
+/***/               border-color: #042f24;
+/***/           }
+/***/
+/***/           .intranet .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+/***/               background-color: #042f24;
+/***/               border-color: #042f24;
+/***/           }
+/***/
+/***/
+/*****************************************************************************/
+/*****************************************************************************/
+
+/*AJUSTAR TAMAÑO IMAGENES IDIOMAS*/
+
+.barraidiomas
+{   background: #222;
+    height: 25px;
+}
+
+.barraidiomas img {
+    float:right;
+    width: 35px;
+    padding: 2px;
+    height: 20px;
+    opacity: 0.7;
+
+}
+
+/*AJUSTAR TAMAÑO LOGO*/
+.logotierno{
+    text-align: center;
+}
+
+.logotierno img{
+    margin: auto;
+    max-width: 200px;
+}
+a:visited { color: #028261 }
+a:active { color: #028261 }
+a:link { color: #028261 }
+
+/*quitar margen que te añade bootstrap*/
+.navbar {
+		margin-bottom: 0;
+	}
+
+.jumbotron	{
+			padding: 20px 0px;
+			margin-bottom: 0;
+		}
+
+.jumbotron .titulo-pag {
+		text-align: center;
+		font-family: FuenteTitulo;
+		color: #04B486;
+}
+
+/*BOTONES*/
+.intranet .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+               background-color: #042f24;
+               border-color: #042f24;
+           }
+.btn-primary{
+	background-color: #04B486;
+	border-color: #028261;
+}
+
+.btn-primary:hover , .btn-primary:active{
+	background-color: #00cc99!important;
+    border-color: #028261!important;
+}
+
+
+.btn-success{
+	background-color: #00cc99;
+	border-color: #028261;
+}
+.btn-success:hover{
+	background-color: #04e6ab;
+	border-color: #028261;
+}
+
+.collapsed {color: white}
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{
+	background-color: #00cc99;
+}
+/* AJUSTAMOS EL MARGEN DE ARRIBA Y ABAJO DEL MAIN */
+.main {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+/* ESTILO PARA LOS POST*/
+
+.post {
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #999;
+}
+
+.post .post-title{
+	color: #333;
+}
+/* Cambiar la miniatura*/
+.post .thumb {
+	margin-right: 10px;
+	width: 40%;
+}
+.icono{
+    width: 50px;
+    height: 70px;
+}
+
+/* CREACION DE MEDIA QUERIE*/
+@media screen and (max-width: 768px){
+	.post .thumb {
+		width: 100%;
+		margin-bottom: 20px;
+		margin-right: 0px;
+	}
+}
+
+
+
+
+
+
+/* FORMULARIO DE INICIO DE SESION */
+.form-signin
+{
+    max-width: 330px;
+    padding: 5px;
+    margin: 0 auto;
+    padding-top: 5px;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+    margin-bottom: 5px;
+}
+.form-signin .checkbox
+{
+    font-weight: normal;
+}
+.form-signin .form-control
+{
+    position: relative;
+    font-size: 12px;
+    height: auto;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus
+{
+    z-index: 2;
+}
+.form-signin input[type="password"]
+{
+    margin-bottom: 10px;
+}
+.account-wall
+{
+    margin-top: 10px;
+    padding: 10px 0px 10px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.login-title
+{
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+.profile-img
+{
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.profile-name {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    height: 1em;
+}
+.profile-email {
+    display: block;
+    padding: 0 8px;
+    font-size: 15px;
+    color: #404040;
+    line-height: 2;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.need-help
+{
+    display: block;
+    margin-top: 10px;
+}
+.new-account
+{
+    display: block;
+    margin-top: 10px;
+}
+
+
+
+/*CALENDARIO DE EJEMPLO*/
+
+
+#calendar {
+width: 141px;
+padding: 0;
+margin: 0;
+border-left: 1px solid #A2ADBC;
+color: #616B76;
+text-align: center;
+background-color: #fff;
+}
+.nav, .nav a {
+color: #fff;
+text-align: center;
+text-decoration: none;
+}
+caption {
+margin: 0;
+padding: 0;
+width: 141px;
+background: #A2ADBC;
+color: #fff;
+text-align: center;
+}
+th {
+color: #616B76;
+background: #D9E2E1;
+border-right: 1px solid #A2ADBC;
+border-bottom: 1px solid #A2ADBC;
+border-top: 1px solid #A2ADBC;
+}
+.today, td.today a, td.today a:link, td.today a:visited {
+color: #F6F4DA;
+font-weight: bold;
+background: #DF9496;
+}
+td {
+border-right: 1px solid #A2ADBC;
+border-bottom: 1px solid #A2ADBC;
+width: 20px;
+height: 20px;
+text-align: center;
+background: url(images/bg_calendar.gif) no-repeat right bottom;
+}
+td a {
+text-decoration: none;
+font-weight: bold;
+display: block;
+}
+td a:link, td a:visited {
+color: #608194;
+background: url(images/bg_calendar.gif) no-repeat;
+}
+td a:hover, td a:active {
+color: #6aa3ae;
+background: url(images/bg_calendar.gif) no-repeat right top;
+}
+
+
+#calendar {
+width: 100%;
+padding: 0;
+margin: 0;
+border-left: 1px solid #A2ADBC;
+font: normal 12px/20px;
+text-align: center;
+background-color: #fff;
+}
+
+.nav, .nav a {
+color: #fff;
+text-align: center;
+text-decoration: none;
+}
+
+caption {
+width: 100%;
+margin: 0;
+padding: 0;
+background: #04B486;
+color: #fff;
+text-align: center;
+}
+
+th {
+color: #616B76;
+background: #D9E2E1;
+border-right: 1px solid #A2ADBC;
+border-bottom: 1px solid #A2ADBC;
+border-top: 1px solid #A2ADBC;
+}
+
+.today, td.today a, td.today a:link, td.today a:visited {
+color: #F6F4DA;
+font-weight: bold;
+background: #DF9496;
+}
+
+td {
+border-right: 1px solid #A2ADBC;
+border-bottom: 1px solid #A2ADBC;
+width: 20px;
+height: 20px;
+text-align: center;
+background: url(images/bg_calendar.gif) no-repeat right bottom;
+}
+
+
+

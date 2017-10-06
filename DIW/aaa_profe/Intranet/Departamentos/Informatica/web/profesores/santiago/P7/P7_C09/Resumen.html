@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Atributos HTML desde jQuery</title>
+
+  
+  
+  <script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<div id="header">
+<p id="cabecera">Atributos HTML desde jQuery</p>
+</div>
+
+<div>
+<div id="nav"> <br>
+<a href="#basicos">Selectores básicos</a><br>
+<br>
+<a href="#jerarquia">Selectores de jerarquía</a><br>
+<br>
+</div>
+<div id="article">&nbsp;&nbsp;&nbsp; Este resumen se ha realizado sobre
+los manuales de <a href="http://www.desarrolloweb.com/manuales/manual-jquery.html">desarrolloweb.com</a>.<br>
+<p>&nbsp;&nbsp;&nbsp; En jQuery existe una función llamada attr() que
+sirve para recuperar y alterar atributos de los elementos de la página.
+Entre estos atributos se encuentran:title, height, width, href, value, etc. </p>
+<h2><br>
+</h2>
+<h2>Lectura de un atributo
+</h2>
+
+El primer uso de attr() es para recuperar el valor de un atributo. En 
+este caso, el método debe recibir una cadena con el nombre del atributo 
+que queremos recuperar.
+<p>
+<span class="codigo&gt; attr(nombre) &lt;/span&gt; Pensemos por ejemplo en un campo INPUT de texto: &lt;p&gt; &lt;span class=codigo&gt; &lt;input type=" text="" value="loquesea" id="campotexto" &gt;="">&lt;="" span=""&gt;
+
+</span></p>
+<p>
+Ahora podríamos acceder a lo que hay escrito en el campo de texto de la siguiente manera:
+</p>
+<p>
+
+<span class="codigo">
+$("#campotexto").attr("value")
+</span>
+
+</p>
+<p>
+Pero atención, en el caso que invoquemos el método attr sobre un objeto 
+jQuery que contenga varios elementos a la vez, attr() en este caso 
+devolvería el valor del atributo del primero de los elementos que haya 
+en el objeto jQuery. Además, en caso que el elemento no tenga definido 
+ese atributo al que se pretenda acceder, devolvería undefined.
+</p>
+<p>
+Veamos un ejemplo, también simple, pero un poco más elaborado. Tenemos varios enlaces en la página, con este código HTML:
+</p>
+<p>
+
+
+<span class="codigo">
+&lt;a href="http://www.elpais.com" title="Diario El País"&gt;El País&lt;/a&gt;<br>
+&lt;br&gt;<br>
+&lt;a href="http://www.mozilla.org" title="Fundación Mozilla"&gt;Mozilla Fundation&lt;/a&gt;<br>
+&lt;br&gt;<br>
+&lt;a href="http://es.openoffice.org/" title="Siute de programas de oficina"&gt;Open Office&lt;/a&gt;
+</span>
+
+</p>
+<p>
+Si hacemos algo como esto:
+</p>
+<p>
+
+
+<span class="codigo">
+$("a").attr("title")
+</span>
+
+</p>
+<p>
+Obtendremos el valor del atributo title del primero de los enlaces. Como
+ tenemos tres enlaces en la página, $("a") nos devolvería un objeto 
+jQuery que contiene esos tres enlaces, pues recordar, que attr("title") 
+devuelve el valor del atributo "title" del primero de los elementos del 
+objeto jQuery. Ahora bien, si  quisiéramos obtener el valor del atributo
+ "title" de todos los elementos, tendríamos que hacer un recorrido a 
+cada uno de los enlaces con el método each del core de jQuery 
+http://www.desarrolloweb.com/articulos/core-each-jquery.html.
+</p>
+<p>
+Veamos un ejemplo de una página completa que hace ese recorrido con each
+ para recuperar todos los valores de los atributos title de los enlaces 
+que haya en la página:
+</p>
+<p>
+
+<span class="codigo">
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;title&gt;método attr&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;script src="../jquery-1.3.2.min.js" type="text/javascript"&gt;&lt;/script&gt;<br>
+&lt;script&gt;<br>
+$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;$("a").each(function(i){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var titulo = $(this).attr("title");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Atributo title del enlace " + i + ": " + titulo);<br>
+&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&nbsp;<br>
+});<br>
+&lt;/script&gt;<br>
+&lt;/head&gt;<br>
+<br>
+&lt;body&gt;<br>
+&lt;a id="enlace1" href="http://www.elpais.com" title="Diario El País"&gt;El País&lt;/a&gt;<br>
+&lt;br&gt;<br>
+&lt;a href="http://www.mozilla.org" title="Fundación Mozilla"&gt;Mozilla Fundation&lt;/a&gt;<br>
+&lt;br&gt;<br>
+&lt;a href="http://es.openoffice.org/" title="Siute de programas de oficina"&gt;Open Office&lt;/a&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;
+</span>
+
+</p>
+<p>
+Podemos <a href="http://desarrolloweb.com/articulos/ejemplos/jquery/attributes/attr.html" target="_blank">ver el ejemplo en marcha en una página aparte</a>.
+
+
+</p>
+<h2>
+Modificar un atributo
+</h2>
+
+Ahora vamos a ver un uso de attr() en el que no leemos el atributo, sino
+ que lo modificamos. En este caso la función recibe dos cadenas de 
+texto, la primera con el nombre del atributo y la segunda con el nuevo 
+valor que queremos asignar. Por ejemplo:
+<p>
+
+<span class="codigo">
+$('li').attr("type", "square");
+</span>
+
+
+</p>
+<p>
+Esto haría que todos los elementos de lista tengan un bullet de tipo cuadrado.
+
+</p>
+<p>
+Si lo deseas, puedes <a href="http://desarrolloweb.com/articulos/ejemplos/jquery/attributes/attr3.html" target="_blank">ver el ejemplo en marcha en una página aparte</a>.
+
+
+</p>
+<h2>
+Modificar varios valores de atributos a la vez
+
+</h2>
+
+También podemos utilizar el método attr() pasando un objeto con pares 
+atributo/valor. Esto sirve para modificar de una sola vez varios 
+atributos sobre los elementos que haya en un objeto jQuery y si esos 
+atributos no existían, simplemente los crea con los valores enviados en 
+el objeto.
+<p>
+A estas alturas ya debemos saber crear variables con notación objeto, 
+pero voy a dejar un ejemplo para que se pueda ver perfectamente este uso
+ del método.
+</p>
+<p>
+Imaginar que tenemos varios enlaces en la página, y que queremos modificar sus atributos, para todos los enlaces a la vez.
+</p>
+<p>
+
+<span class="codigo">
+$('a').attr({<br>
+&nbsp;&nbsp;&nbsp;'title': 'Title modificado por jQuery',<br>
+&nbsp;&nbsp;&nbsp;'href': 'http://www.desarrolloweb.com',<br>
+&nbsp;&nbsp;&nbsp;'style': 'color: #f80'<br>
+});
+</span>
+
+</p>
+<p>
+A partir de la ejecución de la sentencia anterior todos los title de los
+ enlaces tendrán el valor "Title modificado por jQuery". Las URLs a las 
+que enlazarán los link serán siempre la home de Desarrollo Web y además 
+se les creará un estilo CSS para que sean de color naranja.
+</p>
+<p>
+
+Podemos <a href="http://desarrolloweb.com/articulos/ejemplos/jquery/attributes/attr2.html" target="_blank">ver una página aparte con este ejemplo en marcha</a>.
+
+</p>
+<br>
+<br>
+<br>
+
+<p>&nbsp;&nbsp;&nbsp; En esa llamada a la función jQuery se pasa por
+parámetro
+una cadena "p" que es el selector.</p>
+<h3><a name="each"></a>Selectores básicos en jQuery</h3>
+<ul>
+  <li>Selector de etiquetas: $("etiqueta").</li>
+</ul>
+<h3><a name="jerarquia"></a>Selectores de jerarquía</h3>
+<p>&nbsp;&nbsp;&nbsp; Los selectores de jerarquía permiten seleccionar
+elementos atendiendo a la estructura o jerarquía de las etiquetas en la
+página.</p>
+
+</div></div>
+</body></html>

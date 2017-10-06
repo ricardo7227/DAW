@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file016.html -->
+<html>
+<head>
+
+<script type="text/javascript">
+var winPopup;
+function cerrarPopup() {
+	if (winPopup) {
+		if (!winPopup.closed) {
+			winPopup.close();
+		} 
+	}
+}
+
+function miPopup(txtPag, iAncho, iAltura, txtOpt) {
+	var iTop=(screen.height - iAltura) / 2;
+	var iLeft=(screen.width - iAncho) / 2;
+	winPopup = window.open(txtPag,"","top="+iTop+", left="+iLeft+
+		", width="+iAncho+", height="+iAltura+","+txtOpt);
+	if (winPopup) {
+		winPopup.focus();
+	} else {
+		alert("Popup bloqueado")
+	}
+}
+</script>
+</HEAD>
+<BODY>
+<form name="form1" action="" method="post">
+País: <input type="text" name="campo1" value=""><br />
+<a href="javascript:miPopup('pop2.html', 200, 200, 'resizable=no, 
+	location=no, menubar=no, status=no, scrollbars=no, 
+	menubar=no')">Cambiar país</a><BR /> 
+</form>
+<br /><br />
+<a href="javascript:cerrarPopup()">Cerrar ventana popup</a> 
+</BODY>
+</HTML>

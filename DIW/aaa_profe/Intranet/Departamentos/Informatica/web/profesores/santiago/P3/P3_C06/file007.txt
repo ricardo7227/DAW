@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file007.html -->
+<html>
+<head>
+<script type="text/javascript">
+// crea el objeto RegExp
+var expreg = new RegExp("[aeiou]","g");
+var strTexto = "Éste es un texto de prueba en el que se reemplazan las vocales por un guión.";
+// Impresión del texto completo
+document.write(strTexto, "<br />");
+var miTexto = strTexto.replace(expreg,"-");
+document.write(miTexto);
+</script>
+</head>
+<body>
+</body>
+</html>

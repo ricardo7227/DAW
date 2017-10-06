@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file014.html -->
+<html>
+<head>
+
+<script type="text/javascript">
+
+function obtenerParam(str1) {
+
+	// separador por grupo clave=valor
+	var sep1 = new RegExp("&", "g");
+	// le quitamos el primer carácter
+	// que es el símbolo ?
+	var str2 = str1.substring(1);
+
+	// obtenemos una matriz en la que
+	// cada elemento es clave=valor
+	var parms = str2.split(sep1);
+
+	// creamos la matriz que almacenará el
+	// resultado
+	var mat = new Array();
+
+	// el separador dentro de cada elemento
+	// del grupo clave=valor es el símbolo =
+	var sep2 = new RegExp("=", "g");
+
+	// procesamos grupo clave=valor
+	for (var i = 0; i < parms.length; i++) {
+		// separamos clave de valor
+		var parm = parms[i].split(sep2);
+
+		// creamos los elementos de la
+		// matriz asociativa
+		// mat [nombre de clave] = valor
+		mat[parm[0]]= parm[1];
+
+    }
+    // se devuelve la matriz resultante
+	return mat;
+
+}
+
+var strSearch = "?parm1=30&parm2=Casa&parm3=8";
+document.write("Cadena de parámetros ", strSearch, "<br />");
+// se crea una matriz para recibir los
+// elementos resultantes de la función
+var mat = new Array();
+
+mat = obtenerParam(strSearch);
+
+// se imprime la matriz resultado
+for (ind in mat) {
+	document.write("Parámetro : clave es ", ind, " y valor es ", 
+		mat[ind], "<br />");
+}
+</script>
+
+</head>
+<body>
+</body>
+</html>

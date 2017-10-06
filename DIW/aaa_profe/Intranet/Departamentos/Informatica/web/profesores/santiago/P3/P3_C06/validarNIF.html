@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Validar NIF</title>
+    <script type="text/javascript">
+      function validarNIF (cadena) {
+               var expresion = new RegExp("^[0-7][0-9]{7}-[A-Z]$", "g");
+               var valido = (expresion.test (cadena));
+               return (valido);
+      }
+      </script>
+    </head>
+  <body>
+    <script language="javascript">
+      var nif = prompt("Introduzca un N.I.F.", "nnnnnnnn-X");
+      if  (validarNIF(nif)) document.write("BIEN");
+      else document.write("MAL");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file027.html -->
+<html>
+<head>
+	<title>Entrada de datos por formulario</title></head>
+<body>
+<br/>
+<h1>Formulario</h1>
+<br/>
+	<script type="text/javascript">
+		function enviar(miFormulario) {
+			if (miFormulario.nombre.value == "") {
+					alert("Falta introducir el nombre de usuario");
+					return false;
+			}
+
+		  if (miFormulario.clave.value == "") {
+					alert("Falta introducir la contraseña");
+					return false;
+		  }
+			if (miFormulario.clave.value.length < 4) {
+					alert("La contraseña debe tener al menos 4 caracteres");
+					return false;
+			}
+			return confirm("¿ Confirma el envío del formulario ?");
+		} 
+
+		function borrar(){
+			return confirm("¿Está seguro que quiere limpiar el formulario?");
+		}
+
+	</script>
+	<form name="form1" method="get" action="pagina.html" onsubmit="return enviar(this)" onreset="return borrar()">
+Usuario.......:    <input type="text" name="nombre" value=""><br />
+Contraseña.: <input type="text" name="clave" value=""><br />
+<input type="reset"  value="Borrar"><br />
+<input type="submit" value="Enviar"><br />
+	</form>
+</body>
+</html> 

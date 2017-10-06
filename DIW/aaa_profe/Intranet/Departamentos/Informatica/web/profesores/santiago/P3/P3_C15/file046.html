@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file046.html -->
+<html>
+<head>
+	<title>Ejemplo del uso de tablas con DOM</title>
+</head>
+<body>
+<table>
+<caption>Premier League</caption>
+<thead>
+<tr>
+<th scope="col">Pos.</th>
+<th scope="col">Equipo</th>
+<th scope="col">PJ</th>
+<th scope="col">PG</th>
+<th scope="col">PE</th>
+<th scope="col">PP</th>
+<th scope="col">PTOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">1</th>
+<td>Manchester United</td>
+<td>20</td>
+<td>16</td>
+<td>2</td>
+<td>2</td>
+<td>50</td>
+</tr>
+<tr>
+<th scope="row">2</th>
+<td>Chelsea</td>
+<td>20</td>
+<td>15</td>
+<td>3</td>
+<td>2</td>
+<td>48</td>
+</tr>
+<tr>
+<th scope="row">3</th>
+<td>Liverpool</td>
+<td>19</td>
+<td>12</td>
+<td>3</td>
+<td>4</td>
+<td>39</td>
+</tr>
+<tr>
+<th scope="row">3</th>
+<td>Arsenal</td>
+<td>20</td>
+<td>11</td>
+<td>3</td>
+<td>6</td>
+<td>36</td>
+</tr>
+</tbody>
+</table>
+<script type="text/javascript">
+
+// Cantidad de las filas de la tabla
+var tablas = document.getElementsByTagName('table');
+var numRows = tablas[0].rows.length;
+document.write("Cantidad de filas: " + numRows + "<br>");
+
+// Cantidad de elementos <tbody>
+var numBodies = tablas[0].tBodies.length;
+document.write("Cantidad de tbody: " + numBodies + "<br>");
+
+// cantidad de filas del primer tbody (en este caso, el único)
+var numRowsBody = tablas[0].tBodies[0].rows.length;
+document.write("Cantidad de filas del primer tbody: " + 
+	numRowsBody + "<br>");
+
+// cantidad de columnas del primer tbody
+var numCols = tablas[0].rows[0].cells.length;
+document.write("Cantidad de columnas del primer tbody: " + numCols + "<br>");
+
+// navegación por toda la tabla
+// primero por la fila y después
+// por cada columna
+var Rows = tablas[0].rows;
+document.write("Navegación por los elementos de la tabla<br>");
+for(var i=0; i<Rows.length; i++) {
+	var fila = Rows[i];
+	var Cols = fila.cells;
+	for(var j=0; j<Cols.length; j++) {
+		var columna = Cols[j];
+		document.write("fila (" + i +"), col(" + j + ") = " + 
+			columna.innerHTML  + "<br>");
+	}
+}
+document.write("Fin de la navegación por los elementos de la tabla<br>");
+document.write("**************************************<br>");
+
+// Pasos para crear una nueva fila en la tabla
+// ya existente
+
+
+// Insertar una fila
+tablas[0].tBodies[0].insertRow(4);
+
+// crear un elemento <th>
+// y asignarle atributos
+
+var cabecera = document.createElement("th");
+cabecera.setAttribute('scope', 'row');
+cabecera.innerHTML = '5'
+tablas[0].tBodies[0].rows[4].appendChild(cabecera);
+
+// insertar celdas
+tablas[0].tBodies[0].rows[4].insertCell(1);
+tablas[0].tBodies[0].rows[4].cells[1].innerHTML = 'Manchester City';
+tablas[0].tBodies[0].rows[4].insertCell(2);
+tablas[0].tBodies[0].rows[4].cells[2].innerHTML = '20';
+tablas[0].tBodies[0].rows[4].insertCell(3);
+tablas[0].tBodies[0].rows[4].cells[3].innerHTML = '10';
+tablas[0].tBodies[0].rows[4].insertCell(4);
+tablas[0].tBodies[0].rows[4].cells[4].innerHTML = '5';
+tablas[0].tBodies[0].rows[4].insertCell(5);
+tablas[0].tBodies[0].rows[4].cells[5].innerHTML = '5';
+tablas[0].tBodies[0].rows[4].insertCell(6);
+tablas[0].tBodies[0].rows[4].cells[6].innerHTML = '35';
+
+// Obtener el contenido HTML de una fila/columna
+var texto = tablas[0].tBodies[0].rows[3].cells[3].innerHTML;
+document.write("Contenido de la fila 3/columna 3 (dentro del cuerpo, la primera fila th no cuenta) <tbody>: " + texto + "<br>");
+
+</script>
+</body>
+</html>

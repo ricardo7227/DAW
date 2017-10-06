@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Introducción</title>
+
+  
+  
+  <script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<div id="header">
+<p id="cabecera">Introducción</p>
+</div>
+
+<div>
+<div id="nav"><a href="#quees">¿ Qué es jQuery ?</a><br>
+<br>
+<a href="#ejemplos">Ejemplos de jQuery</a><br>
+<br>
+<a href="#instalacion">Instalación</a><br>
+<br>
+<a href="#comprobar">Comprobar si la página está cargada</a><br>
+<br>
+<a href="#gestion">Gestión de un enlace "a href" con jQuery</a><br>
+</div>
+<div id="article">
+Estos resúmenes se han realizado sobre los manuales de <a href="http://www.desarrolloweb.com/manuales/manual-jquery.html">desarrolloweb.com</a>
+<h3><a name="definicion"></a>¿Qué es jQuery?</h3>
+&nbsp;&nbsp;&nbsp; jQuery puede considerarse que está compuesto por
+unas librerías que contienen una serie de funciones JavaScript listas
+para usar. Entre otras cosas, implementa una serie de clases que
+permiten programar sin tener en cuenta el navegador, puesto que
+funcionan igual para las plataformas más habituales.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Permite la creación de efectos dinámicos, galerias,
+aplicaciones con Ajax, etc. de forma más simple. Sencillamente habrá
+que conocer estas librerías y programar haciendo uso de las clases,
+propiedades y métodos adecuados.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Estas librerías (framework) son gratuitas y podrán
+utilizarse incluyendo en las páginas un script JavaScript con el código
+jQuery, descargable desde su web. El archivo ocupa unos 56 KB y si
+nuestro servidor lo envía comprimido el peso de jQuery se queda en unos
+19 KB. El fichero será enviado por el servidor al cliente una vez por
+usuario, después queda en la caché.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Goza de gran aceptación por parte de los
+programadores, es estable y está bien documentado. Requiere habilidades
+avanzadas de programación y conocimientos de programación orientada a
+objetos.<br>
+<h3><a name="ejemplos"></a>Ejemplos de jQuery</h3>
+&nbsp;&nbsp;&nbsp; Veamos el poco código que hay que escribir para
+conseguir algunos dinamismos simples.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En éste primer ejemplo existen dos botones y un
+texto que cambia al pulsar cualquiera de los botones. El resultado
+puede verse pulsando <a href="primer.html" target="_blank">aquí</a>.
+El código del ejemplo es el siguiente:
+<p class="codigo">&lt;div id="capa" style="padding: 10px;
+background-color: #ff8800"&gt;<br>
+&nbsp;&nbsp;&nbsp; Haz clic en un botón<br>
+&lt;/div&gt;<br>
+&lt;input type="button" value="Botón A" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; onclick="$('#capa').html('Has
+hecho clic en el botón &lt;b&gt;A&lt;/b&gt;')"&gt;<br>
+&lt;input type="button" value="Botón B" <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; onclick="$('#capa').html('Recibido
+un clic en el botón
+&lt;b&gt;B&lt;/b&gt;')"&gt;<br>
+</p>
+&nbsp;&nbsp;&nbsp; El código consta de una capa y dos botones que
+responden al evento onclick y ejecutan una instrucción JavaScript que
+hace uso de herramientas jQuery que selecciona la capa (DIV) y ejecuta
+sobre ella un método (html) que cambia el contenido HTML del div.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En el segundo ejemplo vamos a disponer de dos capas,
+una siempre visible y la otra que se mostrará u ocultará según tengamos
+el puntero del ratón sobre la primera o fuera de ella. El resultado
+puede verse pulsando <a href="segun.html" target="_blank">aquí</a> y
+el código es el siguiente:<br>
+<p class="codigo">&lt;div id="capa" style="padding: 10px;
+background-color:
+#ff8800;"&gt;<br>
+&nbsp;&nbsp;&nbsp; Pon el ratón encima de esta capa<br>
+&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;div id="mensaje" style="display: none;"&gt;<br>
+&nbsp;&nbsp;&nbsp; Has puesto el ratón
+encima!! &lt;br&gt;(Ahora quítalo de la capa)<br>
+&lt;/div&gt;<br>
+$("#capa").mouseenter(function(evento){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $("#mensaje").css("display", "block");<br>
+});<br>
+$("#capa").mouseleave(function(evento){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $("#mensaje").css("display", "none");<br>
+});<br>
+</p>
+&nbsp;&nbsp;&nbsp; Así se han gestionado los dos eventos del DIV con
+id="capa". Además, se ha definido el código de los eventos por medio de
+funciones, que se encargarán de mostrar u ocultar la segunda capa con
+id="mensaje". En cada función se selecciona la capa con id "mensaje" y
+con el método css() se cambia a la propiedad "display" entre los
+valores "block" y "none".
+<br>
+<h3><a name="instalacion"></a>Instalación</h3>
+&nbsp;&nbsp;&nbsp; Para descargar la última versión del framework puede
+accederse a la página de <a href="http://jquery.com/" target="_blank">jQuery</a>.
+En el momento de escribir este resumen la release actual es la 1.9.1.
+Hay dos posibilidades para descargar, una que le llaman PRODUCTION, que
+es la adecuada para páginas web en producción, puesto que está
+minimizada y ocupa menos espacio, con lo que la carga de nuestro sitio
+será más rápida. La otra posibilidad es descargar la versión que llaman
+DEVELOPMENT, que está con el código sin comprimir, con lo que ocupa más
+espacio, pero se podrá leer la implementación de las funciones del
+framework, que puede ser interesante en etapa de desarrollo, porque
+podremos bucear en el código de jQuery por si tenemos que entender
+algún asunto del trabajo con el framework.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La descarga consiste en un archivo con extensión js
+que contiene el código completo de jQuery y que deberá incluirse en
+nuestras páginas web de la misma forma que podemos insertar un fichero
+de estilos css:<br>
+<p class="codigo">
+&lt;script src="jquery-1.9.1.min.js"
+type="text/javascript"&gt;&lt;/script&gt;
+</p>
+<p>&nbsp;&nbsp;&nbsp; El nombre del fichero js debe coincidir con el
+descargado. Así quedan incluidas todas las funciones de jQuery en la
+página.</p>
+<h3><a name="comprobar"></a>Comprobar que la página está cargada</h3>
+&nbsp;&nbsp;&nbsp; Para hacer uso de DOM se hace necesario detectar el
+momento en que la página está completamente cargada. Si no se espera a
+que la página esté lista para recibir comandos JavaScript que utilicen
+la estructura del documento se corre un alto riesgo de que se produzcan
+errores de JavaScript en tiempo de ejecución.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Generalmente, cuando se desea ejecutar Javascript
+después de la
+carga de la página, si no utilizamos ningún framework, lo más normal
+será utilizar un código como este:
+<p class="codigo">window.onload = function () {<br>
+&nbsp;&nbsp;&nbsp; alert("cargado...");<br>
+}
+</p>
+<p>&nbsp;&nbsp;&nbsp; Pero esta sentencia, que carga una funcionalidad
+en el evento onload
+del objeto window, sólo se ejecutará cuando el navegador haya
+descargado completamente TODOS los elementos de la página, lo que
+incluye imágenes, iframes, banners, etc. lo que puede tardar bastante,
+dependiendo de los elementos que tenga esa página y su peso. En
+realidad no hace falta esperar todo ese tiempo de carga de
+los elementos de la página para poder ejecutar sentencias Javascript
+que alteren el DOM de la página. Sólo habría que hacerlo cuando el
+navegador ha recibido el código HTML completo y lo ha procesado al
+renderizar la página. Para ello, jQuery incluye una manera de hacer
+acciones justo cuando ya está lista la página, aunque haya elementos
+que no hayan sido cargados del todo. Esto se hace con la siguiente
+sentencia:
+</p>
+<p class="codigo">
+$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp; //código a ejecutar cuando el DOM está listo para
+recibir instrucciones.<br>
+});
+</p>
+<p>&nbsp;&nbsp;&nbsp; Con $(document)
+se obtiene una referencia al documento (la página web) que se está
+cargando y con el método ready() se define un evento, que se
+produce al quedar listo el documento para realizar acciones sobre el
+DOM de la página.<br>
+</p>
+<h3><a name="gestion"></a>Gestión de un enlace "a href" desde jQuery</h3>
+&nbsp;&nbsp;&nbsp; El funcionamiento de "a href" es sobradamente
+conocido. Para crear un evento click desde jQuery que muestre un
+mensaje hay que pasar el código correspondiente como función:
+<p class="codigo">$("a").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;//aquí el código que se debe ejecutar al hacer clic<br>
+});<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp; Con $("a") se hace referencia a las etiquetas "A"
+(enlaces) del documento; como
+sólo hay un enlace se hace referencia a él.</p>
+<p>&nbsp;&nbsp;&nbsp; El método click() sobre $("a") define el evento y
+dentro de la función debe especificarse el código que debe ejecutarse
+cuando se produzca el mismo. El código completo sería:</p>
+<p class="codigo">$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp;$("a").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Has pulsado el
+enlace.\nAhora serás enviado a DesarrolloWeb.com");<br>
+&nbsp;&nbsp;&nbsp;});<br>
+});
+</p>
+<p>&nbsp;&nbsp;&nbsp; Con este código se muestra el mensaje "Has
+pulsado ..." al hacer click sobre el enlace. El comportamiento puede
+comprobarse pulsando <a href="enlace_1.html" target="_blank">aquí</a>.<br>
+</p>
+&nbsp;&nbsp;&nbsp; El comportamiento por defecto de un enlace consiste
+en que al pulsar sobre el mismo nos lleva auna URL. Con el código
+anterior, primero se ejecuta el código colocado para el evento click y
+posteriormente el navegador nos lleva a la URL. El comportamiento por
+defecto se puede bloquear añadiendo una llamada al método
+preventDefault() sobre el evento.<br>
+<br>
+&nbsp;&nbsp;&nbsp; En el código anterior, la función definida para el
+evento click sobre el enlace recibe un parámetro que es un manejador de
+evento, y que tiene sus propios métodos y propiedades. preventDefault
+es uno de esos métodos y un ejemplo de uso es el siguiente:<br>
+<p class="codigo">$(document).ready(function(){<br>
+&nbsp;&nbsp;&nbsp;$("a").click(function(evento){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Has pulsado el enlace pero
+...\nsu funcionamiento está anulado");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;evento.preventDefault();<br>
+&nbsp;&nbsp;&nbsp;});<br>
+});
+</p>
+<p>&nbsp;&nbsp;&nbsp; El resultado puede
+comprobarse pulsando <a href="enlace_2.html" target="_blank">aquí</a>.<br>
+</p>
+</div>
+</div>
+
+<div id="footer">
+</div>
+
+</body></html>

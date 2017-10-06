@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Bordes, márgenes y rellenos</title>
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="estilos.css" type="text/css">
+
+</head><body>
+<h1>Bordes, márgenes y rellenos</h1>
+
+<a href="#caja">Caja de formato</a><br>
+
+<a href="Resumen.html#caja">Campo de acción de márgenes, bordes y
+rellenos</a><br>
+
+<a href="#relleno">Relleno</a><br>
+
+<a href="#bordes">Bordes</a><br>
+
+<a href="#margenes">Márgenes</a><br>
+
+<a href="#contornos">Contornos dinámicos</a><br>
+
+<a href="#curvos">Bordes curvos</a><br>
+
+<br>
+
+<h3><a name="caja"></a>Caja de formato</h3>
+
+<p><img style="width: 190px; height: 65px;" alt="" title="Borde, margen y relleno" src="Imagen.jpeg" align="right">&nbsp;&nbsp;&nbsp;
+Cada
+elemento HTML colocado dentro de un documento queda contenido por una
+caja que lo rodea que, aunque es invisible, tiene propiedades que
+podemos codificar para variar la presentación. El espacio que rodea a
+cada elemento se configura mediante los bordes, los márgenes y el
+relleno.<br>
+</p>
+
+<h3><a name="caja"></a>Campo de acción de márgenes, bordes y rellenos</h3>
+
+&nbsp;&nbsp;&nbsp; El relleno es la distancia entre el contenido y el
+borde y se controla mediante la propiedad padding.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Los bordes, cuando existen, se dibujan rodeando la
+zona de relleno y quedan definidos por su grosor, color y tipo de línea.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Los márgenes ocupan la zona exterior de la caja y
+definen la distancia entre el borde y la caja exterior.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para cada uno de los tres elementos puede tratarse
+de forma independiente la parte superior, inferior, izquierda y derecha.<br>
+
+<h3><a name="relleno"></a>Relleno </h3>
+
+&nbsp;&nbsp;&nbsp; El espacio de relleno se mide por unidades de
+distancia o por un porcentaje de incremento o decremento. El conjunto
+de propiedades es el siguiente:<br>
+
+<ul>
+
+  <li>padding-top.-</li>
+  <li>padding-bottom.-</li>
+  <li>padding-left.-</li>
+  <li>padding-right.-</li>
+  <li>padding.-<br>
+  </li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Ver en pag. 287 la interpretación de los diferentes
+valores que se pueden especificar con padding.<br>
+
+<h3><a name="bordes"></a>Bordes</h3>
+
+&nbsp;&nbsp;&nbsp; A cada elemento HTML se le puede definir un borde
+con las siguientes propiedades fundamentales: grosor, tipo de línea y
+color.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El grosor se configura mediante las propiedades:
+border-top-width, border-bottom-width, border-right-width,
+border-left-width y border-width. Además de los valores conocidos,
+estas propiedades pueden tener como valor: thin (delgado), medium
+(medio) y thick (grueso).<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para definir el tipo de línea (estilo del borde) se
+utilizan las propiedades: border-top-style, ..., boder-style. Los
+valores que se pueden asignar a estas propiedades son:<br>
+
+<ul>
+
+  <li>none o hidden.- sin línea.</li>
+  <li>dotted.- linea de puntos.</li>
+  <li>dashed.- línea de guiones.</li>
+  <li>double.- línea doble.</li>
+  <li>groove.- línea tipo surco.</li>
+  <li>inset.- bajorelieve en dos tonos.</li>
+  <li>outset.- sobrerelieve en dos tonos.</li>
+  <li>ridge.- línea tipo relieve.</li>
+  <li>solid.- línea entera.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; El color del borde se define mediante las
+propiedades: border-top-color, ..., border-color, donde el color se
+puede especificar mediante la palabra reservada correspondiente, un
+valor hexadecimal (#rrggbb), la función rgb() o la función rgb() con
+porcentajes.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Existe un conjunto de propiedades border que permite
+configurar las tres propiedades anteriores, con el formato:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; border:&nbsp;
+border_width&nbsp; border_style&nbsp; border_color<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Las propiedades de este conjunto son: border-top,
+..., border.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Un ejemplo sería:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p&nbsp; {border: thin
+dashed red;}<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Existen dos propiedades relacionadas con los bordes
+pero que se utilizan principalmente con los elementos de las tablas y
+que ya han sido vistos anteriormente: border-spacing (espacio entre
+celdas) y border-collapse (permite solapar bordes contiguos).<br>
+
+<h3><a name="margenes"></a>Márgenes</h3>
+
+&nbsp;&nbsp;&nbsp; El margen es la zona entre la caja exterior del
+elemento y el borde. Las propiedades que lo configuran son: margin-top,
+..., margin. Un ejemplo:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p {margin: 5px;}<br>
+
+<h3><a name="contornos"></a>Contornos dinámicos</h3>
+
+&nbsp;&nbsp;&nbsp; Los contornos son elementos adicionales que existen
+alrededor de un elemento y que permiten resaltarlo. El uso más
+frecuente de los contornos es para indicar que el elemento tiene el
+foco (pseudo-clase :focus).<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El aspecto de los contornos es homogéneo para los
+cuatro lados, no se pueden individualizar. Las propiedades de
+configuración son:<br>
+
+<ul>
+
+  <li>outline-color.- el color.</li>
+  <li>outline-style.- estilo o tipo de línea.</li>
+  <li>outline-width.- grosor de la línea.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; La propiedad outline informa de las tres anteriores
+mediante el formato:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; outline: outline-color
+outline-style outline-width;<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Un ejemplo:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p&nbsp; {outline:
+red&nbsp; dashed&nbsp; thick;}<br>
+
+<h3><a name="curvos"></a>Bordes curvos</h3>
+
+&nbsp;&nbsp;&nbsp; La propiedad border-radius permite definir las
+curvas de los bordes de los elementos. En la definición se utiliza el
+radio del cuarto de elipse utilizada para redondear cada esquina del
+elemento, de la forma:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; elemento
+{border-tb-rl-radius: x y;}<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; donde:<br>
+
+<ul id="curvos">
+
+  <li>elemento.- elemento al que se aplica el estilo.</li>
+  <li>tb.- puede ser top o bottom.</li>
+  <li>rl.- right o left.</li>
+  <li>x y.- indican las longitudes de los radios de la elipse
+correspondiente.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Por ejemplo:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; div&nbsp;
+{border-top-left-radius: 30px 30px;}<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El modo abreviado con la propiedad border-radius
+permite definir las cuatro esquinas con una única propiedad:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; elemento {border-radius:
+izqsup dersup derinf izqinf;}<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Por ejemplo, el borde de la lista anterior tiene como
+código:<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; th&nbsp;&nbsp;&nbsp;
+{border: 3px&nbsp; solid&nbsp; blue;<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp; border-radius:
+20px 20px 20px 20px;<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp; }<br>
+
+<br>
+
+</body></html>

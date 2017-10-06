@@ -1,0 +1,577 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Objeto Date</title>
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<h1>Objeto Date</h1>
+
+<a href="#objeto">Objeto Date</a><br>
+
+<a href="#lectura">Métodos de lectura</a><br>
+
+<a href="#escritura">Métodos de escritura</a><br>
+
+<a href="#zona">Zona horaria internacional</a><br>
+
+<br>
+
+<h3><a name="objeto"></a>Objeto Date</h3>
+
+&nbsp;&nbsp;&nbsp; El objeto Date es un objeto predefinido que permite
+manipular fechas y horas. El almacenamiento de la información dentro
+del objeto cumple las premisas:<br>
+
+<ul>
+
+  <li>El año se representa con cuatro dígitos.</li>
+  <li>El mes es un índice de una tabla, cuyos valores van de 0 (enero)
+a 11 (diciembre).</li>
+  <li>El día es un valor entre 1 y 31.</li>
+  <li>El día de la semana es un índice de una tabla, cuyos valores van
+de 0 (domingo) a 6 (sábado).</li>
+  <li>La hora se representa por un valor entre 0 y 23.</li>
+  <li>Los minutos y los segundos se representan por un valor entre 0 y
+59.</li>
+  <li>Los milisegundos se representan por un valor entre 0 y 999.</li>
+  <li>El huso horario utiliza la configuración regional del equipo del
+cliente. Se indica el desplazamiento en horas respecto al meridiano de
+Greenwich.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Un objeto de tipo Date se crea, como es de esperar,
+de la forma:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var dtFecha = new Date()<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Y así, la instrucción:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write (dtFecha);<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; producirá la salida:<br>
+
+<p class="resul">
+<script languaje="javascript">
+    var dtFecha = new Date();
+    document.write (dtFecha);
+  </script></p>
+
+&nbsp;&nbsp;&nbsp; El constructor puede utilizar los parámetros:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Date (año, mes, día, hora,
+minuto, segundo)<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; lo que permite crear una fecha con instrucciones
+como las siguientes:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; // Fecha: 7 / 12 / 2011<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; var dtFecha1 = new Date
+(2011, 11, 7);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; // Fecha: 23 / 3 /
+2007&nbsp;&nbsp;&nbsp; Hora: 23:12:45<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var dtFecha2 = new Date
+(2007, 3, 23, 23, 12, 45);<br>
+</p>
+
+<h3><a name="lectura"></a>Métodos de lectura</h3>
+
+<ul>
+
+  <li>getDate().- devuelve el día de la fecha (de 1 a 31).</li>
+  <li>getDay().- devuelve el número del día de la semana (de 0 a 6).</li>
+  <li>getFullYear().- devuelve el año en cuatro dígitos.</li>
+  <li>getHours().- Devuelve la hora (de 0 a 23).</li>
+  <li>getMilliseconds().- Devuelve los milisegundos (de 0 a 999).</li>
+  <li>getMinutes().- Devuelve los minutos (de 0 a 59).</li>
+  <li>getMonth().- Devuelve el número de mes ( de 0 a 11).</li>
+  <li>getSeconds().- Devuelve los segundos (de 0 a 59).</li>
+  <li>getTime().- Devuelve la cantidad de milisegundos transcurridos
+desde el 1 / 1 / 1970 hasta la fecha del objeto.</li>
+  <li>getTimezoneOffset().- Devuelve la cantidad de minutos de
+diferencia entre la hora local y la zona horaria de referencia.</li>
+  <li>getYear().- Devuelve el año con cuatro cifras, pero se recomienda
+el uso del método siguiente.</li>
+  <li>getFullYear().- Devuelve el mismo dato.</li>
+  <li>getUTC...().- Estos métodos obtienen la información de fecha/hora
+pero en el modo UTC (coordenadas universales): getUTCDate(),
+getUTCDay(), getUTCFullYear(), getUTCHours(), getUTCMilliseconds(),
+getUTCMinutes(), getUTCMonth(), getUTCSeconds().</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Uso de los métodos
+getDate(), getMonth() y getFullYear()</span><br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script
+languaje="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var&nbsp;
+miFecha = new Date();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; with
+(miFecha) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write ("La fecha del día de hoy es: " +
+getDate() + "/" + getMonth() + "/" + getFullYear())<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado es el siguiente:<br>
+
+<p class="resul">
+<script languaje="javascript">
+    var  miFecha = new Date();
+    with (miFecha) {
+         document.write ("La fecha del día de hoy es: " + getDate() + "/" + getMonth() + "/" + getFullYear())
+    }
+</script></p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Uso del método
+getDay(</span><span style="font-weight: bold;">)</span><br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script
+languaje="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var tbDias =
+new Array ("Domingo", "Lunes", "Martes", "Miercoles", "Jueves",
+"Viernes", "Sabado");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var&nbsp;
+miFecha = new Date();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; with
+(miFecha) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write ("miFecha.getDay() = " + getDay() +
+"&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; document.write ("Hoy es " + tbDias[getDay()]);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado es el siguiente:<br>
+
+<p class="resul">
+<script languaje="javascript">
+   var tbDias = new Array ("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado");
+   var  miFecha = new Date();
+   with (miFecha) {
+        document.write ("miFecha.getDay() = " + getDay() + "<br>");
+        document.write ("Hoy es " + tbDias[getDay()]);
+   }
+</script></p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Uso de los métodos
+getHours(</span><span style="font-weight: bold;">), getMinutes(),
+getSeconds() y getMilliseconds()</span><br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script
+languaje="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var&nbsp;
+miFecha = new Date();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; with
+(miFecha) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write ("Hora : ");<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write (getHours() + ":" + getMinutes() +
+":" + getSeconds() + ":" + getMilliseconds() + "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; //
+Personalizar la hora<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; var h = getHours();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; if (h &lt; 10) { h = "0" + h };<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; var m = getMinutes();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; if (m &lt; 10) { m = "0" + m };<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; var s = getSeconds();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; if (s &lt; 10) { s = "0" + s };<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; var ms = getMilliseconds();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; if (ms &lt; 100) { ms &lt; 10 ? ms = "00" + ms
+: ms = "0" + ms };<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; document.write ("Hora con formato
+personalizado : ");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; document.write (h + ":" + m +
+":" + s + ":" + ms);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado es el siguiente:<br>
+
+<p class="resul">
+<script languaje="javascript">
+             var  miFecha = new Date();
+             with (miFecha) {
+                 document.write ("Hora : ");
+                 document.write (getHours() + ":" + getMinutes() + ":" + getSeconds() + ":" + getMilliseconds() + "<br>");
+               // Personalizar la hora
+                 var h = getHours();
+                 if (h < 10) { h = "0" + h };
+                 var m = getMinutes();
+                 if (m < 10) { m = "0" + m };
+                 var s = getSeconds();
+                 if (s < 10) { s = "0" + s };
+                 var ms = getMilliseconds();
+                 if (ms < 100) { ms < 10 ? ms = "00" + ms : ms = "0" + ms };
+                 document.write ("Hora con formato personalizado : ");
+                 document.write (h + ":" + m + ":" + s + ":" + ms);
+             }
+          </script></p>
+
+&nbsp;
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Uso del método
+getTime(</span><span style="font-weight: bold;">)</span><br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script
+languaje="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var&nbsp;
+miFecha = new Date();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.write ("En numero de segundos transcurridos desde el 1/1/1970
+hasta ahora es de : ");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+document.write (miFecha.getTime());<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado es el siguiente:<br>
+
+<p class="resul">
+<script languaje="javascript">
+             var  miFecha = new Date();
+             document.write ("En numero de segundos transcurridos desde el 1/1/1970 hasta ahora es de : ");
+             document.write (miFecha.getTime());
+          </script></p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Uso de métodos
+getUTC...(</span><span style="font-weight: bold;">)</span><br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var dtFecha = new Date();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; document.write
+(dtFecha.getHours()); &nbsp; &nbsp; // Devuelve 10<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write
+(dtFecha.getUTCHours());&nbsp; // Vevuelve 9<br>
+</p>
+
+<h3><a name="escritura"></a>Métodos de escritura</h3>
+
+<ul>
+
+  <li>setFullYear().- Asigna el año con cuatro dígitos.</li>
+  <li>setMonth().- Asigna el número de mes (de 0 a 11).</li>
+  <li>setDate().- Asigna el número del día de la fecha.</li>
+  <li>setHours().- Asigna la hora (de 0 a 23).</li>
+  <li>setMinutes().- Asigna los minutos (de 0 a 59).</li>
+  <li>setSeconds().- Asigna los segundos (de 0 a 59).</li>
+  <li>setMilliseconds().- Asigna los milisegundos (de 0 a 999).</li>
+  <li>setTime().- Asigna la cantidad de milisegundos transcurridos
+desde el 1/1/1970.<br>
+  </li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Uso del método
+setDate(</span><span style="font-weight: bold;">)</span><br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script
+languaje="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var miFecha =
+new Date();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; with
+(miFecha) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write ("Fecha antes de la modificación..:
+");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write (getDate() + "/" + getMonth() + "/" +
+getFullYear() + "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+// Modificamos el día cambiandolo por el 8<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; setDate(8);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write ("Fecha despues de la modificación:
+");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write (getDate() + "/" + getMonth() + "/" +
+getFullYear());<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado es el siguiente:<br>
+
+<p class="resul">
+<script languaje="javascript">
+             var miFecha = new Date();
+             with (miFecha) {
+                 document.write ("Fecha antes de la modificación..: ");
+                 document.write (getDate() + "/" + getMonth() + "/" + getFullYear() + "<br>");
+               // Modificamos el día cambiandolo por el 8
+                 setDate(8);
+                 document.write ("Fecha despues de la modificación: ");
+                 document.write (getDate() + "/" + getMonth() + "/" + getFullYear());
+             }
+          </script></p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Uso del método
+setTime(</span><span style="font-weight: bold;">)</span><br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script
+languaje="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var miFecha =
+new Date();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // Cantidad de
+milisegundos por día<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var msDia =
+24 * 60 * 60 * 1000<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; with
+(miFecha) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write ("Hoy es................: ");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write (getDate() + "/" + getMonth() + "/" +
+getFullYear() + "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+// Sumamos los milisegundos de 90 días a la fecha actual<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; setTime(getTime() + 90 * msDia);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write ("Dentro de 90 dias será:
+");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write (getDate() + "/" + getMonth() + "/" +
+getFullYear());<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado es el siguiente:<br>
+
+<p class="resul">
+<script languaje="javascript">
+             var miFecha = new Date();
+           // Cantidad de milisegundos por día
+             var msDia = 24 * 60 * 60 * 1000
+             with (miFecha) {
+                 document.write ("Hoy es................: ");
+                 document.write (getDate() + "/" + getMonth() + "/" + getFullYear() + "<br>");
+               // Sumamos los milisegundos de 90 días a la fecha actual
+                 setTime(getTime() + 90 * msDia);
+                 document.write ("Dentro de 90 dias será: ");
+                 document.write (getDate() + "/" + getMonth() + "/" + getFullYear());
+             }
+          </script></p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Uso de los métodos
+setFullYear(), setMonth() setDate(</span><span style="font-weight: bold;">) y setTime()</span><br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script
+languaje="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var miFecha =
+new Date();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; with
+(miFecha) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write ("Fecha de hoy..........:
+");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write (getDate() + "/" + getMonth() + "/" +
+getFullYear() + "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+// Modificamos la fecha <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; setFullYear(1963);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; setMonth(5);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; setDate(18);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write ("Fecha de nacimiento...:
+");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write (getDate() + "/" + getMonth() + "/" +
+getFullYear() + "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write ("Hora..................:
+");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write (getHours() + ":" + getMinutes() +
+":" +
+getSeconds() + "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+// Añadimos 5 segundos a la hora <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; setTime (getTime() + 5000);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write ("Cinco segundos después:
+");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; document.write (getHours() + ":" + getMinutes() +
+":" +
+getSeconds());<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado es el siguiente:<br>
+
+<p class="resul">
+<script languaje="javascript">
+             var miFecha = new Date();
+             with (miFecha) {
+                 document.write ("Fecha de hoy..........: ");
+                 document.write (getDate() + "/" + getMonth() + "/" + getFullYear() + "<br>");
+               // Modificamos la fecha
+                 setFullYear(1963);
+                 setMonth(5);
+                 setDate(18);
+                 document.write ("Fecha de nacimiento...: ");
+                 document.write (getDate() + "/" + getMonth() + "/" + getFullYear() + "<br>");
+                 document.write ("Hora..................: ");
+                 document.write (getHours() + ":" + getMinutes() + ":" + getSeconds() + "<br>");
+               // Añadimos 5 segundos a la hora
+                 setTime (getTime() + 5000);
+                 document.write ("Cinco segundos después: ");
+                 document.write (getHours() + ":" + getMinutes() + ":" + getSeconds());
+             }
+          </script></p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Función
+setTimeout()</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La función setTimeout() permite definir una función
+que se ejecutará cuando pase un tiempo determinado (especificado en
+milisegundos). Su sintaxis es:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; timer = setTimeout("fn()",
+retraso);</p>
+
+&nbsp;&nbsp;&nbsp; Esta función hace que se ejecute la función "fn()"
+cuando transcurra el tiempo determinado en la variable "retraso".<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; En el siguiente ejemplo se define una función que
+actualiza el título de la página y la barra de estado de la ventana
+cada segundo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;script
+languaje="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; function
+TituloDinamico() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; var miFecha =
+new Date();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp; var hor = miFecha.getHours();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp; var min = miFecha.getMinutes();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp; var seg = miFecha.getSeconds();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp; document.title = "Hora actual: " + hor + ":" + min
++ ":" + seg;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp; window.status&nbsp; = "Hora actual: " + hor + ":" +
+min + ":" + seg;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp; var miTimer = setTimeout ("TituloDinamico()", 1000);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+TituloDinamico();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado puede verse pinchando <a href="timeout.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; En cada ejecución de la función vuelve a
+establecerse setTimeout() pues de lo contrario solamente se ejecutaría
+una vez. Para desactivar la variable que controla el proceso iniciado
+por setTimeout() se utiliza la función clearTimeout(miTimer), lo que
+provoca que la función no vuelva a ser llamada.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Función
+setInterval()</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La función setInterval() es muy similar a la
+anterior, con una única diferencia: la llamada dinámica a la función no
+se interrumpe nunca sino que se reinicia automáticamente cada vez que
+se cumple el intervalo. La única manera de interrumpir el proceso es
+mediante el uso de la función clearInterval().<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Supongamos una función que muestra el tiempo
+transcurrido en la página:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;script
+languaje="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; function
+TiempoPasado() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; var FechaAct =
+new Date();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp; var tiempo = Math.round((FechaAct.getTime() - msIni) / 1000);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp; document.title = "Segundos transcurridos: " +
+tiempo;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var FechaIni
+= new Date();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var msIni =
+FechaIni.getTime();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+TiempoPasado();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; // Actualiza el título con
+una llamada<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var miTimer =
+setInterval ("TiempoPasado()", 1000);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &lt;/script&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado puede verse pinchando <a href="interval.html">aquí</a>.<br>
+
+<h3><a name="zona"></a>Zona horaria internacional</h3>
+
+&nbsp;&nbsp;&nbsp; Ver el ejemplo de la página 431, cuyo resultado
+puede verse pinchando <a href="zonas.html">aquí</a>.<br>
+
+<br>
+</body></html>

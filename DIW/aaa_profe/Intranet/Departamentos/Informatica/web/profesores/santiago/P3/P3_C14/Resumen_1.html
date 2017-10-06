@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>DHTML y objeto document</title>
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+</head>
+<body>
+<header>
+<p id="cabecera">DHTML y objeto document</p>
+</header>
+<nav>
+<a href="#dom">DOM: modelo de objeto documento</a><br>
+<br>
+<a href="#objeto">Objeto document</a><br>
+<br>
+<a href="#clase">Clase style</a>
+</nav>
+<article>
+DHTML (HTML dinámico) es la base de la manipulación dinámica de los
+componentes de una página para conseguir cambios del aspecto estético,
+de las posiciones y del contenido. Como de costumbre, no existe
+compatibilidad completa con todos los navegadores.<br>
+
+<h3><a name="dom"></a>DOM: modelo de objeto document</h3>
+
+&nbsp;&nbsp;&nbsp; Los componentes de una página web se pueden
+visualizar como una estructura jerárquica y eso es básicamente el
+modelo de objeto documento (DOM). Cada uno de los elementos se trata
+como un nodo dentro de la estructura del documento.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Existen varias herramientas que permiten el análisis
+y manipulación de un documento DOM, por ejemplo Dom Inspector de
+Mozilla (Herramientas - Web Developer - Dom Inspector).<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Dom Inspector permite modificar la página abierta
+por el navegador, no la del servidor, y la forma de trabajar es la
+siguiente:<br>
+
+<ul>
+
+  <li>1. Abrir con Firefox una página y seleccionar Herramientas - DOM
+Inspector. También se puede especificar la URL en la barra de dirección
+del Inspector o a través de la opción File - Inspect a URL.</li>
+  <li>2. Se puede visualizar la página pulsando sobre el botón
+"Inspect". Puede analizarse la página haciendo uso de los diferentes
+botones y opciones.</li>
+  <li>3. Una vez encontrado el nodo a analizar, puede inspeccionarse en
+una ventana nueva.</li>
+  <li>4. Puede guardarse la versión modificada como un documento nuevo.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Las posibilidades de DHTML son muchas, por ejemplo:<br>
+
+<ul>
+
+  <li>Controlar la visibilidad de un elemento.</li>
+  <li>Mover o deslizar un elemento.</li>
+  <li>Cambiar los parámetros de estilo de un elemento.</li>
+  <li>Modificar el contenido de un elemento.<br>
+  </li>
+</ul>
+
+<h3><a name="objeto"></a>Objeto document</h3>
+
+&nbsp;&nbsp;&nbsp; El objeto document es el elemento fundamental de la
+programación DHTML dado que es el que permite acceder y modificar todos
+los elementos de una página. Contiene varios objetos (subobjetos) y
+algunos métodos orientados a la manipulación de los elementos
+integrados en document.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para verificar que un navegador permite acceder al
+modelo DOM (Document Object Model) puede utilizarse el método
+getElementById() de la forma:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+if (document.getElementById()) {// OK}<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+else {alert ("Su navegador es demasiado antiguo");}</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Principales
+métodos del objeto document</span><br>
+
+<ul>
+
+  <li>getElementById(id).- permite obtener un elemento utilizando su
+identificador (atributo id).</li>
+  <li>getElementsByName(nombre).- permite obtener una tabla de
+elementos mediante el atributo nombre.</li>
+  <li>getElementsByTagName(etiqueta).- permite obtener una tabla de
+elementos usando como atributo una etiqueta.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Contenido HTML de
+un elemento</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; DHTML, haciendo uso de código JavaScript, permite
+modificar el contenido HTML de un elemento. La propiedad innerHTML
+contiene el código HTML del elemento y es una propiedad accesible en
+lectura y escritura. Por ejemplo, para modificar el contenido del
+elemento con atributo id "Texto" puede utilizarse:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.getElementById("Texto").innerHTML = "Otro texto";<br>
+</p>
+
+<h3><a name="clase"></a>Clase style</h3>
+
+&nbsp;&nbsp;&nbsp; La clase style permite modificar dinámicamente la
+presentación de los elementos de un documento. La hoja de estilo en
+cascada (CSS) permite definir el formato de un elemento y su
+codificación actúa por combinación acumulativa de las definiciones
+previas.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Hemos visto que el estilo puede incorporarse dentro
+de las etiquetas HTML, o bien mediante la etiqueta &lt;style&gt; o
+utilizando ficheros CSS.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Propiedad className</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La propiedad className del elemento del documento
+tiene el mismo efecto que el atributo class de la etiqueta HTML
+correspondiente y puede ser accedida en lectura y en escritura. Para
+poder utilizarla es obligatorio que el elemento HTML tenga definido el
+atributo class.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Pinchando <a href="file031.html">aquí</a> puede
+observarse un ejemplo donde el
+aspecto de las filas de una tabla se modifica de la forma:<br>
+
+<ul>
+
+  <li>Aspecto normal.- aspecto de la fila si no ha sido seleccionada ni
+tiene el ratón sobre ella.</li>
+  <li>Aspecto resaltado.- si el ratón se encuentra sobre la fila.</li>
+  <li>Aspecto seleccionado.- si el elemento ha sido seleccionado.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Propiedades de
+estilo</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Las propiedades de estilo permiten acceder y
+modificar el estilo de un elemento (o conjunto de elementos) desde
+código de JavaScript.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Visibilidad</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para controlar la visibilidad de un elemento en el
+documento existen dos propiedades:<br>
+
+<ul>
+
+  <li>visibility.- puede tomar los valores: visible o hidden.</li>
+  <li>display.- puede tomar los valores: none (oculto), block, inline o
+vacío.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; La ventaja de "display: none" (frente a "visibility:
+hidden") es que el elemento no ocupa lugar.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para acceder a las propiedades de estilo CSS desde
+JavaScript se debe acceder (obligatoriamente) a la propiedad
+correspondiente de estilo del elemento desde el objeto style. Un
+ejemplo para acceder a la propiedad display es el siguiente:
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.getElementById("miId").style.display = "none";</p>
+
+&nbsp;&nbsp;&nbsp; Un ejemplo de funcionamiento de las propiedades
+visibility y display puede observarse pinchando <a href="file032.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Posicionamiento</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La propiedad de estilo position permite establecer
+si el posicionamiento es relativo a otro elemento o absoluto con
+respecto a la esquina superior izquierda de la ventana (valores
+relative y absolute). Un ejemplo que hace uso de estas propiedades
+puede verse pinchando <a href="file033.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Dimensionamiento</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Las dos propiedades que controlan el
+dimensionamiento de un elemento en la ventana son width (ancho) y
+height (alto). Estos dos valores son modificables desde JavaScript si
+han sido definidos previamente con alguna dimensión.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Pinchando <a href="file034.html">aquí</a> se muestra un
+ejemplo de una página
+con tres áreas div y una serie de enlaces para modificar su contenido y
+dimensiones. En la página 549 hay una descripción más detallada del
+ejemplo.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Elementos
+superpuestos</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Los elementos de una página se pueden superponer
+mediante la propiedad CSS z-index, que mediante código JavaScript se
+referencia con zIndex y que no debe asignársele valores negativos.
+Pinchando <a href="file035.html">aquí</a> puede contemplarse un
+ejemplo que
+permite modificar la superposición de elementos.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Colores</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El color del texto y del fondo se definen mediante
+las propiedades CSS color y background-color. Su correspondencia con
+JavaScript son color y backgroundColor.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Texto</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para controlar el formato del texto, CSS incluye las
+propiedades: font-family, font-size, font-weight, font-style y
+text-decoration, que tienen su correspondencia en JavaScript con
+fontFamily, fontSize, fontWeight, fontStyle y textDecoration.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Por otra parte, la etiqueta &lt;a&gt; tiene un
+tratamiento automatizado, sin necesidad de programar, respecto a
+algunas de las acciones del ratón, para marcar un estilo diferente para
+indicar un enlace ya visitado o que el ratón está pasando por encima
+del enlace. Ver ejemplo en pág. 552.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Estilos de cursor</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Mediante código JavaScript se puede gestionar el
+formato del cursor utilizando la propiedad de estilo cursor. Los
+valores posibles para esta propiedad son:<br>
+
+<ul>
+
+  <li>default.- flecha normal.</li>
+  <li>text.- selección de texto.</li>
+  <li>progress.- indica el avance con un reloj de arena.</li>
+  <li>hand.- muestra una mano.</li>
+  <li>move.- indica un desplazamiento.</li>
+  <li>crosshair.- una cruz.</li>
+  <li>help.- indicador de ayuda.</li>
+  <li>wait.- reloj de arena.</li>
+  <li>n-resize.- redimensiona el sentido vertical.</li>
+  <li>e-resize.- redimensiona el sentido horizontal.</li>
+  <li>ne-resize.- redimensiona el sentido diagonal (norte-este y
+sud-oeste).</li>
+  <li>nw-resize.- redimensiona el sentido diagonal (norte-oeste y
+sud-este).</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Selección de texto</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Desde JavaScript se puede recuperar el texto que se
+haya seleccionado en una página. Un ejemplo que permite seleccionar un
+texto y lo muestra al pulsar un botón puede analizarse pinchando <a href="file036.html">aquí</a>.
+</article>
+<footer>
+</footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?php
+session_start(); 
+
+//Compruebalogin
+define ('Cintentos',3);
+
+//Parámetros del archivo sitio.conf
+$archivo = file("Configuraciones/sitio.conf"); 
+
+$lineas = array(explode("=",$archivo[4]),explode("=",$archivo[6]),explode("=",$archivo[8]),explode("=",$archivo[10]),explode("=",$archivo[12]),explode("=",$archivo[14]),explode("=",$archivo[16]),explode("=",$archivo[18]));
+$contenido=array();
+
+for ($i=0; $i<count($lineas); $i++)
+{
+	$contenido[]=$lineas[$i][1];
+}
+
+$servidor=trim($contenido[0]);		// Servidor MySQL.
+$usuario=trim($contenido[1]);			// Usuario MySQL.
+$contrasenia=trim($contenido[2]);		// Contraseña MySQL.
+$nombrebd=trim($contenido[3]);		// Nombre de Base de datos MySQL.
+$dirabsoluto=trim($contenido[4]);		// Directorio absoluto de la Web
+$dirrelativo=trim($contenido[5]);		// Directorio relativo de la Web
+$dirftpabsoluto=trim($contenido[5]);	// Directorio absoluto del FTP
+$dirftprelativo=trim($contenido[6]);	// Directorio relativo del FTP
+
+//Conexión a la BBDD
+$conexion=mysql_connect($servidor,$usuario,$contrasenia) or die(mysql_error());
+mysql_select_db($nombrebd) or die(mysql_error());
+
+
+?>

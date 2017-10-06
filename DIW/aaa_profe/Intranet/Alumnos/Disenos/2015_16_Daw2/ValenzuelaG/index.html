@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+		<meta name="viewport" content="width-device-width, initial-scale=1.0">
+		<meta name="author" content="Guillermo Valenzuela Alia">
+		<title>IES Enrique Tierno Galvan</title>
+		<link title="Programacion Web" rel="stylesheet" href="estilos.css" type="text/css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!--Estilos Bootstrap*/-->
+		<link rel="stylesheet" type="text/css" href="Software/css/bootstrap.min.css" >
+		<link rel="stylesheet" type="text/css" href="estiloweb.css" >
+		<script src="Software/js/jquery-1.9.1.min.js"></script>
+		<script src="Software/js/bootstrap.min.js"></script>
+	</head>
+	
+	<div id="cabecera" class="page-header">
+  <h1>Bienvenido al IES Enrique Tierno Galvan</h1>
+  <img  src="img/logo.png" alt="logo" class="img-circle">
+</div>
+<div id="login" class = "row" style = "padding: 91px 80px 50px;">
+     <p>Accede a tu cuenta</p>
+   <form class = "form-inline" role = "form">
+      
+      <div class = "form-group">
+         <input type = "email" class = "form-control" placeholder = "Enter email">
+      </div>
+      
+      <div class = "form-group">
+         <input type = "password" class = "form-control" placeholder = "Password">
+      </div>
+	  
+	   <button type="button" class="btn btn-default">Entrar</button>
+      
+   </form>
+</div>
+<div id="banderas" class="row">
+  <img src="img/espana.png" alt="spain">
+  <img src="img/inglaterra.png" alt="england">
+</div>
+<nav class="navbar navbar-default" role="navigation">
+  <!-- El logotipo y el icono que despliega el menú se agrupan
+       para mostrarlos mejor en los dispositivos móviles -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Desplegar navegación</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+ 
+  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+       otro elemento que se pueda ocultar al minimizar la barra -->
+  <div id="menu" class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="mipaginaweb.html">Inicio</a></li>
+      <li><a href="#">Direccion</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Administracion <b class="caret"></b>
+        </a>
+        <ul  id="menuDesplegable" class="dropdown-menu">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Saldos</a></li>
+          <li><a href="#">Movimientos</a></li>
+          <li><a href="#">Dietas</a></li>
+        </ul>
+      </li>
+    </ul>
+ 
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Buscar">
+      </div>
+      <button type="submit" class="btn btn-default"> Buscar</button>
+    </form>
+ 
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="departamentos.html">Departamentos</a></li>
+	  <li><a href="#">Ampa</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Jefatura <b class="caret"></b>
+        </a>
+        <ul id="menuDesplegable2" class="dropdown-menu">
+          <li><a href="#">Documentos</a></li>
+          <li><a href="#">Progrmacion</a></li>
+          <li><a href="#">Actas</a></li>
+          <li><a href="#">Partes</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<aside id="destacados" class="col-md-3 col-xs col-sm">
+					<h4>Destacados</h4>
+					<div class="list-group">
+						<a href="" class="list-group-item">
+						<img src="img/aula.png" alt="aula" width="50px" height="50px"></img>
+						Aula virtual
+						</a>
+						<a href="" class="list-group-item">
+						<img src="img/bolsa.png" alt="bolsa" width="50px" height="50px"></img>
+						Bolsa de trabajo
+						</a>
+						<a href="" class="list-group-item">
+						<img src="img/bandera.png" alt="proyectos" class="img-circle"></img>
+						Proyectos internacionales
+						</a>
+						<a href="" class="list-group-item">
+						<img src="img/afd.png" alt="AFD" width="50px" height="50px" class="img-circle"></img>
+						AFD
+						</a>
+						<a href="" class="list-group-item">
+						<img src="img/biblioteca.png" alt="biblio" width="50px" height="50px" class="img-circle"></img>
+						Blog de la biblioteca
+						</a>
+						<a href="" class="list-group-item">
+						<img src="img/reciclaje.png" alt="reciclar" width="50px" height="50px"></img>
+						Aqui se recicla
+						</a>
+
+					</div>
+					
+</aside>
+<!--CONTENIDO DE LA WEB-->
+		<section id="cuerpo" class="main container">
+			<div class="row">
+				<section class="posts col-md-9">
+					<!-- CREACION DE MIGAS DE PAN -->
+					<div class="migas-de-pan">
+						<ol class="breadcrumb">
+							<font face="Dream Orphans" color="navy"><marquee behavior="alternate">Inicio</marquee></font>
+							<!--
+							<li><a href="#">Categorias</a></li>
+							<li class="active">Diseño Web</li>
+							-->
+						</ol>
+					</div>
+					
+					<article class="post clearfix"> <!-- usamos clearfix para evitar problemas con el float -->
+ 						<h1>
+ 							<a href="">Articulo 1 </a>
+ 						</h1>
+						<p>
+ 							LALALALALALALASDASD ASD ASFSEGSDGWEGGSDGSss
+ 						</p>
+ 						<p>
+ 							<span class="post-fecha"> 31 de octubre</span> por <span class="post-autor"><a href="#">Guillermo Valenzuela</a></span>
+ 						</p>
+
+					</article>
+
+					<article class="post clearfix"> <!-- usamos clearfix para evitar problemas con el float -->
+ 						<h1>
+ 							<a href="">Articulo 2</a>
+ 						</h1>
+						<p>
+ 							LALALALALALALASDASD ASD ASFSEGSDGWEGGSDGSss
+ 						</p>
+ 						<p>
+ 							<span class="post-fecha"> 31 de octubre</span> por <span class="post-autor"><a href="#">Guillermo Valenzuela</a></span>
+ 						</p>
+					</article>
+
+					<article class="post clearfix"> <!-- usamos clearfix para evitar problemas con el float -->
+ 						<h1>
+ 							<a href="">Articulo 3</a>
+ 						</h1>
+						<p>
+ 							LALALALALALALASDASD ASD ASFSEGSDGWEGGSDGSss
+ 						</p>
+ 						<p>
+ 							<span class="post-fecha"> 31 de octubre</span> por <span class="post-autor"><a href="#">Guillermo Valenzuela</a></span>
+ 						</p>	
+					</article>
+
+					<article class="post clearfix"> <!-- usamos clearfix para evitar problemas con el float -->
+ 						<h1>
+ 							<a href="">Articulo 4</a>
+ 						</h1>
+						<p>
+ 							LALALALALALALASDASD ASD ASFSEGSDGWEGGSDGSss
+ 						</p>
+ 						<p>
+ 							<span class="post-fecha"> </span> por <span class="post-autor"><a href="#">Guillermo Valenzuela</a></span>
+ 						</p>
+					</article>
+				</section>
+<footer id="pie">
+<p>Copyright © 2015 IES Enrique Tierno Galvan. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>

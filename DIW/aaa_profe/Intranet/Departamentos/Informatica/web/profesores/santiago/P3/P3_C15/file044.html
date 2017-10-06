@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file044.html -->
+<html>
+<head>
+	<title>Documento de prueba</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    // se crea un texto
+	var nuevoParrafo = document.createTextNode("Nuevo párrafo");
+
+	// se crea un nodo elemento nodo
+	var nuevoElemento = document.createElement("p");
+
+	// se añade el nodo Text al nodo Element
+	nuevoElemento.appendChild(nuevoParrafo);
+
+	// se añade un atributo ailgn
+	nuevoElemento.setAttribute("align","center");
+
+	// se añade el nodo al cuerpo del documento
+	document.body.appendChild(nuevoElemento);
+</script>
+</body>
+</html>

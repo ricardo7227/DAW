@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Objeto Math</title>
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+</head>
+<body>
+<header>
+<p id="cebecera">Objeto Math</p>
+</header>
+<nav>
+<a href="#conversion">Operaciones de conversión a número</a><br>
+<a href="#inversa">Operación inversa (de número a cadena)</a><br>
+<a href="#objeto">Objeto Math</a><br>
+<a href="#constantes">Constantes matemáticas</a><br>
+<a href="#formateo">Formateo de números</a><br>
+<a href="#calculadora">Calculadora de ejemplo</a><br>
+</nav>
+<article>
+&nbsp;&nbsp;&nbsp; JavaScript permite cálculos de todo tipo aunque no
+es el lenguaje ideal para realizar determinados cálculos de tipo
+científico que necesiten un alto grado de precisión; si resuelve los
+cálculos comerciales típicos de la web.<br>
+
+<h3><a name="conversion"></a>Operaciones de conversión a número</h3>
+
+&nbsp;&nbsp;&nbsp; Las operaciones aritméticas se realizan sobre
+constantes y variables numéricas. Si una variable contiene números pero
+está almacenada como cadena, antes de operar con ella debe ser
+convertida a número. Para ello existen dos funciones:<br>
+
+<ul>
+
+  <li>parseFloat() .- convierte a un número con decimales.</li>
+  <li>parseInt() .- convierte a un número entero.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; La conversión de una cadena de caracteres a número
+se realiza carácter a carácter, desde la primera posición y hasta
+encontrar el primer carácter no convertible a número (un punto se
+acepta en conversión de tipo parseFloat()), momento en el que la
+conversión se da por terminada y se convierte a número la primera parte
+de la cadena.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">NaN</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Si la función de conversión no encuentra un número
+en el inicio de la cadena a convertir entonces la función devuelve NaN,
+que significa Not a Number, que es una constante de tipo numérico sin
+valor. La función isNaN() permite averiguar si una variable es
+numérica. Para ello analiza el contenido completo de la variable y
+devuelve false o true dependiendo de&nbsp; si el contenido es o no un
+número. Hay que tener muy en cuenta que isNaN() devuelve true cuando el
+contenido de la variable no es un número. Ver ejemplos de pag. 456.<br>
+
+<h3><a name="inversa"></a>Operación inversa (de número a cadena)</h3>
+
+&nbsp;&nbsp;&nbsp; La función toString() convierte una variable
+numérica a tipo String. Un ejemplo es:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var cadena =
+toString(3527);
+</p>
+
+&nbsp;&nbsp;&nbsp; Un método indirecto sería:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var cantidad = 3000;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; cantidad = cantidad + "
+euros";<br>
+
+</p>
+<h3><a name="objeto"></a>Objeto Math</h3>
+
+&nbsp;&nbsp;&nbsp; El objeto Math permite realizar operaciones complejas a través de una diversidad de métodos:<br>
+<ul>
+  <li>ceil().- devuelve el entero superior más cercano al pasado como parámetro.</li>
+  <li>floor().- devuelve el entero inferior más cercano al pasado como parámetro.</li>
+  <li>max().- devuelve el valor mayor de los pasados como parámetros.</li>
+  <li>min().- devuelve el valor menor de los pasados como parámetros.</li>
+  <li>round().- devuelve el entero más cercano.</li>
+  <li>abs().- valor absouto.</li>
+  <li>acos().- el ángulo cuyo coseno corresponde al valor pasado.</li>
+  <li>asin().- ...</li>
+  <li>atan().- ...</li>
+  <li>cos().- coseno del ángulo pasado como parámetro.</li>
+  <li>sin().- ...</li>
+  <li>tan().- ...</li>
+  <li>exp().- devuelve el número e (2,7182...) elevado al parámetro.</li>
+  <li>log().- logaritmo neperiano.</li>
+  <li>pow().- primer parámetro elevado al segundo.</li>
+  <li>sqrt().- raiz cuadrada.</li>
+  <li>random().- valor aleatorio entre 0 (incluido) y 1 (excluido).</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Si una operación aritmética no se puede resolver devuelve NaN.<br>
+
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">División entre 0</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; En las divisiones entre 0 no se produce un error sino que devuelve Infinity o -Infinity.<br>
+
+<h3><a name="constantes"></a>Constantes matemáticas</h3>
+
+&nbsp;&nbsp;&nbsp; El objeto Math dispone de una serie de propiedades
+que representan constantes de uso común en las operaciones matemáticas,
+como son:<br>
+<ul>
+  <li>PI</li>
+  <li>E</li>
+  <li>SQRT2</li>
+  <li>LN10</li>
+  <li>LN2</li>
+  <li>LOG10E</li>
+  <li>LOG2E<br>
+
+  </li>
+</ul>
+<h3><a name="formateo"></a>Formateo de números</h3>
+
+&nbsp;&nbsp;&nbsp; JavaScript no tiene una función que permita
+formatear las cantidades numéricas pero no es dificil implementar una
+función personalizada que realice esta función. Ver ejemplo de pag. 460.<br>
+
+<h3><a name="calculadora"></a>Calculadora de ejemplo</h3>
+
+&nbsp;&nbsp;&nbsp; Ver pag. 462.
+</article>
+<footer>
+</footer>
+</body>
+</html>

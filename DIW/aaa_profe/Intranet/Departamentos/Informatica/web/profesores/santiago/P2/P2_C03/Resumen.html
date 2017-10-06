@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Valores y unidades</title>
+  
+  <link title="Estilos" rel="stylesheet" href="estilos.css" type="text/css">
+</head><body>
+<h1>Valores y unidades</h1>
+
+<a href="#valores">Valores de las propiedades</a><br>
+
+<a href="#unidades">Unidades de medida</a><br>
+
+<a href="#color">Valores de color</a><br>
+
+<a href="#url">Valores de url</a><br>
+
+<a href="#texto">Valores de texto y palabras clave</a><br>
+
+<a href="#control">Valores de control de audición</a><br>
+
+<br>
+
+<h3><a name="valores"></a>Valores de las propiedades</h3>
+
+<p>Los valores que se pueden asignar a las diferentes propiedades
+pueden ser de diferente tipo:</p>
+
+<ul>
+
+  <li>Palabras clave, por ejemplo: top, bottom, red, etc.</li>
+  <li>Texto.-</li>
+  <li>Número.-</li>
+  <li>Número con unidad de medida, por ejemplo: 3cm.</li>
+  <li>Medida de pantalla en pixels.</li>
+  <li>Medida con relación a un tamaño de fuente: em y ex.</li>
+  <li>Ángulos (grados y radianes).</li>
+  <li>Valores de tiempo (segundos y milisegundos).</li>
+  <li>Frecuencias (Hz y KHz).</li>
+  <li>Valores de porcentaje, por ejemplo: 40%.</li>
+  <li>Función de color, por ejemplo: rgb(0,255,0).</li>
+  <li>Función de url, por ejemplo: url(www.xxx.com).<br>
+  </li>
+</ul>
+
+<h3><a name="unidades"></a>Unidades de medida</h3>
+
+<p>Las unidades se especifican con un signo - o + (opcional), un número
+y el nombre de la unidad, sin espacios por medio. Por ejemplo:</p>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; height: -30%;<br>
+
+<p>Las unidades de medida absoluta que se pueden utilizar son:</p>
+
+<ul>
+
+  <li>in.- pulgadas. 1 pulgada equivale a 2,54 cm.</li>
+  <li>cm.- centímetros.</li>
+  <li>mm.- milímetros.</li>
+  <li>pt.- puntos. 1 pulgada equivale a 72 puntos.</li>
+  <li>pc.- picas. 1 pica equivale a 12 puntos.</li>
+</ul>
+
+<p>Como unidades de medida relativas están:</p>
+
+<ul>
+
+  <li>ex.- tamaño equivalente a la altura de la letra x (minúscula) de
+la fuente asociada al elemento.</li>
+  <li>em.- tamaño equivalente a la altura de la letra M (mayúscula) de
+la fuente asociada al elemento.</li>
+  <li>px.- pixel, relativo a la resolución del área de visualización.</li>
+  <li>%.- porcentaje con relación al elemento padre. Ver ejemplo en
+pag. 233 (Pag. 35 de la parte 2).<br>
+  </li>
+</ul>
+
+<h3><a name="color"></a>Valores de color</h3>
+
+<p>Un valor de color puede ser una palabra clave (red, ...) o una
+especificación numérica RGB. Las tres formas de especificar el color
+RGB son:</p>
+
+<ul>
+
+  <li>#rrvvaa.- con valores de 00 a FF.</li>
+  <li>rgb(r,v,a).- con valores de 0 a 255.</li>
+  <li>rgb(r%,v%,a%).- con valores de 0 a 100.</li>
+</ul>
+
+<p>Los colores RGBA son una extensión de los RGB que incorporan un
+cuarto parámetro, que indica el canal alfa o grado de opacidad del
+objeto, comprendido entre 0.0 (transparencia máxima) y 1.0 (opacidad
+máxima). Un ejemplo sería:</p>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; .texto&nbsp; {color:
+rgb(255,255,255,0.3);}<br>
+
+<br>
+
+<p>La medida HSL (hue, saturation y lightness) especifica el color
+mediante valores de tono, saturación y luminosidad, através de la
+función hsl(). El tono varía entre 0 y 360, formando una rueda de
+colores, siendo el 0 el rojo, el 120 el verde y el 240 el azul. La
+saturación es un porcentaje donde 0% significa una sombra de grises y
+100% es color completo. La luminosidad es otro porcentaje donde 0% es
+máxima oscuridad y 100% máxima luminosidad. Un ejemplo sería:</p>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; .texto&nbsp; {color:
+hsl(128,80%,70%);}<br>
+
+<p>La medida HSLA incorporaría un cuarto parámetro (entre 0.0 y 1.0)
+con el valor de la opacidad.</p>
+
+<h3><a name="url"></a>Valores de url</h3>
+
+<p>Para expresar una dirección URL en CSS se puede utilizar la forma
+url(Dirección_url), donde la dirección URL puede encerrarse entre
+comillas dobles o simples.<br>
+</p>
+
+<p>Cuando dentro de la dirección URL aparecen paréntesis, espacios,
+comas o comillas deben codificarse con el carácter de escape (\).<br>
+</p>
+
+<p>Una dirección relativa se interpreta como relativa respecto al
+archivo de hoja de estilo, no al documento html.<br>
+</p>
+
+<p>Algunos ejemplos:<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; body {background:
+url(imagen.jpg);}<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; body {background:
+url(http://www.tachan.es/imagen.jpg);}<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; body {background:
+url("imagen.jpg");}<br>
+
+<h3><a name="texto"></a>Valores de texto y palabras clave</h3>
+
+<p>Cuando el valor lleva espacios debe encerrarse entre comillas. Algún
+ejemplo:<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; p {font-family: "Times New
+Roman", Times, sherif;}<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; p:before {content:
+"Nota adiccional: ";}<br>
+
+<h3><a name="control"></a>Valores de control de audición</h3>
+
+<p>CSS incorpora una serie de propiedades que requieren el uso de
+unidades de medida de ángulo, tiempo y frecuencia que se utilizan en
+propiedades relacionadas con el sonido. Ver ejemplo en pag.236 (Pag. 38 de la parte 2).</p>
+
+</body></html>

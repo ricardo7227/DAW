@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Objeto Array</title>
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+
+</head><body>
+<h1>Objeto Array</h1>
+
+<a href="#necesidad">Necesidad del uso de arrays</a><br>
+
+<a href="#objeto">Objeto Array()</a><br>
+
+<a href="#metodos">Métodos del objeto Array()</a><br>
+
+<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La mayor complejidad de JavaScript se encuentra en
+conocer el modelo de objeto DOM y las capacidades de los objetos
+intrínsecos, sus métodos y propiedades: Array(), Date, String(),
+Math(), window, document, image, form, etc.<br>
+
+<h3><a name="necesidad"></a>Necesidad del uso de arrays</h3>
+
+&nbsp;&nbsp;&nbsp; Uno de los mecanismos más utilizados en programación
+para gestionar grupos de objetos es el uso de vectores, matrices,
+tablas o arrays, que son elementos de datos accesibles mediante un
+índice.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El bucle for es ideal para navegar por una tabla de
+elementos variando automáticamente el valor del índice.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; JavaScript implementa un objeto intrínseco, el
+objeto Array(), y solo es necesario crear una instancia para utilizarlo.<br>
+
+<h3><a name="objeto"></a>Objeto Array()</h3>
+
+&nbsp;&nbsp;&nbsp; El objeto Array() es un objeto predefinido que
+permite crear una tabla utilizando la sintaxis:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var meses = new Array();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; meses[0] = "Enero";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; meses[1] = "Febrero";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; meses[11] = "Diciembre";<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Otra posibilidad es:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var meses = new Array
+("Enero", "Febrero", ... "Diciembre");<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; La propiedad length del objeto permite conocer el
+número de elementos de la tabla.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Hay que tener en cuenta que las tablas en JavaScript
+son objetos (no variables) y una instrucción del tipo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var
+miTabla2 = miTabla1;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; duplica el nombre (referencias) de la tabla de datos
+pero al modificar cualquiera de ellos se modifica también el otro.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Tablas asociativas</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Pueden definirse tablas con direccionamiento
+asociativo, es decir, aquellas en las que los índices no son números
+sino claves de texto. Un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var
+meses = new Array();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; meses["Enero"] = "Los
+Reyes Magos";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; meses["Febrero"] = "El mes
+mas corto";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; . . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; meses["Diciembre"] =
+"Vacaciones de Navidad";<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Este tipo de matrices no se puede recorrer de modo
+secuencial mediante el incremento o decremento de un índice; hay que
+utilizar la sentencia "for ... in" vista en el tema anterior para
+recorrer las propiedades de un objeto. Continuando con el ejemplo
+anterior tendremos:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; for (var
+elem in meses) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+document.write ("Indice = ", elem, "&nbsp; ----&nbsp; ", "meses[",
+elem, "] = ", meses[elem], "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; cuyo resultado puede verse pinchando <a href="tablaAsociativa.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Tablas
+multidimensionales</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Un elemento de una tabla puede ser a su vez otra
+tabla, lo que da lugar a las tablas multidimensionales. Un ejemplo
+sería:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var tabla = new
+Array();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; tabla[0]&nbsp; = new Array
+(1, 8, 3);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; tabla[1]&nbsp; = new Array
+(3, 0, 675);<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; que puede identificarse como una tabla de dos
+dimensiones, con dos filas y tres columnas. Para recorrerla pueden
+utilizarse dos bucles for anidados de la forma:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; for (var fila = 0;
+fila &lt; 2; fila++) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; for
+(var col = 0; col &lt; 3; col++) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp; document.write ("tabla (", fila, ", ", col,
+") = ", tabla[fila][col], "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }</p>
+
+&nbsp;&nbsp;&nbsp; El resultado puede verse pinchando <a href="forAnidado.html">aquí</a>.<br>
+
+<h3><a name="metodos"></a>Métodos del objeto Array()</h3>
+
+&nbsp;&nbsp;&nbsp; El objeto Array() tiene una única propiedad (length)
+pero tiene varios métodos que permiten su manipulación.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Conversión a
+cadena (join())</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método join() convierte una matriz en una cadena
+de caracteres formada por el contenido de cada uno de los elementos de
+la matriz, separados por uno o varios caracteres que se definen como
+parámetro del método. Un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var meses = new
+Array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+"Agosto", "Septiembre", &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+"Octubre", "Noviembre", "Diciembre");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write (meses.join
+(" - "));</p>
+
+&nbsp;&nbsp;&nbsp; El resultado puede verse pinchando <a href="tablaJoin.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Concatenación de
+matrices (concat())</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método concat() devuelve una matriz resultante de
+la concatenación de otras dos. Un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var meses1 = new
+Array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var meses2 = new Array
+("Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var meses&nbsp; =
+meses1.concat(meses2);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write (meses.join
+(", "));</p>
+
+&nbsp;&nbsp;&nbsp; El resultado puede verse pinchando <a href="tablaConcat.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Eliminación del
+último elemento (pop())</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método pop() elimina el último elemento de una
+tabla. Un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var meses = new
+Array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "Julio", "Agosto",
+"Septiembre", "Octubre", "Noviembre", "Diciembre");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; meses.pop();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write (meses.join
+(", "));</p>
+
+&nbsp;&nbsp;&nbsp; El resultado puede verse pinchando <a href="tablaPop.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Inclusión de
+elementos por el final (push())</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método push() permite añadir elementos al final
+de la tabla. Un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var meses = new
+Array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; meses.push ("Julio",
+"Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write (meses.join
+(", "));</p>
+
+&nbsp;&nbsp;&nbsp; El resultado puede verse pinchando <a href="tablaPush.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Inversión de la
+tabla (reverse())</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método reverse() invierte los elementos de la
+tabla. Un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var colores = new
+Array ("Blanco", "Rojo", "Verde", "Negro");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; colores.reverse();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; document.write
+(colores.join
+(", "));</p>
+
+&nbsp;&nbsp;&nbsp; El resultado puede verse pinchando <a href="tablaReverse.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Eliminar el primer
+elemento (shift())</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método shift() elimina el primer elemento de la
+tabla. Un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var colores = new
+Array ("Blanco", "Rojo", "Verde", "Negro");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; colores.shift();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; document.write
+(colores.join
+(", "));</p>
+
+&nbsp;&nbsp;&nbsp; El resultado puede verse pinchando <a href="tablaShift.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Recortar una tabla
+(slice())</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método slice() permite recortar o extraer un
+subconjunto de elementos de una tabla. Devuelve una tabla formada por
+los elementos comprendidos entre los dos índices pasados como
+parámetros, sin incluir el último. Un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var meses = new
+Array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "Julio", "Agosto",
+"Septiembre", "Octubre", "Noviembre", "Diciembre");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var verano = meses.slice
+(6, 9);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; document.write
+(verano.join
+(", "));</p>
+
+&nbsp;&nbsp;&nbsp; El programa, como puede verse pinchando <a href="tablaSlice.html">aquí</a>, muestra "Julio, Agosto, Septiembre",
+es decir, muestra meses[6], meses[7] y meses[8].<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Ordenar una tabla
+(sort())</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método sort() ordena una tabla ascendentemente.
+Combinando sort() y reverse() se puede obtener la tabla ordenada
+descendentemente. Un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var colores = new
+Array ("Blanco", "Rojo", "Verde", "Negro");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write ("Antes de
+ordenar.....: ");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; document.write
+(colores.join
+(", ") + "&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; colores.sort();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write ("Despues
+de ordenar: ");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; document.write
+(colores.join
+(", ") + "&lt;br&gt;");
+</p>
+
+&nbsp;&nbsp;&nbsp; El resultado puede verse pinchando <a href="tablaSort.html">aquí</a>. <br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Reemplazar el
+contenido de elementos de una tabla
+(splice())</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método splice() reemplaza desde un elemento en
+adelante, un número determinado de elementos, con los valores
+especificados. Por ejemplo, para reemplazar en la tabla siguiente desde
+el elemento colores[1] (Rojo), dos elementos, por los valores "Marron"
+y "Naranja" se pondrá:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var colores = new
+Array ("Blanco", "Rojo", "Verde", "Azul", "Negro");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; colores.splice (1, 2,
+"Marron", "Naranja");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; document.write
+(colores.join
+(", "));<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; El resultado, como puede verse pinchando <a href="tablaSplice.html">aquí</a>, es que se muestra "Blanco Marron
+Naranja Azul Negro".<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Insertar elementos
+al principio de una tabla
+(unshift())</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El método unshift() inserta elementos al principio
+de la tabla. Un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; var colores = new
+Array ("Blanco", "Rojo", "Verde", "Negro");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; colores.unshift
+("Elemento_0", "Elemento_1");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; document.write
+(colores.join
+(", "));<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; El resultado puede verse pinchando <a href="tablaUnshift.html">aquí</a>.<br>
+
+</body></html>

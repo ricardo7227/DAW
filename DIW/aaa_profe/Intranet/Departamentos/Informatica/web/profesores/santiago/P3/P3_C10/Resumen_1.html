@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Objeto Image</title>
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css">
+</head>
+<body>
+<header>
+<p id="cabecera">Objeto Image</p>
+</header>
+<nav>
+<a href="#objeto">Objeto Image</a><br>
+<br>
+<a href="#precarga">Precarga y visualización dinámica de imágenes</a><br>
+</nav>
+<article>
+<h3><a name="objeto"></a>Objeto Image</h3>
+&nbsp;&nbsp;&nbsp; En HTML se puede definir una imagen mediante la
+etiqueta &lt;img&gt; y JavaScript tiene su equivalente en el objeto
+Image. Este objeto contiene todos los atributos de la etiqueta más
+otras propiedades que permiten conocer el estado de la carga de la
+imagen. Si en HTML se tiene:<br>
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&lt;img src="imagen.jpg" name="miImagen"&gt;
+</p>
+&nbsp;&nbsp;&nbsp; En JavaScript puede hacerse referencia a ésta con:<br>
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.images["miImagen"]
+</p>
+&nbsp;&nbsp;&nbsp; El objeto document contiene varias tablas que
+permiten acceder a diferentes tipos de elementos, entre ellos las
+imágenes, representadas por la propiedad images. Del mismo modo se
+puede acceder a los enlaces, los formularios, los scripts y las hojas
+de estilo, mediante el acceso a las tablas links, forms, scripts y
+styleSheets. Por ejemplo, para acceder a todas las imágenes del
+documento se puede utilizar el siguiente código:<br>
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+. . .<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (var i = 0; i &lt; document.images.length; i++) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  . . .
+</p>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Propiedades del objeto Image</span><br>
+<ul>
+  <li>alt .- (alt en HTML) texto alternativo.</li>
+  <li>border .- (border) tamaño del borde en pixeles.</li>
+  <li>complete .- valor booleano que vale TRUE si la imagen se ha cargado completamente. Es de solo lectura.</li>
+  <li>fileSize .- disponible solo en IE y contiene el tamaño en bytes del fichero de la imagen.</li>
+  <li>height .- (hight) similar al atributo height de HTML. El valor se
+informa en pixeles y corresponde a la altura de la imagen. Si el
+atributo se define en la etiqueta &lt;img&gt;, la propiedad tomará ese
+valor aunque difiera de los valores reales de la imagen. Cuando el
+atributo no se informa, la propiedad toma como valor la altura real de
+la imagen.</li>
+  <li>src .- (src) nombre del fichero. Al ser una propiedad
+modificable, resulta muy útil para crear animaciones de modo simple
+mediante el cambio de imagen.</li>
+  <li>title .- (title) título de la imagen. Es de solo lectura.</li>
+  <li>width .- (width) informa en pixeles del ancho de la imagen. Su comportamiento es como el de heght.<br>
+  </li>
+</ul>
+<h3><a name="precarga"></a>Precarga y visualización dinámica de imagenes</h3>
+
+&nbsp;&nbsp;&nbsp; Ver ejemplo de pág. 496<br>
+</article>
+<footer>
+</footer>
+</body>
+</html>

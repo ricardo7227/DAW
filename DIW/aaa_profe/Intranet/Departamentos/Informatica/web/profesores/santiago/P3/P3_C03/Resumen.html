@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Programación orientada a objetos</title>
+  
+
+  
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<h1>Programación orientada a objetos</h1>
+
+<a href="#objetos">Objetos propios de JavaScript</a><br>
+
+<a href="#forin">Sentencia for ... in para objetos</a><br>
+
+<a href="#with">Sentencia with</a><br>
+
+<a href="#definicion">Definición y creación de objetos en JavaScript</a><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; JavaScript es un lenguaje que sabe trabajar con
+objetos. Un objeto es una entidad que reune datos (propiedades) y
+funciones (métodos) para gestionar esos datos.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El tipo del objeto define su estructura (sus
+propiedades y métodos) y dentro de un programa pueden existir cero,
+una, o más instancias (ejemplares) de un objeto. Los objetos se definen
+en cualquier lugar del programa pero la creación física del programa se
+puede postergar hasta el momento en que realmente sea necesario.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; El tipo del objeto se denomina clase del objeto.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Como ejemplo puede suponerse un objeto de tipo
+Ventana, podría tener las propiedades:<br>
+
+<ul>
+
+  <li>Alto.</li>
+  <li>Ancho.</li>
+  <li>Estado (abierta o cerrada).<br>
+  </li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Y sus métodos podrían ser:<br>
+
+<ul>
+
+  <li>Abrir.</li>
+  <li>Cerrar.</li>
+  <li>Comprobar_estado.</li>
+</ul>
+
+&nbsp;&nbsp;&nbsp; Las propiedades sirven para almacenar valores del
+objeto y los métodos para definir las acciones que puede realizar el
+objeto. Los objetos pueden ser definidos por el usuario o pueden ser
+objetos predefinidos de JavaScript, en ambos casos el modo de gestionar
+métodos y propiedades de un objeto es exactamente el mismo.<br>
+
+<h3><a name="objetos"></a>Objetos propios de JavaScript</h3>
+
+&nbsp;&nbsp;&nbsp; JavaScript contiene un gran número de objetos
+predefinidos o intrínsecos del lenguaje: el documento, las tablas, los
+formularios, el navegador, etc. Por ejemplo, todos los datos contenidos
+dentro de una página son propiedades del objeto "document", que tiene
+la propiedad "title" que almacena la cadena de caracteres del título de
+la página.<br>
+
+<br>
+
+<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; Acceso a las
+propiedades de los objetos</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Algunas propiedades son de lectura/escritura y otras
+de solo lectura por lo que no se podrá modificar su valor. El acceso a
+la propiedad tiene la sintaxis:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+objeto.propiedad<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Por ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; document.title
+= "Título de mi página"<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Aunque la sintaxis completa sería <span class="codigo">
+window.document.title = "..."</span> dado que document es un objeto
+hijo del
+objeto window. JavaScript permite obviar la referencia al objeto window
+dado que la presupone automáticamente; si se expecifica es
+perfectamente correcto.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Por último decir que una propiedad puede ser de
+cualquier tipo, incluido de tipo objeto.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Uso de métodos de
+un objeto</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Los métodos son funciones asociadas a un objeto que
+realizan acciones relacionadas con el objeto. Algunos ejemplos de uso
+de métodos que ya se han visto anteriormente serían:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; window.document.write
+("Hola JavaScript");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; window.alert ("Atención");<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; En ambos casos no sería necesario hacer referencia
+al objeto window. Sencillamente, si se utiliza "alert ("Atención");"
+parece una función normal aunque en realidad es un método del objeto
+window; desde el punto de vista funcional es exactamente lo mismo.<br>
+
+<h3><a name="forin"></a>Sentencia for ... in para objetos</h3>
+
+&nbsp;&nbsp;&nbsp; Para recorrer todas las propiedades de un objeto se
+puede utilizar el código:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; for&nbsp; (var miPropiedad
+in miObjeto) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Esto provoca un bucle por todas las propiedades del
+objeto miObjeto.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Por ejemplo, pueden recuperarse todas las
+propiedades del objeto document:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+for&nbsp; (var miPropiedad in document) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+document.write (miPropiedad, " = ", document[miPropiedad],
+"&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; }<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; Cuyo resultado puede verse pinchando <a href="propiedades.html">aquí</a>.<br>
+
+<h3><a name="with"></a>Sentencia with</h3>
+
+&nbsp;&nbsp;&nbsp; La sentencia with simplifica la codificación pues
+permite establecer&nbsp; un objeto como referencia de forma que para
+hacer uso de sus propiedades y métodos no es necesario especificar el
+nombre del objeto. Veamos un ejemplo:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write ("El título
+es: ", document.title);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; document.write
+("&lt;br&gt;");<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; puede escribirse de la forma:<br>
+
+<p class="codigo">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; with (document) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; write ("El título es: ", title);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; write ("&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; }<br>
+</p>
+
+<h3><a name="definicion"></a>Definición y creación de objetos en
+JavaScript</h3>
+
+&nbsp;&nbsp;&nbsp; La definición de objetos personalizados se realiza
+de la forma siguiente:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &lt;!DOCTYPE html&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;html&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp; &nbsp; &lt;title&gt;Mi primer Objeto&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;script languaje="javascript"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Definición de un objeto<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function persona
+(txtNombre,
+txtApellido1, txtApellido2, nEdad) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Definición de propiedades (valores)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+this.nombre = txtNombre;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+this.apellido1 = txtApellido1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+this.apellido2 = txtApellido2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+this.edad = nEdad;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Definición de métodos (funciones)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+this.mostrar = fnVisualizar;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Función relativa al método<br>
+&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; function fnVisualizar ()&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+with (this) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+document.write ("---------------------------------------------------",
+"&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+document.write ("|&nbsp; Nombre.- &lt;strong&gt;", nombre,
+"&lt;/strong&gt;&nbsp; **&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+document.write ("|&nbsp; Primer apellido.- &lt;strong&gt;", apellido1,
+"&lt;/strong&gt;&nbsp; **&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+document.write ("|&nbsp; Segundo apellido.- &lt;strong&gt;", apellido2,
+"&lt;/strong&gt;&nbsp; **&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+document.write ("|&nbsp; Edad.- &lt;strong&gt;", edad,
+"&lt;/strong&gt;&nbsp; **&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+document.write ("---------------------------------------------------",
+"&lt;br&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}<br>
+&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/script&gt;<br>
+&nbsp; &nbsp; &lt;/head&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;body&gt;<br>
+&nbsp; &nbsp; &nbsp; &lt;script type="text/javascript"&gt;<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var objProfe = new persona (
+"Santiago", "Alonso",
+"Gomez", 48 );<br>
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; objProfe.mostrar ();<br>
+&nbsp; &nbsp; &nbsp; &lt;/script&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/body&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/html&gt;<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; El resultado puede verse pinchando <a href="miPrimerObjeto.html">aquí</a>.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Definición de un
+método</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La definición de un método consiste en asignarle el
+nombre de una función que posteriormente se desarrolla.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Debe observarse el uso de la palabra clave this; al
+estar dentro del objeto persona, this significa el objeto persona
+vigente.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Puntero this para
+referenciar un objeto</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; La palabra clave this significa el propio objeto que
+se está gestionando en ese código.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Se define el objeto personalizado y se crea su
+método constructor, dentro del cual la palabra clave this se refiere al
+objeto que se está creando o manipulando en ese momento.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Operador new para
+crear un objeto</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Para crear un objeto se utiliza el operador new que
+crea una copia del objeto. Los parámetros de la función se utilizan
+para asignar valores a las propiedades.<br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; En el ejemplo del principio de esta sección, la
+variable objProfe es una variable más dentro del programa, pero al
+haberla creado con new se crea un objeto de la clase persona con el
+nombre objProfe. Para acceder a sus propiedades y métodos se hace como en los ejemplos siguientes:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+objProfe.apellido2 = "Pérez";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var iedad = objProfe.edad;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; objProfe.mostrar ();<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  document.write (objProfe.nombre);<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Contención de objetos</span><br>
+
+<br>
+
+&nbsp;&nbsp;&nbsp; Las propiedades de un objeto pueden ser de cualquier
+tipo de dato stándar (numérico, booleano, cadena, fecha, etc.) y
+también de cualquier tipo de objeto intrínseco del lenguaje (Array,
+document, etc.) o creado por el usuario. Ver ejemplo de la pag. 414.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La capacidad de que unos objetos se incluyan dentro
+de otros es una de las características de la programación orientada a
+objetos. Mediante la notación de puntos se puede hacer referencia a
+varios niveles de profundidad de la jerarquía de contención de objetos
+dejando perfectamente clara la dependencia entre los objetos.<br>
+<br>
+&nbsp;&nbsp;&nbsp; La sintaxis es la siguiente:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+objPadre.objHijo.propiedad = " valor ";<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; objPadre.objHijo.metodo ();<br>
+</p>
+
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Copia de objetos</span><br>
+<br>
+&nbsp;&nbsp;&nbsp; Un objeto se puede crear por copia de otro existente
+pues nada impide la existencia de varias variables de un mismo objeto.
+La copia se hace de la forma:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+var objAlumno = objProfe;</p>
+&nbsp;&nbsp;&nbsp; De esta forma se crea la variable objAlumno que es
+un objeto cuyo contenido coincide con el de objProfe, con la
+particularidad que ambos comparten las mismas direcciones de memoria y
+si se modifica uno de los dos objetos el otro también quedará
+modificado.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Si se quiere copiar un objeto y que se puedan
+modificar de forma independiente deberá crearse con new y asignársele
+las propiedades del otro objeto de forma explícita. Por ejemplo:<br>
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+var objProfe&nbsp; = new persona ("Santiago", "Alonso", "Gomez", 48);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; var objAlumno = new
+persona (objProfe.nombre, objProfe.apellido1, objProfe.apellido2,
+objProfe.edad);</p>
+
+&nbsp;&nbsp;&nbsp; Para simplificar la tarea de copia los objetos suelen implementar un método como el siguiente:<br>
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+function copiar (objPersona) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; objPersona.nombre&nbsp;&nbsp;&nbsp; =
+this.nombre;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; objPersona.apellido1 = this.apellido1;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  objPersona.apellido2 = this.apellido2;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; objPersona.edad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = this.edad;<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  }<br>
+</p>
+
+
+&nbsp;&nbsp;&nbsp; Y, para copiar un objeto haciendo uso de la función anterior sería:<br>
+
+
+<p class="codigo">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+var objProfe = new persona ("Santiago", "Alonso", "Gomez", 48);<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; objProfe.copiar(objAlumno);<br>
+</p>
+
+
+
+
+
+</body></html>

@@ -1,0 +1,202 @@
+/* -- GENERAL --*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none!important;
+    vertical-align: middle;
+    color:#FFF;
+}
+a:focus,a:hover {
+    outline: none;
+    outline: none;
+    outline-offset: initial;
+    color:#FFF;
+}
+
+h1{
+    text-transform: uppercase;
+}
+.h2-tittle,.h3-tittle,h4{
+    font-weight: bold;
+}
+
+.breadcrumb{
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 0.9em;}
+
+hr{
+	border-top:3px solid #2D5D3C;
+}
+
+/*-- BODY --*/
+body{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 1.9em;
+}
+
+/* -- IMG --*/
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+.image_bottom{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* -- HEADER --*/
+nav.navbar.navbar-inverse.navbar-static-top {
+    z-index: initial;
+    position: relative;
+}
+
+.jumbotron {
+    padding: 20px 0;
+    margin-bottom: 0;
+    background-color:#fff;
+}
+
+.container .jumbotron{
+	border-radius:0;
+        border-top: 4px solid #3186C6;
+        border-bottom: 4px solid #3186C6;
+        padding-bottom: 3em;
+}
+
+/* -- BANDERAS IDIOMAS -- */
+.bandera a img{
+    width: 2em;
+    float: right;
+    margin-top: 0em;
+}
+
+/* -- MENU  -- */
+.navbar-inverse .navbar-nav>li>a{
+    color:#FFF;
+}
+.dropdown-menu>li>a {
+    font-size: 1.3em;
+    color:#000;
+    font-weight: bold;
+}
+
+.dropdown-menu .divider{
+    margin: 3px 0;
+}
+
+.navbar-form.navbar-left {
+    margin-top: 0.7em;
+}
+
+/* -- ICONO INICIAR SESION -- */
+.glyphicon {
+    width: 1px;
+    margin-top: 5px
+}
+
+
+/* -- CALENDARIO -- */
+#calendario{
+	background:rgba(20, 23, 21, 0.86);
+	cursor: pointer;
+	color: white;
+}
+
+#calendario table{
+	empty-cells: hide;
+	border-collapse: separate;
+        padding: 1em;
+}
+#calendario table tr th{
+	text-align: center;
+}
+
+#calendario table thead tr:first-child th{
+	border-bottom: 2px solid #356E45;
+}
+
+#calendario table  tr td{
+	width: 5em;
+	height: 2em;
+	text-align:center;
+}
+
+#calendario table tbody tr:not(:nth-child(1)) td a{
+	color: #fff;
+}
+
+#calendario table tbody tr:not(:nth-child(1)) td:hover{
+	color: #356E45;
+    border: 1px solid #356E45;
+}
+
+#calendario table tbody tr:not(:nth-child(1)) td:hover a,
+#calendario table tbody tr:not(:nth-child(1)) td a:focus {
+	color: #356E45;
+	font-weight:bold;
+}
+
+
+#flecha arrow_right {
+	position:relative;
+	right:5em;
+	}
+
+/* -- CAMINO DE MIGAS --*/
+.breadcrumb{
+	background-color:#ddd;
+}
+/*-- FORMULARIO --*/
+button.close:focus{
+    outline: none;
+}
+@media (min-width: 450px){
+.modal-content {
+	width:400px;
+        left:5em;
+}
+}
+
+button.btn.btn-lg.btn-primary.btn-block {
+    margin-top: 0.5em;
+    width: auto;
+	background-color: #3186C6;
+}
+
+/*-- ASIDE --*/
+.list-group-item .list-group-item-heading span{
+	color:#2F6339;
+}
+
+.list-group .list-group-item {
+	color:#A21821;
+}
+
+/*-- IFRAME --*/
+iframe{
+    width: 100%;
+    height: auto;
+}
+
+/*-- FOOTER --*/
+footer{
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    background-color: #f5f5f5;
+    padding: 1em;
+    
+}
+.sponsor{
+    margin-bottom: 0.3em;
+}
+
+.footer figure{
+    display: inline-block;
+    margin-right: 1em;  
+}

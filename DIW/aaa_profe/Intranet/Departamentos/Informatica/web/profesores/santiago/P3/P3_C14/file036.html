@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<!-- archivo Parte 3/code/file036.html -->
+<html>
+<body>
+<script type="text/javascript">
+function obtenerTextoSeleccionado() {
+
+	// no todos los navegadores gestionan del mismo
+	// modo la selección de texto
+	var textoSel = "";
+
+	// Internet Explorer
+	if (document.selection)  {
+			textoSel = document.selection.createRange().text;
+	}
+
+	// Mozilla Firefox y otros
+	if (window.getSelection)  {
+		textoSel = window.getSelection();
+	}
+	if (document.getSelection)  {
+		textoSel = document.getSelection();
+	}
+	// se asigna el texto seleccionado div id="texto"
+	document.getElementById("texto").innerHTML = "Texto seleccionado : " + textoSel;
+
+}
+</script>
+<p><b>Selección de texto</b></p>
+<p>Desde JavaScript se puede recuperar el texto que se haya seleccionado en la página. </p>
+<p>En el siguiente ejemplo desarrollaremos una función que realiza la tarea de selección:</p>
+<p>Para probar la función seleccione una parte de este texto.</p>
+<br>
+<div id="texto"></div>
+<form>
+<input type="button" value="Ver lo que esté seleccionado" onmousedown="obtenerTextoSeleccionado()">
+</form>
+</body>
+</html>

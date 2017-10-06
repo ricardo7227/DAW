@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html><head>
+
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Selectores</title>
+  
+
+  
+  
+  <script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+  
+  <link title="Estilos" rel="stylesheet" href="../estilos.css" type="text/css"></head><body>
+<div id="header">
+<p id="cabecera">Selectores</p>
+</div>
+
+<div>
+<div id="nav"> <br>
+<a href="#basicos">Selectores básicos</a><br>
+<br>
+<a href="#jerarquia">Selectores de jerarquía</a><br>
+<br>
+</div>
+<div id="article">&nbsp;&nbsp;&nbsp; Este resumen se ha realizado sobre
+los manuales de <a href="http://www.desarrolloweb.com/manuales/manual-jquery.html">desarrolloweb.com</a>.<br>
+<p>&nbsp;&nbsp;&nbsp; Los selectores son un mecanismo que permite
+seleccionar determinados elementos de la
+página. Por ejemplo:</p>
+&nbsp;&nbsp;&nbsp; $("p");
+<p>&nbsp;&nbsp;&nbsp; En esa llamada a la función jQuery se pasa por
+parámetro
+una cadena "p" que es el selector.</p>
+<h3><a name="each"></a>Selectores básicos en jQuery</h3>
+<ul>
+  <li>Selector de etiquetas: $("etiqueta").</li>
+  <li>Selector por identificador: $("#identificador").</li>
+  <li>Selector por clase: $(".clase").</li>
+  <li>Selector por varias clases: $(".clase1.clasen"). Se aplica a los
+elementos que pertenecen a todas las clases.</li>
+  <li>El selector asterisco: $("*"). Selecciona todos los elementos de
+la página.</li>
+  <li>Separar selectores por comas: $(selector1,selector2). Selecciona
+los elementos que concuerdan con alguno de los selectores.</li>
+</ul>
+<h3><a name="jerarquia"></a>Selectores de jerarquía</h3>
+<p>&nbsp;&nbsp;&nbsp; Los selectores de jerarquía permiten seleccionar
+elementos atendiendo a la estructura o jerarquía de las etiquetas en la
+página.</p>
+<ul>
+  <li>Selector ancestro descendiente. Se especifica en primer lugar el
+selector del ancestro y, separado por un espacio, el selector del
+descendiente. Por ejemplo: $("p&nbsp; b") selecciona todas las
+etiquetas "b" que estén dentro de una etiqueta "p", aunque entre ambas haya otras.</li>
+  <li>Selector padre &gt; hijo. Similar al anteror pero acota el grado de descendencia a padre - hijo directo exclusivamente.</li>
+  <li>Selector previo + siguiente. Permite acceder a los elementos que siguen (son hermanos) a otros.</li>
+  <li>Selector previo ~ siguiente hermano (sibling). Selecciona los
+elementos hermanos que hay a continuación de los elementos que
+concuerdan con el selector "prev".</li>
+</ul>
+
+</div>
+</div>
+
+<br>
+
+<br>
+
+</body></html>

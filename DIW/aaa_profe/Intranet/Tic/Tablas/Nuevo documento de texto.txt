@@ -1,0 +1,105 @@
+<?php
+
+if (isset($_GET['opcion']) && $_GET['opcion']=='alta')
+{
+	registro2();
+}elseif (isset($_GET['opcion']) && $_GET['opcion']=='incidencias'){
+	
+	include 'Tic/incidencias/Seccion6.inc';
+}
+else
+{
+	inicio2();
+}
+
+
+function inicio2()
+{
+	echo "<div id='cuerpo-centro'>
+	<a href='index.php?tic&opcion=alta'>Dar de alta usuario</a><br />
+	<a href='index.php?tic&opcion=incidencias'>Incidencias</a><br />
+	<a href='index.php?ticcon'>Condiciones de uso</a>
+	</div>
+	";
+}
+
+function registro2()
+{
+
+	if(isset($_POST['registro']))
+	{
+		extract($_POST);
+		$contrasenia = md5($contrasenia1);
+		$query = mysql_query("INSERT INTO usuarios 
+		(us_cuenta,us_varios) 
+		values ('".$usuario."','".$contrasenia."')") 
+		or die(mysql_error());
+		header('location: index.php?opcion=login2');
+	}
+	elseif (isset($_POST['siguiente']) && $_POST['tipo']=='alumno')
+	{
+		$grupos=mysql_query("select * from grupos");
+		$roles=mysql_query("select * from roles");
+		echo '
+		<div id="cuerpo-centro">
+		<form action="" method="POST">
+		<div style="position:absolute; width:289px;">
+		<blockquote>Nombre:</blockquote><blockquote> <input type="text" name="nombre"></blockquote>
+		<blockquote>Primer Apellido:</blockquote><blockquote> <input type="text" name="apellido1"></blockquote>
+		<blockquote>Segundo Apellido:</blockquote><blockquote> <input type="text" name="apellido2"></blockquote>
+		<blockquote>Direcci&oacute;n:</blockquote><blockquote> <input type="text" name="direccion"></blockquote>
+		<blockquote>Poblaci&oacute;n:</blockquote><blockquote> <input type="text" name="poblacion"></blockquote>
+		<blockquote>Provincia:</blockquote><blockquote> <input type="text" name="provincia"></blockquote>
+		<blockquote>Cod. Postal:</blockquote><blockquote> <input type="text" name="postal"></blockquote>
+		</div>
+		<div style="position:absolute; width:289px; margin-left:289px;">
+		<blockquote>Tel&eacute;fono 1:</blockquote><blockquote> <input type="text" name="telefono1"></blockquote>
+		<blockquote>Tel&eacute;fono 2:</blockquote><blockquote> <input type="text" name="telefono2"></blockquote>
+		<blockquote>Email:</blockquote><blockquote> <input type="text" name="email"></blockquote>
+		<blockquote>Grupo:</blockquote> <blockquote> <select name="grupo" style="width:150px;">
+							<option value="">Seleccione un grupo</option>';
+		while ($sacogrupos=mysql_fetch_assoc($grupos))
+		{
+			echo '<option value="'.$sacogrupos["gr_codigo"].'">'.$sacogrupos["gr_descri"].'</option>';
+		}
+		echo '		</select></blockquote>
+		<blockquote>Usuario:</blockquote> <blockquote><input type="text" name="usuario"></blockquote>
+		<blockquote>Rol:</blockquote> <blockquote> <select name="grupo" style="width:150px;">
+							<option value="">Seleccione un grupo</option>';
+		while ($sacoroles=mysql_fetch_assoc($roles))
+		{
+			echo '<option value="'.$sacoroles["ro_codigo"].'">'.$sacoroles["ro_descri"].'</option>';
+		}
+		echo '		</select></blockquote>
+		<blockquote>Contrase&ntilde;a:</blockquote> <blockquote><input type="text" name="contrasenia"></blockquote>
+		<blockquote>Verificar contrase&ntilde;a:</blockquote> <blockquote><input type="text" name="v_contrasenia"></blockquote><br />
+		</div>
+		<div style="position:relative; top:600px;">
+		<blockquote><input type="submit" value="Confirmar" name="registro"></blockquote>
+		</div>
+		</form>
+		</div>
+		';
+	}
+	elseif (isset($_POST['siguiente']) && $_POST['tipo']=='profesor')
+	{
+		echo 'esto es un profesor';
+	}
+	else
+	{
+		echo '
+		<div id="cuerpo-centro">
+		<form action="" method="POST">
+		<br />Seleccione el tipo de alta: 
+			<select name="tipo">
+				<option value="">Seleccione una opci&oacute;n</option>
+				<option value="profesor">Profesor</option>
+				<option value="alumno">Alumno</option>
+			</select>
+			<br /><br /><input type="submit" name="siguiente" value="Siguiente" />
+		</form>
+		</div>';
+	}
+}
+
+?>
