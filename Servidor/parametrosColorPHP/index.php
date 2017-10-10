@@ -11,15 +11,9 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        echo 'url:?blue=azul';
-        foreach ($_REQUEST as $key => $val) {
-            
-                echo '<h1 style="color:' .$key.'">';
-                
-                echo ($key . "=" . $val);
-                ?> </h1>
-            <?php
-        }
+        include "controller/controllerPHP.php";
+        
+       
         ?>
     </body>
 </html>
