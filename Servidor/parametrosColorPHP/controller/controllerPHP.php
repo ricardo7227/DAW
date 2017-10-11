@@ -1,13 +1,15 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include 'controller/errorMessages.php';
+include 'controller/errorMessages.php'; //mensajes de error a mostrar
+include 'controller/paths.php'; //rutas de las vistas
 
-echo 'url:?blue=azul<br>';
-
+echo 'Ejemplo: /index.php?blue=azul<br>';
+//colors permitidos
 $colors = ["blue", "red", "yellow", "green"];
 
 $destinoURL = "";
@@ -15,22 +17,26 @@ $destinoURL = "";
 if (empty($_REQUEST)) {
 
     $error = $errorParamsEmpty;
-    $destinoURL = "vista/error.php";
+    $destinoURL = $vistaError;
 } else {
-    foreach ($_REQUEST as $key => $val) {
-        $bandera = false;
-        foreach ($colors as $color => $value) {
-            
-            if ($color == $key ) {                
-                $error = $errorParamsWrong;
-                $destinoURL = "vista/error.php";
+
+//comprobamos que todos los parametros introducidos pertenecen a un color válido
+    foreach ($_REQUEST as $color => $valor) {
+        $colorExist = false;
+
+        for ($i = 0; $i < count($colors); $i++) {
+            if ($colors[$i] == $color) {
+                $colorExist = true;
             }
         }
-        echo '<h1 style="color:' . $key . '">';
+        if (!$colorExist) {
+            $error = $errorParamsWrong;
+            $destinoURL = $vistaError;
+        }
+    }//fin foreach
+    if ($colorExist) {
 
-        echo ($key . "=" . $val);
-        ?> </h1>
-        <?php
+        $destinoURL = $vistaVista;
     }
 }
 include $destinoURL;
