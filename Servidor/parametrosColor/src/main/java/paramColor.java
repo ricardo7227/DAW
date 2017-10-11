@@ -42,19 +42,22 @@ public class paramColor extends HttpServlet {
             destino = Page.ERROR;
             request.setAttribute(Constantes.MensajeAtributos, Error.Empty);
         } else {
-            boolean isColorExist = false;
 
             for (String parm : request.getParameterMap().keySet()) {
+                boolean isColorExist = false;
 
                 for (int i = 0; i < Colors.paleta.length && !isColorExist; i++) {
 
                     if (Colors.paleta[i].equalsIgnoreCase(parm)) {
                         destino = Page.INDEX;
                         isColorExist = true;
-                    } else {
-                        destino = Page.ERROR;
-                        request.setAttribute(Constantes.MensajeAtributos, Error.Color);
                     }
+
+                }
+                if (!isColorExist) {
+
+                    destino = Page.ERROR;
+                    request.setAttribute(Constantes.MensajeAtributos, Error.Color);
 
                 }
             }
