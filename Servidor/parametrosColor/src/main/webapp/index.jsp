@@ -14,7 +14,7 @@
        
     </head>
     <body>
-        <h1>url:?blue=azul</h1>
+        <h1>paramcolor?blue=azul</h1>
         
          <%
             

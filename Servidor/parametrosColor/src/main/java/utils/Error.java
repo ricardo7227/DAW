@@ -12,6 +12,6 @@ package utils;
 public class Error {
     public static String Params = "Parametros erroneos en la URL";
     public static String Empty = "No se han pasado parametros por la URL";
-    public static String Color = "Color no existente en el servidor";
+    public static String Color = "Se ha introducido un color no existente en el servidor";
     
 }
