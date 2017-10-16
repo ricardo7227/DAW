@@ -11,15 +11,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import utils.SessionValues;
 import utils.Valor;
 
 /**
  *
- * @author daw
+ * @author Gato
  */
-@WebServlet(urlPatterns = {"/session"})
-public class Session extends HttpServlet {
+@WebServlet(urlPatterns = {"/session2"})
+public class Session2 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,31 +35,31 @@ public class Session extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String param = request.getParameter(String.valueOf(SessionValues.nivel1));
+        HttpSession session = request.getSession();
+        PrintWriter out = response.getWriter();
+        String nivel2 = String.valueOf(SessionValues.nivel2);
 
-        if (request.getParameter(String.valueOf(SessionValues.nivel1))
-                != null) {
-            if (request.getParameter(String.valueOf(SessionValues.nivel1))
-                    .equalsIgnoreCase(Valor.passNivel1)) {
-
-                request.getSession().setAttribute(String.valueOf(SessionValues.nivel1), param);
-
-            }else{
-                request.getSession().setAttribute(String.valueOf(SessionValues.nivel1), Valor.passWrong);
-            }
-            response.getWriter().print(Valor.passRecived);
-            //request.getRequestDispatcher(Valor.session2).forward(request, response);
-
+        if (session.getAttribute(String.valueOf(SessionValues.nivel1)) == null) {
+            out.print(Valor.sessionError);
         } else {
-            if (request.getParameterMap().isEmpty()) {
-                response.getWriter().print(Valor.empty);
+            if (request.getParameter(nivel2) != null) {
+                String concat = null;
+                try {
+                    if (session.getAttribute(nivel2).toString().length() >= Valor.passNivel2.length()) {
+                        out.print(Valor.passlenghtOk);
+                    } else {
+                        concat = session.getAttribute(nivel2).toString().concat(request.getParameter(nivel2));
+                    }
+
+                } catch (Exception e) {
+                    concat = request.getParameter(nivel2);
+                }
+
+                request.getSession().setAttribute(nivel2, concat);
             } else {
-
-                request.getSession().setAttribute(String.valueOf(SessionValues.nivel1), Valor.passWrong);
-
-                response.getWriter().print(Valor.passRecived);
+                out.print(Valor.empty);
             }
-
+            //out.print(Valor.passRecived);
         }
 
     }
