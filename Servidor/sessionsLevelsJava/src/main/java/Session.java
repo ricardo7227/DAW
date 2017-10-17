@@ -48,8 +48,10 @@ public class Session extends HttpServlet {
                 out.print(Constante.passRecived);
 
             } else {
-
-                out.print(Constante.sessionError);
+                
+                request.setAttribute(Constante.levelError, Constante.session1);
+                request.getRequestDispatcher(Constante.errorPage).forward(request, response);
+                //out.print(Constante.sessionError);
             }
 
         } else {

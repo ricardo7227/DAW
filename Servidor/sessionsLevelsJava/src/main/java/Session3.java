@@ -34,40 +34,41 @@ public class Session3 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
-        
+
         String nivel1 = String.valueOf(SessionValues.nivel1);
         String nivel2 = String.valueOf(SessionValues.num3);
         String nivel3 = String.valueOf(SessionValues.nivel3);
-        
+
         //Sessiones anteriores
         if (session.getAttribute(nivel1) == null
                 || session.getAttribute(nivel2) == null) {
-            
+
             out.print(Constante.sessionError);
         } else {
-            
+
             if (!request.getParameterMap().isEmpty()) {//parametros vacios
                 String parametro = request.getParameter(nivel3);
-                
+
                 if (parametro != null && parametro.equals(Constante.passNivel3)) {
-                    
+
                     session.setAttribute(nivel3, parametro);
                     request.getRequestDispatcher(Constante.congrats).forward(request, response);
                 } else {
-                    
-                    out.print(Constante.passWrong);
+
+                    request.setAttribute(Constante.levelError, Constante.session3);
                     session.invalidate();
+                    request.getRequestDispatcher(Constante.errorPage).forward(request, response);
                 }
             } else {
-                
+
                 out.print(Constante.empty);
             }
-            
+
         }
-        
+
     }//fin processRequest
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

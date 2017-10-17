@@ -16,13 +16,17 @@ public class Constante {
     public static String passNivel23 = "30";
     public static String passNivel3 = "123456";
     public static String congrats = "congratulations.jsp";
+    public static String errorPage = "errorLevel.jsp";
     public static String passRecived = "Lo tengo pasa al siguiente nivel";
     public static String empty = "Paramentros vacios";
+    public static String session1 = "nivel1";
     public static String session2 = "nivel2";
     public static String session3 = "nivel3";
+    public static String levelError = "errorSession";
     public static String sessionError = "Vuelve atrás te has saltado cosas";
-    public static String passWrong = "Error vuelve a empezar en nivel1";
-    public static String passlenghtOk = "Suficiente en nivel 2";
+    public static String passWrong = "Vuelve a empezar en nivel1";
+    public static String passWrongIn = "Error en %s";
+    
     public static String passNextLevel2 = "Recibido %s";
     
     
