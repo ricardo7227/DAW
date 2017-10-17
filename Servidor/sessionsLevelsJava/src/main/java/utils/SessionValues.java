@@ -10,6 +10,6 @@ package utils;
  * @author daw
  */
 public enum SessionValues {
-    nivel1,nivel2,nivel3
+    nivel1,nivel2,nivel3,num1,num2,num3
     
 }

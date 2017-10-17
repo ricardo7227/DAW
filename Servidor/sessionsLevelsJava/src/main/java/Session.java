@@ -11,14 +11,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import utils.SessionValues;
-import utils.Valor;
+import utils.Constante;
 
 /**
  *
  * @author daw
  */
-@WebServlet(urlPatterns = {"/session"})
+@WebServlet(urlPatterns = {"/nivel1"})
 public class Session extends HttpServlet {
 
     /**
@@ -33,32 +34,27 @@ public class Session extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
 
-        String param = request.getParameter(String.valueOf(SessionValues.nivel1));
+        if (!request.getParameterMap().isEmpty()) {//parametros vacios
 
-        if (request.getParameter(String.valueOf(SessionValues.nivel1))
-                != null) {
-            if (request.getParameter(String.valueOf(SessionValues.nivel1))
-                    .equalsIgnoreCase(Valor.passNivel1)) {
+            String nivel1 = String.valueOf(SessionValues.nivel1);
+            String param1 = request.getParameter(nivel1);
 
-                request.getSession().setAttribute(String.valueOf(SessionValues.nivel1), param);
+            if (Constante.passNivel1.equals(param1)) {
 
-            }else{
-                request.getSession().setAttribute(String.valueOf(SessionValues.nivel1), Valor.passWrong);
-            }
-            response.getWriter().print(Valor.passRecived);
-            //request.getRequestDispatcher(Valor.session2).forward(request, response);
+                session.setAttribute(nivel1, param1);
+                out.print(Constante.passRecived);
 
-        } else {
-            if (request.getParameterMap().isEmpty()) {
-                response.getWriter().print(Valor.empty);
             } else {
 
-                request.getSession().setAttribute(String.valueOf(SessionValues.nivel1), Valor.passWrong);
-
-                response.getWriter().print(Valor.passRecived);
+                out.print(Constante.sessionError);
             }
 
+        } else {
+
+            out.print(Constante.empty);
         }
 
     }
