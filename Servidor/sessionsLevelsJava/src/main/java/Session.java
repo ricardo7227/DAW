@@ -36,6 +36,7 @@ public class Session extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
+        request.setAttribute(Constante.currentlevel, Constante.session1);//defino el nivel para el jsp
 
         if (!request.getParameterMap().isEmpty()) {//parametros vacios
 
@@ -45,14 +46,21 @@ public class Session extends HttpServlet {
             if (Constante.passNivel1.equals(param1)) {
 
                 session.setAttribute(nivel1, param1);
-                out.print(Constante.passRecived);
+
+                request.setAttribute(Constante.resultMessage, Constante.okresultMessage);
+                request.setAttribute(Constante.levelTarget, Constante.session2);
+                request.setAttribute(Constante.color, Constante.green);
 
             } else {
-                
-                request.setAttribute(Constante.levelError, Constante.session1);
-                request.getRequestDispatcher(Constante.errorPage).forward(request, response);
-                //out.print(Constante.sessionError);
+
+                request.setAttribute(Constante.resultLevel, Constante.crashLevel);
+                request.setAttribute(Constante.resultMessage, Constante.crashresultMessage);
+                request.setAttribute(Constante.levelTarget, Constante.session1);
+                request.setAttribute(Constante.color, Constante.red);
+
             }
+
+            request.getRequestDispatcher(Constante.nextLevelPage).forward(request, response);
 
         } else {
 

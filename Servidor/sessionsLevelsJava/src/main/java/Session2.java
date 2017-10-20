@@ -38,10 +38,12 @@ public class Session2 extends HttpServlet {
         HttpSession session = request.getSession();
         PrintWriter out = response.getWriter();
         String nivel1 = String.valueOf(SessionValues.nivel1);
+        request.setAttribute(Constante.currentlevel, Constante.session2);
 
         String num1 = String.valueOf(SessionValues.num1);
         String num2 = String.valueOf(SessionValues.num2);
         String num3 = String.valueOf(SessionValues.num3);
+        Atributo atributos = null;//objeto que contiene los atributos que se leen en jsp
 
         if (session.getAttribute(nivel1) != null) {//comprobación session nivel1
 
@@ -55,7 +57,8 @@ public class Session2 extends HttpServlet {
                 if (Constante.passNivel21.equals(param1)) {//primera entrada
 
                     session.setAttribute(num1, param1);
-                    out.print(String.format(Constante.passNextLevel2, param1));
+
+                    atributos = new Atributo(Constante.green, Constante.okresultMessage, Constante.num2, null);
 
                 } else if (session.getAttribute(num1) != null) {//segunda entrada
 
@@ -63,7 +66,8 @@ public class Session2 extends HttpServlet {
                     if (Constante.passNivel22.equals(param2)) {
 
                         session.setAttribute(num2, param2);
-                        out.print(String.format(Constante.passNextLevel2, param2));
+
+                        atributos = new Atributo(Constante.green, Constante.okresultMessage, Constante.num3, null);
 
                     } else if (session.getAttribute(num2) != null) {//tercera entrada
 
@@ -71,28 +75,39 @@ public class Session2 extends HttpServlet {
                         if (Constante.passNivel23.equals(param3)) {
 
                             session.setAttribute(num3, param3);
-                            out.print(Constante.passRecived);
+
+                            atributos = new Atributo(Constante.green, Constante.okresultMessage, Constante.session3, null);
+
                         } else {
 
-                            request.setAttribute(Constante.levelError, Constante.session2);
+                            atributos = new Atributo(Constante.red, Constante.crashresultMessage, Constante.session2, Constante.crashLevel);
+
                             session.invalidate();
-                            request.getRequestDispatcher(Constante.errorPage).forward(request, response);
 
                         }
 
                     } else {
 
-                        request.setAttribute(Constante.levelError, Constante.session2);
+                        atributos = new Atributo(Constante.red, Constante.crashresultMessage, Constante.session2, Constante.crashLevel);
+
                         session.invalidate();
-                        request.getRequestDispatcher(Constante.errorPage).forward(request, response);
+
                     }
                 } else {
+                    atributos = new Atributo(Constante.red, Constante.crashresultMessage, Constante.session2, Constante.crashLevel);
 
-                    request.setAttribute(Constante.levelError, Constante.session2);
                     session.invalidate();
-                    request.getRequestDispatcher(Constante.errorPage).forward(request, response);
+
                 }
             }
+
+            request.setAttribute(Constante.resultMessage, atributos.getMessage());
+            request.setAttribute(Constante.levelTarget, atributos.getTarget());
+            request.setAttribute(Constante.color, atributos.getColor());
+            request.setAttribute(Constante.resultLevel, atributos.getError());
+            
+            request.getRequestDispatcher(Constante.nextLevelPage).forward(request, response);
+            
         } else {
 
             out.print(Constante.sessionError);
@@ -138,5 +153,53 @@ public class Session2 extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    public static class Atributo {
+
+        String color;
+        String message;
+        String target;
+        String error;
+
+        public Atributo(String color, String message, String target, String error) {
+            this.color = color;
+            this.message = message;
+            this.target = target;
+            this.error = error;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+
+        public String getTarget() {
+            return target;
+        }
+
+        public void setTarget(String target) {
+            this.target = target;
+        }
+
+        public String getError() {
+            return error;
+        }
+
+        public void setError(String error) {
+            this.error = error;
+        }
+
+    }
 
 }

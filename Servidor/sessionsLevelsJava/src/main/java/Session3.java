@@ -41,7 +41,8 @@ public class Session3 extends HttpServlet {
         String nivel1 = String.valueOf(SessionValues.nivel1);
         String nivel2 = String.valueOf(SessionValues.num3);
         String nivel3 = String.valueOf(SessionValues.nivel3);
-
+        request.setAttribute(Constante.currentlevel, Constante.session3);
+        
         //Sessiones anteriores
         if (session.getAttribute(nivel1) == null
                 || session.getAttribute(nivel2) == null) {
@@ -58,9 +59,16 @@ public class Session3 extends HttpServlet {
                     request.getRequestDispatcher(Constante.congrats).forward(request, response);
                 } else {
 
-                    request.setAttribute(Constante.levelError, Constante.session3);
                     session.invalidate();
-                    request.getRequestDispatcher(Constante.errorPage).forward(request, response);
+
+                    Session2.Atributo atributos = new Session2.Atributo(Constante.red, Constante.crashresultMessage, Constante.session3, Constante.crashLevel);
+
+                    request.setAttribute(Constante.resultMessage, atributos.getMessage());
+                    request.setAttribute(Constante.levelTarget, atributos.getTarget());
+                    request.setAttribute(Constante.color, atributos.getColor());
+                    request.setAttribute(Constante.resultLevel, atributos.getError());
+
+                    request.getRequestDispatcher(Constante.nextLevelPage).forward(request, response);
                 }
             } else {
 
