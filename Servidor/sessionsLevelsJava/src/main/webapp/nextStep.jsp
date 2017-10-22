@@ -28,7 +28,7 @@
         </h1>
 
 
-        <c:if test="${resultlevel == 'crashlevel'}">
+        <c:if test="${resultlevel == cons.getCrashLevel()}">
             <h1>
                 <c:out value="${cons.getPassWrong()}"/>  
 

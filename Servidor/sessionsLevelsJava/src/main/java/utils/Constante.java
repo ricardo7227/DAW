@@ -61,6 +61,10 @@ public class Constante {
     public static String getPassWrong() {
         return passWrong;
     }
+
+    public static String getCrashLevel() {
+        return crashLevel;
+    }
     
     
 }
