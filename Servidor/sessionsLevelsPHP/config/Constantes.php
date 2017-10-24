@@ -12,7 +12,7 @@
  * @author daw
  */
 class Constantes {
-    
+
     const passNivel1 = "password";
     const passNum1 = "10";
     const passNum2 = "20";
@@ -20,9 +20,16 @@ class Constantes {
     const passNivel3 = "123456";
     
     const nivel1 = "nivel1";
+    const nivel2 = "nivel2";
     const num1 = "num1";
     const num2 = "num2";
-    const num3 = "num3";   
+    const num3 = "num3";
     const nivel3 = "nivel3";
     
+    const pageDestino ="vista/nextStepPage.php";
+    
+    const messageParametrosVacios = "No has pasado parametros en este nivel";
+    const messageLevelCompleted = "Nivel completado! pasa al ";
+    const messageLevelError = "Error en %s, vuelve a nivel1 ";
+
 }
