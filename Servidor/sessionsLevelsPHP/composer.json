@@ -1,0 +1,17 @@
+{
+    "name": "vendor/sessions-levels-p-h-p",
+    "description": "Description of project sessionsLevelsPHP.",
+    "authors": [
+        {
+            "name": "daw",
+            "email": "your@email.here"
+        }
+    ],"autoload": {
+        "psr-4": {
+             "": "src/"
+        }
+    },
+    "require": {
+        "monolog/monolog": "1.0.*"    
+    }
+}

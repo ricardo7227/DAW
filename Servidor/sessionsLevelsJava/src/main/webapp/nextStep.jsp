@@ -31,9 +31,9 @@
         <c:if test="${resultlevel == cons.getCrashLevel()}">
             <h1>
                 <c:out value="${cons.getPassWrong()}"/>  
-
+                
             </h1>
-
+                <c:set var="invalidar" scope="session"  value="${sessionScope.invalidate()}"/>
 
         </c:if>    
 

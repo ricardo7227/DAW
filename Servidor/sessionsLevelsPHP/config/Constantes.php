@@ -1,0 +1,28 @@
+<?php
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of Constantes
+ *
+ * @author daw
+ */
+class Constantes {
+    
+    const passNivel1 = "password";
+    const passNum1 = "10";
+    const passNum2 = "20";
+    const passNum3 = "30";
+    const passNivel3 = "123456";
+    
+    const nivel1 = "nivel1";
+    const num1 = "num1";
+    const num2 = "num2";
+    const num3 = "num3";   
+    const nivel3 = "nivel3";
+    
+}

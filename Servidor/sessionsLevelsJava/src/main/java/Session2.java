@@ -82,7 +82,7 @@ public class Session2 extends HttpServlet {
 
                             atributos = new Atributo(Constante.red, Constante.crashresultMessage, Constante.session2, Constante.crashLevel);
 
-                            session.invalidate();
+                           // session.invalidate();
 
                         }
 
@@ -90,13 +90,13 @@ public class Session2 extends HttpServlet {
 
                         atributos = new Atributo(Constante.red, Constante.crashresultMessage, Constante.session2, Constante.crashLevel);
 
-                        session.invalidate();
+                        //session.invalidate();
 
                     }
                 } else {
                     atributos = new Atributo(Constante.red, Constante.crashresultMessage, Constante.session2, Constante.crashLevel);
 
-                    session.invalidate();
+                    //session.invalidate();
 
                 }
             }
