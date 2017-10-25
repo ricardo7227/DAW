@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+     <title>Mostrar imágenes</title>
+     <script type="text/javascript">
+	function cargarImagenes () {
+		for (var i = 0; i < cargarImagenes.arguments.length; i++) {
+			imagenes[i] = new Image();
+			imagenes[i].src = cargarImagenes.arguments[i];
+		}
+	}
+	// Función que cambia la propiedad src de la imagen
+	function cambiarFoto() {
+		var i;
+		i = Math.round(Math.random() * 3);
+		document.images["Beatles"].src = imagenes[i].src;
+		// Aunque no es necesario, puede mostrarse el índice de la tabla en el título
+		document.title="Mostrar imágenes (" + i + ")";
+	}
+    </script>
+ </HEAD>
+ <BODY>
+     <img src="john.jpg" name="Beatles">
+     <script type="text/javascript">
+	var imagenes = new Array()
+	cargarImagenes ("john.jpg", "paul.jpg", "george.jpg", "ringo.jpg");
+	var intervalo = setInterval ("cambiarFoto()", 2000);
+     </script>
+     <input type="button" value="Finalizar" onclick="clearInterval(intervalo)">
+ </BODY>
+</HTML>

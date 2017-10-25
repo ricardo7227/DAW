@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<HTML>
+<BODY>
+<script type="text/javascript">
+function eventoMove(ev) {
+	if (window.event) {
+		document.title = "X: " + event["x"] + " Y: " + event["y"];
+	} else {
+		document.title = "X: " + ev["pageX"] + " Y: " + ev["pageY"];
+	}
+}
+document.onmousemove=eventoMove;
+</script>
+</BODY>
+</HTML>

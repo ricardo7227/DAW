@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Clases, propiedades y contenido</title>
+   <style type="text/css">
+p {visibility: visible;
+}
+.verde {background-color: green;
+}
+.roja {background-color: red;
+}
+   </style>
+   <script type="text/JavaScript">
+     function cambiarClase() {
+	if (document.getElementById("parrafo").className == "verde")
+	     document.getElementById("parrafo").className = "roja"
+	 else
+	     document.getElementById("parrafo").className = "verde";
+     }
+     function cambiarVisibilidad() {
+	if (document.getElementById("parrafo").style.visibility != "hidden")
+	     document.getElementById("parrafo").style.visibility = "hidden"
+	 else
+	     document.getElementById("parrafo").style.visibility = "visible";
+     }
+     function cambiarContenido() {
+	document.getElementById("parrafo").innerHTML = prompt("Contenido", "");
+     }
+    </script>
+  </head>
+ <body>
+  <center> <H1> Párrafo </H1> </center>
+  <hr>
+  <p id="parrafo" class="verde">
+Éste es el contenido que el párrafo contendrá inicialmente.
+  </p>
+   <input type=button value="Cambiar clase" onclick="cambiarClase()">
+   <input type=button value="Cambiar visibilidad" onclick="cambiarVisibilidad()">
+   <input type=button value="Cambiar contenido" onclick="cambiarContenido()">
+  </form>
+ </body>
+</html>

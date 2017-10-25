@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Creación de tabla</title>
+   <style type="text/css">
+	table, tr, td {	border: medium double black;}
+   </style>
+  </head>
+ <body>
+   <script type="text/JavaScript">
+	// Filas
+	var nFilas = prompt ("Número de filas", 0);
+	// Columnas
+	var nCol   = prompt ("Número de columnas", 0);
+	// Crea la tabla si hay filas y columnas
+	if (nFilas > 0 && nCol > 0) {
+	    tabla = document.createElement("table");
+	    for (var i = 0; i < nFilas; i++) {
+		// Crea el elemento tr
+		var elemTr = document.createElement("tr");
+		for (var j = 0; j < nCol; j++) {
+		    // Crea el elemento td
+		    var contenido = prompt("Fila: " + i + "  Columna: " + j, "Contenido");
+		    var elemTd = document.createElement("td");
+		    var texto = document.createTextNode(contenido);
+		    elemTd.appendChild(texto);
+		    elemTr.appendChild(elemTd);
+		}
+		tabla.appendChild(elemTr);
+	    }
+	    document.body.appendChild(tabla);
+	}
+   </script>
+</div>
+ </body>
+</html>
+

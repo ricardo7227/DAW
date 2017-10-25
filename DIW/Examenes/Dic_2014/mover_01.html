@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Ventana padre que abre la ventana hija</title>
+   <script type="text/javascript">
+	function mover() {
+// Coordenadas de una circunferencia
+		x = h - radio + Math.round(radio * Math.cos(gr * Math.PI / 180));
+		y = v - Math.round(radio * Math.sin(gr * Math.PI / 180));
+// Se le añade vibracion
+                x1 = x + (Math.floor(Math.random() * 7)) - 3;
+                y1 = y + (Math.floor(Math.random() * 7)) - 3;
+		miVentana.moveTo(x1, y1);
+		miVentana.focus();
+		gr += velocidad;
+	}
+	function parar() {
+		clearInterval(repetir);
+	}
+   </script>
+ </head>
+ <body>
+  <p>Ventana padre</p>
+  <p>
+  Para parar el movimiento pulse <a href="javascript:parar()">aquí</a>.
+  </p>
+  <script type="text/javascript">
+      var gr = 0;
+      var h = parseInt(prompt("Posición horizontal", 550));
+      var v = parseInt(prompt("Posición vertical", 250));
+      var radio = parseInt(prompt("Introduzca el radio de giro", 100));
+      var velocidad = -2;
+      var x = 0;
+      var y = 0;
+      var x1 = 0;
+      var y1 = 0;
+      var ancho = Math.floor(innerWidth / 4);
+      var alto  = Math.floor(innerHeight / 4);
+      var miVentana = window.open("mover_01_aux.html", "ventana", "width="+ancho+", height="+alto);
+      miVentana.moveTo(h, v);
+      var repetir = setInterval("mover()", 20);
+  </script>
+ </body>
+</html>

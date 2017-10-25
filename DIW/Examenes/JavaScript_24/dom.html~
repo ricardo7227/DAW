@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Uso del DOM</title>
+
+   <script type="text/JavaScript">
+     function agregar() {
+              var nuevoParrafo = document.createElement("p");
+              var textoParrafo = document.createTextNode(document.getElementById("caja").value);
+alert("0");
+              nuevoParrafo.appendChild(textoParrafo);
+alert("1");
+              document.body.appendChild(nuevoParrafo);
+alert("llega");
+     }
+    </script>
+  </head>
+ <body>
+  <center> <H1> DOM </H1> </center>
+  <form name="formulario">
+    Texto:
+    <input type"text" id="caja" onchange="agregar()">
+  </form>
+ </body>
+</html>
+

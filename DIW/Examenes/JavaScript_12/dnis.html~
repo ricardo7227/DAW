@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+     <title>Mostrar dnis</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+	// Pedir cadena
+	var cadena = prompt("Introduzca una cadena", "");
+	// Obtener los dnis de la cadena
+        var dnis = cadena.match("[0-7][0-9]{7}[- ][A-Z]", "gi");
+        document.write (dnis);
+    </script>
+  </body>
+</html>

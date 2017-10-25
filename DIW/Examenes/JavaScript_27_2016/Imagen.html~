@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset=UTF-8">
+   <title>Manejar imagen</title>
+   <style>
+img {
+	width: 300px;
+	height: 200px;
+}
+   </style>
+   <script type="text/JavaScript">
+	var ancho_anterior = 300;
+	var alto_anterior = 200;
+	function comprobar_ancho(){
+		if (parseInt(document.getElementById("ancho").value) < 250 || parseInt(document.getElementById("ancho").value) > 1000) {
+			document.getElementById("ancho").value = ancho_anterior;
+		} else {
+			ancho_anterior = document.getElementById("ancho").value;
+		}
+	}
+	function comprobar_alto(){
+		if (parseInt(document.getElementById("alto").value) < 100 || parseInt(document.getElementById("alto").value) > 500) {
+			document.getElementById("alto").value = alto_anterior;
+		} else {
+			alto_anterior = document.getElementById("alto").value;
+		}
+	}
+	function redimensionar() {
+		document.getElementsByTagName("img")[0].style.width  = document.getElementById("ancho").value + "px";
+		document.getElementsByTagName("img")[0].style.height = document.getElementById("alto").value +"px";
+	}
+	function eliminar() {
+		document.body.removeChild(document.getElementsByTagName("img")[0]);
+	}
+   </script>
+  </head>
+ <body>
+<img src="paul.jpg" onclick="redimensionar()" /><br /><br />
+<form name="formulario">
+   Ancho: &nbsp;&nbsp;
+     <input type="text" id="ancho" value="300" onchange="comprobar_ancho()"><br/>
+   Alto....: &nbsp;&nbsp;
+     <input type="text" id="alto" value="200" onchange="comprobar_alto()"><br/><br/>
+   <input type=button value="Eliminar imagen" onclick="eliminar()">
+  </form>
+ </body>
+</html>

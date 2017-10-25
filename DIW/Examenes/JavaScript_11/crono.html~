@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+     <title>Cronómetro</title>
+    <script type="text/javascript">
+	function cronometro () {
+	    // Se obtiene la fecha y hora en un instante
+	    var actual = new Date();
+	    // Se establece como título la diferencia en segundos
+	    // entre la hora actual y la inicial
+	    document.title = Math.round((actual.getTime() - inicial.getTime()) / 1000);
+	}
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+	// Coge la fecha y hora del sistema
+	var inicial = new Date ();
+	// Obtener los milisegundos iniciales
+//	var inicial = fecha.getTime();
+	// Realizar la función cronómetro cada segundo
+	var intervalo = setInterval(cronometro, 1000);
+    </script>
+  </body>
+</html>

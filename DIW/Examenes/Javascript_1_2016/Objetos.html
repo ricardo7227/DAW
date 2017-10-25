@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <script>
+// Definición del objeto Repuesto
+     function Repuesto (txtDesc, nPcp, nPvp, fInstalacion, nMeses) {
+            // Definición de propiedades
+                this.Descripcion       = txtDesc;
+                this.Pcp               = nPcp;
+                this.Pvp               = nPvp;
+                this.Fecha_instalacion = fInstalacion;
+                this.Meses_vida        = nMeses;
+            // Definición de métodos
+                this.ganancia = fnGanancia;
+                this.caducado = fnCaducado;
+    }
+            // Funciones correspondientes a los métodos
+     function fnGanancia () {
+                with (this) {
+                     return (Pvp - Pcp);
+                }
+     }
+     function fnCaducado () {
+                with (this) {
+                     var fecha = new Date();
+                     var meses = (fecha.getTime() - Fecha_instalacion.getTime()) / (1000 * 60 * 60 * 24 * 30);
+                     if (meses > Meses_vida) return true;
+                     return false;
+                }
+     }
+
+// Definicion del objeto Vehiculo
+     function Vehiculo (txtMatri, txtModelo, fRevision, aRepuestos) {
+            // Definición de propiedades
+                this.Matricula       = txtMatri;
+                this.Modelo          = txtModelo;
+                this.Ultima_revision = fRevision;
+                this.Repuestos       = aRepuestos;
+            // Definición de métodos
+                this.actualizar      = fnActualizar;
+                this.importe         = fnImporte;
+                this.neto            = fnNeto;
+     }
+            // Funciones correspondientes a los métodos
+     function fnActualizar() {
+                with (this) {
+                     var fecha = new Date();
+                     Ultima_revision.setTime() = fecha.getTime();
+                     for (var i=0; i < Repuestos.length; i++) {
+                         if (Repuestos[i].caducado()) Repuestos[i].Fecha_instalacion.setTime() = fecha.getTime();
+                     }
+                }
+     }
+     function fnImporte() {
+                with (this) {
+                     var suma = 0;
+                     for (var i=0; i < Repuestos.length; i++) {
+                         if (Repuestos[i].caducado()) suma += Repuestos[i].Pvp;
+                     }
+                }
+                return suma;
+     }
+     function fnNeto() {
+                with (this) {
+                     var suma = 0;
+                     for (var i=0; i < Repuestos.length; i++) {
+                         if (Repuestos[i].caducado()) suma += Repuestos[i].ganancia();
+                     }
+                }
+                return suma;
+     }
+   </script>
+ </head>
+ <body>
+   <script type="text/javascript">
+     var datos = new Array();
+     function pedirDatos () {
+debugger;
+              var i = 0;
+              var j = 0;
+              var mas_repu = true;
+              var ano = 0;
+              var mes = 0;
+              var dia = 0;
+
+              var matricula = prompt("Matricula", "nnnn-aaa");
+              for (i=0; i < datos.length; i++) {
+                  if (matricula == datos[i].Matricula) {
+                      alert ("Matricula repetida");
+                             break;
+                  }
+              }
+              if (i == datos.length) {
+                  datos[i] = new Vehiculo();
+                  datos[i].Matricula = matricula;
+                  datos[i].Modelo    = prompt("Modelo de vehiculo", "Seat Ibiza 1.6");
+                  datos[i].Ultima_revision = new Date();
+                  datos[i].Repuestos = new Array();
+                  while (mas_repu) {
+                      j = datos[i].Repuestos.length;
+                      datos[i].Repuestos[j] = new Repuesto();
+                      datos[i].Repuestos[j].Descripcion = prompt("Descripcion del repuesto", "");
+                      do {
+                          datos[i].Repuestos[j].Pcp = parseFloat(prompt("P.C.P", 0));
+                          datos[i].Repuestos[j].Pvp = parseFloat(prompt("P.V.P", 0));
+                      } while (datos[i].Repuestos[j].Pcp > datos[i].Repuestos[j].Pvp);
+                      do {
+                          ano = parseInt(prompt("Año", 2016));
+                          do {
+                              mes = parseInt(prompt("Mes", 12));
+                          } while (mes < 1 || mes > 12);
+                          do {
+                              dia = parseInt(prompt("Dia", 14));
+                          } while (dia < 1 || dia > 31);
+                          datos[i].Repuestos[j].Fecha_instalacion = new Date(ano, mes-1, dia);
+                      } while (datos[i].Repuestos[j].Fecha_instalacion > datos[i].Ultima_revision);
+                      datos[i].Repuestos[j].Meses_vida = parseInt(prompt("Duracion del repuesto en meses", 12));
+                      mas_repu = confirm ("Mas repuestos?");
+                  }
+              }
+     }
+     function facturar () {
+debugger;
+              var i = 0;
+              var j = 0;
+              var ind = 0;
+
+              var matricula = prompt("Matricula", "nnnn-aaa");
+              for (i=0; i < datos.length; i++) {
+                  if (matricula == datos[i].Matricula) {
+                      ind = i;
+                      break;
+                  }
+              }
+              if (i == datos.length) {
+                  alert("Matricula inexistente");
+              } else {
+                  document.write("FACTURA <BR>");
+                  document.write(matricula + " --- " + datos[i].Modelo + "<br>");
+                  for (j=0; j < datos[i].Repuestos.length; j++) {
+                      if (datos[i].Repuestos[j].caducado()) {
+                          document.write(datos[i].Repuestos[j].Descripcion + "---" + datos[i].Repuestos[j].Pvp + "<br>");
+                      }
+                  }
+                  document.write("TOTAL.-" + datos[i].importe());
+                  datos[i].actualizar();
+              }
+     }
+     function importe () {
+debugger;
+              var i = 0;
+              var ind = 0;
+
+              var matricula = prompt("Matricula", "nnnn-aaa");
+              for (i=0; i < datos.length; i++) {
+                  if (matricula == datos[i].Matricula) {
+                      ind = i;
+                      break;
+                  }
+              }
+              if (i == datos.length) {
+                  alert("Matricula inexistente");
+              } else {
+                  alert(datos[i].importe());
+              }
+     }
+     function ganancia () {
+debugger;
+              var i = 0;
+              var ind = 0;
+
+              var matricula = prompt("Matricula", "nnnn-aaa");
+              for (i=0; i < datos.length; i++) {
+                  if (matricula == datos[i].Matricula) {
+                      ind = i;
+                      break;
+                  }
+              }
+              if (i == datos.length) {
+                  alert("Matricula inexistente");
+              } else {
+                  alert(datos[i].neto());
+              }
+
+     }
+   </script>
+OPCIONES<br />
+<br />
+<a href="javascript:pedirDatos()">Alta vehiculo</a><br />
+<a href="javascript:facturar()">Facturar</a><br />
+<a href="javascript:importe()">Importe reparacion</a><br />
+<a href="javascript:ganancia()">Ganancia taller</a><br />
+ </body>
+</html>

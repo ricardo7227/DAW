@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Control de visitas mediante cookies</title>
+   <script type="text/JavaScript">
+
+     function gestionarCookies(){
+
+// Prepara el dato de última conexión
+        var texto = leerCookie("ultima_conexion");
+	if (texto == null) texto = "Es su primera visita a esta página";
+        document.formulario.fecha.value = texto;
+// Prepara el dato del contador
+        var contador = leerCookie("contador");
+	contador == null ? contador = 1 : contador = parseInt(contador) + 1;
+        document.formulario.contador.value = contador;
+// Guarda una cookie con la fecha en el formato requerido
+        var hoy = new Date();
+        var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+                              "Septiembre", "Octubre", "Noviembre", "Diciembre");
+        var anio = hoy.getFullYear();
+        var mes  = meses[hoy.getMonth()];
+        var dia  = hoy.getDate();
+        var hora = hoy.getHours();
+        var minutos = hoy.getMinutes();
+        texto = dia + " de " + mes + " de " + anio + " a las " + hora + ":" + minutos + " horas";
+        var fecha_caducidad = new Date();
+//      fecha_caducidad.setTime(hoy.getTime() + (6*30*24*60*60*1000));
+        fecha_caducidad.setTime(hoy.getTime() + (2*60*1000));
+        escribirCookie("ultima_conexion", texto, fecha_caducidad);
+// Guarda una cookie con el contador
+        escribirCookie("contador", contador, fecha_caducidad);
+     }
+
+     function leerCookie(nombre) {
+	if (document.cookie.length > 0) {
+	   // Crea listaCookies con las cookies existentes
+           var sep1 = new RegExp("; ", "g");
+           var sep2 = new RegExp("=", "g");
+           var listaCookies = document.cookie.split(sep1);
+	   // Recorre la lista de cookies
+           for (var i = 0; i < listaCookies.length ; i++) {
+	        // Separar la parte de clave de
+	        // la parte valor (separador =)
+	        var cookie = listaCookies[i].split(sep2);
+		// Comprueba si la cookie coincide con el parámetro pasado
+		if (cookie[0] == nombre) {
+                   return cookie[1];
+		}
+	   }
+        }
+        return null;
+     }
+
+     function escribirCookie(nombre, valor, caducidad) {
+        document.cookie = nombre + "=" + valor +
+        ((caducidad == undefined) ? "" : ("; expires=" + caducidad.toUTCString()));
+     }
+
+    </script>
+  </head>
+ <body onload="gestionarCookies()">
+  <center> <H1> Control de visitas mediante cookies </H1> </center>
+  <hr>
+  <form name="formulario">
+   Conexión anterior:
+   <input type="text" name="fecha" size=30 readonly="" value="">
+   <br />
+   Esta es su visita número:
+   <input type="text" name="contador" size=1 readonly="" value=1>
+  </form>
+ </body>
+</html>

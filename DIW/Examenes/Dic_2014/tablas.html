@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Tablas</title>
+   <script type="text/javascript">
+   </script>
+ </head>
+ <body>
+   <script type="text/javascript">
+var libros = new Array();
+var mas = "si";
+var i = 0;
+var j = 0;
+var autoraux = "";
+var pagaux = 0;
+while (mas == "si") {
+      i = libros.length;
+      libros[i] = new Array();
+      libros[i][0] = prompt("Titulo del libro", "");
+      libros[i][1] = prompt("Autor", "");
+      libros[i][2] = parseInt(prompt("Número de páginas", 0));
+      mas = prompt("Más libros ?", "si");
+}
+var paginas = new Array();
+for (i=0; i < libros.length; i++) {
+    for (j=0; j < paginas.length; j++) {
+        if (libros[i][1] == paginas[j][0]) {
+           paginas[j][1] += libros[i][2];
+           break;
+        }
+    }
+    if (j == paginas.length) {
+       paginas[j] = new Array();
+       paginas[j][0] = libros[i][1];
+       paginas[j][1] = libros[i][2];
+    }
+}
+for (i=0; i < paginas.length - 1; i++) {
+    for (j = i+1; j < paginas.length; j++) {
+        if (paginas[i][1] < paginas[j][1]) {
+           autoraux = paginas[i][0];
+           pagaux   = paginas[i][1];
+           paginas[i][0] = paginas[j][0];
+           paginas[i][1] = paginas[j][1];
+           paginas[j][0] = autoraux;
+           paginas[j][1] = pagaux;
+        }
+    }
+}
+for (i=0; i < paginas.length; i++) {
+    document.write(paginas[i][0] + " - " + paginas[i][1] + "<br>");
+}
+   </script>
+ </body>
+</html>

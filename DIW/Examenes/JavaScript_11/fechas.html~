@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+     <title>Manejo de fechas</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+	// Introducir el año
+	var ano = prompt ("Año", "nnnn");
+	while (isNaN(ano) || ano < 1500 || ano > 2100) {
+		ano = prompt ("Año erroneo. Introduzcalo de nuevo", "nnnn");
+	}
+	// Introducir el mes
+	var mes = prompt ("Mes", "nn");
+	while (isNaN(mes) || mes < 1 || mes > 12) {
+		mes = prompt ("Mes erroneo. Introduzcalo de nuevo", "nn");
+	}
+	// Introducir el dia
+	var dia = prompt ("Dia", "nn");
+	while (isNaN(dia) || dia < 1 || dia > 31) {
+		dia = prompt ("Dia erroneo. Introduzcalo de nuevo", "nn");
+	}
+	var fecha = new Date (ano, mes - 1, dia);
+document.write(fecha);
+
+    </script>
+  </body>
+</html>

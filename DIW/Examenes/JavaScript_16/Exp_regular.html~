@@ -1,0 +1,18 @@
+ <!DOCTYPE html>
+    <html>
+    <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+      <title>Expresion regular</title>
+      <script languaje="javascript">
+      </script>
+    </head>
+    <body>
+	EJERCICIO CON CADENAS REGULARES
+      <script type="text/javascript">
+	var expresion = /\w+@\w+\.\w{2,3}/g;
+	var cadena = prompt("Introduzaca una cadena de caracteres con e-mails", "jhg jhg_g@iuy_v.comm hg hjg@khlkjh.kjh");
+	var tabla = cadena.match(expresion);
+	alert(tabla.join("/"));
+      </script>
+    </body>
+    </html>

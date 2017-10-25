@@ -1,0 +1,70 @@
+ <!DOCTYPE html>
+    <html>
+    <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+      <title>Objeto movil</title>
+      <script languaje="javascript">
+      // Definición del objeto Tarifa
+         function Tarifa (txtpais, numporinicio, numporminuto) {
+                // Definición de propiedades
+			this.Pais			= txtpais;
+			this.Precio_establecimiento	= numporinicio;
+			this.Precio_minuto		= numporminuto;
+         } 
+      </script>
+    </head>
+    <body>
+      <script type="text/javascript">
+/*
+// ********************************************************************** VERSION 1
+// Variables
+	// Creación de una tabla con las tarifas
+	var t_tarifas = new Array();
+	var mi_tarifa;
+	var mi_pais;
+	// Éstas no son estrictamente necesarias
+	var mi_prinicio = 0;
+	var mi_prminuto = 0;
+	var i = 0;
+	var j = 0;
+// Introducir tarifas (en una tabla)
+	var numtar = parseInt(prompt("Numero de tarifas", 0));
+	for (i = 0; i < numtar; i++) {
+		mi_pais = prompt("Pais a tarificar", "España");
+		mi_prinicio = parseFloat(prompt("Precio establecimiento llamada", 0));
+		mi_prminuto = parseFloat(prompt("Precio minuto llamada", 0));
+		mi_tarifa = new Tarifa(mi_pais, mi_prinicio, mi_prminuto);
+		t_tarifas[i] = mi_tarifa;
+	}
+	for (i in t_tarifas) {
+		for (j in t_tarifas[i]) {
+			document.write(j + " = " + t_tarifas[i][j] + " --- ");
+		}
+		document.write("<br> --------------------------------- <br>");
+	}
+*/
+// ********************************************************************** VERSION 2
+// Variables
+	// Creación de una tabla con las tarifas
+	var t_tarifas = new Array();
+	var mi_tarifa = new Tarifa;
+	var i = 0;
+	var j = 0;
+// Introducir tarifas (en una tabla)
+	var numtar = parseInt(prompt("Numero de tarifas", 0));
+	for (i = 0; i < numtar; i++) {
+		mi_tarifa.Pais = prompt("Pais a tarificar", "España");
+		mi_tarifa.Precio_establecimiento = parseFloat(prompt("Precio establecimiento llamada", 0));
+		mi_tarifa.Precio_minuto = parseFloat(prompt("Precio minuto llamada", 0));
+		t_tarifas[i] = mi_tarifa;
+	}
+	for (i in t_tarifas) {
+		for (j in t_tarifas[i]) {
+			document.write(j + " = " + t_tarifas[i][j] + " --- ");
+		}
+		document.write("<br> --------------------------------- <br>");
+	}
+
+      </script>
+    </body>
+    </html>

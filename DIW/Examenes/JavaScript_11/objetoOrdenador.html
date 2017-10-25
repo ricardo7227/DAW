@@ -1,0 +1,113 @@
+ <!DOCTYPE html>
+    <html>
+    <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+      <title>Objeto ordenador</title>
+      <script languaje="javascript">
+      // Definición del objeto CPU
+	 function CPU (des, mem, pro, cap, pre) {
+		// Definición de propiedades de CPU
+			this.descripcion = des;
+			this.memoria     = mem;
+			this.procesador  = pro;
+			this.capacidadHD = cap;
+			this.precio      = pre;
+		// Definición de métodos de CPU
+			this.imprimirPrecio = fnVisualizarPrCPU;
+	 }
+	// Definición del método de CPU
+	 function fnVisualizarPrCPU () {
+			with (this) {
+				document.write(precio);
+			}
+	 }
+
+      // Definición del objeto Pantalla
+	 function Pantalla (des, res, col, pre) {
+		// Definición de propiedades de CPU
+			this.descripcion = des;
+			this.resolucion  = res;
+			this.colores     = col;
+			this.precio      = pre;
+		// Definición de métodos de Pantalla
+			this.numeroPixels   = fnPixels;
+			this.imprimirPrecio = fnVisualizarPrPan;
+	 }
+	// Definición de los métodos de Pantalla
+
+	 function fnPixels () {
+			with (this) {
+			return (resolucion * resolucion);
+			}
+	 }
+	 function fnVisualizarPrPan () {
+			with (this) {
+				document.write(precio);
+			}
+	 }
+      // Definición del objeto Ordenador
+         function Ordenador (objCPU, objPantalla, desTec, prTec, desRat, prRat) {
+                    // Definición de propiedades del objeto Ordenador
+                        this.CPU                = objCPU;
+			this.Pantalla           = objPantalla;
+			this.descripcionTeclado = desTec;
+			this.precioTeclado      = prTec;
+			this.descripcionRaton   = desRat;
+			this.precioRaton        = prRat;
+		    // Definición de métodos del objeto Ordenador
+			this.imprimirCaracteristicas = fnImpCarOrd;
+			this.precioTotal             = fnPrOrd;
+	 }
+	// Definición de los métodos de Ordenador
+	 function fnImpCarOrd () {
+			with (this) {
+			document.write(CPU.descripcion, "<br>");
+			document.write(Pantalla.descripcion, "<br>");
+			document.write(descripcionTeclado, "<br>");
+			document.write(descripcionRaton, "<br>");
+			}
+	 }
+	 function fnPrOrd () {
+			with (this) {
+			var importe = CPU.precio + Pantalla.precio + precioTeclado + precioRaton;
+			return importe;
+			}
+	 }
+      </script>
+    </head>
+    <body>
+      <script type="text/javascript">
+	// Creación de un objeto CPU
+	var desC = prompt ("Descripción de la CPU", "");
+	var memC = prompt ("Memoria de la CPU", "");
+	var proC = prompt ("Procesador de la CPU", "");
+	var capC = prompt ("Capacidad del HD", "");
+	var preC = parseInt(prompt ("Precio de la CPU", ""));
+	var objmiCPU = new CPU (desC, memC, proC, capC, preC);
+
+	// Creación de un objeto Pantalla
+	var desP = prompt ("Descripción de la pantalla", "");
+	var resP = parseInt(prompt ("Resolución de la pantalla", ""));
+	var colP = prompt ("Colores de la pantalla", "");
+	var preP = parseInt(prompt ("Precio de la pantalla", ""));
+	var objmiPan = new Pantalla (desP, resP, colP, preP);
+
+	// Creación de un objeto Ordenador
+	var desT = prompt ("Descripción del teclado", "");
+	var preT = parseInt(prompt ("Precio del teclado", ""));
+	var desR = prompt ("Descripción del ratón", "");
+	var preR = parseInt(prompt ("Precio del ratón", ""));
+	var objmiOrd = new Ordenador (objmiCPU, objmiPan, desT, preT, desR, preR);
+
+	// Mostrar características y precio del ordenador
+	objmiOrd.imprimirCaracteristicas();
+	document.write(objmiOrd.precioTotal(), "<br>");
+
+	// Mostrar propiedades del ordenador
+	document.write("---------------------------------------------------<br>");
+	for (var i in objmiOrd) {
+		document.write (i, ".- ", objmiOrd[i], "<br>");
+	}
+      </script>
+    </body>
+    </html>

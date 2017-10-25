@@ -1,0 +1,22 @@
+ <!DOCTYPE html>
+    <html>
+    <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+      <title>Prueba 2</title>
+      <script languaje="javascript">
+      </script>
+    </head>
+    <body>
+      <script type="text/javascript">
+	var fecha1 = new Date();
+	alert("parada");
+	var fecha2 = new Date();
+	if (fecha2 > fecha1) {
+		alert("La segunda es mayor");
+	} else {
+		alert("La primera es mayor");
+	}
+	alert(fecha1);
+      </script>
+    </body>
+    </html>

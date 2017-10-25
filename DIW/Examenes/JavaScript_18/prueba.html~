@@ -1,0 +1,24 @@
+ <!DOCTYPE html>
+    <html>
+    <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+      <title>Objeto movil</title>
+    </head>
+    <body>
+Inicio
+      <script languaje="javascript">
+debugger;
+//	var expre = new RegExp ("^([0-9]{3} )?[0-9]{9}$","g");
+	var expre = /^([0-9]{3} )?[0-9]{9}$/;
+	var telefono = "";
+	do {
+		telefono = prompt("Num. teléfono", "123 913170047");
+		if (expre.test(telefono)) {
+			alert("Bueno");
+		} else {
+			alert("Malo");
+		}
+	} while (telefono !== "000000000")
+      </script>
+    </body>
+    </html>

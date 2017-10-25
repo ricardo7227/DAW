@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <meta charset=UTF-8">
+   <title>Clases y estilos</title>
+<script type="text/javascript">
+function classClick(elemento) {
+	if (elemento.className=="classOculto") {
+		elemento.className="classNormal";
+	} else {
+		elemento.className="classOculto";
+	}
+}
+function classMouseOver(elemento) {
+	if (elemento.className!="classOculto") {
+		elemento.className="classResaltado";
+	}
+}
+function classMouseOut(elemento) {
+	if (elemento.className!="classOculto") {
+		elemento.className="classNormal";
+	}
+}
+</script>
+<style type="text/css">
+.classNormal {
+	visibility:visible;}
+.classResaltado {
+	background-color:yellow;}
+.classOculto {
+	visibility:hidden;}
+table {
+	background-color:white;
+	width:100%;}
+td {
+	font-family:"Times New Roman";
+	text-align:center;
+	font-size:12pt;
+	border:4px solid green;}
+</style>
+</head>
+<body>
+<table>
+<tr class="classNormal" onmouseover="classMouseOver(this);" onmouseout="classMouseOut(this);" onclick="classClick(this);">
+	<td>Fila 1 columna 1</td>
+	<td>Fila 1 columna 2</td>
+</tr>
+<tr class="classNormal" onmouseover="classMouseOver(this);" onmouseout="classMouseOut(this);" onclick="classClick(this);">
+	<td>Fila 2 columna 1</td>
+	<td>Fila 2 columna 2</td>
+</tr>
+<tr class="classNormal" onmouseover="classMouseOver(this);" onmouseout="classMouseOut(this);" onclick="classClick(this);">
+	<td>Fila 3 columna 1</td>
+	<td>Fila 3 columna 2</td>
+</tr>
+</table>
+</body>
+</html>

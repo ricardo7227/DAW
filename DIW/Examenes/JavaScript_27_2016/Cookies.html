@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Guardar formulario en cookies</title>
+   <script type="text/JavaScript">
+     function leerDatos() {
+alert(document.cookie);
+	if (document.cookie.length > 0) {
+	   // Crea listaCookies con las cookies existentes
+           var sep1 = new RegExp("; ", "g");
+	   var sep2 = new RegExp("=", "g");
+           var listaCookies = document.cookie.split(sep1);
+	   // Recorre la lista de cookies
+           for (var i = 0; i < listaCookies.length ; i++) {
+	        // Separar la parte de clave de
+	        // la parte valor (separador =)
+	        var cookie = listaCookies[i].split(sep2);
+		// Comprueba si es la cookie nombre
+		if (cookie[0] == "visita") {
+			// Lo lleva al cuadro de texto
+			document.getElementById("ultima_visita").innerHTML = cookie[1];
+                }
+		if (cookie[0] == "opciones") {
+			// Activa los cuadros de verificación adecuados
+			for (var j = document.formulario.regalo.length - 1; j >= 0; j--){
+				if (cookie[1] >= Math.pow(2, j)) {
+					cookie[1] -= Math.pow(2, j);
+					document.formulario.regalo[j].checked = "checked";
+				}
+			}
+                }
+	   }
+        }
+
+     }
+     function guardarDatos() {
+	var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                              "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+	var fecha = new Date();
+	var cadena = "Fecha última visita: " + fecha.getDate() + " de " + meses[fecha.getMonth()] + " de " + fecha.getFullYear();
+	var caducidad = new Date();
+	caducidad.setTime(fecha.getTime() + 1000*60*2);
+	var opcion = 0;
+        for (var i = 0; i < document.formulario.regalo.length; i++) {
+                 if (document.formulario.regalo[i].checked) {
+                    opcion += Math.pow(2, i);
+                 }
+        }
+        document.cookie = "visita=" + cadena +";expires=" + caducidad.toUTCString();
+        document.cookie = "opciones=" + opcion +";expires=" + caducidad.toUTCString();
+alert(document.cookie);
+     }
+     function enviar() {
+	var opcion = 0;
+        for (var i = 0; i < document.formulario.regalo.length; i++) {
+                 if (document.formulario.regalo[i].checked) {
+                    opcion += 1;
+                 }
+        }
+	if (opcion > 0) {
+		document.formulario.submit();
+	}
+     }
+    </script>
+  </head>
+ <body onload="leerDatos()" onunload="guardarDatos()">
+  <H1> Formulario </H1>
+  <hr>
+  <p id="ultima_visita">Es la primera vez que visita esta página</p>
+  <form name="formulario" method="get" action="server.php">
+<!--	Otra forma de validar antes de enviar:
+  <form name="formulario" method="get" action="server.php" onsubmit="return validacion()">
+-->
+   Regalos: &nbsp;&nbsp;
+     <input type="checkbox" name="regalo"/>Bicicleta<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" name="regalo"/>Raqueta<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" name="regalo"/>Balón<br/>
+   <br/>
+   <input type="button" value="Enviar" onclick="enviar()">
+  </form>
+<br /><br />
+<!--p>Puesto que el evento onunload depende de la configuración del navegador puede pulsar <a href="javascript:guardarDatos()">aqui</a> para grabar las cookies.</p-->
+ </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Programa con definición de objetos</title>
+   <script type="text/javascript">
+         function Alumno (txtDNI, txtNombre, fNacimiento) {
+                    // Definición de propiedades (valores)
+                        this.DNI             = txtDNI;
+                        this.Nombre          = txtNombre;
+                        this.FechaNacimiento = fNacimiento;
+                    // Definición de métodos (funciones)
+                        this.edad = fnEdad;
+         }
+      // Función relativa al método
+         function fnEdad ()  {
+                        with (this) {
+                             var fechaHoy = new Date();
+                             return fechaHoy.getTime() - FechaNacimiento.getTime();
+                        }
+         }
+         function Aula (txtDenominacion, txtLocalizacion, nCapacidad, tAlumnos) {
+                    // Definición de propiedades
+                        this.Denominacion = txtDenominacion;
+                        this.Localizacion = txtLocalizacion;
+                        this.Capacidad    = nCapacidad;
+                        this.Alumnos      = tAlumnos;
+                    // Definición de métodos
+                        this.plazasLibres = fnPlazas;
+                        this.alumnoMenor  = fnMenor;
+                        this.sacarLista   = fnLista;
+         }
+         function fnPlazas () {
+                        with (this) {
+                             return Capacidad - Alumnos.length;
+                        }
+         }
+         function fnMenor () {
+                    // Ojo, controlar qué pasa si no hay alumnos
+                        with (this) {
+                             var indice = 0;
+                             var menor  = Alumnos[0].edad();
+                             for (var i=1; i<Alumnos.length; i++) {
+                                 if (Alumnos[i].edad() < menor) {
+                                    indice = i;
+                                 }
+                             }
+                             return Alumnos[indice].Nombre;
+                        }
+         }
+         function fnLista () {
+                        with (this) {
+                             for (var i=0;i<Alumnos.length; i++) {
+                                 alert(Alumnos[i].Nombre);
+                             }
+                        }
+         }
+   </script>
+ </head>
+ <body>
+   <script type="text/javascript">
+         var datos = new Array();
+         function pedirDatos () {
+debugger;
+                  var masAulas = "si";
+                  var masAlumnos = "si";
+//                  var repe = "no";
+                  var i = 0;
+                  var j = 0;
+                  var ano = 0;
+                  var mes = 0;
+                  var dia = 0;
+                  while (masAulas == "si") {
+                      var denom = prompt("Denominación del aula o grupo", "2º DAW");
+//                      repe = "no";
+                      for (i=0; i < datos.length; i++) {
+                          if (denom == datos[i].Denominacion) {
+                             alert ("La denominación del aula ya existe");
+                             break;
+                          }
+                      }
+                      if (i == datos.length) {
+                         datos[i] = new Aula();
+                         datos[i].Denominacion = denom;
+                         datos[i].Localizacion = prompt("Localización", "Edificio A, planta 1ª");
+                         datos[i].Capacidad    = eval(prompt("Capacidad del aula", 30));
+                         datos[i].Alumnos = new Array();
+                         masAlumnos = "si";
+                         while (masAlumnos == "si" && datos[i].Alumnos.length < datos[i].Capacidad) {
+                               j = datos[i].Alumnos.length;
+                               datos[i].Alumnos[j] = new Alumno();
+                               datos[i].Alumnos[j].DNI = prompt("DNI", "nnnnnnnnX");
+                               datos[i].Alumnos[j].Nombre = prompt("Nombre", "Pepe");
+                               ano = eval(prompt("Año de nacimiento", "nnnn"));
+                               mes = eval(prompt("Mes de nacimiento", "nn"));
+                               dia = eval(prompt("Dia de nacimiento", "nn"));
+                               datos[i].Alumnos[j].FechaNacimiento = new Date(ano, mes, dia);
+                               masAlumnos = prompt("Más alumnos", "si");
+                         }
+                      }
+                      masAulas = prompt ("Más aulas", "si");
+                  }
+         }
+         function mostrarBenjamines () {
+                  for (var i=0; i < datos.length; i++) {
+                        alert(datos[i].Denominacion + " - " + datos[i].alumnoMenor());
+//                      document.write(datos[i].Denominacion + " - " + datos[i].alumnoMenor() + "<br>");
+                  }
+         }
+         function mostrarListado () {
+                  var nomaula = prompt("Nombre del aula o grupo", "2º DAW");
+                  for (var i = 0; i < datos.length; i++) {
+                      if (nomaula == datos[i].Denominacion) {
+                         datos[i].sacarLista();
+                      }
+                  }
+         }
+   </script>
+OPCIONES<br />
+<br >
+<a href="javascript:pedirDatos()">Introducir datos </a><br />
+<a href="javascript:mostrarBenjamines()">Mostrar benjamines </a><br />
+<a href="javascript:mostrarListado()">Mostrar listado </a><br />
+ </body>
+</html>

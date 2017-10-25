@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <meta charset=UTF-8">
+   <title>Tablas y DOM</title>
+  <script>
+function anadir_fila() {
+	var num_fila = parseInt(prompt("Numero de fila a insertar", 0));
+	if (num_fila < 1 || num_fila > document.getElementsByTagName("tr").length) {
+		num_fila = document.getElementsByTagName("tr").length + 1;
+	}
+	var fila = document.createElement("tr");
+	for (var col=1; col < 4; col++) {
+		var texto = "Fila " + num_fila + " columna " + col;
+		var nodo_texto = document.createTextNode(texto);
+		var columna = document.createElement("td");
+		columna.appendChild(nodo_texto);
+		fila.appendChild(columna);
+	}
+	document.getElementsByTagName("tbody")[0].appendChild(fila);
+}
+function eliminar_fila() {
+alert("Eliminar");
+}
+  </script>
+  <style>
+  </style>
+</head>
+<body>
+  <table border="1">
+    <thead></thead>
+    <tfoot></tfoot>
+    <tbody>
+      <tr>
+        <td>Fila 1 columna 1</td>
+        <td>Fila 1 columna 2</td>
+        <td>Fila 1 columna 3</td>
+      </tr>
+      <tr>
+        <td>Fila 2 columna 1</td>
+        <td>Fila 2 columna 2</td>
+        <td>Fila 2 columna 3</td>
+      </tr>
+    </tbody>
+  </table><br />
+  <form>
+    <input type="button" value="Anadir fila" onclick="anadir_fila()">
+    <input type="button" value="Eliminar fila" onclick="eliminar_fila()">
+  </form>
+</body>
+</html>

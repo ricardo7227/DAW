@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <title>Guardar formulario en cookies</title>
+   <script type="text/JavaScript">
+     function cargar(){
+              var opcion = leerCookie("provincia");
+              if (opcion !== null){
+                 document.formulario.provincia.selectedIndex=opcion;
+              }
+     }
+
+     function guardar(boton){
+              var caducidad = new Date();
+              caducidad.setTime(caducidad.getTime() + 1000*60*2);
+              guardarCookie("provincia", boton.form.provincia.selectedIndex, caducidad);
+     }
+
+     function leerCookie(variable) {
+	if (document.cookie.length > 0) {
+	   // Crea listaCookies con las cookies existentes
+           var sep1 = new RegExp("; ", "g");
+	   var sep2 = new RegExp("=", "g");
+           var listaCookies = document.cookie.split(sep1);
+	   // Recorre la lista de cookies
+           for (var i = 0; i < listaCookies.length ; i++) {
+	        // Separar la parte de clave de
+	        // la parte valor (separador =)
+	        var cookie = listaCookies[i].split(sep2);
+		// Comprueba si es la cookie nombre
+		if (cookie[0] == variable) {
+                   return cookie[1];
+                }
+	   }
+           return null;
+        }
+        return null;
+     }
+     function guardarCookie(cookie, valor, fecha) {
+        document.cookie = cookie + "=" + valor + ";expires=" + fecha.toUTCString();
+     }
+    </script>
+  </head>
+ <body onload="cargar()">
+  <form name="formulario" method="get" action="server.php">
+    <H1> Formulario </H1>
+    <hr>
+    <p>Elije provincia:</p>
+    <select name="provincia" size="3">
+      <option>Albacete</option>
+      <option>Almeria</option>
+      <option>Alava</option>
+      <option>Zamora</option>
+      <option>Zaragoza</option>
+    </select>
+    <input type="button" value="Guardar" onclick="guardar(this)">
+  </form>
+ </body>
+</html>

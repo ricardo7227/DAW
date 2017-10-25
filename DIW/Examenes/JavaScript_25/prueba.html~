@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Mostrar y ocultar parrafo</title>
+
+   <style>
+   </style>
+
+   <script type="text/JavaScript">
+   </script>
+  </head>
+ <body>
+   <script type="text/JavaScript">
+var a = 50;
+if (100 < a < 200) {
+	alert("Funciona");
+} else {
+ 	alert("En el sino");
+}
+
+   </script>
+ </body>
+</html>

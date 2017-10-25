@@ -1,0 +1,11 @@
+<html>
+  <head></head>
+  <body>
+    <script>
+	var array = new Array();
+//	array ["a"] = new Array();
+	array ["a"]["b"] = 10;
+	alert (array ["a"]["b"]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+     <title>Mostrar imágenes</title>
+     <script type="text/javascript">
+	// Función que cambia la propiedad src de la imagen
+	function cambiarFoto() {
+		document.images["Beatles"].src = imagenes[Math.round((Math.random() * 3))];
+		// Aunque no es necesario, puede mostrarse el índice de la tabla en el título
+		document.title="Mostrar imágenes (" + Math.round((Math.random() * 3)) + ")";
+	}
+    </script>
+ </HEAD>
+ <BODY>
+     <img src="john.jpg" name="Beatles">
+     <script type="text/javascript">
+	var imagenes = new Array ("john.jpg", "paul.jpg", "george.jpg", "ringo.jpg");
+	var intervalo = setInterval ("cambiarFoto()", 2000);
+     </script>
+     <input type="button" value="Finalizar" onclick="clearInterval(intervalo)">
+ </BODY>
+</HTML>

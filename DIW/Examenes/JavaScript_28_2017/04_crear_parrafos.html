@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <meta charset=UTF-8">
+   <title>Crear parrafos con DOM</title>
+  <script>
+function anadir_parrafo(texto, color) {
+	var parrafo = document.createElement("p");
+        var nodo_texto = document.createTextNode(texto);
+        parrafo.appendChild(nodo_texto);
+        parrafo.style.backgroundColor=color;
+        document.body.appendChild(parrafo);
+}
+  </script>
+</head>
+<body>
+  <script>
+    var contenido = "";
+    var elcolor = "";
+    var num_parrafos = parseInt(prompt("Introduzca numero de párrafos a crear", 0));
+    for (var i=0; i<num_parrafos;i++) {
+        contenido = prompt("Introduzca el texto del párrafo", "Contenido del parrafo");
+        elcolor = prompt("Introduzca el color del fondo del párrafo", "white");
+        anadir_parrafo(contenido, elcolor);
+    }
+  </script>
+</body>
+</html>

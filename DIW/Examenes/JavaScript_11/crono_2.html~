@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+     <title>Cronómetro que se colapsa</title>
+    <script type="text/javascript">
+	function cronometro () {
+	    // Se obtiene la fecha y hora en un instante
+	    var actual = new Date();
+	    // Se establece como título la diferencia en segundos
+	    // entre la hora actual y la inicial
+	    document.title = Math.round((actual.getTime() - inicial.getTime()) / 1000);
+	    // Crea intervalos que colapsan al equipo
+	    setInterval(cronometro, 1000);
+	}
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+	// Coge la fecha y hora del sistema
+	var inicial = new Date ();
+	cronometro();
+    </script>
+  </body>
+</html>

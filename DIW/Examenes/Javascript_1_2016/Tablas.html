@@ -1,0 +1,118 @@
+<DOCTYPE html>
+<html>
+ <head>
+ </head>
+ <body>
+  <script>
+// Definición de variables
+var mas_datos = true;
+var pro = 0;
+var mes = 0;
+var dia = 0;
+var provin = new Array("Albacete", "Alicante", "Zaragoza");
+var meses  = new Array("Enero","Febr","Marzo","Abril","Mayo","Junio","Julio","Agos","Sept","Oct","Nov","Dic");
+var dias   = new Array("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado");
+var datos = new Array();
+var total_provincia = 0;
+var total_mes = new Array(0,0,0,0,0,0,0,0,0,0,0,0);
+var total_mes_aux = 0;
+var mes_aux = "";
+var mayor = 0;
+
+// Opcionalmente se puede inicializar la tabla de datos para evitar posibles errores
+for (pro=0; pro < provin.length; pro++) {
+  datos[pro] = new Array();
+  for (mes=0; mes < meses.length; mes++) {
+    datos[pro][mes] = new Array();
+    for (dia=0; dia < 31; dia++) {
+      datos[pro][mes][dia] = 0;
+    }
+  }
+}
+
+// Toma de datos
+do {
+  pro = parseInt(prompt("Introduzca num. de provincia 1-"+provin.length, 1));
+    // Aquí podría ir un bucle hasta que 0 < pro < 53
+  mes = parseInt(prompt("Introduzca num. de mes 1-12", 1));
+    // Aquí podría ir un bucle hasta que 0 < mes < 13
+  dia = parseInt(prompt("Introduzca dia 1-31", 1));
+    // Aquí podría ir un bucle hasta que 0 < dia < 32
+  datos[pro - 1][mes - 1][dia - 1] = parseInt(prompt("Introduzca num. litros caidos", 0));
+  mas_datos = confirm("Mas datos");
+} while (mas_datos);
+
+// Mostrar nombres de provincias con litros totales
+for (pro=0; pro < provin.length; pro++) {
+  total_provincia = 0;
+  for (mes=0; mes < meses.length; mes++) {
+    for (dia=0; dia < 31; dia++) {
+      total_provincia += datos[pro][mes][dia];
+    }
+  }
+  document.write(provin[pro] + " --- " + total_provincia + "<br>");
+}
+
+// Mostrar nombres de meses por orden descendente de litros
+   // Totalizar por mes
+for (pro=0; pro < provin.length; pro++) {
+  for (mes=0; mes < meses.length; mes++) {
+    for (dia=0; dia < 31; dia++) {
+      total_mes[mes] += datos[pro][mes][dia];
+    }
+  }
+}
+   // Ordenar tabla de meses y de totales por orden descendente de éstos
+for (var i=0; i < (meses.length -1); i++) {
+  for (var j=i+1; j < (meses.length); j++){
+    if (total_mes[i] < total_mes[j]) {
+      total_mes_aux = total_mes[i];
+      total_mes[i] = total_mes[j];
+      total_mes[j] = total_mes_aux;
+
+      mes_aux = meses[i];
+      meses[i] = meses[j];
+      meses[j] = mes_aux;
+    }
+  }
+}
+   // Mostrar meses y totales ordenados
+document.write("<br>");
+for (mes=0; mes < meses.length; mes++) {
+  document.write(meses[mes] + " --- " + total_mes[mes] + "<br>");
+}
+
+// Mostrar día más lluvioso
+   // Inicializar tabla de meses anteriormente descolocada
+meses[0] = "Enero";
+meses[1] = "Febrero";
+meses[2] = "Marzo";
+meses[3] = "Abril";
+meses[4] = "Mayo";
+meses[5] = "Junio";
+meses[6] = "Julio";
+meses[7] = "Agosto";
+meses[8] = "Septiembre";
+meses[9] = "Octubre";
+meses[10] = "Noviembre";
+meses[11] = "Diciembre";
+
+for (var i=0; i < provin.length; i++) {
+  for (var j=0; j < meses.length; j++) {
+    for (var k=0; k < 31; k++) {
+      if (datos[i][j][k] > mayor) {
+         pro = i;
+         mes = j;
+         dia = k;
+      }
+    }
+  }
+}
+
+// Visualizar en formato: El día más lluvioso fue el MARTES, 13 de Abril, en Cuenca.
+var fecha = new Date(2016, mes, dia+1);
+document.write("<br>");
+document.write("El dia mas lluvioso fue el " + dias[fecha.getDay()] + ", " + (dia+1) + " de " + meses[mes] + ", en " + provin[pro]);
+  </script>
+ </body>
+</html>

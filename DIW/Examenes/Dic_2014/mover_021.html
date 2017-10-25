@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Ventana padre que abre la ventana hija</title>
+   <script type="text/javascript">
+	function redimensionar() {
+// Sumando al ángulo pi/2 cada 50 movimientos los valores del resize serán:
+// (1,0), (0,1), (-1,0) y (0,-1) que se irán repitiendo
+		miVentana.resizeBy(Math.cos(radianes), Math.sin(radianes));
+		contador++;
+		if (contador == 50) {
+			contador = 0;
+			radianes+=Math.PI/2;
+		}
+	}
+	function parar() {
+		clearInterval(repetir);
+	}
+   </script>
+ </head>
+ <body>
+  <p>Ventana padre</p>
+  <p>
+  Para parar el movimiento pulse <a href="javascript:parar()">aquí</a>.
+  </p>
+  <script type="text/javascript">
+      var h = parseInt(prompt("Posición horizontal", 550));
+      var v = parseInt(prompt("Posición vertical", 250));
+      var ancho = parseInt(prompt("Ancho de la ventana", 300));
+      var alto = parseInt(prompt("Alto de la ventana", 200));
+      var contador = 0;
+      var radianes = 0;
+      var miVentana = window.open("mover_021_aux.html", "ventana", "width="+ancho+", height="+alto);
+      miVentana.moveTo(h, v);
+      var repetir = setInterval("redimensionar()", 20);
+  </script>
+ </body>
+</html>

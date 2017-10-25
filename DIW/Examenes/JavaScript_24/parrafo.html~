@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Mostrar y ocultar parrafo</title>
+
+   <style>
+     p {font-size: 25px}
+     .visible{display: block;}
+     .oculto{display: none;}
+   </style>
+
+   <script type="text/JavaScript">
+     function validacion() {
+	var contar = 0;
+        for (var i = 0; i < document.formulario.deporte.length; i++) {
+                 if (document.formulario.deporte[i].checked) {
+                    contar += 1;
+                 }
+        }
+        if (contar == 0) {
+           document.getElementById("parrafo").className = "visible";
+           setTimeout("ocultar()", 3000);
+           return false;
+        }
+     }
+     function ocultar() {
+              document.getElementById("parrafo").className = "oculto";
+     }
+    </script>
+  </head>
+ <body>
+  <center> <H1> Formulario </H1> </center>
+  <hr>
+  <form name="formulario" action="procesar.php" onsubmit="return validacion()">
+   Elija regalo(s):<br>
+     <input type="checkbox" name="deporte"/>Bicicleta<br/>
+     <input type="checkbox" name="deporte"/>Raqueta<br/>
+     <input type="checkbox" name="deporte"/>Balón<br/>
+     <input type="checkbox" name="deporte"/>Zapatillas
+   <br/><br/>
+   <input type=image src="john.jpg" width="150px" height="50px">
+  </form>
+   <p id="parrafo" class="oculto">Debe elegir un regalo</p>
+ </body>
+</html>

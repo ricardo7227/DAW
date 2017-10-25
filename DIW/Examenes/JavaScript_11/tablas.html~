@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+     <title>Manejo de tablas</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+	// Creación de tablas fijas (solamente con 3 provincias y 4 meses)
+	var provincias = new Array("Alava", "Albacete", "Zaragoza");
+	var meses      = new Array("Enero", "Febrero", "Marzo", "Diciembre");
+
+	// Introducción de nacimientos y fallecimientos por provincia y mes
+	var datos = new Array();
+	for (var pr = 0; pr < provincias.length; pr++) {
+	    datos[pr] = new Array();
+	    for (var ms = 0; ms < meses.length; ms++) {
+		datos[pr][ms] = new Array();
+		datos[pr][ms][0] = parseInt(prompt(provincias[pr]+" - "+meses[ms], "Nacimientos"));
+		datos[pr][ms][1] = parseInt(prompt(provincias[pr]+" - "+meses[ms], "Fallecimientos"));
+	    }
+	}
+
+	// Llevar el crecimiento neto por provincia a la tabla netos
+	// Este proceso podría haberse realizado en los bucles anteriores
+	var netos = new Array();
+	for (var pr = 0; pr < provincias.length; pr++) {
+	    netos [pr] = 0;
+	    for (var ms = 0; ms < meses.length; ms++) {
+		netos[pr] = netos[pr] + datos[pr][ms][0] - datos[pr][ms][1];
+	    }
+	}
+
+	// Ordenación de las tablas provincias y netos
+	var provincia_aux = "";
+	var neto_aux = 0;
+	for (var i = 0; i < provincias.length - 1; i++) {
+	    for (var j = i+1; j < provincias.length; j++) {
+		if (netos[i] < netos[j]) {
+		    provincia_aux = provincias[i];
+		    provincias[i] = provincias[j];
+		    provincias[j] = provincia_aux;
+		    neto_aux      = netos[i];
+		    netos[i]      = netos[j];
+		    netos[j]      = neto_aux;
+		}
+	    }
+	}
+
+	// Mostrar las provincias ordenadas, separadas por un guión
+	document.write (provincias.join (" - "));
+    </script>
+  </body>
+</html>

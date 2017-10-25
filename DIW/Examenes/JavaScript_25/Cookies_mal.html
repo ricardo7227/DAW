@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Control de visitas mediante cookies</title>
+   <script type="text/JavaScript">
+
+     function gestionarCookies(){
+
+        var fecha = leerCookie("fecha");
+        var contador = eval(leerCookie("contador"));
+        var hoy = new Date();
+        if (fecha == null) {
+           fecha.setTime(hoy.getTime());
+           contador = 1;
+        }
+        document.formulario.fecha.value = fecha;
+        document.formulario.contador.value = contador;
+        var fecha_fin = new Date();
+//      fecha_fin.setTime(hoy.getTime() + (6*30*24*60*60*1000));
+        fecha_fin.setTime(hoy.getTime() + (2*60*1000));
+        escribirCookie("fecha", fecha, fecha_fin);
+        escribirCookie("contador", contador+1, fecha_fin);
+     }
+
+     function leerCookie(nombre) {
+	if (document.cookie.length > 0) {
+	   // Crea listaCookies con las cookies existentes
+           var sep1 = new RegExp("; ", "g");
+           var sep2 = new RegExp("=", "g");
+           var listaCookies = document.cookie.split(sep1);
+	   // Recorre la lista de cookies
+           for (var i = 0; i < listaCookies.length ; i++) {
+	        // Separar la parte de clave de
+	        // la parte valor (separador =)
+	        var cookie = listaCookies[i].split(sep2);
+		// Comprueba si la cookie coincide con el parámetro pasado
+		if (cookie[0] == nombre) {
+                   return cookie[1];
+		}
+	   }
+           return null;
+        } else {
+	   // Si la cookie aún no existe devuelve null
+           return null;
+        }
+     }
+
+     function escribirCookie(nombre, valor, caducidad) {
+        document.cookie = nombre + "=" + valor +
+        ((caducidad == undefined) ? "" : ("; expires=" + caducidad.toUTCString()));
+     }
+
+    </script>
+  </head>
+ <body onload="gestionarCookies()">
+  <center> <H1> Control de visitas mediante cookies </H1> </center>
+  <hr>
+  <form name="formulario">
+   Conexión anterior:
+   <input type="text" name="fecha" size=30 readonly="" value="">
+   <br />
+   Esta es su visita número:
+   <input type="text" name="contador" size=1 readonly="" value=1>
+  </form>
+ </body>
+</html>

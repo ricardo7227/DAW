@@ -1,0 +1,40 @@
+<DOCTYPE html>
+<html>
+ <head>
+ </head>
+ <body>
+  <script>
+// Definición de funciones
+function mover() {
+//    document.write("posicion: " + h1 + "--" + v1 + "<br>");
+//    Con document.title se puede comprobar mejor que con document.write
+    document.title = "posicion: " + h1 + "--" + Math.round(v1);
+    if (h1 == h2) {
+        clearInterval(intervalo);
+    }
+    h1 += incremento_h;
+    v1 += incremento_v;
+}
+
+// Definición de variables
+var h1 = 0;
+var v1 = 0;
+var h2 = 0;
+var v2 = 0;
+var incremento_h = 1;
+var incremento_v = 0;
+var intervalo;
+
+h1 = parseInt(prompt("Introduzca posicion horizontal del punto inicial", 0));
+v1 = parseInt(prompt("Introduzca posicion vertical del punto inicial", 0));
+h2 = parseInt(prompt("Introduzca posicion horizontal del punto final", 0));
+v2 = parseInt(prompt("Introduzca posicion vertical del punto final", 0));
+incremento_v = (v2 - v1) / (h2 - h1);
+if (h1 > h2) {
+    incremento_h = -1;
+    incremento_v = incremento_v * -1;
+}
+intervalo = setInterval("mover()", 100)
+  </script>
+ </body>
+</html>

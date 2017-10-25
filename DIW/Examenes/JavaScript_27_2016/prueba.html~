@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Guardar formulario en cookies</title>
+   <script type="text/JavaScript">
+/*
+     function rellenarFormulario() {
+	// Comprueba si existe
+	if (document.cookie.length > 0) {
+	   // Crea listaCookies con las cookies existentes
+           var sep1 = new RegExp("; ", "g");
+           var listaCookies = document.cookie.split(sep1);
+	   // Recorre la lista de cookies
+           for (var i = 0; i < listaCookies.length ; i++) {
+	        // Separar la parte de clave de
+	        // la parte valor (separador =)
+	        var sep2 = new RegExp("=", "g");
+	        var cookie = listaCookies[i].split(sep2);
+		// Comprueba si es la cookie nombre
+		if (cookie[0] == "nombre") {
+			// Lo lleva al cuadro de texto
+			document.formulario.texto.value = cookie[1];
+                }
+		if (cookie[0] == "sexo") {
+			// Activa el botón de selección adecuado
+			document.formulario.sexo[cookie[1]].checked = "checked";
+                }
+		if (cookie[0] == "deportes") {
+			// Activa los cuadros de verificación adecuados
+			for (var j = document.formulario.deporte.length - 1; j >= 0; j--){
+				if (cookie[1] >= Math.pow(2, j)) {
+					cookie[1] -= Math.pow(2, j);
+					document.formulario.deporte[j].checked = "checked";
+				}
+			}
+                }
+	   }
+        }
+     }
+     function guardarCookie() {
+        document.cookie = "nombre=" + document.formulario.texto.value;
+
+	var opcion = 0;
+        for (var i = 0; i < document.formulario.sexo.length; i++) {
+                 if (document.formulario.sexo[i].checked) {
+                    opcion = i;
+                 }
+        }
+        document.cookie = "sexo=" + opcion;
+
+	var opcion = 0;
+        for (var i = 0; i < document.formulario.deporte.length; i++) {
+                 if (document.formulario.deporte[i].checked) {
+                    opcion += Math.pow(2, i);
+                 }
+        }
+        document.cookie = "deportes=" + opcion;
+        alert(document.cookie);
+     }
+*/
+    </script>
+  </head>
+ <body onload="rellenarFormulario()">
+  <H1> Formulario </H1>
+  <hr>
+  <form name="formulario">
+   Fecha ultima visita: 13 de Febrero de 2016<br><br/>
+   Regalos: &nbsp;&nbsp;
+     <input type="checkbox" name="regalo"/>Bicicleta<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" name="regalo"/>Raqueta<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" name="regalo"/>Balón<br/>
+   <br/>
+   <input type=button value="Enviar" onclick="guardarCookie()"><br/>
+  </form>
+ </body>
+</html>

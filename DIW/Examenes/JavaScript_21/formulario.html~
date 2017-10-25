@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Guardar formulario en cookies</title>
+   <script type="text/JavaScript">
+     function rellenarFormulario() {
+	// Comprueba si existe
+	if (document.cookie.length > 0) {
+	   // Crea listaCookies con las cookies existentes
+           var sep1 = new RegExp("; ", "g");
+           var listaCookies = document.cookie.split(sep1);
+	   // Recorre la lista de cookies
+           for (var i = 0; i < listaCookies.length ; i++) {
+	        // Separar la parte de clave de
+	        // la parte valor (separador =)
+	        var sep2 = new RegExp("=", "g");
+	        var cookie = listaCookies[i].split(sep2);
+		// Comprueba si es la cookie regalos
+		if (cookie[0] == "regalos") {
+			// Activa los cuadros de verificación adecuados
+			for (var j = document.formulario.regalos.length - 1; j >= 0; j--){
+				if (cookie[1] >= Math.pow(2, j)) {
+					cookie[1] -= Math.pow(2, j);
+					document.formulario.regalos[j].checked = "checked";
+				}
+			}
+                }
+	   }
+        }
+     }
+     function guardarCookie() {
+	// Establecer fecha de caducidad en 2 minutos
+	var fechaCaducidad = new Date();
+	fechaCaducidad.setTime(fechaCaducidad.getTime() + (2 * 60 * 1000));
+	// Graba el valor correspondiente a los cuadros de verificación seleccionados
+	var opcion = 0;
+        for (var i = 0; i < document.formulario.regalos.length; i++) {
+                 if (document.formulario.regalos[i].checked) {
+                    opcion += Math.pow(2, i);
+                 }
+        }
+        document.cookie = "regalos=" + opcion + "; expires=" + fechaCaducidad.toUTCString();
+	// Muestra las cookies
+        alert(document.cookie);
+     }
+    </script>
+  </head>
+ <body onload="rellenarFormulario()">
+  <center> <H1> Formulario </H1> </center>
+  <hr>
+  <form name="formulario">
+
+   Regalos: &nbsp;&nbsp;
+     <input type="checkbox" name="regalos"/>Balón<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" name="regalos"/>Pelota<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" name="regalos"/>Bicicleta<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" name="regalos"/>Raqueta
+   <br/><br/>
+   <input type=button value="Guardar datos" onclick="guardarCookie()">
+  </form>
+ </body>
+</html>

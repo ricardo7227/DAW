@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Guardar formulario en cookies</title>
+   <script type="text/JavaScript">
+
+     function leer_cookie(nombre) {
+	// Comprueba si existe
+	if (document.cookie.length > 0) {
+	   // Crea listaCookies con las cookies existentes
+           var sep1 = new RegExp("; ", "g");
+           var sep2 = new RegExp("=", "g");
+           var listaCookies = document.cookie.split(sep1);
+	   // Recorre la lista de cookies
+           for (var i = 0; i < listaCookies.length ; i++) {
+	        // Separar la parte de clave de
+	        // la parte valor (separador =)
+	        var cookie = listaCookies[i].split(sep2);
+		// Comprueba si es la cookie nombre
+		if (cookie[0] == nombre) {
+			// Devuelve el valor
+                   return unescape(cookie[1]);
+                }
+	   }
+        }
+        return null;
+     }
+
+     function grabar_cookie (nombre, valor, fecha) {
+        document.cookie = nombre + "=" + escape(valor) +
+                          ((fecha == null) ? "" : ("; expires=" + fecha.toGMTString()));
+     }
+
+     function rellenarFormulario() {
+	      var nombre = leer_cookie("nombre");
+	      if (nombre !== null) {
+	              document.formulario.texto.value = leer_cookie("nombre");
+	      }
+	      var i = leer_cookie("sexo");
+	      if (i !== null) {
+		  document.formulario.sexo[eval(i)].checked = "checked";
+	      }
+	      var numero = leer_cookie("deportes");
+	      if (numero !== null) {
+		  numero = eval(numero);
+		  for (var j = document.formulario.deporte.length - 1; j >= 0; j--){
+			if (numero >= Math.pow(2, j)) {
+				numero -= Math.pow(2, j);
+				document.formulario.deporte[j].checked = "checked";
+		  	}
+	      	  }
+	      }
+     }
+
+     function guardarFormulario() {
+	// Establecer fecha de caducidad en 2 minutos
+	var fechaCaducidad = new Date();
+	fechaCaducidad.setTime(fechaCaducidad.getTime() + (2 * 60 * 1000));
+
+	grabar_cookie("nombre", document.formulario.texto.value, fechaCaducidad);
+	var opcion = 0;
+        for (var i = 0; i < document.formulario.sexo.length; i++) {
+                 if (document.formulario.sexo[i].checked) {
+                    opcion = i;
+                 }
+        }
+	grabar_cookie("sexo", opcion, fechaCaducidad);
+	var opcion = 0;
+        for (var i = 0; i < document.formulario.deporte.length; i++) {
+                 if (document.formulario.deporte[i].checked) {
+                    opcion += Math.pow(2, i);
+                 }
+        }
+	grabar_cookie("deportes", opcion, fechaCaducidad);
+     }
+    </script>
+  </head>
+ <body onload="rellenarFormulario()">
+  <center> <H1> Formulario </H1> </center>
+  <hr>
+  <form name="formulario">
+
+   Nombre:
+     <input type="text" name="texto" size=20 value="Escriba su nombre">
+     <br><br>
+   Sexo: &nbsp;&nbsp;
+     <input type="radio" name="sexo" value="hombre">Hombre<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="radio" name="sexo" value="mujer">Mujer 
+   <br/><br/>
+   Deportes: &nbsp;&nbsp;
+     <input type="checkbox" name="deporte"/>Bicicleta<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" name="deporte"/>Tenis<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" name="deporte"/>Fútbol<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" name="deporte"/>Atletismo
+   <br/><br/>
+   <input type=button value="Guardar Cookie" onclick="guardarFormulario()">
+   <input type=button value="Reiniciar formulario" onclick="document.formulario.reset()"><br/>
+   <a href="#" onclick="guardarFormulario()">Guardar Cookie</a><br/>
+   <a href="javascript:guardarFormulario()">Guardar Cookie</a>
+  </form>
+ </body>
+</html>

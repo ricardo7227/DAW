@@ -1,0 +1,142 @@
+ <!DOCTYPE html>
+    <html>
+    <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+      <title>Objeto Deportista</title>
+      <script languaje="javascript">
+// OBJETOS
+      // Definición del objeto Trayecto
+	 function Trayecto (txt_des, num_kms, num_cal, date_sal, date_lle) {
+		// Definición de propiedades de Trayecto
+			this.Descripcion = txt_des;
+			this.Kmts        = num_kms;
+			this.Calorias    = num_cal;
+			this.Salida      = date_sal;
+			this.Llegada     = date_lle;
+		// Definición de métodos de Trayecto
+			this.media       = fnMedia;
+                        this.duracion    = fnDuracion;
+	 }
+	// Definición del método media
+	 function fnMedia () {
+			with (this) {
+                             var horas = duracion() / (1000 * 60 * 60);
+                             return (Kmts / horas);
+			}
+	 }
+	// Definición del método duracion
+	 function fnDuracion () {
+			with (this) {
+                             return (Llegada.getTime() - Salida.getTime());
+			}
+	 }
+
+      // Definición del objeto Deportista
+	 function Deportista (txt_nom, date_nac, array_rut) {
+		// Definición de propiedades de Deportista
+			this.Nombre          = txt_nom;
+			this.FechaNacimiento = date_nac;
+			this.Rutas           = array_rut;
+		// Definición de métodos de Deportista
+			this.dia_mas_fuerte = fnDiaMasFuerte;
+			this.tiempo_total   = fnTiempoTotal;
+	 }
+	// Definición del método dia_mas_fuerte
+	 function fnDiaMasFuerte () {
+			with (this) {
+                             var indice = 0;
+                             for (var i=1; i < Rutas.length; i++) {
+                                 if (Rutas[i].media() > Rutas[indice].media()) {
+                                    indice = i;
+                                 }
+                             }
+                             return Rutas[indice].Salida;
+			}
+	 }
+        // Definición del método tiempo_total
+	 function fnTiempoTotal () {
+			with (this) {
+                             var total = 0;
+                             for (var i=0; i < Rutas.length; i++) {
+                                 total += Rutas[i].duracion();
+                             }
+                        return total;
+			}
+	 }
+// FUNCIONES
+      // Definición de la función pedir_fecha
+         function pedir_fecha (texto) {
+                        var anio = parseInt(prompt("Introduzca año de " + texto, 2016));
+                        var mes  = parseInt(prompt("Introduzca mes de " + texto, 1));
+                        while (mes < 1 || mes > 12) {
+                             var mes  = parseInt(prompt("Error: Introduzca de nuevo mes de " + texto, 1));
+                        }
+                        var dia  = parseInt(prompt("Introduzca dia de " + texto, 1));
+                        while (dia < 1 || dia > 31) {
+                             var dia  = parseInt(prompt("Error: Introduzca de nuevo dia de " + texto, 1));
+                        }
+                        var fecha = new Date (anio, mes, dia);
+                        return fecha;
+         }
+      // Definición de la función pedir_fecha_hora
+         function pedir_fecha_hora (texto) {
+                        var fecha = pedir_fecha (texto);
+                        var hora = parseInt(prompt("Introduzca hora de " + texto, 0));
+                        while (hora < 0 || hora > 23) {
+                             var hora  = parseInt(prompt("Error: Introduzca de nuevo hora de " + texto, 0));
+                        }
+                        var minuto = parseInt(prompt("Introduzca minuto de " + texto, 0));
+                        while (minuto < 0 || minuto > 59) {
+                             var minuto  = parseInt(prompt("Error: Introduzca de nuevo minuto de " + texto, 0));
+                        }
+                        fecha.setHours(hora);
+                        fecha.setMinutes(minuto);
+                        return fecha;
+         }
+      </script>
+    </head>
+    <body>
+      <script type="text/javascript">
+	var mi_deportista = new Deportista ();
+// Función introducir_datos
+	function introducir_datos() {
+		var tabla_rutas = new Array();
+		mi_deportista.Nombre = prompt("Nombre del deportista");
+		mi_deportista.FechaNacimiento = pedir_fecha("Nacimiento");
+		var mas_rutas = true;
+		do {
+			var descri = prompt("Descripción de la ruta");
+			var kilos  = parseInt(prompt("Kms."));
+			var calor  = parseInt(prompt("Calorias"));
+			var f_sal  = pedir_fecha_hora ("Salida");
+			var f_lle  = pedir_fecha_hora ("Llegada");
+			while (f_sal > f_lle) {
+				alert("La fecha de salida es posterior a la de llegada. Introduzcalas de nuevo");
+				var f_sal  = pedir_fecha_hora ("Salida");
+				var f_lle  = pedir_fecha_hora ("Llegada");
+			}
+			tabla_rutas[tabla_rutas.length] = new Trayecto (descri, kilos, calor, f_sal, f_lle);
+			mas_rutas = confirm("Más rutas ?");
+		} while (mas_rutas);
+		mi_deportista.Rutas = tabla_rutas;
+        }
+// Función mostrar_edad
+	function mostrar_edad() {
+		var edad = Math.floor((mi_deportista.dia_mas_fuerte().getTime() - mi_deportista.FechaNacimiento.getTime())
+                                      / (1000*60*60*24*365));
+		alert (edad);
+        }
+// Función tiempo_total
+	function tiempo_total() {
+		var horas = Math.floor(mi_deportista.tiempo_total() / (1000*60*60));
+		var minu  = Math.floor((mi_deportista.tiempo_total() - horas*60*60*1000) / (1000*60));
+                alert("Tiempo total.- " + horas + ":" + minu);
+        }
+      </script>
+       OBJETO DEPORTISTA<br />
+       ==============<br /><br />
+       <a href="javascript:introducir_datos()">Introducir datos</a><br />
+       <a href="javascript:mostrar_edad()">Mostrar edad</a><br />
+       <a href="javascript:tiempo_total()">Tiempo total</a><br />
+    </body>
+    </html>

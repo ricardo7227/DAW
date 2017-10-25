@@ -31,5 +31,6 @@ class Constantes {
     const messageParametrosVacios = "No has pasado parametros en este nivel";
     const messageLevelCompleted = "Nivel completado! pasa al ";
     const messageLevelError = "Error en %s, vuelve a nivel1 ";
+    const messageLevelJumpError = "Error te has saltado cosas, vuelve a nivel1 ";
 
 }

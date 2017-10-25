@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Ventana padre que abre la ventana hija</title>
+   <script type="text/javascript">
+	function redimensionar() {
+                cont++;
+                if (fase == 1) miVentana.resizeBy(1, 0);
+                if (fase == 2) miVentana.resizeBy(0, 1);
+                if (fase == 3) miVentana.resizeBy(-1, 0);
+                if (fase == 4) miVentana.resizeBy(0, -1);
+		if (cont == 50) {
+		    cont = 0;
+		    fase++;
+		    if (fase == 5) fase = 1;
+		}
+	}
+	function parar() {
+		clearInterval(repetir);
+	}
+   </script>
+ </head>
+ <body>
+  <p>Ventana padre</p>
+  <p>
+  Para parar el movimiento pulse <a href="javascript:parar()">aquí</a>.
+  </p>
+  <script type="text/javascript">
+      var h = parseInt(prompt("Posición horizontal", 550));
+      var v = parseInt(prompt("Posición vertical", 250));
+      var ancho = parseInt(prompt("Ancho de la ventana", 300));
+      var alto = parseInt(prompt("Alto de la ventana", 200));
+      var cont = 0;
+      var fase = 1;
+      var miVentana = window.open("mover_02_aux.html", "ventana", "width="+ancho+", height="+alto);
+      miVentana.moveTo(h, v);
+      var repetir = setInterval("redimensionar()", 20);
+  </script>
+ </body>
+</html>

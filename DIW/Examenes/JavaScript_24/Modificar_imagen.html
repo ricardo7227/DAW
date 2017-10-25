@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+   <title>Redimensionar imagen</title>
+   <style>
+      img {width: 300px;
+           height: 200px;
+      }
+   </style>
+   <script type="text/javascript">
+    var ancho_bueno = 300;
+    var alto_bueno = 200;
+    function comprobar_ancho() {
+          if (eval(document.formulario.ancho.value) < 100 ||
+              eval(document.formulario.ancho.value) > 1200) {
+                  alert ("Ancho erroneo");
+                  document.formulario.ancho.value = ancho_bueno;
+          } else {
+                  ancho_bueno = document.formulario.ancho.value
+          }
+    }
+    function comprobar_alto() {
+          if (eval(document.formulario.alto.value) < 50 ||
+              eval(document.formulario.alto.value) >700) {
+                  alert ("Alto erroneo");
+                  document.formulario.alto.value = alto_bueno;
+          } else {
+                  alto_bueno = document.formulario.alto.value
+          }
+    }
+    function redimensionar() {
+          document.images["Beatle"].style.width  = document.formulario.ancho.value + "px";
+          document.images["Beatle"].style.height = document.formulario.alto.value + "px";
+    }
+  </script>
+ </head>
+ <body>
+   <center> <H1> Redimensión de imagen </H1> </center>
+   <hr>
+   <img src="john.jpg" name="Beatle" onclick="redimensionar()">
+   <br />
+   <br />
+   <form name="formulario">
+     Nuevo ancho.: 
+     <input type="text" name="ancho" value="300" onchange="comprobar_ancho()"/>
+     <br />
+     Nuevo alto.....:
+     <input type="text" name="alto" value="200" onchange ="comprobar_alto()"/>
+   </form>
+ </body>
+</html>

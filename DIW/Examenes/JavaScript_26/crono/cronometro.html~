@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+     <title>Cronometro</title>
+     <script type="text/javascript">
+        function funcion(){
+alert("a");
+//          var ahora = new Date();
+//          var segundos = Math.round((ahora.getTime() - inicial.getTime()) / 1000);
+//          contador = contador + 1;
+//alert (contador);
+//          document.images["s2"].src = imagenes[contador];
+        }
+     </script>
+ </HEAD>
+ <BODY>
+     <img src="cero.jpeg" name="h1">
+     <img src="cero.jpeg" name="h2">
+     <img src="dospuntos.jpeg">
+     <img src="cero.jpeg" name="m1">
+     <img src="cero.jpeg" name="m2">
+     <img src="dospuntos.jpeg">
+     <img src="cero.jpeg" name="s1">
+     <img src="cero.jpeg" name="s2">
+
+     <script type="text/javascript">
+/*
+//        var imagenes = new Array ("cero.jpeg", "uno.jpeg", "dos.jpeg", "tres.jpeg", "cuatro.jpeg", "cinco.jpeg", "seis.jpeg", "siete.jpeg", "ocho.jpeg", "nueve.jpeg");
+//        var inicial = new Date();
+//        var contador = 0;
+//        var intervalo = setInterval("funcion()", 1000);
+*/
+alert("b");
+     </script>
+ </BODY>
+</HTML>

@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+  <SCRIPT type="text/javascript">
+    var imagenes = new Array ("george.jpg", "john.jpg", "paul.jpg", "ringo.jpg");
+    var intervalo = setInterval ("cambiarFoto()", 3000);
+    function cambiarFoto() {
+        var i = Math.floor(Math.random()*4);
+ 	document.images["Beatles"].src = imagenes[i];
+    }
+  </SCRIPT>
+ </HEAD>
+ <BODY>
+   <img src="john.jpg" name="Beatles">
+ </BODY>
+</HTML>

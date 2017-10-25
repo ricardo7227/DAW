@@ -1,0 +1,123 @@
+ <!DOCTYPE html>
+    <html>
+    <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+      <title>Objeto ordenador</title>
+      <script languaje="javascript">
+      // Definición del objeto Persona
+	 function Persona (nom, dir, fec) {
+		// Definición de propiedades de Persona
+			this.nombre          = nom;
+			this.direccion       = dir;
+			this.fechaNacimiento = fec;
+		// Definición de métodos de Persona
+			this.imprimirDatos = fnVisualizarPersona;
+			this.edad          = fnCalcularEdad;
+	 }
+alert("1");
+	// Definición de los métodos de Persona
+	 function fnVisualizarPersona () {
+			with (this) {
+				document.write("Nombre: " + nombre + "<br>");
+				document.write("Dirección: " + direccion + "<br>");
+				document.write("Fecha de nacimiento: " + fechaNacimiento + "<br>");
+			}
+	 }
+alert("2");
+	 function fnCalcularEdad () {
+			var edad = 0;
+			var fechahoy = new Date();
+			with (this) {
+				edad = fechahoy.getFullYear() - fechaNacimiento.getFullYear();
+			}
+			return edad;
+	 }
+
+      // Definición del objeto Calificaciones
+	 function Calificaciones (asi, not) {
+		// Definición de propiedades de Calificaciones
+			this.asignatura = asi;
+			this.nota       = not;
+		// Definición de métodos de Calificaciones
+			this.imprimirDatos = fnVisualizarNotas;
+	 }
+alert("3");
+	// Definición de los métodos de Calificaciones
+	 function fnVisualizarNotas () {
+			with (this) {
+				document.write(asignatura + ": " + nota + "<br>");
+			}
+	 }
+alert("4");
+      // Definición del objeto Alumno
+         function Alumno (objPersona, tablaObjCalificaciones, gru) {
+                    // Definición de propiedades del objeto Alumno
+                        this.Persona        = objPersona;
+			this.Calificaciones = tablaObjCalificaciones;
+			this.grupo          = gru;
+		    // Definición de métodos del objeto Alumno
+			this.notaMedia = fnNotaMedia;
+			this.aprobado  = fnAprobado;
+	 }
+alert("5");
+	// Definición de los métodos de Ordenador
+	 function fnNotaMedia () {
+			var nota = 0;
+			with (this) {
+				for (var i = 0; i < Calificaciones.length; i++) {
+					nota += Calificaciones[i].nota
+				}
+			}
+			return (nota / i)
+
+	 }
+alert("6");
+
+	 function fnAprobado () {
+			with (this) {
+alert(notaMedia());
+				if (notaMedia() < 5) return false
+				else return true;
+			}
+	 }
+alert("7");
+
+      </script>
+    </head>
+    <body>
+      <script type="text/javascript">
+	// Creación de un objeto Persona
+	var nomP = prompt ("Nombre", "");
+	var dirP = prompt ("Dirección", "");
+	var anoP = prompt ("Año de nacimiento", "");
+	var mesP = prompt ("Mes de nacimiento", "");
+	var diaP = prompt ("Día de nacimiento", "");
+	var fecP = new Date(anoP, mesP, diaP);
+	var objmiPersona = new Persona (nomP, dirP, fecP);
+objmiPersona.imprimirDatos();
+
+	// Creación de objetos Calificaciones
+	var numasig = parseInt(prompt("Numero de asignaturas", ""));
+	var tasig;
+	var tnota;
+	var tabla = new Array();
+	for (var i = 0; i < numasig; i++) {
+		tasig = prompt("Asignatura","");
+		tnota = parseInt(prompt("Nota", "0"));
+		var objmiCalif = new Calificaciones (tasig, tnota);
+		tabla[i] = objmiCalif;
+	}
+alert(tabla);
+
+	// Creación de un objeto Alumno
+	var grupo = prompt("Grupo del alumno", "");
+	var objmiAlumno = new Alumno(objmiPersona, tabla, grupo);
+
+	// Mostrar nota media
+	document.write("<br><br>");
+	document.write("Nota media.- " + objmiAlumno.notaMedia() + "<br><br>");
+	if (objmiAlumno.aprobado()) document.write("APROBADO")
+	else document.write("SUSPENSO");	
+      </script>
+    </body>
+    </html>

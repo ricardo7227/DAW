@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+  <style>
+    .blanco {background-color: white;}
+    .verde  {background-color: green;}
+  </style>
+  <script type="text/javascript">
+    function cambiar_color(parrafo){
+             if (parrafo.className == "blanco") parrafo.className = "verde"; else parrafo.className = "blanco";
+    }
+  </script>
+ </HEAD>
+ <BODY>
+    <p class="blanco" onmouseover="javascript:this.innerHTML='Esta usted encima de mi'"
+                      onmouseout="javascript:this.innerHTML=texto_1"
+                      onclick="cambiar_color(this)">Este es el texto inicial del primer parrafo</p>
+    <p class="blanco" onmouseover="javascript:this.innerHTML='Esta usted encima de mi'"
+                      onmouseout="javascript:this.innerHTML=texto_2"
+                      onclick="cambiar_color(this)">Este es el texto inicial del segundo parrafo</p>
+    <script>
+      var texto_1 = document.getElementsByTagName("p")[0].innerHTML;
+      var texto_2 = document.getElementsByTagName("p")[1].innerHTML;
+    </script>
+ </BODY>
+</HTML>
