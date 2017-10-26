@@ -4,6 +4,8 @@
 require_once 'config/Config.php';
 
 use controller\controllerNivel1;
+use controller\controllerNivel2;
+use controller\controllerNivel3;
 
 //parametros 
 $nivel1 = Constantes::nivel1;
@@ -31,19 +33,18 @@ if (strstr($uri, $nivel1)) {
     }
 } elseif (strstr($uri, $nivel2)) {
     $query_raw = strstr($uri, $num1);
-    echo 'sss';
+
     if (isset($paramNivel2Num1) || isset($paramNivel2Num2) || isset($paramNivel2Num3)) {
 
         $control = new controller\controllerNivel2();
         $control->processRequest();
-        
-    } elseif (strstr($uri, $nivel3)) {
-        echo '3333';
-        if (isset($paramNivel3)) {
+    }
+} elseif (strstr($uri, $nivel3)) {
+    
+    if (isset($paramNivel3)) {
 
-            $control = new controllerNivel3();
-            $control->processRequest();
-        }
+        $control = new controllerNivel3();
+        $control->processRequest();
     }
 } else {
     echo 'fff';

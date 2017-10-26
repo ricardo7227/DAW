@@ -23,8 +23,6 @@ class controllerNivel2 {
         if (isset($_SESSION[\Constantes::nivel1])) {
 
 
-
-
             $param1 = $_REQUEST[\Constantes::num1];
             if (\Constantes::passNum1 == $param1) {//primera entrada
                 $_SESSION[\Constantes::num1] = $param1;

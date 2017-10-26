@@ -33,6 +33,7 @@ class Constantes {
     const messageLevelError = "Error en %s, vuelve a nivel1 ";
     const messageLevelJumpError = "Error te has saltado cosas, vuelve a nivel1 ";
     const messageLevelNextNum = "Correcto! pasa al %s ";
+    const messageCongratulations = "Correcto! has desbloqueado todos los niveles";
     
     const error ="Error";
 
