@@ -31,7 +31,6 @@ class controllerNivel2 {
 
                 $this->setMessage(sprintf(\Constantes::messageLevelNextNum, \Constantes::num2));
             } else if (isset($_SESSION[\Constantes::num1])) {//segunda entrada
-                
                 $param2 = $_REQUEST[\Constantes::num2];
                 if (\Constantes::passNum2 == $param2) {
 
@@ -48,22 +47,20 @@ class controllerNivel2 {
                     } else {
                         $this->setMessage(sprintf(\Constantes::messageLevelError, \Constantes::nivel2));
 
-                        //pendiente error en las sessiones nivel 2
-                        // session.invalidate();
+
                     }
                 } else {
                     $this->setMessage(sprintf(\Constantes::messageLevelError, \Constantes::nivel2));
 
 
-                    //session.invalidate();
+
                 }
             } else {
                 $this->setMessage(sprintf(\Constantes::messageLevelError, \Constantes::nivel2));
-
-                //session.invalidate();
+                              
             }
         } else {
-            
+
             $this->setMessage(\Constantes::messageLevelJumpError);
         }
         $this->setDestinoPage(\Constantes::pageDestino);
@@ -80,6 +77,9 @@ class controllerNivel2 {
 
     function setMessage($message) {
         $this->message = $message;
+        if (strstr($message, \Constantes::error)) {
+            session_destroy(); //destruye toda la session si enviamos un mensaje de error            
+        }
     }
 
     function setDestinoPage($DestinoPage) {
