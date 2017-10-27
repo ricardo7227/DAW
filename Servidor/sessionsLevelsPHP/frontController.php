@@ -1,6 +1,6 @@
 <?php
 
-//sini_set('display_errors', 'On');
+ini_set('display_errors', 'On');
 require_once 'config/Config.php';
 
 use controller\controllerNivel1;
@@ -16,43 +16,50 @@ $num2 = Constantes::num2;
 $num3 = Constantes::num3;
 
 
-$paramNivel1 = $_REQUEST[$nivel1];
-$paramNivel2 = $_REQUEST[$nivel2];
-$paramNivel2Num1 = $_REQUEST[$num1];
-$paramNivel2Num2 = $_REQUEST[$num2];
-$paramNivel2Num3 = $_REQUEST[$num3];
-$paramNivel3 = $_REQUEST[$nivel3];
+
+$paramNivel1 = filter_input(INPUT_GET, $nivel1); //$_REQUEST[$nivel1];
+$paramNivel2 = isset($_REQUEST[$nivel2]);
+$paramNivel2Num1 = isset($_REQUEST[$num1]);
+$paramNivel2Num2 = isset($_REQUEST[$num2]);
+$paramNivel2Num3 = isset($_REQUEST[$num3]);
+$paramNivel3 = isset($_REQUEST[$nivel3]);
 
 $uri = $_SERVER['REQUEST_URI'];
 
-if (strstr($uri, $nivel1)) {
+if (strstr($uri, $nivel1)) {//path nivel1
     if (isset($paramNivel1)) {
 
         $control = new controllerNivel1();
         $control->processRequest($paramNivel1);
+    } else {
+        
+        setMessage(sprintf(Constantes::messageLevelParamEmpty, $nivel1, $nivel1, $nivel1));
     }
-} elseif (strstr($uri, $nivel2)) {
-    $query_raw = strstr($uri, $num1);
-
-    if (isset($paramNivel2Num1) || isset($paramNivel2Num2) || isset($paramNivel2Num3)) {
-
-        $control = new controller\controllerNivel2();
-        $control->processRequest();
-    }
-} elseif (strstr($uri, $nivel3)) {
+} elseif (strstr($uri, $nivel2)) {//path nivel2
     
-    if (isset($paramNivel3)) {
+
+    if ($paramNivel2Num1 || $paramNivel2Num2 || $paramNivel2Num3) {
+
+        $control = new controllerNivel2();
+        $control->processRequest();
+    } else {
+        
+        setMessage(sprintf(Constantes::messageLevelParamEmpty, $nivel2, $nivel2, $num1));
+    }
+} elseif (strstr($uri, $nivel3)) {//path nivel3
+    if ($paramNivel3) {
 
         $control = new controllerNivel3();
-        $control->processRequest();
+        $control->processRequest3();
+    } else {
+        
+        setMessage(sprintf(Constantes::messageLevelParamEmpty, $nivel3, $nivel3, $nivel3));
     }
 } else {
-    echo 'fff';
-    header('Status: 404 Not Found');
-    echo '<html><body><h1>Page Not Found</h1></body></html>';
+
+    include 'index.php';
 }
 
-
-    
-
-
+function setMessage($message) {
+    echo $message;
+}

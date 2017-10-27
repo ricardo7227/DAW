@@ -12,7 +12,12 @@ and open the template in the editor.
     <body><h2>
             <?php
             echo $this->message;
+            if ($this->message == Constantes::messageCongratulations){
+                echo '</br><img src="../vista/image.png" style="width: 30%;height: auto"/>';
+            }
+                
             ?>
         </h2>
+        
     </body>
 </html>

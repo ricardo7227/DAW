@@ -18,7 +18,7 @@ class controllerNivel3 {
     public $message = "Default message";
     public $pageDestino = "Default Page";
 
-    public function processRequest() {
+    public function processRequest3() {
 
         //Sessiones anteriores
         if (!isset($_SESSION[\Constantes::nivel1]) || !isset($_SESSION[\Constantes::num3])) {
@@ -26,7 +26,7 @@ class controllerNivel3 {
             $this->setMessage(\Constantes::messageLevelJumpError);
         } else {
 
-            $paramNivel3 = $_REQUEST[\Constantes::nivel3];
+            $paramNivel3 = isset($_REQUEST[\Constantes::nivel3]);
             if (isset($paramNivel3) && strlen($paramNivel3) > 0) {//parametros vacios
                 if (\Constantes::passNivel3 == $paramNivel3) {
 
