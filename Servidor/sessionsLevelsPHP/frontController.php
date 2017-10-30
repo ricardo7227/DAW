@@ -1,6 +1,6 @@
 <?php
 
-ini_set('display_errors', 'On');
+//ini_set('display_errors', 'On');
 require_once 'config/Config.php';
 
 use controller\controllerNivel1;

@@ -26,9 +26,9 @@ class controllerNivel3 {
             $this->setMessage(\Constantes::messageLevelJumpError);
         } else {
 
-            $paramNivel3 = isset($_REQUEST[\Constantes::nivel3]);
+            $paramNivel3 = $_REQUEST[\Constantes::nivel3];
             if (isset($paramNivel3) && strlen($paramNivel3) > 0) {//parametros vacios
-                if (\Constantes::passNivel3 == $paramNivel3) {
+                if (\Constantes::passNivel3 === $paramNivel3) {
 
                     $_SESSION[\Constantes::nivel3] = $paramNivel3;
                     $this->setMessage(\Constantes::messageCongratulations);

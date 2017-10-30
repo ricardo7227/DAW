@@ -25,7 +25,7 @@ class controllerNivel1 {
             $nivel1 = \Constantes::nivel1;
 
 
-            if (\Constantes::passNivel1 == $password) {
+            if (\Constantes::passNivel1 === $password) {
 
                 $_SESSION[$nivel1] = $password;
 

@@ -21,23 +21,24 @@ class controllerNivel2 {
     public function processRequest() {
 
         if (isset($_SESSION[\Constantes::nivel1])) {
+            
 
-
-            $param1 = isset($_REQUEST[\Constantes::num1]);
-            if (\Constantes::passNum1 == $param1) {//primera entrada
+            $param1 = $_REQUEST[\Constantes::num1];
+            if (\Constantes::passNum1 === $param1) {//primera entrada
+              
                 $_SESSION[\Constantes::num1] = $param1;
 
                 $this->setMessage(sprintf(\Constantes::messageLevelNextNum, \Constantes::num2));
             } else if (isset($_SESSION[\Constantes::num1])) {//segunda entrada
                 $param2 = $_REQUEST[\Constantes::num2];
-                if (\Constantes::passNum2 == $param2) {
+                if (\Constantes::passNum2 === $param2) {
 
                     $_SESSION[\Constantes::num2] = $param2;
 
                     $this->setMessage(sprintf(\Constantes::messageLevelNextNum, \Constantes::num3));
                 } else if (isset($_SESSION[\Constantes::num2])) {//tercera entrada
                     $param3 = $_REQUEST[\Constantes::num3];
-                    if (\Constantes::passNum3 == $param3) {
+                    if (\Constantes::passNum3 === $param3) {
 
                         $_SESSION[\Constantes::num3] = $param3;
 
