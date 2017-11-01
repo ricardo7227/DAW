@@ -2,5 +2,5 @@
 driverDB: com.mysql.jdbc.Driver
 urlDB: jdbc:mysql://discutivo.com:3306/discu351_test?useSSL=false
 userDB: discu351_test
-passDB: alexss00di
----
+passDB: nohay2sin3
+

@@ -19,7 +19,7 @@ class controllerNivel1 {
     public $pageDestino = "Default Page";
 
     public function processRequest($password) {
-//echo get_current_user();
+
 
         if (isset($password) && strlen($password) > 0) {//parametros vacios
             $nivel1 = \Constantes::nivel1;

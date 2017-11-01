@@ -29,6 +29,7 @@ class controllerNivel2 {
                 $_SESSION[\Constantes::num1] = $param1;
 
                 $this->setMessage(sprintf(\Constantes::messageLevelNextNum, \Constantes::num2));
+                
             } else if (isset($_SESSION[\Constantes::num1])) {//segunda entrada
                 $param2 = $_REQUEST[\Constantes::num2];
                 if (\Constantes::passNum2 === $param2) {

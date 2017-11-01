@@ -11,8 +11,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +26,7 @@ import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
+
 
 /**
  *
@@ -72,7 +74,7 @@ public class AlumnosDAO {
                 String nombre = rs.getString("NOMBRE");
                 Date fn = rs.getDate("FECHA_NACIMIENTO");
                 Boolean mayor = rs.getBoolean("MAYOR_EDAD");
-                nuevo = new Alumno();
+                nuevo = new Alumno();                               
                 nuevo.setFecha_nacimiento(fn);
                 nuevo.setId(id);
                 nuevo.setMayor_edad(mayor);
