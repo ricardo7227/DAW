@@ -14,6 +14,7 @@ import java.sql.Statement;
 
 import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,7 @@ import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
+import utils.SqlQuery;
 
 
 /**
@@ -63,17 +65,17 @@ public class AlumnosDAO {
         try {
             con = db.getConnection();
             stmt = con.createStatement();
-            String sql;
-            sql = "SELECT * FROM ALUMNOS";
-            rs = stmt.executeQuery(sql);
+            //String sql;
+            //sql = "SELECT * FROM ALUMNOS";
+            rs = stmt.executeQuery(SqlQuery.SELECT_ALL_ALUMNOS);
 
             //STEP 5: Extract data from result set
             while (rs.next()) {
                 //Retrieve by column name
-                int id = rs.getInt("ID");
-                String nombre = rs.getString("NOMBRE");
-                Date fn = rs.getDate("FECHA_NACIMIENTO");
-                Boolean mayor = rs.getBoolean("MAYOR_EDAD");
+                int id = rs.getInt(SqlQuery.ID);
+                String nombre = rs.getString(SqlQuery.NOMBRE);
+                Date fn = rs.getDate(SqlQuery.FECHA_NACIMIENTO);
+                Boolean mayor = rs.getBoolean(SqlQuery.MAYOR_EDAD);
                 nuevo = new Alumno();                               
                 nuevo.setFecha_nacimiento(fn);
                 nuevo.setId(id);
@@ -157,6 +159,25 @@ public class AlumnosDAO {
         } finally {
             db.cerrarConexion(con);
         }
+    }
+    
+    public void updateUserJDBC(Alumno alumno){
+        DBConnection dBConnection = new DBConnection();
+        Connection connection = null;
+        
+        ResultSet rs = null;
+        try {           
+            connection = dBConnection.getConnection();
+            
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO ALUMNOS (NOMBRE,FECHA_NACIMIENTO,MAYOR_EDAD) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setString(1, alumno.getNombre());
+            stmt.setDate(2, new java.sql.Date(alumno.getFecha_nacimiento().getTime()));
+            stmt.setBoolean(3, alumno.getMayor_edad());
+            
+        } catch (Exception e) {
+        }
+    
     }
 
     public void updateUser(Alumno u) {

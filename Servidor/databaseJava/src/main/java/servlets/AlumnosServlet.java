@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.Constantes;
 
 /**
  *
@@ -32,11 +33,18 @@ public class AlumnosServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        AlumnosDAO al = new AlumnosDAO();
-        al.getAllAlumnosJDBC();
-        request.setAttribute("alumnos", al);
-        request.getRequestDispatcher("resultadosJsp.jsp").forward(request, response);
+        
+        AlumnosDAO alumnosObj = new AlumnosDAO();
+        String action = request.getParameter(Constantes.actionJSP);
+        switch(action){
+            case Constantes.UPDATE:
+                
+                      
+                break;
+        
+        }
+        request.setAttribute(Constantes.alumnosList, alumnosObj.getAllAlumnosJDBC());//envia la lista al jsp
+        request.getRequestDispatcher(Constantes.alumnosJSP).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

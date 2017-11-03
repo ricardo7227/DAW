@@ -11,10 +11,11 @@ package utils;
  */
 public class Constantes {
     
-    public static final String PRUEBA = "prueba";
-
-    public static String getPRUEBA() {
-        return PRUEBA;
-    }
+    public static String alumnosList = "alumnosList";
+    public static String alumnosJSP = "resultadosJsp.jsp";
+    public static String actionJSP = "action";
+    public static final String INSERT = "INSERT";
+    public static final String UPDATE = "UPDATE";
+    public static final String DELETE = "DELETE";
     
 }
