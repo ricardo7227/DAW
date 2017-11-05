@@ -11,7 +11,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,15 +23,25 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-        </style>
+        </style>        
         <script>
             function cargarAlumno(id, nombre, fecha_nacimiento, mayor_edad) {
                 document.getElementById("id").value = id;
                 document.getElementById("nombre").value = nombre;
                 document.getElementById("fecha_nacimiento").value = fecha_nacimiento;
-                document.getElementById("mayor_edad").value = mayor_edad;
+
+                if (mayor_edad === true) {
+                    document.getElementById("mayor_edad_true").checked = true;
+                } else {
+                    document.getElementById("mayor_edad_false").checked = true;
+                }
             }
+
         </script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
     </head>
     <body>
 
@@ -45,9 +55,11 @@
             <c:forEach var="alumno" items="${alumnosList}">
                 <tr>
                     <td>
+                        <c:set var="nombre" value="${alumno.nombre}"/>
+                        
                         <button id="cargarAlumno" onClick="
-                                cargarAlumno(${alumno.id}, '${alumno.nombre}', '${alumno.fecha_nacimiento}',
-                                        '${alumno.mayor_edad}')">Cargar</button>
+                cargarAlumno(${alumno.id}, '${fn:escapeXml(nombre)}', '${alumno.fecha_nacimiento}',
+                                ${alumno.mayor_edad})">Cargar</button>
                     </td>
                     <td contenteditable="true">
                         <c:out value="${alumno.nombre}"/>
@@ -60,13 +72,14 @@
             </c:forEach>
         </table>
         <form target="">
-            <input type="hidden" name="id" id="id" value="1"><br>
+            <input type="hidden" name="id" id="id" ><br>
             Nombre:
-            <input type="text" name="nombre" id="nombre" value="Mickey"><br>
+            <input type="text" name="nombre" id="nombre" ><br>
             Fecha Nacimiento:
-            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="25-05-1999"><br>
-            Mayor de edad:
-            <input type="text" name="mayor_edad" id="mayor_edad" value="NO">
+            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="yyyy-mm-dd"><br>
+            Mayor de edad: <br>
+            Si: <input type="radio" name="mayor_edad" value="on" id="mayor_edad_true" required >
+            No: <input type="radio" name="mayor_edad" value="off" id="mayor_edad_false" >
             <br>
             <input type="submit" name="action" value="INSERT">
             <input type="submit" name="action" value="UPDATE">
@@ -74,10 +87,18 @@
         </form>  
 
 
+        <p>Nº Alumnos: 
+            <c:out value="${fn:length(alumnosList)}"/>
+        </p>
 
-        <c:out value="${fn:length(alumnosList)}"/>
+        <script>
+            if (document.getElementById("fecha_nacimiento").type !== "date") { //if browser doesn't support input type="date", initialize date picker widget:
+                $(function () {
+                    // Find any date inputs and override their functionality
+                    $('input[type="date"]').datepicker({ dateFormat: 'yy-mm-dd' });
+                });
+            }
 
-
-
+        </script>
     </body>
 </html>

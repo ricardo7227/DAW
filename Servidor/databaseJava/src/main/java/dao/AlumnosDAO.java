@@ -27,8 +27,8 @@ import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
+import sun.rmi.runtime.Log;
 import utils.SqlQuery;
-
 
 /**
  *
@@ -76,7 +76,7 @@ public class AlumnosDAO {
                 String nombre = rs.getString(SqlQuery.NOMBRE);
                 Date fn = rs.getDate(SqlQuery.FECHA_NACIMIENTO);
                 Boolean mayor = rs.getBoolean(SqlQuery.MAYOR_EDAD);
-                nuevo = new Alumno();                               
+                nuevo = new Alumno();
                 nuevo.setFecha_nacimiento(fn);
                 nuevo.setId(id);
                 nuevo.setMayor_edad(mayor);
@@ -160,25 +160,43 @@ public class AlumnosDAO {
             db.cerrarConexion(con);
         }
     }
-    
-    public void updateUserJDBC(Alumno alumno){
+
+    public void updateUserJDBC(Alumno alumno) {
         DBConnection dBConnection = new DBConnection();
         Connection connection = null;
-        
-        ResultSet rs = null;
-        try {           
+
+        PreparedStatement stmt = null;
+        try {
             connection = dBConnection.getConnection();
-            
-            PreparedStatement stmt = connection.prepareStatement("INSERT INTO ALUMNOS (NOMBRE,FECHA_NACIMIENTO,MAYOR_EDAD) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
+
+            stmt = connection.prepareStatement(SqlQuery.UPDATE_ALUMNO, Statement.RETURN_GENERATED_KEYS);
 
             stmt.setString(1, alumno.getNombre());
             stmt.setDate(2, new java.sql.Date(alumno.getFecha_nacimiento().getTime()));
             stmt.setBoolean(3, alumno.getMayor_edad());
-            
+            stmt.setInt(4, (int) alumno.getId());
+
+            if (stmt.executeUpdate() == 0) {
+                throw new SQLException("Update alumno failed, no rows affected.");
+
+            }
+
         } catch (Exception e) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            dBConnection.cerrarConexion(connection);
         }
+
+    }//fin update
     
-    }
 
     public void updateUser(Alumno u) {
         DBConnection db = new DBConnection();
@@ -281,7 +299,41 @@ public class AlumnosDAO {
         return filas;
 
     }
+public void insertUserJDBC(Alumno alumno) {
+        DBConnection dBConnection = new DBConnection();
+        Connection connection = null;
 
+        PreparedStatement stmt = null;
+        try {
+            connection = dBConnection.getConnection();
+
+            stmt = connection.prepareStatement(SqlQuery.INSERT_ALUMNO, Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setString(1, alumno.getNombre());
+            stmt.setDate(2, new java.sql.Date(alumno.getFecha_nacimiento().getTime()));
+            stmt.setBoolean(3, alumno.getMayor_edad());
+            
+
+            if (stmt.executeUpdate() == 0) {
+                throw new SQLException("Insert alumno failed, no rows affected.");                
+            }
+            
+
+        } catch (Exception e) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            dBConnection.cerrarConexion(connection);
+        }
+
+    }//fin update
     public Alumno addUser(Alumno u, String activacion) {
         DBConnection db = new DBConnection();
         Connection con = null;
@@ -306,6 +358,40 @@ public class AlumnosDAO {
         }
         return u;
 
+    }
+
+    public void deleteUserByIdJDBC(String key) {
+        DBConnection dBConnection = new DBConnection();
+        Connection connection = null;
+
+        PreparedStatement stmt = null;
+        try {
+            connection = dBConnection.getConnection();
+
+            stmt = connection.prepareStatement(SqlQuery.DELETE_ALUMNO, Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setInt(1, Integer.valueOf(key));
+                                    
+            if (stmt.executeUpdate() == 0) {
+                throw new SQLException("Delete alumno failed, no rows affected.");                
+            }
+            
+
+        } catch (Exception e) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            dBConnection.cerrarConexion(connection);
+        }
+        
+        
     }
 
 }
