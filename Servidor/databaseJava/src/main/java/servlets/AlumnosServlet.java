@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Alumno;
+import servicios.AlumnosServicios;
 import utils.Constantes;
 import utils.SqlQuery;
 
@@ -45,11 +46,12 @@ public class AlumnosServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        AlumnosDAO alumnosObj = new AlumnosDAO();
+        AlumnosServicios servicios = new AlumnosServicios();
         
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
+        
+        
+       response.setContentType("text/html;charset=UTF-8");
+       request.setCharacterEncoding("UTF-8");
         String action = request.getParameter(Constantes.actionJSP);
         Alumno alumno = null;
         Map<String, String[]> parametros = null;
@@ -57,68 +59,41 @@ public class AlumnosServlet extends HttpServlet {
 
             switch (action) {
                 case Constantes.UPDATE:
-                    alumno = new Alumno();
+                    
                     parametros = request.getParameterMap();
-
-                    alumno = tratarParametros(parametros, alumno);
-
-                    alumnosObj.updateUserJDBC(alumno);
+                    
+                    alumno = servicios.tratarParametros(parametros);
+                    servicios.updateAlumnoJDBC(alumno);
+                    
 
                     break;
                 case Constantes.INSERT:
-                    alumno = new Alumno();
+                    
                     parametros = request.getParameterMap();
-                    alumno = tratarParametros(parametros, alumno);
+                    
+                    alumno = servicios.tratarParametros(parametros);
+                    
 
-                    alumnosObj.insertUserJDBC(alumno);
+                    if(servicios.insertAlumnoJDBC(alumno)){
+                        request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryInserted);
+                    }
+                    
                     break;
                 case Constantes.DELETE:
                     String key = request.getParameter(SqlQuery.ID.toLowerCase());
                     if (key != null && !key.isEmpty()) {
-                        alumnosObj.deleteUserByIdJDBC(key);
+                        servicios.deleteAlumnoJDBC(key);
+                        
                     }
                     break;
 
             }
         }
-        request.setAttribute(Constantes.alumnosList, alumnosObj.getAllAlumnosJDBC());//envia la lista al jsp
+        request.setAttribute(Constantes.alumnosList, servicios.getAllAlumnos());//envia la lista al jsp
         request.getRequestDispatcher(Constantes.alumnosJSP).forward(request, response);
     }
 
-    private Alumno tratarParametros(Map<String, String[]> parametros, Alumno alumno) throws UnsupportedEncodingException {
-        if (parametros != null && !parametros.isEmpty()) {
-
-            Iterator<String> it = parametros.keySet().iterator();
-
-            while (it.hasNext()) {
-                String key = (String) it.next();
-                String[] values = (String[]) parametros.get(key);
-                if (values[0] != null && !values[0].isEmpty()) {
-
-                    if (SqlQuery.ID.equalsIgnoreCase(key)) {
-                        alumno.setId(Long.valueOf(values[0]));
-                    } else if (SqlQuery.NOMBRE.equalsIgnoreCase(key)) {
-                        alumno.setNombre(new String(values[0].getBytes("UTF-8")));
-                    } else if (SqlQuery.FECHA_NACIMIENTO.equalsIgnoreCase(key)) {
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                        java.util.Date parseDate = null;
-                        try {
-                            parseDate = dateFormat.parse(values[0]);
-                            alumno.setFecha_nacimiento(new Date(parseDate.getTime()));
-                        } catch (ParseException ex) {
-                            Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-
-                    } else if (SqlQuery.MAYOR_EDAD.equalsIgnoreCase(key)) {
-                        alumno.setMayor_edad("on".equals(values[0]) ? Boolean.TRUE : Boolean.FALSE);
-                    }
-                }
-
-            }
-
-        }
-        return alumno;
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -28,6 +28,7 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 import sun.rmi.runtime.Log;
+import utils.Funciones;
 import utils.SqlQuery;
 
 /**
@@ -169,17 +170,14 @@ public class AlumnosDAO {
         try {
             connection = dBConnection.getConnection();
 
-            stmt = connection.prepareStatement(SqlQuery.UPDATE_ALUMNO, Statement.RETURN_GENERATED_KEYS);
+            stmt = connection.prepareStatement(SqlQuery.UPDATE_ALUMNO);
 
             stmt.setString(1, alumno.getNombre());
             stmt.setDate(2, new java.sql.Date(alumno.getFecha_nacimiento().getTime()));
             stmt.setBoolean(3, alumno.getMayor_edad());
             stmt.setInt(4, (int) alumno.getId());
 
-            if (stmt.executeUpdate() == 0) {
-                throw new SQLException("Update alumno failed, no rows affected.");
-
-            }
+            stmt.executeUpdate();
 
         } catch (Exception e) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -196,7 +194,6 @@ public class AlumnosDAO {
         }
 
     }//fin update
-    
 
     public void updateUser(Alumno u) {
         DBConnection db = new DBConnection();
@@ -216,93 +213,10 @@ public class AlumnosDAO {
         }
     }
 
-    public boolean recuperarUser(Alumno u, String activacion) {
-        DBConnection db = new DBConnection();
-        Connection con = null;
-        boolean ok = false;
-        try {
-            con = db.getConnection();
-            QueryRunner qr = new QueryRunner();
-
-            int filas = qr.update(con,
-                    "UPDATE LOGIN SET ACTIVACION=?, FECHA_RENOVACION = now() WHERE ID=?",
-                    activacion, u.getId());
-            if (filas >= 1) {
-                ok = true;
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.cerrarConexion(con);
-        }
-        return ok;
-    }
-
-    public void updateUserPassword(Alumno u) {
-        DBConnection db = new DBConnection();
-        Connection con = null;
-        try {
-            con = db.getConnection();
-            QueryRunner qr = new QueryRunner();
-
-            int filas = qr.update(con,
-                    "UPDATE LOGIN SET PASSWORD=?,MAIL=? WHERE USER=?",
-                    "", "", "");
-
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.cerrarConexion(con);
-        }
-    }
-
-    public int cambiarPassUser(String codigo, String password) {
-        DBConnection db = new DBConnection();
-        Connection con = null;
-        int filas = 0;
-        try {
-            con = db.getConnection();
-            QueryRunner qr = new QueryRunner();
-
-            filas = qr.update(con,
-                    "UPDATE LOGIN SET PASSWORD=? WHERE ACTIVACION=? "
-                    + "AND fecha_renovacion > date_sub(now(),INTERVAL 1 HOUR)",
-                    password, codigo);
-
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.cerrarConexion(con);
-        }
-        return filas;
-
-    }
-
-    public int activarUser(String activacion) {
-        DBConnection db = new DBConnection();
-        Connection con = null;
-        int filas = 0;
-        try {
-            con = db.getConnection();
-            QueryRunner qr = new QueryRunner();
-
-            filas = qr.update(con,
-                    "UPDATE LOGIN SET ACTIVO=1 WHERE ACTIVACION=? "
-                    + "AND fecha_renovacion > date_sub(now(),INTERVAL 1 HOUR)",
-                    activacion);
-
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.cerrarConexion(con);
-        }
-        return filas;
-
-    }
-public void insertUserJDBC(Alumno alumno) {
+    public boolean insertUserJDBC(Alumno alumno) {
         DBConnection dBConnection = new DBConnection();
         Connection connection = null;
-
+        boolean insertado = false;
         PreparedStatement stmt = null;
         try {
             connection = dBConnection.getConnection();
@@ -312,12 +226,10 @@ public void insertUserJDBC(Alumno alumno) {
             stmt.setString(1, alumno.getNombre());
             stmt.setDate(2, new java.sql.Date(alumno.getFecha_nacimiento().getTime()));
             stmt.setBoolean(3, alumno.getMayor_edad());
-            
 
-            if (stmt.executeUpdate() == 0) {
-                throw new SQLException("Insert alumno failed, no rows affected.");                
+            if (stmt.executeUpdate() > 0) {
+                insertado = Boolean.TRUE;
             }
-            
 
         } catch (Exception e) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -331,9 +243,12 @@ public void insertUserJDBC(Alumno alumno) {
             }
 
             dBConnection.cerrarConexion(connection);
+
         }
+        return insertado;
 
     }//fin update
+
     public Alumno addUser(Alumno u, String activacion) {
         DBConnection db = new DBConnection();
         Connection con = null;
@@ -371,11 +286,8 @@ public void insertUserJDBC(Alumno alumno) {
             stmt = connection.prepareStatement(SqlQuery.DELETE_ALUMNO, Statement.RETURN_GENERATED_KEYS);
 
             stmt.setInt(1, Integer.valueOf(key));
-                                    
-            if (stmt.executeUpdate() == 0) {
-                throw new SQLException("Delete alumno failed, no rows affected.");                
-            }
-            
+
+            stmt.executeUpdate();
 
         } catch (Exception e) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -390,8 +302,7 @@ public void insertUserJDBC(Alumno alumno) {
 
             dBConnection.cerrarConexion(connection);
         }
-        
-        
+
     }
 
 }

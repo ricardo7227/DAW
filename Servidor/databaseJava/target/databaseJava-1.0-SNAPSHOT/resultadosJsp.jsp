@@ -44,7 +44,7 @@
 
     </head>
     <body>
-
+        <c:out value="${resultado}"/>
         <table class="table">
             <tr>
                 <th></th>
@@ -56,9 +56,11 @@
                 <tr>
                     <td>
                         <c:set var="nombre" value="${alumno.nombre}"/>
-                        
+
                         <button id="cargarAlumno" onClick="
-                cargarAlumno(${alumno.id}, '${fn:escapeXml(nombre)}', '${alumno.fecha_nacimiento}',
+                cargarAlumno(${alumno.id},
+                        '${fn:escapeXml(fn:replace(nombre,"'","\\'"))}'
+                        , '${alumno.fecha_nacimiento}',
                                 ${alumno.mayor_edad})">Cargar</button>
                     </td>
                     <td contenteditable="true">
@@ -71,7 +73,7 @@
                 </tr>
             </c:forEach>
         </table>
-        <form target="">
+        <form action="alumnos" >
             <input type="hidden" name="id" id="id" ><br>
             Nombre:
             <input type="text" name="nombre" id="nombre" ><br>
@@ -95,7 +97,7 @@
             if (document.getElementById("fecha_nacimiento").type !== "date") { //if browser doesn't support input type="date", initialize date picker widget:
                 $(function () {
                     // Find any date inputs and override their functionality
-                    $('input[type="date"]').datepicker({ dateFormat: 'yy-mm-dd' });
+                    $('input[type="date"]').datepicker({dateFormat: 'yy-mm-dd'});
                 });
             }
 

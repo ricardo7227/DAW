@@ -17,5 +17,7 @@ public class Constantes {
     public static final String INSERT = "INSERT";
     public static final String UPDATE = "UPDATE";
     public static final String DELETE = "DELETE";
+    public static final String resultadoQuery = "resultado";
+    public static final String messageQueryInserted = "El alumno fue insertado en la lista";
     
 }
