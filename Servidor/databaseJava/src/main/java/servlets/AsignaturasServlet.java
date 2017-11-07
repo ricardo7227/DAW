@@ -5,22 +5,17 @@
  */
 package servlets;
 
-
 import java.io.IOException;
-
-
-
-
 import java.util.Map;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Alumno;
-import servicios.AlumnosServicios;
+
+import model.Asignatura;
+import servicios.AsignaturasServicios;
 import utils.Constantes;
 import utils.SqlQuery;
 
@@ -28,8 +23,8 @@ import utils.SqlQuery;
  *
  * @author daw
  */
-@WebServlet(name = "AlumnosServlet", urlPatterns = {"/alumnos"})
-public class AlumnosServlet extends HttpServlet {
+@WebServlet(name = "AsignaturasServlet", urlPatterns = {"/asignaturas"})
+public class AsignaturasServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,54 +37,53 @@ public class AlumnosServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AlumnosServicios servicios = new AlumnosServicios();
-        
-        
-        
-       response.setContentType("text/html;charset=UTF-8");
-       request.setCharacterEncoding("UTF-8");
+
+        AsignaturasServicios servicios = new AsignaturasServicios();
+
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter(Constantes.actionJSP);
-        Alumno alumno = null;
+        Asignatura asignatura = null;
         Map<String, String[]> parametros = null;
         if (action != null && !action.isEmpty()) {
 
             switch (action) {
                 case Constantes.UPDATE:
-                    
+
                     parametros = request.getParameterMap();
-                    
-                    alumno = servicios.tratarParametros(parametros);
-                    servicios.updateAlumnoJDBC(alumno);
-                    
+
+                    asignatura = servicios.tratarParametros(parametros);
+                    int filas = servicios.updateAsignaturadbUtils(asignatura);
+
+                    request.setAttribute(Constantes.resultadoQuery,
+                            (filas > 0 ? Constantes.messageQueryAsignaturaUpdated : Constantes.messageQueryAsignaturaUpdateFailed));
 
                     break;
                 case Constantes.INSERT:
-                    
-                    parametros = request.getParameterMap();
-                    
-                    alumno = servicios.tratarParametros(parametros);
-                    
 
-                    if(servicios.insertAlumnoJDBC(alumno)){
-                        request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryAlumnoInserted);
+                    parametros = request.getParameterMap();
+
+                    asignatura = servicios.tratarParametros(parametros);
+
+                    if (servicios.insertAsignaturadbUtils(asignatura)) {
+                        request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryAsignaturaInserted);
                     }
-                    
+
                     break;
                 case Constantes.DELETE:
                     String key = request.getParameter(SqlQuery.ID.toLowerCase());
                     if (key != null && !key.isEmpty()) {
-                        servicios.deleteAlumnoJDBC(key);
-                        
+                        servicios.deleteAsignaturadbUtils(key);
+
                     }
                     break;
 
             }
         }
-        request.setAttribute(Constantes.alumnosList, servicios.getAllAlumnos());//envia la lista al jsp
-        request.getRequestDispatcher(Constantes.alumnosJSP).forward(request, response);
-    }
 
-    
+        request.setAttribute(Constantes.asignaturasList, servicios.getAllAsignaturasdbUtils());//envia la lista al jsp
+        request.getRequestDispatcher(Constantes.asignaturasJSP).forward(request, response);
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

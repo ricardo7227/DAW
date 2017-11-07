@@ -27,8 +27,7 @@ import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
-import sun.rmi.runtime.Log;
-import utils.Funciones;
+
 import utils.SqlQuery;
 
 /**
