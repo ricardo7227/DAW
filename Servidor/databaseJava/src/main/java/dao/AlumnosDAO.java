@@ -36,24 +36,7 @@ import utils.SqlQuery;
  */
 public class AlumnosDAO {
 
-    public List<Alumno> getAllAlumnos() {
-        List<Alumno> lista = null;
-        DBConnection db = new DBConnection();
-        Connection con = null;
-        try {
-            con = db.getConnection();
-            QueryRunner qr = new QueryRunner();
-            ResultSetHandler<List<Alumno>> h
-                    = new BeanListHandler<Alumno>(Alumno.class);
-            lista = qr.query(con, "select * FROM ALUMNOS", h);
-
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.cerrarConexion(con);
-        }
-        return lista;
-    }
+    
 
     public List<Alumno> getAllAlumnosJDBC() {
         List<Alumno> lista = new ArrayList<>();
@@ -104,62 +87,9 @@ public class AlumnosDAO {
 
     }
 
-    public Alumno getUserById(int id) {
-        Alumno user = null;
-        DBConnection db = new DBConnection();
+   
 
-        Connection con = null;
-        try {
-            Context ctx = new InitialContext();
-            DataSource ds = (DataSource) ctx.lookup("jdbc/db4free");
-            con = ds.getConnection();
-            QueryRunner qr = new QueryRunner();
-            ResultSetHandler<Alumno> h
-                    = new BeanHandler<>(Alumno.class);
-            user = qr.query(con, "select * FROM ALUMNOS where ID = ?", h, id);
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.cerrarConexion(con);
-        }
-        return user;
-    }
 
-    public Alumno getUser(Alumno userOriginal) {
-        Alumno user = null;
-        DBConnection db = new DBConnection();
-        Connection con = null;
-        try {
-            con = db.getConnection();
-            QueryRunner qr = new QueryRunner();
-            ResultSetHandler<Alumno> h
-                    = new BeanHandler<>(Alumno.class);
-            user = qr.query(con, "select * FROM LOGIN where USER = ?", h, userOriginal.getNombre());
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.cerrarConexion(con);
-        }
-        return user;
-    }
-
-    public void delUser(Alumno u) {
-        DBConnection db = new DBConnection();
-        Connection con = null;
-        try {
-            con = db.getConnection();
-            QueryRunner qr = new QueryRunner();
-
-            int filas = qr.update(con,
-                    "DELETE FROM LOGIN WHERE ID=?",
-                    u.getId());
-
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.cerrarConexion(con);
-        }
-    }
 
     public void updateUserJDBC(Alumno alumno) {
         DBConnection dBConnection = new DBConnection();
@@ -194,23 +124,7 @@ public class AlumnosDAO {
 
     }//fin update
 
-    public void updateUser(Alumno u) {
-        DBConnection db = new DBConnection();
-        Connection con = null;
-        try {
-            con = db.getConnection();
-            QueryRunner qr = new QueryRunner();
-
-            int filas = qr.update(con,
-                    "UPDATE LOGIN SET MAIL=? WHERE USER=?",
-                    "", "");
-
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.cerrarConexion(con);
-        }
-    }
+    
 
     public boolean insertUserJDBC(Alumno alumno) {
         DBConnection dBConnection = new DBConnection();
@@ -248,31 +162,7 @@ public class AlumnosDAO {
 
     }//fin update
 
-    public Alumno addUser(Alumno u, String activacion) {
-        DBConnection db = new DBConnection();
-        Connection con = null;
-
-        try {
-            con = db.getConnection();
-            con.setAutoCommit(false);
-            QueryRunner qr = new QueryRunner();
-
-            BigInteger id = qr.insert(con,
-                    "INSERT INTO LOGIN (USER,PASSWORD,MAIL,ACTIVACION,ACTIVO,FECHA_RENOVACION) VALUES(?,?,?,?,?,now())",
-                    new ScalarHandler<BigInteger>(),
-                    "", "", "", activacion, 0);
-
-            u.setId(id.longValue());
-            con.commit();
-
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.cerrarConexion(con);
-        }
-        return u;
-
-    }
+    
 
     public void deleteUserByIdJDBC(String key) {
         DBConnection dBConnection = new DBConnection();
@@ -304,4 +194,4 @@ public class AlumnosDAO {
 
     }
 
-}
+}//fin clase

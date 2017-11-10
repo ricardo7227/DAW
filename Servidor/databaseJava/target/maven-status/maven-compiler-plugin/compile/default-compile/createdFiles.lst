@@ -1,6 +1,9 @@
 servicios/AsignaturasServicios.class
 config/ConfigListener.class
+dao/NotasDAO.class
 model/Alumno.class
+servlets/NotasServlet.class
+model/Nota.class
 model/Asignatura.class
 dao/DBConnection.class
 utils/Funciones.class
@@ -8,6 +11,7 @@ servicios/AlumnosServicios.class
 utils/SqlQuery.class
 config/Configuration.class
 dao/AlumnosDAO.class
+servicios/NotasServicios.class
 utils/Constantes.class
 servlets/AlumnosServlet.class
 servlets/AsignaturasServlet.class

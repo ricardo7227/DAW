@@ -21,6 +21,10 @@ public class SqlQuery {
     public static String CURSO = "CURSO";
     public static String CICLO = "CICLO";
     
+    //columnas tabla notas
+    public static String ID_ALUMNO = "ID_ALUMNO";
+    public static String ID_ASIGNATURA = "ID_ASIGNATURA";
+    public static String NOTA = "NOTA";
     
     public static String SELECT_ALL_ALUMNOS = "SELECT * FROM ALUMNOS";
     public static String UPDATE_ALUMNO = "UPDATE ALUMNOS SET NOMBRE = ? , FECHA_NACIMIENTO = ?, MAYOR_EDAD = ? WHERE ID = ?";
@@ -31,6 +35,10 @@ public class SqlQuery {
     public static String INSERT_ASIGNATURA = "INSERT INTO ASIGNATURAS (NOMBRE, CURSO, CICLO) VALUES(?,?,?)";
     public static String UPDATE_ASIGNATURA = "UPDATE ASIGNATURAS SET NOMBRE= ? , CURSO = ? , CICLO = ? WHERE ID = ?";
     public static String DELETE_ASIGNATURA = "DELETE FROM ASIGNATURAS WHERE ID = ? ";
+    
+    public static String SELECT_NOTA = "SELECT NOTAS.ID_ALUMNO,NOTAS.ID_ASIGNATURA,NOTAS.NOTA FROM NOTAS, ALUMNOS, ASIGNATURAS "
+            + "WHERE NOTAS.ID_ALUMNO = ALUMNOS.ID AND ASIGNATURAS.ID = NOTAS.ID_ASIGNATURA "
+            + "AND NOTAS.ID_ASIGNATURA = ? AND NOTAS.ID_ALUMNO = ?";
     
     //public static String UPDATE_ALUMNO = "UPDATE ALUMNOS SET NOMBRE =\" ? \", FECHA_NACIMIENTO = str_to_date(\"?\",\"%d-%m-%Y\"), MAYOR_EDAD = ? WHERE ID = ?";
 

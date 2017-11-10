@@ -39,12 +39,7 @@ public class AlumnosServicios {
         return dao.getAllAlumnosJDBC();
     }
     
-    public Alumno getAlumnoById(int id){
-        
-        
-        return dao.getUserById(id);
-        
-    }
+    
     public boolean addAlumno(Alumno alumnoNuevo)
     {
         
