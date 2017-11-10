@@ -12,7 +12,7 @@ utils/SqlQuery.class
 config/Configuration.class
 dao/AlumnosDAO.class
 servicios/NotasServicios.class
-utils/Constantes.class
-servlets/AlumnosServlet.class
 servlets/AsignaturasServlet.class
+servlets/AlumnosServlet.class
+utils/Constantes.class
 dao/AsignaturasDAO.class

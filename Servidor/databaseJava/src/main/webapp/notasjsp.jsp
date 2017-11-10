@@ -21,13 +21,19 @@
                 </c:forEach>
 
             </select> 
-            <select name="alumno">
-                <c:forEach var="id_alumno" items="${alumnosList}">
+            <select name="id_alumno">
+                <c:forEach var="alumno" items="${alumnosList}">
                     <option value="${alumno.id}">${fn:escapeXml(fn:replace(alumno.nombre,"'","\\'"))}</option>
                 </c:forEach>
 
             </select> 
-            <input type="text" name="nota" value="${nota.nota}">
+            <c:if test="${not empty notaResult.nota}">
+            <input type="text" name="nota" value="${notaResult.nota}">    
+            </c:if>
+            <c:if test="${empty notaResult.nota}">
+            <input type="text" name="nota" placeholder="${resultado}">    
+            </c:if>
+            
             <input type="submit" name="action" value="VIEW">
             <input type="submit" name="action" value="UPDATE">
         </form>

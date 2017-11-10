@@ -32,4 +32,6 @@ public class Constantes {
     public static final String messageQueryAsignaturaUpdated = "Asignatura actualizada correctamente";
     public static final String messageQueryAsignaturaUpdateFailed = "Error en la actualización de Asignatura";
     
+    public static final String messageQueryNotaMissing = "No tiene nota";
+    
 }

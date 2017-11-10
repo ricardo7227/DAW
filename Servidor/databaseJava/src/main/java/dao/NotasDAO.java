@@ -5,23 +5,25 @@
  */
 package dao;
 
-import java.sql.Array;
+
+import java.math.BigInteger;
 import java.sql.Connection;
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Alumno;
+import model.Asignatura;
+
 
 import model.Nota;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import utils.SqlQuery;
 
@@ -97,4 +99,28 @@ public class NotasDAO {
         }
         return nota;
     }
+    
+    public int updateNotadbUtils(Nota nota) {
+        int filas = -1;
+        DBConnection db = new DBConnection();
+        Connection con = null;
+
+        try {
+            con = db.getConnection();
+
+            QueryRunner qr = new QueryRunner();
+
+            filas = qr.update(con,
+                    SqlQuery.UPDATE_ASIGNATURA,
+                   nota.getNota());
+
+        } catch (Exception ex) {
+            Logger.getLogger(AsignaturasDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.cerrarConexion(con);
+        }
+
+        return filas;
+    }
+    
 }//fin clase

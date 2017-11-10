@@ -6,7 +6,7 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,13 +50,22 @@ public class NotasServlet extends HttpServlet {
 
                     parametros = request.getParameterMap();
                     int[] claves = serviciosNotas.tratarParametros(parametros);
-                    
+
                     nota = serviciosNotas.getNota(claves[0], claves[1]);
 
-                    request.setAttribute(Constantes.notaResult,
-                            (nota != null ? nota : Constantes.messageQueryAsignaturaUpdateFailed));
+                    if (nota != null) {
+                        request.setAttribute(Constantes.notaResult, nota);
+                    } else {
+                        request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryNotaMissing);
+                    }
 
                     break;
+                    
+                case Constantes.UPDATE:
+                    //actualizar nota
+                    break;
+                    
+
             }
 
         }
