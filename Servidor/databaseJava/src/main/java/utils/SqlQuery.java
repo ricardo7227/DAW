@@ -39,6 +39,10 @@ public class SqlQuery {
     public static String SELECT_NOTA = "SELECT NOTAS.ID_ALUMNO,NOTAS.ID_ASIGNATURA,NOTAS.NOTA FROM NOTAS, ALUMNOS, ASIGNATURAS "
             + "WHERE NOTAS.ID_ALUMNO = ALUMNOS.ID AND ASIGNATURAS.ID = NOTAS.ID_ASIGNATURA "
             + "AND NOTAS.ID_ASIGNATURA = ? AND NOTAS.ID_ALUMNO = ?";
+    public static String UPDATE_NOTA = "UPDATE NOTAS " +
+            "SET NOTA = ? " +
+            "WHERE ID_ALUMNO = ? AND ID_ASIGNATURA = ?";
+    public static String INSERT_NOTAS = "INSERT INTO NOTAS (ID_ALUMNO, ID_ASIGNATURA, NOTA) VALUES (?,?,?)";
     
     //public static String UPDATE_ALUMNO = "UPDATE ALUMNOS SET NOMBRE =\" ? \", FECHA_NACIMIENTO = str_to_date(\"?\",\"%d-%m-%Y\"), MAYOR_EDAD = ? WHERE ID = ?";
 

@@ -100,8 +100,9 @@ public class NotasDAO {
         return nota;
     }
     
-    public int updateNotadbUtils(Nota nota) {
+    public boolean updateNotadbUtils(Nota nota) {
         int filas = -1;
+        boolean updated = false;
         DBConnection db = new DBConnection();
         Connection con = null;
 
@@ -111,16 +112,47 @@ public class NotasDAO {
             QueryRunner qr = new QueryRunner();
 
             filas = qr.update(con,
-                    SqlQuery.UPDATE_ASIGNATURA,
-                   nota.getNota());
-
+                    SqlQuery.UPDATE_NOTA,
+                   nota.getNota(),
+                   nota.getId_alumno(),
+                   nota.getId_asignatura());
+           
+            if (filas > 0) {
+                updated = true;
+            }
         } catch (Exception ex) {
-            Logger.getLogger(AsignaturasDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NotasDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             db.cerrarConexion(con);
         }
 
-        return filas;
+        return updated;
+    }
+
+    public boolean insertNotadbUtils(Nota nota) {
+        DBConnection db = new DBConnection();
+        Connection con = null;
+        boolean insertado = false;
+        try {
+            con = db.getConnection();
+
+            QueryRunner qr = new QueryRunner();
+
+            int id = qr.insert(con,
+                    SqlQuery.INSERT_NOTAS,
+                    new ScalarHandler<Integer>(),
+                   nota.getId_alumno(), nota.getId_asignatura(),nota.getNota());
+
+            if (id > 0) {
+                insertado = Boolean.TRUE;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(NotasDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.cerrarConexion(con);
+        }
+        return insertado;
     }
     
 }//fin clase

@@ -42,34 +42,51 @@ public class NotasServlet extends HttpServlet {
         AlumnosServicios alumnosServicios = new AlumnosServicios();
         AsignaturasServicios asignaturasServicios = new AsignaturasServicios();
         Nota nota = null;
+        Nota claves = null;
         String action = request.getParameter(Constantes.actionJSP);
         Map<String, String[]> parametros = null;
         if (action != null && !action.isEmpty()) {
+
+            parametros = request.getParameterMap();
+            claves = serviciosNotas.tratarParametros(parametros);
+
             switch (action) {
                 case Constantes.VIEW://buscamos la nota 
 
-                    parametros = request.getParameterMap();
-                    int[] claves = serviciosNotas.tratarParametros(parametros);
-
-                    nota = serviciosNotas.getNota(claves[0], claves[1]);
+                    nota = serviciosNotas.getNota(claves);
 
                     if (nota != null) {
                         request.setAttribute(Constantes.notaResult, nota);
                     } else {
                         request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryNotaMissing);
+                        claves.setNota(-1);//no tenemos nota la base de datos
+
                     }
 
                     break;
-                    
+
                 case Constantes.UPDATE:
                     //actualizar nota
+                    //1* consultar en notas
+                    //si -> actualizar update
+                    //no -> insert
+                    boolean resultado = Boolean.FALSE;
+                    if (serviciosNotas.getNota(claves) != null) {
+                        resultado = serviciosNotas.updateNota(claves);
+                    } else {
+                        resultado = serviciosNotas.insertNota(claves);//crear el insert alternativo a dbutils, ahora actualiza pero salta una exception, aunque lo realiza. Qué pasa?
+                    }
+                    request.setAttribute(Constantes.notaMessage, (resultado) ? Constantes.messageQueryNotaUpdated : Constantes.messageQueryNotaUpdatedFail);
+
                     break;
-                    
 
             }
 
         }
-
+        
+        if (claves != null) {
+            request.setAttribute(Constantes.notaResult, claves);
+        }
         request.setAttribute(Constantes.asignaturasList, asignaturasServicios.getAllAsignaturasdbUtils());//envia la lista al jsp
         request.setAttribute(Constantes.alumnosList, alumnosServicios.getAllAlumnos());
 

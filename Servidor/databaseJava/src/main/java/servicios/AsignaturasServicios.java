@@ -63,13 +63,13 @@ public class AsignaturasServicios {
                     if (SqlQuery.ID.equalsIgnoreCase(key)) {
                         asignatura.setId(Long.valueOf(values[0]));
                     } else if (SqlQuery.NOMBRE.equalsIgnoreCase(key)) {
-                        asignatura.setNombre(new String(values[0].getBytes("UTF-8")));
+                        asignatura.setNombre(values[0]);
                     } else if (SqlQuery.CURSO.equalsIgnoreCase(key)) {
 
-                        asignatura.setCurso(new String(values[0].getBytes("UTF-8")));
+                        asignatura.setCurso(values[0]);
 
                     } else if (SqlQuery.CICLO.equalsIgnoreCase(key)) {
-                        asignatura.setCiclo(new String(values[0].getBytes("UTF-8")));
+                        asignatura.setCiclo(values[0]);
 
                     }
                 }

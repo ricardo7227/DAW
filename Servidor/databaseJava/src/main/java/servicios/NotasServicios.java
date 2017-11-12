@@ -8,7 +8,7 @@ package servicios;
 import dao.NotasDAO;
 import java.util.Iterator;
 import java.util.Map;
-import model.Asignatura;
+
 import model.Nota;
 import utils.SqlQuery;
 
@@ -24,15 +24,15 @@ public class NotasServicios {
         dao = new NotasDAO();
     }
 
-    public Nota getNota(int idAlumno, int Asignatura) {
-        return dao.getNotaJDBC(idAlumno, Asignatura);
+    public Nota getNota(Nota nota) {
+        return dao.getNotaJDBC((int) nota.getId_alumno(), (int) nota.getId_asignatura());
     }
 
-    public int[] tratarParametros(Map<String, String[]> parametros) {
-        int claves [] = null;
+    public Nota tratarParametros(Map<String, String[]> parametros) {
+        Nota claves = null;
         if (parametros != null && !parametros.isEmpty()) {
 
-            claves = new int[2];
+            claves = new Nota();
 
             Iterator<String> it = parametros.keySet().iterator();
 
@@ -42,16 +42,26 @@ public class NotasServicios {
                 if (values[0] != null && !values[0].isEmpty()) {
 
                     if (SqlQuery.ID_ALUMNO.equalsIgnoreCase(key)) {
-                        claves[0] = Integer.valueOf(values[0]);
+                        claves.setId_alumno(Long.valueOf(values[0]));
                     } else if (SqlQuery.ID_ASIGNATURA.equalsIgnoreCase(key)) {
-                        claves[1] = Integer.valueOf(values[0]);
-                    }  
+                        claves.setId_asignatura(Long.valueOf(values[0]));
+                    } else if (SqlQuery.NOTA.equalsIgnoreCase(key)) {
+                        claves.setNota(Integer.valueOf(values[0]));
+                    }
                 }
 
             }
 
         }
         return claves;
+    }
+
+    public boolean updateNota(Nota nota) {
+        return dao.updateNotadbUtils(nota);
+    }
+
+    public boolean insertNota(Nota nota) {
+        return dao.insertNotadbUtils(nota);
     }
 
 }//fin clase

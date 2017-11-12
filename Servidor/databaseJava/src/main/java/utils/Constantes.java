@@ -14,6 +14,7 @@ public class Constantes {
     public static String alumnosList = "alumnosList";
     public static String asignaturasList = "asignaturasList";
     public static String notaResult = "notaResult";
+    public static String notaMessage = "notaMessage";
     
     public static String alumnosJSP = "resultadosJsp.jsp";
     public static String asignaturasJSP = "asignaturasjsp.jsp";
@@ -33,5 +34,8 @@ public class Constantes {
     public static final String messageQueryAsignaturaUpdateFailed = "Error en la actualización de Asignatura";
     
     public static final String messageQueryNotaMissing = "No tiene nota";
+    public static final String messageQueryNotaUpdated = "Hemos actualizado la nota correctamente";
+    public static final String messageQueryNotaUpdatedFail = "Falló en la actualización de Nota";
+    
     
 }

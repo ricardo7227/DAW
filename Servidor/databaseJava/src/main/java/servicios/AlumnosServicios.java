@@ -80,7 +80,7 @@ public class AlumnosServicios {
                     if (SqlQuery.ID.equalsIgnoreCase(key)) {
                         alumno.setId(Long.valueOf(values[0]));
                     } else if (SqlQuery.NOMBRE.equalsIgnoreCase(key)) {
-                        alumno.setNombre(new String(values[0].getBytes("UTF-8")));
+                        alumno.setNombre(values[0]);
                     } else if (SqlQuery.FECHA_NACIMIENTO.equalsIgnoreCase(key)) {
                         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                         java.util.Date parseDate = null;
