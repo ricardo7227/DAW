@@ -5,14 +5,9 @@
  */
 package servlets;
 
-
 import java.io.IOException;
 
-
-
-
 import java.util.Map;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,44 +38,49 @@ public class AlumnosServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         AlumnosServicios servicios = new AlumnosServicios();
+
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         
-        
-        
-       response.setContentType("text/html;charset=UTF-8");
-       request.setCharacterEncoding("UTF-8");
         String action = request.getParameter(Constantes.actionJSP);
         Alumno alumno = null;
-        Map<String, String[]> parametros = null;
+        Map<String, String[]> parametros = request.getParameterMap();
         if (action != null && !action.isEmpty()) {
 
             switch (action) {
                 case Constantes.UPDATE:
-                    
-                    parametros = request.getParameterMap();
-                    
+
                     alumno = servicios.tratarParametros(parametros);
-                    servicios.updateAlumnoJDBC(alumno);
-                    
+                    if (servicios.updateAlumnoJDBC(alumno)) {
+                        request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryAlumnoUpdated);
+                    }
 
                     break;
                 case Constantes.INSERT:
-                    
-                    parametros = request.getParameterMap();
-                    
-                    alumno = servicios.tratarParametros(parametros);
-                    
 
-                    if(servicios.insertAlumnoJDBC(alumno)){
+                    //parametros = request.getParameterMap();
+                    alumno = servicios.tratarParametros(parametros);
+
+                    if (servicios.insertAlumnoJDBC(alumno)) {
                         request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryAlumnoInserted);
                     }
-                    
+
                     break;
                 case Constantes.DELETE:
                     String key = request.getParameter(SqlQuery.ID.toLowerCase());
+                    boolean deleted = false;
                     if (key != null && !key.isEmpty()) {
-                        servicios.deleteAlumnoJDBC(key);
-                        
+                        deleted = servicios.deleteAlumnoJDBC(key);
                     }
+                    if (!deleted) {
+                        alumno = servicios.tratarParametros(parametros);
+                        request.setAttribute(Constantes.alumnoResult, alumno);
+                        request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryAlumnoDeletedFail);
+                    }
+                    break;
+                case Constantes.DELETE_FORCE:
+                        //1º -> BORRAR NOTA - LLAMAR SERVICIO DE NOTAS
+                        //2º -> BORRAR ALUMNO
                     break;
 
             }
@@ -88,8 +88,6 @@ public class AlumnosServlet extends HttpServlet {
         request.setAttribute(Constantes.alumnosList, servicios.getAllAlumnos());//envia la lista al jsp
         request.getRequestDispatcher(Constantes.alumnosJSP).forward(request, response);
     }
-
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

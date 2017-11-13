@@ -16,6 +16,8 @@ public class Constantes {
     public static String notaResult = "notaResult";
     public static String notaMessage = "notaMessage";
     
+    public static String alumnoResult = "alumnoResult";
+    
     public static String alumnosJSP = "resultadosJsp.jsp";
     public static String asignaturasJSP = "asignaturasjsp.jsp";
     public static String notasJSP = "notasjsp.jsp";
@@ -26,8 +28,13 @@ public class Constantes {
     public static final String UPDATE = "UPDATE";
     public static final String DELETE = "DELETE";
     public static final String VIEW = "VIEW";
+    public static final String DELETE_FORCE = "DELETE_FORCE";
+    
     public static final String resultadoQuery = "resultado";
     public static final String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";
+    public static final String messageQueryAlumnoUpdated = "El alumno fue actualizado en la lista";
+    public static final String messageQueryAlumnoDeletedFail = "Cuidado! el alumno tiene notas, Quieres borrarlo?";
+    
     public static final String messageQueryAsignaturaInserted = "Asignatura fue insertado en la lista";
     public static final String messageQueryAsignaturaInsertFailed = "Asignatura no agregada a la base de datos";
     public static final String messageQueryAsignaturaUpdated = "Asignatura actualizada correctamente";
@@ -39,3 +46,4 @@ public class Constantes {
     
     
 }
+

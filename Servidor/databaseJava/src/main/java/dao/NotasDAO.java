@@ -6,17 +6,19 @@
 package dao;
 
 
-import java.math.BigInteger;
+
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Asignatura;
+
+
 
 
 import model.Nota;
@@ -128,7 +130,7 @@ public class NotasDAO {
 
         return updated;
     }
-
+    @Deprecated
     public boolean insertNotadbUtils(Nota nota) {
         DBConnection db = new DBConnection();
         Connection con = null;
@@ -154,5 +156,40 @@ public class NotasDAO {
         }
         return insertado;
     }
+    public boolean insertUserJDBC(Nota nota) {
+        DBConnection dBConnection = new DBConnection();
+        Connection connection = null;
+        boolean insertado = false;
+        PreparedStatement stmt = null;
+        try {
+            connection = dBConnection.getConnection();
+
+            stmt = connection.prepareStatement(SqlQuery.INSERT_NOTAS, Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setInt(1,(int) nota.getId_alumno());
+            stmt.setInt(2, (int) nota.getId_asignatura());
+            stmt.setInt(3, nota.getNota());
+
+            if (stmt.executeUpdate() > 0) {
+                insertado = Boolean.TRUE;
+            }
+
+        } catch (Exception e) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            dBConnection.cerrarConexion(connection);
+
+        }
+        return insertado;
+
+    }//fin insert
     
 }//fin clase

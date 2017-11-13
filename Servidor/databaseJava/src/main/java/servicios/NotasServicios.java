@@ -61,7 +61,7 @@ public class NotasServicios {
     }
 
     public boolean insertNota(Nota nota) {
-        return dao.insertNotadbUtils(nota);
+        return dao.insertUserJDBC(nota);
     }
 
 }//fin clase

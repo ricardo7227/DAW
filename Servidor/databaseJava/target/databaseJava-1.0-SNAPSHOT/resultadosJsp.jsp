@@ -44,7 +44,22 @@
 
     </head>
     <body>
-        <c:out value="${resultado}"/>
+        <c:if test="${not empty alumnoResult}">
+            <form action="alumnos">
+                <h3><c:out value="${resultado}"/></h3>
+                <input type="hidden" name="id" value="${alumnoResult.id}" ><br>           
+                <button name="action" name="action" value="DELETE_FORCE" type="submit">Borrar Completamente</button>
+                <button name="action" name="action" value="CANCEL" type="submit">Cancelar</button>
+
+            </form>
+
+        </c:if>
+
+        <c:if test="${empty alumnoResult}">
+            <c:out value="${resultado}"/>
+
+        </c:if>
+        <br>
         <table class="table">
             <tr>
                 <th></th>

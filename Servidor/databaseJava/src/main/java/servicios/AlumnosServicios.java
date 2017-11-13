@@ -46,16 +46,16 @@ public class AlumnosServicios {
         return true;
     }
     
-    public void updateAlumnoJDBC(Alumno alumno){
-        dao.updateUserJDBC(alumno);
+    public boolean updateAlumnoJDBC(Alumno alumno){
+       return dao.updateUserJDBC(alumno);
     }
     
     public boolean insertAlumnoJDBC(Alumno alumno){
         return dao.insertUserJDBC(alumno);
     }
     
-    public  void deleteAlumnoJDBC(String id){
-        dao.deleteUserByIdJDBC(id);
+    public  boolean deleteAlumnoJDBC(String id){
+        return dao.deleteUserByIdJDBC(id);
     }
     
     /**

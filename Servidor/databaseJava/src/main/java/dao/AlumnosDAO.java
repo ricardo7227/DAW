@@ -36,8 +36,6 @@ import utils.SqlQuery;
  */
 public class AlumnosDAO {
 
-    
-
     public List<Alumno> getAllAlumnosJDBC() {
         List<Alumno> lista = new ArrayList<>();
         Alumno nuevo = null;
@@ -87,11 +85,8 @@ public class AlumnosDAO {
 
     }
 
-   
-
-
-
-    public void updateUserJDBC(Alumno alumno) {
+    public boolean updateUserJDBC(Alumno alumno) {
+        boolean updated = false;
         DBConnection dBConnection = new DBConnection();
         Connection connection = null;
 
@@ -106,8 +101,9 @@ public class AlumnosDAO {
             stmt.setBoolean(3, alumno.getMayor_edad());
             stmt.setInt(4, (int) alumno.getId());
 
-            stmt.executeUpdate();
-
+            if (stmt.executeUpdate() > 0) {
+                updated = Boolean.TRUE;
+            }
         } catch (Exception e) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
@@ -121,10 +117,8 @@ public class AlumnosDAO {
 
             dBConnection.cerrarConexion(connection);
         }
-
+        return updated;
     }//fin update
-
-    
 
     public boolean insertUserJDBC(Alumno alumno) {
         DBConnection dBConnection = new DBConnection();
@@ -160,11 +154,11 @@ public class AlumnosDAO {
         }
         return insertado;
 
-    }//fin update
+    }//fin insert
 
-    
+    public boolean deleteUserByIdJDBC(String key) {
+        boolean deleted = Boolean.FALSE;
 
-    public void deleteUserByIdJDBC(String key) {
         DBConnection dBConnection = new DBConnection();
         Connection connection = null;
 
@@ -176,9 +170,12 @@ public class AlumnosDAO {
 
             stmt.setInt(1, Integer.valueOf(key));
 
-            stmt.executeUpdate();
+            if (stmt.executeUpdate() > 0) {
+                deleted = Boolean.TRUE;
+            }
 
         } catch (Exception e) {
+
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             try {
@@ -191,7 +188,9 @@ public class AlumnosDAO {
 
             dBConnection.cerrarConexion(connection);
         }
-
+        return deleted;
     }
+    
+    //DELETE_FORCE
 
 }//fin clase
