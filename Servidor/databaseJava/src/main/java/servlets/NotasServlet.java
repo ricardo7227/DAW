@@ -74,7 +74,7 @@ public class NotasServlet extends HttpServlet {
                     if (serviciosNotas.getNota(claves) != null) {
                         resultado = serviciosNotas.updateNota(claves);
                     } else {
-                        resultado = serviciosNotas.insertNota(claves);//crear el insert alternativo a dbutils, ahora actualiza pero salta una exception, aunque lo realiza. Qué pasa?
+                        resultado = serviciosNotas.insertNota(claves);
                     }
                     request.setAttribute(Constantes.notaMessage, (resultado) ? Constantes.messageQueryNotaUpdated : Constantes.messageQueryNotaUpdatedFail);
 

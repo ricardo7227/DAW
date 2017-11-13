@@ -8,6 +8,7 @@ package servicios;
 import dao.AlumnosDAO;
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
@@ -100,6 +101,10 @@ public class AlumnosServicios {
 
         }
         return alumno;
+    }
+
+    public boolean deleteAlumnoForce(int i) throws SQLException {
+        return dao.deleteUserByIddbUtils(i);
     }
     
 }//fin clase

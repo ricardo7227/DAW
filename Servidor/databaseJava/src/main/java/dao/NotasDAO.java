@@ -191,5 +191,31 @@ public class NotasDAO {
         return insertado;
 
     }//fin insert
+
+    public boolean deleteNotadbUtils(int key) {
+        int filas = -1;
+        boolean borrado = Boolean.FALSE;
+        DBConnection db = new DBConnection();
+        Connection con = null;
+
+        try {
+            con = db.getConnection();
+
+            QueryRunner qr = new QueryRunner();
+
+            filas = qr.update(con,
+                    SqlQuery.DELETE_NOTA_ALUMNO,
+                    key);
+            if (filas > 0) {
+                borrado = Boolean.TRUE;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(AsignaturasDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.cerrarConexion(con);
+        }
+        return borrado;
+    }
     
 }//fin clase

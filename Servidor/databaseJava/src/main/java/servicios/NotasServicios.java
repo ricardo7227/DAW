@@ -64,4 +64,8 @@ public class NotasServicios {
         return dao.insertUserJDBC(nota);
     }
 
+    public boolean deleteNota(int i) {
+        return dao.deleteNotadbUtils(i);
+    }
+
 }//fin clase

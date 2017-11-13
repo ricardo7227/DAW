@@ -7,6 +7,7 @@ package dao;
 
 import java.math.BigInteger;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -96,8 +97,9 @@ public class AsignaturasDAO {
         return filas;
     }
 
-    public int deleteAsignaturadbUtils(String key) {
+    public boolean deleteAsignaturadbUtils(String key) {
         int filas = -1;
+        boolean deleted = Boolean.FALSE;
         DBConnection db = new DBConnection();
         Connection con = null;
 
@@ -109,13 +111,49 @@ public class AsignaturasDAO {
             filas = qr.update(con,
                     SqlQuery.DELETE_ASIGNATURA,
                     key);
+            if (filas > 0) {
+                deleted = Boolean.TRUE;
+            }
 
         } catch (Exception ex) {
             Logger.getLogger(AsignaturasDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             db.cerrarConexion(con);
         }
-        return filas;
+        return deleted;
+    }
+
+    public boolean deleteAsignaturadbUtilsForce(int key) throws SQLException {
+        int filasNota = -1;
+        int filasAsigantura = -1;
+        boolean borrado = Boolean.FALSE;
+        DBConnection db = new DBConnection();
+        Connection con = null;
+
+        try {
+            con = db.getConnection();
+            con.setAutoCommit(Boolean.FALSE);
+            QueryRunner qr = new QueryRunner();
+
+            filasNota = qr.update(con,
+                    SqlQuery.DELETE_NOTA_ASIGNATURA,
+                    key);
+            filasAsigantura = qr.update(con,
+                    SqlQuery.DELETE_ASIGNATURA,
+                    key);
+            
+            if (filasNota > 0 && filasAsigantura > 0) {
+                borrado = Boolean.TRUE;
+                con.commit();
+            }
+
+        } catch (Exception ex) {
+            con.rollback();
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.cerrarConexion(con);
+        }
+        return borrado;
     }
 
 }//Fin clase

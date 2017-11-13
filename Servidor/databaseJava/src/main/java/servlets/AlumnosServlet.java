@@ -6,8 +6,11 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Alumno;
 import servicios.AlumnosServicios;
+
 import utils.Constantes;
 import utils.SqlQuery;
 
@@ -41,7 +45,7 @@ public class AlumnosServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        
+
         String action = request.getParameter(Constantes.actionJSP);
         Alumno alumno = null;
         Map<String, String[]> parametros = request.getParameterMap();
@@ -79,8 +83,20 @@ public class AlumnosServlet extends HttpServlet {
                     }
                     break;
                 case Constantes.DELETE_FORCE:
-                        //1º -> BORRAR NOTA - LLAMAR SERVICIO DE NOTAS
-                        //2º -> BORRAR ALUMNO
+
+                    alumno = servicios.tratarParametros(parametros);
+                     {
+                        try {
+                            boolean borrado = servicios.deleteAlumnoForce((int) alumno.getId());
+
+                            request.setAttribute(Constantes.resultadoQuery, (borrado) ? Constantes.messageQueryAlumnoDeleted : Constantes.messageQueryAlumnoDeletedFailedAgain);
+
+                        } catch (SQLException ex) {
+                            Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    //1º -> BORRAR NOTA 
+                    //2º -> BORRAR ALUMNO
                     break;
 
             }

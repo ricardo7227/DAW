@@ -7,6 +7,7 @@ package servicios;
 
 import dao.AsignaturasDAO;
 import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
 
 import java.util.Iterator;
 import java.util.List;
@@ -43,7 +44,7 @@ public class AsignaturasServicios {
         return dao.updateAsignaturasdbUtils(asignatura);
     }
 
-    public int deleteAsignaturadbUtils(String key) {
+    public boolean deleteAsignaturadbUtils(String key) {
         return dao.deleteAsignaturadbUtils(key);
     }
 
@@ -78,5 +79,9 @@ public class AsignaturasServicios {
 
         }
         return asignatura;
+    }
+
+    public boolean deleteAsignaturaForce(int i) throws SQLException {
+        return dao.deleteAsignaturadbUtilsForce(i);
     }
 }//FIN CLASE

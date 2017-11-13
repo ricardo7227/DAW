@@ -45,7 +45,8 @@ public class SqlQuery {
     public static String INSERT_NOTAS = "INSERT INTO NOTAS (ID_ALUMNO, ID_ASIGNATURA, NOTA) VALUES (?,?,?)";
 
     //FORCE-DELETE
-    public static String DELETE_NOTA = "DELETE FROM NOTAS WHERE ID_ALUMNO = ? ";
+    public static String DELETE_NOTA_ALUMNO = "DELETE FROM NOTAS WHERE ID_ALUMNO = ? ";
+    public static String DELETE_NOTA_ASIGNATURA = "DELETE FROM NOTAS WHERE ID_ASIGNATURA = ? ";
     
     //delete from NOTAS where ID_ALUMNO = 350
     //delete from ALUMNOS where ID = 350

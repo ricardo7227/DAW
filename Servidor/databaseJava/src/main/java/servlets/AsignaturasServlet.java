@@ -6,7 +6,10 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,16 +45,16 @@ public class AsignaturasServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+
         String action = request.getParameter(Constantes.actionJSP);
         Asignatura asignatura = null;
-        Map<String, String[]> parametros = null;
+        Map<String, String[]> parametros = request.getParameterMap();
         if (action != null && !action.isEmpty()) {
 
             switch (action) {
                 case Constantes.UPDATE:
 
-                    parametros = request.getParameterMap();
-
+                    //parametros = request.getParameterMap();
                     asignatura = servicios.tratarParametros(parametros);
                     int filas = servicios.updateAsignaturadbUtils(asignatura);
 
@@ -61,8 +64,7 @@ public class AsignaturasServlet extends HttpServlet {
                     break;
                 case Constantes.INSERT:
 
-                    parametros = request.getParameterMap();
-
+                    //parametros = request.getParameterMap();
                     asignatura = servicios.tratarParametros(parametros);
 
                     if (servicios.insertAsignaturadbUtils(asignatura)) {
@@ -72,10 +74,31 @@ public class AsignaturasServlet extends HttpServlet {
                     break;
                 case Constantes.DELETE:
                     String key = request.getParameter(SqlQuery.ID.toLowerCase());
+                    boolean deleted = false;
                     if (key != null && !key.isEmpty()) {
-                        servicios.deleteAsignaturadbUtils(key);
-
+                       deleted = servicios.deleteAsignaturadbUtils(key);
+                       request.setAttribute(Constantes.resultadoQuery, (deleted) ? Constantes.messageQueryAsignaturaDeleted : Constantes.messageQueryAsignaturaDeletedFail);
                     }
+                    if (!deleted) {
+                        asignatura = servicios.tratarParametros(parametros);
+                        request.setAttribute(Constantes.asignaturaResult, asignatura);
+                        request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryAsignaturaDeletedFail);
+                    }
+                    break;
+                case Constantes.DELETE_FORCE:
+
+                    asignatura = servicios.tratarParametros(parametros);
+
+                    try {
+                        boolean borrado = servicios.deleteAsignaturaForce((int) asignatura.getId());
+                        request.setAttribute(Constantes.resultadoQuery, (borrado) ? Constantes.messageQueryAsignaturaDeleted : Constantes.messageQueryAlumnoDeletedFailedAgain);
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AsignaturasServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    //1º -> BORRAR NOTA 
+                    //2º -> BORRAR ASIGNATURA
                     break;
 
             }
