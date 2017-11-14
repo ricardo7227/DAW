@@ -57,16 +57,13 @@ public class AlumnosServlet extends HttpServlet {
                 case Constantes.UPDATE:
 
                     alumno = servicios.tratarParametros(parametros);
-                    messageToUser = (servicios.updateAlumnoJDBC(alumno)) ? Constantes.messageQueryAlumnoUpdated: Constantes.messageQueryAlumnoDeletedFail;
-                    
+                    messageToUser = (servicios.updateAlumnoJDBC(alumno)) ? Constantes.messageQueryAlumnoUpdated : Constantes.messageQueryAlumnoDeletedFail;
 
                     break;
                 case Constantes.INSERT:
 
-                    
                     alumno = servicios.tratarParametros(parametros);
-                    messageToUser = (servicios.insertAlumnoJDBC(alumno)) ? Constantes.messageQueryAlumnoInserted: Constantes.messageQueryAlumnoInsertedFail;
-                    
+                    messageToUser = (servicios.insertAlumnoJDBC(alumno)) ? Constantes.messageQueryAlumnoInserted : Constantes.messageQueryAlumnoInsertedFail;
 
                     break;
                 case Constantes.DELETE:
@@ -79,9 +76,9 @@ public class AlumnosServlet extends HttpServlet {
                         alumno = servicios.tratarParametros(parametros);
                         request.setAttribute(Constantes.alumnoResult, alumno);
                         messageToUser = Constantes.messageQueryAlumnoDeletedFail;
-                        
+
                     } else if (deleted > 0 && deleted < ConstantesError.CodeErrorClaveForanea) {
-                        
+
                         messageToUser = Constantes.messageQueryAlumnoDeleted;
                     }
                     break;
@@ -104,12 +101,11 @@ public class AlumnosServlet extends HttpServlet {
 
             }
         }
-        
-        
+
         if (messageToUser != null) {
             request.setAttribute(Constantes.resultadoQuery, messageToUser);
         }
-                
+
         request.setAttribute(Constantes.alumnosList, servicios.getAllAlumnos());//envia la lista al jsp
         request.getRequestDispatcher(Constantes.alumnosJSP).forward(request, response);
     }

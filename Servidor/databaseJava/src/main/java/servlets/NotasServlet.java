@@ -68,7 +68,7 @@ public class NotasServlet extends HttpServlet {
                 case Constantes.UPDATE:
                     //actualizar nota
                     //1* consultar en notas
-                    //si -> actualizar update
+                    //si -> update
                     //no -> insert
                     boolean resultado = Boolean.FALSE;
                     if (serviciosNotas.getNota(claves) != null) {
@@ -83,7 +83,7 @@ public class NotasServlet extends HttpServlet {
             }
 
         }
-        
+
         if (claves != null) {
             request.setAttribute(Constantes.notaResult, claves);
         }

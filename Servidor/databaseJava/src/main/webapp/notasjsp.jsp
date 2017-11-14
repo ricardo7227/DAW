@@ -39,7 +39,7 @@
         <div class="container">
             <a href="alumnos">alumnos</a><a href="asignaturas">asignaturas</a><a href="notas">notas</a>
         </div>
-        <form action="notas" onclick="validar(this)" >
+        <form action="notas" >
             <select name="id_asignatura">
                 <c:forEach var="asignatura" items="${asignaturasList}">
                     <option value="${asignatura.id}"
@@ -77,24 +77,23 @@
             </c:if>
 
             <input type="submit" name="action" value="VIEW">
-            <input type="submit" name="action" value="UPDATE" >
+            <input type="submit" name="action" value="UPDATE" onclick="return comprobarInputNota()" >
         </form>
         <c:if test="${not empty notaMessage}">
             <p>
                 <c:out value="${notaMessage}"/>
             </p>
         </c:if>
-            
+
         <script>
-            function validar(form) {
-                var formulario = form.nota.value;
-                var tipo = form.action.value;
-                if (tipo == "UPDATE"){
-                 if (formulario.length === 0) {
-                    alert("no has introducido una nota!");
+            function comprobarInputNota() {
+                var formulario = document.getElementsByTagName("input")[0].value;
+                if (formulario.length == 0) {
+
+                    alert("No has introducido una nota!");
                     return false;
-                }   
-                }                
+
+                }
             }
         </script>
     </body>

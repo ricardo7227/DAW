@@ -65,12 +65,11 @@ public class AsignaturasServlet extends HttpServlet {
                     break;
                 case Constantes.INSERT:
 
-                    
                     asignatura = servicios.tratarParametros(parametros);
 
-                    messageToUser = (servicios.insertAsignaturadbUtils(asignatura)) ? 
-                            Constantes.messageQueryAsignaturaInserted: Constantes.messageQueryAsignaturaInsertFailed;
-                    
+                    messageToUser = (servicios.insertAsignaturadbUtils(asignatura))
+                            ? Constantes.messageQueryAsignaturaInserted : Constantes.messageQueryAsignaturaInsertFailed;
+
                     break;
                 case Constantes.DELETE:
                     String key = request.getParameter(SqlQuery.ID.toLowerCase());
@@ -80,11 +79,11 @@ public class AsignaturasServlet extends HttpServlet {
 
                     }
                     if (deleted == ConstantesError.CodeErrorClaveForanea) {
-                        
+
                         asignatura = servicios.tratarParametros(parametros);
                         request.setAttribute(Constantes.asignaturaResult, asignatura);
                         messageToUser = Constantes.messageQueryAsignaturaDeletedFail;
-                        
+
                     } else if (deleted > 0 && deleted < ConstantesError.CodeErrorClaveForanea) {
                         messageToUser = Constantes.messageQueryAsignaturaDeleted;
                     }
@@ -107,7 +106,7 @@ public class AsignaturasServlet extends HttpServlet {
 
             }
         }
-        
+
         if (messageToUser != null) {
             request.setAttribute(Constantes.resultadoQuery, messageToUser);
         }
