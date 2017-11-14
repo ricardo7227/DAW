@@ -55,7 +55,7 @@ public class AlumnosServicios {
         return dao.insertUserJDBC(alumno);
     }
     
-    public  boolean deleteAlumnoJDBC(String id){
+    public  int deleteAlumnoJDBC(String id){
         return dao.deleteUserByIdJDBC(id);
     }
     

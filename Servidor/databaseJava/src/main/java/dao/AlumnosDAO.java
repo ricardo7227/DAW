@@ -27,6 +27,7 @@ import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
+import utils.ConstantesError;
 
 import utils.SqlQuery;
 
@@ -156,9 +157,9 @@ public class AlumnosDAO {
 
     }//fin insert
 
-    public boolean deleteUserByIdJDBC(String key) {
-        boolean deleted = Boolean.FALSE;
-
+    public int deleteUserByIdJDBC(String key) {
+        
+        int filasErased = -1;
         DBConnection dBConnection = new DBConnection();
         Connection connection = null;
 
@@ -170,12 +171,13 @@ public class AlumnosDAO {
 
             stmt.setInt(1, Integer.valueOf(key));
 
-            if (stmt.executeUpdate() > 0) {
-                deleted = Boolean.TRUE;
-            }
+            filasErased = stmt.executeUpdate();
 
         } catch (Exception e) {
-
+            
+            if (e.getMessage().contains(ConstantesError.errorForeingkey)) {
+                filasErased = ConstantesError.CodeErrorClaveForanea;
+            }
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             try {
@@ -188,13 +190,12 @@ public class AlumnosDAO {
 
             dBConnection.cerrarConexion(connection);
         }
-        return deleted;
+        return filasErased;
     }
-    
-    //DELETE_FORCE
 
+    //DELETE_FORCE
     public boolean deleteUserByIddbUtils(int key) throws SQLException {
-        
+
         int filasNota = -1;
         int filasAlumno = -1;
         boolean borrado = Boolean.FALSE;
@@ -212,7 +213,7 @@ public class AlumnosDAO {
             filasAlumno = qr.update(con,
                     SqlQuery.DELETE_ALUMNO,
                     key);
-            
+
             if (filasNota > 0 && filasAlumno > 0) {
                 borrado = Boolean.TRUE;
                 con.commit();
@@ -225,7 +226,7 @@ public class AlumnosDAO {
             db.cerrarConexion(con);
         }
         return borrado;
-    
+
     }
 
 }//fin clase

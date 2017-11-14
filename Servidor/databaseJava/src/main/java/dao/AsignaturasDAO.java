@@ -17,6 +17,7 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
+import utils.ConstantesError;
 import utils.SqlQuery;
 
 /**
@@ -53,12 +54,12 @@ public class AsignaturasDAO {
 
             QueryRunner qr = new QueryRunner();
 
-            BigInteger id = qr.insert(con,
+            long id =  qr.insert(con,
                     SqlQuery.INSERT_ASIGNATURA,
-                    new ScalarHandler<BigInteger>(),
+                    new ScalarHandler<Long>(),
                     asignatura.getNombre(), asignatura.getCurso(), asignatura.getCiclo());
 
-            if (id.intValue() > 0) {
+            if (id > 0) {
                 insertado = Boolean.TRUE;
             }
 
@@ -97,9 +98,9 @@ public class AsignaturasDAO {
         return filas;
     }
 
-    public boolean deleteAsignaturadbUtils(String key) {
-        int filas = -1;
-        boolean deleted = Boolean.FALSE;
+    public int deleteAsignaturadbUtils(String key) {
+        int filasErased = -1;
+        
         DBConnection db = new DBConnection();
         Connection con = null;
 
@@ -108,19 +109,20 @@ public class AsignaturasDAO {
 
             QueryRunner qr = new QueryRunner();
 
-            filas = qr.update(con,
+            filasErased = qr.update(con,
                     SqlQuery.DELETE_ASIGNATURA,
                     key);
-            if (filas > 0) {
-                deleted = Boolean.TRUE;
-            }
+            
 
         } catch (Exception ex) {
+            if (ex.getMessage().contains(ConstantesError.errorForeingkey)) {
+                filasErased = ConstantesError.CodeErrorClaveForanea;
+            }
             Logger.getLogger(AsignaturasDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             db.cerrarConexion(con);
         }
-        return deleted;
+        return filasErased;
     }
 
     public boolean deleteAsignaturadbUtilsForce(int key) throws SQLException {

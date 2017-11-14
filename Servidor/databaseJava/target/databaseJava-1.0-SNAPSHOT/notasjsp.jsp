@@ -22,11 +22,24 @@
             body {
                 text-align: center; 
             }
+            .container {
+                margin: 0 auto;
+                text-align: center;
+                width: 100%;
+            }
+            .container a {
+                padding-left: 20px;
+                font-size: 1.5em;
+            }
 
         </style>
+
     </head>
     <body>
-        <form action="notas" >
+        <div class="container">
+            <a href="alumnos">alumnos</a><a href="asignaturas">asignaturas</a><a href="notas">notas</a>
+        </div>
+        <form action="notas" onclick="validar(this)" >
             <select name="id_asignatura">
                 <c:forEach var="asignatura" items="${asignaturasList}">
                     <option value="${asignatura.id}"
@@ -55,22 +68,34 @@
                     <input type="text" name="nota" value="${notaResult.nota}">    
                 </c:if>                
                 <c:if test="${notaResult.nota == -1}">
-                    <input type="text" name="nota"placeholder="${resultado}" >    
+                    <input type="text" name="nota" placeholder="${resultado}" >    
                 </c:if> 
             </c:if>
-                    <!-- para borrar-->
+            <!-- para borrar-->
             <c:if test="${empty notaResult.nota}">
                 <input type="text" name="nota" placeholder="${resultado}">    
             </c:if>
 
             <input type="submit" name="action" value="VIEW">
-            <input type="submit" name="action" value="UPDATE">
+            <input type="submit" name="action" value="UPDATE" >
         </form>
         <c:if test="${not empty notaMessage}">
             <p>
                 <c:out value="${notaMessage}"/>
             </p>
         </c:if>
-
+            
+        <script>
+            function validar(form) {
+                var formulario = form.nota.value;
+                var tipo = form.action.value;
+                if (tipo == "UPDATE"){
+                 if (formulario.length === 0) {
+                    alert("no has introducido una nota!");
+                    return false;
+                }   
+                }                
+            }
+        </script>
     </body>
 </html>

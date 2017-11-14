@@ -19,6 +19,15 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+            .container {
+                margin: 0 auto;
+                text-align: center;
+                width: 100%;
+            }
+            .container a {
+                padding-left: 20px;
+                font-size: 1.5em;
+            }
         </style>        
         <script>
             function cargarAsignatura(id, nombre, curso, ciclo) {
@@ -36,6 +45,9 @@
 
     </head>
     <body>
+        <div class="container">
+            <a href="alumnos">alumnos</a><a href="asignaturas">asignaturas</a><a href="notas">notas</a>
+        </div>
         <c:if test="${not empty asignaturaResult}">
             <form action="asignaturas">
                 <h3><c:out value="${resultado}"/></h3>

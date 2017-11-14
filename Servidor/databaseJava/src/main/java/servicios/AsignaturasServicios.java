@@ -44,7 +44,7 @@ public class AsignaturasServicios {
         return dao.updateAsignaturasdbUtils(asignatura);
     }
 
-    public boolean deleteAsignaturadbUtils(String key) {
+    public int deleteAsignaturadbUtils(String key) {
         return dao.deleteAsignaturadbUtils(key);
     }
 

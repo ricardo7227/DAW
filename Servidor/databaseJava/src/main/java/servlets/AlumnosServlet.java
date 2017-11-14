@@ -21,6 +21,7 @@ import model.Alumno;
 import servicios.AlumnosServicios;
 
 import utils.Constantes;
+import utils.ConstantesError;
 import utils.SqlQuery;
 
 /**
@@ -48,6 +49,7 @@ public class AlumnosServlet extends HttpServlet {
 
         String action = request.getParameter(Constantes.actionJSP);
         Alumno alumno = null;
+        String messageToUser = null;
         Map<String, String[]> parametros = request.getParameterMap();
         if (action != null && !action.isEmpty()) {
 
@@ -55,31 +57,32 @@ public class AlumnosServlet extends HttpServlet {
                 case Constantes.UPDATE:
 
                     alumno = servicios.tratarParametros(parametros);
-                    if (servicios.updateAlumnoJDBC(alumno)) {
-                        request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryAlumnoUpdated);
-                    }
+                    messageToUser = (servicios.updateAlumnoJDBC(alumno)) ? Constantes.messageQueryAlumnoUpdated: Constantes.messageQueryAlumnoDeletedFail;
+                    
 
                     break;
                 case Constantes.INSERT:
 
-                    //parametros = request.getParameterMap();
+                    
                     alumno = servicios.tratarParametros(parametros);
-
-                    if (servicios.insertAlumnoJDBC(alumno)) {
-                        request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryAlumnoInserted);
-                    }
+                    messageToUser = (servicios.insertAlumnoJDBC(alumno)) ? Constantes.messageQueryAlumnoInserted: Constantes.messageQueryAlumnoInsertedFail;
+                    
 
                     break;
                 case Constantes.DELETE:
                     String key = request.getParameter(SqlQuery.ID.toLowerCase());
-                    boolean deleted = false;
+                    int deleted = 0;
                     if (key != null && !key.isEmpty()) {
                         deleted = servicios.deleteAlumnoJDBC(key);
                     }
-                    if (!deleted) {
+                    if (deleted == ConstantesError.CodeErrorClaveForanea) {
                         alumno = servicios.tratarParametros(parametros);
                         request.setAttribute(Constantes.alumnoResult, alumno);
-                        request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryAlumnoDeletedFail);
+                        messageToUser = Constantes.messageQueryAlumnoDeletedFail;
+                        
+                    } else if (deleted > 0 && deleted < ConstantesError.CodeErrorClaveForanea) {
+                        
+                        messageToUser = Constantes.messageQueryAlumnoDeleted;
                     }
                     break;
                 case Constantes.DELETE_FORCE:
@@ -89,7 +92,7 @@ public class AlumnosServlet extends HttpServlet {
                         try {
                             boolean borrado = servicios.deleteAlumnoForce((int) alumno.getId());
 
-                            request.setAttribute(Constantes.resultadoQuery, (borrado) ? Constantes.messageQueryAlumnoDeleted : Constantes.messageQueryAlumnoDeletedFailedAgain);
+                            messageToUser = (borrado) ? Constantes.messageQueryAlumnoDeleted : Constantes.messageQueryAlumnoDeletedFailedAgain;
 
                         } catch (SQLException ex) {
                             Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -101,6 +104,12 @@ public class AlumnosServlet extends HttpServlet {
 
             }
         }
+        
+        
+        if (messageToUser != null) {
+            request.setAttribute(Constantes.resultadoQuery, messageToUser);
+        }
+                
         request.setAttribute(Constantes.alumnosList, servicios.getAllAlumnos());//envia la lista al jsp
         request.getRequestDispatcher(Constantes.alumnosJSP).forward(request, response);
     }

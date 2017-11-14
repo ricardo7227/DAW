@@ -33,7 +33,9 @@ public class Constantes {
     
     public static final String resultadoQuery = "resultado";
     public static final String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";
+    public static final String messageQueryAlumnoInsertedFail = "Alumno no agregado en la lista, vuelve a intentarlo";
     public static final String messageQueryAlumnoUpdated = "El alumno fue actualizado en la lista";
+    public static final String messageQueryAlumnoUpdatedFail = "Problemas actualizando el alumno, inténtalo otra vez";
     public static final String messageQueryAlumnoDeleted = "El alumno fue eliminado correctamente de la lista";
     public static final String messageQueryAlumnoDeletedFail = "Cuidado! el alumno tiene notas, Quieres borrarlo?";
     public static final String messageQueryAlumnoDeletedFailedAgain = "Seguimos sin poder borrar el alumno";
@@ -49,6 +51,8 @@ public class Constantes {
     public static final String messageQueryNotaMissing = "No tiene nota";
     public static final String messageQueryNotaUpdated = "Hemos actualizado la nota correctamente";
     public static final String messageQueryNotaUpdatedFail = "Falló en la actualización de Nota";
+    
+    
     
     
 }

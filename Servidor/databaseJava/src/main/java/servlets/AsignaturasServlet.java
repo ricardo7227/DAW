@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Asignatura;
 import servicios.AsignaturasServicios;
 import utils.Constantes;
+import utils.ConstantesError;
 import utils.SqlQuery;
 
 /**
@@ -47,6 +48,7 @@ public class AsignaturasServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         String action = request.getParameter(Constantes.actionJSP);
+        String messageToUser = null;
         Asignatura asignatura = null;
         Map<String, String[]> parametros = request.getParameterMap();
         if (action != null && !action.isEmpty()) {
@@ -58,31 +60,33 @@ public class AsignaturasServlet extends HttpServlet {
                     asignatura = servicios.tratarParametros(parametros);
                     int filas = servicios.updateAsignaturadbUtils(asignatura);
 
-                    request.setAttribute(Constantes.resultadoQuery,
-                            (filas > 0 ? Constantes.messageQueryAsignaturaUpdated : Constantes.messageQueryAsignaturaUpdateFailed));
+                    messageToUser = (filas > 0) ? Constantes.messageQueryAsignaturaUpdated : Constantes.messageQueryAsignaturaUpdateFailed;
 
                     break;
                 case Constantes.INSERT:
 
-                    //parametros = request.getParameterMap();
+                    
                     asignatura = servicios.tratarParametros(parametros);
 
-                    if (servicios.insertAsignaturadbUtils(asignatura)) {
-                        request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryAsignaturaInserted);
-                    }
-
+                    messageToUser = (servicios.insertAsignaturadbUtils(asignatura)) ? 
+                            Constantes.messageQueryAsignaturaInserted: Constantes.messageQueryAsignaturaInsertFailed;
+                    
                     break;
                 case Constantes.DELETE:
                     String key = request.getParameter(SqlQuery.ID.toLowerCase());
-                    boolean deleted = false;
+                    int deleted = -1;
                     if (key != null && !key.isEmpty()) {
-                       deleted = servicios.deleteAsignaturadbUtils(key);
-                       request.setAttribute(Constantes.resultadoQuery, (deleted) ? Constantes.messageQueryAsignaturaDeleted : Constantes.messageQueryAsignaturaDeletedFail);
+                        deleted = servicios.deleteAsignaturadbUtils(key);
+
                     }
-                    if (!deleted) {
+                    if (deleted == ConstantesError.CodeErrorClaveForanea) {
+                        
                         asignatura = servicios.tratarParametros(parametros);
                         request.setAttribute(Constantes.asignaturaResult, asignatura);
-                        request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryAsignaturaDeletedFail);
+                        messageToUser = Constantes.messageQueryAsignaturaDeletedFail;
+                        
+                    } else if (deleted > 0 && deleted < ConstantesError.CodeErrorClaveForanea) {
+                        messageToUser = Constantes.messageQueryAsignaturaDeleted;
                     }
                     break;
                 case Constantes.DELETE_FORCE:
@@ -91,8 +95,8 @@ public class AsignaturasServlet extends HttpServlet {
 
                     try {
                         boolean borrado = servicios.deleteAsignaturaForce((int) asignatura.getId());
-                        request.setAttribute(Constantes.resultadoQuery, (borrado) ? Constantes.messageQueryAsignaturaDeleted : Constantes.messageQueryAlumnoDeletedFailedAgain);
-                        
+                        messageToUser = (borrado) ? Constantes.messageQueryAsignaturaDeleted : Constantes.messageQueryAlumnoDeletedFailedAgain;
+
                     } catch (SQLException ex) {
                         Logger.getLogger(AsignaturasServlet.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -102,6 +106,10 @@ public class AsignaturasServlet extends HttpServlet {
                     break;
 
             }
+        }
+        
+        if (messageToUser != null) {
+            request.setAttribute(Constantes.resultadoQuery, messageToUser);
         }
 
         request.setAttribute(Constantes.asignaturasList, servicios.getAllAsignaturasdbUtils());//envia la lista al jsp
