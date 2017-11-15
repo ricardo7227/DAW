@@ -1,0 +1,227 @@
+body {
+  font: 1em "Century Gothic", Futura, sans-serif;
+  background: #fff url(https://raw.githubusercontent.com/ricardo7227/DAW/55d21dfc16a9980f981cdf150a70545f083ddf68/DIW/Anagramas_Fotos/bodyback.png) left top;
+
+}
+
+.fondo{
+  background:#e1e0dc url(https://raw.githubusercontent.com/ricardo7227/DAW/55d21dfc16a9980f981cdf150a70545f083ddf68/DIW/Anagramas_Fotos/bodyback.png);
+}
+.fondo_footer {
+  background: #222 url(https://raw.githubusercontent.com/ricardo7227/DAW/bf73882270a641fef111fd2f9afc8b13d62a4720/DIW/Anagramas_Fotos/footerback.png) left top;
+  color: #F4F8F9;
+}
+.fondo-light{
+  box-shadow:0px 2px 4px rgba(0,0,0,0.1);
+}
+.container-title {  
+  box-shadow:0px 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: right;
+  width: 100%;
+  height: 100%;
+
+}
+
+ul.menu {  
+  background: #28589B; 
+  height: 30px;
+  /*     width: 100%;  */
+}
+
+
+ul.menu > li {  
+  float: left; 
+  position: relative;  
+}
+
+ul.menu ul {  
+  background: #444; 
+  display: none; 
+  position: absolute;
+  left: 0; top: 100%;
+}
+
+ul.menu a {  
+  cursor: pointer; 
+  display: block; 
+  color: white; 
+  line-height: 30px; 
+  padding: 0 10px; 
+}
+
+ul.menu li { list-style: none; }
+
+ul.menu li:hover { background: #555;  }  
+ul.menu li:hover ul { display: block;  }  
+
+.constainer_destacado {
+  margin:auto;
+  overflow: hidden;
+  width: 100%;
+  height: 22em;
+  border-radius:2%;
+}
+
+.img_destacado {
+  width: 100%;
+}
+.text-container {
+  height:100%;
+  width:100%;
+  border: 1px solid #222;
+  text-align: center;
+}
+.text-container a:link{
+  color:#eaecef;
+}
+.centrar-texto {
+  text-align: center;
+}
+.derecha-texto {
+  text-align: right;
+}
+.fuente-peque {
+  font-size: 80%;
+}
+.borde-simple-curva {
+  border: 1px solid #fcf7ef;
+  border-radius: 5px;
+}
+input {  
+  width : 99%;
+}
+textarea {
+  width: 99%;
+}
+
+footer .creditos li {  
+  list-style: none;
+}
+footer .creditos a {
+  color:#999;
+  text-decoration: none;
+}
+.foto_articulo {
+  width: 30%;
+  float: left;
+  margin: 0.5em;
+}
+.foto_logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: 18%;
+}
+/* calendario */
+header {
+  overflow: clear;
+  position: relative;
+}
+h2 {
+
+  font-size: 1.5em;
+  font-weight: 7;
+  margin: 0 0 10px;
+  text-align: center;
+}
+button {
+  position: absolute;
+  top: -4px;
+}
+button:first-child {
+  left: 0;
+}
+button:last-child {
+  right: 0;
+}
+table {
+  background: #dce5ef;
+  border-collapse: collapse;
+  color: #222;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 0.89em;
+  width: 100%;
+}
+td {
+  border: 1px solid #ccc;
+  color: #444;
+  line-height: 22px;
+  text-align: center;
+}
+tr:first-child td {
+  color: #222;
+  font-weight: 700;
+}
+.selected {
+  background: #d7dee5;
+  border: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .5) inset;
+}
+
+/* pagination */
+.pagination {
+  width: 50%;
+  margin: 0 auto;
+}
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  /*   border: 1px solid black; */
+}
+
+.pagination a.active {
+  background-color: #1c73ce;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #bad6f4;}
+
+
+@media only screen and (max-width: 480px) {
+  ul.menu {  height: auto; }
+  ul.menu > li {  float: none; width: 100%; }
+  ul.menu a { line-height: 40px; }
+  ul.menu ul { position: relative; }
+
+  .constainer_destacado {
+    margin:auto;
+    overflow: hidden;
+    width: auto;
+    height: 100%;
+    border-radius:2%;
+  }
+
+  .img_destacado{
+    height: 100%;
+    width: auto; 
+  }
+  .foto_articulo {
+    width: 100%;
+    margin: 1% 0 1% 0%;
+  }
+  .pagination {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .col650 {  margin: 1% 0 1% 0%; }
+  .span_3_of_3, .span_2_of_3, .span_1_of_3 { width: 100%; }
+}
+/*  GO FULL WIDTH BELOW 1200 PIXELS */
+@media only screen and (max-width: 1200px) {
+
+  .img_destacado{
+    height: auto;
+    width: 100%; 
+  }
+}
+
