@@ -64,6 +64,15 @@
   width: 100%;
   display:none;
 }
+.altura-header {
+  height: 100%;
+  width: auto;  
+}
+.centrar-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
 
 /*  GO FULL WIDTH BELOW 480 PIXELS */
 @media only screen and (max-width: 480px) {
