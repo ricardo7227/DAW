@@ -28,6 +28,18 @@ public class NotasServicios {
         return dao.getNotaJDBC((int) nota.getId_alumno(), (int) nota.getId_asignatura());
     }
 
+    public boolean updateNota(Nota nota) {
+        return dao.updateNotadbUtils(nota);
+    }
+
+    public boolean insertNota(Nota nota) {
+        return dao.insertUserJDBC(nota);
+    }
+
+    public boolean deleteNota(int i) {
+        return dao.deleteNotadbUtils(i);
+    }
+
     public Nota tratarParametros(Map<String, String[]> parametros) {
         Nota claves = null;
         if (parametros != null && !parametros.isEmpty()) {
@@ -54,18 +66,6 @@ public class NotasServicios {
 
         }
         return claves;
-    }
-
-    public boolean updateNota(Nota nota) {
-        return dao.updateNotadbUtils(nota);
-    }
-
-    public boolean insertNota(Nota nota) {
-        return dao.insertUserJDBC(nota);
-    }
-
-    public boolean deleteNota(int i) {
-        return dao.deleteNotadbUtils(i);
     }
 
 }//fin clase

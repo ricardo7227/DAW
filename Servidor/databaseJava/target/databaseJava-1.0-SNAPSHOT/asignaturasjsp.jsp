@@ -10,7 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
 <!DOCTYPE html>
 <html>
-   <head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Asignaturas List</title>
         <style>
@@ -35,7 +35,7 @@
                 document.getElementById("nombre").value = nombre;
                 document.getElementById("curso").value = curso;
                 document.getElementById("ciclo").value = ciclo;
-              
+
             }
 
         </script>
@@ -61,11 +61,11 @@
 
         <c:if test="${empty asignaturaResult}">
             <c:out value="${resultado}"/>
-            
+
 
         </c:if>
         <br>
-        
+
         <table class="table">
             <tr>
                 <th></th>
@@ -79,10 +79,10 @@
                         <c:set var="nombre" value="${asignatura.nombre}"/>
 
                         <button id="cargarAsignatura" onClick="
-                 cargarAsignatura(${asignatura.id},
+                cargarAsignatura(${asignatura.id},
                         '${fn:escapeXml(fn:replace(nombre,"'","\\'"))}'
                         , '${asignatura.curso}',
-                                '${asignatura.ciclo}')">Cargar</button>
+                        '${asignatura.ciclo}')">Cargar</button>
                     </td>
                     <td contenteditable="true">
                         <c:out value="${asignatura.nombre}"/>
@@ -105,7 +105,7 @@
             <input type="text" name="curso" id="curso" placeholder=""><br>
             Ciclo: 
             <input type="text" name="ciclo" id="ciclo" placeholder=""><br>
-            
+
             <br>
             <input type="submit" name="action" value="INSERT">
             <input type="submit" name="action" value="UPDATE">
@@ -118,7 +118,7 @@
         </p>
 
         <script>
-            
+
 
         </script>
     </body>

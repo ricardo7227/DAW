@@ -27,50 +27,40 @@ import utils.SqlQuery;
 public class AlumnosServicios {
 
     private AlumnosDAO dao;
-    
+
     public AlumnosServicios() {
         dao = new AlumnosDAO();
     }
-    
-    
-    
-    
-    public List<Alumno> getAllAlumnos()
-    {               
+
+    public List<Alumno> getAllAlumnos() {
         return dao.getAllAlumnosJDBC();
     }
-    
-    
-    public boolean addAlumno(Alumno alumnoNuevo)
-    {
-        
-        return true;
+   
+
+    public boolean updateAlumnoJDBC(Alumno alumno) {
+        return dao.updateUserJDBC(alumno);
     }
-    
-    public boolean updateAlumnoJDBC(Alumno alumno){
-       return dao.updateUserJDBC(alumno);
-    }
-    
-    public boolean insertAlumnoJDBC(Alumno alumno){
+
+    public boolean insertAlumnoJDBC(Alumno alumno) {
         return dao.insertUserJDBC(alumno);
     }
-    
-    public  int deleteAlumnoJDBC(String id){
+
+    public int deleteAlumnoJDBC(String id) {
         return dao.deleteUserByIdJDBC(id);
     }
-    
+
     /**
-     * 
+     *
      * @param parametros
      * @return objeto alumno con sus parametros correspondientes
-     * @throws UnsupportedEncodingException 
+     * @throws UnsupportedEncodingException
      */
     public Alumno tratarParametros(Map<String, String[]> parametros) throws UnsupportedEncodingException {
         Alumno alumno = null;
         if (parametros != null && !parametros.isEmpty()) {
-            
+
             alumno = new Alumno();
-            
+
             Iterator<String> it = parametros.keySet().iterator();
 
             while (it.hasNext()) {
@@ -106,5 +96,5 @@ public class AlumnosServicios {
     public boolean deleteAlumnoForce(int i) throws SQLException {
         return dao.deleteUserByIddbUtils(i);
     }
-    
+
 }//fin clase

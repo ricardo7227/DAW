@@ -13,7 +13,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-
 import model.Asignatura;
 
 import utils.SqlQuery;
@@ -38,7 +37,6 @@ public class AsignaturasServicios {
     public boolean insertAsignaturadbUtils(Asignatura a) {
         return dao.insertAsignaturadbUtils(a);
     }
-    
 
     public int updateAsignaturadbUtils(Asignatura asignatura) {
         return dao.updateAsignaturasdbUtils(asignatura);

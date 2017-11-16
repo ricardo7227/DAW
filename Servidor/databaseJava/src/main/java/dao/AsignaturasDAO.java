@@ -5,7 +5,6 @@
  */
 package dao;
 
-import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -54,7 +53,7 @@ public class AsignaturasDAO {
 
             QueryRunner qr = new QueryRunner();
 
-            long id =  qr.insert(con,
+            long id = qr.insert(con,
                     SqlQuery.INSERT_ASIGNATURA,
                     new ScalarHandler<Long>(),
                     asignatura.getNombre(), asignatura.getCurso(), asignatura.getCiclo());
@@ -100,7 +99,7 @@ public class AsignaturasDAO {
 
     public int deleteAsignaturadbUtils(String key) {
         int filasErased = -1;
-        
+
         DBConnection db = new DBConnection();
         Connection con = null;
 
@@ -112,7 +111,6 @@ public class AsignaturasDAO {
             filasErased = qr.update(con,
                     SqlQuery.DELETE_ASIGNATURA,
                     key);
-            
 
         } catch (Exception ex) {
             if (ex.getMessage().contains(ConstantesError.errorForeingkey)) {
@@ -143,7 +141,7 @@ public class AsignaturasDAO {
             filasAsigantura = qr.update(con,
                     SqlQuery.DELETE_ASIGNATURA,
                     key);
-            
+
             if (filasNota > 0 && filasAsigantura > 0) {
                 borrado = Boolean.TRUE;
                 con.commit();

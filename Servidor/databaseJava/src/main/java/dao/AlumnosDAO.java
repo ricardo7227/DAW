@@ -6,7 +6,7 @@
 package dao;
 
 import model.Alumno;
-import java.math.BigInteger;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,15 +18,9 @@ import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
 
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.ResultSetHandler;
-import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.BeanListHandler;
-import org.apache.commons.dbutils.handlers.ScalarHandler;
+
 import utils.ConstantesError;
 
 import utils.SqlQuery;
@@ -47,8 +41,7 @@ public class AlumnosDAO {
         try {
             con = db.getConnection();
             stmt = con.createStatement();
-            //String sql;
-            //sql = "SELECT * FROM ALUMNOS";
+
             rs = stmt.executeQuery(SqlQuery.SELECT_ALL_ALUMNOS);
 
             //STEP 5: Extract data from result set
@@ -158,7 +151,7 @@ public class AlumnosDAO {
     }//fin insert
 
     public int deleteUserByIdJDBC(String key) {
-        
+
         int filasErased = -1;
         DBConnection dBConnection = new DBConnection();
         Connection connection = null;
@@ -174,7 +167,7 @@ public class AlumnosDAO {
             filasErased = stmt.executeUpdate();
 
         } catch (Exception e) {
-            
+
             if (e.getMessage().contains(ConstantesError.errorForeingkey)) {
                 filasErased = ConstantesError.CodeErrorClaveForanea;
             }

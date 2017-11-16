@@ -43,8 +43,10 @@ public class NotasServlet extends HttpServlet {
         AsignaturasServicios asignaturasServicios = new AsignaturasServicios();
         Nota nota = null;
         Nota claves = null;
+        
         String action = request.getParameter(Constantes.actionJSP);
         Map<String, String[]> parametros = null;
+        
         if (action != null && !action.isEmpty()) {
 
             parametros = request.getParameterMap();
