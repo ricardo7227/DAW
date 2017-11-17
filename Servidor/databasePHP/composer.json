@@ -1,0 +1,21 @@
+{
+    "name": "vendor/database-p-h-p",
+    "description": "Description of project databasePHP.",
+    "authors": [
+        {
+            "name": "daw",
+            "email": "your@email.here"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+
+    "require": {
+        "ext-PDO": "* 7.0.22",
+        "ifsnop/mysqldump-php": "dev-master",
+        "aura/sql": "3.x-dev"
+    }
+}
