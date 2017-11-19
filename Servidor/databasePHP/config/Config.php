@@ -1,5 +1,6 @@
 <?php
-namespace controller;
+require_once 'vendor/autoload.php';
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,7 +14,4 @@ namespace controller;
  */
 class Config {
     
-    public function nombre($param) {
-        return $param;
-    }
 }

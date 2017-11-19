@@ -1,160 +1,49 @@
 [
     {
-        "name": "ifsnop/mysqldump-php",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "name": "joshcam/mysqli-database-class",
+        "version": "v2.8",
+        "version_normalized": "2.8.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/ifsnop/mysqldump-php.git",
-            "reference": "eb2a10ab4f3dd30ef953f386c2da9e091a44b0d2"
+            "url": "https://github.com/joshcam/PHP-MySQLi-Database-Class.git",
+            "reference": "3e33abfc8e6d689631249b403b368b91ceda5c14"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ifsnop/mysqldump-php/zipball/eb2a10ab4f3dd30ef953f386c2da9e091a44b0d2",
-            "reference": "eb2a10ab4f3dd30ef953f386c2da9e091a44b0d2",
+            "url": "https://api.github.com/repos/joshcam/PHP-MySQLi-Database-Class/zipball/3e33abfc8e6d689631249b403b368b91ceda5c14",
+            "reference": "3e33abfc8e6d689631249b403b368b91ceda5c14",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "require-dev": {
-            "phpunit/phpunit": "3.7.*",
-            "squizlabs/php_codesniffer": "1.*"
-        },
-        "time": "2017-08-25T17:21:15+00:00",
+        "time": "2017-08-02T16:08:26+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
-            "psr-4": {
-                "Ifsnop\\": "src/Ifsnop/"
-            }
+            "files": [
+                "MysqliDb.php",
+                "dbObject.php"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "MIT"
+            "GPL-3.0"
         ],
         "authors": [
             {
-                "name": "Diego Torres",
-                "homepage": "https://github.com/ifsnop",
+                "name": "Josh Campbell",
+                "email": "josh.lee.campbell@gmail.com",
+                "homepage": "https://github.com/joshcam",
+                "role": "Developer"
+            },
+            {
+                "name": "Alexander V. Butenko",
+                "email": "a.butenka@gmail.com",
+                "homepage": "http://smarttechdo.com",
                 "role": "Developer"
             }
         ],
-        "description": "This is a php version of linux's mysqldump in terminal \"$ mysqldump -u username -p...\"",
-        "homepage": "https://github.com/ifsnop/mysqldump-php",
-        "keywords": [
-            "backup",
-            "database",
-            "dump",
-            "export",
-            "mysql",
-            "mysqldump",
-            "pdo",
-            "sqlite"
-        ]
-    },
-    {
-        "name": "psr/log",
-        "version": "1.0.2",
-        "version_normalized": "1.0.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/php-fig/log.git",
-            "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
-            "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2016-10-10T12:19:37+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Psr\\Log\\": "Psr/Log/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "PHP-FIG",
-                "homepage": "http://www.php-fig.org/"
-            }
-        ],
-        "description": "Common interface for logging libraries",
-        "homepage": "https://github.com/php-fig/log",
-        "keywords": [
-            "log",
-            "psr",
-            "psr-3"
-        ]
-    },
-    {
-        "name": "aura/sql",
-        "version": "3.x-dev",
-        "version_normalized": "3.9999999.9999999.9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/auraphp/Aura.Sql.git",
-            "reference": "596fc78aa20c434d5ac95a6d234ffad17f6df4a0"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/auraphp/Aura.Sql/zipball/596fc78aa20c434d5ac95a6d234ffad17f6df4a0",
-            "reference": "596fc78aa20c434d5ac95a6d234ffad17f6df4a0",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.6.0",
-            "psr/log": "^1.0"
-        },
-        "require-dev": {
-            "pds/skeleton": "~1.0",
-            "phpunit/phpunit": "~5.0"
-        },
-        "time": "2017-06-28T15:21:43+00:00",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Aura\\Sql\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Aura.Sql Contributors",
-                "homepage": "https://github.com/auraphp/Aura.Sql/contributors"
-            }
-        ],
-        "description": "A PDO extension that provides lazy connections, array quoting, query profiling, value binding, and convenience methods for common fetch styles. Because it extends PDO, existing code that uses PDO can use this without any changes to the existing code.",
-        "homepage": "https://github.com/auraphp/Aura.Sql",
-        "keywords": [
-            "mysql",
-            "pdo",
-            "pgsql",
-            "postgres",
-            "postgresql",
-            "sql server",
-            "sqlite",
-            "sqlserver",
-            "sqlsrv"
-        ]
+        "description": "PHP MySQL Wrapper and object mapper which utilizes MySQLi and prepared statements"
     }
 ]

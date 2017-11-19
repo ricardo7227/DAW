@@ -1,6 +1,6 @@
 {
-    "name": "vendor/database-p-h-p",
-    "description": "Description of project databasePHP.",
+    "name": "vendor/sessions-levels-p-h-p",
+    "description": "Description of project sessionsLevelsPHP.",
     "authors": [
         {
             "name": "daw",
@@ -12,10 +12,7 @@
             "": "src/"
         }
     },
-
     "require": {
-        "ext-PDO": "* 7.0.22",
-        "ifsnop/mysqldump-php": "dev-master",
-        "aura/sql": "3.x-dev"
+        "joshcam/mysqli-database-class": "v2.8"
     }
 }

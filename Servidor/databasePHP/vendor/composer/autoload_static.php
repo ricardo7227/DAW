@@ -4,43 +4,21 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf7f7d5af726d416f54ac1b257d3238aa
+class ComposerStaticInitcd014f611780721af75da9f67723ed7f
 {
-    public static $prefixLengthsPsr4 = array (
-        'P' => 
-        array (
-            'Psr\\Log\\' => 8,
-        ),
-        'I' => 
-        array (
-            'Ifsnop\\' => 7,
-        ),
-        'A' => 
-        array (
-            'Aura\\Sql\\' => 9,
-        ),
+    public static $files = array (
+        '9c9a81795c809f4710dd20bec1e349df' => __DIR__ . '/..' . '/joshcam/mysqli-database-class/MysqliDb.php',
+        '94df122b6b32ca0be78d482c26e5ce00' => __DIR__ . '/..' . '/joshcam/mysqli-database-class/dbObject.php',
     );
 
-    public static $prefixDirsPsr4 = array (
-        'Psr\\Log\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
-        ),
-        'Ifsnop\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/ifsnop/mysqldump-php/src/Ifsnop',
-        ),
-        'Aura\\Sql\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/aura/sql/src',
-        ),
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/../..' . '/src',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf7f7d5af726d416f54ac1b257d3238aa::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf7f7d5af726d416f54ac1b257d3238aa::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitcd014f611780721af75da9f67723ed7f::$fallbackDirsPsr4;
 
         }, null, ClassLoader::class);
     }

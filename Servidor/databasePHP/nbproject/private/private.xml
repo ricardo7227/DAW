@@ -2,10 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="alumno">
-            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/composer.json</file>
-            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/src/controller/Config.php</file>
-            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/index.php</file>
+        <group>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/alumnos.php</file>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/asignaturas.php</file>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/index.php</file>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/notas.php</file>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/config/Config.php</file>
         </group>
     </open-files>
 </project-private>
