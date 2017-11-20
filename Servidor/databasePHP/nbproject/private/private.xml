@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/alumnos.php</file>
-            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/asignaturas.php</file>
-            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/index.php</file>
-            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/notas.php</file>
-            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/config/Config.php</file>
-        </group>
         <group name="profesor">
             <file>file:/home/daw/Documentos/Servidor/databasePHP/notas.php</file>
         </group>
@@ -23,6 +16,17 @@
             <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/alumnos.php</file>
             <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/composer.lock</file>
             <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/src/controller/credentialsDatabase.php</file>
+        </group>
+        <group>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/alumnos.php</file>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/asignaturas.php</file>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/alumnosVista.php</file>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/index.php</file>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/src/controller/SqlQuery.php</file>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/asignaturasVista.php</file>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/notas.php</file>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/notasVista.php</file>
+            <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/config/Config.php</file>
         </group>
     </open-files>
 </project-private>
