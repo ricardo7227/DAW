@@ -9,5 +9,20 @@
             <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/notas.php</file>
             <file>file:/D:/Users/Gato/Documentos/Github/Servidor/databasePHP/config/Config.php</file>
         </group>
+        <group name="profesor">
+            <file>file:/home/daw/Documentos/Servidor/databasePHP/notas.php</file>
+        </group>
+        <group name="alumno">
+            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/asignaturas.php</file>
+            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/composer.json</file>
+            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/notas.php</file>
+            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/index.php</file>
+            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/src/controller/Constantes.php</file>
+            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/src/controller/SqlQuery.php</file>
+            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/config.php</file>
+            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/alumnos.php</file>
+            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/composer.lock</file>
+            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/src/controller/credentialsDatabase.php</file>
+        </group>
     </open-files>
 </project-private>

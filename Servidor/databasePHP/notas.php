@@ -36,6 +36,7 @@ switch ($action) {
 
         if ($id_alumno != NULL && $id_asignatura != NULL &&
                 strlen($id_alumno) > 0 && strlen($id_asignatura) > 0) {
+
             $notaDB = getNota($credenciales, $id_alumno, $id_asignatura);
         }
         if ($notaDB == null || strlen($notaDB[SqlQuery::NOTA]) == 0) {
@@ -45,19 +46,25 @@ switch ($action) {
 
 
         break;
-    case Constantes::UPDATE://TO-DO pendiente terminar el update y los delete force
+    case Constantes::UPDATE:
         //actualizar nota
         //1* consultar en notas
         //si -> update
         //no -> insert
         $resultado = FALSE;
-        if (getNota(claves) != null) {
-            //$resultado = updateNota(claves);
-        } else {
-            //resultado = serviciosNotas.insertNota(claves);
-        }
-        $messageToUser = (resultado) ? Constantes::messageQueryNotaUpdated : Constantes::messageQueryNotaUpdatedFail;
+        if ($id_alumno != NULL && $id_asignatura != NULL && $nota != NULL &&
+                strlen($id_alumno) > 0 && strlen($id_asignatura) > 0 && strlen($nota) > 0) {
 
+            if (getNota($credenciales, $id_alumno, $id_asignatura) != NULL) {
+
+                $resultado = updateNota($credenciales, $id_alumno, $id_asignatura, $nota);
+            } else {
+
+                $resultado = insertNota($credenciales, $id_alumno, $id_asignatura, $nota);
+            }
+
+            $messageToUser = ($resultado) ? Constantes::messageQueryNotaUpdated : Constantes::messageQueryNotaUpdatedFail;
+        }
         break;
 
     default:
@@ -77,6 +84,11 @@ include 'index.php';
  * Métodos 
  */
 
+/**
+ * 
+ * @param type $credenciales
+ * @return \MysqliDb
+ */
 function conexionDB($credenciales) {
     $host = $credenciales->getServername();
     $user = $credenciales->getUsername();
@@ -89,6 +101,8 @@ function conexionDB($credenciales) {
     if (!$conexion->ping()) {
         exit();
     }
+    $conexion->autoReconnect = false;
+    
     return $conexion;
 }
 
@@ -96,6 +110,11 @@ function cerrarConexion($conexion) {
     $conexion->disconnect();
 }
 
+/**
+ * 
+ * @param type $credenciales
+ * @return type - lista de alumnos 
+ */
 function getAllAlumnos($credenciales) {
 
     $lista = NULL;
@@ -122,6 +141,11 @@ function getAllAlumnos($credenciales) {
     return $lista;
 }
 
+/**
+ * 
+ * @param type $credenciales
+ * @return type - lista de asignaturas
+ */
 function getAllAsignaturas($credenciales) {
 
     $conexion = NULL;
@@ -150,6 +174,13 @@ function getAllAsignaturas($credenciales) {
     return $lista;
 }
 
+/**
+ * 
+ * @param type $credenciales
+ * @param type $idAlumno
+ * @param type $idAsignatura
+ * @return type - nota del alumno
+ */
 function getNota($credenciales, $idAlumno, $idAsignatura) {
     $nota = null;
     $conexion = NULL;
@@ -176,5 +207,77 @@ function getNota($credenciales, $idAlumno, $idAsignatura) {
     return $nota;
 }
 
+/**
+ * 
+ * @param type $credenciales
+ * @param type $id_alumno
+ * @param type $id_asignatura
+ * @param type $nota
+ * @return boolean - resultado update
+ */
+function updateNota($credenciales, $id_alumno, $id_asignatura, $nota) {
+    $filas = -1;
+    $updated = false;
+    $conexion = NULL;
+
+    try {
+        $conexion = conexionDB($credenciales);
+
+        $dataNotas = Array(
+            SqlQuery::NOTA => $nota
+        );
+        $conexion->where(SqlQuery::ID_ALUMNO, $id_alumno);
+        $conexion->where(SqlQuery::ID_ASIGNATURA, $id_asignatura);
+
+        if ($conexion->update(SqlQuery::NOTAS, $dataNotas)) {
+
+            $filas = $conexion->count;
+
+            if ($filas > 0) {
+                $updated = true;
+            }
+        }
+    } catch (Exception $ex) {
+        
+    } finally {
 
 
+        cerrarConexion($conexion);
+    }
+
+    return $updated;
+}
+/**
+ * 
+ * @param type $credenciales
+ * @param type $id_alumno
+ * @param type $id_asignatura
+ * @param type $nota
+ * @return boolean - resultado insert
+ */
+function insertNota($credenciales, $id_alumno, $id_asignatura, $nota) {
+    $conexion = NULL;
+
+    $insertado = false;
+    try {
+
+        $conexion = conexionDB($credenciales);
+        //INSERT INTO NOTAS (ID_ALUMNO, ID_ASIGNATURA, NOTA) VALUES (?,?,?)";
+        $data = Array(SqlQuery::ID_ALUMNO => $id_alumno,
+            SqlQuery::ID_ASIGNATURA => $id_asignatura,
+            SqlQuery::NOTA => $nota
+        );
+        $fila = $conexion->insert(SqlQuery::NOTAS, $data);
+        if ($fila) {
+            $insertado = TRUE;
+        }
+    } catch (Exception $e) {
+        $e->getMessage();
+    } finally {
+
+        cerrarConexion($conexion);
+    }
+    return $insertado;
+}
+
+//fin insert

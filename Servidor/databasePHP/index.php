@@ -59,9 +59,6 @@ and open the template in the editor.
         use controller\Constantes;
 
         if (isset($notasView) && $notasView) {//notas.php
-            
-            
-
             echo '<form action="notas.php" >
                     <select name="ID_ASIGNATURA">';
 
@@ -72,15 +69,14 @@ and open the template in the editor.
                 $ciclo = htmlspecialchars($valor[SqlQuery::CICLO]);
 
                 echo ' <option value="' . $id . '"';
-                
-                if ($id == $id_asignatura){
+
+                if ($id == $id_asignatura) {
                     echo 'selected >';
                 } else {
                     echo '>';
                 }
-                
-                echo str_replace("'", "\'", $nombre).'</option>';
-                                 
+
+                echo str_replace("'", "\'", $nombre) . '</option>';
             }
             unset($valor);
 
@@ -91,37 +87,39 @@ and open the template in the editor.
                 $nombre = htmlspecialchars($valor[SqlQuery::NOMBRE]);
                 $fecha_nacimiento = $valor[SqlQuery::FECHA_NACIMIENTO];
                 $mayor_edad = $valor[SqlQuery::MAYOR_EDAD];
-                
-                echo '<option value="'.$id.'"';
-                                
-                if ($id == $id_alumno){
+
+                echo '<option value="' . $id . '"';
+
+                if ($id == $id_alumno) {
                     echo 'selected >';
                 } else {
                     echo '>';
                 }
-                echo $nombre.'</option>';
-                           
-                
+                echo $nombre . '</option>';
             }
             unset($valor);
-            echo '</select> 
-            
+            echo '</select>            
                     <input type="text" name="NOTA" value="';
-            if (isset($notaDB) && is_array($notaDB)){
-                echo $notaDB[SqlQuery::NOTA].'"> ';
-            } else {                
-                echo '" placeholder="'.$messageToUser.'">';              
-                
+
+            if (isset($notaDB) && is_array($notaDB)) {
+
+                echo $notaDB[SqlQuery::NOTA] . '"> ';
+            } elseif (isset($nota) && !isset($notaDB)) {
+
+                echo $nota . '"> ';
+            } else {
+
+                echo '" placeholder="' . $messageToUser . '">';
             }
-            echo 
-                                           
+
+            echo
             '<input type="submit" name="ACTION" value="VIEW">
             <input type="submit" name="ACTION" value="UPDATE" onclick="return comprobarInputNota()" >
         </form>';
-            if (!isset($notaDB)){
-                echo '<p>'.$messageToUser.'</p>'; 
+            if (!isset($notaDB)) {
+                echo '<p>' . $messageToUser . '</p>';
             }
-        } elseif (isset($listaAlumnos) && $listaAlumnos != NULL) {//cuando estamos en alumnos.php
+        } elseif (isset($listaAlumnos) && $listaAlumnos != NULL) {//alumnos.php
             if ($deletedAlumno == Constantes::CodeErrorClaveForanea) {//cuando no pueda borrar
                 echo '<form action="alumnos.php">
                 <h3>';
@@ -264,12 +262,17 @@ and open the template in the editor.
 
             function comprobarInputNota() {
                 var formulario = document.getElementsByTagName("input")[0].value;
-                if (formulario.length == 0) {
+                if (formulario.length == 0 || !isInt(formulario)) {
 
-                    alert("No has introducido una nota!");
+                    alert("No has introducido una nota válida!");
                     return false;
 
                 }
+            }
+            function isInt(value) {
+                return !isNaN(value) &&
+                        parseInt(Number(value)) == value &&
+                        !isNaN(parseInt(value, 10));
             }
 
         </script>

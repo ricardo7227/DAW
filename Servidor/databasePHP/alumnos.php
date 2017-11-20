@@ -15,7 +15,7 @@ $credenciales = new credentialsDatabase();
 
 $listaAlumnos = NULL; //getAllAlumnos($credenciales);
 $deletedAlumno = 0; //controla el borrado con clave foranea
-
+//recibe del formulario
 $id = filter_input(INPUT_GET, SqlQuery::ID);
 $nombre = filter_input(INPUT_GET, SqlQuery::NOMBRE);
 $fecha_nacimiento = filter_input(INPUT_GET, SqlQuery::FECHA_NACIMIENTO);
@@ -61,7 +61,7 @@ switch ($action) {
         if ($id != null && strlen($id) > 0) {
             $borrado = deleteAlumnoForceById($credenciales, $id);
         }
-        $messageToUser = (borrado) ? Constantes::messageQueryAlumnoDeleted : Constantes::messageQueryAlumnoDeletedFailedAgain;
+        $messageToUser = ($borrado) ? Constantes::messageQueryAlumnoDeleted : Constantes::messageQueryAlumnoDeletedFailedAgain;
 
         //1º -> BORRAR NOTA 
         //2º -> BORRAR ALUMNO
@@ -82,7 +82,7 @@ include 'index.php';
 
 
 /*
- * Métodos 
+ * Conexión base de datos
  */
 
 function conexionDB($credenciales) {
@@ -107,6 +107,16 @@ function cerrarConexion($enlace) {
     }
 }
 
+/**
+ * Métodos
+ *
+ */
+
+/**
+ * 
+ * @param type $credenciales
+ * @return type lista de alumnos
+ */
 function getAllAlumnos($credenciales) {
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
@@ -141,6 +151,14 @@ function getAllAlumnos($credenciales) {
     return $lista;
 }
 
+/**
+ * 
+ * @param type $credenciales
+ * @param type $nombre
+ * @param type $fecha_nacimiento
+ * @param type $mayor_edad
+ * @return boolean resultado inserción
+ */
 function insertAlumno($credenciales, $nombre, $fecha_nacimiento, $mayor_edad) {
     $insertado = FALSE;
     $conexion = NULL;
@@ -148,7 +166,7 @@ function insertAlumno($credenciales, $nombre, $fecha_nacimiento, $mayor_edad) {
     try {
         $conexion = conexionDB($credenciales);
 
-        $statement = $conexion->prepare(\controller\SqlQuery::INSERT_ALUMNO);
+        $statement = $conexion->prepare(SqlQuery::INSERT_ALUMNO);
 
         $fecha_nacimiento = date('Y-m-d', strtotime($fecha_nacimiento));
 
@@ -177,6 +195,15 @@ function insertAlumno($credenciales, $nombre, $fecha_nacimiento, $mayor_edad) {
 
 //fin insert
 
+/**
+ * 
+ * @param type $credenciales
+ * @param type $id
+ * @param type $nombre
+ * @param type $fecha_nacimiento
+ * @param type $mayor_edad
+ * @return boolean - resultado update
+ */
 function updateAlumno($credenciales, $id, $nombre, $fecha_nacimiento, $mayor_edad) {
     $updated = FALSE;
     $conexion = NULL;
@@ -187,7 +214,7 @@ function updateAlumno($credenciales, $id, $nombre, $fecha_nacimiento, $mayor_eda
 
         $mayor_edad = (strcmp($mayor_edad, "on") == 0) ? TRUE : FALSE;
 
-        $statement = $conexion->prepare(\controller\SqlQuery::UPDATE_ALUMNO);
+        $statement = $conexion->prepare(SqlQuery::UPDATE_ALUMNO);
 
         $statement->bind_param('ssii', $nombre, $fecha_nacimiento, $mayor_edad, $id);
         if ($statement->execute()) {
@@ -210,16 +237,21 @@ function updateAlumno($credenciales, $id, $nombre, $fecha_nacimiento, $mayor_eda
     return $updated;
 }
 
+/**
+ * 
+ * @param type $credenciales
+ * @param type $id
+ * @return type - filas borradas, en caso contrario un código de error
+ */
 function deleteUserById($credenciales, $id) {
-    mysqli_report(MYSQLI_REPORT_ALL);
-
+    mysqli_report(MYSQLI_REPORT_ALL);//para las excepciones
 
     $filasErased = -1;
     $conexion = null;
     $statement = null;
     try {
         $conexion = conexionDB($credenciales);
-        $statement = $conexion->prepare(\controller\SqlQuery::DELETE_ALUMNO);
+        $statement = $conexion->prepare(SqlQuery::DELETE_ALUMNO);
         $statement->bind_param('i', $id);
 
         if ($statement->execute()) {
@@ -246,7 +278,12 @@ function deleteUserById($credenciales, $id) {
 }
 
 //fin delete
-//DELETE_FORCE
+/**
+ * 
+ * @param type $credenciales
+ * @param type $id
+ * @return boolean - resultado delete
+ */
 function deleteAlumnoForceById($credenciales, $id) {//pendiente probar
     mysqli_report(MYSQLI_REPORT_ALL);
     $filasNota = -1;
@@ -258,14 +295,14 @@ function deleteAlumnoForceById($credenciales, $id) {//pendiente probar
         $conexion = conexionDB($credenciales);
         $conexion->autocommit(FALSE);
 
-        $statement = $conexion->prepare(\controller\SqlQuery::DELETE_NOTA_ALUMNO);
+        $statement = $conexion->prepare(SqlQuery::DELETE_NOTA_ALUMNO);
         $statement->bind_param('i', $id);
 
         if ($statement->execute()) {
             $filasNota = $statement->affected_rows;
         }
 
-        $statement = $conexion->prepare(\controller\SqlQuery::DELETE_ALUMNO);
+        $statement = $conexion->prepare(SqlQuery::DELETE_ALUMNO);
         $statement->bind_param('i', $id);
         if ($statement->execute()) {
             $filasAlumno = $statement->affected_rows;
@@ -291,7 +328,7 @@ function deleteAlumnoForceById($credenciales, $id) {//pendiente probar
 
         cerrarConexion($conexion);
     }
-    return borrado;
+    return $borrado;
 }
 
 //fin delete force

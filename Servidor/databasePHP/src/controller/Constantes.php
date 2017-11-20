@@ -22,16 +22,9 @@ class Constantes {
     const VIEW = "VIEW";
     const DELETE_FORCE = "DELETE_FORCE";
 
-    const alumnosList = "alumnosList";
-    const asignaturasList = "asignaturasList";
-    const notaResult = "notaResult";
-    const notaMessage = "notaMessage";
-    
-    const alumnoResult = "alumnoResult";
-    const asignaturaResult = "asignaturaResult";
-    
         
-    const resultadoQuery = "resultado";
+   
+                
     const messageQueryAlumnoInserted = "El alumno fue insertado en la lista";
     const messageQueryAlumnoInsertedFail = "Alumno no agregado en la lista, vuelve a intentarlo";
     const messageQueryAlumnoUpdated = "El alumno fue actualizado en la lista";

@@ -13,7 +13,7 @@ use controller\Constantes;
 
 $credenciales = new credentialsDatabase();
 
-$listaAsignaturas = NULL; //getAllAlumnos($credenciales);
+$listaAsignaturas = NULL; 
 $deletedAsignatura = 0; //controla el borrado con clave foranea
 
 $id = filter_input(INPUT_GET, SqlQuery::ID);
@@ -61,7 +61,7 @@ switch ($action) {
         if ($id != null && strlen($id) > 0) {
             $borrado = deleteAsignaturaForceById($credenciales, $id);
         }
-        $messageToUser = (borrado) ? Constantes::messageQueryAsignaturaDeleted : Constantes::messageQueryAlumnoDeletedFailedAgain;
+        $messageToUser = ($borrado) ? Constantes::messageQueryAsignaturaDeleted : Constantes::messageQueryAlumnoDeletedFailedAgain;
 
         //1º -> BORRAR NOTA 
         //2º -> BORRAR Asignatura
@@ -84,7 +84,11 @@ include 'index.php';
 /*
  * Métodos 
  */
-
+/**
+ * 
+ * @param type $credenciales
+ * @return type conexión con la base de datos
+ */
 function conexionDB($credenciales) {
     $host = $credenciales->getServername();
     $user = $credenciales->getUsername();
@@ -96,7 +100,7 @@ function conexionDB($credenciales) {
     try {
         $conexion = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $user, $password);
 
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//para las excepciones
     } catch (PDOException $e) {
         $e->getMessage();
         $conexion = null;
@@ -109,6 +113,11 @@ function cerrarConexion($conexion) {
     $conexion = NULL;
 }
 
+/**
+ * 
+ * @param type $credenciales
+ * @return type - lista de asignaturas
+ */
 function getAllAsignaturas($credenciales) {
 
 
@@ -137,6 +146,15 @@ function getAllAsignaturas($credenciales) {
     return $lista;
 }
 
+
+/**
+ * 
+ * @param type $credenciales
+ * @param type $nombre
+ * @param type $curso
+ * @param type $ciclo
+ * @return boolean - resultado insert
+ */
 function insertAsignatura($credenciales, $nombre, $curso, $ciclo) {
     $insertado = FALSE;
     $conexion = NULL;
@@ -166,6 +184,15 @@ function insertAsignatura($credenciales, $nombre, $curso, $ciclo) {
 
 //fin insert
 
+/**
+ * 
+ * @param type $credenciales
+ * @param type $id
+ * @param type $nombre
+ * @param type $curso
+ * @param type $ciclo
+ * @return boolean - resultado update
+ */
 function updateAsignatura($credenciales, $id, $nombre, $curso, $ciclo) {
     $updated = FALSE;
     $conexion = NULL;
@@ -194,7 +221,12 @@ function updateAsignatura($credenciales, $id, $nombre, $curso, $ciclo) {
     }
     return $updated;
 }
-
+/**
+ * 
+ * @param type $credenciales
+ * @param type $id
+ * @return type - filas o código de error en el borrado
+ */
 function deleteAsignaturaById($credenciales, $id) {
 
     $filasErased = -1;
@@ -202,7 +234,7 @@ function deleteAsignaturaById($credenciales, $id) {
     $statement = null;
     try {
         $conexion = conexionDB($credenciales);
-        $statement = $conexion->prepare(\controller\SqlQuery::DELETE_ASIGNATURA);
+        $statement = $conexion->prepare(SqlQuery::DELETE_ASIGNATURA);
         $statement->bindParam(1, $id);
 
         if ($statement->execute()) {
@@ -223,8 +255,14 @@ function deleteAsignaturaById($credenciales, $id) {
 }
 
 //fin delete
-//DELETE_FORCE
-function deleteAsignaturaForceById($credenciales, $id) {//pendiente probar
+
+/**
+ * 
+ * @param type $credenciales
+ * @param type $id
+ * @return boolean - resultado delete
+ */
+function deleteAsignaturaForceById($credenciales, $id) {
     $filasNota = -1;
     $filasAlumno = -1;
     $borrado = FALSE;
@@ -261,7 +299,7 @@ function deleteAsignaturaForceById($credenciales, $id) {//pendiente probar
 
         cerrarConexion($conexion);
     }
-    return borrado;
+    return $borrado;
 }
 
 //fin delete force
