@@ -102,12 +102,14 @@ function conexionDB($credenciales) {
         exit();
     }
     $conexion->autoReconnect = false;
-    
+
     return $conexion;
 }
 
 function cerrarConexion($conexion) {
-    $conexion->disconnect();
+    if (isset($conexion) && $conexion != NULL) {
+        $conexion->disconnect();
+    }
 }
 
 /**
@@ -188,9 +190,9 @@ function getNota($credenciales, $idAlumno, $idAsignatura) {
         $conexion = conexionDB($credenciales);
 
         $lista = array();
-        $conexion->where(\controller\SqlQuery::ID_ALUMNO, $idAlumno);
-        $conexion->where(\controller\SqlQuery::ID_ASIGNATURA, $idAsignatura);
-        $resultado = $conexion->get(\controller\SqlQuery::NOTAS);
+        $conexion->where(SqlQuery::ID_ALUMNO, $idAlumno);
+        $conexion->where(SqlQuery::ID_ASIGNATURA, $idAsignatura);
+        $resultado = $conexion->get(SqlQuery::NOTAS);
         if ($conexion->count > 0) {
             $nota = array(
                 SqlQuery::ID_ALUMNO => $resultado[0][SqlQuery::ID_ALUMNO],
@@ -247,6 +249,7 @@ function updateNota($credenciales, $id_alumno, $id_asignatura, $nota) {
 
     return $updated;
 }
+
 /**
  * 
  * @param type $credenciales

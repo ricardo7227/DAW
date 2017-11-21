@@ -41,7 +41,7 @@ foreach ($listaAlumnos as &$valor) {
                <td><button id = "cargarAlumno" onClick = "cargarAlumno(';
     echo $id;
     echo ',\'';
-    echo $nombre;
+    echo str_replace("'", "\'", $nombre);
     echo '\',\'';
     echo $fecha_nacimiento;
     echo '\',';

@@ -102,7 +102,7 @@ function conexionDB($credenciales) {
 }
 
 function cerrarConexion($enlace) {
-    if (!$enlace->connect_errno) {
+    if (isset($enlace) && $enlace != NULL && !$enlace->connect_errno) {
         $enlace->close();
     }
 }
