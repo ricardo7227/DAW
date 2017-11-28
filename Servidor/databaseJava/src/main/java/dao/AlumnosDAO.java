@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.math.BigDecimal;
 import model.Alumno;
 
 import java.sql.Connection;
@@ -119,6 +120,7 @@ public class AlumnosDAO {
         Connection connection = null;
         boolean insertado = false;
         PreparedStatement stmt = null;
+        ResultSet rs = null;
         try {
             connection = dBConnection.getConnection();
 
@@ -130,6 +132,11 @@ public class AlumnosDAO {
 
             if (stmt.executeUpdate() > 0) {
                 insertado = Boolean.TRUE;
+            }
+            rs = stmt.getGeneratedKeys();
+            while (rs.next()) {
+                BigDecimal bd = rs.getBigDecimal(1);
+                alumno.setId(bd.longValue());
             }
 
         } catch (Exception e) {

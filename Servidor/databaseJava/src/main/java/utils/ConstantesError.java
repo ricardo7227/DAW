@@ -11,7 +11,7 @@ package utils;
  */
 public class ConstantesError {
     
-    public static int CodeErrorClaveForanea = 5000;
+    public static int CodeErrorClaveForanea = -5000;
     
     public static String errorForeingkey = "foreign key";
     

@@ -17,7 +17,9 @@ import java.util.logging.Logger;
 
 import model.Nota;
 import org.apache.commons.dbutils.QueryRunner;
-
+import org.apache.commons.dbutils.ResultSetHandler;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import utils.SqlQuery;
 
@@ -58,14 +60,14 @@ public class NotasDAO {
             }
 
         } catch (Exception e) {
-            Logger.getLogger(NotasDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             try {
                 if (stmt != null) {
                     stmt.close();
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(NotasDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             dBConnection.cerrarConexion(connection);
@@ -123,14 +125,14 @@ public class NotasDAO {
             }
 
         } catch (Exception e) {
-            Logger.getLogger(NotasDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             try {
                 if (stmt != null) {
                     stmt.close();
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(NotasDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             dBConnection.cerrarConexion(connection);
@@ -159,7 +161,7 @@ public class NotasDAO {
             }
 
         } catch (Exception ex) {
-            Logger.getLogger(NotasDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AsignaturasDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             db.cerrarConexion(con);
         }

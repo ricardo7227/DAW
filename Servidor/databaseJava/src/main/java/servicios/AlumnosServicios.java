@@ -33,6 +33,7 @@ public class AlumnosServicios {
     }
 
     public List<Alumno> getAllAlumnos() {
+        AlumnosDAO dao = new  AlumnosDAO();//asi
         return dao.getAllAlumnosJDBC();
     }
    

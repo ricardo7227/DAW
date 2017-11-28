@@ -35,7 +35,7 @@ public class NotasServicios {
     public boolean insertNota(Nota nota) {
         return dao.insertUserJDBC(nota);
     }
-
+//no Usado
     public boolean deleteNota(int i) {
         return dao.deleteNotadbUtils(i);
     }

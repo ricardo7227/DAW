@@ -31,26 +31,26 @@ public class Constantes {
     public static final String VIEW = "VIEW";
     public static final String DELETE_FORCE = "DELETE_FORCE";
     
-    public static final String resultadoQuery = "resultado";
-    public static final String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";
-    public static final String messageQueryAlumnoInsertedFail = "Alumno no agregado en la lista, vuelve a intentarlo";
-    public static final String messageQueryAlumnoUpdated = "El alumno fue actualizado en la lista";
-    public static final String messageQueryAlumnoUpdatedFail = "Problemas actualizando el alumno, inténtalo otra vez";
-    public static final String messageQueryAlumnoDeleted = "El alumno fue eliminado correctamente de la lista";
-    public static final String messageQueryAlumnoDeletedFail = "Cuidado! el alumno tiene notas, Quieres borrarlo?";
-    public static final String messageQueryAlumnoDeletedFailedAgain = "Seguimos sin poder borrar el alumno";
+    public static  String resultadoQuery = "resultado";
+    public static  String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";
+    public static  String messageQueryAlumnoInsertedFail = "Alumno no agregado en la lista, vuelve a intentarlo";
+    public static  String messageQueryAlumnoUpdated = "El alumno fue actualizado en la lista";
+    public static  String messageQueryAlumnoUpdatedFail = "Problemas actualizando el alumno, inténtalo otra vez";
+    public static  String messageQueryAlumnoDeleted = "El alumno fue eliminado correctamente de la lista";
+    public static  String messageQueryAlumnoDeletedFail = "Cuidado! el alumno tiene notas, Quieres borrarlo?";
+    public static  String messageQueryAlumnoDeletedFailedAgain = "Seguimos sin poder borrar el alumno";
     
-    public static final String messageQueryAsignaturaInserted = "Asignatura fue insertado en la lista";
-    public static final String messageQueryAsignaturaInsertFailed = "Asignatura no agregada a la base de datos";
-    public static final String messageQueryAsignaturaUpdated = "Asignatura actualizada correctamente";
-    public static final String messageQueryAsignaturaUpdateFailed = "Error en la actualización de Asignatura";
-    public static final String messageQueryAsignaturaDeleted = "Asignatura eliminada correctamente";
-    public static final String messageQueryAsignaturaDeletedFail = "Cuidado! Tienes alumnos que estan cursando esta asignatura. Estás Seguro?";
-    public static final String messageQueryAsignaturaDeletedFailedAgain = "Problemas graves, no pudimos borrar la Asignatura";
+    public static  String messageQueryAsignaturaInserted = "Asignatura fue insertado en la lista";
+    public static  String messageQueryAsignaturaInsertFailed = "Asignatura no agregada a la base de datos";
+    public static  String messageQueryAsignaturaUpdated = "Asignatura actualizada correctamente";
+    public static  String messageQueryAsignaturaUpdateFailed = "Error en la actualización de Asignatura";
+    public static  String messageQueryAsignaturaDeleted = "Asignatura eliminada correctamente";
+    public static  String messageQueryAsignaturaDeletedFail = "Cuidado! Tienes alumnos que estan cursando esta asignatura. Estás Seguro?";
+    public static  String messageQueryAsignaturaDeletedFailedAgain = "Problemas graves, no pudimos borrar la Asignatura";
     
-    public static final String messageQueryNotaMissing = "No tiene nota";
-    public static final String messageQueryNotaUpdated = "Hemos actualizado la nota correctamente";
-    public static final String messageQueryNotaUpdatedFail = "Falló en la actualización de Nota";
+    public static  String messageQueryNotaMissing = "No tiene nota";
+    public static  String messageQueryNotaUpdated = "Hemos actualizado la nota correctamente";
+    public static  String messageQueryNotaUpdatedFail = "Falló en la actualización de Nota";
     
     
     
