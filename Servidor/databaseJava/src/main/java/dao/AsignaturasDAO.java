@@ -145,10 +145,15 @@ public class AsignaturasDAO {
             if (filasNota > 0 && filasAsigantura > 0) {
                 borrado = Boolean.TRUE;
                 con.commit();
+            }else {
+                con.rollback();
             }
 
         } catch (Exception ex) {
-            con.rollback();
+            if (con != null) {
+                con.rollback();
+            }
+
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             db.cerrarConexion(con);

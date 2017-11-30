@@ -23,27 +23,33 @@ import utils.SqlQuery;
  */
 public class AsignaturasServicios {
 
-    AsignaturasDAO dao;
-
     public AsignaturasServicios() {
-        dao = new AsignaturasDAO();
+
     }
 
     public List<Asignatura> getAllAsignaturasdbUtils() {
-
+        AsignaturasDAO dao = new AsignaturasDAO();
         return dao.getAllAsignaturasdbUtils();
     }
 
     public boolean insertAsignaturadbUtils(Asignatura a) {
+        AsignaturasDAO dao = new AsignaturasDAO();
         return dao.insertAsignaturadbUtils(a);
     }
 
     public int updateAsignaturadbUtils(Asignatura asignatura) {
+        AsignaturasDAO dao = new AsignaturasDAO();
         return dao.updateAsignaturasdbUtils(asignatura);
     }
 
     public int deleteAsignaturadbUtils(String key) {
+        AsignaturasDAO dao = new AsignaturasDAO();
         return dao.deleteAsignaturadbUtils(key);
+    }
+    
+    public boolean deleteAsignaturaForce(int i) throws SQLException {
+        AsignaturasDAO dao = new AsignaturasDAO();
+        return dao.deleteAsignaturadbUtilsForce(i);
     }
 
     public Asignatura tratarParametros(Map<String, String[]> parametros) throws UnsupportedEncodingException {
@@ -79,7 +85,5 @@ public class AsignaturasServicios {
         return asignatura;
     }
 
-    public boolean deleteAsignaturaForce(int i) throws SQLException {
-        return dao.deleteAsignaturadbUtilsForce(i);
-    }
+    
 }//FIN CLASE

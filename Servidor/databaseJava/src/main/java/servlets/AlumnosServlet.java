@@ -44,9 +44,7 @@ public class AlumnosServlet extends HttpServlet {
             throws ServletException, IOException {
         AlumnosServicios servicios = new AlumnosServicios();
 
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-
+        
         String action = request.getParameter(Constantes.actionJSP);
         Alumno alumno = null;
         String messageToUser = null;

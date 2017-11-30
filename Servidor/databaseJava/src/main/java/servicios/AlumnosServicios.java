@@ -26,28 +26,33 @@ import utils.SqlQuery;
  */
 public class AlumnosServicios {
 
-    private AlumnosDAO dao;
-
     public AlumnosServicios() {
-        dao = new AlumnosDAO();
+
     }
 
     public List<Alumno> getAllAlumnos() {
-        AlumnosDAO dao = new  AlumnosDAO();//asi
+        AlumnosDAO dao = new AlumnosDAO();
         return dao.getAllAlumnosJDBC();
     }
-   
 
     public boolean updateAlumnoJDBC(Alumno alumno) {
+        AlumnosDAO dao = new AlumnosDAO();
         return dao.updateUserJDBC(alumno);
     }
 
     public boolean insertAlumnoJDBC(Alumno alumno) {
+        AlumnosDAO dao = new AlumnosDAO();
         return dao.insertUserJDBC(alumno);
     }
 
     public int deleteAlumnoJDBC(String id) {
+        AlumnosDAO dao = new AlumnosDAO();
         return dao.deleteUserByIdJDBC(id);
+    }
+    
+    public boolean deleteAlumnoForce(int i) throws SQLException {
+        AlumnosDAO dao = new  AlumnosDAO();
+        return dao.deleteUserByIddbUtils(i);
     }
 
     /**
@@ -94,8 +99,6 @@ public class AlumnosServicios {
         return alumno;
     }
 
-    public boolean deleteAlumnoForce(int i) throws SQLException {
-        return dao.deleteUserByIddbUtils(i);
-    }
+    
 
 }//fin clase

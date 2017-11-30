@@ -44,8 +44,7 @@ public class AsignaturasServlet extends HttpServlet {
 
         AsignaturasServicios servicios = new AsignaturasServicios();
 
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
+        
 
         String action = request.getParameter(Constantes.actionJSP);
         String messageToUser = null;

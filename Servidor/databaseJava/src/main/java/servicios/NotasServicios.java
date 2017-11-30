@@ -18,25 +18,29 @@ import utils.SqlQuery;
  */
 public class NotasServicios {
 
-    NotasDAO dao;
+    
 
     public NotasServicios() {
-        dao = new NotasDAO();
+        
     }
 
     public Nota getNota(Nota nota) {
+        NotasDAO dao = new NotasDAO();
         return dao.getNotaJDBC((int) nota.getId_alumno(), (int) nota.getId_asignatura());
     }
 
     public boolean updateNota(Nota nota) {
+        NotasDAO dao = new NotasDAO();
         return dao.updateNotadbUtils(nota);
     }
 
     public boolean insertNota(Nota nota) {
+        NotasDAO dao = new NotasDAO();
         return dao.insertUserJDBC(nota);
     }
 //no Usado
     public boolean deleteNota(int i) {
+        NotasDAO dao = new NotasDAO();
         return dao.deleteNotadbUtils(i);
     }
 

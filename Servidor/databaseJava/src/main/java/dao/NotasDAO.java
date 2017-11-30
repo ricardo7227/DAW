@@ -17,9 +17,6 @@ import java.util.logging.Logger;
 
 import model.Nota;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.ResultSetHandler;
-import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import utils.SqlQuery;
 

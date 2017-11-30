@@ -31,6 +31,16 @@ public class Constantes {
     public static final String VIEW = "VIEW";
     public static final String DELETE_FORCE = "DELETE_FORCE";
     
+    //Columnas User
+    public static final String USER = "USER";
+    public static final String ID = "ID";
+    public static final String NOMBRE = "NOMBRE";
+    public static final String PASSWORD = "PASSWORD";
+    public static final String ACTIVO = "ACTIVO";
+    public static final String CODIGO_ACTIVACION = "CODIGO_ACTIVACION";
+    public static final String FECHA_ACTIVACION = "FECHA_ACTIVACION";
+    public static final String EMAIL = "EMAIL";
+    
     public static  String resultadoQuery = "resultado";
     public static  String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";
     public static  String messageQueryAlumnoInsertedFail = "Alumno no agregado en la lista, vuelve a intentarlo";
