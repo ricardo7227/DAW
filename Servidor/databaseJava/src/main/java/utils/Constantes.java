@@ -62,6 +62,8 @@ public class Constantes {
     public static  String messageQueryNotaUpdated = "Hemos actualizado la nota correctamente";
     public static  String messageQueryNotaUpdatedFail = "Falló en la actualización de Nota";
     
+    public static  String messageUserExist = "Ya tenemos un usario con un Nombre o Email";
+    
     
     
     

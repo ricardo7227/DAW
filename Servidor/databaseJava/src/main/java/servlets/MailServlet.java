@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.User;
 import servicios.RegistroServicios;
+import utils.Constantes;
 import utils.PasswordHash;
 
 /**
@@ -40,16 +41,26 @@ public class MailServlet extends HttpServlet {
             throws ServletException, IOException, NoSuchAlgorithmException, InvalidKeySpecException {
 
         Map<String, String[]> parametros = request.getParameterMap();
-
+        String messageToUser = null;
         RegistroServicios servicios = new RegistroServicios();
         User usuario = servicios.tratarParametro(parametros);
 
         if (!servicios.thisUserExist(usuario)) {
-            String passwordHash = PasswordHash.getInstance().createHash(usuario.getPassword());
+            
+            usuario.setPassword( PasswordHash.getInstance().createHash(usuario.getPassword()));
+            usuario.setCodigo_activacion(PasswordHash.getInstance().createHash(usuario.getEmail()));
+            servicios.insertUser(usuario);
+            
+        }else{
+            messageToUser = Constantes.messageUserExist;
         }
 
         //MandarMail mail = new MandarMail();
         //mail.mandarMail("ricardo@aol.com", "Soy JAVA", "hola");
+        
+        if (messageToUser != null) {
+            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

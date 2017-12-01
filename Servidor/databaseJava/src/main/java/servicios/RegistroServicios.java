@@ -29,9 +29,19 @@ public class RegistroServicios {
         return dao.getUserByNombreAndEmailDBUtils(user);
     }
 
+    public User getDuplicateUser(User user) {
+        UsersDAO dao = new UsersDAO();
+        return dao.getDuplicateUserDBUtils(user);
+    }
+
+    public boolean insertUser(User user) {
+        UsersDAO dao = new UsersDAO();
+        return dao.insertUserDbUtils(user);
+    }
+
     public boolean thisUserExist(User user) {
 
-        return getUserbyNombreAndEmail(user) != null;
+        return getDuplicateUser(user) != null;
     }
 
     /**
@@ -74,6 +84,14 @@ public class RegistroServicios {
         }
         return usuario;
 
+    }
+
+    public boolean readyToInsert(User user) {
+        boolean valido = false;//NOMBRE, PASSWORD, CODIGO_ACTIVACION, FECHA_ACTIVACION, EMAIL
+        if (user.getNombre() != null && user.getPassword() != null && user.getCodigo_activacion() != null && user.getFecha_activacion() != null &&user.getEmail() != null) {
+            valido = Boolean.TRUE;
+        }
+        return valido;
     }
 
 }//fin clase
