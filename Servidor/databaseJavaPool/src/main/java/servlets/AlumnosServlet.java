@@ -55,7 +55,7 @@ public class AlumnosServlet extends HttpServlet {
                 case Constantes.UPDATE:
 
                     alumno = servicios.tratarParametros(parametros);
-                    messageToUser = (servicios.updateAlumnoJDBC(alumno)) ? Constantes.messageQueryAlumnoUpdated : Constantes.messageQueryAlumnoDeletedFail;
+                    messageToUser = (servicios.updateAlumnoJDBC(alumno)) ? Constantes.messageQueryAlumnoUpdated : Constantes.messageQueryAlumnoUpdatedFail;
 
                     break;
                 case Constantes.INSERT:

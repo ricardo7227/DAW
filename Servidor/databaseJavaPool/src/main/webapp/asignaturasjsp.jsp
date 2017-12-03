@@ -46,7 +46,7 @@
     </head>
     <body>
         <div class="container">
-            <a href="alumnos">alumnos</a><a href="asignaturas">asignaturas</a><a href="notas">notas</a>
+            <a href="alumnos">alumnos</a><a href="asignaturas">asignaturas</a><a href="notas">notas</a><a href="registro">registro</a>
         </div>
         <c:if test="${not empty asignaturaResult}">
             <form action="asignaturas">

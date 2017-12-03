@@ -37,7 +37,7 @@
     </head>
     <body>
         <div class="container">
-            <a href="alumnos">alumnos</a><a href="asignaturas">asignaturas</a><a href="notas">notas</a>
+            <a href="alumnos">alumnos</a><a href="asignaturas">asignaturas</a><a href="notas">notas</a><a href="registro">registro</a>
         </div>
         <form action="notas" >
             <select name="id_asignatura">
