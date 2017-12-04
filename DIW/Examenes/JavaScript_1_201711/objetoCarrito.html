@@ -1,0 +1,172 @@
+ <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Objeto carrito</title>
+      <script>
+      // Definición del objeto Producto
+         function Producto (des, pvp, peso, fec){
+             // Propiedades
+                this.descripcion = des;
+                this.pvp_kg      = pvp;
+                this.peso_gr     = peso;
+                this.caduca      = fec;
+	     // Métodos
+                this.Caducado    = fnCaducado;
+                this.Valor       = fnValor;
+         }
+
+      // Definición del objeto Carrito
+         function Carrito (cli, cod, com) {
+             // Propiedades
+                this.cliente     = cli;
+                this.cod_postal  = cod;
+                this.compra      = com;
+             // Métodos
+                this.Importe     = fnImporte;
+                this.Valido      = fnValido;
+                this.Cod_provincia = fnCod_provincia;
+         }
+
+      // Funciones de Producto
+         function fnCaducado(){
+                var ahora = new Date();
+                if (this.caduca.getTime() < ahora.getTime()) return true; else return false;
+         }
+         function fnValor(){
+                return (this.pvp_kg * this.peso_gr / 1000);
+         }
+
+      // Funciones de Carrito
+         function fnImporte() {
+                var total = 0;
+                for (var i=0; i < this.compra.length; i++) {
+                    total += this.compra[i].Valor();
+                }
+                return total;
+         }
+         function fnValido() {
+                for (var i=0; i < this.compra.length; i++) {
+                    if (this.compra[i].Caducado()) return false;
+                }
+                return true;
+         }
+         function fnCod_provincia() {
+                return this.cod_postal.substr(0,2);
+         }
+
+      </script>
+    </head>
+    <body>
+<script>
+var datos = new Array();
+
+function intro_datos(){
+    var mas_datos = true;
+    var articulos = new Array();
+    var hoy = new Date();
+    var nombre = prompt("Introduzca el nombre del cliente", "Nombre");
+    var postal = prompt("Introduzca el código postal", "28000");
+    while (es_valido(postal) == false) {
+        postal = prompt("Introduzca un código postal ¡¡VÁLIDO!!", "28000");
+    }
+    do {
+       var descri = prompt ("Descripción del artículo", "Artículo");
+       var pvp    = parseInt(prompt("Precio el kilogramo", "0"));
+       var peso   = parseInt(prompt("Peso en gramos", "0"));
+       var anio   = parseInt(prompt("Año", "2017"));
+       while (anio < hoy.getFullYear()) {
+           anio   = parseInt(prompt("Introduzca un año correcto", "2017"));
+       }
+       var mes   = parseInt(prompt("Mes (1-12)", "12"));
+       while (mes < 1 || mes > 12) {
+           mes   = parseInt(prompt("Introduzca un mes correcto", "12"));
+       }
+       var dia   = parseInt(prompt("Dia (1-31)", "1"));
+       while (dia < 1 || dia > 31) {
+           dia   = parseInt(prompt("Introduzca un dia correcto", "1"));
+       }
+       var fecha_cad = new Date(anio, mes - 1, dia);
+       if (fecha_cad.getTime() >= hoy.getTime()){
+          articulos[articulos.length] = new Producto (descri, pvp, peso, fecha_cad);
+       }
+       mas_datos = confirm ("Mas artículos");
+    } while (mas_datos);
+    if (articulos.length > 0) {
+       datos[datos.length] = new Carrito (nombre, postal, articulos);
+       if (datos[(datos.length - 1)].Valido()) {
+          alert ("Importe total: " + datos[(datos.length - 1)].Importe());
+       } else {
+          datos.pop();
+          alert("El carrito contiene productos caducados");
+       }
+    }
+}
+function es_valido (cp) {
+    var expresion = /[0-5]\d{4}/;
+    if (expresion.test(cp)) {
+       if (parseInt(cp) > 999 && parseInt(cp) < 53000) return true;
+    }
+    return false;
+}
+function mostrar_cliente(){
+    if (datos.length > 0) {
+        var indice = 0;
+        var importe_aux = datos[0].Importe();
+        for (var i=1; i < datos.length; i++) {
+            if (datos[i].Importe() > importe_aux) {
+               indice = i;
+               importe_aux = datos[i].Importe();
+            }
+        }
+        alert(datos[indice].cliente + ".- " + importe_aux);
+    } else {
+        alert("No hay carritos");
+    }
+}
+function listado(){
+    var provin_aux = "";
+    var impor_aux = 0;
+    var provincias = new Array ("Alava", "Albacete", "Alicante", "Almeria", "Zaragoza");
+    var importes_pr = new Array();
+    var i = 0;
+    var j = 0;
+    for (i=0; i < provincias.length; i++) {
+        importes_pr[i] = 0;
+    }
+    for (i=0; i < datos.length; i++) {
+        importes_pr[(parseInt(datos[i].Cod_provincia()) - 1)] += datos[i].Importe();
+    }
+// Ordenar descendentemente las dos tablas
+    for (i=0; i<(provincias.length - 1); i++) {
+        for (j=i+1; j<provincias.length; j++) {
+            if (importes_pr[i] < importes_pr[j]) {
+                provin_aux     = provincias[i];
+                impor_aux      = importes_pr[i];
+                provincias[i]  = provincias[j];
+                importes_pr[i] = importes_pr[j];
+                provincias[j]  = provin_aux;
+                importes_pr[j] = impor_aux;
+            }
+        }
+    }
+
+// Mostrar datos
+    for (i=0; i < datos.length; i++) {
+        if (importes_pr[i] > 0) {
+            alert(provincias[i] + " = " + importes_pr[i]);
+        }
+    }
+}
+
+</script>
+
+<h2>TU TIENDA EN CASA</h2>
+<br />
+<br />
+<button onclick="intro_datos()">Introducir carrito</button>
+<button onclick="mostrar_cliente()">Mejor cliente</button>
+<button onclick="listado()">Listado de mejores provincias</button>
+
+   </body>
+</html>

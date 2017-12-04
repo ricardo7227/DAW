@@ -15,4 +15,9 @@
             <page-encoding>UTF-8</page-encoding>
         </jsp-property-group>
     </jsp-config>
+    <filter>
+        <filter-name>Login</filter-name> <!-- mandatory -->
+        <filter-class>filtros.Login</filter-class> <!-- mandatory -->
+        
+    </filter>
 </web-app>
