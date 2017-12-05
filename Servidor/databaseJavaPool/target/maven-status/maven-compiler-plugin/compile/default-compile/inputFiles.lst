@@ -1,5 +1,6 @@
 /home/daw/Documentos/Servidor/databaseJavaPool/src/main/java/utils/Constantes.java
 /home/daw/Documentos/Servidor/databaseJavaPool/src/main/java/servicios/NotasServicios.java
+/home/daw/Documentos/Servidor/databaseJavaPool/src/main/java/utils/UrlsPaths.java
 /home/daw/Documentos/Servidor/databaseJavaPool/src/main/java/model/Alumno.java
 /home/daw/Documentos/Servidor/databaseJavaPool/src/main/java/servlets/RegistroServlet.java
 /home/daw/Documentos/Servidor/databaseJavaPool/src/main/java/dao/AsignaturasDAO.java

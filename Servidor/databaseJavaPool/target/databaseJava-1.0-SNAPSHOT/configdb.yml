@@ -1,7 +1,7 @@
 ## YAML Template.
 driverDB: com.mysql.jdbc.Driver
-urlDB: jdbc:mysql://discutivo.com:3306/discu351_test?useSSL=false&useUnicode=true&characterEncoding=utf8
-userDB: discu351_test
+urlDB: jdbc:mysql://localhost:3306/discu351_test?useSSL=false&useUnicode=true&characterEncoding=utf8
+userDB: root
 passDB: nohay2sin3
 mailFrom: discutivo@gmail.com
 smtpServer: smtp.gmail.com

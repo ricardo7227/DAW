@@ -6,6 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="cons" class="utils.UrlsPaths" scope="session"/>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,7 +27,10 @@
     </head>
     <body>
         <div class="container">
-            <a href="alumnos">alumnos</a><a href="asignaturas">asignaturas</a><a href="notas">notas</a><a href="registro">registro</a>
+            <a href="<c:out value="${cons.getAlumnos()}"/>">alumnos</a>
+            <a href="<c:out value="${cons.getAsignaturas()}"/>">asignaturas</a>
+            <a href="<c:out value="${cons.getNotas()}"/>">notas</a>
+            <a href="<c:out value="${cons.getRegistro()}"/>">registro</a>
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">

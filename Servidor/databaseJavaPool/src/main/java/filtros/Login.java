@@ -16,6 +16,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import utils.Constantes;
 
 /**
  *
@@ -108,7 +110,12 @@ public class Login implements Filter {
         
         Throwable problem = null;
         try {
-            chain.doFilter(request, response);
+            if (((HttpServletRequest)request).getSession().getAttribute(Constantes.LOGIN_ON) != null) {
+
+                chain.doFilter(request, response);
+            } else {
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            }
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then

@@ -22,13 +22,14 @@ import model.User;
 import servicios.RegistroServicios;
 import utils.Constantes;
 import utils.PasswordHash;
+import utils.UrlsPaths;
 import utils.Utils;
 
 /**
  *
  * @author Gato
  */
-@WebServlet(name = "registroServlet", urlPatterns = {"/registro"})
+@WebServlet(name = "registroServlet", urlPatterns = {UrlsPaths.REGISTRO})
 public class RegistroServlet extends HttpServlet {
 
     /**

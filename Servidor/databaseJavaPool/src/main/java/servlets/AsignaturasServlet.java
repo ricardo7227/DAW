@@ -22,12 +22,13 @@ import servicios.AsignaturasServicios;
 import utils.Constantes;
 import utils.ConstantesError;
 import utils.SqlQuery;
+import utils.UrlsPaths;
 
 /**
  *
  * @author daw
  */
-@WebServlet(name = "AsignaturasServlet", urlPatterns = {"/asignaturas"})
+@WebServlet(name = "AsignaturasServlet", urlPatterns = {UrlsPaths.ASIGNATURAS})
 public class AsignaturasServlet extends HttpServlet {
 
     /**

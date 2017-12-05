@@ -18,12 +18,13 @@ import servicios.AlumnosServicios;
 import servicios.AsignaturasServicios;
 import servicios.NotasServicios;
 import utils.Constantes;
+import utils.UrlsPaths;
 
 /**
  *
  * @author daw
  */
-@WebServlet(name = "NotasServlet", urlPatterns = {"/notas"})
+@WebServlet(name = "NotasServlet", urlPatterns = {UrlsPaths.NOTAS})
 public class NotasServlet extends HttpServlet {
 
     /**

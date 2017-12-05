@@ -25,6 +25,7 @@ config/Configuration.class
 dao/UsersDAO$4.class
 model/User.class
 servlets/RegistroServlet.class
+utils/UrlsPaths.class
 servlets/AlumnosServlet.class
 servlets/AsignaturasServlet.class
 dao/UsersDAO$1.class
