@@ -20,6 +20,7 @@ public class Constantes {
     public static String asignaturaResult = "asignaturaResult";
 
     public static String alumnosJSP = "alumnosJsp.jsp";
+    public static String indexJSP = "index.jsp";
     public static String asignaturasJSP = "asignaturasjsp.jsp";
     public static String notasJSP = "notasjsp.jsp";
     public static String registroJSP = "registroJsp.jsp";
@@ -34,6 +35,8 @@ public class Constantes {
     public static final String REGISTRAR = "REGISTRAR";
     public static final String VALIDATE = "VALIDATE";
     public static final String LOGIN = "LOGIN";
+    public static final String LOGOUT = "LOGOUT";
+    
 
     //Columnas Users
     public static final String USERS = "USERS";
@@ -87,7 +90,7 @@ public class Constantes {
     public static String emailSubjectValidate = "ASTOLFO SL: Hola %s - Correo de Activación";
 
     public static int MAX_RANDOM = 30;
-    public static int MIN_RANDOM = 10;
+    public static int MIN_RANDOM = 20;
     public static long MAX_TIME_TO_VALIDATE = 1000 * 60 * 60;//1hora
     
 

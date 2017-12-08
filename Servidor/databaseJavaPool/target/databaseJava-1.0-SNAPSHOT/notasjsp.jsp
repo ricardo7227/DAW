@@ -39,10 +39,10 @@
     </head>
     <body>
         <div class="container">
-            <a href="<c:out value="${cons.getAlumnos()}"/>">alumnos</a>
-            <a href="<c:out value="${cons.getAsignaturas()}"/>">asignaturas</a>
-            <a href="<c:out value="${cons.getNotas()}"/>">notas</a>
-            <a href="<c:out value="${cons.getRegistro()}"/>">registro</a>
+            <a href="<c:out value="${cons.getAlumnosRelative()}"/>">alumnos</a>
+            <a href="<c:out value="${cons.getAsignaturasRelative()}"/>">asignaturas</a>
+            <a href="<c:out value="${cons.getNotasRelative()}"/>">notas</a>
+            <a href="<c:out value="${cons.getRegistroRelative()}"/>">registro</a>
         </div>
         <form action="notas" >
             <select name="id_asignatura">

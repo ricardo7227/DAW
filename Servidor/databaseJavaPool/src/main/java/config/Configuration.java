@@ -24,8 +24,8 @@ public class Configuration {
     private String smtpServer;
     private String smtpPort;
     private String mailPass;
+    private int timeToValidate;
 
-   
     private Configuration() {
 
     }
@@ -74,7 +74,8 @@ public class Configuration {
     public void setPassDB(String passDB) {
         this.passDB = passDB;
     }
-     public static Configuration getConfig() {
+
+    public static Configuration getConfig() {
         return config;
     }
 
@@ -113,6 +114,13 @@ public class Configuration {
     public void setMailPass(String mailPass) {
         this.mailPass = mailPass;
     }
-    
+
+    public int getTimeToValidate() {
+        return timeToValidate;
+    }
+
+    public void setTimeToValidate(int timeToValidate) {
+        this.timeToValidate = timeToValidate;
+    }
 
 }//fin clase

@@ -11,28 +11,48 @@ package utils;
  */
 public class UrlsPaths {
 
-    public static final String ALUMNOS = "/src/alumnos";
-    public static final String ASIGNATURAS = "/asignaturas";
-    public static final String NOTAS = "/notas";
+    public static final String ALUMNOS = "/privado/alumnos";
+    public static final String ASIGNATURAS = "/privado/asignaturas";
+    public static final String NOTAS = "/privado/notas";
     public static final String REGISTRO = "/registro";
-    public static final String LOGIN = "/login";
+    public static final String PRIVADO = "/privado/*";
 
     private static String preRelativePath = "..";
 
     public static String getAlumnos() {
-        return preRelativePath + ALUMNOS;
+        return ALUMNOS;
     }
 
     public static String getAsignaturas() {
-        return preRelativePath + ASIGNATURAS.substring(1);
+        return ASIGNATURAS;
     }
 
     public static String getNotas() {
-        return preRelativePath + NOTAS.substring(1);
+        return NOTAS;
     }
 
     public static String getRegistro() {
-        return preRelativePath + REGISTRO.substring(1);
+        return REGISTRO;
+    }
+
+    public static String getLOGOUT() {
+        return REGISTRO + "?" + Constantes.actionJSP + "=" + Constantes.LOGOUT;
+    }
+
+    public static String getAlumnosRelative() {
+        return preRelativePath + ALUMNOS;
+    }
+
+    public static String getAsignaturasRelative() {
+        return preRelativePath + ASIGNATURAS;
+    }
+
+    public static String getNotasRelative() {
+        return preRelativePath + NOTAS;
+    }
+
+    public static String getRegistroRelative() {
+        return preRelativePath + REGISTRO;
     }
 
 }

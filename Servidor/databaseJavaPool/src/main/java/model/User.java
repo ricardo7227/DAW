@@ -12,7 +12,7 @@ import java.sql.Date;
  * @author Gato
  */
 public class User {
-    
+
     private long id;
     private String nombre;
     private String password;
@@ -72,8 +72,6 @@ public class User {
         this.fecha_activacion = fecha_activacion;
     }
 
-   
-
     public String getEmail() {
         return email;
     }
@@ -82,8 +80,4 @@ public class User {
         this.email = email;
     }
 
-   
-    
-    
-    
 }

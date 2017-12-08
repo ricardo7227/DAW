@@ -57,7 +57,7 @@ public class RegistroServlet extends HttpServlet {
                         if (servicios.userReadyToWorkInsert(usuario)) {
 
                             usuario.setPassword(PasswordHash.getInstance().createHash(usuario.getPassword()));
-                            usuario.setCodigo_activacion(Utils.randomAlphaNumeric((ThreadLocalRandom.current().nextInt(Constantes.MIN_RANDOM, Constantes.MAX_RANDOM + 1))));
+                            usuario.setCodigo_activacion(Utils.randomAlphaNumeric(ThreadLocalRandom.current().nextInt(Constantes.MIN_RANDOM, Constantes.MAX_RANDOM + 1)));
                             usuario.setFecha_activacion(new Date(new java.util.Date().getTime()));
 
                             if (servicios.insertUser(usuario)) {
@@ -103,7 +103,7 @@ public class RegistroServlet extends HttpServlet {
                     //entra desde url *
                     //prevenir campos nulos *
                     //select nombre, email ,codigo activacion - existe una variable de tiempo* a comtrolar cuanto pasa desde el registro*
-                    //si -> update activo* -> email Bienvenido?
+                    //si -> update activo* -> email ¿Bienvenido?
                     //no -> mensaje error en la validación*
 
                     //hay un login con nombre y contraseña*
@@ -135,12 +135,16 @@ public class RegistroServlet extends HttpServlet {
 
                     break;
 
+                case Constantes.LOGOUT:
+                    request.getSession().setAttribute(Constantes.LOGIN_ON, null);
+                    break;
+
             }
 
         }
 
         if (messageToUser != null) {
-            request.setAttribute(Constantes.messageFromServer, messageToUser);//mirar si funciona, ahora solo en el duplicado
+            request.setAttribute(Constantes.messageFromServer, messageToUser);
         }
         request.getRequestDispatcher(Constantes.registroJSP).forward(request, response);
     }

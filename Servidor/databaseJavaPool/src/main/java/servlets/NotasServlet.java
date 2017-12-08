@@ -93,7 +93,7 @@ public class NotasServlet extends HttpServlet {
         request.setAttribute(Constantes.asignaturasList, asignaturasServicios.getAllAsignaturasdbUtils());//envia la lista al jsp
         request.setAttribute(Constantes.alumnosList, alumnosServicios.getAllAlumnos());
 
-        request.getRequestDispatcher(Constantes.notasJSP).forward(request, response);
+        request.getRequestDispatcher("/" + Constantes.notasJSP).forward(request, response);
 
     }
 

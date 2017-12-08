@@ -5,20 +5,13 @@
  */
 package dao;
 
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.User;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.ResultSetHandler;
-import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -36,32 +29,6 @@ public class UsersDAO {
     public UsersDAO() {
     }
 
-    /**
-     * *
-     *
-     * @param usuario
-     * @return user - puede ser null cuando no existe el usuario
-     */
-    public User getUserByNombreAndEmailDBUtils(User usuario) {
-        User user = null;
-
-        Connection con = null;
-        try {
-            con = DBConnection.getInstance().getConnection();
-            QueryRunner qr = new QueryRunner();
-            ResultSetHandler<User> handler
-                    = new BeanHandler<User>(User.class);
-            user = qr.query(con, SqlQuery.SELECT_USER_BY_NAME_EMAIL, handler, usuario.getNombre(), usuario.getEmail());
-
-        } catch (Exception ex) {
-            Logger.getLogger(UsersDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            DBConnection.getInstance().cerrarConexion(con);
-        }
-        return user;
-    }
-
-    
     public User getLoginUserJDBCTemplate(User usuario) {
 
         JdbcTemplate jtm = new JdbcTemplate(
@@ -170,59 +137,4 @@ public class UsersDAO {
         return rowsAffected;
     }
 
-    @Deprecated
-    public User getDuplicateUserDBUtils(User usuario) {
-        User user = null;
-
-        Connection con = null;
-        try {
-            con = DBConnection.getInstance().getConnection();
-            QueryRunner qr = new QueryRunner();
-            ResultSetHandler<User> handler
-                    = new BeanHandler<User>(User.class
-                    );
-            user = qr.query(con, SqlQuery.SELECT_USER_BY_NAME, handler, usuario.getNombre());
-            if (user == null) {
-                user = qr.query(con, SqlQuery.SELECT_USER_BY_EMAIL, handler, usuario.getEmail());
-
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(UsersDAO.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            DBConnection.getInstance().cerrarConexion(con);
-        }
-        return user;
-    }
-
-    @Deprecated
-    public boolean insertUserDbUtils(User usuario) {
-
-        Connection con = null;
-        boolean insertado = false;
-        try {
-            con = DBConnection.getInstance().getConnection();
-
-            QueryRunner qr = new QueryRunner();
-
-            long id = qr.insert(con,
-                    SqlQuery.INSERT_USER,//NOMBRE, PASSWORD, CODIGO_ACTIVACION, FECHA_ACTIVACION, EMAIL
-                    new ScalarHandler<Long>(),
-                    usuario.getNombre(), usuario.getPassword(), usuario.getCodigo_activacion(), usuario.getFecha_activacion(), usuario.getEmail());
-
-            if (id > 0) {
-                insertado = Boolean.TRUE;
-
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(UsersDAO.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            DBConnection.getInstance().cerrarConexion(con);
-        }
-        return insertado;
-
-    }
 }//fin clase

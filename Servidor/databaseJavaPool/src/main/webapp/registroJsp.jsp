@@ -5,7 +5,9 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <jsp:useBean id="cons" class="utils.UrlsPaths" scope="session"/>
 <!DOCTYPE html>
 <html>
@@ -27,17 +29,20 @@
     </head>
     <body>
         <div class="container">
-            <a href="<c:out value="${cons.getAlumnos()}"/>">alumnos</a>
-            <a href="<c:out value="${cons.getAsignaturas()}"/>">asignaturas</a>
-            <a href="<c:out value="${cons.getNotas()}"/>">notas</a>
-            <a href="<c:out value="${cons.getRegistro()}"/>">registro</a>
+            <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
+
+            <a href="<c:out value="${baseURL}${cons.getAlumnos()}"/>">alumnos</a>
+            <a href="<c:out value="${baseURL}${cons.getAsignaturas()}"/>">asignaturas</a>
+            <a href="<c:out value="${baseURL}${cons.getNotas()}"/>">notas</a>
+            <a href="<c:out value="${baseURL}${cons.getRegistro()}"/>">registro</a>
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
                         <p>
                             Registrar Usuarios:
                         </p>
-                        <form action="registro">
+                        <form action="${baseURL}${cons.getRegistro()}">
                             Nombre:<input name="NOMBRE" placeholder="Username" required="" type="text" /><br />
                             Email:<input name="EMAIL" placeholder="user@gmail.com" required="" type="email" /><br />
                             Contraseña:<input name="PASSWORD" placeholder="password" required="" type="password" /><br />
@@ -48,7 +53,10 @@
                         <p>
                             Login Usuarios:
                         </p>
-                        <form action="registro">
+
+
+
+                        <form action="${baseURL}${cons.getRegistro()}">
                             Nombre:<input name="NOMBRE" placeholder="Username" required="" type="text" /><br />                            
                             Contraseña:<input name="PASSWORD" placeholder="password" required="" type="password" /><br />
                             <input name="action" type="submit" value="LOGIN" />
@@ -71,7 +79,8 @@
                         Bienvenido, <c:out value="${sessionScope.loginOnFromServer.nombre}"/>.
                         <br>
                         Estás Logueado correctamente!
-
+                        <br>
+                        <a class="btn btn-primary" href="${baseURL}${cons.getLOGOUT()}" role="button">Cerrar Sesión</a>
                     </p>
                 </div>
 

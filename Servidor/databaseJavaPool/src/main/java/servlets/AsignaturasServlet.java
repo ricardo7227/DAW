@@ -110,7 +110,7 @@ public class AsignaturasServlet extends HttpServlet {
         }
 
         request.setAttribute(Constantes.asignaturasList, servicios.getAllAsignaturasdbUtils());//envia la lista al jsp
-        request.getRequestDispatcher(Constantes.asignaturasJSP).forward(request, response);
+        request.getRequestDispatcher("/" + Constantes.asignaturasJSP).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

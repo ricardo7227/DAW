@@ -7,6 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="cons" class="utils.UrlsPaths" scope="session"/>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,13 +28,13 @@
     </head>
     <body>
         <div class="container">
-            <a href="<c:out value="${cons.getAlumnos()}"/>">alumnos</a>
-            <a href="<c:out value="${cons.getAsignaturas()}"/>">asignaturas</a>
-            <a href="<c:out value="${cons.getNotas()}"/>">notas</a>
-            <a href="<c:out value="${cons.getRegistro()}"/>">registro</a>
-            
-            
-         
+            <c:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
+
+            <a href="<c:out value="${baseURL}${cons.getAlumnos()}"/>">alumnos</a>
+            <a href="<c:out value="${baseURL}${cons.getAsignaturas()}"/>">asignaturas</a>
+            <a href="<c:out value="${baseURL}${cons.getNotas()}"/>">notas</a>
+            <a href="<c:out value="${baseURL}${cons.getRegistro()}"/>">registro</a>
+
         </div>
     </body>
 </html>

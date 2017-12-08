@@ -106,7 +106,7 @@ public class AlumnosServlet extends HttpServlet {
         }
 
         request.setAttribute(Constantes.alumnosList, servicios.getAllAlumnos());//envia la lista al jsp
-        request.getRequestDispatcher("/"+Constantes.alumnosJSP).forward(request, response);
+        request.getRequestDispatcher("/" + Constantes.alumnosJSP).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
