@@ -62,7 +62,6 @@ public class RegistroServlet extends HttpServlet {
 
                             if (servicios.insertUser(usuario)) {
 
-                                //usuario.setEmail("ricardo@aol.com");
                                 messageToUser = (servicios.buildAndSendEmail(request, usuario)) ? Constantes.messageUserRegisterSubmitEmail : Constantes.messageUserRegisterSubmitEmailFail;
 
                             } else {
@@ -100,14 +99,7 @@ public class RegistroServlet extends HttpServlet {
                     } else {
                         messageToUser = Constantes.messageUserValidateEmailFail;
                     }
-                    //entra desde url *
-                    //prevenir campos nulos *
-                    //select nombre, email ,codigo activacion - existe una variable de tiempo* a comtrolar cuanto pasa desde el registro*
-                    //si -> update activo* -> email ¿Bienvenido?
-                    //no -> mensaje error en la validación*
-
-                    //hay un login con nombre y contraseña*
-                    //comprobar activo -> arrancar sessión -> refresh con una varible en sesión - "Estas conectado Ricardo"*
+                   
                     break;
 
                 case Constantes.LOGIN:

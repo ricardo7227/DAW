@@ -31,7 +31,7 @@ public class RegistroServicios {
     public User getDuplicateUser(User user) {
         UsersDAO dao = new UsersDAO();
 
-        return (user.getNombre() != null && user.getEmail() != null) ? dao.getDuplicateUserJDBCTemplate(user) : null;//prevenir la inserción de nulos;
+        return (user.getNombre() != null && user.getEmail() != null) ? dao.getDuplicateUserJDBCTemplate(user) : null;
     }
 
     public boolean insertUser(User user) {

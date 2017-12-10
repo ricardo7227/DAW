@@ -29,6 +29,12 @@ public class UsersDAO {
     public UsersDAO() {
     }
 
+    /**
+     * Busca un registro por nombre, si existe devuelve el objeto User
+     *
+     * @param usuario
+     * @return usuario
+     */
     public User getLoginUserJDBCTemplate(User usuario) {
 
         JdbcTemplate jtm = new JdbcTemplate(
@@ -50,6 +56,12 @@ public class UsersDAO {
         return user;
     }
 
+    /**
+     * Busca resgistros existentes en DB por nombre y email
+     *
+     * @param usuario
+     * @return user o null si no existe
+     */
     public User getDuplicateUserJDBCTemplate(User usuario) {
 
         JdbcTemplate jtm = new JdbcTemplate(
@@ -80,6 +92,12 @@ public class UsersDAO {
         return user;
     }
 
+    /**
+     * *
+     *
+     * @param usuario
+     * @return
+     */
     public User insertUserJDBCTemplate(User usuario) {
 
         SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(
@@ -96,6 +114,12 @@ public class UsersDAO {
         return usuario;
     }
 
+    /**
+     * busca un registro por nombre, email y cod activación
+     *
+     * @param usuario
+     * @return user o null
+     */
     public User selectIdValidateUserJDBCTemplate(User usuario) {
 
         JdbcTemplate jtm = new JdbcTemplate(
@@ -123,6 +147,12 @@ public class UsersDAO {
         return usuario;
     }
 
+    /**
+     * update activo por ID
+     *
+     * @param usuario
+     * @return int - filas afectadas
+     */
     public int validateUserByIdJDBCTemplate(User usuario) {
 
         JdbcTemplate jtm = new JdbcTemplate(
