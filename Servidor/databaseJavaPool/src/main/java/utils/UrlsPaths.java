@@ -17,7 +17,9 @@ public class UrlsPaths {
     public static final String REGISTRO = "/registro";
     public static final String PRIVADO = "/privado/*";
 
-    private static String preRelativePath = "..";
+    public String logout = REGISTRO + "?" + Constantes.actionJSP + "=" + Constantes.LOGOUT;
+
+    private static final String PRERELATIVEPATH = "..";
 
     public static String getAlumnos() {
         return ALUMNOS;
@@ -35,24 +37,28 @@ public class UrlsPaths {
         return REGISTRO;
     }
 
-    public static String getLOGOUT() {
-        return REGISTRO + "?" + Constantes.actionJSP + "=" + Constantes.LOGOUT;
-    }
-
     public static String getAlumnosRelative() {
-        return preRelativePath + ALUMNOS;
+        return PRERELATIVEPATH + ALUMNOS;
     }
 
     public static String getAsignaturasRelative() {
-        return preRelativePath + ASIGNATURAS;
+        return PRERELATIVEPATH + ASIGNATURAS;
     }
 
     public static String getNotasRelative() {
-        return preRelativePath + NOTAS;
+        return PRERELATIVEPATH + NOTAS;
     }
 
     public static String getRegistroRelative() {
-        return preRelativePath + REGISTRO;
+        return PRERELATIVEPATH + REGISTRO;
     }
 
-}
+    public String getLogout() {
+        return logout;
+    }
+
+    public void setLogout(String logout) {
+        this.logout = logout;
+    }
+
+}//fin clase

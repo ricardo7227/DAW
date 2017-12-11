@@ -42,6 +42,7 @@
                         <p>
                             Registrar Usuarios:
                         </p>
+
                         <form action="${baseURL}${cons.getRegistro()}">
                             Nombre:<input name="NOMBRE" placeholder="Username" required="" type="text" /><br />
                             Email:<input name="EMAIL" placeholder="user@gmail.com" required="" type="email" /><br />
@@ -80,7 +81,8 @@
                         <br>
                         Estás Logueado correctamente!
                         <br>
-                        <a class="btn btn-primary" href="${baseURL}${cons.getLOGOUT()}" role="button">Cerrar Sesión</a>
+                        <%-- <jsp:setProperty name="cons" property="logout" value="Nuevo valor" />--%>
+                        <a class="btn btn-primary" href="${baseURL}<jsp:getProperty name="cons" property="logout" />" role="button">Cerrar Sesión</a>
                     </p>
                 </div>
 
