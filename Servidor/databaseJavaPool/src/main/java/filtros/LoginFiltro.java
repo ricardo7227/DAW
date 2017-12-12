@@ -43,7 +43,6 @@ public class LoginFiltro implements Filter {
             log("Login:DoBeforeProcessing");
         }
 
-        
     }
 
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
@@ -52,7 +51,6 @@ public class LoginFiltro implements Filter {
             log("Login:DoAfterProcessing");
         }
 
-       
     }
 
     /**

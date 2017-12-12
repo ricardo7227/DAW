@@ -5,12 +5,11 @@
  */
 package servlets;
 
+import dao.UsersDAO;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.sql.Date;
 import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -18,12 +17,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Asignatura;
 import model.User;
 import servicios.RegistroServicios;
 import utils.Constantes;
 import utils.PasswordHash;
 import utils.UrlsPaths;
-import utils.Utils;
 
 /**
  *
@@ -56,9 +55,7 @@ public class RegistroServlet extends HttpServlet {
 
                         if (servicios.userReadyToWorkInsert(usuario)) {
 
-                            usuario.setPassword(PasswordHash.getInstance().createHash(usuario.getPassword()));
-                            usuario.setCodigo_activacion(Utils.randomAlphaNumeric(ThreadLocalRandom.current().nextInt(Constantes.MIN_RANDOM, Constantes.MAX_RANDOM + 1)));
-                            usuario.setFecha_activacion(new Date(new java.util.Date().getTime()));
+                            usuario = servicios.generatePasswordAndActivationCode(usuario);
 
                             if (servicios.insertUser(usuario)) {
 
@@ -99,13 +96,13 @@ public class RegistroServlet extends HttpServlet {
                     } else {
                         messageToUser = Constantes.messageUserValidateEmailFail;
                     }
-                   
+
                     break;
 
                 case Constantes.LOGIN:
                     if (servicios.userReadyToWorkLogin(usuario)) {
                         String passwordFromClient = usuario.getPassword();
-                        usuario = servicios.selectLoginUser(usuario);
+                        usuario = servicios.selectLoginUser(usuario);//recupera el hash de DB
                         if (usuario != null) {
                             if (usuario.isActivo()) {
 
@@ -138,6 +135,8 @@ public class RegistroServlet extends HttpServlet {
         if (messageToUser != null) {
             request.setAttribute(Constantes.messageFromServer, messageToUser);
         }
+        
+
         request.getRequestDispatcher(Constantes.registroJSP).forward(request, response);
     }
 

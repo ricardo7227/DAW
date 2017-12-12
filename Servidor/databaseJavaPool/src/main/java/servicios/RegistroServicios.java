@@ -7,6 +7,8 @@ package servicios;
 
 import config.Configuration;
 import dao.UsersDAO;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,10 +16,13 @@ import java.time.Duration;
 import java.time.Instant;
 import model.User;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import utils.Constantes;
+import utils.PasswordHash;
+import utils.Utils;
 
 /**
  *
@@ -60,6 +65,8 @@ public class RegistroServicios {
     }
 
     private String buildUrlToValidate(HttpServletRequest request, User usuario) {
+        String equal = "=";
+        String and = "&";
 
         String uri = request.getScheme() + "://"
                 + // "http" + "://
@@ -73,10 +80,19 @@ public class RegistroServicios {
                 + // "/people"
                 "?"
                 + // "?"
-                Constantes.actionJSP + "=" + Constantes.VALIDATE + "&" + Constantes.NOMBRE + "=" + usuario.getNombre()
-                + "&" + Constantes.EMAIL + "=" + usuario.getEmail() + "&" + Constantes.CODIGO_ACTIVACION + "=" + usuario.getCodigo_activacion();
+                Constantes.actionJSP + equal + Constantes.VALIDATE + and + Constantes.NOMBRE + equal + usuario.getNombre()
+                + "&" + Constantes.EMAIL + equal + usuario.getEmail() + and + Constantes.CODIGO_ACTIVACION + equal + usuario.getCodigo_activacion();
 
         return uri;
+    }
+
+    public User generatePasswordAndActivationCode(User usuario) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        
+        usuario.setPassword(PasswordHash.getInstance().createHash(usuario.getPassword()));
+        usuario.setCodigo_activacion(Utils.randomAlphaNumeric(ThreadLocalRandom.current().nextInt(Constantes.MIN_RANDOM, Constantes.MAX_RANDOM + 1)));
+        usuario.setFecha_activacion(new Date(new java.util.Date().getTime()));
+        
+        return usuario;
     }
 
     public boolean buildAndSendEmail(HttpServletRequest request, User usuario) {

@@ -7,10 +7,12 @@ dao/UsersDAO$3.class
 filtros/LoginFiltro.class
 servicios/RegistroServicios.class
 dao/AlumnosDAO.class
+dao/UsersDAO$5.class
 dao/UsersDAO$2.class
 servicios/NotasServicios.class
 utils/Constantes.class
 dao/AsignaturasDAO.class
+.netbeans_automatic_build
 servicios/AsignaturasServicios.class
 utils/Utils.class
 config/ConfigListener.class

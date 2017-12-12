@@ -64,6 +64,11 @@
             <artifactId>spring-jdbc</artifactId>
             <version>5.0.1.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.pushtorefresh</groupId>
+            <artifactId>javac-warning-annotation</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

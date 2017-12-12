@@ -5,18 +5,24 @@
  */
 package dao;
 
+import com.pushtorefresh.javac_warning_annotation.Warning;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
+import model.Asignatura;
 import model.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionTemplate;
 import utils.Constantes;
 import utils.SqlQuery;
 
@@ -165,6 +171,32 @@ public class UsersDAO {
         }
 
         return rowsAffected;
+    }
+/***
+ * Una forma de realizar transacciones
+ * @param as 
+ */
+    @Warning("En desarrollo")
+    public void transaction(final Asignatura as) {
+        TransactionTemplate template = new TransactionTemplate(new DataSourceTransactionManager(DBConnection.getInstance().getDataSource()));
+
+        final JdbcTemplate jtm = new JdbcTemplate(
+                DBConnection.getInstance().getDataSource());
+
+        template.execute(new TransactionCallback<Integer>() {
+            @Override
+            public Integer doInTransaction(TransactionStatus ts) {
+                try {
+                    Object[] params = new Object[]{as.getNombre(), as.getCurso(), as.getCiclo()};
+                    jtm.update(SqlQuery.INSERT_ASIGNATURA, params);
+                } catch (Exception e) {
+                    ts.setRollbackOnly();
+                }
+                return 0;
+
+            }
+        });
+
     }
 
 }//fin clase
