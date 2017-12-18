@@ -1,0 +1,11 @@
+## YAML Template.
+driverDB: com.mysql.jdbc.Driver
+urlDB: jdbc:mysql://localhost:3306/examen1?useSSL=false&useUnicode=true&characterEncoding=utf8
+userDB: root
+passDB: nohay2sin3
+##30seg
+timeToValidate: 30
+descuento: 10
+
+
+
