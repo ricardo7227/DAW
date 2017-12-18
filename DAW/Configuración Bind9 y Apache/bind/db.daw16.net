@@ -1,0 +1,27 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL	1D
+@	IN	SOA	daw16.net. admin.daw16.net. (
+			      1		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;Servidores DNS del dominio
+		IN	NS	userver.daw16.net.
+;Hosts
+userver			IN	A	192.168.103.162
+redes			IN	A	192.168.103.162
+bbdd			IN	A	192.168.103.162
+seguro			IN	A	192.168.103.162
+siete.daw16.net.	IN	A	192.168.103.161
+wserver			IN	A	192.168.103.163
+
+;Alias
+ns1	IN	CNAME	ubuntu
+www	IN	CNAME	ubuntu
+ftp	IN	CNAME	wserver
+
+;@	IN	NS	localhost.
+

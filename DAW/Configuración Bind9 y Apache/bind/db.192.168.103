@@ -1,0 +1,18 @@
+;
+; BIND reverse data file for broadcast zone
+;
+$TTL	1D
+@	IN	SOA	103.168.192.in-addr.arpa. admin.daw16.net. (
+			      1		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 10800 )	; Negative Cache TTL
+
+;Servidores DNS del dominio
+		IN	NS	userver.daw16.net.
+
+162.103.168.192.in-addr.arpa.	IN	PTR	userver.daw16.net.
+161				IN	PTR	siete.daw16.net.
+163				IN	PTR	wserver.daw16.net.
+
