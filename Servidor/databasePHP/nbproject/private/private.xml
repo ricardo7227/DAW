@@ -9,10 +9,7 @@
             <file>file:/home/daw/Documentos/Servidor/databasePHP/asignaturasVista.php</file>
             <file>file:/home/daw/Documentos/Servidor/databasePHP/asignaturas.php</file>
         </group>
-        <group name="alumno">
-            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/index.php</file>
-            <file>file:/home/daw/Documentos/Github/DAW/Servidor/databasePHP/alumnos.php</file>
-        </group>
         <group/>
+        <group name="alumno"/>
     </open-files>
 </project-private>
