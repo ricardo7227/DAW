@@ -5,7 +5,6 @@
  */
 package servlets;
 
-import dao.UsersDAO;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -17,7 +16,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Asignatura;
 import model.User;
 import servicios.RegistroServicios;
 import utils.Constantes;
