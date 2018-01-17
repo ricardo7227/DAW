@@ -77,5 +77,18 @@ public class RestApi {
         HttpRequest requestGoogle = crearServicio().buildPostRequest(url, new UrlEncodedContent(data));
         return requestGoogle.executeAsync().get().parseAs(GenericJson.class);
     }
+    public GenericJson getRoutetLine(String fecha, String linea) throws IOException, InterruptedException, ExecutionException {
+        GenericUrl url = new GenericUrl(Api.END_POINT_GET_LIST_LINES);
+
+        GenericData data = new GenericData();
+        Configuration instancia = Configuration.getInstance();
+        data.put(Constantes.ID_CLIENT, instancia.getIdClient());
+        data.put(Constantes.PASS_KEY, instancia.getPassKey());
+        data.put(Constantes.SELECT_DATE, fecha);
+        data.put(Constantes.LINES, linea);
+
+        HttpRequest requestGoogle = crearServicio().buildPostRequest(url, new UrlEncodedContent(data));
+        return requestGoogle.executeAsync().get().parseAs(GenericJson.class);
+    }
 
 }//fin clase

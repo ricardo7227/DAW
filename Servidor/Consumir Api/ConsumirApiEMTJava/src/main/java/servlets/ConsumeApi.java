@@ -8,9 +8,13 @@ package servlets;
 import RestApi.RestApi;
 import com.google.api.client.json.GenericJson;
 import com.google.api.client.util.ArrayMap;
+import config.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,12 +46,28 @@ public class ConsumeApi extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InterruptedException, ExecutionException {
 
-        GenericJson json = RestApi.getInstance().getArriveStop("3727");
-        GenericJson json1 = RestApi.getInstance().getListLines(Tiempo.getcurrentDate());
-        BigDecimal resultCode = (BigDecimal) json1.get(Constantes.RESULT_CODE);
-        if (resultCode != null && resultCode.intValue() == OK.ordinal()) {
-            ArrayList lineasAutobus = (ArrayList) json1.get(Constantes.RESULT_VALUES);
-            ArrayMap<String, String> linea = (ArrayMap<String, String>) lineasAutobus.get(0);
+        try {
+            GenericJson json = RestApi.getInstance().getArriveStop("3727");
+            GenericJson json1 = RestApi.getInstance().getListLines(Tiempo.getcurrentDate());
+            GenericJson json2 = null;
+            String lineaRequest = request.getParameter(Constantes.LINEA);
+            if (lineaRequest != null) {
+                json2 = RestApi.getInstance().getRoutetLine(Tiempo.getcurrentDate(), lineaRequest);
+            }
+            BigDecimal resultCode = (BigDecimal) json1.get(Constantes.RESULT_CODE);
+            ArrayList lineasAutobus = null;
+            if (resultCode != null && resultCode.intValue() == OK.ordinal()) {
+                lineasAutobus = (ArrayList) json1.get(Constantes.RESULT_VALUES);
+                ArrayMap<String, String> linea = (ArrayMap<String, String>) lineasAutobus.get(0);
+            }
+
+            HashMap paramentrosPlantilla = new HashMap();
+
+            paramentrosPlantilla.put(Constantes.LISTA_LINEAS, lineasAutobus);
+            Template plantilla = Configuration.getInstance().getFreeMarker().getTemplate(Constantes.INDEX_TEMPLATE);
+            plantilla.process(paramentrosPlantilla, response.getWriter());
+        } catch (TemplateException ex) {
+            Logger.getLogger(ConsumeApi.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

@@ -39,7 +39,7 @@ public class Configuration {
             // Create your Configuration instance, and specify if up to what FreeMarker
 // version (here 2.3.25) do you want to apply the fixes that are not 100%
 // backward-compatible. See the Configuration JavaDoc for details.
-            config.setFreeMarker(new freemarker.template.Configuration(freemarker.template.Configuration.VERSION_2_3_23));
+            config.setFreeMarker(new freemarker.template.Configuration(freemarker.template.Configuration.VERSION_2_3_27));
 
 // Specify the source where the template files come from. Here I set a
 // plain directory for it, but non-file-system sources are possible too:

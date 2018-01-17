@@ -10,15 +10,27 @@ package utilidades;
  * @author daw
  */
 public class Constantes {
-    public static String  LINE = "line";
-    public static String  LINES = "Lines";
-    public static String  SELECT_DATE = "SelectDate";
-    public static String  ID_STOP = "idStop";
-    public static String  ID_CLIENT = "idClient";
-    public static String  PASS_KEY = "passKey";
-    public static String  FECHA = "fecha";
-    public static String  RESULT_CODE = "resultCode";
-    public static String  RESULT_VALUES = "resultValues";
+
+    //api
+    public static String LINE = "line";
+    public static String LINES = "Lines";
+    public static String SELECT_DATE = "SelectDate";
+    public static String ID_STOP = "idStop";
+    public static String ID_CLIENT = "idClient";
+    public static String PASS_KEY = "passKey";
+    public static String FECHA = "fecha";
+    public static String RESULT_CODE = "resultCode";
+    public static String RESULT_VALUES = "resultValues";
     
-    
+    //codificación
+    public static final String  ACTION_TEMPLATE = "ACTION";
+    public static final String  DEFAULT_ENCODING = "UTF-8";
+    public static final String  CONTENT_TYPE = "text/html; charset=UTF-8";
+
+
+    //template
+    public static String INDEX_TEMPLATE = "index.ftl";
+    public static String LISTA_LINEAS = "lineas_autobus";
+    public static String LINEA = "linea";
+
 }
