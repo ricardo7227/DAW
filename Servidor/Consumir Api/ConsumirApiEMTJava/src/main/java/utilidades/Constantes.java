@@ -17,6 +17,8 @@ public class Constantes {
     public static String  ID_CLIENT = "idClient";
     public static String  PASS_KEY = "passKey";
     public static String  FECHA = "fecha";
+    public static String  RESULT_CODE = "resultCode";
+    public static String  RESULT_VALUES = "resultValues";
     
     
 }

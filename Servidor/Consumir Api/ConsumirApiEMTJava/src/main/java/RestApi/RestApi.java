@@ -30,7 +30,7 @@ import utilidades.Constantes;
 public class RestApi {
 
     private static RestApi instance;
-    private static HttpRequestFactory requestFactory;
+    private static HttpRequestFactory requestFactory;    
 
     public static RestApi getInstance() {
         if (instance == null) {
@@ -61,8 +61,8 @@ public class RestApi {
         data.put(Constantes.ID_STOP, idStop);
 
         HttpRequest requestGoogle = crearServicio().buildPostRequest(url, new UrlEncodedContent(data));
-        GenericJson json = requestGoogle.executeAsync().get().parseAs(GenericJson.class);
-        return json;
+
+        return requestGoogle.executeAsync().get().parseAs(GenericJson.class);
     }
 
     public GenericJson getListLines(String fecha) throws IOException, InterruptedException, ExecutionException {

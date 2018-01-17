@@ -7,7 +7,10 @@ package servlets;
 
 import RestApi.RestApi;
 import com.google.api.client.json.GenericJson;
+import com.google.api.client.util.ArrayMap;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +19,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import static utilidades.CodesApi.OK;
+import utilidades.Constantes;
 import utilidades.Tiempo;
 
 /**
@@ -39,6 +44,11 @@ public class ConsumeApi extends HttpServlet {
 
         GenericJson json = RestApi.getInstance().getArriveStop("3727");
         GenericJson json1 = RestApi.getInstance().getListLines(Tiempo.getcurrentDate());
+        BigDecimal resultCode = (BigDecimal) json1.get(Constantes.RESULT_CODE);
+        if (resultCode != null && resultCode.intValue() == OK.ordinal()) {
+            ArrayList lineasAutobus = (ArrayList) json1.get(Constantes.RESULT_VALUES);
+            ArrayMap<String, String> linea = (ArrayMap<String, String>) lineasAutobus.get(0);
+        }
 
     }
 
