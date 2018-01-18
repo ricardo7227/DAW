@@ -78,7 +78,7 @@ public class RestApi {
         return requestGoogle.executeAsync().get().parseAs(GenericJson.class);
     }
     public GenericJson getRoutetLine(String fecha, String linea) throws IOException, InterruptedException, ExecutionException {
-        GenericUrl url = new GenericUrl(Api.END_POINT_GET_LIST_LINES);
+        GenericUrl url = new GenericUrl(Api.END_POINT_GET_ROUTE_LINE);
 
         GenericData data = new GenericData();
         Configuration instancia = Configuration.getInstance();

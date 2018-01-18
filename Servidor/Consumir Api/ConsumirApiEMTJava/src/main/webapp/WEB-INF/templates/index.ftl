@@ -10,6 +10,15 @@
             function cargarLinea(linea) {
                 
                 document.getElementById("numLinea").value = linea;
+                document.getElementById("action").value = "VIEW_LINE";
+                document.getElementById("formBus").submit();
+                
+                    
+}
+    function cargarParada(parada) {
+                
+                document.getElementById("numParada").value = parada;
+                document.getElementById("action").value = "VIEW_STATION";
                 document.getElementById("formBus").submit();
                 
                     
@@ -59,11 +68,43 @@
                                         <button class="btn btn-primary" onClick="cargarLinea(${valores[3]})">Ver Paradas</button>
                                         </td>
                                     </tr>
-                                </#list>
-                            </#if> 
+                                </#list>                                                           
+                                </table>                            
+                            <#elseif paradas_linea??>
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Line</th>
+                                    <th>Sec Detail</th>
+                                    <th>Order Detail</th>
+                                    <th>Node</th>
+                                    <th>distance</th>
+                                    <th>Distance Previous Stop</th>
+                                    <th>Name</th>
+                                    <th>latitude</th>
+                                    <th>longitude</th>
+                                    <th></th>
+                                    </tr>   
+                                <#list paradas_linea as parada>                            
+                                <tr>
+                                    <#assign valores = parada?values>                                    
+                                        <#list valores as valor>
+                                    <td>
+                                            ${valor}
+
+                                        </td>
+                                        </#list>
+                                    <td>
+                                        <button class="btn btn-primary" onClick="cargarParada(${valores[3]})">Ver Parada</button>
+                                        </td>
+                                    </tr>
+                                </#list>                                                           
                                 </table>
+                            
+                            </#if> 
                             <form id="formBus">
                                 <input type="hidden" id="numLinea" name="linea">                                
+                                <input type="hidden" id="numParada" name="parada">                                
+                                <input type="hidden" id="action" name="ACTION">                                
                                 </form>
                             </div>
                         </div>

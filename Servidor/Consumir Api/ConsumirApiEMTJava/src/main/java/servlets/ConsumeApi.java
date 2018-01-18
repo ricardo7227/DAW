@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import static utilidades.CodesApi.OK;
 import utilidades.Constantes;
+import static utilidades.Constantes.SERVER_NO_RESPONSE_TIME_OUT;
 import utilidades.Tiempo;
 
 /**
@@ -33,6 +34,8 @@ import utilidades.Tiempo;
  */
 @WebServlet(name = "ConsumeApi", urlPatterns = {"/api"})
 public class ConsumeApi extends HttpServlet {
+
+    private String messageToUser = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,30 +47,60 @@ public class ConsumeApi extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, InterruptedException, ExecutionException {
+            throws ServletException, IOException {
 
         try {
-            GenericJson json = RestApi.getInstance().getArriveStop("3727");
-            GenericJson json1 = RestApi.getInstance().getListLines(Tiempo.getcurrentDate());
-            GenericJson json2 = null;
-            String lineaRequest = request.getParameter(Constantes.LINEA);
-            if (lineaRequest != null) {
-                json2 = RestApi.getInstance().getRoutetLine(Tiempo.getcurrentDate(), lineaRequest);
-            }
-            BigDecimal resultCode = (BigDecimal) json1.get(Constantes.RESULT_CODE);
+            GenericJson jsonParada = null;
+            GenericJson jsonLineasEMT = null;
+            GenericJson jsonParadasLinea = null;
             ArrayList lineasAutobus = null;
-            if (resultCode != null && resultCode.intValue() == OK.ordinal()) {
-                lineasAutobus = (ArrayList) json1.get(Constantes.RESULT_VALUES);
-                ArrayMap<String, String> linea = (ArrayMap<String, String>) lineasAutobus.get(0);
-            }
+            ArrayList paradasLinea = null;
+
+            String action = request.getParameter(Constantes.ACTION_TEMPLATE);
+            action = action == null ? Constantes.DEFAULT : action;
+            switch (action) {
+                case Constantes.VIEW_LINE:
+                    String lineaRequest = request.getParameter(Constantes.LINEA);
+                    if (lineaRequest != null) {
+                        jsonParadasLinea = RestApi.getInstance().getRoutetLine(Tiempo.getcurrentDate(), lineaRequest);
+                        paradasLinea = (ArrayList) jsonParadasLinea.get(Constantes.RESULT_VALUES);
+                    }
+
+                    break;
+                case Constantes.VIEW_STATION:
+                    String paradaRequest = request.getParameter(Constantes.PARADA);
+                    if (paradaRequest != null) {
+                        paradaRequest = paradaRequest.replace(".", "");                        
+                        jsonParada = RestApi.getInstance().getArriveStop(paradaRequest);
+                    }
+
+                    break;
+                default:
+                    jsonLineasEMT = RestApi.getInstance().getListLines(Tiempo.getcurrentDate());
+                    BigDecimal resultCode = (BigDecimal) jsonLineasEMT.get(Constantes.RESULT_CODE);
+                    if (resultCode != null && resultCode.intValue() == OK.ordinal()) {
+                        lineasAutobus = (ArrayList) jsonLineasEMT.get(Constantes.RESULT_VALUES);
+                    }
+                    break;
+            }//fin switch            
 
             HashMap paramentrosPlantilla = new HashMap();
+            if (messageToUser != null) {
+
+            }
 
             paramentrosPlantilla.put(Constantes.LISTA_LINEAS, lineasAutobus);
+            paramentrosPlantilla.put(Constantes.PARADAS_LINEA, paradasLinea);
+
             Template plantilla = Configuration.getInstance().getFreeMarker().getTemplate(Constantes.INDEX_TEMPLATE);
             plantilla.process(paramentrosPlantilla, response.getWriter());
         } catch (TemplateException ex) {
             Logger.getLogger(ConsumeApi.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ConsumeApi.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ExecutionException ex) {
+            Logger.getLogger(ConsumeApi.class.getName()).log(Level.SEVERE, null, ex);
+            response.getWriter().print(SERVER_NO_RESPONSE_TIME_OUT);
         }
 
     }
@@ -84,13 +117,9 @@ public class ConsumeApi extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ConsumeApi.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ExecutionException ex) {
-            Logger.getLogger(ConsumeApi.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        processRequest(request, response);
+
     }
 
     /**
@@ -104,13 +133,9 @@ public class ConsumeApi extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ConsumeApi.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ExecutionException ex) {
-            Logger.getLogger(ConsumeApi.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        processRequest(request, response);
+
     }
 
     /**
