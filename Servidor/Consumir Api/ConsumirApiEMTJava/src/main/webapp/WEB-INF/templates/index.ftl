@@ -30,7 +30,9 @@
 
             <div class="row justify-content-center">    
                 <div class="col-sm-10">
-                    <h5>Líneas de Autobuses de MADRID EMT</h5>
+                    <a href="api">
+                    <h5>MADRID EMT</h5>
+                    </a>
                 <#if messageToUser??>
                     <div class="alert alert-primary" role="alert">
                 ${messageToUser?js_string}  
@@ -43,7 +45,8 @@
                     <div class="row justify-content-center">    
 
                         <div class="col-sm-10">  
-                            <#if lineas_autobus??>             
+                            <#if lineas_autobus??>  
+                            <h5>Líneas de Autobuses</h5>
                             <table class="table table-striped">
                                 <tr>
                                     <th>Group Number</th>
@@ -71,6 +74,7 @@
                                 </#list>                                                           
                                 </table>                            
                             <#elseif paradas_linea??>
+                            <h5>Paradas de la línea</h5>
                             <table class="table table-striped">
                                 <tr>
                                     <th>Line</th>
@@ -99,7 +103,33 @@
                                     </tr>
                                 </#list>                                                           
                                 </table>
-                            
+                            <#elseif autobusesIncoming??>
+                            <h5>Autobuses llegando a la parada</h5>
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>stopId</th>
+                                    <th>lineId</th>
+                                    <th> isHead</th>
+                                    <th>destination</th>
+                                    <th>busId</th>
+                                    <th>busTimeLeft</th>
+                                    <th>busDistance</th>
+                                    <th>longitude</th>
+                                    <th>latitude</th>
+                                    <th>busPositionType</th>                                    
+                                    </tr>   
+                                <#list autobusesIncoming as autobus>                            
+                                <tr>
+                                    <#assign valores = autobus?values>                                    
+                                        <#list valores as valor>
+                                    <td>
+                                            ${valor}
+
+                                        </td>
+                                        </#list>                                    
+                                    </tr>
+                                </#list>                                                           
+                                </table>
                             </#if> 
                             <form id="formBus">
                                 <input type="hidden" id="numLinea" name="linea">                                

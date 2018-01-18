@@ -21,6 +21,7 @@ public class Constantes {
     public static String FECHA = "fecha";
     public static String RESULT_CODE = "resultCode";
     public static String RESULT_VALUES = "resultValues";
+    public static String ARRIVES = "arrives";
 
     //codificación    
     public static final String DEFAULT_ENCODING = "UTF-8";
@@ -32,6 +33,7 @@ public class Constantes {
     public static String INDEX_TEMPLATE = "index.ftl";
     public static String LISTA_LINEAS = "lineas_autobus";
     public static String PARADAS_LINEA = "paradas_linea";
+    public static String AUTOBUSES_INCOMING = "autobusesIncoming";
     public static String LINEA = "linea";
     public static String PARADA = "parada";
     public static final String VIEW_LINE = "VIEW_LINE";

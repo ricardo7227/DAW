@@ -18,7 +18,7 @@
     </head>
     <body>
         <div class="container">
-            <%--<c:redirect url="/index"/>--%>
+            <c:redirect url="/api"/>
             <h2>INDEX</h2>            
         </div>
     </body>

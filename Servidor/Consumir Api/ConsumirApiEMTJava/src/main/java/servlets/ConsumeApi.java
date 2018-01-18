@@ -55,6 +55,7 @@ public class ConsumeApi extends HttpServlet {
             GenericJson jsonParadasLinea = null;
             ArrayList lineasAutobus = null;
             ArrayList paradasLinea = null;
+            ArrayList autobusesIncoming = null;
 
             String action = request.getParameter(Constantes.ACTION_TEMPLATE);
             action = action == null ? Constantes.DEFAULT : action;
@@ -72,6 +73,7 @@ public class ConsumeApi extends HttpServlet {
                     if (paradaRequest != null) {
                         paradaRequest = paradaRequest.replace(".", "");                        
                         jsonParada = RestApi.getInstance().getArriveStop(paradaRequest);
+                        autobusesIncoming = (ArrayList) jsonParada.get(Constantes.ARRIVES);
                     }
 
                     break;
@@ -91,6 +93,7 @@ public class ConsumeApi extends HttpServlet {
 
             paramentrosPlantilla.put(Constantes.LISTA_LINEAS, lineasAutobus);
             paramentrosPlantilla.put(Constantes.PARADAS_LINEA, paradasLinea);
+            paramentrosPlantilla.put(Constantes.AUTOBUSES_INCOMING, autobusesIncoming);
 
             Template plantilla = Configuration.getInstance().getFreeMarker().getTemplate(Constantes.INDEX_TEMPLATE);
             plantilla.process(paramentrosPlantilla, response.getWriter());
