@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>CRUD PHP</title>
+        <title>Ajax - php</title>
         <style>
             body {text-align: center}
             table {
@@ -55,7 +55,7 @@ and open the template in the editor.
             });
 
             function loadAjax() {
-                $(targetResponseId).load("echo.php", {nombre: "ricardo"}, function () {
+                $(targetResponseId).load("echo.php", {nombre: $("#dni").val()}, function () {
                     console.log("todo correcto");
                 });
             }            
