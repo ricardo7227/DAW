@@ -10,9 +10,21 @@ and open the template in the editor.
         <title>Football - API</title>
         <style>
             body {text-align: center}
-           
+
         </style>
         <script>
+            function cargarLiga(ligaID) {
+                document.getElementById("ligaId").value = ligaID;
+                document.getElementById("ACTION").value = "VIEW_LEAGUE";
+                document.getElementById("formLiga").submit();
+            }
+            function cargarEquipo(crestUri, nombreEquipo, equipoApi) {
+                document.getElementById("crestUri").value = crestUri;
+                document.getElementById("hrefEquipoApi").value = equipoApi;
+                document.getElementById("nombreEquipo").value = nombreEquipo;
+                document.getElementById("ACTION").value = "VIEW_TEAM";
+                document.getElementById("formLiga").submit();
+            }
 
 
         </script>
@@ -23,12 +35,20 @@ and open the template in the editor.
     </head>
     <body>
         <div class="container">
-
-
+            <h4>
+                <a href="/">Football API</a>
+            </h4>
             <?php
             include 'ligas.php';
             ?>
         </div>
+        <form id="formLiga">
+            <input type="hidden" id="ligaId" name="ligaId"/>
+            <input type="hidden" id="hrefEquipoApi" name="hrefEquipoApi"/>
+            <input type="hidden" id="nombreEquipo" name="nombreEquipo"/>
+            <input type="hidden" id="crestUri" name="crestUri"/>
+            <input type="hidden" id="ACTION" name="ACTION" />
+        </form> 
         <script>
 
 

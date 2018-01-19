@@ -47,6 +47,7 @@ public class RestApi {
                     @Override
                     public void initialize(HttpRequest request) {
                         request.setParser(new JsonObjectParser(JSON_FACTORY));
+                        request.setConnectTimeout(100000);
                     }
                 });
         return requestFactory;
@@ -61,7 +62,7 @@ public class RestApi {
         data.put(Constantes.ID_STOP, idStop);
 
         HttpRequest requestGoogle = crearServicio().buildPostRequest(url, new UrlEncodedContent(data));
-
+        
         return requestGoogle.executeAsync().get().parseAs(GenericJson.class);
     }
 

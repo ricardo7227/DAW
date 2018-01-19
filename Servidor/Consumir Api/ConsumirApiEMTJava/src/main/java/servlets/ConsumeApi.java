@@ -7,7 +7,6 @@ package servlets;
 
 import RestApi.RestApi;
 import com.google.api.client.json.GenericJson;
-import com.google.api.client.util.ArrayMap;
 import config.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
