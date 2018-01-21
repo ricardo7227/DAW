@@ -12,9 +12,14 @@ use controller\SqlQuery;
 
 $nombre = filter_input(INPUT_POST, "nombre");
 
+
 $credenciales = new credentialsDatabase();
 
-getAlumno($credenciales, $nombre);
+$arrayResult = getAlumno($credenciales, $nombre);
+
+if ($arrayResult != NULL) {
+    echo "ID: " . $arrayResult[0] . " Nombre: " . $arrayResult[1] . " Fecha Nacimiento: " . $arrayResult[2];
+}
 
 function conexionDB($credenciales) {
     $host = $credenciales->getServername();
@@ -40,37 +45,31 @@ function cerrarConexion($enlace) {
 
 function getAlumno($credenciales, $nombre) {
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-
-    $lista = NULL;
+    $arrayResult = null;
     $statement = NULL;
     try {
         $conexion = conexionDB($credenciales);
 
-        $lista = array();
-        $statement = $conexion->prepare(SqlQuery::SELECT_ALUMNO);        
-        $statement->bind_param("s", $nombre);                
+
+        $statement = $conexion->prepare(SqlQuery::SELECT_ALUMNO);
+        $statement->bind_param("s", $nombre);
+
         $statement->execute();
-        //var_dump($statement->);
-//        while ($fila = $statement->fetch_assoc()) {
-//            $alumno = array(
-//                SqlQuery::ID => $fila[SqlQuery::ID],
-//                SqlQuery::NOMBRE => $fila[SqlQuery::NOMBRE],
-//                SqlQuery::FECHA_NACIMIENTO => $fila[SqlQuery::FECHA_NACIMIENTO],
-//                SqlQuery::MAYOR_EDAD => $fila[SqlQuery::MAYOR_EDAD]
-//            );
-//            $lista[] = $alumno;
-//        }
+        if ($resultado = $statement->get_result()) {
+
+            $arrayResult = $resultado->fetch_row();
+        }
     } catch (Exception $ex) {
-        $ex->getMessage();
+        echo $ex->getMessage();
     } finally {
         try {
             if ($statement != NULL) {
-               // $statement->free();
+                $statement->close();
             }
         } catch (Exception $e) {
             $e->getMessage();
         }
         cerrarConexion($conexion);
     }
-    return $lista;
+    return $arrayResult;
 }
