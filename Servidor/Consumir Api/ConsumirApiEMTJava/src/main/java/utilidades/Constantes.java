@@ -38,6 +38,7 @@ public class Constantes {
     public static String PARADA = "parada";
     public static final String VIEW_LINE = "VIEW_LINE";
     public static final String VIEW_STATION = "VIEW_STATION";
+    public static final String MESSAGE_TO_USER = "messageToUser";
 
     //error
     public static String SERVER_NO_RESPONSE_TIME_OUT = "El servidor esta tardando en responder";

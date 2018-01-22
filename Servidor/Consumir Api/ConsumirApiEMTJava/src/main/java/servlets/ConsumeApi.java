@@ -70,7 +70,7 @@ public class ConsumeApi extends HttpServlet {
                 case Constantes.VIEW_STATION:
                     String paradaRequest = request.getParameter(Constantes.PARADA);
                     if (paradaRequest != null) {
-                        paradaRequest = paradaRequest.replace(".", "");                        
+                        paradaRequest = paradaRequest.replace(".", "");
                         jsonParada = RestApi.getInstance().getArriveStop(paradaRequest);
                         autobusesIncoming = (ArrayList) jsonParada.get(Constantes.ARRIVES);
                     }
@@ -81,13 +81,15 @@ public class ConsumeApi extends HttpServlet {
                     BigDecimal resultCode = (BigDecimal) jsonLineasEMT.get(Constantes.RESULT_CODE);
                     if (resultCode != null && resultCode.intValue() == OK.ordinal()) {
                         lineasAutobus = (ArrayList) jsonLineasEMT.get(Constantes.RESULT_VALUES);
+                    } else {
+                        messageToUser = Constantes.SERVER_NO_RESPONSE_TIME_OUT;
                     }
                     break;
             }//fin switch            
 
             HashMap paramentrosPlantilla = new HashMap();
             if (messageToUser != null) {
-
+                paramentrosPlantilla.put(Constantes.MESSAGE_TO_USER, messageToUser);
             }
 
             paramentrosPlantilla.put(Constantes.LISTA_LINEAS, lineasAutobus);

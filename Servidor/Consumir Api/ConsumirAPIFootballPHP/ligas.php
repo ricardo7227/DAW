@@ -21,57 +21,8 @@ switch ($action) {
     case Constantes::VIEW_LEAGUE:
 
         $client = new Client($header);
-        try {
+        printLeagueTable($client,$ligaId);
 
-            $response = $client->request('GET', 'http://api.football-data.org/v1/' . 'competitions/' . $ligaId . '/leagueTable');
-
-            $json = json_decode($response->getBody());
-            echo '<h5>' . $json->leagueCaption . '</h5>';
-            echo '<h6> Jornada: ' . $json->matchday . '</h6>';
-
-            echo '<table class="table table-striped">'
-            . '<tr>'
-            . '<th>position</th>'
-            . '<th>crestURI</th>'
-            . '<th>teamName</th>'
-            . '<th>playedGames</th>'
-            . '<th> points</th>'
-            . '<th> goals</th>'
-            . '<th>goalsAgainst</th>'
-            . '<th> goalDifference</th>'
-            . '<th> wins</th>'
-            . '<th>draws</th>'
-            . '<th>losses</th>'
-            . '<th></th>'
-            . '</tr>';
-
-            foreach ($json->standing as $equipo) {
-                echo '<tr>';
-                echo '<td>' . $equipo->position . '</td>';
-                echo '<td><img src="' . $equipo->crestURI . '" class="img-thumbnail"></td>';
-                echo '<td>' . $equipo->teamName . '</td>';
-                echo '<td>' . $equipo->playedGames . '</td>';
-                echo '<td>' . $equipo->points . '</td>';
-                echo '<td>' . $equipo->goals . '</td>';
-                echo '<td>' . $equipo->goalsAgainst . '</td>';
-                echo '<td>' . $equipo->goalDifference . '</td>';
-                echo '<td>' . $equipo->wins . '</td>';
-                echo '<td>' . $equipo->draws . '</td>';
-                echo '<td>' . $equipo->losses . '</td>';
-                echo '<td> <button class="btn btn-primary" onclick=\'cargarEquipo("' . $equipo->crestURI . '","' . $equipo->teamName . '","' . $equipo->_links->team->href . '")\'>Ver Equipo</button></td>';
-                echo '</tr>';
-            }
-            echo '</table>';
-        } catch (RequestException $e) {
-
-            if ($e->hasResponse()) {
-                if ($e->getCode()) {
-                    echo '<div class="alert alert-danger" role="alert">
-                              No tenemos el contenido que estas buscando
-                           </div>';
-                }
-            }
-        }
 
         break;
     case Constantes::VIEW_TEAM:
@@ -79,7 +30,7 @@ switch ($action) {
 
         $response = $client->get('players', $header);
 
-        printTeam($response);
+        printTeam($response, $crestUri, $nombreEquipo);
 
         break;
     default :
@@ -93,8 +44,7 @@ switch ($action) {
         break;
 }
 
-
-function printTeam($response) {
+function printTeam($response, $crestUri, $nombreEquipo) {
     $json = json_decode($response->getBody());
     echo '<img src="' . $crestUri . '"class="img-thumbnail rounded float-right" style="height: 100px; width:auto;"> ';
     echo '<h5>Equipo : ' . $nombreEquipo . '</h5>';
@@ -157,4 +107,58 @@ function printLeagues($response) {
         }
     }
     echo '</table>';
+}
+
+function printLeagueTable($client,$ligaId) {
+    try {
+
+        $response = $client->request('GET', 'http://api.football-data.org/v1/competitions/' . $ligaId . '/leagueTable');
+
+        $json = json_decode($response->getBody());
+        echo '<h5>' . $json->leagueCaption . '</h5>';
+        echo '<h6> Jornada: ' . $json->matchday . '</h6>';
+
+        echo '<table class="table table-striped">'
+        . '<tr>'
+        . '<th>position</th>'
+        . '<th>crestURI</th>'
+        . '<th>teamName</th>'
+        . '<th>playedGames</th>'
+        . '<th> points</th>'
+        . '<th> goals</th>'
+        . '<th>goalsAgainst</th>'
+        . '<th> goalDifference</th>'
+        . '<th> wins</th>'
+        . '<th>draws</th>'
+        . '<th>losses</th>'
+        . '<th></th>'
+        . '</tr>';
+
+        foreach ($json->standing as $equipo) {
+            echo '<tr>';
+            echo '<td>' . $equipo->position . '</td>';
+            echo '<td><img src="' . $equipo->crestURI . '" class="img-thumbnail"></td>';
+            echo '<td>' . $equipo->teamName . '</td>';
+            echo '<td>' . $equipo->playedGames . '</td>';
+            echo '<td>' . $equipo->points . '</td>';
+            echo '<td>' . $equipo->goals . '</td>';
+            echo '<td>' . $equipo->goalsAgainst . '</td>';
+            echo '<td>' . $equipo->goalDifference . '</td>';
+            echo '<td>' . $equipo->wins . '</td>';
+            echo '<td>' . $equipo->draws . '</td>';
+            echo '<td>' . $equipo->losses . '</td>';
+            echo '<td> <button class="btn btn-primary" onclick=\'cargarEquipo("' . $equipo->crestURI . '","' . $equipo->teamName . '","' . $equipo->_links->team->href . '")\'>Ver Equipo</button></td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+    } catch (RequestException $e) {
+
+        if ($e->hasResponse()) {
+            if ($e->getCode()) {
+                echo '<div class="alert alert-danger" role="alert">
+                              No tenemos el contenido que estas buscando
+                           </div>';
+            }
+        }
+    }
 }

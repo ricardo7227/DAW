@@ -12,8 +12,7 @@
             "": "src/"
         }
     },
-    "require": {
-        "joshcam/mysqli-database-class": "v2.8",
+    "require": {        
         "guzzlehttp/guzzle": "~6.0"
     }
 }

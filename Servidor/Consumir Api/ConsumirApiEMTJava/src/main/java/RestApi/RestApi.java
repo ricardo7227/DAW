@@ -30,7 +30,7 @@ import utilidades.Constantes;
 public class RestApi {
 
     private static RestApi instance;
-    private static HttpRequestFactory requestFactory;    
+    private static HttpRequestFactory requestFactory;
 
     public static RestApi getInstance() {
         if (instance == null) {
@@ -42,14 +42,17 @@ public class RestApi {
     private HttpRequestFactory crearServicio() {
         HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
         final JsonFactory JSON_FACTORY = new JacksonFactory();
-        requestFactory
-                = HTTP_TRANSPORT.createRequestFactory(new HttpRequestInitializer() {
-                    @Override
-                    public void initialize(HttpRequest request) {
-                        request.setParser(new JsonObjectParser(JSON_FACTORY));
-                        request.setConnectTimeout(100000);
-                    }
-                });
+        if (requestFactory == null) {
+
+            requestFactory
+                    = HTTP_TRANSPORT.createRequestFactory(new HttpRequestInitializer() {
+                        @Override
+                        public void initialize(HttpRequest request) {
+                            request.setParser(new JsonObjectParser(JSON_FACTORY));
+                            request.setConnectTimeout(100000);
+                        }
+                    });
+        }
         return requestFactory;
     }
 
@@ -62,7 +65,7 @@ public class RestApi {
         data.put(Constantes.ID_STOP, idStop);
 
         HttpRequest requestGoogle = crearServicio().buildPostRequest(url, new UrlEncodedContent(data));
-        
+
         return requestGoogle.executeAsync().get().parseAs(GenericJson.class);
     }
 
@@ -78,6 +81,7 @@ public class RestApi {
         HttpRequest requestGoogle = crearServicio().buildPostRequest(url, new UrlEncodedContent(data));
         return requestGoogle.executeAsync().get().parseAs(GenericJson.class);
     }
+
     public GenericJson getRoutetLine(String fecha, String linea) throws IOException, InterruptedException, ExecutionException {
         GenericUrl url = new GenericUrl(Api.END_POINT_GET_ROUTE_LINE);
 
