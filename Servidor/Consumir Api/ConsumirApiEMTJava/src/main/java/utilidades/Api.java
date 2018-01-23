@@ -16,6 +16,7 @@ public class Api {
     public static String END_POINT_GET_ARRIVE_STOP = BASE_URL_EMT + "/geo/GetArriveStop.php";
     public static String END_POINT_GET_LIST_LINES = BASE_URL_EMT + "/bus/GetListLines.php";
     public static String END_POINT_GET_ROUTE_LINE = BASE_URL_EMT + "/bus/GetRouteLines.php";
+    public static String END_POINT_GetNodesLines= BASE_URL_EMT + "/bus/GetNodesLines.php";
     
     
     

@@ -95,5 +95,19 @@ public class RestApi {
         HttpRequest requestGoogle = crearServicio().buildPostRequest(url, new UrlEncodedContent(data));
         return requestGoogle.executeAsync().get().parseAs(GenericJson.class);
     }
+    @Deprecated
+    public GenericJson getNodeLine() throws IOException, InterruptedException, ExecutionException {
+        GenericUrl url = new GenericUrl(Api.END_POINT_GetNodesLines);
+
+        GenericData data = new GenericData();
+        Configuration instancia = Configuration.getInstance();
+        data.put(Constantes.ID_CLIENT, instancia.getIdClient());
+        data.put(Constantes.PASS_KEY, instancia.getPassKey());
+        data.put("Nodes", "3727");
+        //data.put(Constantes.LINES, linea);
+
+        HttpRequest requestGoogle = crearServicio().buildPostRequest(url, new UrlEncodedContent(data));
+        return requestGoogle.executeAsync().get().parseAs(GenericJson.class);
+    }
 
 }//fin clase
