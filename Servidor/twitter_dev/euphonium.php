@@ -7,6 +7,7 @@ use controller\credentialsDatabase;
 use controller\SqlQuery;
 use controller\Constantes;
 use twitter\TwitterAsuka;
+use Vectorface\Whip\Whip;
 
 $credenciales = new credentialsDatabase();
 
@@ -61,7 +62,7 @@ function cargarResposeSuccess($response) {
                   <h5 class="card-title">' . $user->name . ':<a href=\'https://twitter.com/' . $user->screen_name . '\' target="_blanck"> @' . $user->screen_name . '</a></h5>
                   <p class="card-text">' . $response->text . '</p>
                   <p class="card-text"><small class="text-muted">' . $response->created_at . '</small></p>
-                </div>
+                </div>                
               </div>';
     }
 }
@@ -157,4 +158,79 @@ function getTwitterTokenAsuka($credenciales) {
         cerrarConexion($conexion);
     }
     return $token;
+}
+
+function getNavegador() {
+    $browser = new Browser();
+    return $browser->getUserAgent() . "| movil: " . $browser->isMobile();
+}
+
+function getIpClient() {
+    $whip = new Whip();
+    return $whip->getValidIpAddress();
+}
+
+function getAndCheckIpAgent($ip_client, $agente) {
+
+    return $ip_client != false && strlen($ip_client) > 6 && $agente != null;
+}
+
+function insertAccessClient($credenciales, $ip_client, $agente) {
+    $insertado = FALSE;
+    $conexion = NULL;
+    $statement = NULL;
+    try {
+        $conexion = conexionDB($credenciales);
+
+        $statement = $conexion->prepare(SqlQuery::INSERT_INTO_USER_ACCESS);
+
+        $statement->bind_param('ss', $ip_client, $agente);
+        if ($statement->execute()) {
+            $insertado = TRUE;
+        }
+    } catch (Exception $e) {
+        $e->getMessage();
+    } finally {
+        try {
+            if ($statement != null) {
+                $statement->close();
+            }
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+
+
+        cerrarConexion($conexion);
+    }
+    return $insertado;
+}
+function isEnableTwitter($credenciales) {
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+    $isEnable = NULL;
+    $resultado = NULL;
+    try {
+        $conexion = conexionDB($credenciales);
+
+        $isEnable = array();
+        $resultado = $conexion->query(SqlQuery::SELECT_DISPONIBLE_LIMIT_DAY);
+        while ($fila = $resultado->fetch_assoc()) {
+            $isEnable = array(
+                SqlQuery::DISPONIBLE => $fila[SqlQuery::DISPONIBLE]
+            );
+            
+        }
+    } catch (Exception $ex) {
+        $ex->getMessage();
+    } finally {
+        try {
+            if ($resultado != NULL) {
+                $resultado->free();
+            }
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+        cerrarConexion($conexion);
+    }
+    return $isEnable;
 }
