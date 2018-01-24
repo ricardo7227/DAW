@@ -7,7 +7,6 @@ package servlets;
 
 import RestApi.RestApi;
 import com.google.api.client.json.GenericJson;
-import com.google.api.client.util.ArrayMap;
 import config.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -72,7 +71,7 @@ public class ConsumeApi extends HttpServlet {
                     String paradaRequest = request.getParameter(Constantes.PARADA);
                     if (paradaRequest != null) {
                         paradaRequest = paradaRequest.replace(".", "");
-                        jsonParada = RestApi.getInstance().getArriveStop(paradaRequest);                        
+                        jsonParada = RestApi.getInstance().getArriveStop(paradaRequest);
                         autobusesIncoming = (ArrayList) jsonParada.get(Constantes.ARRIVES);
                     }
 
@@ -96,14 +95,7 @@ public class ConsumeApi extends HttpServlet {
             paramentrosPlantilla.put(Constantes.LISTA_LINEAS, lineasAutobus);
             paramentrosPlantilla.put(Constantes.PARADAS_LINEA, paradasLinea);
             paramentrosPlantilla.put(Constantes.AUTOBUSES_INCOMING, autobusesIncoming);
-  /*          
-            GenericJson jsonNodes = RestApi.getInstance().getNodeLine();
-            ArrayMap js = (ArrayMap)jsonNodes.get("resultValues");
-            ArrayList<String> js2 = (ArrayList<String>)js.get("lines");
-            for (String str : js2) {
-                String val = str;
-            }
-*/
+
             Template plantilla = Configuration.getInstance().getFreeMarker().getTemplate(Constantes.INDEX_TEMPLATE);
             plantilla.process(paramentrosPlantilla, response.getWriter());
         } catch (TemplateException ex) {
