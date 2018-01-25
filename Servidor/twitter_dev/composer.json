@@ -14,8 +14,10 @@
     },
     "require": {
         "joshcam/mysqli-database-class": "v2.8",
-        "abraham/twitteroauth": "0.7.4",
-        "cbschuld/browser.php": "1.95.x-dev",
-        "vectorface/whip": "v0.3.2"
+        "abraham/twitteroauth": "0.7.4",        
+        "vectorface/whip": "v0.3.2",
+        "cbschuld/browser.php": "1.95.x-dev"
+    },
+    "require-dev": {
     }
 }
