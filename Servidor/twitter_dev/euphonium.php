@@ -8,6 +8,7 @@ use controller\SqlQuery;
 use controller\Constantes;
 use twitter\TwitterAsuka;
 use Vectorface\Whip\Whip;
+use mensajes\Mensaje;
 
 $credenciales = new credentialsDatabase();
 
@@ -16,7 +17,7 @@ $messageFromUser = filter_input(INPUT_POST, Constantes::MESSAGE);
 $action = filter_input(INPUT_POST, Constantes::ACTION);
 
 $messageToUser = NULL;
-
+$tipo = Constantes::INFO;
 
 
 /* * *
@@ -28,16 +29,37 @@ $messageToUser = NULL;
 switch ($action) {
 
     case Constantes::UPDATE;
-        $consumerBD = getTwitterApp($credenciales);
-        $tokenDB = getTwitterTokenAsuka($credenciales);
-        if ($consumerBD != null) {
-            $twitterAsuka = new TwitterAsuka($consumerBD[SqlQuery::CONSUMER_KEY], $consumerBD[SqlQuery::CONSUMER_SECRET], $tokenDB[SqlQuery::OAUTH_TOKEN], $tokenDB[SqlQuery::OAUTH_TOKEN_SECRET]);
-            $response = $twitterAsuka->postMessage($messageFromUser);
-            if ($response != null) {
-                cargarResposeSuccess($response);
-                // var_dump($response);
+        $statusTwitter = isEnableTwitter($credenciales);
+        if (checkVar($statusTwitter) && $statusTwitter[SqlQuery::DISPONIBLE] == TRUE) {
+
+            if ($statusTwitter[SqlQuery::RATIO_DISPONIBLE] == TRUE) {
+                $ip_user = getIpClient();
+                $agente = getNavegador();
+                $statusUser = getUserStatus($credenciales, $ip_user);
+
+                if (checkVar($statusUser) && $statusUser[0] == TRUE) {
+                    enviarTweet($credenciales, $messageFromUser);
+                    insertAccessClient($credenciales, $ip_user, $agente);
+                } elseif (checkVar($statusUser) && $statusUser[0] == FALSE) {
+                    $tipo = Constantes::WARNING;
+                    $messageToUser = sprintf(Mensaje::LIMIT_TWEETS_USER,$statusUser[1]);
+                } else {
+                    enviarTweet($credenciales, $messageFromUser);
+                    insertAccessClient($credenciales, $ip_user, $agente);
+                }
+            } else {
+                $tipo = Constantes::WARNING;
+                $messageToUser = Mensaje::LIMIT_RATIO_HORA;
             }
+        } else {
+            $tipo = Constantes::WARNING;
+            $messageToUser = Mensaje::LIMIT_TWEETS_DAY;
         }
+
+        if ($messageToUser != null){
+            mensajeToUser($messageToUser, $tipo);
+        }
+
 
         break;
     case Constantes::DELETE:
@@ -50,6 +72,26 @@ switch ($action) {
 
 
         break;
+}
+
+function enviarTweet($credenciales, $messageFromUser) {
+    $consumerBD = getTwitterApp($credenciales);
+    $tokenDB = getTwitterTokenAsuka($credenciales);
+
+    if ($consumerBD != null) {
+        $twitterAsuka = new TwitterAsuka($consumerBD[SqlQuery::CONSUMER_KEY], $consumerBD[SqlQuery::CONSUMER_SECRET], $tokenDB[SqlQuery::OAUTH_TOKEN], $tokenDB[SqlQuery::OAUTH_TOKEN_SECRET]);
+        $response = $twitterAsuka->postMessage($messageFromUser);
+        if ($response != null) {
+            cargarResposeSuccess($response);
+            // var_dump($response);
+        }
+    }
+}
+
+function mensajeToUser($messageToUser, $tipo) {
+    echo '<div class="alert alert-'.$tipo.'" role="alert">
+            '.$messageToUser.'
+            </div>';
 }
 
 function cargarResposeSuccess($response) {
@@ -175,6 +217,10 @@ function getAndCheckIpAgent($ip_client, $agente) {
     return $ip_client != false && strlen($ip_client) > 6 && $agente != null;
 }
 
+function checkVar($variable) {
+    return $variable != null && !empty($variable);
+}
+
 function insertAccessClient($credenciales, $ip_client, $agente) {
     $insertado = FALSE;
     $conexion = NULL;
@@ -204,6 +250,12 @@ function insertAccessClient($credenciales, $ip_client, $agente) {
     }
     return $insertado;
 }
+
+/**
+ * 
+ * @param type $credenciales
+ * @return array (ratio y limite alcanzado diario
+ */
 function isEnableTwitter($credenciales) {
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
@@ -213,12 +265,12 @@ function isEnableTwitter($credenciales) {
         $conexion = conexionDB($credenciales);
 
         $isEnable = array();
-        $resultado = $conexion->query(SqlQuery::SELECT_DISPONIBLE_LIMIT_DAY);
+        $resultado = $conexion->query(SqlQuery::SELECT_RATIO_AND_LIMIT_DAY);
         while ($fila = $resultado->fetch_assoc()) {
             $isEnable = array(
+                SqlQuery::RATIO_DISPONIBLE => $fila[SqlQuery::RATIO_DISPONIBLE],
                 SqlQuery::DISPONIBLE => $fila[SqlQuery::DISPONIBLE]
             );
-            
         }
     } catch (Exception $ex) {
         $ex->getMessage();
@@ -233,4 +285,41 @@ function isEnableTwitter($credenciales) {
         cerrarConexion($conexion);
     }
     return $isEnable;
+}
+
+/**
+ * 
+ * @param type $credenciales
+ * @param type $ip_address
+ * @return array[update_status,count_post]  o null
+ */
+function getUserStatus($credenciales, $ip_address) {
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+    $arrayResult = null;
+    $statement = NULL;
+    try {
+        $conexion = conexionDB($credenciales);
+
+
+        $statement = $conexion->prepare(SqlQuery::SELECT_STATUS_USER_BY_IP);
+        $statement->bind_param("s", $ip_address);
+
+        $statement->execute();
+        $resultado = $statement->get_result();
+        if ($resultado) {
+            $arrayResult = $resultado->fetch_row();
+        }
+    } catch (Exception $ex) {
+        echo $ex->getMessage();
+    } finally {
+        try {
+            if ($statement != NULL) {
+                $statement->close();
+            }
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+        cerrarConexion($conexion);
+    }
+    return $arrayResult;
 }
