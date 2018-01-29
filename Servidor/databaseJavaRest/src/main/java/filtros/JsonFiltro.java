@@ -45,12 +45,11 @@ public class JsonFiltro implements Filter {
         }
         ObjectMapper mapper = new ObjectMapper();
 
-        
-        String alumno = request.getParameter("alumno");
+        String alumno = request.getParameter(Constantes.ALUMNO);
         if (alumno != null) {
             Alumno a = mapper.readValue(alumno, new TypeReference<Alumno>() {
             });
-            request.setAttribute("alumno", a);
+            request.setAttribute(Constantes.ALUMNO, a);
         }
 
     }

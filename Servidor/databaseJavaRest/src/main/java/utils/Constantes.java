@@ -38,6 +38,7 @@ public class Constantes {
     public static final String LOGOUT = "LOGOUT";
     
     public static final String JSON = "json";
+    public static final String ALUMNO = "alumno";
     
 
     //Columnas Users

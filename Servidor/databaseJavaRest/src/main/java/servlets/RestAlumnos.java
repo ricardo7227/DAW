@@ -22,22 +22,24 @@ import model.Alumno;
  */
 @WebServlet(name = "RestAlumnos", urlPatterns = {"/rest/alumnos"})
 public class RestAlumnos extends HttpServlet {
-
+    
     private AlumnosServicios servicios;
-
+    
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doDelete(req, resp); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        BufferedReader br = req.getReader();
-
-        Alumno alumno = (Alumno) req.getAttribute("alumno");
-
+        
+        Alumno alumno = (Alumno) req.getAttribute(Constantes.ALUMNO);
+        if (alumno != null) {
+            servicios.insertAlumnoJDBC(alumno);
+        }
+        
     }
-
+    
     @Override
     public void init() throws ServletException {
         servicios = new AlumnosServicios();
@@ -55,9 +57,9 @@ public class RestAlumnos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         request.setAttribute(Constantes.JSON, servicios.getAllAlumnos());
-
+        
     }
 
     /**
