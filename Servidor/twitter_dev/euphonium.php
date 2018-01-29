@@ -305,10 +305,12 @@ function getUserStatus($credenciales, $ip_address) {
         $statement->bind_param("s", $ip_address);
 
         $statement->execute();
-        $resultado = $statement->get_result();
-        if ($resultado) {
-            $arrayResult = $resultado->fetch_row();
+        $statement->bind_result($update_status,$count_post);//get_result();
+        $arrayResult = array();
+        while ($statement->fetch()){
+        $arrayResult =  array($update_status,$count_post);   
         }
+        
     } catch (Exception $ex) {
         echo $ex->getMessage();
     } finally {
