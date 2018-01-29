@@ -15,7 +15,7 @@ namespace controller;
  */
 class credentialsDatabase {
 
-    public $servername = "discutivo.com:3306";
+    public $servername = "discutivo.com";
     public $username = "discu351_test";
     public $password = "nohay2sin3";
     public $database = "discu351_test";
