@@ -5,7 +5,6 @@
  */
 package servlets;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import servicios.AlumnosServicios;
 import utils.Constantes;
 import model.Alumno;
+import model.GenericResponse;
+import utils.CodesError;
 
 /**
  *
@@ -22,30 +23,36 @@ import model.Alumno;
  */
 @WebServlet(name = "RestAlumnos", urlPatterns = {"/rest/alumnos"})
 public class RestAlumnos extends HttpServlet {
-    
+
     private AlumnosServicios servicios;
-    
+
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doDelete(req, resp); //To change body of generated methods, choose Tools | Templates.
+        Alumno alumno = (Alumno) req.getAttribute(Constantes.ALUMNO);
+
+        if (alumno != null && alumno.getId() > 0) {
+
+            int rowsAffected = servicios.deleteAlumnoJDBC(alumno.getId());
+            req.setAttribute(Constantes.JSON, rowsAffected > 0 ? new GenericResponse(rowsAffected, Constantes.messageQueryAlumnoDeleted) : new GenericResponse(CodesError.DELETE.ordinal(), Constantes.messageQueryAlumnoDeletedFail));
+        }
     }
-    
+
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+
         Alumno alumno = (Alumno) req.getAttribute(Constantes.ALUMNO);
         if (alumno != null) {
-            servicios.insertAlumnoJDBC(alumno);
+            alumno = servicios.insertAlumnoJDBC(alumno);
+            req.setAttribute(Constantes.JSON, alumno.getId() > 0 ? alumno : new GenericResponse(CodesError.INSERT.ordinal(), Constantes.messageQueryAlumnoInsertedFail));
         }
-        
+
     }
-    
+
     @Override
     public void init() throws ServletException {
         servicios = new AlumnosServicios();
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -57,9 +64,9 @@ public class RestAlumnos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         request.setAttribute(Constantes.JSON, servicios.getAllAlumnos());
-        
+
     }
 
     /**
@@ -73,7 +80,11 @@ public class RestAlumnos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//update
+        Alumno alumno = (Alumno) request.getAttribute(Constantes.ALUMNO);
+        if (alumno != null) {
+            alumno = servicios.updateAlumnoJDBC(alumno);
+            request.setAttribute(Constantes.JSON, alumno != null ? alumno : new GenericResponse(CodesError.UPDATE.ordinal(), Constantes.messageQueryAlumnoUpdatedFail));
+        }
     }
 
     /**

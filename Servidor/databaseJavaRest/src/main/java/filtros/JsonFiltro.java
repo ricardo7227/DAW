@@ -18,7 +18,11 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 import model.Alumno;
+import model.Asignatura;
+import servicios.AlumnosServicios;
+import utils.CodesError;
 import utils.Constantes;
 
 /**
@@ -46,10 +50,69 @@ public class JsonFiltro implements Filter {
         ObjectMapper mapper = new ObjectMapper();
 
         String alumno = request.getParameter(Constantes.ALUMNO);
-        if (alumno != null) {
+        String asignatura = request.getParameter(Constantes.ASIGNATURA);
+
+        AlumnosServicios servicios = new AlumnosServicios();
+        int codeError = CodesError.DEFAULT.ordinal();
+        String method = ((HttpServletRequest) request).getMethod();
+
+        if (alumno != null && !alumno.isEmpty()) {
             Alumno a = mapper.readValue(alumno, new TypeReference<Alumno>() {
             });
-            request.setAttribute(Constantes.ALUMNO, a);
+
+            if (method.equalsIgnoreCase(Constantes.PUT)) {
+
+                if (servicios.comprobarCamposAlumno(a, false)) {
+                    request.setAttribute(Constantes.ALUMNO, a);
+                } else {
+                    codeError = CodesError.INSERT.ordinal();
+                }
+            } else if (method.equalsIgnoreCase(Constantes.POST)) {
+                if (servicios.comprobarCamposAlumno(a, true)) {
+                    request.setAttribute(Constantes.ALUMNO, a);
+                } else {
+                    codeError = CodesError.UPDATE.ordinal();
+                }
+            } else if (method.equalsIgnoreCase(Constantes.DELETE)) {
+                if (a.getId() > 0) {
+                    request.setAttribute(Constantes.ALUMNO, a);
+                } else {
+                    codeError = CodesError.DELETE.ordinal();
+                }
+            }
+
+        } else if (asignatura != null && !asignatura.isEmpty()) {
+
+            Asignatura asig = mapper.readValue(asignatura, new TypeReference<Asignatura>() {
+            });
+
+            if (method.equalsIgnoreCase(Constantes.PUT)) {
+
+                if (servicios.comprobarCamposAsignatura(asig, false)) {
+                    request.setAttribute(Constantes.ASIGNATURA, asig);
+                } else {
+                    codeError = CodesError.INSERT.ordinal();
+                }
+            } else if (method.equalsIgnoreCase(Constantes.POST)) {
+                if (servicios.comprobarCamposAsignatura(asig, true)) {
+                    request.setAttribute(Constantes.ASIGNATURA, asig);
+                } else {
+                    codeError = CodesError.UPDATE.ordinal();
+                }
+            } else if (method.equalsIgnoreCase(Constantes.DELETE)) {
+                if (asig.getId() > 0) {
+                    request.setAttribute(Constantes.ASIGNATURA, asig);
+                } else {
+                    codeError = CodesError.DELETE.ordinal();
+                }
+            }
+
+        } else {
+            codeError = CodesError.EMPTY.ordinal();
+        }
+
+        if (codeError != CodesError.DEFAULT.ordinal()) {
+            request.setAttribute(Constantes.JSON, new model.GenericResponse(codeError, Constantes.faltanCampos));
         }
 
     }

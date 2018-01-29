@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Alumno;
+import model.Asignatura;
 import servlets.AlumnosServlet;
 import utils.SqlQuery;
 
@@ -35,23 +36,23 @@ public class AlumnosServicios {
         return dao.getAllAlumnosJDBC();
     }
 
-    public boolean updateAlumnoJDBC(Alumno alumno) {
+    public Alumno updateAlumnoJDBC(Alumno alumno) {
         AlumnosDAO dao = new AlumnosDAO();
         return dao.updateUserJDBC(alumno);
     }
 
-    public boolean insertAlumnoJDBC(Alumno alumno) {
+    public Alumno insertAlumnoJDBC(Alumno alumno) {
         AlumnosDAO dao = new AlumnosDAO();
         return dao.insertUserJDBC(alumno);
     }
 
-    public int deleteAlumnoJDBC(String id) {
+    public int deleteAlumnoJDBC(long id) {
         AlumnosDAO dao = new AlumnosDAO();
         return dao.deleteUserByIdJDBC(id);
     }
-    
+
     public boolean deleteAlumnoForce(int i) throws SQLException {
-        AlumnosDAO dao = new  AlumnosDAO();
+        AlumnosDAO dao = new AlumnosDAO();
         return dao.deleteUserByIddbUtils(i);
     }
 
@@ -99,6 +100,11 @@ public class AlumnosServicios {
         return alumno;
     }
 
-    
+    public boolean comprobarCamposAlumno(Alumno alumno,boolean update) {
+        return alumno != null && alumno.getNombre() != null && alumno.getFecha_nacimiento() != null &&(update ? alumno.getId() > 0 : true);
+    }
+    public boolean comprobarCamposAsignatura(Asignatura asig,boolean update) {
+        return asig != null && asig.getNombre() != null && asig.getCiclo()!= null && asig.getCurso()!= null &&(update ? asig.getId() > 0 : true);
+    }
 
 }//fin clase

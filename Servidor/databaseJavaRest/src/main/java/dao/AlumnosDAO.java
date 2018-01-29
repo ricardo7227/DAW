@@ -80,7 +80,7 @@ public class AlumnosDAO {
 
     }
 
-    public boolean updateUserJDBC(Alumno alumno) {
+    public Alumno updateUserJDBC(Alumno alumno) {
         boolean updated = false;
         Connection connection = null;
 
@@ -97,8 +97,11 @@ public class AlumnosDAO {
 
             if (stmt.executeUpdate() > 0) {
                 updated = Boolean.TRUE;
+            }else{
+            alumno = null;
             }
         } catch (Exception e) {
+            alumno = null;
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             try {
@@ -111,10 +114,10 @@ public class AlumnosDAO {
 
             DBConnection.getInstance().cerrarConexion(connection);
         }
-        return updated;
+        return alumno;
     }//fin update
 
-    public boolean insertUserJDBC(Alumno alumno) {
+    public Alumno insertUserJDBC(Alumno alumno) {
         Connection connection = null;
         boolean insertado = false;
         PreparedStatement stmt = null;
@@ -139,6 +142,7 @@ public class AlumnosDAO {
 
         } catch (Exception e) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
+            alumno.setId(-1);
         } finally {
             try {
                 if (stmt != null) {
@@ -151,11 +155,11 @@ public class AlumnosDAO {
             DBConnection.getInstance().cerrarConexion(connection);
 
         }
-        return insertado;
+        return alumno;
 
     }//fin insert
 
-    public int deleteUserByIdJDBC(String key) {
+    public int deleteUserByIdJDBC(long key) {
 
         int filasErased = -1;
         Connection connection = null;
@@ -166,7 +170,7 @@ public class AlumnosDAO {
 
             stmt = connection.prepareStatement(SqlQuery.DELETE_ALUMNO, Statement.RETURN_GENERATED_KEYS);
 
-            stmt.setInt(1, Integer.valueOf(key));
+            stmt.setLong(1, key);
 
             filasErased = stmt.executeUpdate();
 

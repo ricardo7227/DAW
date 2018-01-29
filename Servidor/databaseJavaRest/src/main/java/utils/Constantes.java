@@ -39,6 +39,10 @@ public class Constantes {
     
     public static final String JSON = "json";
     public static final String ALUMNO = "alumno";
+    public static final String ASIGNATURA = "ASIGNATURA";
+    public static final String POST = "POST";    
+    public static final String GET = "GET";
+    public static final String PUT = "PUT";
     
 
     //Columnas Users
@@ -54,6 +58,7 @@ public class Constantes {
     public static String resultadoQuery = "resultado";
     public static String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";
     public static String messageQueryAlumnoInsertedFail = "Alumno no agregado en la lista, vuelve a intentarlo";
+    public static String faltanCampos = "Faltan campos en el objeto";
     public static String messageQueryAlumnoUpdated = "El alumno fue actualizado en la lista";
     public static String messageQueryAlumnoUpdatedFail = "Problemas actualizando el alumno, inténtalo otra vez";
     public static String messageQueryAlumnoDeleted = "El alumno fue eliminado correctamente de la lista";
