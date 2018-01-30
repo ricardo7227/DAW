@@ -16,26 +16,28 @@ public class GenericResponse {
     public GenericResponse() {
     }
 
-    public GenericResponse(long codeError, String descripError) {
-        this.code = codeError;
-        this.description = descripError;
+    public GenericResponse(long code, String description) {
+        this.code = code;
+        this.description = description;
     }
 
-    public long getCodeError() {
+    public long getCode() {
         return code;
     }
 
-    public void setCodeError(long codeError) {
-        this.code = codeError;
+    public void setCode(long code) {
+        this.code = code;
     }
 
-    public String getDescripError() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescripError(String descripError) {
-        this.description = descripError;
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+    
     
     
 }

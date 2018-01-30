@@ -34,7 +34,7 @@ public class NotasServicios {
         return dao.updateNotadbUtils(nota);
     }
 
-    public boolean insertNota(Nota nota) {
+    public Nota insertNota(Nota nota) {
         NotasDAO dao = new NotasDAO();
         return dao.insertUserJDBC(nota);
     }

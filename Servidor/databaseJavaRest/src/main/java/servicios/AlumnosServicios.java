@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Alumno;
 import model.Asignatura;
+import model.Nota;
 import servlets.AlumnosServlet;
 import utils.SqlQuery;
 
@@ -100,11 +101,16 @@ public class AlumnosServicios {
         return alumno;
     }
 
-    public boolean comprobarCamposAlumno(Alumno alumno,boolean update) {
-        return alumno != null && alumno.getNombre() != null && alumno.getFecha_nacimiento() != null &&(update ? alumno.getId() > 0 : true);
+    public boolean comprobarCamposAlumno(Alumno alumno, boolean update) {
+        return alumno != null && alumno.getNombre() != null && alumno.getFecha_nacimiento() != null && (update ? alumno.getId() > 0 : true);
     }
-    public boolean comprobarCamposAsignatura(Asignatura asig,boolean update) {
-        return asig != null && asig.getNombre() != null && asig.getCiclo()!= null && asig.getCurso()!= null &&(update ? asig.getId() > 0 : true);
+
+    public boolean comprobarCamposAsignatura(Asignatura asig, boolean update) {
+        return asig != null && asig.getNombre() != null && asig.getCiclo() != null && asig.getCurso() != null && (update ? asig.getId() > 0 : true);
+    }
+
+    public boolean comprobarCamposNota(Nota nota, boolean update) {
+        return nota != null && nota.getId_alumno() > 0 && nota.getId_asignatura() > 0 && (update ? nota.getNota() > -1 : true);
     }
 
 }//fin clase

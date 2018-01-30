@@ -39,7 +39,8 @@ public class Constantes {
     
     public static final String JSON = "json";
     public static final String ALUMNO = "alumno";
-    public static final String ASIGNATURA = "ASIGNATURA";
+    public static final String ASIGNATURA = "asignatura";
+    public static final String NOTA = "nota";
     public static final String POST = "POST";    
     public static final String GET = "GET";
     public static final String PUT = "PUT";
@@ -63,6 +64,7 @@ public class Constantes {
     public static String messageQueryAlumnoUpdatedFail = "Problemas actualizando el alumno, inténtalo otra vez";
     public static String messageQueryAlumnoDeleted = "El alumno fue eliminado correctamente de la lista";
     public static String messageQueryAlumnoDeletedFail = "Cuidado! el alumno tiene notas, Quieres borrarlo?";
+    public static String messageQueryAlumnoDeleteMissing = "No Existe el alumno que tratas de borrar";
     public static String messageQueryAlumnoDeletedFailedAgain = "Seguimos sin poder borrar el alumno";
 
     public static String messageQueryAsignaturaInserted = "Asignatura fue insertado en la lista";
@@ -71,11 +73,13 @@ public class Constantes {
     public static String messageQueryAsignaturaUpdateFailed = "Error en la actualización de Asignatura";
     public static String messageQueryAsignaturaDeleted = "Asignatura eliminada correctamente";
     public static String messageQueryAsignaturaDeletedFail = "Cuidado! Tienes alumnos que estan cursando esta asignatura. Estás Seguro?";
+    public static String messageQueryAsignaturaDeleteMissing = "No Existe la asignatura que tratas de borrar";
     public static String messageQueryAsignaturaDeletedFailedAgain = "Problemas graves, no pudimos borrar la Asignatura";
 
     public static String messageQueryNotaMissing = "No tiene nota";
     public static String messageQueryNotaUpdated = "Hemos actualizado la nota correctamente";
     public static String messageQueryNotaUpdatedFail = "Falló en la actualización de Nota";
+    public static String messageQueryNotaDeleted = "Notas borradas para el alumno";
 
     public static String messageUserExist = "Ya tenemos un usuario con un Nombre o Email igual";
     public static String messageUserMissingFields = "Te faltan campos por rellenar";

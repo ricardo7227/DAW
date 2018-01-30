@@ -56,24 +56,24 @@ public class AsignaturasServlet extends HttpServlet {
 
                     //parametros = request.getParameterMap();
                     asignatura = servicios.tratarParametros(parametros);
-                    int filas = servicios.updateAsignaturadbUtils(asignatura);
+                   // int filas = servicios.updateAsignaturadbUtils(asignatura);
 
-                    messageToUser = (filas > 0) ? Constantes.messageQueryAsignaturaUpdated : Constantes.messageQueryAsignaturaUpdateFailed;
+                    //messageToUser = (filas > 0) ? Constantes.messageQueryAsignaturaUpdated : Constantes.messageQueryAsignaturaUpdateFailed;
 
                     break;
                 case Constantes.INSERT:
 
                     asignatura = servicios.tratarParametros(parametros);
 
-                    messageToUser = (servicios.insertAsignaturadbUtils(asignatura))
-                            ? Constantes.messageQueryAsignaturaInserted : Constantes.messageQueryAsignaturaInsertFailed;
+                    //messageToUser = (servicios.insertAsignaturadbUtils(asignatura))
+                      //      ? Constantes.messageQueryAsignaturaInserted : Constantes.messageQueryAsignaturaInsertFailed;
 
                     break;
                 case Constantes.DELETE:
                     String key = request.getParameter(SqlQuery.ID.toLowerCase());
                     int deleted = -1;
                     if (key != null && !key.isEmpty()) {
-                        deleted = servicios.deleteAsignaturadbUtils(key);
+                        //deleted = servicios.deleteAsignaturadbUtils(key);
 
                     }
                     if (deleted == ConstantesError.CodeErrorClaveForanea) {

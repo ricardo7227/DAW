@@ -77,7 +77,7 @@ public class NotasServlet extends HttpServlet {
                     if (serviciosNotas.getNota(claves) != null) {
                         resultado = serviciosNotas.updateNota(claves);
                     } else {
-                        resultado = serviciosNotas.insertNota(claves);
+                       // resultado = serviciosNotas.insertNota(claves);
                     }
                     request.setAttribute(Constantes.notaMessage, (resultado) ? Constantes.messageQueryNotaUpdated : Constantes.messageQueryNotaUpdatedFail);
 

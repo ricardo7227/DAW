@@ -21,6 +21,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import model.Alumno;
 import model.Asignatura;
+import model.GenericResponse;
+import model.Nota;
+import org.apache.http.HttpStatus;
 import servicios.AlumnosServicios;
 import utils.CodesError;
 import utils.Constantes;
@@ -51,9 +54,11 @@ public class JsonFiltro implements Filter {
 
         String alumno = request.getParameter(Constantes.ALUMNO);
         String asignatura = request.getParameter(Constantes.ASIGNATURA);
+        String nota = request.getParameter(Constantes.NOTA);
 
         AlumnosServicios servicios = new AlumnosServicios();
-        int codeError = CodesError.DEFAULT.ordinal();
+        int codeResponse = HttpStatus.SC_ACCEPTED;
+
         String method = ((HttpServletRequest) request).getMethod();
 
         if (alumno != null && !alumno.isEmpty()) {
@@ -65,19 +70,19 @@ public class JsonFiltro implements Filter {
                 if (servicios.comprobarCamposAlumno(a, false)) {
                     request.setAttribute(Constantes.ALUMNO, a);
                 } else {
-                    codeError = CodesError.INSERT.ordinal();
+                    codeResponse = HttpStatus.SC_BAD_REQUEST;
                 }
             } else if (method.equalsIgnoreCase(Constantes.POST)) {
                 if (servicios.comprobarCamposAlumno(a, true)) {
                     request.setAttribute(Constantes.ALUMNO, a);
                 } else {
-                    codeError = CodesError.UPDATE.ordinal();
+                    codeResponse = HttpStatus.SC_BAD_REQUEST;
                 }
             } else if (method.equalsIgnoreCase(Constantes.DELETE)) {
-                if (a.getId() > 0) {
+                if (a != null && a.getId() > 0) {
                     request.setAttribute(Constantes.ALUMNO, a);
                 } else {
-                    codeError = CodesError.DELETE.ordinal();
+                    codeResponse = HttpStatus.SC_BAD_REQUEST;
                 }
             }
 
@@ -91,28 +96,48 @@ public class JsonFiltro implements Filter {
                 if (servicios.comprobarCamposAsignatura(asig, false)) {
                     request.setAttribute(Constantes.ASIGNATURA, asig);
                 } else {
-                    codeError = CodesError.INSERT.ordinal();
+                    codeResponse = HttpStatus.SC_BAD_REQUEST;
                 }
             } else if (method.equalsIgnoreCase(Constantes.POST)) {
                 if (servicios.comprobarCamposAsignatura(asig, true)) {
                     request.setAttribute(Constantes.ASIGNATURA, asig);
                 } else {
-                    codeError = CodesError.UPDATE.ordinal();
+                    codeResponse = HttpStatus.SC_BAD_REQUEST;
                 }
             } else if (method.equalsIgnoreCase(Constantes.DELETE)) {
-                if (asig.getId() > 0) {
+                if (asig != null && asig.getId() > 0) {
                     request.setAttribute(Constantes.ASIGNATURA, asig);
                 } else {
-                    codeError = CodesError.DELETE.ordinal();
+                    codeResponse = HttpStatus.SC_BAD_REQUEST;
                 }
             }
 
+        } else if (nota != null && !nota.isEmpty()) {
+            Nota n = mapper.readValue(nota, new TypeReference<Nota>() {
+            });
+            if (servicios.comprobarCamposNota(n, false)) {
+
+                if (method.equalsIgnoreCase(Constantes.POST) || method.equalsIgnoreCase(Constantes.PUT)) {
+                    if (servicios.comprobarCamposNota(n, true)) {
+                        request.setAttribute(Constantes.NOTA, n);
+                    } else {
+                        codeResponse = HttpStatus.SC_BAD_REQUEST;
+                    }
+                } else {
+
+                    request.setAttribute(Constantes.NOTA, n);
+
+                }
+
+            } else {
+                codeResponse = HttpStatus.SC_BAD_REQUEST;
+            }
         } else {
-            codeError = CodesError.EMPTY.ordinal();
+            codeResponse = HttpStatus.SC_BAD_REQUEST;
         }
 
-        if (codeError != CodesError.DEFAULT.ordinal()) {
-            request.setAttribute(Constantes.JSON, new model.GenericResponse(codeError, Constantes.faltanCampos));
+        if (codeResponse != HttpStatus.SC_ACCEPTED) {
+            request.setAttribute(Constantes.JSON, new GenericResponse(codeResponse, Constantes.faltanCampos));
         }
 
     }

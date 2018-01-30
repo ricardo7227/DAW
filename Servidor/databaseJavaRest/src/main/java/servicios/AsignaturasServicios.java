@@ -32,17 +32,17 @@ public class AsignaturasServicios {
         return dao.getAllAsignaturasdbUtils();
     }
 
-    public boolean insertAsignaturadbUtils(Asignatura a) {
+    public Asignatura insertAsignaturadbUtils(Asignatura a) {
         AsignaturasDAO dao = new AsignaturasDAO();
         return dao.insertAsignaturadbUtils(a);
     }
 
-    public int updateAsignaturadbUtils(Asignatura asignatura) {
+    public Asignatura updateAsignaturadbUtils(Asignatura asignatura) {
         AsignaturasDAO dao = new AsignaturasDAO();
         return dao.updateAsignaturasdbUtils(asignatura);
     }
 
-    public int deleteAsignaturadbUtils(String key) {
+    public int deleteAsignaturadbUtils(long key) {
         AsignaturasDAO dao = new AsignaturasDAO();
         return dao.deleteAsignaturadbUtils(key);
     }

@@ -27,7 +27,7 @@ public class AsignaturasDAO {
 
     public List<Asignatura> getAllAsignaturasdbUtils() {
         List<Asignatura> lista = null;
-        
+
         Connection con = null;
         try {
             con = DBConnection.getInstance().getConnection();
@@ -44,8 +44,8 @@ public class AsignaturasDAO {
         return lista;
     }
 
-    public boolean insertAsignaturadbUtils(Asignatura asignatura) {
-        
+    public Asignatura insertAsignaturadbUtils(Asignatura asignatura) {
+
         Connection con = null;
         boolean insertado = false;
         try {
@@ -60,20 +60,22 @@ public class AsignaturasDAO {
 
             if (id > 0) {
                 insertado = Boolean.TRUE;
+                asignatura.setId(id);
             }
 
         } catch (Exception ex) {
+            asignatura = null;
             Logger.getLogger(AsignaturasDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             DBConnection.getInstance().cerrarConexion(con);
         }
-        return insertado;
+        return asignatura;
 
     }
 
-    public int updateAsignaturasdbUtils(Asignatura asignatura) {
+    public Asignatura updateAsignaturasdbUtils(Asignatura asignatura) {
         int filas = -1;
-        
+
         Connection con = null;
 
         try {
@@ -89,18 +91,18 @@ public class AsignaturasDAO {
                     asignatura.getId());
 
         } catch (Exception ex) {
+            asignatura = null;
             Logger.getLogger(AsignaturasDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             DBConnection.getInstance().cerrarConexion(con);
         }
 
-        return filas;
+        return asignatura;
     }
 
-    public int deleteAsignaturadbUtils(String key) {
+    public int deleteAsignaturadbUtils(long key) {
         int filasErased = -1;
 
-        
         Connection con = null;
 
         try {
@@ -127,7 +129,7 @@ public class AsignaturasDAO {
         int filasNota = -1;
         int filasAsigantura = -1;
         boolean borrado = Boolean.FALSE;
-        
+
         Connection con = null;
 
         try {
@@ -145,7 +147,7 @@ public class AsignaturasDAO {
             if (filasNota > 0 && filasAsigantura > 0) {
                 borrado = Boolean.TRUE;
                 con.commit();
-            }else {
+            } else {
                 con.rollback();
             }
 

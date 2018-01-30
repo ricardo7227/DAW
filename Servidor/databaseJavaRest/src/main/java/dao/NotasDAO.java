@@ -26,8 +26,6 @@ import utils.SqlQuery;
  */
 public class NotasDAO {
 
-   
-
     public Nota getNotaJDBC(int idAlumno, int idAsignatura) {
         Nota nota = null;
 
@@ -75,7 +73,7 @@ public class NotasDAO {
     public boolean updateNotadbUtils(Nota nota) {
         int filas = -1;
         boolean updated = false;
-        
+
         Connection con = null;
 
         try {
@@ -101,9 +99,7 @@ public class NotasDAO {
         return updated;
     }
 
-    
-
-    public boolean insertUserJDBC(Nota nota) {
+    public Nota insertUserJDBC(Nota nota) {
 
         Connection connection = null;
         boolean insertado = false;
@@ -119,9 +115,12 @@ public class NotasDAO {
 
             if (stmt.executeUpdate() > 0) {
                 insertado = Boolean.TRUE;
+            } else {
+                nota = null;
             }
 
         } catch (Exception e) {
+            nota = null;
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             try {
@@ -135,14 +134,14 @@ public class NotasDAO {
             DBConnection.getInstance().cerrarConexion(connection);
 
         }
-        return insertado;
+        return nota;
 
     }//fin insert
 
     public boolean deleteNotadbUtils(int key) {
         int filas = -1;
         boolean borrado = Boolean.FALSE;
-        
+
         Connection con = null;
 
         try {

@@ -142,7 +142,7 @@ public class AlumnosDAO {
 
         } catch (Exception e) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, e);
-            alumno.setId(-1);
+            alumno = null;
         } finally {
             try {
                 if (stmt != null) {
