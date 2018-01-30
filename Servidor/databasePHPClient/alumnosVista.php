@@ -32,11 +32,11 @@ echo '
                     <th>Fecha</th>
                     <th></th>
                     </tr>';
-foreach ($listaAlumnos as &$valor) {
-    $id = $valor[SqlQuery::ID];
-    $nombre = htmlspecialchars($valor[SqlQuery::NOMBRE]);
-    $fecha_nacimiento = $valor[SqlQuery::FECHA_NACIMIENTO];
-    $mayor_edad = $valor[SqlQuery::MAYOR_EDAD];
+foreach ($listaAlumnos as $valor) {
+    $id = $valor->id;
+    $nombre = htmlspecialchars($valor->nombre);
+    $fecha_nacimiento = $valor->fecha_nacimiento;
+    $mayor_edad = $valor->mayor_edad;
 
     echo '<tr>
                <td><button id = "cargarAlumno" onClick = "cargarAlumno(';

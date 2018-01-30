@@ -25,7 +25,6 @@ import model.GenericResponse;
 import model.Nota;
 import org.apache.http.HttpStatus;
 import servicios.AlumnosServicios;
-import utils.CodesError;
 import utils.Constantes;
 
 /**

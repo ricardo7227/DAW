@@ -11,6 +11,8 @@ include 'header.php';
 use controller\credentialsDatabase;
 use controller\SqlQuery;
 use controller\Constantes;
+use api\AlumnosApi;
+use model\Alumno;
 
 $credenciales = new credentialsDatabase();
 
@@ -33,7 +35,11 @@ $messageToUser = NULL;
 
 switch ($action) {
     case Constantes::INSERT:
-        $messageToUser = (insertAlumno($credenciales, $nombre, $fecha_nacimiento, $mayor_edad)) ?
+        $alumno = new Alumno($id,$nombre,$fecha_nacimiento,0);
+        //pendiente
+        $alumno = AlumnosApi::getInstance()->insertAlumno($alumno);
+        var_dump($alumno);
+        $messageToUser = ($alumno != null) ?
                 Constantes::messageQueryAlumnoInserted : Constantes::messageQueryAlumnoInsertedFail;
 
 
@@ -76,7 +82,7 @@ switch ($action) {
 }
 
 
-$listaAlumnos = getAllAlumnos($credenciales);
+$listaAlumnos = AlumnosApi::getInstance()->getAllAlumnos();
 
 
 include './alumnosVista.php';
