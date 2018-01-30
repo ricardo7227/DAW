@@ -53,7 +53,7 @@ public class RestNotas extends HttpServlet {
                         new GenericResponse(HttpStatus.SC_INTERNAL_SERVER_ERROR, Constantes.messageQueryNotaUpdatedFail));
             } else {
                 resp.setStatus(HttpStatus.SC_CREATED);
-                req.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_ACCEPTED, Constantes.messageQueryNotaUpdated));
+                req.setAttribute(Constantes.JSON,nota);
             }
 
         }
