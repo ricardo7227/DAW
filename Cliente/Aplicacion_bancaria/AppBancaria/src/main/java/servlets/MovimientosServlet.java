@@ -5,11 +5,13 @@
  */
 package servlets;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import config.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -17,6 +19,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Movimiento;
+import model.MovimientosFechas;
+import servicios.MovimientosServicios;
 import utils.Constantes;
 import utils.Templates;
 
@@ -82,7 +87,17 @@ public class MovimientosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+
+        MovimientosServicios servicios = new MovimientosServicios();
+        MovimientosFechas mf = servicios.tratarParametro(request.getParameterMap());
+        mf.setId_cuenta(1234567890);
+        List<Movimiento> listaMovimientos = servicios.getAllMovimientosByRango(mf);
+        ObjectMapper mapper = new ObjectMapper();
+
+        mapper.writeValue(response.getOutputStream(), listaMovimientos);
+
+//        response.getWriter().write(mf.toString());
     }
 
     /**

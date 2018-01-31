@@ -64,6 +64,10 @@ public class Constantes {
     public static final String CODIGO_ACTIVACION = "CODIGO_ACTIVACION";
     public static final String FECHA_ACTIVACION = "FECHA_ACTIVACION";
     public static final String EMAIL = "EMAIL";
+   
+    //servlet Movimientos
+   public static final String FECHA_INI = "fecha_ini"; 
+   public static final String FECHA_FIN = "fecha_fin"; 
 
     public static String resultadoQuery = "resultado";
     public static String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";

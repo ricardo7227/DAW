@@ -6,9 +6,17 @@
 package servicios;
 
 import dao.MovimientosDAO;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Movimiento;
 import model.MovimientosFechas;
+import model.User;
+import utils.Constantes;
 
 /**
  *
@@ -18,9 +26,41 @@ public class MovimientosServicios {
 
     public MovimientosServicios() {
     }
-    
-     public List<Movimiento> getAllMovimientosByRango(MovimientosFechas mf) {
+
+    public List<Movimiento> getAllMovimientosByRango(MovimientosFechas mf) {
         MovimientosDAO dao = new MovimientosDAO();
         return dao.getMovimientosJDBCTemplate(mf);
+    }
+
+    public MovimientosFechas tratarParametro(Map<String, String[]> parametros) {
+        MovimientosFechas movimientos = null;
+        if (parametros != null && !parametros.isEmpty()) {
+            movimientos = new MovimientosFechas();
+            if (parametros.get(Constantes.FECHA_INI) != null && !parametros.get(Constantes.FECHA_INI)[0].isEmpty()) {
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date parseDate = null;
+                try {
+                    parseDate = dateFormat.parse(parametros.get(Constantes.FECHA_INI)[0]);
+                    movimientos.setFecha_inicio(new Date(parseDate.getTime()));
+                } catch (ParseException ex) {
+                    Logger.getLogger(MovimientosServicios.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (parametros.get(Constantes.FECHA_FIN) != null && !parametros.get(Constantes.FECHA_FIN)[0].isEmpty()) {
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date parseDate = null;
+                try {
+                    parseDate = dateFormat.parse(parametros.get(Constantes.FECHA_FIN)[0]);
+                    movimientos.setFecha_fin(new Date(parseDate.getTime()));
+                } catch (ParseException ex) {
+                    Logger.getLogger(MovimientosServicios.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+        return movimientos;
+
     }
 }
