@@ -56,4 +56,8 @@ public class SqlQuery {
     public static String SELECT_USER_BY_EMAIL = "SELECT * FROM USERS WHERE EMAIL = ?";
     public static String INSERT_USER = "INSERT INTO USERS (NOMBRE, PASSWORD, CODIGO_ACTIVACION, FECHA_ACTIVACION, EMAIL) VALUES(?,?,?,?,?)";
     public static String UPDATE_USER_ACTIVO_ON = "UPDATE USERS SET ACTIVO = 1 WHERE ID = ?";
+    
+    //Movimientos
+    public static String SELECT_MOVIMIENTOS_BY_CUENTA_AND_FECHAS = "SELECT *  FROM `movimientos` WHERE `mo_ncu` = ? AND `mo_fec` BETWEEN ? AND ?";
+    public static String SELECT_MOVIMIENTOS= "SELECT *  FROM `movimientos`";
 }

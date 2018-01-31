@@ -26,7 +26,7 @@ public class Constantes {
     public static String registroJSP = "registroJsp.jsp";
 
     public static String actionJSP = "action";
-    public static final String  ACTION_TEMPLATE = "ACTION";
+    public static final String ACTION_TEMPLATE = "ACTION";
 
     public static final String INSERT = "INSERT";
     public static final String UPDATE = "UPDATE";
@@ -37,17 +37,23 @@ public class Constantes {
     public static final String VALIDATE = "VALIDATE";
     public static final String LOGIN = "LOGIN";
     public static final String LOGOUT = "LOGOUT";
-    
-    public static final String  BASE_URL_SERVER = "baseUrlServer";
+
+    public static final String BASE_URL_SERVER = "baseUrlServer";
     public static final String OFFSET = "offset";
-    public static final String  MESSAGE_TO_USER_OUT_OF_RANGE = "No tienes Acceso al Contenido";
-    public static final String  MESSAGE_TO_USER = "messageToUser";
-    public static final String  INDEX_TEMPLATE = "index.ftl";      
-    public static final String  LEVEL_ACCESS = "levelAccess";
-    
-    public static final String  DEFAULT_ENCODING = "UTF-8";
-    public static final String  CONTENT_TYPE = "text/html; charset=UTF-8";
-    
+    public static final String MESSAGE_TO_USER_OUT_OF_RANGE = "No tienes Acceso al Contenido";
+    public static final String MESSAGE_TO_USER = "messageToUser";
+    public static final String INDEX_TEMPLATE = "index.ftl";
+    public static final String LEVEL_ACCESS = "levelAccess";
+
+    public static final String DEFAULT_ENCODING = "UTF-8";
+    public static final String CONTENT_TYPE = "text/html; charset=UTF-8";
+
+    //columna movimientos
+    public static final String MOV_NUM_CUENTA = "mo_ncu";
+    public static final String MOV_FECHA = "mo_fec";
+    public static final String MOV_HORA = "mo_hor";
+    public static final String MOV_DESCRIP = "mo_des";
+    public static final String MOV_IMPORTE = "mo_imp";
 
     //Columnas Users
     public static final String USERS = "USERS";
@@ -93,30 +99,29 @@ public class Constantes {
     public static String messageUserLoginFailNombre = "Error en las credenciales, El Usuario no existe";
     public static String messageUserLoginFailPassword = "Contraseña Errónea";
     public static String messageUserLoginFailActivo = "Quieto parado! Este Usuario no ha sido validado";
-    
+
     public static String messageFromServer = "messageFromServer";
     public static String LOGIN_ON = "loginOnFromServer";
-    
+
     //email
     public static String emailSubjectValidate = "ASTOLFO SL: Hola %s - Correo de Activación";
 
     public static int MAX_RANDOM = 30;
     public static int MIN_RANDOM = 20;
     public static long MAX_TIME_TO_VALIDATE = 1000 * 60 * 60;//1hora
-    
+
     //servlet Login        
-    public static final String  MESSAGE_USER_LOGIN_FAIL_PASSWORD = "Contraseña Errónea";    
-    public static final String  MESSAGE_USER_LOGIN_FAIL_ACTIVO = "Quieto parado! Este Usuario no ha sido validado";    
-    public static final String  MESSAGE_USER_LOGIN_FAIL_NOMBRE = "Error en las credenciales, El Usuario no existe";    
-    public static final String  MESSAGE_USER_MISSING_FIELDS = "Te faltan campos por rellenar";
-    
-    public static final String  MESSAGE_USER_NEW_PASSWORD = "%s esta es tu nueva contraseña: %s ";    
+    public static final String MESSAGE_USER_LOGIN_FAIL_PASSWORD = "Contraseña Errónea";
+    public static final String MESSAGE_USER_LOGIN_FAIL_ACTIVO = "Quieto parado! Este Usuario no ha sido validado";
+    public static final String MESSAGE_USER_LOGIN_FAIL_NOMBRE = "Error en las credenciales, El Usuario no existe";
+    public static final String MESSAGE_USER_MISSING_FIELDS = "Te faltan campos por rellenar";
+
+    public static final String MESSAGE_USER_NEW_PASSWORD = "%s esta es tu nueva contraseña: %s ";
     public static final String MESSAGE_USER_NEW_PASSWORD_EMAIL = "Te acabamos de enviar tu nueva contraseña, revisa tu correo";
-    public static final String MESSAGE_USER_NEW_PASSWORD_EMAIL_FAIL = "Tenemos problemas para enviarte un correo con tu nueva contraseña, pero ya esta cambiada";    
-    public static final String MESSAGE_USER_NEW_PASSWORD_WRONG_COMPARE = "la nueva contraseña, no coincide con sus confirmación";    
-    public static final String MESSAGE_USER_NEW_PASSWORD_WRONG = "No hemos podido cambiar la contraseña, intentalo otra vez";    
-    public static final String  MESSAGE_USER_PASSWORD_FAIL = "Contraseña Actual Errónea";    
-    public static final String  EMAIL_SUBJECT_NEW_PASSWORD = "CRUD:  %s - Nueva Contraseña";    
-    
+    public static final String MESSAGE_USER_NEW_PASSWORD_EMAIL_FAIL = "Tenemos problemas para enviarte un correo con tu nueva contraseña, pero ya esta cambiada";
+    public static final String MESSAGE_USER_NEW_PASSWORD_WRONG_COMPARE = "la nueva contraseña, no coincide con sus confirmación";
+    public static final String MESSAGE_USER_NEW_PASSWORD_WRONG = "No hemos podido cambiar la contraseña, intentalo otra vez";
+    public static final String MESSAGE_USER_PASSWORD_FAIL = "Contraseña Actual Errónea";
+    public static final String EMAIL_SUBJECT_NEW_PASSWORD = "CRUD:  %s - Nueva Contraseña";
 
 }
