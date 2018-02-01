@@ -26,9 +26,24 @@
                             <input type="date" name="fecha_ini" id="fecha_ini" required />
                             Fin:
                             <input type="date" name="fecha_fin" id="fecha_fin" required/>
-                            <button id="ver_movimientos" type="submit">Ver Movimientos</button>
+                            <button id="ver_movimientos" type="submit" class="btn btn-primary">Ver Movimientos</button>
                             </form>
-                        <div id="response"/>
+                        <div id="response">
+                            <table class="table table-striped" id="table_response">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"># Cuenta</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Hora</th>
+                                        <th scope="col">Descripción</th>
+                                        <th scope="col">Importe</th>
+                                        </tr>
+                                    </thead>
+                                <tbody>
+                                    <tr id="row_response"/>
+                                    </tbody>
+                                </table>
+                            </div>
                         <div id="response_client_js">
                             <div class="alert" id="alert_type" role="alert">
                                 <span id="dialog_span"></span>

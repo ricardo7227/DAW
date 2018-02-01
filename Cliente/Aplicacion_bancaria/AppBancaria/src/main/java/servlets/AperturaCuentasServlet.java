@@ -5,32 +5,19 @@
  */
 package servlets;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import config.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Movimiento;
-import model.MovimientosFechas;
-import servicios.MovimientosServicios;
-import utils.Constantes;
-import utils.Templates;
 
 /**
  *
  * @author daw
  */
-@WebServlet(name = "MovimientosServlet", urlPatterns = {"/movimientosServlet"})
-public class MovimientosServlet extends HttpServlet {
+@WebServlet(name = "AperturaCuentasServlet", urlPatterns = {"/aperturaCuentas"})
+public class AperturaCuentasServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,22 +30,9 @@ public class MovimientosServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //dao.getMovimientosJDBCTemplate(new MovimientosFechas(0000000011, new Date(2012-1900, 01, 01), new Date(2018-1900, 01, 01)));
-        try {
-            freemarker.template.Configuration freeMarker = Configuration.getInstance().getFreeMarker();
-            String messageToUser = null;
 
-            HashMap paramentrosPlantilla = new HashMap();
-            if (messageToUser != null) {
-                paramentrosPlantilla.put(Constantes.MESSAGE_TO_USER, messageToUser);
-            }
-
-            Template plantilla = freeMarker.getTemplate(Templates.MOVIMIENTOS);
-            plantilla.process(paramentrosPlantilla, response.getWriter());
-
-        } catch (TemplateException ex) {
-            Logger.getLogger(MovimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -87,17 +61,7 @@ public class MovimientosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-
-        MovimientosServicios servicios = new MovimientosServicios();
-        MovimientosFechas mf = servicios.tratarParametro(request.getParameterMap());
-        mf.setId_cuenta(1234567890);//TODO Modificar cuando recuperamos usuario de la sesión
-        List<Movimiento> listaMovimientos = servicios.getAllMovimientosByRango(mf);
-        ObjectMapper mapper = new ObjectMapper();
-
-        mapper.writeValue(response.getOutputStream(), listaMovimientos);
-
-//        response.getWriter().write(mf.toString());
+        processRequest(request, response);
     }
 
     /**

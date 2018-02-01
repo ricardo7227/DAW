@@ -17,7 +17,7 @@ import org.yaml.snakeyaml.Yaml;
 public class Configuration {
 
     private static Configuration config;
-   private String urlDB;
+    private String urlDB;
     private String driverDB;
     private String userDB;
     private String passDB;
@@ -153,8 +153,5 @@ public class Configuration {
     public void setTimeToValidate(int timeToValidate) {
         this.timeToValidate = timeToValidate;
     }
-
-   
-    
 
 }//fin clase

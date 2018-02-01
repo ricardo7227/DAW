@@ -4,6 +4,7 @@ console.log("movimientos");
 
 $(document).ready(function () {
     $("#response_client_js").hide();
+    $("#response").hide();
 });
 
 function comprobarFechas() {
@@ -18,13 +19,15 @@ function comprobarFechas() {
 $("form").submit(function (e) {
     e.preventDefault();
     if (comprobarFechas()) {
-        console.log("true");
+        
 
         cambiarTextoRespuesta("#dialog_span", "Cargando Movimientos ....");
         cambiarStatusAlert("#alert_type", "alert-success");
 
         $("#response_client_js").show("slow");
-
+        $('.rows_movimientos').remove();
+        $("#response").hide("slow");
+        
         $.ajax({
             type: "POST",
             url: end_point_movimientos,
@@ -33,12 +36,20 @@ $("form").submit(function (e) {
                 fecha_fin: $("#fecha_fin").val()
             },
             success: function (result) {
+                var trHtml = '<tr id="row_response">';
                 var resp = JSON.parse(result);
                 resp.forEach(function (movimiento) {
-                $("#response").html("<strong>" + movimiento.mo_des + "</strong>");    
+                    trHtml += "<tr class=\"rows_movimientos\"><td>" + movimiento.mo_ncu + "</td><td>" + movimiento.mo_fec + "</td><td>" + formatHora(movimiento.mo_hor) + "</td><td>" + movimiento.mo_des + "</td><td>" + movimiento.mo_imp + "</td></tr>";
+
                 });
-                $("#response").html("<strong>" + result  + "</strong>");//TODO pendiente representar el JSON que recibe
-                
+                $("#row_response").replaceWith(trHtml);
+                $("#response").show("slow");
+                console.log("Respuesta Server");
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                cambiarTextoRespuesta("#dialog_span", "Tenemos problemas en el Servidor, inténtalo otra vez");
+                cambiarStatusAlert("#alert_type", "alert-danger");
+                console.log(XMLHttpRequest + textStatus + errorThrown);
             }
         });
     } else {
@@ -50,6 +61,16 @@ $("form").submit(function (e) {
 
 
 });
+
+function formatHora(hora) {
+
+    var array_hora = hora.match(/[0-9]{2}/g);
+    var hora_format = "";
+    array_hora.forEach(function (dd) {
+        hora_format += dd + ":";
+    });
+    return hora_format.substring(0, hora_format.length - 1);
+}
 
 function cambiarStatusAlert(objetivo, clase) {
 

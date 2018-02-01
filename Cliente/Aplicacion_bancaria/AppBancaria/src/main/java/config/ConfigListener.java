@@ -4,6 +4,8 @@ package config;
 
 
 
+import com.zaxxer.hikari.HikariDataSource;
+import dao.DBConnection;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -28,6 +30,6 @@ public class ConfigListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        
+        ((HikariDataSource)DBConnection.getInstance().getDataSource()).close();
     }
 }

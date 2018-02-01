@@ -72,7 +72,7 @@ public class DBConnection {
         }
     }
 
-    DataSource getDataSource() {
+    public DataSource getDataSource() {
         return hikariDatasource;
     }
 }
