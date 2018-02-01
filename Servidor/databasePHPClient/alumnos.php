@@ -8,11 +8,12 @@ include 'header.php';
 //asignaturas -> pdo
 //notas -> librería mysqlidb-composer
 
+
+use api\AlumnosApi;
 use controller\credentialsDatabase;
 use controller\SqlQuery;
-use controller\Constantes;
-use api\AlumnosApi;
 use model\Alumno;
+use utilidades\Constantes;
 
 $credenciales = new credentialsDatabase();
 
@@ -32,41 +33,45 @@ $messageToUser = NULL;
  * Operaciones
  * 
  */
+$alumno = new Alumno($id, $nombre, $fecha_nacimiento, ($mayor_edad == "on") ? 1 : 0);
 
 switch ($action) {
     case Constantes::INSERT:
-        $alumno = new Alumno($id,$nombre,$fecha_nacimiento,0);
-        //pendiente
+
+
         $alumno = AlumnosApi::getInstance()->insertAlumno($alumno);
-        var_dump($alumno);
-        $messageToUser = ($alumno != null) ?
+
+        $messageToUser = ($alumno != null) ? //TODO Errores devuelve un json             
                 Constantes::messageQueryAlumnoInserted : Constantes::messageQueryAlumnoInsertedFail;
 
 
         break;
     case Constantes::UPDATE;
+        $alumno = AlumnosApi::getInstance()->updateAlumno($alumno);
 
-        $messageToUser = (updateAlumno($credenciales, $id, $nombre, $fecha_nacimiento, $mayor_edad)) ?
+        $messageToUser = ($alumno != null) ?
                 Constantes::messageQueryAlumnoUpdated : Constantes::messageQueryAlumnoDeletedFail;
 
 
         break;
     case Constantes::DELETE:
+
         $deletedAlumno = -1;
         if ($id != null && strlen($id) > 0) {
-            $deletedAlumno = deleteUserById($credenciales, $id);
+
+            $deletedAlumno = AlumnosApi::getInstance()->deleteAlumno($alumno,FALSE);
         }
-        if ($deletedAlumno == Constantes::CodeErrorClaveForanea) {
+        if (is_int($deletedAlumno) && $deletedAlumno == Constantes::CodeConflict) {
 
             $messageToUser = Constantes::messageQueryAlumnoDeletedFail;
-        } else if ($deletedAlumno > 0 && $deletedAlumno < Constantes::CodeErrorClaveForanea) {
+        } else if (is_object($deletedAlumno)) {
 
             $messageToUser = Constantes::messageQueryAlumnoDeleted;
         }
         break;
-    case Constantes::DELETE_FORCE://pendiente probar
+    case Constantes::DELETE_FORCE://TODO -> pendiente probar
         if ($id != null && strlen($id) > 0) {
-            $borrado = deleteAlumnoForceById($credenciales, $id);
+            $borrado = AlumnosApi::getInstance()->deleteAlumno($alumno,TRUE);
         }
         $messageToUser = ($borrado) ? Constantes::messageQueryAlumnoDeleted : Constantes::messageQueryAlumnoDeletedFailedAgain;
 
@@ -251,7 +256,7 @@ function updateAlumno($credenciales, $id, $nombre, $fecha_nacimiento, $mayor_eda
  * @return type - filas borradas, en caso contrario un código de error
  */
 function deleteUserById($credenciales, $id) {
-    mysqli_report(MYSQLI_REPORT_ALL);//para las excepciones
+    mysqli_report(MYSQLI_REPORT_ALL); //para las excepciones
 
     $filasErased = -1;
     $conexion = null;

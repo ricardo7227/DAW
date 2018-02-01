@@ -1,6 +1,5 @@
 <?php
- 
-        
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,9 +7,9 @@
  */
 
 use controller\SqlQuery;
-use controller\Constantes;
+use utilidades\Constantes;
 
-if ($deletedAlumno == Constantes::CodeErrorClaveForanea) {//cuando no pueda borrar
+if (is_int($deletedAlumno) && $deletedAlumno == Constantes::CodeConflict) {//cuando no pueda borrar
     echo '<form action="alumnos.php">
             <h3>';
     echo $messageToUser;
@@ -21,7 +20,7 @@ if ($deletedAlumno == Constantes::CodeErrorClaveForanea) {//cuando no pueda borr
 
             </form>';
 }
-if ($messageToUser != NULL && $deletedAlumno != Constantes::CodeErrorClaveForanea) {
+if ($messageToUser != NULL && is_object($deletedAlumno) && $deletedAlumno->code != Constantes::CodeConflict) {
     echo $messageToUser . "<br>";
 }
 echo ' 

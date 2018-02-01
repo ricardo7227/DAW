@@ -1,6 +1,6 @@
 <?php
 
-namespace controller;
+namespace utilidades;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -45,7 +45,8 @@ class Constantes {
     const messageQueryNotaUpdated = "Hemos actualizado la nota correctamente";
     const messageQueryNotaUpdatedFail = "Falló en la actualización de Nota";
     
-    const CodeErrorClaveForanea = 5000;
+    const CodeErrorClaveForanea = -5000;
+    const CodeConflict = 409;
     
     const errorForeingkey = "foreign key";
     

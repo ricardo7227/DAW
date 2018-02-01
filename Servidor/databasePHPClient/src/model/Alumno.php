@@ -12,10 +12,10 @@ namespace model;
  * @author Gato
  */
 class Alumno {
-    private $id;
-    private $nombre;
-    private $fecha_nacimiento;
-    private $mayor_edad;
+    public $id;
+    public $nombre;
+    public $fecha_nacimiento;
+    public $mayor_edad;
     public function __construct($id, $nombre, $fecha_nacimiento, $mayor_edad) {
         $this->id = $id;
         $this->nombre = $nombre;

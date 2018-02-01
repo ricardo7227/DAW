@@ -37,10 +37,10 @@ public class RestAlumnos extends HttpServlet {
 
         int rowsAffected = -1;
         if (alumno != null && alumno.getId() > 0) {
-            if (deleteForce != null && !deleteForce.isEmpty()) {
+            if (deleteForce != null && !deleteForce.isEmpty() && Boolean.valueOf(deleteForce)) {
                 try {
                     rowsAffected = (servicios.deleteAlumnoForce((int) alumno.getId())) ? 1 : 0;
-                    
+
                 } catch (SQLException ex) {
                     req.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_BAD_REQUEST, Constantes.messageQueryAlumnoDeletedFailedAgain));
                     Logger.getLogger(RestAlumnos.class.getName()).log(Level.SEVERE, null, ex);

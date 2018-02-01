@@ -31,7 +31,7 @@ public class Constantes {
     public static final String UPDATE = "UPDATE";
     public static final String DELETE = "DELETE";
     public static final String VIEW = "VIEW";
-    public static final String DELETE_FORCE = "DELETE_FORCE";
+    public static final String DELETE_FORCE = "delete_force";
     public static final String REGISTRAR = "REGISTRAR";
     public static final String VALIDATE = "VALIDATE";
     public static final String LOGIN = "LOGIN";
