@@ -1,0 +1,15 @@
+## YAML Template.
+driverDB: com.mysql.jdbc.Driver
+urlDB: jdbc:mysql://discutivo.com:3306/discu351_test?useSSL=false&useUnicode=true&characterEncoding=utf8
+userDB: discu351_test
+passDB: nohay2sin3
+mailFrom: al@gmail.com
+smtpServer: smtp.gmail.com
+smtpPort: 587
+mailPass: password
+##1hora
+timeToValidate: 1
+idClient: idCliente
+apiKeyPass: apiKeyPassword
+
+

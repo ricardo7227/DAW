@@ -14,72 +14,71 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Asignatura;
+import servicios.AlumnosServicios;
+import utils.Constantes;
+import model.Alumno;
 import model.GenericResponse;
 import org.apache.http.HttpStatus;
-import servicios.AsignaturasServicios;
-import utils.Constantes;
 import utils.ConstantesError;
 
 /**
  *
  * @author daw
  */
-@WebServlet(name = "RestAsignaturas", urlPatterns = {"/rest/asignaturas"})
-public class RestAsignaturas extends HttpServlet {
+@WebServlet(name = "RestAlumnos", urlPatterns = {"/rest/alumnos"})
+public class RestAlumnos extends HttpServlet {
 
-    private AsignaturasServicios servicios;
+    private AlumnosServicios servicios;
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Asignatura asignatura = (Asignatura) req.getAttribute(Constantes.ASIGNATURA);
+        Alumno alumno = (Alumno) req.getAttribute(Constantes.ALUMNO);
         String deleteForce = req.getParameter(Constantes.DELETE_FORCE);
 
         int rowsAffected = -1;
-        if (asignatura != null && asignatura.getId() > 0) {
+        if (alumno != null && alumno.getId() > 0) {
             if (deleteForce != null && !deleteForce.isEmpty() && Boolean.valueOf(deleteForce)) {
                 try {
-                    rowsAffected = (servicios.deleteAsignaturaForce((int) asignatura.getId())) ? 1 : 0;
+                    rowsAffected = (servicios.deleteAlumnoForce((int) alumno.getId())) ? 1 : 0;
 
                 } catch (SQLException ex) {
-                    req.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_BAD_REQUEST, Constantes.messageQueryAsignaturaDeletedFailedAgain));
+                    req.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_BAD_REQUEST, Constantes.messageQueryAlumnoDeletedFailedAgain));
                     Logger.getLogger(RestAlumnos.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
 
-                rowsAffected = servicios.deleteAsignaturadbUtils(asignatura.getId());
+                rowsAffected = servicios.deleteAlumnoJDBC(alumno.getId());
 
                 if (rowsAffected == ConstantesError.CodeErrorClaveForanea) {
                     resp.setStatus(HttpStatus.SC_CONFLICT);
-                    req.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_CONFLICT, Constantes.messageQueryAsignaturaDeletedFail));
+                    req.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_CONFLICT, Constantes.messageQueryAlumnoDeletedFail));
 
                 } else if (rowsAffected == 0) {
                     resp.setStatus(HttpStatus.SC_BAD_REQUEST);
-                    req.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_BAD_REQUEST, Constantes.messageQueryAsignaturaDeleteMissing));
+                    req.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_BAD_REQUEST, Constantes.messageQueryAlumnoDeleteMissing));
 
                 }
 
             }
         }
         if (rowsAffected > 0) {
-            req.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_ACCEPTED, Constantes.messageQueryAsignaturaDeleted));
+            req.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_ACCEPTED, Constantes.messageQueryAlumnoDeleted));
         }
-
     }
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Asignatura asignatura = (Asignatura) req.getAttribute(Constantes.ASIGNATURA);
-        if (asignatura != null) {
-            asignatura = servicios.insertAsignaturadbUtils(asignatura);
-            if (asignatura == null) {
+        Alumno alumno = (Alumno) req.getAttribute(Constantes.ALUMNO);
+        if (alumno != null) {
+            alumno = servicios.insertAlumnoJDBC(alumno);
+            if (alumno == null) {
                 resp.setStatus(HttpStatus.SC_INTERNAL_SERVER_ERROR);
                 req.setAttribute(Constantes.JSON,
-                        new GenericResponse(HttpStatus.SC_INTERNAL_SERVER_ERROR, Constantes.messageQueryAsignaturaInsertFailed));
+                        new GenericResponse(HttpStatus.SC_INTERNAL_SERVER_ERROR, Constantes.messageQueryAlumnoInsertedFail));
             } else {
                 resp.setStatus(HttpStatus.SC_CREATED);
-                req.setAttribute(Constantes.JSON, asignatura);
+                req.setAttribute(Constantes.JSON, alumno);
             }
 
         }
@@ -88,7 +87,7 @@ public class RestAsignaturas extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        servicios = new AsignaturasServicios();
+        servicios = new AlumnosServicios();
     }
 
     /**
@@ -103,7 +102,7 @@ public class RestAsignaturas extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setAttribute(Constantes.JSON, servicios.getAllAsignaturasdbUtils());
+        request.setAttribute(Constantes.JSON, servicios.getAllAlumnos());
 
     }
 
@@ -118,17 +117,18 @@ public class RestAsignaturas extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Asignatura asignatura = (Asignatura) request.getAttribute(Constantes.ASIGNATURA);
-        if (asignatura != null) {
-            asignatura = servicios.updateAsignaturadbUtils(asignatura);
-            if (asignatura != null) {
-                request.setAttribute(Constantes.JSON, asignatura);
+        Alumno alumno = (Alumno) request.getAttribute(Constantes.ALUMNO);
+        if (alumno != null) {
+            alumno = servicios.updateAlumnoJDBC(alumno);
+            if (alumno != null) {
+                request.setAttribute(Constantes.JSON, alumno);
             } else {
                 response.setStatus(HttpStatus.SC_INTERNAL_SERVER_ERROR);
-                request.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_INTERNAL_SERVER_ERROR, Constantes.messageQueryAsignaturaUpdateFailed));
+                request.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_INTERNAL_SERVER_ERROR, Constantes.messageQueryAlumnoUpdatedFail));
             }
 
         }
+
     }
 
     /**

@@ -56,20 +56,20 @@ public class AlumnosServlet extends HttpServlet {
                 case Constantes.UPDATE:
 
                     alumno = servicios.tratarParametros(parametros);
-                    //messageToUser = (servicios.updateAlumnoJDBC(alumno)) ? Constantes.messageQueryAlumnoUpdated : Constantes.messageQueryAlumnoUpdatedFail;
+                    messageToUser = (servicios.updateAlumnoJDBC(alumno) != null) ? Constantes.messageQueryAlumnoUpdated : Constantes.messageQueryAlumnoUpdatedFail;
 
                     break;
                 case Constantes.INSERT:
 
                     alumno = servicios.tratarParametros(parametros);
-                    //messageToUser = (servicios.insertAlumnoJDBC(alumno)) ? Constantes.messageQueryAlumnoInserted : Constantes.messageQueryAlumnoInsertedFail;
+                    messageToUser = (servicios.insertAlumnoJDBC(alumno) != null) ? Constantes.messageQueryAlumnoInserted : Constantes.messageQueryAlumnoInsertedFail;
 
                     break;
                 case Constantes.DELETE:
                     String key = request.getParameter(SqlQuery.ID.toLowerCase());
                     int deleted = 0;
                     if (key != null && !key.isEmpty()) {
-                        //deleted = servicios.deleteAlumnoJDBC(key);
+                        deleted = servicios.deleteAlumnoJDBC(Integer.valueOf(key));
                     }
                     if (deleted == ConstantesError.CodeErrorClaveForanea) {
                         alumno = servicios.tratarParametros(parametros);
