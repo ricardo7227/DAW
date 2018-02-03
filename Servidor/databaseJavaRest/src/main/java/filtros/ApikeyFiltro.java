@@ -5,7 +5,6 @@
  */
 package filtros;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -20,20 +19,18 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Alumno;
-import model.Asignatura;
+import model.Apikey;
 import model.GenericResponse;
-import model.Nota;
 import org.apache.http.HttpStatus;
-import servicios.AlumnosServicios;
+import servicios.ApikeyServicios;
 import utils.Constantes;
 
 /**
  *
- * @author daw
+ * @author Gato
  */
-@WebFilter(filterName = "JsonFiltro", urlPatterns = {"/rest/*"})
-public class JsonFiltro implements Filter {
+@WebFilter(filterName = "ApikeyFiltro", urlPatterns = {"/*"})
+public class ApikeyFiltro implements Filter {
 
     private static final boolean debug = true;
 
@@ -42,102 +39,13 @@ public class JsonFiltro implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
 
-    public JsonFiltro() {
+    public ApikeyFiltro() {
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("JsonFiltro:DoBeforeProcessing");
-        }
-        ObjectMapper mapper = new ObjectMapper();
-
-        String alumno = request.getParameter(Constantes.ALUMNO);
-        String asignatura = request.getParameter(Constantes.ASIGNATURA);
-        String nota = request.getParameter(Constantes.NOTA);
-
-        AlumnosServicios servicios = new AlumnosServicios();
-        int codeResponse = HttpStatus.SC_ACCEPTED;
-        
-        String method = ((HttpServletRequest) request).getMethod();
-
-        if (alumno != null && !alumno.isEmpty()) {
-            Alumno a = mapper.readValue(alumno, new TypeReference<Alumno>() {
-            });
-
-            if (method.equalsIgnoreCase(Constantes.PUT)) {
-
-                if (servicios.comprobarCamposAlumno(a, false)) {
-                    request.setAttribute(Constantes.ALUMNO, a);
-                } else {
-                    codeResponse = HttpStatus.SC_BAD_REQUEST;
-                }
-            } else if (method.equalsIgnoreCase(Constantes.POST)) {
-                if (servicios.comprobarCamposAlumno(a, true)) {
-                    request.setAttribute(Constantes.ALUMNO, a);
-                } else {
-                    codeResponse = HttpStatus.SC_BAD_REQUEST;
-                }
-            } else if (method.equalsIgnoreCase(Constantes.DELETE)) {
-                if (a != null && a.getId() > 0) {
-                    request.setAttribute(Constantes.ALUMNO, a);
-                } else {
-                    codeResponse = HttpStatus.SC_BAD_REQUEST;
-                }
-            }
-
-        } else if (asignatura != null && !asignatura.isEmpty()) {
-
-            Asignatura asig = mapper.readValue(asignatura, new TypeReference<Asignatura>() {
-            });
-
-            if (method.equalsIgnoreCase(Constantes.PUT)) {
-
-                if (servicios.comprobarCamposAsignatura(asig, false)) {
-                    request.setAttribute(Constantes.ASIGNATURA, asig);
-                } else {
-                    codeResponse = HttpStatus.SC_BAD_REQUEST;
-                }
-            } else if (method.equalsIgnoreCase(Constantes.POST)) {
-                if (servicios.comprobarCamposAsignatura(asig, true)) {
-                    request.setAttribute(Constantes.ASIGNATURA, asig);
-                } else {
-                    codeResponse = HttpStatus.SC_BAD_REQUEST;
-                }
-            } else if (method.equalsIgnoreCase(Constantes.DELETE)) {
-                if (asig != null && asig.getId() > 0) {
-                    request.setAttribute(Constantes.ASIGNATURA, asig);
-                } else {
-                    codeResponse = HttpStatus.SC_BAD_REQUEST;
-                }
-            }
-
-        } else if (nota != null && !nota.isEmpty()) {
-            Nota n = mapper.readValue(nota, new TypeReference<Nota>() {
-            });
-            if (servicios.comprobarCamposNota(n, false)) {
-
-                if (method.equalsIgnoreCase(Constantes.POST) || method.equalsIgnoreCase(Constantes.PUT)) {
-                    if (servicios.comprobarCamposNota(n, true)) {
-                        request.setAttribute(Constantes.NOTA, n);
-                    } else {
-                        codeResponse = HttpStatus.SC_BAD_REQUEST;
-                    }
-                } else {
-
-                    request.setAttribute(Constantes.NOTA, n);
-
-                }
-
-            } else {
-                codeResponse = HttpStatus.SC_BAD_REQUEST;
-            }
-        } else {
-            codeResponse = HttpStatus.SC_BAD_REQUEST;
-        }
-
-        if (codeResponse != HttpStatus.SC_ACCEPTED) {
-            request.setAttribute(Constantes.JSON, new GenericResponse(codeResponse, Constantes.faltanCampos));
+            log("ApikeyFiltro:DoBeforeProcessing");
         }
 
     }
@@ -145,13 +53,14 @@ public class JsonFiltro implements Filter {
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("JsonFiltro:DoAfterProcessing");
+            log("ApikeyFiltro:DoAfterProcessing");
         }
         ObjectMapper mapper = new ObjectMapper();
         Object json = request.getAttribute(Constantes.JSON);
         if (json != null) {
             mapper.writeValue(response.getOutputStream(), json);
         }
+
     }
 
     /**
@@ -168,14 +77,32 @@ public class JsonFiltro implements Filter {
             throws IOException, ServletException {
 
         if (debug) {
-            log("JsonFiltro:doFilter()");
+            log("ApikeyFiltro:doFilter()");
         }
 
         doBeforeProcessing(request, response);
 
         Throwable problem = null;
         try {
-            chain.doFilter(request, response);
+
+            String apikey_request = ((HttpServletRequest) request).getHeader(Constantes.APIKEY_REQUEST);
+
+            ApikeyServicios servicios = new ApikeyServicios();
+            Apikey apikeyDB = servicios.checkApikey(apikey_request);
+            if (apikeyDB != null) {
+                if (!servicios.checkLimitApikey(apikeyDB)) {
+                    chain.doFilter(request, response);
+                } else {
+                    ((HttpServletResponse) response).setStatus(HttpStatus.SC_FORBIDDEN);
+
+                    request.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_FORBIDDEN, Constantes.superadoLimitesPeticiones));
+                }
+
+            } else {
+                ((HttpServletResponse) response).setStatus(HttpStatus.SC_UNAUTHORIZED);
+                request.setAttribute(Constantes.JSON, new GenericResponse(HttpStatus.SC_UNAUTHORIZED, Constantes.faltaApikey));
+            }
+
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then
@@ -228,7 +155,7 @@ public class JsonFiltro implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {
-                log("JsonFiltro:Initializing filter");
+                log("ApikeyFiltro:Initializing filter");
             }
         }
     }
@@ -239,9 +166,9 @@ public class JsonFiltro implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("JsonFiltro()");
+            return ("ApikeyFiltro()");
         }
-        StringBuffer sb = new StringBuffer("JsonFiltro(");
+        StringBuffer sb = new StringBuffer("ApikeyFiltro(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());

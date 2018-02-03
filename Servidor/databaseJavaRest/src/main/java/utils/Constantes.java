@@ -36,15 +36,14 @@ public class Constantes {
     public static final String VALIDATE = "VALIDATE";
     public static final String LOGIN = "LOGIN";
     public static final String LOGOUT = "LOGOUT";
-    
+
     public static final String JSON = "json";
     public static final String ALUMNO = "alumno";
     public static final String ASIGNATURA = "asignatura";
     public static final String NOTA = "nota";
-    public static final String POST = "POST";    
+    public static final String POST = "POST";
     public static final String GET = "GET";
     public static final String PUT = "PUT";
-    
 
     //Columnas Users
     public static final String USERS = "USERS";
@@ -56,10 +55,21 @@ public class Constantes {
     public static final String FECHA_ACTIVACION = "FECHA_ACTIVACION";
     public static final String EMAIL = "EMAIL";
 
+    //Columnas Apikey
+    public static final String APIKEY = "APIKEY";    
+    public static final String NUM_PETICIONES = "NUM_PETICIONES";
+    public static final String FECHA_ULTIMA_PETICION = "FECHA_ULTIMA_PETICION";
+    public static final String FECHA = "FECHA";
+    
+    //Apikey Constants
+    public static final String APIKEY_REQUEST = "apikey";
+    
     public static String resultadoQuery = "resultado";
     public static String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";
     public static String messageQueryAlumnoInsertedFail = "Alumno no agregado en la lista, vuelve a intentarlo";
     public static String faltanCampos = "Faltan campos en el objeto";
+    public static String faltaApikey = "No tienes una Apikey válida";
+    public static String superadoLimitesPeticiones = "Has superado el límite de peticiones diarias";
     public static String messageQueryAlumnoUpdated = "El alumno fue actualizado en la lista";
     public static String messageQueryAlumnoUpdatedFail = "Problemas actualizando el alumno, inténtalo otra vez";
     public static String messageQueryAlumnoDeleted = "El alumno fue eliminado correctamente de la lista";
@@ -94,16 +104,17 @@ public class Constantes {
     public static String messageUserLoginFailNombre = "Error en las credenciales, El Usuario no existe";
     public static String messageUserLoginFailPassword = "Contraseña Errónea";
     public static String messageUserLoginFailActivo = "Quieto parado! Este Usuario no ha sido validado";
-    
+
     public static String messageFromServer = "messageFromServer";
     public static String LOGIN_ON = "loginOnFromServer";
-    
+
     //email
     public static String emailSubjectValidate = "ASTOLFO SL: Hola %s - Correo de Activación";
 
     public static int MAX_RANDOM = 30;
     public static int MIN_RANDOM = 20;
     public static long MAX_TIME_TO_VALIDATE = 1000 * 60 * 60;//1hora
-    
 
+    
+    
 }
