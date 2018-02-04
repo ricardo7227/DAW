@@ -48,6 +48,7 @@ public class Constantes {
     //aPIKEY
     public static final String ID_CLIENT = "idClient";
     public static final String APIKEY_PASS = "apiKeyPass";
+    public static final String APIKEY = "apikey";
     
 
     //Columnas Users

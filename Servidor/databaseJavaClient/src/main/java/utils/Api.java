@@ -10,8 +10,8 @@ package utils;
  * @author daw
  */
 public class Api {
-    public static final String BASE_URL_CRUD = "https://f2dfec45-70cc-404e-ae25-71e1cd140bf0.mock.pstmn.io/";
-    //public static final String BASE_URL_CRUD = "http://localhost:8080/databaseJavaRest/rest/";
+    //public static final String BASE_URL_CRUD = "https://6df7e545-a398-4475-9376-2da9aa0218f4.mock.pstmn.io/";
+    public static final String BASE_URL_CRUD = "http://localhost:8080/databaseJavaRest/rest/";
     
     //end-points
     public static String END_POINT_ALUMNOS = BASE_URL_CRUD + "alumnos";

@@ -5,15 +5,24 @@
  */
 package dao;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpResponse;
-import com.google.api.client.json.GenericJson;
+import com.google.api.client.http.HttpResponseException;
+import com.google.api.client.http.UrlEncodedContent;
+import com.google.api.client.http.json.JsonHttpContent;
+import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.GenericData;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import model.Alumnos;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Alumno;
+import model.GenericResponse;
 import utils.Api;
+import utils.Constantes;
 
 /**
  *
@@ -30,20 +39,103 @@ public class AlumnosREST {
         return instancia;
     }
 
-    public Alumnos getAlumnos() throws IOException, InterruptedException, ExecutionException {
-        GenericUrl url = new GenericUrl(Api.END_POINT_ALUMNOS);
+    public Alumno[] getAlumnos() {
+        Alumno[] alumnos = null;
+        try {
+            GenericUrl url = new GenericUrl(Api.END_POINT_ALUMNOS);
+            RestApi instanceRest = RestApi.getInstance();
 
-        GenericData data = new GenericData();
-      //  data.put(Constantes.ID_CLIENT, Configuration.getInstance().getIdClient());
-        //data.put(Constantes.APIKEY_PASS, Configuration.getInstance().getApiKeyPass());
+            HttpRequest requestGoogle = instanceRest.crearServicio().buildGetRequest(url).setHeaders(instanceRest.getHeaderApikey());
+            HttpResponse response = requestGoogle.execute();
+            ObjectMapper mapper = new ObjectMapper();
+            alumnos = mapper.readValue(response.getContent(), Alumno[].class);
 
-
-        HttpRequest requestGoogle = RestApi.getInstance().crearServicio().buildGetRequest(url);
-        final HttpResponse execute = requestGoogle.execute();
-        GenericJson gj = new GenericJson();
-        
-        return execute.parseAs(Alumnos.class);
-        //return null;
+        } catch (HttpResponseException ex) {
+            Logger.getLogger(AlumnosREST.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(AlumnosREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return alumnos;
     }
 
+    public Alumno updateAlumno(Alumno alumno) {
+        Alumno alumnoResponse = null;
+        try {
+            GenericUrl url = new GenericUrl(Api.END_POINT_ALUMNOS);
+            ObjectMapper mapper = new ObjectMapper();
+            GenericData data = new GenericData();
+            data.put(Constantes.ALUMNO, mapper.writeValueAsString(alumno));
+
+            RestApi instanceRest = RestApi.getInstance();
+
+            HttpRequest requestGoogle = instanceRest.crearServicio().buildPostRequest(url, new UrlEncodedContent(data))
+                    .setHeaders(instanceRest.getHeaderApikey());
+            HttpResponse response = requestGoogle.execute();
+
+            alumnoResponse = mapper.readValue(response.getContent(), Alumno.class);
+
+        } catch (HttpResponseException ex) {
+            Logger.getLogger(AlumnosREST.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(AlumnosREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return alumnoResponse;
+    }
+
+    public Alumno addAlumno(Alumno alumno) {
+        Alumno alumnoResponse = null;
+        try {
+            GenericUrl url = new GenericUrl(Api.END_POINT_ALUMNOS);
+            ObjectMapper mapper = new ObjectMapper();
+
+            Gson gson = new GsonBuilder()
+                    .setDateFormat("yyyy-MM-dd").create();
+            String json = gson.toJson(alumno);
+
+            RestApi instanceRest = RestApi.getInstance();
+
+            HttpRequest requestGoogle = instanceRest.crearServicio().buildPutRequest(url.set(Constantes.ALUMNO, json),
+                    new JsonHttpContent(new JacksonFactory(), alumno)).setHeaders(instanceRest.getHeaderApikey());
+            HttpResponse response = requestGoogle.execute();
+
+            alumnoResponse = mapper.readValue(response.getContent(), Alumno.class);
+
+        } catch (HttpResponseException ex) {
+            Logger.getLogger(AlumnosREST.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(AlumnosREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return alumnoResponse;
+    }
+
+    public GenericResponse deleteAlumno(Alumno alumno, boolean force) {
+        GenericResponse alumnoResponse = null;
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd").create();
+        try {
+            GenericUrl url = new GenericUrl(Api.END_POINT_ALUMNOS);
+
+            url.set(Constantes.DELETE_FORCE, force);
+
+            String json = gson.toJson(alumno);
+
+            RestApi instanceRest = RestApi.getInstance();
+
+            HttpRequest requestGoogle = instanceRest.crearServicio().buildDeleteRequest(url.set(Constantes.ALUMNO, json)).setHeaders(instanceRest.getHeaderApikey());
+            HttpResponse response = requestGoogle.execute();
+            
+            ObjectMapper mapper = new ObjectMapper();
+            alumnoResponse = mapper.readValue(response.getContent(), GenericResponse.class);
+
+        } catch (HttpResponseException ex) {
+            alumnoResponse = gson.fromJson(ex.getContent(), GenericResponse.class);
+            Logger.getLogger(AlumnosREST.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(AlumnosREST.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return alumnoResponse;
+    }
+//leer response
+//            Scanner s = new Scanner(response.getContent()).useDelimiter("\\A");
+//            String result = s.hasNext() ? s.next() : "";
 }//fin clase

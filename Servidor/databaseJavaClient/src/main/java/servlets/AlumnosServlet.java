@@ -7,12 +7,8 @@ package servlets;
 
 import dao.AlumnosREST;
 import java.io.IOException;
-import java.sql.SQLException;
 
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Alumno;
-import model.Alumnos;
+import model.GenericResponse;
+import org.apache.http.HttpStatus;
 import servicios.AlumnosServicios;
 
 import utils.Constantes;
@@ -46,76 +43,67 @@ public class AlumnosServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            AlumnosServicios servicios = new AlumnosServicios();
-            
-            request.setCharacterEncoding("UTF-8");
-            String action = request.getParameter(Constantes.actionJSP);
-            Alumno alumno = null;
-            String messageToUser = null;
-            Map<String, String[]> parametros = request.getParameterMap();
-            if (action != null && !action.isEmpty()) {
-                
-                switch (action) {
-                    case Constantes.UPDATE:
-                        
-                        alumno = servicios.tratarParametros(parametros);
-                        messageToUser = (servicios.updateAlumnoJDBC(alumno) != null) ? Constantes.messageQueryAlumnoUpdated : Constantes.messageQueryAlumnoUpdatedFail;
-                        
-                        break;
-                    case Constantes.INSERT:
-                        
-                        alumno = servicios.tratarParametros(parametros);
-                        messageToUser = (servicios.insertAlumnoJDBC(alumno) != null) ? Constantes.messageQueryAlumnoInserted : Constantes.messageQueryAlumnoInsertedFail;
-                        
-                        break;
-                    case Constantes.DELETE:
-                        String key = request.getParameter(SqlQuery.ID.toLowerCase());
-                        int deleted = 0;
-                        if (key != null && !key.isEmpty()) {
-                            deleted = servicios.deleteAlumnoJDBC(Integer.valueOf(key));
-                        }
-                        if (deleted == ConstantesError.CodeErrorClaveForanea) {
-                            alumno = servicios.tratarParametros(parametros);
-                            request.setAttribute(Constantes.alumnoResult, alumno);
-                            messageToUser = Constantes.messageQueryAlumnoDeletedFail;
-                            
-                        } else if (deleted > 0 && deleted < ConstantesError.CodeErrorClaveForanea) {
-                            
-                            messageToUser = Constantes.messageQueryAlumnoDeleted;
-                        }
-                        break;
-                    case Constantes.DELETE_FORCE:
-                        
-                        alumno = servicios.tratarParametros(parametros);
-                        {
-                            try {
-                                boolean borrado = servicios.deleteAlumnoForce((int) alumno.getId());
-                                
-                                messageToUser = (borrado) ? Constantes.messageQueryAlumnoDeleted : Constantes.messageQueryAlumnoDeletedFailedAgain;
-                                
-                            } catch (SQLException ex) {
-                                Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                        }
-                        //1º -> BORRAR NOTA
-                        //2º -> BORRAR ALUMNO
-                        break;
-                        
-                }
+        AlumnosServicios servicios = new AlumnosServicios();
+        request.setCharacterEncoding("UTF-8");
+        String action = request.getParameter(Constantes.actionJSP);
+        Alumno alumno = null;
+        String messageToUser = null;
+        Map<String, String[]> parametros = request.getParameterMap();
+        if (action != null && !action.isEmpty()) {
+
+            switch (action) {
+                case Constantes.UPDATE:
+
+                    alumno = servicios.tratarParametros(parametros);
+                    messageToUser = (AlumnosREST.getInstance().updateAlumno(alumno) != null) ? Constantes.messageQueryAlumnoUpdated : Constantes.messageQueryAlumnoUpdatedFail;
+
+                    break;
+                case Constantes.INSERT:
+
+                    alumno = servicios.tratarParametros(parametros);
+                    messageToUser = (AlumnosREST.getInstance().addAlumno(alumno) != null) ? Constantes.messageQueryAlumnoInserted : Constantes.messageQueryAlumnoInsertedFail;
+
+                    break;
+                case Constantes.DELETE:
+                    alumno = servicios.tratarParametros(parametros);
+                    String key = request.getParameter(SqlQuery.ID.toLowerCase());
+                    GenericResponse responseDel = null;
+                    int deleted = 0;
+                    if (key != null && !key.isEmpty()) {
+                        responseDel = AlumnosREST.getInstance().deleteAlumno(alumno, false);
+                    }
+                    if (responseDel != null && responseDel.getCode() == HttpStatus.SC_CONFLICT) {
+
+                        request.setAttribute(Constantes.alumnoResult, alumno);
+                        messageToUser = Constantes.messageQueryAlumnoDeletedFail;
+
+                    } else if (deleted > 0 && deleted < ConstantesError.CodeErrorClaveForanea) {
+
+                        messageToUser = Constantes.messageQueryAlumnoDeleted;
+                    }
+                    break;
+                case Constantes.DELETE_FORCE:
+
+                    alumno = servicios.tratarParametros(parametros);
+                     {
+
+                        GenericResponse borrado = AlumnosREST.getInstance().deleteAlumno(alumno, true);
+
+                        messageToUser = (borrado != null && borrado.getCode() == HttpStatus.SC_ACCEPTED) ? Constantes.messageQueryAlumnoDeleted : Constantes.messageQueryAlumnoDeletedFailedAgain;
+
+                    }
+                    //1º -> BORRAR NOTA
+                    //2º -> BORRAR ALUMNO
+                    break;
+
             }
-            
-            if (messageToUser != null) {
-                request.setAttribute(Constantes.resultadoQuery, messageToUser);
-            }
-            Alumnos al = AlumnosREST.getInstance().getAlumnos();
-            request.setAttribute(Constantes.alumnosList,al );//envia la lista al jsp
-            request.getRequestDispatcher("/" + Constantes.alumnosJSP).forward(request, response);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ExecutionException ex) {
-            Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        if (messageToUser != null) {
+            request.setAttribute(Constantes.resultadoQuery, messageToUser);
+        }
+        Alumno[] listaAlumnos = AlumnosREST.getInstance().getAlumnos();
+        request.setAttribute(Constantes.alumnosList, listaAlumnos);//envia la lista al jsp
+        request.getRequestDispatcher("/" + Constantes.alumnosJSP).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

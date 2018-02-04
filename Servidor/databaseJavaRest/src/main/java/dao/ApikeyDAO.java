@@ -7,15 +7,11 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 import model.Apikey;
-import model.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import utils.Constantes;
 import utils.SqlQuery;
 
@@ -65,18 +61,9 @@ public class ApikeyDAO {
         JdbcTemplate jtm = new JdbcTemplate(
                 DBConnection.getInstance().getDataSource());
 
-        int rowsResultC = jtm.update(SqlQuery.UPDATE_COUNTER_APIKEY_BY_ID, apikey.getId());
+        int rowsAffected = jtm.update(SqlQuery.UPDATE_COUNTER_APIKEY_BY_ID, apikey.getId());
 
-//        if (rowsResultC == 1) {
-//            rowsResultC = jtm.query(SqlQuery.SELECT_NUM_PETICIONES_BY_ID, new Object[]{apikey.getId()}, new ResultSetExtractor<Integer>() {
-//                @Override
-//                public Integer extractData(ResultSet rs) throws SQLException, DataAccessException {
-//                    return rs.next() ? rs.getInt(Constantes.NUM_PETICIONES) : -1;
-//                }
-//            });
-//        }
-
-        return rowsResultC;
+        return rowsAffected;
     }
 
     public int resetCounterApikeyJDBCTemplate(Apikey apikey) {
@@ -84,7 +71,7 @@ public class ApikeyDAO {
         JdbcTemplate jtm = new JdbcTemplate(
                 DBConnection.getInstance().getDataSource());
 
-        int rowsAffected = jtm.update(SqlQuery.UPDATE_COUNTER_APIKEY_BY_ID, apikey.getId());
+        int rowsAffected = jtm.update(SqlQuery.RESET_COUNTER_APIKEY_BY_ID, apikey.getId());
 
         if (rowsAffected == 0) {
             rowsAffected = -1;

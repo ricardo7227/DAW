@@ -20,6 +20,10 @@ if (is_int($deletedAlumno) && $deletedAlumno == Constantes::CodeConflict) {//cua
 
             </form>';
 }
+
+if ($messageToUser != NULL && $deletedAlumno == NULL) {
+    echo $messageToUser . "<br>";
+}
 if ($messageToUser != NULL && is_object($deletedAlumno) && $deletedAlumno->code != Constantes::CodeConflict) {
     echo $messageToUser . "<br>";
 }

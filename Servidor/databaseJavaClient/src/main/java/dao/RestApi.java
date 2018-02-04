@@ -5,22 +5,16 @@
  */
 package dao;
 
-import com.google.api.client.http.GenericUrl;
+import com.google.api.client.http.HttpHeaders;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
-import com.google.api.client.http.UrlEncodedContent;
 import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.GenericJson;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.client.util.GenericData;
 import config.Configuration;
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import utils.Api;
 import utils.Constantes;
 
 /**
@@ -56,44 +50,9 @@ public class RestApi {
         return requestFactory;
     }
 
-    public GenericJson getArriveStop(String idStop) throws IOException, InterruptedException, ExecutionException {
-        GenericUrl url = new GenericUrl(Api.END_POINT_ALUMNOS);
-
-        GenericData data = new GenericData();
-        data.put(Constantes.ID_CLIENT, Configuration.getInstance().getIdClient());
-        data.put(Constantes.APIKEY_PASS, Configuration.getInstance().getApiKeyPass());
-//        data.put(Constantes.ID_STOP, idStop);
-
-        HttpRequest requestGoogle = crearServicio().buildPostRequest(url, new UrlEncodedContent(data));
-
-        return requestGoogle.executeAsync().get().parseAs(GenericJson.class);
-    }
-
-    public GenericJson getListLines(String fecha) throws IOException, InterruptedException, ExecutionException {
-        GenericUrl url = new GenericUrl(Api.END_POINT_ASIGNATURAS);
-
-        GenericData data = new GenericData();
-        Configuration instancia = Configuration.getInstance();
-        data.put(Constantes.ID_CLIENT, instancia.getIdClient());
-        data.put(Constantes.APIKEY_PASS, instancia.getApiKeyPass());
-//        data.put(Constantes.SELECT_DATE, fecha);
-
-        HttpRequest requestGoogle = crearServicio().buildPostRequest(url, new UrlEncodedContent(data));
-        return requestGoogle.executeAsync().get().parseAs(GenericJson.class);
-    }
-
-    public GenericJson getRoutetLine(String fecha, String linea) throws IOException, InterruptedException, ExecutionException {
-        GenericUrl url = new GenericUrl(Api.END_POINT_NOTAS);
-
-        GenericData data = new GenericData();
-        Configuration instancia = Configuration.getInstance();
-        data.put(Constantes.ID_CLIENT, instancia.getIdClient());
-        data.put(Constantes.APIKEY_PASS, instancia.getApiKeyPass());
-//        data.put(Constantes.SELECT_DATE, fecha);
-//        data.put(Constantes.LINES, linea);
-
-        HttpRequest requestGoogle = crearServicio().buildPostRequest(url, new UrlEncodedContent(data));
-        return requestGoogle.executeAsync().get().parseAs(GenericJson.class);
+    public HttpHeaders getHeaderApikey() {
+        HttpHeaders header = new HttpHeaders();
+        return header.set(Constantes.APIKEY, Configuration.getInstance().getApiKeyPass());
     }
 
 }//fin clase

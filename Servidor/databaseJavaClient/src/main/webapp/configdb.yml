@@ -10,6 +10,6 @@ mailPass: password
 ##1hora
 timeToValidate: 1
 idClient: idCliente
-apiKeyPass: apiKeyPassword
+apiKeyPass: keyJava
 
 

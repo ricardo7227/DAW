@@ -48,7 +48,7 @@ switch ($action) {
         break;
     case Constantes::UPDATE;
         $alumno = AlumnosApi::getInstance()->updateAlumno($alumno);
-
+        
         $messageToUser = ($alumno != null) ?
                 Constantes::messageQueryAlumnoUpdated : Constantes::messageQueryAlumnoDeletedFail;
 

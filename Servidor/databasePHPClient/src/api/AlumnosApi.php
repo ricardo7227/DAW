@@ -22,9 +22,10 @@ class AlumnosApi {
 
     private $client;
     private static $instancia;
+    //TODO mejorar el acceso al apikey
 
     public function __construct() {
-        $this->client = new Client(['base_uri' => EndPoints::$BASE_URL]);
+        $this->client = new Client(['base_uri' => EndPoints::$BASE_URL,'headers'=>['apikey'=>'keyPHP']]);        
     }
 
     public static function getInstance() {
@@ -44,7 +45,7 @@ class AlumnosApi {
         $response = $this->client->put(EndPoints::$ALUMNOS_END_POINT, [
             'query' => [
                 'alumno' => json_encode($alumno)
-        ]]);
+    ]]);
         return json_decode($response->getBody());
     }
 
