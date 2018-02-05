@@ -47,6 +47,7 @@ class Constantes {
     
     const CodeErrorClaveForanea = -5000;
     const CodeConflict = 409;
+    const CodeNotFound = 404;
     
     const errorForeingkey = "foreign key";
     

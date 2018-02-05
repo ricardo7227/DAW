@@ -3,13 +3,19 @@
 ini_set('display_errors', 'On');
 require_once 'config/Config.php';
 include 'header.php';
+
 //alumnos -> mysqli
 //asignaturas -> pdo
 //notas -> librería mysqlidb-composer
 
+
+use api\AlumnosApi;
+use api\AsignaturasApi;
+use api\NotasApi;
 use controller\credentialsDatabase;
 use controller\SqlQuery;
-use controller\Constantes;
+use model\Nota;
+use utilidades\Constantes;
 
 $credenciales = new credentialsDatabase();
 $notasView = TRUE;
@@ -30,16 +36,16 @@ $messageToUser = NULL;
  * Operaciones
  * 
  */
-
+$nota = new Nota($id_alumno, $id_asignatura, $nota);
 switch ($action) {
     case Constantes::VIEW:
 
         if ($id_alumno != NULL && $id_asignatura != NULL &&
                 strlen($id_alumno) > 0 && strlen($id_asignatura) > 0) {
 
-            $notaDB = getNota($credenciales, $id_alumno, $id_asignatura);
+            $notaDB = NotasApi::getInstance()->getNota($nota);
         }
-        if ($notaDB == null || strlen($notaDB[SqlQuery::NOTA]) == 0) {
+        if (is_int($notaDB) && $notaDB == Constantes::CodeNotFound) {
             $notaDB = -1;
             $messageToUser = Constantes::messageQueryNotaMissing;
         }
@@ -52,18 +58,17 @@ switch ($action) {
         //si -> update
         //no -> insert
         $resultado = FALSE;
-        if ($id_alumno != NULL && $id_asignatura != NULL && $nota != NULL &&
-                strlen($id_alumno) > 0 && strlen($id_asignatura) > 0 && strlen($nota) > 0) {
+        if (is_object($nota)) {
+            $notaDB = NotasApi::getInstance()->getNota($nota);
+            if (is_int($notaDB) && $notaDB != Constantes::CodeNotFound) {
 
-            if (getNota($credenciales, $id_alumno, $id_asignatura) != NULL) {
-
-                $resultado = updateNota($credenciales, $id_alumno, $id_asignatura, $nota);
+                $resultado = NotasApi::getInstance()->updateNota($nota);
             } else {
 
-                $resultado = insertNota($credenciales, $id_alumno, $id_asignatura, $nota);
+                $resultado =NotasApi::getInstance()->insertNota($nota);
             }
 
-            $messageToUser = ($resultado) ? Constantes::messageQueryNotaUpdated : Constantes::messageQueryNotaUpdatedFail;
+            $messageToUser = (is_object($resultado)) ? Constantes::messageQueryNotaUpdated : Constantes::messageQueryNotaUpdatedFail;
         }
         break;
 
@@ -73,8 +78,8 @@ switch ($action) {
         break;
 }
 
-$listaAlumnos = getAllAlumnos($credenciales);
-$listaAsignaturas = getAllAsignaturas($credenciales);
+$listaAlumnos = AlumnosApi::getInstance()->getAllAlumnos();
+$listaAsignaturas = AsignaturasApi::getInstance()->getAllAsignaturas();
 
 
 include './notasVista.php';
@@ -88,7 +93,7 @@ include './footer.php';
 /**
  * 
  * @param type $credenciales
- * @return \MysqliDb
+ * @return MysqliDb
  */
 function conexionDB($credenciales) {
     $host = $credenciales->getServername();

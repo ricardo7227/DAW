@@ -6,16 +6,14 @@
  * and open the template in the editor.
  */
 
-use controller\SqlQuery;
-
 echo '<form action="notas.php" >
                     <select name="ID_ASIGNATURA">';
 
 foreach ($listaAsignaturas as &$valor) {
-    $id = $valor[SqlQuery::ID];
-    $nombre = htmlspecialchars($valor[SqlQuery::NOMBRE]);
-    $curso = htmlspecialchars($valor[SqlQuery::CURSO]);
-    $ciclo = htmlspecialchars($valor[SqlQuery::CICLO]);
+    $id = $valor->id;
+    $nombre = htmlspecialchars($valor->nombre);
+    $curso = htmlspecialchars($valor->curso);
+    $ciclo = htmlspecialchars($valor->ciclo);
 
     echo ' <option value="' . $id . '"';
 
@@ -32,10 +30,10 @@ unset($valor);
 echo '</select> 
             <select name="ID_ALUMNO">';
 foreach ($listaAlumnos as &$valor) {
-    $id = $valor[SqlQuery::ID];
-    $nombre = htmlspecialchars($valor[SqlQuery::NOMBRE]);
-    $fecha_nacimiento = $valor[SqlQuery::FECHA_NACIMIENTO];
-    $mayor_edad = $valor[SqlQuery::MAYOR_EDAD];
+    $id = $valor->id;
+    $nombre = htmlspecialchars($valor->nombre);
+    $fecha_nacimiento = $valor->fecha_nacimiento;
+    $mayor_edad = $valor->mayor_edad;
 
     echo '<option value="' . $id . '"';
 
@@ -50,14 +48,10 @@ unset($valor);
 echo '</select>            
       <input type="text" name="NOTA" value="';
 
-if (isset($notaDB) && is_array($notaDB)) {
+if (is_object($notaDB)) {//TODO - pendiente controlar respuestas 
 
-    echo $notaDB[SqlQuery::NOTA] . '"> ';
-} elseif (isset($nota) && !isset($notaDB)) {
-
-    echo $nota . '"> ';
-} else {
-
+    echo $notaDB->nota . '"> ';
+} else if (is_int($notaDB) && $notaDB == utilidades\Constantes::CodeNotFound) {
     echo '" placeholder="' . $messageToUser . '">';
 }
 
@@ -68,3 +62,5 @@ echo
 if (!isset($notaDB)) {
     echo '<p>' . $messageToUser . '</p>';
 }
+
+    

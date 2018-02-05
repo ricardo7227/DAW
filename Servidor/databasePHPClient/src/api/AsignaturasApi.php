@@ -15,11 +15,11 @@ use function GuzzleHttp\json_decode;
  */
 
 /**
- * Description of AlumnosApi
+ * Description of AsignaturasApi
  *
  * @author Gato
  */
-class AlumnosApi {
+class AsignaturasApi {
 
     private $client;
     private static $instancia;
@@ -36,46 +36,46 @@ class AlumnosApi {
         return self::$instancia;
     }
 
-    public function getAllAlumnos() {
+    public function getAllAsignaturas() {
 
-        $response = $this->client->get(EndPoints::$ALUMNOS_END_POINT);
+        $response = $this->client->get(EndPoints::$ASIGNATURA_END_POINT);
         return json_decode($response->getBody());
     }
 
-    public function insertAlumno($alumno) {
-        $response = $this->client->put(EndPoints::$ALUMNOS_END_POINT, [
+    public function insertAsignatura($asignatura) {
+        $response = $this->client->put(EndPoints::$ASIGNATURA_END_POINT, [
             'query' => [
-                'alumno' => json_encode($alumno)
+                'asignatura' => json_encode($asignatura)
     ]]);
         return json_decode($response->getBody());
     }
 
-    public function updateAlumno($alumno) {
-        $response = $this->client->post(EndPoints::$ALUMNOS_END_POINT, [
+    public function updateAsignatura($asignatura) {
+        $response = $this->client->post(EndPoints::$ASIGNATURA_END_POINT, [
             'form_params' => [
-                'alumno' => json_encode($alumno)
+                'asignatura' => json_encode($asignatura)
             ]
         ]);
         return json_decode($response->getBody());
     }
 
    
-    public function deleteAlumno($alumno,$force) {
+    public function deleteAsignatura($asignatura,$force) {
        
         try {
-            $response = $this->client->delete(EndPoints::$ALUMNOS_END_POINT, [
+            $response = $this->client->delete(EndPoints::$ASIGNATURA_END_POINT, [
                 'query' => [
-                    'alumno' => json_encode($alumno),'delete_force'=>($force)?'true':'false'
+                    'asignatura' => json_encode($asignatura),'delete_force'=>($force)?'true':'false'
             ]]);
 
             $respuesta = json_decode($response->getBody());
-            //var_dump($response->getStatusCode());
+            
         } catch (RequestException $e) {
             if ($e->getCode() == \utilidades\Constantes::CodeConflict) {
                 $respuesta = $e->getCode();
             }
         } finally {
-            //var_dump($respuesta);
+            
             return $respuesta;
         }
     }

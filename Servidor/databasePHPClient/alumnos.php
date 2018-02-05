@@ -69,11 +69,12 @@ switch ($action) {
             $messageToUser = Constantes::messageQueryAlumnoDeleted;
         }
         break;
-    case Constantes::DELETE_FORCE://TODO -> pendiente probar
+    case Constantes::DELETE_FORCE:
         if ($id != null && strlen($id) > 0) {
             $borrado = AlumnosApi::getInstance()->deleteAlumno($alumno,TRUE);
+            
         }
-        $messageToUser = ($borrado) ? Constantes::messageQueryAlumnoDeleted : Constantes::messageQueryAlumnoDeletedFailedAgain;
+        $messageToUser = (is_object($borrado)) ? Constantes::messageQueryAlumnoDeleted : Constantes::messageQueryAlumnoDeletedFailedAgain;
 
         //1º -> BORRAR NOTA 
         //2º -> BORRAR ALUMNO

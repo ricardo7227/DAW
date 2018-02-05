@@ -6,10 +6,9 @@
  * and open the template in the editor.
  */
 
-use controller\SqlQuery;
-use controller\Constantes;
+use utilidades\Constantes;
 
-if ($deletedAsignatura == Constantes::CodeErrorClaveForanea) {//cuando no pueda borrar
+if (is_int($deletedAsignatura) && $deletedAsignatura == Constantes::CodeConflict) {//cuando no pueda borrar
     echo ' <form action="asignaturas.php">
                 <h3>' . $messageToUser . '</h3>
                 <input type="hidden" name="ID" value="' . $id . '" ><br>           
@@ -19,7 +18,11 @@ if ($deletedAsignatura == Constantes::CodeErrorClaveForanea) {//cuando no pueda 
             </form>';
 }
 
-if ($messageToUser != NULL && $deletedAsignatura != Constantes::CodeErrorClaveForanea) {
+if ($messageToUser != NULL && $deletedAsignatura == NULL) {
+    echo $messageToUser . "<br>";
+}
+
+if ($messageToUser != NULL && is_object($deletedAsignatura) && $deletedAsignatura->code != Constantes::CodeConflict) {
     echo $messageToUser . "<br>";
 }
 
@@ -31,10 +34,10 @@ echo '<table class="table">
                 <th>Ciclo</th>
             </tr>';
 foreach ($listaAsignaturas as &$valor) {
-    $id = $valor[SqlQuery::ID];
-    $nombre = htmlspecialchars($valor[SqlQuery::NOMBRE]);
-    $curso = htmlspecialchars($valor[SqlQuery::CURSO]);
-    $ciclo = htmlspecialchars($valor[SqlQuery::CICLO]);
+    $id = $valor->id;
+    $nombre = htmlspecialchars($valor->nombre);
+    $curso = htmlspecialchars($valor->curso);
+    $ciclo = htmlspecialchars($valor->ciclo);
     echo '<tr>
                     <td>
                     <button id="cargarAsignatura" onClick="
@@ -67,6 +70,6 @@ echo '</table>'
                     <input type="submit" name="ACTION" value="UPDATE">
                     <input type="submit" name="ACTION" value="DELETE">
                 </form>  
-                <p>Nº Alumnos: ';
+                <p>Nº Asignaturas: ';
 echo count($listaAsignaturas);
 echo '</p>';

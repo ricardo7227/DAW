@@ -3,17 +3,20 @@
 ini_set('display_errors', 'On');
 require_once 'config/Config.php';
 include 'header.php';
+
 //alumnos -> mysqli
 //asignaturas -> pdo
 //notas -> librería mysqlidb-composer
 
 use controller\credentialsDatabase;
 use controller\SqlQuery;
-use controller\Constantes;
+use model\Asignatura;
+use utilidades\Constantes;
+use api\AsignaturasApi;
 
 $credenciales = new credentialsDatabase();
 
-$listaAsignaturas = NULL; 
+$listaAsignaturas = NULL;
 $deletedAsignatura = 0; //controla el borrado con clave foranea
 
 $id = filter_input(INPUT_GET, SqlQuery::ID);
@@ -30,16 +33,20 @@ $messageToUser = NULL;
  * 
  */
 
+$asignatura = new Asignatura($id, $nombre, $curso, $ciclo);
+
 switch ($action) {
     case Constantes::INSERT:
-        $messageToUser = (insertAsignatura($credenciales, $nombre, $curso, $ciclo)) ?
+
+        $asignatura = AsignaturasApi::getInstance()->insertAsignatura($asignatura);
+        $messageToUser = ($asignatura != NULL) ?
                 Constantes::messageQueryAsignaturaInserted : Constantes::messageQueryAsignaturaInsertFailed;
 
 
         break;
     case Constantes::UPDATE;
-
-        $messageToUser = (updateAsignatura($credenciales, $id, $nombre, $curso, $ciclo)) ?
+        $asignatura = AsignaturasApi::getInstance()->updateAsignatura($asignatura);
+        $messageToUser = ($asignatura != NULL) ?
                 Constantes::messageQueryAsignaturaUpdated : Constantes::messageQueryAsignaturaUpdateFailed;
 
 
@@ -47,21 +54,21 @@ switch ($action) {
     case Constantes::DELETE:
         $deletedAsignatura = -1;
         if ($id != null && strlen($id) > 0) {
-            $deletedAsignatura = deleteAsignaturaById($credenciales, $id);
+            $deletedAsignatura = AsignaturasApi::getInstance()->deleteAsignatura($asignatura, FALSE);
         }
-        if ($deletedAsignatura == Constantes::CodeErrorClaveForanea) {
+        if (is_int($deletedAsignatura) && $deletedAsignatura == Constantes::CodeConflict) {
 
             $messageToUser = Constantes::messageQueryAsignaturaDeletedFail;
-        } else if ($deletedAsignatura > 0 && $deletedAsignatura < Constantes::CodeErrorClaveForanea) {
+        } else if (is_object($deletedAsignatura)) {
 
             $messageToUser = Constantes::messageQueryAsignaturaDeleted;
         }
         break;
-    case Constantes::DELETE_FORCE://pendiente probar
+    case Constantes::DELETE_FORCE:
         if ($id != null && strlen($id) > 0) {
-            $borrado = deleteAsignaturaForceById($credenciales, $id);
+            $borrado = AsignaturasApi::getInstance()->deleteAsignatura($asignatura, TRUE);
         }
-        $messageToUser = ($borrado) ? Constantes::messageQueryAsignaturaDeleted : Constantes::messageQueryAlumnoDeletedFailedAgain;
+        $messageToUser = (is_object($borrado)) ? Constantes::messageQueryAsignaturaDeleted : Constantes::messageQueryAlumnoDeletedFailedAgain;
 
         //1º -> BORRAR NOTA 
         //2º -> BORRAR Asignatura
@@ -75,7 +82,7 @@ switch ($action) {
 }
 
 
-$listaAsignaturas = getAllAsignaturas($credenciales);
+$listaAsignaturas = AsignaturasApi::getInstance()->getAllAsignaturas();
 
 
 include './asignaturasVista.php';
@@ -85,6 +92,7 @@ include './footer.php';
 /*
  * Métodos 
  */
+
 /**
  * 
  * @param type $credenciales
@@ -101,7 +109,7 @@ function conexionDB($credenciales) {
     try {
         $conexion = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $user, $password);
 
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//para las excepciones
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //para las excepciones
     } catch (PDOException $e) {
         $e->getMessage();
         $conexion = null;
@@ -146,7 +154,6 @@ function getAllAsignaturas($credenciales) {
     }
     return $lista;
 }
-
 
 /**
  * 
@@ -222,6 +229,7 @@ function updateAsignatura($credenciales, $id, $nombre, $curso, $ciclo) {
     }
     return $updated;
 }
+
 /**
  * 
  * @param type $credenciales

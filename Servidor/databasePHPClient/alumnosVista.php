@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-use controller\SqlQuery;
+
 use utilidades\Constantes;
 
 if (is_int($deletedAlumno) && $deletedAlumno == Constantes::CodeConflict) {//cuando no pueda borrar
