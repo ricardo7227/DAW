@@ -5,7 +5,6 @@
  */
 package servicios;
 
-
 import java.io.UnsupportedEncodingException;
 
 import java.util.Iterator;
@@ -13,7 +12,7 @@ import java.util.Map;
 
 import model.Asignatura;
 
-import utils.SqlQuery;
+import utils.Constantes;
 
 /**
  *
@@ -24,7 +23,6 @@ public class AsignaturasServicios {
     public AsignaturasServicios() {
 
     }
-
 
     public Asignatura tratarParametros(Map<String, String[]> parametros) throws UnsupportedEncodingException {
         Asignatura asignatura = null;
@@ -39,15 +37,15 @@ public class AsignaturasServicios {
                 String[] values = (String[]) parametros.get(key);
                 if (values[0] != null && !values[0].isEmpty()) {
 
-                    if (SqlQuery.ID.equalsIgnoreCase(key)) {
+                    if (Constantes.ID.equalsIgnoreCase(key)) {
                         asignatura.setId(Long.valueOf(values[0]));
-                    } else if (SqlQuery.NOMBRE.equalsIgnoreCase(key)) {
+                    } else if (Constantes.NOMBRE.equalsIgnoreCase(key)) {
                         asignatura.setNombre(values[0]);
-                    } else if (SqlQuery.CURSO.equalsIgnoreCase(key)) {
+                    } else if (Constantes.CURSO.equalsIgnoreCase(key)) {
 
                         asignatura.setCurso(values[0]);
 
-                    } else if (SqlQuery.CICLO.equalsIgnoreCase(key)) {
+                    } else if (Constantes.CICLO.equalsIgnoreCase(key)) {
                         asignatura.setCiclo(values[0]);
 
                     }
@@ -59,5 +57,4 @@ public class AsignaturasServicios {
         return asignatura;
     }
 
-    
 }//FIN CLASE

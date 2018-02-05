@@ -18,7 +18,7 @@ import model.Alumno;
 import model.Asignatura;
 import model.Nota;
 import servlets.AlumnosServlet;
-import utils.SqlQuery;
+import utils.Constantes;
 
 /**
  *
@@ -51,11 +51,11 @@ public class AlumnosServicios {
                 String[] values = (String[]) parametros.get(key);
                 if (values[0] != null && !values[0].isEmpty()) {
 
-                    if (SqlQuery.ID.equalsIgnoreCase(key)) {
+                    if (Constantes.ID.equalsIgnoreCase(key)) {
                         alumno.setId(Long.valueOf(values[0]));
-                    } else if (SqlQuery.NOMBRE.equalsIgnoreCase(key)) {
+                    } else if (Constantes.NOMBRE.equalsIgnoreCase(key)) {
                         alumno.setNombre(values[0]);
-                    } else if (SqlQuery.FECHA_NACIMIENTO.equalsIgnoreCase(key)) {
+                    } else if (Constantes.FECHA_NACIMIENTO.equalsIgnoreCase(key)) {
                         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                         java.util.Date parseDate = null;
                         try {
@@ -65,7 +65,7 @@ public class AlumnosServicios {
                             Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
-                    } else if (SqlQuery.MAYOR_EDAD.equalsIgnoreCase(key)) {
+                    } else if (Constantes.MAYOR_EDAD.equalsIgnoreCase(key)) {
                         alumno.setMayor_edad("on".equals(values[0]) ? Boolean.TRUE : Boolean.FALSE);
                     }
                 }

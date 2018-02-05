@@ -7,10 +7,7 @@ package servlets;
 
 import dao.AsignaturasREST;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,8 +20,6 @@ import model.GenericResponse;
 import org.apache.http.HttpStatus;
 import servicios.AsignaturasServicios;
 import utils.Constantes;
-import utils.ConstantesError;
-import utils.SqlQuery;
 import utils.UrlsPaths;
 
 /**
@@ -72,7 +67,7 @@ public class AsignaturasServlet extends HttpServlet {
 
                     break;
                 case Constantes.DELETE:
-                    String key = request.getParameter(SqlQuery.ID.toLowerCase());
+                    String key = request.getParameter(Constantes.ID.toLowerCase());
                     GenericResponse responseDel = null;
 
                     

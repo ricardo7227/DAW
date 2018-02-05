@@ -27,6 +27,7 @@ public class Constantes {
 
     public static String actionJSP = "action";
 
+    public static final String ID = "ID";
     public static final String INSERT = "INSERT";
     public static final String UPDATE = "UPDATE";
     public static final String DELETE = "DELETE";
@@ -52,14 +53,19 @@ public class Constantes {
     
 
     //Columnas Users
-    public static final String USERS = "USERS";
-    public static final String ID = "ID";
+    public static final String USERS = "USERS";    
     public static final String NOMBRE = "NOMBRE";
     public static final String PASSWORD = "PASSWORD";
+    public static final String MAYOR_EDAD = "MAYOR_EDAD";
     public static final String ACTIVO = "ACTIVO";
     public static final String CODIGO_ACTIVACION = "CODIGO_ACTIVACION";
     public static final String FECHA_ACTIVACION = "FECHA_ACTIVACION";
     public static final String EMAIL = "EMAIL";
+    public static final String FECHA_NACIMIENTO = "fecha_nacimiento";
+    public static final String CURSO = "CURSO";
+    public static final String CICLO = "CICLO";
+    public static final String ID_ALUMNO = "ID_ALUMNO";
+    public static final String ID_ASIGNATURA = "ID_ASIGNATURA";
 
     public static String resultadoQuery = "resultado";
     public static String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";

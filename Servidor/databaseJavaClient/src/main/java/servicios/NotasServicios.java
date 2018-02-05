@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import model.Nota;
-import utils.SqlQuery;
+import utils.Constantes;
 
 /**
  *
@@ -34,11 +34,11 @@ public class NotasServicios {
                 String[] values = (String[]) parametros.get(key);
                 if (values[0] != null && !values[0].isEmpty()) {
 
-                    if (SqlQuery.ID_ALUMNO.equalsIgnoreCase(key)) {
+                    if (Constantes.ID_ALUMNO.equalsIgnoreCase(key)) {
                         claves.setId_alumno(Long.valueOf(values[0]));
-                    } else if (SqlQuery.ID_ASIGNATURA.equalsIgnoreCase(key)) {
+                    } else if (Constantes.ID_ASIGNATURA.equalsIgnoreCase(key)) {
                         claves.setId_asignatura(Long.valueOf(values[0]));
-                    } else if (SqlQuery.NOTA.equalsIgnoreCase(key)) {
+                    } else if (Constantes.NOTA.equalsIgnoreCase(key)) {
                         claves.setNota(Integer.valueOf(values[0]));
                     }
                 }

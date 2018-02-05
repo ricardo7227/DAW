@@ -21,8 +21,7 @@ import org.apache.http.HttpStatus;
 import servicios.AlumnosServicios;
 
 import utils.Constantes;
-import utils.ConstantesError;
-import utils.SqlQuery;
+
 import utils.UrlsPaths;
 
 /**
@@ -68,7 +67,7 @@ public class AlumnosServlet extends HttpServlet {
                     break;
                 case Constantes.DELETE:
                     alumno = servicios.tratarParametros(parametros);
-                    String key = request.getParameter(SqlQuery.ID.toLowerCase());
+                    String key = request.getParameter(Constantes.ID.toLowerCase());
                     GenericResponse responseDel = null;
                     
                     if (key != null && !key.isEmpty()) {

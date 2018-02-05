@@ -33,7 +33,7 @@
             <a href="<c:out value="${baseURL}${cons.getAlumnos()}"/>">alumnos</a>
             <a href="<c:out value="${baseURL}${cons.getAsignaturas()}"/>">asignaturas</a>
             <a href="<c:out value="${baseURL}${cons.getNotas()}"/>">notas</a>
-            <a href="<c:out value="${baseURL}${cons.getRegistro()}"/>">registro</a>
+            
 
         </div>
     </body>

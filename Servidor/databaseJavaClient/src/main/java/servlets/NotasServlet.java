@@ -60,7 +60,7 @@ public class NotasServlet extends HttpServlet {
 
                     if (nota != null) {
                         request.setAttribute(Constantes.notaResult, nota);
-
+                        claves = null;
                     } else {
                         request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryNotaMissing);
                         claves.setNota(-1);//no tenemos nota la base de datos
