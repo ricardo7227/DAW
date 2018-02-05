@@ -5,6 +5,7 @@ namespace api;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use utilidades\EndPoints;
+use api\ApikeyClient;
 use function GuzzleHttp\json_decode;
 
 /*
@@ -22,10 +23,10 @@ class AlumnosApi {
 
     private $client;
     private static $instancia;
-    //TODO mejorar el acceso al apikey
+    
 
     public function __construct() {
-        $this->client = new Client(['base_uri' => EndPoints::$BASE_URL,'headers'=>['apikey'=>'keyPHP']]);        
+        $this->client = new Client(['base_uri' => EndPoints::$BASE_URL,'headers'=>['apikey'=> ApikeyClient::apikeyClient]]);        
     }
 
     public static function getInstance() {

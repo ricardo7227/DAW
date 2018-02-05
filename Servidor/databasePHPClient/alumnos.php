@@ -17,7 +17,7 @@ use utilidades\Constantes;
 
 $credenciales = new credentialsDatabase();
 
-$listaAlumnos = NULL; //getAllAlumnos($credenciales);
+$listaAlumnos = NULL; 
 $deletedAlumno = 0; //controla el borrado con clave foranea
 //recibe del formulario
 $id = filter_input(INPUT_GET, SqlQuery::ID);
