@@ -49,35 +49,37 @@ public class AlumnosServlet extends HttpServlet {
         Alumno alumno = null;
         String messageToUser = null;
         Map<String, String[]> parametros = request.getParameterMap();
+        
+        AlumnosREST instanceREST = AlumnosREST.getInstance();
         if (action != null && !action.isEmpty()) {
 
             switch (action) {
                 case Constantes.UPDATE:
 
                     alumno = servicios.tratarParametros(parametros);
-                    messageToUser = (AlumnosREST.getInstance().updateAlumno(alumno) != null) ? Constantes.messageQueryAlumnoUpdated : Constantes.messageQueryAlumnoUpdatedFail;
+                    messageToUser = (instanceREST.updateAlumno(alumno) != null) ? Constantes.messageQueryAlumnoUpdated : Constantes.messageQueryAlumnoUpdatedFail;
 
                     break;
                 case Constantes.INSERT:
 
                     alumno = servicios.tratarParametros(parametros);
-                    messageToUser = (AlumnosREST.getInstance().addAlumno(alumno) != null) ? Constantes.messageQueryAlumnoInserted : Constantes.messageQueryAlumnoInsertedFail;
+                    messageToUser = (instanceREST.addAlumno(alumno) != null) ? Constantes.messageQueryAlumnoInserted : Constantes.messageQueryAlumnoInsertedFail;
 
                     break;
                 case Constantes.DELETE:
                     alumno = servicios.tratarParametros(parametros);
                     String key = request.getParameter(SqlQuery.ID.toLowerCase());
                     GenericResponse responseDel = null;
-                    int deleted = 0;
+                    
                     if (key != null && !key.isEmpty()) {
-                        responseDel = AlumnosREST.getInstance().deleteAlumno(alumno, false);
+                        responseDel = instanceREST.deleteAlumno(alumno, false);
                     }
                     if (responseDel != null && responseDel.getCode() == HttpStatus.SC_CONFLICT) {
 
                         request.setAttribute(Constantes.alumnoResult, alumno);
                         messageToUser = Constantes.messageQueryAlumnoDeletedFail;
 
-                    } else if (deleted > 0 && deleted < ConstantesError.CodeErrorClaveForanea) {
+                    } else if (responseDel != null && responseDel.getCode() == HttpStatus.SC_ACCEPTED) {
 
                         messageToUser = Constantes.messageQueryAlumnoDeleted;
                     }
@@ -87,7 +89,7 @@ public class AlumnosServlet extends HttpServlet {
                     alumno = servicios.tratarParametros(parametros);
                      {
 
-                        GenericResponse borrado = AlumnosREST.getInstance().deleteAlumno(alumno, true);
+                        GenericResponse borrado = instanceREST.deleteAlumno(alumno, true);
 
                         messageToUser = (borrado != null && borrado.getCode() == HttpStatus.SC_ACCEPTED) ? Constantes.messageQueryAlumnoDeleted : Constantes.messageQueryAlumnoDeletedFailedAgain;
 
@@ -101,7 +103,7 @@ public class AlumnosServlet extends HttpServlet {
         if (messageToUser != null) {
             request.setAttribute(Constantes.resultadoQuery, messageToUser);
         }
-        Alumno[] listaAlumnos = AlumnosREST.getInstance().getAlumnos();
+        Alumno[] listaAlumnos = instanceREST.getAlumnos();
         request.setAttribute(Constantes.alumnosList, listaAlumnos);//envia la lista al jsp
         request.getRequestDispatcher("/" + Constantes.alumnosJSP).forward(request, response);
     }

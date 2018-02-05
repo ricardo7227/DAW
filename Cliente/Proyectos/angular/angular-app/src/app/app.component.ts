@@ -2,7 +2,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GeoService} from './geo.service';
 @Component({
-    selector: 'app-root',
+   
     templateUrl: './app.component.html',
     //template: '<html> ',
     styleUrls: ['./app.component.css']

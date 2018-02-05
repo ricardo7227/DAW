@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import dao.AsignaturasREST;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
@@ -18,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Asignatura;
+import model.GenericResponse;
+import org.apache.http.HttpStatus;
 import servicios.AsignaturasServicios;
 import utils.Constantes;
 import utils.ConstantesError;
@@ -45,58 +48,54 @@ public class AsignaturasServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         AsignaturasServicios servicios = new AsignaturasServicios();
 
+        AsignaturasREST instanceREST = AsignaturasREST.getInstance();
+
         String action = request.getParameter(Constantes.actionJSP);
         String messageToUser = null;
-        Asignatura asignatura = null;
+
         Map<String, String[]> parametros = request.getParameterMap();
+        Asignatura asignatura = servicios.tratarParametros(parametros);
         if (action != null && !action.isEmpty()) {
 
             switch (action) {
                 case Constantes.UPDATE:
 
-                    //parametros = request.getParameterMap();
-                    asignatura = servicios.tratarParametros(parametros);
-                    Asignatura filas = servicios.updateAsignaturadbUtils(asignatura);
+                    Asignatura filas = instanceREST.updateAsignatura(asignatura);
 
                     messageToUser = (filas != null) ? Constantes.messageQueryAsignaturaUpdated : Constantes.messageQueryAsignaturaUpdateFailed;
 
                     break;
                 case Constantes.INSERT:
 
-                    asignatura = servicios.tratarParametros(parametros);
-
-                    messageToUser = (servicios.insertAsignaturadbUtils(asignatura) != null)
+                    messageToUser = (instanceREST.addAsignatura(asignatura) != null)
                             ? Constantes.messageQueryAsignaturaInserted : Constantes.messageQueryAsignaturaInsertFailed;
 
                     break;
                 case Constantes.DELETE:
                     String key = request.getParameter(SqlQuery.ID.toLowerCase());
-                    int deleted = -1;
+                    GenericResponse responseDel = null;
+
+                    
                     if (key != null && !key.isEmpty()) {
-                        deleted = servicios.deleteAsignaturadbUtils(Integer.valueOf(key));
+                        responseDel = instanceREST.deleteAsignatura(asignatura, false);
 
                     }
-                    if (deleted == ConstantesError.CodeErrorClaveForanea) {
+                    if (responseDel != null && responseDel.getCode() == HttpStatus.SC_CONFLICT) {
 
-                        asignatura = servicios.tratarParametros(parametros);
                         request.setAttribute(Constantes.asignaturaResult, asignatura);
                         messageToUser = Constantes.messageQueryAsignaturaDeletedFail;
 
-                    } else if (deleted > 0 && deleted < ConstantesError.CodeErrorClaveForanea) {
+                    } else if (responseDel != null && responseDel.getCode() == HttpStatus.SC_ACCEPTED) {
                         messageToUser = Constantes.messageQueryAsignaturaDeleted;
                     }
                     break;
                 case Constantes.DELETE_FORCE:
 
-                    asignatura = servicios.tratarParametros(parametros);
+                    
+                        GenericResponse borrado = instanceREST.deleteAsignatura(asignatura, true);
+                        messageToUser = (borrado != null && borrado.getCode() == HttpStatus.SC_ACCEPTED) ? Constantes.messageQueryAsignaturaDeleted : Constantes.messageQueryAlumnoDeletedFailedAgain;
 
-                    try {
-                        boolean borrado = servicios.deleteAsignaturaForce((int) asignatura.getId());
-                        messageToUser = (borrado) ? Constantes.messageQueryAsignaturaDeleted : Constantes.messageQueryAlumnoDeletedFailedAgain;
-
-                    } catch (SQLException ex) {
-                        Logger.getLogger(AsignaturasServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    
 
                     //1º -> BORRAR NOTA 
                     //2º -> BORRAR ASIGNATURA
@@ -109,7 +108,7 @@ public class AsignaturasServlet extends HttpServlet {
             request.setAttribute(Constantes.resultadoQuery, messageToUser);
         }
 
-        request.setAttribute(Constantes.asignaturasList, servicios.getAllAsignaturasdbUtils());//envia la lista al jsp
+        request.setAttribute(Constantes.asignaturasList, instanceREST.getAsignaturas());//envia la lista al jsp
         request.getRequestDispatcher("/" + Constantes.asignaturasJSP).forward(request, response);
     }
 

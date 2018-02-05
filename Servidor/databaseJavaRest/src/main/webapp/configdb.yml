@@ -9,7 +9,7 @@ smtpPort: 587
 mailPass: password
 ##1hora
 timeToValidate: 1
-numMaxPeticiones: 100
+numMaxPeticiones: 1000
 
 
 

@@ -5,6 +5,9 @@
  */
 package servlets;
 
+import dao.AlumnosREST;
+import dao.AsignaturasREST;
+import dao.NotasREST;
 import java.io.IOException;
 
 import java.util.Map;
@@ -14,8 +17,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Nota;
-import servicios.AlumnosServicios;
-import servicios.AsignaturasServicios;
 import servicios.NotasServicios;
 import utils.Constantes;
 import utils.UrlsPaths;
@@ -40,14 +41,13 @@ public class NotasServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         NotasServicios serviciosNotas = new NotasServicios();
-        AlumnosServicios alumnosServicios = new AlumnosServicios();
-        AsignaturasServicios asignaturasServicios = new AsignaturasServicios();
+
         Nota nota = null;
         Nota claves = null;
 
         String action = request.getParameter(Constantes.actionJSP);
         Map<String, String[]> parametros = null;
-
+        NotasREST instanceRest = NotasREST.getInstance();
         if (action != null && !action.isEmpty()) {
 
             parametros = request.getParameterMap();
@@ -56,14 +56,14 @@ public class NotasServlet extends HttpServlet {
             switch (action) {
                 case Constantes.VIEW://buscamos la nota 
 
-                    nota = serviciosNotas.getNota(claves);
+                    nota = instanceRest.getNota(claves);
 
                     if (nota != null) {
                         request.setAttribute(Constantes.notaResult, nota);
+
                     } else {
                         request.setAttribute(Constantes.resultadoQuery, Constantes.messageQueryNotaMissing);
                         claves.setNota(-1);//no tenemos nota la base de datos
-
                     }
 
                     break;
@@ -73,13 +73,13 @@ public class NotasServlet extends HttpServlet {
                     //1* consultar en notas
                     //si -> update
                     //no -> insert
-                    boolean resultado = Boolean.FALSE;
-                    if (serviciosNotas.getNota(claves) != null) {
-                        resultado = serviciosNotas.updateNota(claves);
+
+                    if (instanceRest.getNota(claves) != null) {
+                        nota = instanceRest.updateNota(claves);
                     } else {
-                        resultado = (serviciosNotas.insertNota(claves) != null);
+                        nota = instanceRest.addNota(claves);
                     }
-                    request.setAttribute(Constantes.notaMessage, (resultado) ? Constantes.messageQueryNotaUpdated : Constantes.messageQueryNotaUpdatedFail);
+                    request.setAttribute(Constantes.notaMessage, (nota != null) ? Constantes.messageQueryNotaUpdated : Constantes.messageQueryNotaUpdatedFail);
 
                     break;
 
@@ -90,8 +90,8 @@ public class NotasServlet extends HttpServlet {
         if (claves != null) {
             request.setAttribute(Constantes.notaResult, claves);
         }
-        request.setAttribute(Constantes.asignaturasList, asignaturasServicios.getAllAsignaturasdbUtils());//envia la lista al jsp
-        request.setAttribute(Constantes.alumnosList, alumnosServicios.getAllAlumnos());
+        request.setAttribute(Constantes.asignaturasList, AsignaturasREST.getInstance().getAsignaturas());//envia la lista al jsp
+        request.setAttribute(Constantes.alumnosList, AlumnosREST.getInstance().getAlumnos());
 
         request.getRequestDispatcher("/" + Constantes.notasJSP).forward(request, response);
 
