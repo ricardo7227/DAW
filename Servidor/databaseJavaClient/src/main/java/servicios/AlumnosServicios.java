@@ -5,14 +5,12 @@
  */
 package servicios;
 
-import dao.AlumnosDAO;
+
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,30 +30,7 @@ public class AlumnosServicios {
 
     }
 
-    public List<Alumno> getAllAlumnos() {
-        AlumnosDAO dao = new AlumnosDAO();
-        return dao.getAllAlumnosJDBC();
-    }
-
-    public Alumno updateAlumnoJDBC(Alumno alumno) {
-        AlumnosDAO dao = new AlumnosDAO();
-        return dao.updateUserJDBC(alumno);
-    }
-
-    public Alumno insertAlumnoJDBC(Alumno alumno) {
-        AlumnosDAO dao = new AlumnosDAO();
-        return dao.insertUserJDBC(alumno);
-    }
-
-    public int deleteAlumnoJDBC(long id) {
-        AlumnosDAO dao = new AlumnosDAO();
-        return dao.deleteUserByIdJDBC(id);
-    }
-
-    public boolean deleteAlumnoForce(int i) throws SQLException {
-        AlumnosDAO dao = new AlumnosDAO();
-        return dao.deleteUserByIddbUtils(i);
-    }
+   
 
     /**
      *

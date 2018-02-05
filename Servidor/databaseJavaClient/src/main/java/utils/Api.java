@@ -18,8 +18,7 @@ public class Api {
     public static String END_POINT_ASIGNATURAS = BASE_URL_CRUD + "asignaturas";
     public static String END_POINT_NOTAS = BASE_URL_CRUD + "notas";
     
-    //TODO BORRAR
-    public static String END_POINT_GetNodesLines= BASE_URL_CRUD + "/bus/GetNodesLines.php";
+    
     
     
     

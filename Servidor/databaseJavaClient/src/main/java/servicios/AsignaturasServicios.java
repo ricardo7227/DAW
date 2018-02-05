@@ -5,12 +5,10 @@
  */
 package servicios;
 
-import dao.AsignaturasDAO;
+
 import java.io.UnsupportedEncodingException;
-import java.sql.SQLException;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import model.Asignatura;
@@ -27,30 +25,6 @@ public class AsignaturasServicios {
 
     }
 
-    public List<Asignatura> getAllAsignaturasdbUtils() {
-        AsignaturasDAO dao = new AsignaturasDAO();
-        return dao.getAllAsignaturasdbUtils();
-    }
-
-    public Asignatura insertAsignaturadbUtils(Asignatura a) {
-        AsignaturasDAO dao = new AsignaturasDAO();
-        return dao.insertAsignaturadbUtils(a);
-    }
-
-    public Asignatura updateAsignaturadbUtils(Asignatura asignatura) {
-        AsignaturasDAO dao = new AsignaturasDAO();
-        return dao.updateAsignaturasdbUtils(asignatura);
-    }
-
-    public int deleteAsignaturadbUtils(long key) {
-        AsignaturasDAO dao = new AsignaturasDAO();
-        return dao.deleteAsignaturadbUtils(key);
-    }
-    
-    public boolean deleteAsignaturaForce(int i) throws SQLException {
-        AsignaturasDAO dao = new AsignaturasDAO();
-        return dao.deleteAsignaturadbUtilsForce(i);
-    }
 
     public Asignatura tratarParametros(Map<String, String[]> parametros) throws UnsupportedEncodingException {
         Asignatura asignatura = null;

@@ -5,7 +5,6 @@
  */
 package servicios;
 
-import dao.NotasDAO;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -18,30 +17,8 @@ import utils.SqlQuery;
  */
 public class NotasServicios {
 
-    
-
     public NotasServicios() {
-        
-    }
 
-    public Nota getNota(Nota nota) {
-        NotasDAO dao = new NotasDAO();
-        return dao.getNotaJDBC((int) nota.getId_alumno(), (int) nota.getId_asignatura());
-    }
-
-    public boolean updateNota(Nota nota) {
-        NotasDAO dao = new NotasDAO();
-        return dao.updateNotadbUtils(nota);
-    }
-
-    public Nota insertNota(Nota nota) {
-        NotasDAO dao = new NotasDAO();
-        return dao.insertUserJDBC(nota);
-    }
-//no Usado
-    public boolean deleteNota(int i) {
-        NotasDAO dao = new NotasDAO();
-        return dao.deleteNotadbUtils(i);
     }
 
     public Nota tratarParametros(Map<String, String[]> parametros) {
