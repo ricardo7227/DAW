@@ -68,6 +68,7 @@ public class Constantes {
     //servlet Movimientos
    public static final String FECHA_INI = "fecha_ini"; 
    public static final String FECHA_FIN = "fecha_fin"; 
+   public static final String N_CUENTA = "n_cuenta"; 
 
     public static String resultadoQuery = "resultado";
     public static String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";

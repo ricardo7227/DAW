@@ -1,28 +1,51 @@
 
-console.log("movimientos");
+
 //https://stackoverflow.com/questions/4112686/how-to-use-servlets-and-ajax
+
+var input_num_cuenta;
 
 $(document).ready(function () {
     $("#response_client_js").hide();
     $("#response").hide();
-    $("#num_cuenta").keyup(function (ob) {
+    $("#ver_movimientos").hide();
 
-        $("#check_num_cuenta_form").submit(function (e) {
-            console.log(ob.currentTarget.value);
-            console.log("sss");
-        });
-        console.log();
-        ob.target.setCustomValidity = "333";
+    $("#num_cuenta").keyup(function (ob) {
+        var elem_input_val = $("#num_cuenta").get(0);
+        input_num_cuenta = ob.currentTarget.value;
+        if (!isNaN(input_num_cuenta)) {
+            
+            if (isNumCuentaComplete(input_num_cuenta)) {
+                elem_input_val.setCustomValidity("");
+               
+                if (isValidNumCuenta(input_num_cuenta)) {
+                    $("#ver_movimientos").show("slow");
+                
+                } else {
+                    elem_input_val.setCustomValidity("Número de Cuenta inválido");
+                    $("#ver_movimientos").hide("slow");
+                }
+            
+            } else {
+                $("#ver_movimientos").hide("slow");
+                elem_input_val.setCustomValidity("Faltan " + (10 - input_num_cuenta.length) + " dígitos");
+            }
+
+            
+        } else {
+            elem_input_val.setCustomValidity("Número no válido");
+        }
+
+
         $("#num_cuenta_sub").click();
-//        console.log(ob.currentTarget.value);
+
     });
-    //implementar onchange para el input
+
 });
 
 $("#check_num_cuenta_form").submit(function (e) {
-    e.preventDefault();//TODO lleno de basura
-    // console.log(ob.currentTarget.value);
-    console.log("sss");
+    e.preventDefault();
+
+    console.log(input_num_cuenta);
 });
 
 function comprobarFechas() {
@@ -109,6 +132,44 @@ function cambiarTextoRespuesta(objetivo, texto) {
     }, 10000);
 }
 
-function isNumCuentaComplete() {
+function isNumCuentaComplete(inp) {
+    return inp.length == 10;
+}
 
+function isValidNumCuenta(num_cuenta) {
+    var isValidNum = false;
+    var corte1 = num_cuenta.substring(0, num_cuenta.length - 1);
+    var corte2 = parseInt(num_cuenta.charAt(num_cuenta.length - 1));
+
+    var array_n_cu = corte1.match(/[0-9]/g);
+    var suma_array = 0;
+    array_n_cu.forEach(function (num) {
+        suma_array += parseInt(num);
+
+    });
+    if (corte1 % 9 == corte2) {
+        isValidNum = true;
+    }
+    return isValidNum;
+}
+
+function comprobarNumCuentaAjax(num_cuenta) {
+    $.ajax({
+            type: "POST",
+            url: end_point_movimientos,
+            data: {
+                n_cuenta: num_cuenta
+            },
+            success: function (result) {
+                var trHtml = '<tr id="row_response">';
+                var resp = JSON.parse(result);
+                
+                console.log("Respuesta Server");
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                cambiarTextoRespuesta("#dialog_span", "Tenemos problemas en el Servidor, inténtalo otra vez");
+                cambiarStatusAlert("#alert_type", "alert-danger");
+                console.log(XMLHttpRequest + textStatus + errorThrown);
+            }
+        });
 }

@@ -22,7 +22,7 @@
                     <div class="col-sm-12">    
                         <p>Número de cuenta del titular</p>
                         <form id="check_num_cuenta_form">
-                            <input type="text" name="num_cuenta" id="num_cuenta"maxlength="10" required/>
+                            <input type="text" name="num_cuenta" id="num_cuenta"maxlength="10" />
                             <input type="submit" name="num_cuenta_sub" id="num_cuenta_sub" style="display: none;"/>
 
                             </form>
