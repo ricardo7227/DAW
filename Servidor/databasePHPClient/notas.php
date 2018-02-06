@@ -46,7 +46,7 @@ switch ($action) {
             $notaDB = NotasApi::getInstance()->getNota($nota);
         }
         if (is_int($notaDB) && $notaDB == Constantes::CodeNotFound) {
-            $notaDB = -1;
+            
             $messageToUser = Constantes::messageQueryNotaMissing;
         }
 
@@ -57,18 +57,18 @@ switch ($action) {
         //1* consultar en notas
         //si -> update
         //no -> insert
-        $resultado = FALSE;
+        //$resultado = FALSE;
         if (is_object($nota)) {
             $notaDB = NotasApi::getInstance()->getNota($nota);
-            if (is_int($notaDB) && $notaDB != Constantes::CodeNotFound) {
+            if ((is_int($notaDB) && $notaDB != Constantes::CodeNotFound) || is_object($notaDB)) {
 
-                $resultado = NotasApi::getInstance()->updateNota($nota);
+                $notaDB = NotasApi::getInstance()->updateNota($nota);
             } else {
 
-                $resultado =NotasApi::getInstance()->insertNota($nota);
+                $notaDB =NotasApi::getInstance()->insertNota($nota);
             }
 
-            $messageToUser = (is_object($resultado)) ? Constantes::messageQueryNotaUpdated : Constantes::messageQueryNotaUpdatedFail;
+            $messageToUser = (is_object($notaDB)) ? Constantes::messageQueryNotaUpdated : Constantes::messageQueryNotaUpdatedFail;
         }
         break;
 

@@ -1,5 +1,5 @@
 <?php
-
+use utilidades\Constantes;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -47,11 +47,12 @@ foreach ($listaAlumnos as &$valor) {
 unset($valor);
 echo '</select>            
       <input type="text" name="NOTA" value="';
-
-if (is_object($notaDB)) {//TODO - pendiente controlar respuestas 
-
+if ($notaDB == null) {//primera llamada
+    echo '" > ';
+    
+} else if (is_object($notaDB)) {
     echo $notaDB->nota . '"> ';
-} else if (is_int($notaDB) && $notaDB == utilidades\Constantes::CodeNotFound) {
+} else if (is_int($notaDB) && $notaDB == Constantes::CodeNotFound) {
     echo '" placeholder="' . $messageToUser . '">';
 }
 
@@ -59,7 +60,7 @@ echo
 '<input type="submit" name="ACTION" value="VIEW">
             <input type="submit" name="ACTION" value="UPDATE" onclick="return comprobarInputNota()" >
         </form>';
-if (!isset($notaDB)) {
+if (is_object($notaDB)) {
     echo '<p>' . $messageToUser . '</p>';
 }
 
