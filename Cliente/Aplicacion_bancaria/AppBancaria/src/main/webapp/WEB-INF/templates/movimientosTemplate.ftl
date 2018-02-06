@@ -18,10 +18,19 @@
                         <h4>Lista de movimientos</h4>
                         </div>                    
                     </div>
-                <div class="row">    
+                <div class="row">                        
+                    <div class="col-sm-12">    
+                        <p>Número de cuenta del titular</p>
+                        <form id="check_num_cuenta_form">
+                            <input type="text" name="num_cuenta" id="num_cuenta"maxlength="10" required/>
+                            <input type="submit" name="num_cuenta_sub" id="num_cuenta_sub" style="display: none;"/>
+
+                            </form>
+                        </div>
+
                     <div class="col-sm-12">    
                         <p>Filtrar movimientos por fechas</p>
-                        <form>
+                        <form id="form_movimientos">
                             Inicio:
                             <input type="date" name="fecha_ini" id="fecha_ini" required />
                             Fin:

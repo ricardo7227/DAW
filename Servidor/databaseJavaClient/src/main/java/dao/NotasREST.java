@@ -6,13 +6,12 @@
 package dao;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.api.client.http.EmptyContent;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.HttpResponseException;
 import com.google.api.client.http.UrlEncodedContent;
-import com.google.api.client.http.json.JsonHttpContent;
-import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.GenericData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -99,7 +98,7 @@ public class NotasREST {
             RestApi instanceRest = RestApi.getInstance();
 
             HttpRequest requestGoogle = instanceRest.crearServicio().buildPutRequest(url.set(Constantes.NOTA, json),
-                    new JsonHttpContent(new JacksonFactory(), nota)).setHeaders(instanceRest.getHeaderApikey());
+                    new EmptyContent()).setHeaders(instanceRest.getHeaderApikey());
             HttpResponse response = requestGoogle.execute();
 
             notaResponse = mapper.readValue(response.getContent(), Nota.class);

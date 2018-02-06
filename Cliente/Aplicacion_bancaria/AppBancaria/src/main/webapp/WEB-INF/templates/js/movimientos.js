@@ -5,6 +5,24 @@ console.log("movimientos");
 $(document).ready(function () {
     $("#response_client_js").hide();
     $("#response").hide();
+    $("#num_cuenta").keyup(function (ob) {
+
+        $("#check_num_cuenta_form").submit(function (e) {
+            console.log(ob.currentTarget.value);
+            console.log("sss");
+        });
+        console.log();
+        ob.target.setCustomValidity = "333";
+        $("#num_cuenta_sub").click();
+//        console.log(ob.currentTarget.value);
+    });
+    //implementar onchange para el input
+});
+
+$("#check_num_cuenta_form").submit(function (e) {
+    e.preventDefault();//TODO lleno de basura
+    // console.log(ob.currentTarget.value);
+    console.log("sss");
 });
 
 function comprobarFechas() {
@@ -16,10 +34,10 @@ function comprobarFechas() {
     console.log(ini + " " + fin);
     return (fin > ini);
 }
-$("form").submit(function (e) {
+$("#form_movimientos").submit(function (e) {
     e.preventDefault();
     if (comprobarFechas()) {
-        
+
 
         cambiarTextoRespuesta("#dialog_span", "Cargando Movimientos ....");
         cambiarStatusAlert("#alert_type", "alert-success");
@@ -27,7 +45,7 @@ $("form").submit(function (e) {
         $("#response_client_js").show("slow");
         $('.rows_movimientos').remove();
         $("#response").hide("slow");
-        
+
         $.ajax({
             type: "POST",
             url: end_point_movimientos,
@@ -89,4 +107,8 @@ function cambiarTextoRespuesta(objetivo, texto) {
     setTimeout(function () {
         $("#response_client_js").hide("slow");
     }, 10000);
+}
+
+function isNumCuentaComplete() {
+
 }
