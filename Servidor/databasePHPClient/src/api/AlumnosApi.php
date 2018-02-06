@@ -2,11 +2,13 @@
 
 namespace api;
 
+use api\ApikeyClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use utilidades\Constantes;
 use utilidades\EndPoints;
-use api\ApikeyClient;
 use function GuzzleHttp\json_decode;
+use function GuzzleHttp\json_encode;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -69,13 +71,13 @@ class AlumnosApi {
             ]]);
 
             $respuesta = json_decode($response->getBody());
-            //var_dump($response->getStatusCode());
+            
         } catch (RequestException $e) {
-            if ($e->getCode() == \utilidades\Constantes::CodeConflict) {
+            if ($e->getCode() == Constantes::CodeConflict) {
                 $respuesta = $e->getCode();
             }
         } finally {
-            //var_dump($respuesta);
+            
             return $respuesta;
         }
     }

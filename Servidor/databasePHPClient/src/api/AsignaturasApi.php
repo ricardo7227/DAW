@@ -2,11 +2,13 @@
 
 namespace api;
 
+use api\ApikeyClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use utilidades\Constantes;
 use utilidades\EndPoints;
-use api\ApikeyClient;
 use function GuzzleHttp\json_decode;
+use function GuzzleHttp\json_encode;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,10 +25,9 @@ class AsignaturasApi {
 
     private $client;
     private static $instancia;
-    
 
     public function __construct() {
-        $this->client = new Client(['base_uri' => EndPoints::$BASE_URL,'headers'=>['apikey'=> ApikeyClient::apikeyClient]]);        
+        $this->client = new Client(['base_uri' => EndPoints::$BASE_URL, 'headers' => ['apikey' => ApikeyClient::apikeyClient]]);
     }
 
     public static function getInstance() {
@@ -46,7 +47,7 @@ class AsignaturasApi {
         $response = $this->client->put(EndPoints::$ASIGNATURA_END_POINT, [
             'query' => [
                 'asignatura' => json_encode($asignatura)
-    ]]);
+        ]]);
         return json_decode($response->getBody());
     }
 
@@ -59,23 +60,21 @@ class AsignaturasApi {
         return json_decode($response->getBody());
     }
 
-   
-    public function deleteAsignatura($asignatura,$force) {
-       
+    public function deleteAsignatura($asignatura, $force) {
+
         try {
             $response = $this->client->delete(EndPoints::$ASIGNATURA_END_POINT, [
                 'query' => [
-                    'asignatura' => json_encode($asignatura),'delete_force'=>($force)?'true':'false'
+                    'asignatura' => json_encode($asignatura), 'delete_force' => ($force) ? 'true' : 'false'
             ]]);
 
             $respuesta = json_decode($response->getBody());
-            
         } catch (RequestException $e) {
-            if ($e->getCode() == \utilidades\Constantes::CodeConflict) {
+            if ($e->getCode() == Constantes::CodeConflict) {
                 $respuesta = $e->getCode();
             }
         } finally {
-            
+
             return $respuesta;
         }
     }

@@ -1,5 +1,7 @@
 <?php
+
 use utilidades\Constantes;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -49,7 +51,6 @@ echo '</select>
       <input type="text" name="NOTA" value="';
 if ($notaDB == null) {//primera llamada
     echo '" > ';
-    
 } else if (is_object($notaDB)) {
     echo $notaDB->nota . '"> ';
 } else if (is_int($notaDB) && $notaDB == Constantes::CodeNotFound) {

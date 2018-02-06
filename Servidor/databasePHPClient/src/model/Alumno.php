@@ -1,5 +1,7 @@
 <?php
+
 namespace model;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,16 +14,19 @@ namespace model;
  * @author Gato
  */
 class Alumno {
+
     public $id;
     public $nombre;
     public $fecha_nacimiento;
     public $mayor_edad;
+
     public function __construct($id, $nombre, $fecha_nacimiento, $mayor_edad) {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->fecha_nacimiento = $fecha_nacimiento;
         $this->mayor_edad = $mayor_edad;
     }
+
     public function getId() {
         return $this->id;
     }
@@ -54,7 +59,4 @@ class Alumno {
         $this->mayor_edad = $mayor_edad;
     }
 
-
-
-    
 }
