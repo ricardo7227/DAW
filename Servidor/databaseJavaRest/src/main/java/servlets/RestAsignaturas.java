@@ -20,12 +20,13 @@ import org.apache.http.HttpStatus;
 import servicios.AsignaturasServicios;
 import utils.Constantes;
 import utils.ConstantesError;
+import static utils.UrlsPaths.ASIGNATURAS;
 
 /**
  *
  * @author daw
  */
-@WebServlet(name = "RestAsignaturas", urlPatterns = {"/rest/asignaturas"})
+@WebServlet(name = "RestAsignaturas", urlPatterns = {ASIGNATURAS})
 public class RestAsignaturas extends HttpServlet {
 
     private AsignaturasServicios servicios;

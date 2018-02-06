@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 import model.Alumno;
 import model.Asignatura;
 import model.Nota;
-import servlets.AlumnosServlet;
+
 import utils.SqlQuery;
 
 /**
@@ -87,7 +87,7 @@ public class AlumnosServicios {
                             parseDate = dateFormat.parse(values[0]);
                             alumno.setFecha_nacimiento(new Date(parseDate.getTime()));
                         } catch (ParseException ex) {
-                            Logger.getLogger(AlumnosServlet.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(AlumnosServicios.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
                     } else if (SqlQuery.MAYOR_EDAD.equalsIgnoreCase(key)) {

@@ -16,12 +16,13 @@ import model.Nota;
 import servicios.NotasServicios;
 import utils.Constantes;
 import org.apache.http.HttpStatus;
+import static utils.UrlsPaths.NOTAS;
 
 /**
  *
  * @author daw
  */
-@WebServlet(name = "RestNotas", urlPatterns = {"/rest/notas"})
+@WebServlet(name = "RestNotas", urlPatterns = {NOTAS})
 public class RestNotas extends HttpServlet {
 
     private NotasServicios servicios;

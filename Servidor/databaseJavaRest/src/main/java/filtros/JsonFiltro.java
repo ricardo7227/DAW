@@ -26,12 +26,13 @@ import model.Nota;
 import org.apache.http.HttpStatus;
 import servicios.AlumnosServicios;
 import utils.Constantes;
+import static utils.UrlsPaths.JSON_FILTRO;
 
 /**
  *
  * @author daw
  */
-@WebFilter(filterName = "JsonFiltro", urlPatterns = {"/rest/*"})
+@WebFilter(filterName = "JsonFiltro", urlPatterns = {JSON_FILTRO})
 public class JsonFiltro implements Filter {
 
     private static final boolean debug = true;

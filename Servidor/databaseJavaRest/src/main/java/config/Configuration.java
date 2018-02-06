@@ -20,11 +20,7 @@ public class Configuration {
     private String driverDB;
     private String userDB;
     private String passDB;
-    private String mailFrom;
-    private String smtpServer;
-    private String smtpPort;
-    private String mailPass;
-    private int timeToValidate;
+
     private int numMaxPeticiones;
 
     private Configuration() {
@@ -82,46 +78,6 @@ public class Configuration {
 
     public static void setConfig(Configuration config) {
         Configuration.config = config;
-    }
-
-    public String getMailFrom() {
-        return mailFrom;
-    }
-
-    public void setMailFrom(String mailFrom) {
-        this.mailFrom = mailFrom;
-    }
-
-    public String getSmtpServer() {
-        return smtpServer;
-    }
-
-    public void setSmtpServer(String smtpServer) {
-        this.smtpServer = smtpServer;
-    }
-
-    public String getSmtpPort() {
-        return smtpPort;
-    }
-
-    public void setSmtpPort(String smtpPort) {
-        this.smtpPort = smtpPort;
-    }
-
-    public String getMailPass() {
-        return mailPass;
-    }
-
-    public void setMailPass(String mailPass) {
-        this.mailPass = mailPass;
-    }
-
-    public int getTimeToValidate() {
-        return timeToValidate;
-    }
-
-    public void setTimeToValidate(int timeToValidate) {
-        this.timeToValidate = timeToValidate;
     }
 
     public int getNumMaxPeticiones() {
