@@ -94,24 +94,29 @@ public class MovimientosServlet extends HttpServlet {
         MovimientosFechas mf = servicios.tratarParametros(request.getParameterMap());
 
         if (action != null && !action.isEmpty()) {
+
+            CuentasServicios cuentasServicios = new CuentasServicios();
+            ObjectMapper mapper = new ObjectMapper();
+
             switch (action) {
                 case Constantes.CHECK_NUM_CUENTA:
-                    CuentasServicios cuentasServicios = new CuentasServicios();
+
                     Cuenta cuentaDB = null;
                     if (cuentasServicios.comprobarNumCuenta(String.valueOf(mf.getId_cuenta()))) {
                         cuentaDB = cuentasServicios.getCuenta(new Cuenta(mf.getId_cuenta()));
                     }
 
-                    ObjectMapper mapper = new ObjectMapper();
-
                     mapper.writeValue(response.getOutputStream(), cuentaDB);
 
                     break;
                 case Constantes.SEARCH_MOVIMIENTOS:
-                    List<Movimiento> listaMovimientos = servicios.getAllMovimientosByRango(mf);
-//                    ObjectMapper mapper = new ObjectMapper();
+                    if (cuentasServicios.comprobarNumCuenta(String.valueOf(mf.getId_cuenta()))) {
 
-                    // mapper.writeValue(response.getOutputStream(), listaMovimientos);
+                        List<Movimiento> listaMovimientos = servicios.getAllMovimientosByRango(mf);
+
+                        mapper.writeValue(response.getOutputStream(), listaMovimientos);
+                    }
+
                     break;
 
             }

@@ -1,5 +1,3 @@
-
-
 //https://stackoverflow.com/questions/4112686/how-to-use-servlets-and-ajax
 
 var input_num_cuenta;
@@ -76,17 +74,24 @@ $("#form_movimientos").submit(function (e) {
             data: {
                 fecha_ini: $("#fecha_ini").val(),
                 fecha_fin: $("#fecha_fin").val(),
+                n_cuenta: $("#num_cuenta_fec").val(),
                 ACTION: "search_movs"
             },
             success: function (result) {
-                var trHtml = '<tr id="row_response">';
-                var resp = JSON.parse(result);
-                resp.forEach(function (movimiento) {
-                    trHtml += "<tr class=\"rows_movimientos\"><td>" + movimiento.mo_ncu + "</td><td>" + movimiento.mo_fec + "</td><td>" + formatHora(movimiento.mo_hor) + "</td><td>" + movimiento.mo_des + "</td><td>" + movimiento.mo_imp + "</td></tr>";
+                if (result === "null" || result.length == 2) {
+                    cambiarTextoRespuesta("#dialog_span", "En este rango de fechas, no existen movimientos");
+                    cambiarStatusAlert("#alert_type", "alert-info");
+                } else {
+                    console.log(result.length);
+                    var trHtml = '<tr id="row_response">';
+                    var resp = JSON.parse(result);
+                    resp.forEach(function (movimiento) {
+                        trHtml += "<tr class=\"rows_movimientos\"><td>" + movimiento.mo_ncu + "</td><td>" + movimiento.mo_fec + "</td><td>" + formatHora(movimiento.mo_hor) + "</td><td>" + movimiento.mo_des + "</td><td>" + movimiento.mo_imp + "</td></tr>";
 
-                });
-                $("#row_response").replaceWith(trHtml);
-                $("#response").show("slow");
+                    });
+                    $("#row_response").replaceWith(trHtml);
+                    $("#response").show("slow");
+                }
                 console.log("Respuesta Server");
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {

@@ -37,7 +37,7 @@
                     <div class="col-sm-12">    
                         <p>Filtrar movimientos por fechas</p>
                         <form id="form_movimientos">
-                            <input type="hidden" name="num_cuenta" id="num_cuenta_fec" value=""/>
+                            <input type="hidden" name="n_cuenta" id="num_cuenta_fec" value=""/>
                             Inicio:                            
                             <input type="date" name="fecha_ini" id="fecha_ini" required />
                             Fin:
