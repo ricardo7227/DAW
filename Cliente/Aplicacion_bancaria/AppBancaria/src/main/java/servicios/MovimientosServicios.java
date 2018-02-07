@@ -31,8 +31,9 @@ public class MovimientosServicios {
         MovimientosDAO dao = new MovimientosDAO();
         return dao.getMovimientosJDBCTemplate(mf);
     }
+    
 
-    public MovimientosFechas tratarParametro(Map<String, String[]> parametros) {
+    public MovimientosFechas tratarParametros(Map<String, String[]> parametros) {
         MovimientosFechas movimientos = null;
         if (parametros != null && !parametros.isEmpty()) {
             movimientos = new MovimientosFechas();
@@ -57,6 +58,11 @@ public class MovimientosServicios {
                 } catch (ParseException ex) {
                     Logger.getLogger(MovimientosServicios.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+            if (parametros.get(Constantes.N_CUENTA) != null && !parametros.get(Constantes.N_CUENTA)[0].isEmpty()) {
+
+                movimientos.setId_cuenta(Long.valueOf(parametros.get(Constantes.N_CUENTA)[0]));
+
             }
 
         }

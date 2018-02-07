@@ -10,16 +10,21 @@ package model;
  * @author daw
  */
 public class Cuenta {
+
     private long cu_ncu;
-    private String cu_dni1;
-    private String cu_dni2;
+    private String cu_dn1;
+    private String cu_dn2;
     private float cu_sal;
 
-    public Cuenta(long cu_ncu, String cu_dni1, String cu_dni2, float cu_sal) {
+    public Cuenta(long cu_ncu, String cu_dn1, String cu_dn2, float cu_sal) {
         this.cu_ncu = cu_ncu;
-        this.cu_dni1 = cu_dni1;
-        this.cu_dni2 = cu_dni2;
+        this.cu_dn1 = cu_dn1;
+        this.cu_dn2 = cu_dn2;
         this.cu_sal = cu_sal;
+    }
+
+    public Cuenta(long cu_ncu) {
+        this.cu_ncu = cu_ncu;
     }
 
     public Cuenta() {
@@ -33,20 +38,20 @@ public class Cuenta {
         this.cu_ncu = cu_ncu;
     }
 
-    public String getCu_dni1() {
-        return cu_dni1;
+    public String getCu_dn1() {
+        return cu_dn1;
     }
 
-    public void setCu_dni1(String cu_dni1) {
-        this.cu_dni1 = cu_dni1;
+    public void setCu_dn1(String cu_dn1) {
+        this.cu_dn1 = cu_dn1;
     }
 
-    public String getCu_dni2() {
-        return cu_dni2;
+    public String getCu_dn2() {
+        return cu_dn2;
     }
 
-    public void setCu_dni2(String cu_dni2) {
-        this.cu_dni2 = cu_dni2;
+    public void setCu_dn2(String cu_dn2) {
+        this.cu_dn2 = cu_dn2;
     }
 
     public float getCu_sal() {
@@ -56,5 +61,5 @@ public class Cuenta {
     public void setCu_sal(float cu_sal) {
         this.cu_sal = cu_sal;
     }
-       
+
 }

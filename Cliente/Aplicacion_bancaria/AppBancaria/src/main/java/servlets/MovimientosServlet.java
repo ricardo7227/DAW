@@ -19,8 +19,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Cuenta;
 import model.Movimiento;
 import model.MovimientosFechas;
+import servicios.CuentasServicios;
 import servicios.MovimientosServicios;
 import utils.Constantes;
 import utils.Templates;
@@ -61,7 +63,6 @@ public class MovimientosServlet extends HttpServlet {
         }
     }
 
-   
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -88,14 +89,33 @@ public class MovimientosServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-
+        String action = request.getParameter(Constantes.ACTION_TEMPLATE);
         MovimientosServicios servicios = new MovimientosServicios();
-        MovimientosFechas mf = servicios.tratarParametro(request.getParameterMap());
-        mf.setId_cuenta(1234567890);//TODO Modificar cuando recuperamos usuario de la sesión
-        List<Movimiento> listaMovimientos = servicios.getAllMovimientosByRango(mf);
-        ObjectMapper mapper = new ObjectMapper();
+        MovimientosFechas mf = servicios.tratarParametros(request.getParameterMap());
 
-        mapper.writeValue(response.getOutputStream(), listaMovimientos);
+        if (action != null && !action.isEmpty()) {
+            switch (action) {
+                case Constantes.CHECK_NUM_CUENTA:
+                    CuentasServicios cuentasServicios = new CuentasServicios();
+                    Cuenta cuentaDB = null;
+                    if (cuentasServicios.comprobarNumCuenta(String.valueOf(mf.getId_cuenta()))) {
+                        cuentaDB = cuentasServicios.getCuenta(new Cuenta(mf.getId_cuenta()));
+                    }
+
+                    ObjectMapper mapper = new ObjectMapper();
+
+                    mapper.writeValue(response.getOutputStream(), cuentaDB);
+
+                    break;
+                case Constantes.SEARCH_MOVIMIENTOS:
+                    List<Movimiento> listaMovimientos = servicios.getAllMovimientosByRango(mf);
+//                    ObjectMapper mapper = new ObjectMapper();
+
+                    // mapper.writeValue(response.getOutputStream(), listaMovimientos);
+                    break;
+
+            }
+        }
 
 //        response.getWriter().write(mf.toString());
     }

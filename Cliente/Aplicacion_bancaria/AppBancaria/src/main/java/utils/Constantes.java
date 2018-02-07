@@ -55,6 +55,9 @@ public class Constantes {
     public static final String MOV_DESCRIP = "mo_des";
     public static final String MOV_IMPORTE = "mo_imp";
 
+    //columna Cuenta
+    public static final String CU_NUM_CUENTA = "cu_ncu";
+
     //Columnas Users
     public static final String USERS = "USERS";
     public static final String ID = "ID";
@@ -64,11 +67,16 @@ public class Constantes {
     public static final String CODIGO_ACTIVACION = "CODIGO_ACTIVACION";
     public static final String FECHA_ACTIVACION = "FECHA_ACTIVACION";
     public static final String EMAIL = "EMAIL";
-   
+
     //servlet Movimientos
-   public static final String FECHA_INI = "fecha_ini"; 
-   public static final String FECHA_FIN = "fecha_fin"; 
-   public static final String N_CUENTA = "n_cuenta"; 
+    public static final String FECHA_INI = "fecha_ini";
+    public static final String FECHA_FIN = "fecha_fin";
+    public static final String N_CUENTA = "n_cuenta";
+    
+    
+    //ajax
+    public static final String CHECK_NUM_CUENTA = "check_num_cuenta";
+    public static final String SEARCH_MOVIMIENTOS = "search_movs";
 
     public static String resultadoQuery = "resultado";
     public static String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";

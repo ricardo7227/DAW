@@ -61,5 +61,5 @@ public class SqlQuery {
     public static String SELECT_MOVIMIENTOS_BY_CUENTA_AND_FECHAS = "SELECT *  FROM `movimientos` WHERE `mo_ncu` = ? AND `mo_fec` BETWEEN ? AND ?";
     public static String SELECT_MOVIMIENTOS= "SELECT *  FROM `movimientos`";
     //Cuentas
-    public static String SELECT_CUENTA_BY_ID= "SELECT *  FROM `cuentas` WHERE `cu_ncu` = ?";
+    public static String SELECT_CUENTA_BY_ID= "SELECT cu_ncu,cu_dn1,cu_dn2,cu_sal  FROM `cuentas` WHERE `cu_ncu` = ?";
 }

@@ -19,7 +19,7 @@
                         </div>                    
                     </div>
                 <div class="row">                        
-                    <div class="col-sm-12">    
+                    <div class="col-sm-6">    
                         <p>Número de cuenta del titular</p>
                         <form id="check_num_cuenta_form">
                             <input type="text" name="num_cuenta" id="num_cuenta"maxlength="10" />
@@ -27,11 +27,18 @@
 
                             </form>
                         </div>
+                    <div class="col-sm-6">    
+                        <h6>Nº Cuenta : <span id="num_cuenta_db"></span></h6>
+                        <h6>Titular/s : <span id="titular_cuenta_db"></span></h6>
+                        <h6>Saldo : <span id="saldo_cuenta_db"></span></h6>
+                        
+                        </div>
 
                     <div class="col-sm-12">    
                         <p>Filtrar movimientos por fechas</p>
                         <form id="form_movimientos">
-                            Inicio:
+                            <input type="hidden" name="num_cuenta" id="num_cuenta_fec" value=""/>
+                            Inicio:                            
                             <input type="date" name="fecha_ini" id="fecha_ini" required />
                             Fin:
                             <input type="date" name="fecha_fin" id="fecha_fin" required/>

@@ -1,0 +1,50 @@
+<DOCTYPE html>
+<html>
+ <head>
+ </head>
+ <body>
+  <script> 
+// Definición de funciones
+function pedir_fecha(cadena) {
+    var ano = 0;
+    var mes = 0;
+    var dia = 0;
+// Hago una ligera comprobación de los datos introducidos
+    do {
+        ano = parseInt(prompt("Introduzca año " + cadena + " de 2000 a 2020", 2000));
+    } while (ano < 2000 || ano > 2020);
+    do {
+        mes = parseInt(prompt("Introduzca mes " + cadena + " de 1 a 12", 1));
+    } while (mes < 1 || mes > 12);
+    do {
+        dia = parseInt(prompt("Introduzca dia " + cadena + " de 1 a 31", 1));
+    } while (dia < 1 || mes > 31);
+    var fecha = new Date (ano, mes-1, dia);
+    return fecha;
+}
+
+// Definición de variables
+var meses  = new Array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+var dias   = new Array("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado");
+var mili_ini  = 0;
+var mili_fin  = 0;
+var mili      = 0;
+var fecha     = new Date();
+
+var fecha_ini = pedir_fecha("INICIAL");
+var fecha_fin = pedir_fecha("FINAL");
+// Opcionalmente compruebo que fecha_fin > fecha_ini
+while (fecha_ini >= fecha_fin) {
+    fecha_ini = pedir_fecha("INICIAL");
+    fecha_fin = pedir_fecha("FINAL");
+}
+mili_ini = fecha_ini.getTime();
+mili_fin = fecha_fin.getTime();
+mili = mili_ini + Math.floor(Math.random() * (mili_fin - mili_ini + 1));
+fecha.setTime(mili);
+// Imprimir con formato: La persona premiada ha sido la nacida el Lunes, 25 de marzo de 2.014
+document.write("La persona premiada ha sido la nacida el ");
+document.write(dias[fecha.getDay()] + ", " + fecha.getDate() + " de " + meses[fecha.getMonth()] + " de " + fecha.getFullYear());
+  </script>
+ </body>
+</html>
