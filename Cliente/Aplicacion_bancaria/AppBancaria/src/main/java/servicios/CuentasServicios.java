@@ -37,7 +37,7 @@ public class CuentasServicios {
                 int param1 = 0;
 
                 char[] arrayCorte1 = corte1.toCharArray();
-                for (char val : arrayCorte1) {//TODO suma mal
+                for (char val : arrayCorte1) {
                     param1 += Character.getNumericValue(val);
                 }
 

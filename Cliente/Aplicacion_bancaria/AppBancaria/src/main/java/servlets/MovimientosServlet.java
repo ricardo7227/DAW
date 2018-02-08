@@ -45,7 +45,7 @@ public class MovimientosServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //dao.getMovimientosJDBCTemplate(new MovimientosFechas(0000000011, new Date(2012-1900, 01, 01), new Date(2018-1900, 01, 01)));
+        
         try {
             freemarker.template.Configuration freeMarker = Configuration.getInstance().getFreeMarker();
             String messageToUser = null;

@@ -139,26 +139,7 @@ function cambiarTextoRespuesta(objetivo, texto) {
     }, 10000);
 }
 
-function isNumCuentaComplete(inp) {
-    return inp.length == 10;
-}
 
-function isValidNumCuenta(num_cuenta) {
-    var isValidNum = false;
-    var corte1 = num_cuenta.substring(0, num_cuenta.length - 1);
-    var corte2 = parseInt(num_cuenta.charAt(num_cuenta.length - 1));
-
-    var array_n_cu = corte1.match(/[0-9]/g);
-    var suma_array = 0;
-    array_n_cu.forEach(function (num) {
-        suma_array += parseInt(num);
-
-    });
-    if (corte1 % 9 == corte2) {
-        isValidNum = true;
-    }
-    return isValidNum;
-}
 
 function comprobarNumCuentaAjax(num_cuenta) {
     $.ajax({

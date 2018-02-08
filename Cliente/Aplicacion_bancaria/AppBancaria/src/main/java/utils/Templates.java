@@ -12,5 +12,6 @@ package utils;
 public class Templates {
 
     public static String MOVIMIENTOS = "movimientosTemplate.ftl";
+    public static String APERTURA_CUENTAS = "aperturaCuentasTemplate.ftl";
 
 }
