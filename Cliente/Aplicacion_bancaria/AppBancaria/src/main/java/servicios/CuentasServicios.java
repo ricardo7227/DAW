@@ -6,7 +6,15 @@
 package servicios;
 
 import dao.CuentasDAO;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Cuenta;
+import model.MovimientosFechas;
+import utils.Constantes;
 
 /**
  *
@@ -63,6 +71,42 @@ public class CuentasServicios {
 
         }
         return cuentaValida;
+    }
+    public Cuenta tratarParametros(Map<String, String[]> parametros) {
+        Cuenta cuenta = null;
+        if (parametros != null && !parametros.isEmpty()) {
+            cuenta = new Cuenta();
+//            if (parametros.get(Constantes.FECHA_INI) != null && !parametros.get(Constantes.FECHA_INI)[0].isEmpty()) {
+//
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//                java.util.Date parseDate = null;
+//                try {
+//                    parseDate = dateFormat.parse(parametros.get(Constantes.FECHA_INI)[0]);
+//                    cuenta.setFecha_inicio(new Date(parseDate.getTime()));
+//                } catch (ParseException ex) {
+//                    Logger.getLogger(MovimientosServicios.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//            if (parametros.get(Constantes.FECHA_FIN) != null && !parametros.get(Constantes.FECHA_FIN)[0].isEmpty()) {
+//
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//                java.util.Date parseDate = null;
+//                try {
+//                    parseDate = dateFormat.parse(parametros.get(Constantes.FECHA_FIN)[0]);
+//                    cuenta.setFecha_fin(new Date(parseDate.getTime()));
+//                } catch (ParseException ex) {
+//                    Logger.getLogger(MovimientosServicios.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+            if (parametros.get(Constantes.N_CUENTA) != null && !parametros.get(Constantes.N_CUENTA)[0].isEmpty()) {
+
+                cuenta.setCu_ncu(Long.valueOf(parametros.get(Constantes.N_CUENTA)[0]));
+
+            }
+
+        }
+        return cuenta;
+
     }
 
 }//fin clase

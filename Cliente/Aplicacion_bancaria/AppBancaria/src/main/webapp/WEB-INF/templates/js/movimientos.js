@@ -120,16 +120,7 @@ function formatHora(hora) {
     return hora_format.substring(0, hora_format.length - 1);
 }
 
-function cambiarStatusAlert(objetivo, clase) {
 
-    var status_alerts = ["alert-primary", "alert-secondary", "alert-success", "alert-danger", "alert-warning", "alert-info", "alert-light", "alert-dark"];
-    status_alerts.forEach(function (status) {
-        if ($(objetivo).hasClass(status)) {
-            $(objetivo).removeClass(status);
-        }
-    });
-    $(objetivo).addClass(clase);
-}
 
 function cambiarTextoRespuesta(objetivo, texto) {
     $(objetivo).text(texto);

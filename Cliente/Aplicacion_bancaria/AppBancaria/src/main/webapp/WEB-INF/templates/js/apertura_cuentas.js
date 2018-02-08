@@ -22,11 +22,11 @@ $(document).ready(function () {
 
                 } else {
                     elem_input_val.setCustomValidity("Número de Cuenta inválido");
-                    $("#ver_movimientos").hide("slow");
+                    $("#datos_dni_1").hide("slow");
                 }
 
             } else {
-                $("#ver_movimientos").hide("slow");
+                $("#datos_dni_1").hide("slow");
                 elem_input_val.setCustomValidity("Faltan " + (10 - input_num_cuenta.length) + " dígitos");
             }
 
@@ -39,6 +39,7 @@ $(document).ready(function () {
         $("#num_cuenta_sub").click();
 
     });
+    comprobarNumCuentaAjax(getValidRandomValue());
 
 });
 
@@ -53,37 +54,36 @@ function getValidRandomValue(){
 	}
 	return recomend_num_cuenta;
 }
-function getValidRandomNumberDB() {
-    var num_recomendado = getValidRandomValue();
-    //TODO - implementar
+function comprobarNumCuentaAjax(num_recomendado) {
+    
+    
     $.ajax({
         type: "POST",
         url: end_point_apertura_cuentas,
         data: {
-            n_cuenta: num_cuenta,
+            n_cuenta: num_recomendado,
             ACTION: "check_num_cuenta"
         },
         success: function (result) {
             if (result === "null") {
-                cambiarTextoRespuesta("#dialog_span", "No existe el número de cuenta en base de datos");
-                cambiarStatusAlert("#alert_type", "alert-warning");
-                $("#ver_movimientos").hide("slow");
+                cambiarTextoResp("#dialog_span", "Nº Cuenta recomendado: " + num_recomendado,1000*60);                
+                cambiarStatusAlert("#alert_type", "alert-info");                
+               
             } else {
-
                 var resp = JSON.parse(result);
-                mostrarDatosCuenta(resp);
-                $("#num_cuenta_fec").val(resp.cu_ncu);
-                cambiarTextoRespuesta("#dialog_span", "Número de Cuenta correcto");
-                cambiarStatusAlert("#alert_type", "alert-success");
+                
+                console.log("Ya existen DB");
             }
 
 
             console.log("Respuesta Server");
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            cambiarTextoRespuesta("#dialog_span", "Tenemos problemas en el Servidor, inténtalo otra vez");
+            cambiarTextoResp("#dialog_span", "Tenemos problemas en el Servidor, inténtalo otra vez",1000*20);
             cambiarStatusAlert("#alert_type", "alert-danger");
             console.log(XMLHttpRequest + textStatus + errorThrown);
         }
     });
 }
+
+

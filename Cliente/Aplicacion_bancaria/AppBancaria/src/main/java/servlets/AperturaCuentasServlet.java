@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import config.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -17,6 +18,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Cuenta;
+import servicios.CuentasServicios;
 import utils.Constantes;
 import utils.Templates;
 
@@ -38,7 +41,7 @@ public class AperturaCuentasServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-try {
+        try {
             freemarker.template.Configuration freeMarker = Configuration.getInstance().getFreeMarker();
             String messageToUser = null;
 
@@ -53,11 +56,9 @@ try {
         } catch (TemplateException ex) {
             Logger.getLogger(MovimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -83,7 +84,28 @@ try {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        String action = request.getParameter(Constantes.ACTION_TEMPLATE);
+
+        if (action != null && !action.isEmpty()) {
+
+            CuentasServicios cuentasServicios = new CuentasServicios();
+            Cuenta cuenta = cuentasServicios.tratarParametros(request.getParameterMap());
+
+            ObjectMapper mapper = new ObjectMapper();
+
+            switch (action) {
+                case Constantes.CHECK_NUM_CUENTA:
+                    Cuenta cuentaDB = null;
+                    if (cuentasServicios.comprobarNumCuenta(String.valueOf(cuenta.getCu_ncu()))) {
+                        cuentaDB = cuentasServicios.getCuenta(cuenta);
+                    }
+
+                    mapper.writeValue(response.getOutputStream(), cuentaDB);
+
+                    break;
+            }
+        }
     }
 
     /**

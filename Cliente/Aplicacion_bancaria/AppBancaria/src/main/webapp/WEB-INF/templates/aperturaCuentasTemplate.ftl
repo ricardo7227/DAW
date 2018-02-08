@@ -24,9 +24,17 @@
             </div>
         <div class="row justify-content-center">
             <div class="col-sm-4">
-                Nº Cuenta:<input id="ncuenta_input" maxlength="10" required="" type="text" value="" />
+                
+                <form id="check_num_cuenta_form">
+                    Nº Cuenta:<input id="ncuenta_input" maxlength="10" required="" type="text" value="" />
+                    <input type="submit" name="num_cuenta_sub" id="num_cuenta_sub" style="display: none;"/>
+                    </form>
+                
                 </div>
             <div class="col-sm-4">
+                <div class="alert" id="alert_type" role="alert">
+                    <span id="dialog_span"></span>
+                    </div>
                 <div id="response_cuenta">
                     <span id="response_cuenta_span"></span>
                     </div>

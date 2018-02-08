@@ -18,3 +18,22 @@ function isValidNumCuenta(num_cuenta) {
 function isNumCuentaComplete(inp) {
     return inp.length == 10;
 }
+
+function cambiarTextoResp(objetivo, texto,tiempo) {
+    $(objetivo).text(texto);
+    $(objetivo).show("slow");
+    setTimeout(function () {
+        $(objetivo).hide("slow");
+    }, tiempo);
+}
+
+function cambiarStatusAlert(objetivo, clase) {
+
+    var status_alerts = ["alert-primary", "alert-secondary", "alert-success", "alert-danger", "alert-warning", "alert-info", "alert-light", "alert-dark"];
+    status_alerts.forEach(function (status) {
+        if ($(objetivo).hasClass(status)) {
+            $(objetivo).removeClass(status);
+        }
+    });
+    $(objetivo).addClass(clase);
+}
