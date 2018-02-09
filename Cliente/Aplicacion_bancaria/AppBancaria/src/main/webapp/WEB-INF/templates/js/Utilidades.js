@@ -18,6 +18,9 @@ function isValidNumCuenta(num_cuenta) {
 function isNumCuentaComplete(inp) {
     return inp.length == 10;
 }
+function isNumDniComplete(inp) {
+    return inp.length == 9;
+}
 
 function cambiarTextoResp(objetivo, texto,tiempo) {
     $(objetivo).text(texto);
@@ -36,4 +39,8 @@ function cambiarStatusAlert(objetivo, clase) {
         }
     });
     $(objetivo).addClass(clase);
+}
+function checkDni(dni_input){	
+	var rgx = new RegExp(/^[0-9]{8}[A-Z]{1}/i);
+	return rgx.test(dni_input);
 }

@@ -43,7 +43,10 @@
         <div id="datos_dni_1">
             <div class="row justify-content-center">
                 <div class="col-sm-5">
+                    <form id="check_dni_titular_form">
                     DNI titular: <input id="dni_input" maxlength="9" required="" type="text" value="" />
+                    <input type="submit" name="dni_titular_sub" id="dni_titular_sub" style="display: none;"/>
+                    </form>
                     </div>
                 <div class="col-sm-5">
                     <div id="response_dni">
