@@ -44,3 +44,18 @@ function checkDni(dni_input){
 	var rgx = new RegExp(/^[0-9]{8}[A-Z]{1}/i);
 	return rgx.test(dni_input);
 }
+
+function disableForm(formulario, isDisable) {
+    $("form#" + formulario + " :input").each(function () {
+        $(this).prop("disabled", isDisable);
+    });
+}
+function checkForm(formulario) {
+    var isfull = true;
+    $("form#" + formulario + " :input").each(function () {
+        if ($(this).val() == ""){
+            isfull = false;
+        }
+    });
+    return isfull;
+}

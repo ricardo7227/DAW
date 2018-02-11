@@ -24,29 +24,27 @@
             </div>
         <div class="row justify-content-center">
             <div class="col-sm-4">
-                
-                <form id="check_num_cuenta_form">
+
+                <form id="check_num_cuenta_form" action="">
                     Nº Cuenta:<input id="ncuenta_input" maxlength="10" required="" type="text" value="" />
-                    <input type="submit" name="num_cuenta_sub" id="num_cuenta_sub" style="display: none;"/>
+                    <input type="submit" name="num_cuenta_sub" id="num_cuenta_sub" value="ncuenta" style="display: none;"/>
                     </form>
-                
+
                 </div>
             <div class="col-sm-4">
-                <div class="alert" id="alert_type" role="alert">
+                <div class="alert" id="alert_type">
                     <span id="dialog_span"></span>
                     </div>
-                <div id="response_cuenta">
-                    <span id="response_cuenta_span"></span>
-                    </div>
+
                 </div>
             </div>
         <div id="datos_dni_1">
             <div class="row justify-content-center">
                 <div class="col-sm-5">
-                    <form id="check_dni_titular_form">
-                    DNI titular: <input id="dni_input" maxlength="9" required="" type="text" value="" />
-                    <input type="submit" name="dni_titular_sub" id="dni_titular_sub" style="display: none;"/>
-                    </form>
+                    <form id="check_dni_titular_form" action="">
+                        DNI titular: <input id="dni_input" name="dni_input" maxlength="9" required="" type="text" value="" />
+                        <input type="submit" name="dni_titular_sub" id="dni_titular_sub" value="ncuenta" style="display: none;"/>
+                        </form>
                     </div>
                 <div class="col-sm-5">
                     <div id="response_dni">
@@ -63,7 +61,13 @@
                         </p>
                     </div>
                 <div class="col-sm-5">
-                    Nombre: <input id="nombre_input" required="" type="text" value="" /><br />Dirección: <input id="dir_input" required="" type="text" value="" /><br />Teléfono: <input id="tel_input" required="" type="text" value="" /><br />E-mail: <input id="email_input" required="" type="text" value="" /><br />Fecha Nacimiento:<input id="fecha_input" required="" type="date" value="" />
+                    <form id="check_datos_titular_form" action="">                    
+                        Nombre: <input id="nombre_input" name="nombre_input" required="" type="text" value="" /><br />
+                        Dirección: <input id="dir_input" name="dir_input" required="" type="text" value="" /><br />
+                        Teléfono: <input id="tel_input" name="tel_input" required="" type="text" value="" /><br />
+                        E-mail: <input id="email_input" name="email_input" required="" type="email" value="" /><br />
+                        Fecha Nacimiento:<input id="fecha_input"  name="fecha_input" required="" type="date" value="" />
+                        </form>
                     </div>
                 <div class="col-sm-5">
                     <div id="response_cliente_1">
@@ -75,14 +79,22 @@
         <div id="new_titular">
             <div class="row justify-content-center">
                 <div class="col-sm-2">
-                    <button class="btn btn-primary" id="add_titular">Añadir otro títular?</button>
+                    <button class="btn btn-primary" id="add_titular" type="button">Añadir otro títular?</button>
                     </div>
                 </div>
             </div>
         <div id="datos_dni_2">
             <div class="row justify-content-center">
-                <div class="col-sm-10">
-                    DNI 2º titular: <input id="dni_input_2" maxlength="9" required="" type="text" value="" />
+                <div class="col-sm-5">
+                    <form id="check_dni_titular_form_2" action="">
+                        DNI 2º titular: <input id="dni_input_2" name="dni_input" maxlength="9" required="" type="text" value="" />
+                        <input type="submit" name="dni_titular_sub" id="dni_titular_sub_2" value="dni2" style="display: none;"/>
+                        </form>
+                    </div>
+                <div class="col-sm-5">
+                    <div id="response_dni_2">
+                        <span id="response_dni_span_2"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,7 +106,13 @@
                         </p>
                     </div>
                 <div class="col-sm-5">
-                    Nombre: <input id="nombre_input" required="" type="text" value="" /><br />Dirección: <input id="dir_input" required="" type="text" value="" /><br />Teléfono: <input id="tel_input" required="" type="text" value="" /><br />E-mail: <input id="email_input" required="" type="text" value="" /><br />Fecha Nacimiento:<input id="fecha_input" required="" type="date" value="" />
+                    <form id="check_datos_titular_form_2">      
+                        Nombre: <input id="nombre_input_2" name="nombre_input" required="" type="text" value="" /><br />
+                        Dirección: <input id="dir_input_2" name="dir_input" required="" type="text" value="" /><br />
+                        Teléfono: <input id="tel_input_2" name="tel_input" required="" type="text" value="" /><br />
+                        E-mail: <input id="email_input_2" name="email_input" required="" type="email" value="" /><br />
+                        Fecha Nacimiento:<input id="fecha_input_2"  name="fecha_input" required="" type="date" value="" />                                                                
+                        </form>
                     </div>
                 <div class="col-sm-5">
                     <div id="response_cliente_2">
@@ -103,23 +121,26 @@
                     </div>
                 </div>
             </div>
-        <div id="importe">
-            <div class="row justify-content-center">
-                <div class="col-sm-3">
-                    <p>
-                        Saldo de Apertura
-                        </p>
-                    <input id="importe_input" required="" type="text" value="" />
+        <form id="check_importe_form">
+            <div id="importe">            
+                <div class="row justify-content-center">
+                    <div class="col-sm-3">
+                        <p>
+                            Saldo de Apertura
+                            </p>
+                        <input id="importe_input" name="importe_input" required="" type="text" value="" />
+                        <div id="response_importe"/>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <div id="crear_cuenta">
-            <div class="row justify-content-center">
-                <div class="col-sm-2">
-                    <br /><button class="btn btn-primary">Crear Nueva Cuenta</button>
+            <div id="crear_cuenta">
+                <div class="row justify-content-center">
+                    <div class="col-sm-2">
+                        <br /><button type="submit" class="btn btn-primary">Crear Nueva Cuenta</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         <script>
             var end_point_apertura_cuentas = "/AppBancaria/aperturaCuentas";
             <#include "/js/apertura_cuentas.js">

@@ -58,6 +58,16 @@ public class Constantes {
     //columna Cuenta
     public static final String CU_NUM_CUENTA = "cu_ncu";
 
+    //columna cliente
+    public static final String CLIENTE_DNI = "cl_dni";
+    public static final String CLIENTE_NOMBRE = "cl_nom";
+    public static final String CLIENTE_DIRECCION = "cl_dir";
+    public static final String CLIENTE_TELEFONO = "cl_tel";
+    public static final String CLIENTE_EMAIL = "cl_ema";
+    public static final String CLIENTE_F_NACIMIENTO = "cl_fna";
+    public static final String CLIENTE_F_CL_CREA = "cl_fcl";
+    public static final String CLIENTE_NUM_CUENTAS = "cl_ncu";
+    public static final String CLIENTE_SALDO = "cl_sal";
     //Columnas Users
     public static final String USERS = "USERS";
     public static final String ID = "ID";
@@ -72,11 +82,11 @@ public class Constantes {
     public static final String FECHA_INI = "fecha_ini";
     public static final String FECHA_FIN = "fecha_fin";
     public static final String N_CUENTA = "n_cuenta";
-    
-    
+
     //ajax
     public static final String CHECK_NUM_CUENTA = "check_num_cuenta";
     public static final String SEARCH_MOVIMIENTOS = "search_movs";
+    public static final String CHECK_DNI_TITULAR = "check_dni_titular";
 
     public static String resultadoQuery = "resultado";
     public static String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";

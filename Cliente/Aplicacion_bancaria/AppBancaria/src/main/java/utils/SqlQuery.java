@@ -47,7 +47,7 @@ public class SqlQuery {
     //FORCE-DELETE
     public static String DELETE_NOTA_ALUMNO = "DELETE FROM NOTAS WHERE ID_ALUMNO = ? ";
     public static String DELETE_NOTA_ASIGNATURA = "DELETE FROM NOTAS WHERE ID_ASIGNATURA = ? ";
-    
+
     //Users
     public static String SELECT_USER_BY_NAME_EMAIL = "SELECT * FROM USERS WHERE NOMBRE = ? AND EMAIL = ?";
     public static String SELECT_USER_BY_NAME_EMAIL_CODIGO_ACTIVACION = "SELECT * FROM USERS WHERE NOMBRE = ? AND EMAIL = ? AND CODIGO_ACTIVACION = ?";
@@ -56,10 +56,14 @@ public class SqlQuery {
     public static String SELECT_USER_BY_EMAIL = "SELECT * FROM USERS WHERE EMAIL = ?";
     public static String INSERT_USER = "INSERT INTO USERS (NOMBRE, PASSWORD, CODIGO_ACTIVACION, FECHA_ACTIVACION, EMAIL) VALUES(?,?,?,?,?)";
     public static String UPDATE_USER_ACTIVO_ON = "UPDATE USERS SET ACTIVO = 1 WHERE ID = ?";
-    
+
     //Movimientos
     public static String SELECT_MOVIMIENTOS_BY_CUENTA_AND_FECHAS = "SELECT *  FROM `movimientos` WHERE `mo_ncu` = ? AND `mo_fec` BETWEEN ? AND ?";
-    public static String SELECT_MOVIMIENTOS= "SELECT *  FROM `movimientos`";
+    public static String SELECT_MOVIMIENTOS = "SELECT *  FROM `movimientos`";
     //Cuentas
-    public static String SELECT_CUENTA_BY_ID= "SELECT cu_ncu,cu_dn1,cu_dn2,cu_sal  FROM `cuentas` WHERE `cu_ncu` = ?";
+    public static String SELECT_CUENTA_BY_ID = "SELECT cu_ncu,cu_dn1,cu_dn2,cu_sal  FROM `cuentas` WHERE `cu_ncu` = ?";
+
+    //Clientes
+    public static String SELECT_CLIENTE_BY_ID = "SELECT * FROM `clientes` WHERE cl_dni = ?";
+
 }

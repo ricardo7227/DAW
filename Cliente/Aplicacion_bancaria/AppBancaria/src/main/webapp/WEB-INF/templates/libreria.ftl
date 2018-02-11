@@ -8,4 +8,6 @@
 crossorigin="anonymous"></script>
 <script>            
             <#include "/js/Utilidades.js">
+            <#include "/js/Cliente.js">
+                
     </script>

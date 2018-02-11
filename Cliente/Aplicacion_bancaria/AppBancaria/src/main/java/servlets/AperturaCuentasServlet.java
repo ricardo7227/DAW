@@ -18,7 +18,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Cliente;
 import model.Cuenta;
+import servicios.ClientesServicios;
 import servicios.CuentasServicios;
 import utils.Constantes;
 import utils.Templates;
@@ -90,7 +92,10 @@ public class AperturaCuentasServlet extends HttpServlet {
         if (action != null && !action.isEmpty()) {
 
             CuentasServicios cuentasServicios = new CuentasServicios();
+            ClientesServicios clientesServicios = new ClientesServicios();
+
             Cuenta cuenta = cuentasServicios.tratarParametros(request.getParameterMap());
+            Cliente cliente = clientesServicios.tratarParametros(request.getParameterMap());
 
             ObjectMapper mapper = new ObjectMapper();
 
@@ -102,6 +107,15 @@ public class AperturaCuentasServlet extends HttpServlet {
                     }
 
                     mapper.writeValue(response.getOutputStream(), cuentaDB);
+
+                    break;
+                case Constantes.CHECK_DNI_TITULAR:
+                    Cliente clienteDB = null;
+                    if (clientesServicios.checkDni(cliente.getCl_dni())) {
+                        clienteDB = clientesServicios.getCliente(cliente);
+
+                    }
+                    mapper.writeValue(response.getOutputStream(), clienteDB);
 
                     break;
             }
