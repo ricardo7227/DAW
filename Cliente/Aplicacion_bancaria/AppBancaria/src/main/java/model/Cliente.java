@@ -5,6 +5,8 @@
  */
 package model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import java.sql.Date;
 
 /**
@@ -13,11 +15,23 @@ import java.sql.Date;
  */
 public class Cliente {
 
+    @SerializedName("dni")
+    @Expose
     private String cl_dni;
+    @SerializedName("nombre")
+    @Expose
     private String cl_nom;
+    @SerializedName("direccion")
+    @Expose
     private String cl_dir;
+    @SerializedName("telefono")
+    @Expose
     private long cl_tel;
+    @SerializedName("email")
+    @Expose
     private String cl_ema;
+    @SerializedName("fecha_nacimiento")
+    @Expose
     private Date cl_fna;
     private Date cl_fcl;
     private int cl_ncu;
@@ -109,7 +123,5 @@ public class Cliente {
     public void setCl_sal(float cl_sal) {
         this.cl_sal = cl_sal;
     }
-    
-    
 
 }

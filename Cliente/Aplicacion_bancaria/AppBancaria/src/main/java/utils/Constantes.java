@@ -82,11 +82,14 @@ public class Constantes {
     public static final String FECHA_INI = "fecha_ini";
     public static final String FECHA_FIN = "fecha_fin";
     public static final String N_CUENTA = "n_cuenta";
+    public static final String TITULARES = "titulares";
 
     //ajax
     public static final String CHECK_NUM_CUENTA = "check_num_cuenta";
     public static final String SEARCH_MOVIMIENTOS = "search_movs";
     public static final String CHECK_DNI_TITULAR = "check_dni_titular";
+    public static final String NEW_ACCOUNT = "new_account";
+    public static final String DATOS = "datos";
 
     public static String resultadoQuery = "resultado";
     public static String messageQueryAlumnoInserted = "El alumno fue insertado en la lista";

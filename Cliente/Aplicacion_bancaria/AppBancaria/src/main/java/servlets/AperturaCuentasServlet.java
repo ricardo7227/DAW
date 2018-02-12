@@ -6,6 +6,8 @@
 package servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import config.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -20,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Cliente;
 import model.Cuenta;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import servicios.ClientesServicios;
 import servicios.CuentasServicios;
 import utils.Constantes;
@@ -118,6 +122,29 @@ public class AperturaCuentasServlet extends HttpServlet {
                     mapper.writeValue(response.getOutputStream(), clienteDB);
 
                     break;
+                case Constantes.NEW_ACCOUNT:
+                    String json_new_account = request.getParameter(Constantes.DATOS);
+                    Gson gson = new GsonBuilder()
+                            .setDateFormat("yyyy-MM-dd").create();
+                    JSONObject json_obj_account = new JSONObject(json_new_account);
+
+                    String nCuenta = (String) json_obj_account.get(Constantes.N_CUENTA);
+                    if (cuentasServicios.comprobarNumCuenta(nCuenta)) {
+                        if (cuentasServicios.getCuenta(cuenta) == null) {
+                            JSONArray titulares = json_obj_account.getJSONArray(Constantes.TITULARES);
+                            for (Object titular : titulares) {
+                                if (titular instanceof JSONObject) {
+                                    JSONObject jsTitular = (JSONObject) titular;
+                                    Cliente cl = gson.fromJson(jsTitular.toString(),Cliente.class);//TODO - pendiente controlar JSON recibido
+                                }
+                            }
+                        }
+                    }
+
+                    json_obj_account.get(Constantes.CLIENTE_SALDO);
+
+                    break;
+
             }
         }
     }

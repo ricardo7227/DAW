@@ -118,38 +118,45 @@ $("#check_importe_form").submit(function (e) {
         var lista_titulares = new Array(cliente1);
         if (inDatos2) {
             if (checkForm("check_datos_titular_form_2")) {
-                var cliente2 = extractDatosForm("check_datos_titular_form_2");
+                var dni_in_2 = $("#dni_input_2").val();
+                var cliente2 = extractDatosForm(dni_in_2,"check_datos_titular_form_2");
                 lista_titulares.push(cliente2);
             } else {
                 //formulario 2 vacio
                 pendientes += " Datos personales 2º Titular ";
             }
         }
-
-
+        
+    }
+    if (pendientes != "") {
+        cambiarTextoResp("#response_importe_span_extra", "Tienes pendientes los siguientes apartados: " + pendientes, 1000 * 20 * 1);
+        cambiarStatusAlert("#response_importe_extra", "alert-danger");
+    }else{
+        //enviar json
         var json_peticion_new_cuenta = {//TODO - controlar vacios y envio de JSON
             "n_cuenta": n_cuenta,
             "titulares": lista_titulares,
             "cl_sal": saldo
         }
         console.log(JSON.stringify(json_peticion_new_cuenta));
-    }
-    if (pendientes != "") {
-        cambiarTextoResp("#response_importe_span_extra", "Tienes pendientes los siguientes apartados: " + pendientes, 1000 * 20 * 1);
-        cambiarStatusAlert("#response_importe_extra", "alert-danger");
+        sendNewAccount(json_peticion_new_cuenta);
     }
 
 });
 
-function sendNewAccount(parameters) {//TODO - confeccionar llamada
+function sendNewAccount(json_new_account) {//TODO - confeccionar llamada
     $.ajax({
-        type: 'post',
-        url: 'Your-URI',
-        data: JSON.stringify(SendInfo),
-        contentType: "application/json; charset=utf-8",
-        traditional: true,
-        success: function (data) {
+        type: 'POST',
+        url: end_point_apertura_cuentas,
+        data: {
+            ACTION: "new_account",
+            datos:JSON.stringify(json_new_account)
+        },        
+        success: function (result) {
 
+        },
+        error: function (result){
+            
         }
     });
 }
@@ -290,7 +297,7 @@ function compararDNI(formulario1, formulario2) {
         if (dni2.length == 9 && dni1 === dni2) {
             createDivSpan("#response_dni_2", "response_dni_2_extra", "response_dni_span_2_extra");
 
-            cambiarTextoResp("#response_dni_span_2_extra", "El segundo cliente debe tener un DNI disntinto al primero, tienes que cambiarlo", 1000 * 60 * 1);
+            cambiarTextoResp("#response_dni_span_2_extra", "El segundo cliente debe tener un DNI distinto al primero, tienes que cambiarlo", 1000 * 60 * 1);
             cambiarStatusAlert("#response_dni_2_extra", "alert-danger");
 
             setTimeout(function () {
