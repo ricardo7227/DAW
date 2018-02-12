@@ -13,17 +13,20 @@ p {visibility: visible;
    </style>
    <script type="text/JavaScript">
      function cambiarClase() {
-	if (document.getElementById("parrafo").className == "verde")
-	     document.getElementById("parrafo").className = "roja"
+       with(document.getElementById("parrafo")){
+	if (className == "verde")
+	     className = "roja"
 	 else
-	     document.getElementById("parrafo").className = "verde";
+	     className = "verde";
      }
+   }
      function cambiarVisibilidad() {
-	if (document.getElementById("parrafo").style.visibility != "hidden")
-	     document.getElementById("parrafo").style.visibility = "hidden"
+       with(document.getElementById("parrafo")){
+	if (style.visibility != "hidden")
+	     style.visibility = "hidden"
 	 else
-	     document.getElementById("parrafo").style.visibility = "visible";
-     }
+	     style.visibility = "visible";
+     }}
      function cambiarContenido() {
 	document.getElementById("parrafo").innerHTML = prompt("Contenido", "");
      }
