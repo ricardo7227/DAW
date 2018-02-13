@@ -8,6 +8,12 @@
     <packaging>war</packaging>
 
     <name>GoogleOAUTH</name>
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -15,6 +21,13 @@
     </properties>
     
     <dependencies>
+        <dependency>
+            <groupId>com.github.ricardo7227</groupId>
+            <artifactId>AsteriskUtils</artifactId>
+            <version>0.2</version>
+        </dependency>
+
+        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>

@@ -91,7 +91,7 @@ public class ConsumeApi extends HttpServlet {
             if (messageToUser != null) {
                 paramentrosPlantilla.put(Constantes.MESSAGE_TO_USER, messageToUser);
             }
-
+                               
             paramentrosPlantilla.put(Constantes.LISTA_LINEAS, lineasAutobus);
             paramentrosPlantilla.put(Constantes.PARADAS_LINEA, paradasLinea);
             paramentrosPlantilla.put(Constantes.AUTOBUSES_INCOMING, autobusesIncoming);
