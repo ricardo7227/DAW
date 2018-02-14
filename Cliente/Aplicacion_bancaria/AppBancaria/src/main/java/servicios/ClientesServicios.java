@@ -108,5 +108,8 @@ public class ClientesServicios {
         }
         return isValid;
     }
+//    public boolean isClientValid(Cliente cliente){
+//       
+//    }
 
 }//fin clase

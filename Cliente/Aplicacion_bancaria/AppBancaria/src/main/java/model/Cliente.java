@@ -8,6 +8,7 @@ package model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.sql.Date;
+import utilidades.validacion.InterfaceValidator.Required;
 
 /**
  *
@@ -16,23 +17,29 @@ import java.sql.Date;
 public class Cliente {
 
     @SerializedName("dni")
-    @Expose
+    @Expose   
+    @Required
     private String cl_dni;
     @SerializedName("nombre")
     @Expose
+    @Required
     private String cl_nom;
     @SerializedName("direccion")
     @Expose
+    @Required
     private String cl_dir;
     @SerializedName("telefono")
     @Expose
+    @Required
     private long cl_tel;
     @SerializedName("email")
     @Expose
+    @Required
     private String cl_ema;
     @SerializedName("fecha_nacimiento")
     @Expose
-    private Date cl_fna;
+    @Required
+    private Date cl_fna;    
     private Date cl_fcl;
     private int cl_ncu;
     private float cl_sal;

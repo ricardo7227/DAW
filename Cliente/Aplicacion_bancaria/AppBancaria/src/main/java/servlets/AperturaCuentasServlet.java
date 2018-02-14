@@ -12,7 +12,9 @@ import config.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -26,8 +28,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import servicios.ClientesServicios;
 import servicios.CuentasServicios;
+import servicios.ValidadorServicios;
 import utils.Constantes;
 import utils.Templates;
+
 
 /**
  *
@@ -132,16 +136,31 @@ public class AperturaCuentasServlet extends HttpServlet {
                     if (cuentasServicios.comprobarNumCuenta(nCuenta)) {
                         if (cuentasServicios.getCuenta(cuenta) == null) {
                             JSONArray titulares = json_obj_account.getJSONArray(Constantes.TITULARES);
+                            List<Cliente> clientes = new ArrayList<Cliente>();
+                            String dniTemp = null;
+                            boolean isDuplicate = false;
                             for (Object titular : titulares) {
                                 if (titular instanceof JSONObject) {
-                                    JSONObject jsTitular = (JSONObject) titular;
-                                    Cliente cl = gson.fromJson(jsTitular.toString(),Cliente.class);//TODO - pendiente controlar JSON recibido
+                                    
+                                        JSONObject jsTitular = (JSONObject) titular;
+                                        Cliente cl = gson.fromJson(jsTitular.toString(), Cliente.class);//TODO - pendiente controlar JSON recibido
+                                         boolean ok = new ValidadorServicios().validateModel(cl);
+                                        if (dniTemp != null && dniTemp.equals(cl.getCl_dni())) {
+                                            isDuplicate = true;
+                                        } else {
+                                            dniTemp = cl.getCl_dni();
+                                        }
+                                        if (!isDuplicate) {
+                                            clientes.add(cl);
+                                        }
+                                    
+
                                 }
                             }
                         }
                     }
 
-                    json_obj_account.get(Constantes.CLIENTE_SALDO);
+                    String saldo = (String) json_obj_account.get(Constantes.CLIENTE_SALDO);
 
                     break;
 

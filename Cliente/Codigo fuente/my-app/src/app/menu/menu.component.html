@@ -1,0 +1,10 @@
+<div>
+ <a routerLink="/inicio" routerLinkActive="active">Inicio</a>
+ <a routerLink="/pagina2">Página 2</a>
+ <a routerLink="/usuarios" *ngIf="loggedIn.isUserLoggedIn()">Usuarios</a>
+ <a routerLink="/login" *ngIf="!loggedIn.isUserLoggedIn()">Conectar</a>
+ <a routerLink="/logout" *ngIf="loggedIn.isUserLoggedIn()">Desconectar</a>
+</div>
+<router-outlet></router-outlet>
+<simple-notifications [options]="options"></simple-notifications>
+<ngx-loading-bar></ngx-loading-bar>

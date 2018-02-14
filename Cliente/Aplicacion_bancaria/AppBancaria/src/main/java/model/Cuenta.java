@@ -5,13 +5,15 @@
  */
 package model;
 
+import utilidades.validacion.InterfaceValidator.Required;
+
 /**
  *
  * @author daw
  */
 public class Cuenta {
-
-    private long cu_ncu;
+    @Required
+    private long cu_ncu;    
     private String cu_dn1;
     private String cu_dn2;
     private float cu_sal;

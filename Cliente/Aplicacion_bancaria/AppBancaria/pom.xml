@@ -13,6 +13,12 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
     
     <dependencies>
         
@@ -123,7 +129,12 @@
             <artifactId>json</artifactId>
             <version>20180130</version>
         </dependency>
-
+        
+        <dependency>
+            <groupId>com.github.ricardo7227</groupId>
+            <artifactId>AsteriskUtils</artifactId>
+            <version>Claudia-0.2.1</version>
+        </dependency>
         
     </dependencies>
 

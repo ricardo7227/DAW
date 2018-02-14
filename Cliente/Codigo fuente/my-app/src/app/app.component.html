@@ -1,0 +1,10 @@
+<div>
+   <div>         Mensaje inicial:     </div>
+   <div>         {{ title }}     </div>
+</div>
+<div>
+   <div>         Contador:     </div>
+   <div class="diferente">         {{ miNumero }}     </div>
+</div>
+<input type="button" value="Incrementar" (click)="setMiNumero()"/>
+<div *ngIf="miNumero > 3">Mi numero es mayor que 3 :DD</div>
