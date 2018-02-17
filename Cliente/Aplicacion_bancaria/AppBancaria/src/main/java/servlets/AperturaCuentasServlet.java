@@ -6,6 +6,7 @@
 package servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.api.client.http.HttpStatusCodes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import config.Configuration;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Cliente;
 import model.Cuenta;
+import model.GenericResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import servicios.ClientesServicios;
@@ -31,7 +33,6 @@ import servicios.CuentasServicios;
 import servicios.ValidadorServicios;
 import utils.Constantes;
 import utils.Templates;
-
 
 /**
  *
@@ -127,40 +128,43 @@ public class AperturaCuentasServlet extends HttpServlet {
 
                     break;
                 case Constantes.NEW_ACCOUNT:
+                    Cuenta newCuenta = null;
+                    GenericResponse respuesta = null;
                     String json_new_account = request.getParameter(Constantes.DATOS);
-                    Gson gson = new GsonBuilder()
-                            .setDateFormat("yyyy-MM-dd").create();
+
                     JSONObject json_obj_account = new JSONObject(json_new_account);
 
                     String nCuenta = (String) json_obj_account.get(Constantes.N_CUENTA);
                     if (cuentasServicios.comprobarNumCuenta(nCuenta)) {
-                        if (cuentasServicios.getCuenta(cuenta) == null) {
-                            JSONArray titulares = json_obj_account.getJSONArray(Constantes.TITULARES);
-                            List<Cliente> clientes = new ArrayList<Cliente>();
-                            String dniTemp = null;
-                            boolean isDuplicate = false;
-                            for (Object titular : titulares) {
-                                if (titular instanceof JSONObject) {
-                                    
-                                        JSONObject jsTitular = (JSONObject) titular;
-                                        Cliente cl = gson.fromJson(jsTitular.toString(), Cliente.class);//TODO - pendiente controlar JSON recibido
-                                         boolean ok = new ValidadorServicios().validateModel(cl);
-                                        if (dniTemp != null && dniTemp.equals(cl.getCl_dni())) {
-                                            isDuplicate = true;
-                                        } else {
-                                            dniTemp = cl.getCl_dni();
-                                        }
-                                        if (!isDuplicate) {
-                                            clientes.add(cl);
-                                        }
-                                    
 
-                                }
+                        if (cuentasServicios.getCuenta(new Cuenta(Long.valueOf(nCuenta))) == null) {
+                            JSONArray titulares = json_obj_account.getJSONArray(Constantes.TITULARES);
+                            String saldo = (String) json_obj_account.get(Constantes.CLIENTE_SALDO);
+                            List<Cliente> clientes = clientesServicios.checkAndGetClientes(titulares, saldo);
+
+                            if (clientes.size() > 0) {
+                                newCuenta = cuentasServicios.buildCuentaFromList(nCuenta, clientes);
+                                newCuenta = cuentasServicios.createNewAccount(newCuenta, clientes);
+
+                            } else {
+                                respuesta = new GenericResponse(HttpStatusCodes.STATUS_CODE_BAD_REQUEST, Constantes.MSJ_APERTURA_CUENTA_CAMPOS_FAIL);
+                                response.setStatus(HttpStatusCodes.STATUS_CODE_BAD_REQUEST);
                             }
+
+                        } else {
+                            respuesta = new GenericResponse(HttpStatusCodes.STATUS_CODE_BAD_REQUEST, Constantes.MSJ_APERTURA_CUENTA_N_ERRONEO);
+                            response.setStatus(HttpStatusCodes.STATUS_CODE_BAD_REQUEST);
                         }
                     }
 
-                    String saldo = (String) json_obj_account.get(Constantes.CLIENTE_SALDO);
+                    if (newCuenta == null && respuesta == null) {
+                        respuesta = new GenericResponse(HttpStatusCodes.STATUS_CODE_SERVER_ERROR, Constantes.MSJ_APERTURA_CUENTA_SERVIDOR_FAIL);
+                        response.setStatus(HttpStatusCodes.STATUS_CODE_SERVER_ERROR);
+
+                    } else if (newCuenta != null && respuesta == null) {
+                        respuesta = new GenericResponse(HttpStatusCodes.STATUS_CODE_OK, Constantes.MSJ_APERTURA_CUENTA_OK);
+                    }
+                    mapper.writeValue(response.getOutputStream(), respuesta);
 
                     break;
 

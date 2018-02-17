@@ -7,11 +7,17 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import model.Cliente;
 import model.Cuenta;
+import model.Movimiento;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionTemplate;
 import utils.Constantes;
 import utils.SqlQuery;
 
@@ -42,5 +48,42 @@ public class CuentasDAO {
 
         return cuentaDB;
     }
+/**
+ * 
+ * @param cuenta
+ * @return cuenta o null, cuenta de la base de datos
+ */
+    public Cuenta insertCuentaJDBCTemplate(final Cuenta cuenta) {
+        Cuenta cuentaDB = null;
+        final Movimiento movimiento = new Movimiento(cuenta.getCu_ncu(), Constantes.MSJ_APERTURA_CUENTA, (long) cuenta.getCu_sal());
+        TransactionTemplate template = new TransactionTemplate(new DataSourceTransactionManager(DBConnection.getInstance().getDataSource()));
 
-}
+        final JdbcTemplate jtm = new JdbcTemplate(
+                DBConnection.getInstance().getDataSource());
+
+        int resultTrans = template.execute(new TransactionCallback<Integer>() {
+            @Override
+            public Integer doInTransaction(TransactionStatus ts) {
+                int rowsAffectedCuenta = 0;
+                try {
+
+                    Object[] params = new Object[]{cuenta.getCu_ncu(), cuenta.getCu_dn1(), cuenta.getCu_dn2(), cuenta.getCu_sal()};
+                    Object[] paramsMovimiento = new Object[]{movimiento.getMo_ncu(), movimiento.getMo_des(), movimiento.getMo_imp()};
+
+                    rowsAffectedCuenta = jtm.update(SqlQuery.INSERT_CUENTA, params);
+                    jtm.update(SqlQuery.INSERT_MOVIMIENTOS, paramsMovimiento);
+
+                } catch (DataAccessException e) {
+                    ts.setRollbackOnly();
+                }
+                return rowsAffectedCuenta;
+
+            }
+        });
+        if (resultTrans > 0) {
+            cuentaDB = getNumCuentaJDBCTemplate(cuenta);
+        }
+        return cuentaDB;
+    }//fin
+
+}//fin clase

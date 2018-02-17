@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author daw
  */
 public class Movimiento {
+
     private long mo_ncu;
     private Date mo_fec;
     private String mo_hor;
@@ -22,6 +23,12 @@ public class Movimiento {
         this.mo_ncu = mo_ncu;
         this.mo_fec = mo_fec;
         this.mo_hor = mo_hor;
+        this.mo_des = mo_des;
+        this.mo_imp = mo_imp;
+    }
+
+    public Movimiento(long mo_ncu, String mo_des, long mo_imp) {
+        this.mo_ncu = mo_ncu;
         this.mo_des = mo_des;
         this.mo_imp = mo_imp;
     }
@@ -68,9 +75,5 @@ public class Movimiento {
     public void setMo_imp(long mo_imp) {
         this.mo_imp = mo_imp;
     }
-   
-    
-    
-    
-    
+
 }

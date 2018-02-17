@@ -15,7 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Movimiento;
 import model.MovimientosFechas;
-import model.User;
 import utils.Constantes;
 
 /**
@@ -69,4 +68,5 @@ public class MovimientosServicios {
         return movimientos;
 
     }
+    
 }

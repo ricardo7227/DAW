@@ -189,7 +189,7 @@ public class UsersDAO {
                 try {
                     Object[] params = new Object[]{as.getNombre(), as.getCurso(), as.getCiclo()};
                     jtm.update(SqlQuery.INSERT_ASIGNATURA, params);
-                } catch (Exception e) {
+                } catch (DataAccessException e) {
                     ts.setRollbackOnly();
                 }
                 return 0;

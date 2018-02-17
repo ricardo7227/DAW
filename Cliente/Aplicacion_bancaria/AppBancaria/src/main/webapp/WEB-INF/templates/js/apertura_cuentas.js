@@ -1,6 +1,8 @@
 var input_num_cuenta;
-//var input_dni_titular;
-
+var json_peticion_new_cuenta;
+var array_datos_ocultables = new Array("#datos_dni_1", "#datos_cliente_1", "#new_titular", "#datos_dni_2", "#datos_cliente_2", "#importe", "#crear_cuenta");
+var array_formularios = new Array("check_num_cuenta_form", "check_dni_titular_form", "check_datos_titular_form", "check_dni_titular_form_2", "check_datos_titular_form_2", "check_importe_form");
+var array_botones = new Array("#num_cuenta_sub", "#dni_titular_sub", "#dni_titular_sub_2");
 $(document).ready(function () {
     $("#datos_dni_1").hide();
     $("#datos_cliente_1").hide();
@@ -88,9 +90,7 @@ $("#check_importe_form").submit(function (e) {
     var importe = $("#importe_input").val();
     createDivSpan("#response_importe", "response_importe_extra", "response_importe_span_extra");
     if (importe === "" || isNaN(importe) || importe == 0) {
-
-        cambiarTextoResp("#response_importe_span_extra", "El importe tiene un formato incorrecto, tiene que ser mayor de cero y numérico", 1000 * 20 * 1);
-        cambiarStatusAlert("#response_importe_extra", "alert-warning");
+        pendientes = " Formato del saldo de apertura erróneo ";
     } else {
         var saldo = $("#importe_input").val();
 
@@ -119,30 +119,43 @@ $("#check_importe_form").submit(function (e) {
         if (inDatos2) {
             if (checkForm("check_datos_titular_form_2")) {
                 var dni_in_2 = $("#dni_input_2").val();
-                var cliente2 = extractDatosForm(dni_in_2,"check_datos_titular_form_2");
+                var cliente2 = extractDatosForm(dni_in_2, "check_datos_titular_form_2");
                 lista_titulares.push(cliente2);
             } else {
                 //formulario 2 vacio
                 pendientes += " Datos personales 2º Titular ";
             }
         }
-        
+
     }
     if (pendientes != "") {
         cambiarTextoResp("#response_importe_span_extra", "Tienes pendientes los siguientes apartados: " + pendientes, 1000 * 20 * 1);
         cambiarStatusAlert("#response_importe_extra", "alert-danger");
-    }else{
+    } else {
         //enviar json
-        var json_peticion_new_cuenta = {//TODO - controlar vacios y envio de JSON
+        json_peticion_new_cuenta = {//TODO - controlar vacios y envio de JSON
             "n_cuenta": n_cuenta,
             "titulares": lista_titulares,
             "cl_sal": saldo
         }
         console.log(JSON.stringify(json_peticion_new_cuenta));
-        sendNewAccount(json_peticion_new_cuenta);
+        $('#exampleModalLong').modal('show');
+        cambiarStatusAlert(".modal-body", "alert-info");
+        cambiarTextoResp("#modal_body_confirm", JSON.stringify(json_peticion_new_cuenta) + pendientes, 1000 * 60 * 60);
+
     }
 
 });
+//envío de datos para crear la nueva cuenta
+$("#confirm_create_new_account").click(function () {
+    sendNewAccount(json_peticion_new_cuenta);
+    $('#exampleModalLong').modal('hide');
+    //var array_datos_ocultables = new Array("#datos_dni_1", "#datos_cliente_1", "#new_titular", "#datos_dni_2", "#datos_cliente_2", "#importe", "#crear_cuenta");
+    var array_datos_ocultables = new Array("#datos_dni_1", "#datos_cliente_1", "#new_titular", "#datos_dni_2", "#datos_cliente_2");
+    showHideCampos(array_datos_ocultables, "ocultar");
+});
+
+
 
 function sendNewAccount(json_new_account) {//TODO - confeccionar llamada
     $.ajax({
@@ -150,13 +163,31 @@ function sendNewAccount(json_new_account) {//TODO - confeccionar llamada
         url: end_point_apertura_cuentas,
         data: {
             ACTION: "new_account",
-            datos:JSON.stringify(json_new_account)
-        },        
+            datos: JSON.stringify(json_new_account)
+        },
         success: function (result) {
+            if (result != "null") {
+                var resp = JSON.parse(result);
+                $('#response_modal_server').modal('show');
+                cambiarTextoResp("#response_modal_label_server", resp.code, 1000 * 60 * 60);
+                cambiarTextoResp("#response_modal_body_span_server", resp.description, 1000 * 60 * 60);
+                cambiarStatusAlert(".modal-body", "alert-success");
+                cleanAllForms(array_formularios);
+                disableAllForm(array_formularios, false);
+                rellenarBotones(array_botones);
+                callNumCuentaAjax(getValidRandomValue(), "recommend_number");
+            }
 
         },
-        error: function (result){
-            
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            var resp = JSON.parse(XMLHttpRequest.responseText);
+            $('#response_modal_server').modal('show');
+            cambiarTextoResp("#response_modal_label_server", resp.code, 1000 * 60 * 60);
+            cambiarTextoResp("#response_modal_body_span_server", resp.description, 1000 * 60 * 60);
+            cambiarStatusAlert(".modal-body", "alert-danger");
+            showHideCampos(array_datos_ocultables, "mostrar");
+            console.log(XMLHttpRequest, textStatus, errorThrown);
+
         }
     });
 }
@@ -343,4 +374,10 @@ function introducirDatosDNI(objetivo, cuerpo_input_datos, submit_dni_input, resp
         $("#" + submit_dni_input).click();
 
     });//fin dni input
+}
+
+function rellenarBotones(botones) {
+    for (var item in botones) {
+        $(botones[item]).val("boton");
+    }
 }

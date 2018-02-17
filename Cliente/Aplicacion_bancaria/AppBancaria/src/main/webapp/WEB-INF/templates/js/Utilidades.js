@@ -22,7 +22,7 @@ function isNumDniComplete(inp) {
     return inp.length == 9;
 }
 
-function cambiarTextoResp(objetivo, texto,tiempo) {
+function cambiarTextoResp(objetivo, texto, tiempo) {
     $(objetivo).text(texto);
     $(objetivo).show("slow");
     setTimeout(function () {
@@ -40,9 +40,9 @@ function cambiarStatusAlert(objetivo, clase) {
     });
     $(objetivo).addClass(clase);
 }
-function checkDni(dni_input){	
-	var rgx = new RegExp(/^[0-9]{8}[A-Z]{1}/i);
-	return rgx.test(dni_input);
+function checkDni(dni_input) {
+    var rgx = new RegExp(/^[0-9]{8}[A-Z]{1}/i);
+    return rgx.test(dni_input);
 }
 
 function disableForm(formulario, isDisable) {
@@ -50,12 +50,50 @@ function disableForm(formulario, isDisable) {
         $(this).prop("disabled", isDisable);
     });
 }
+function disableAllForm(array_formularios, isDisable) {
+    for (var item in array_formularios) {
+        disableForm(array_formularios[item],isDisable);
+    }
+}
+function cleanForm(formulario) {
+    $("form#" + formulario + " :input").each(function () {
+        $(this).val("");
+    });
+}
+function cleanAllForms(array_formularios) {
+    for (var item in array_formularios) {
+        cleanForm(array_formularios[item]);
+    }
+}
+
+/**
+ * Comprueba si un formulario esta lleno
+ * @param {type} formulario
+ * @returns {Boolean}
+ */
 function checkForm(formulario) {
     var isfull = true;
     $("form#" + formulario + " :input").each(function () {
-        if ($(this).val() == ""){
+        if ($(this).val() == "") {
             isfull = false;
         }
     });
     return isfull;
+}
+/***
+ * Muestra u oculta un array de identificadores
+ * @param {type} array_campos
+ * @param {type} opcion - mostrar
+ * @returns {undefined}
+ */
+function showHideCampos(array_campos, opcion) {
+    if (opcion === "mostar") {
+        for (var objetivo in array_campos) {
+            $(array_campos[objetivo]).show("slow");
+        }
+    } else {
+        for (var objetivo in array_campos) {
+            $(array_campos[objetivo]).hide("slow");
+        }
+    }
 }

@@ -60,10 +60,18 @@ public class SqlQuery {
     //Movimientos
     public static String SELECT_MOVIMIENTOS_BY_CUENTA_AND_FECHAS = "SELECT *  FROM `movimientos` WHERE `mo_ncu` = ? AND `mo_fec` BETWEEN ? AND ?";
     public static String SELECT_MOVIMIENTOS = "SELECT *  FROM `movimientos`";
+    public static String INSERT_MOVIMIENTOS = "INSERT INTO `movimientos` (`mo_ncu`, `mo_fec`, `mo_hor`, `mo_des`, `mo_imp`)"
+            + " VALUES (?, CURRENT_DATE(), DATE_FORMAT(CURRENT_TIME(), \"%H%i%s\"), ?, ?);";
     //Cuentas
     public static String SELECT_CUENTA_BY_ID = "SELECT cu_ncu,cu_dn1,cu_dn2,cu_sal  FROM `cuentas` WHERE `cu_ncu` = ?";
+    public static String INSERT_CUENTA = "INSERT INTO `cuentas` (`cu_ncu`, `cu_dn1`, `cu_dn2`, `cu_sal`) VALUES (?, ?, ?, ?);";
 
     //Clientes
     public static String SELECT_CLIENTE_BY_ID = "SELECT * FROM `clientes` WHERE cl_dni = ?";
+    public static String DELETE_CLIENTE_BY_ID = "DELETE FROM `clientes` WHERE `clientes`.`cl_dni` = ?";
+    public static String UPDATE_CLIENTE_BY_ID_SALDO_N_CUENTAS = "UPDATE `clientes` SET `cl_fcl` = CURRENT_DATE(), `cl_ncu` = cl_ncu+1, `cl_sal` = cl_sal + ? WHERE `clientes`.`cl_dni` = ?";
+    public static String UPDATE_CLIENTE_BY_ID_SALDO_N_CUENTAS_MINUS = "UPDATE `clientes` SET `cl_fcl` = CURRENT_DATE(), `cl_ncu` = cl_ncu-1, `cl_sal` = cl_sal - ? WHERE `clientes`.`cl_dni` = ?";
+    public static String INSERT_CLIENTE = "INSERT INTO `clientes` (`cl_dni`, `cl_nom`, `cl_dir`, `cl_tel`, `cl_ema`, `cl_fna`, `cl_fcl`, `cl_ncu`, `cl_sal`) "
+            + "VALUES (?, ?, ?, ?, ?, ?, CURRENT_DATE(),'1',?);";
 
 }

@@ -6,14 +6,10 @@
 package servicios;
 
 import dao.CuentasDAO;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import model.Cliente;
 import model.Cuenta;
-import model.MovimientosFechas;
 import utils.Constantes;
 
 /**
@@ -33,6 +29,11 @@ public class CuentasServicios {
     public Cuenta getCuenta(Cuenta cuenta) {
         CuentasDAO dao = new CuentasDAO();
         return dao.getNumCuentaJDBCTemplate(cuenta);
+    }
+
+    public Cuenta insertCuenta(Cuenta cuenta) {
+        CuentasDAO dao = new CuentasDAO();
+        return dao.insertCuentaJDBCTemplate(cuenta);
     }
 
     public boolean comprobarNumCuenta(String numCuenta) {
@@ -72,6 +73,7 @@ public class CuentasServicios {
         }
         return cuentaValida;
     }
+
     public Cuenta tratarParametros(Map<String, String[]> parametros) {
         Cuenta cuenta = null;
         if (parametros != null && !parametros.isEmpty()) {
@@ -109,4 +111,87 @@ public class CuentasServicios {
 
     }
 
+    public Cuenta buildCuentaFromList(String nCuenta, List<Cliente> clientes) {
+
+        String dni1 = null;
+        String dni2 = null;
+        float saldo = 0;
+        for (Cliente cliente : clientes) {
+            if (dni1 == null) {
+                dni1 = cliente.getCl_dni();
+                saldo = cliente.getCl_sal();
+            } else {
+                dni2 = cliente.getCl_dni();                
+            }
+
+        }
+        return new Cuenta(Long.valueOf(nCuenta), dni1, dni2, saldo);
+    }
+
+    public Cuenta createNewAccount(Cuenta cuenta, List<Cliente> clientes) {
+        ClientesServicios clientesServicios = new ClientesServicios();
+        Cuenta cuentaDB = null;
+        boolean isCuentaFinish = false;
+
+        boolean isClientFinish = tratarClientes(clientes, clientesServicios, true);
+
+        if (isClientFinish) {
+            cuentaDB = insertCuenta(cuenta);
+            if (cuentaDB != null) {
+                isCuentaFinish = true;
+            }
+        }
+        if (!isCuentaFinish && !isClientFinish) {//fallo en agregando registro en cuentas y clientes
+            tratarClientes(clientes, clientesServicios, false);
+        }
+        return cuentaDB;
+    }
+
+    /**
+     * Actualiza en DB la lista de clientes o inserta sini existen.
+     *
+     * @param clientes
+     * @param clientesServicios
+     * @param aumentar - true - suma num cuentas y saldo a clientes existentes
+     * @return
+     */
+    public boolean tratarClientes(List<Cliente> clientes, ClientesServicios clientesServicios, boolean aumentar) {
+        boolean isClientFinish = false;
+        for (Cliente cliente : clientes) {
+            Cliente clienteDB = clientesServicios.getCliente(cliente);
+
+            if (clienteDB != null) {
+
+                if (!aumentar) {//quitar datos de cliente
+
+                    if (clienteDB.getCl_ncu() > 1) {//más de una cuenta -> quitamos quitamos cuenta y saldo
+
+                        if (clientesServicios.updateSaldoAndNcuentas(cliente, aumentar) != null) {
+                            isClientFinish = true;
+                        }
+
+                    } else {//borramos cuenta
+
+                        if (clientesServicios.deleteCliente(cliente) > 0) {
+                            isClientFinish = true;
+                        }
+                    }
+
+                } else {
+                    clienteDB = clientesServicios.updateSaldoAndNcuentas(cliente, aumentar);
+                }
+
+                if (clienteDB != null) {//cliente actualizado en DB
+                    isClientFinish = true;
+                }
+
+            } else {//no existe en BD
+                clienteDB = clientesServicios.insertCliente(cliente);
+                if (clienteDB != null) {//cliente actualizado en DB
+                    isClientFinish = true;
+                }
+            }
+        }
+        return isClientFinish;
+    }
 }//fin clase
