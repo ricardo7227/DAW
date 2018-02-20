@@ -46,7 +46,7 @@ var output = document.getElementById("output");
 
 
 function conectar() {
-    websocket = new WebSocket(wsUri+"/"+user.value, []);
+    websocket = new WebSocket(wsUri, []);
 
     websocket.onopen = function (evt) {
         onOpen(evt);
