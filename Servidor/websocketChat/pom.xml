@@ -41,7 +41,7 @@
         <dependency>
             <groupId>com.github.ricardo7227</groupId>
             <artifactId>AsteriskUtils</artifactId>
-            <version>Claudia-0.2.1</version>
+            <version>Claudia-0.2.4</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>

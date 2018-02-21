@@ -31,6 +31,12 @@ public class Message {
         this.guardar = guardar;
     }
 
+    public Message(int tipo, long user) {
+        this.tipo = tipo;
+        this.user = user;
+    }
+    
+
     public Message() {
     }
 

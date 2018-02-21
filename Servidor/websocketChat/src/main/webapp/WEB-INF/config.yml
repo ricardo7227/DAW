@@ -1,7 +1,7 @@
 ## YAML Template.
 ---
 driverDB: com.mysql.jdbc.Driver
-urlDB: jdbc:mysql://discutivo.com:3306/discu351_Banco?useSSL=false
+urlDB: jdbc:mysql://discutivo.com:3306/discu351_test?useSSL=false
 userDB: discu351_test
 passDB: nohay2sin3
 mailFrom: dawcrud@gmail.com

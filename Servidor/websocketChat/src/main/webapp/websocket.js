@@ -42,7 +42,9 @@ var wsUri = "ws://localhost:8080/websocketChat/chat";
 console.log("Connecting to " + wsUri);
 
 var websocket;
-var output = document.getElementById("output");
+
+var usuario;
+
 
 
 function conectar() {
@@ -63,13 +65,14 @@ function conectar() {
 }
 
 
-function sayHello() {
-    console.log("sayHello: " + myField.value);
+function hablar(mensaje) {
+    console.log("mensaje: " + mensaje);
     var object = new Object();
-    object.destino = destino.value;
-    object.mensaje = myField.value;
-    websocket.send(JSON.stringify(object));
-    writeToScreen("SENT (text): " + myField.value);
+//    object.destino = destino.value;
+//    object.mensaje = myField.value;
+//    //websocket.send(JSON.stringify(object));
+    websocket.send(mensaje);
+    //writeToScreen("SENT (text): " + myField.value);
 }
 
 function echoBinary() {
@@ -96,6 +99,10 @@ function onClose() {
 
 function onMessage(evt) {
     if (typeof evt.data == "string") {
+        var respuesta = JSON.parse(evt.data);
+        if (respuesta.tipo == MensajeTipo.CONFIG) {
+            usuario = respuesta.user;//TODO pasar todo a JSON
+        }
         writeToScreen("RECEIVED (text): " + evt.data);
     } else {
         writeToScreen("RECEIVED (binary): " + evt.data);
@@ -108,6 +115,8 @@ function onError(evt) {
 
 function writeToScreen(message) {
     var chat_flow = $("#textarea_chat");
-    chat_flow.val(chat_flow.val()  + "\n" + message);
-    
+    chat_flow.val(chat_flow.val() + "\n" + message);
+    chat_flow.animate({
+        scrollTop: chat_flow[0].scrollHeight - chat_flow.height()
+    }, 1000);
 }

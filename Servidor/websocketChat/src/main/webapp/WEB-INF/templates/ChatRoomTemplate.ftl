@@ -41,15 +41,15 @@
                                 <input type="checkbox" class="form-check-input"> <label for="exampleInputPassword1">Guardar Mensajes</label> </div>
                             <div class="form-group"> <label for="exampleInputEmail1">Canales Disponibles</label> <select class="form-control">
                                     <option>canal 1</option>
-                                    </select> <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Habla..."></textarea> <small id="emailHelp" class="form-text text-muted">Selecciona un canal y Habla</small>
-                                <button type="submit" class="btn btn-primary">Talk</button>
+                                    </select> <textarea class="form-control" id="textarea_talk" rows="3" placeholder="Habla..."></textarea> <small id="emailHelp" class="form-text text-muted">Selecciona un canal y Habla</small>
+                                <button type="button" id="talk" class="btn btn-primary">Talk</button>
                                 </div>
                             </form>
                         </div>
                     <div class="col-md-6">
                         <form class="">
                             <div class="form-group"> <label for="exampleInputEmail1">Chat</label>
-                                <br> <textarea class="form-control" id="textarea_chat" rows="10" placeholder="Se esta comentando..."></textarea> </div>
+                                <br> <textarea class="form-control" id="textarea_chat" rows="10" placeholder="Se esta comentando..." disabled></textarea> </div>
                             <div class="form-group"> <small id="emailHelp" class="form-text text-muted">Filtra los mensajes por fechas</small> <label for="exampleInputEmail1">Fecha Inicial</label>
                                 <input type="date" class="form-control" id="exampleInputEmail1" placeholder="">
                                 <div class="form-group"> <label for="exampleInputEmail1">Fecha Final</label>
@@ -127,8 +127,8 @@
              });
                }
             </script>
-        <script language="javascript" type="text/javascript" src="websocket.js">
-            </script>
+        <script language="javascript" type="text/javascript" src="websocket.js"></script>
+        <script type="text/javascript" src="js/OperacionesJS.js"></script>
         </body>
 
     </html>

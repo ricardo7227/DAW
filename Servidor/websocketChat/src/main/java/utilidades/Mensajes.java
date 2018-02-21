@@ -12,5 +12,6 @@ package utilidades;
 public class Mensajes {
     
     public static String BIENVENIDA_USER = "Bienvenido al chat %s, Qué quieres decirle al mundo?";
+    public static String NUEVO_USUARIO_EN_CHAT = " %s, Se ha unido al chat";
     
 }
