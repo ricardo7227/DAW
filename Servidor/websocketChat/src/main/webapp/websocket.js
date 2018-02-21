@@ -87,7 +87,7 @@ function echoBinary() {
 function onOpen() {
     console.log("onOpen");
     writeToScreen("CONNECTED");
-    websocket.send(idToken);
+    //websocket.send(idToken);
 }
 function onClose() {
 
@@ -107,8 +107,7 @@ function onError(evt) {
 }
 
 function writeToScreen(message) {
-    var pre = document.createElement("p");
-    pre.style.wordWrap = "break-word";
-    pre.innerHTML = message;
-    output.appendChild(pre);
+    var chat_flow = $("#textarea_chat");
+    chat_flow.val(chat_flow.val()  + "\n" + message);
+    
 }

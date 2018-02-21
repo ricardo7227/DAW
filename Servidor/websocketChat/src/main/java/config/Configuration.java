@@ -25,6 +25,7 @@ public class Configuration {
     private String smtpServer;
     private String smtpPort;
     private String mailPass;
+    private String googleClientId;
     private int timeToValidate;
 
     private freemarker.template.Configuration freeMarker;
@@ -47,7 +48,7 @@ public class Configuration {
 // version (here 2.3.25) do you want to apply the fixes that are not 100%
 // backward-compatible. See the Configuration JavaDoc for details.
             config.setFreeMarker(new freemarker.template.Configuration(freemarker.template.Configuration.VERSION_2_3_23));
-            
+
 // Specify the source where the template files come from. Here I set a
 // plain directory for it, but non-file-system sources are possible too:
             config.getFreeMarker().setServletContextForTemplateLoading(sc, "WEB-INF/templates");
@@ -61,7 +62,7 @@ public class Configuration {
             config.getFreeMarker().setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
 
 // Don't log exceptions inside FreeMarker that it will thrown at you anyway:
-            config.getFreeMarker().setLogTemplateExceptions(false);           
+            config.getFreeMarker().setLogTemplateExceptions(false);
         }
         return config;
     }
@@ -152,6 +153,14 @@ public class Configuration {
 
     public void setTimeToValidate(int timeToValidate) {
         this.timeToValidate = timeToValidate;
+    }
+
+    public String getGoogleClientId() {
+        return googleClientId;
+    }
+
+    public void setGoogleClientId(String googleClientId) {
+        this.googleClientId = googleClientId;
     }
 
 }//fin clase

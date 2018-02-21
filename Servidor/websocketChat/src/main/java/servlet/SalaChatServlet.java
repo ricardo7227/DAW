@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utilidades.Constantes;
 
 /**
  *
@@ -39,19 +40,18 @@ public class SalaChatServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+
             
-            request.getSession().setAttribute("nombre", "ricardo");
             HashMap paramentrosPlantilla = new HashMap();
             //paramentrosPlantilla.put(Constantes.LOGIN_ON, usuario);
 
-            Template plantilla = Configuration.getInstance().getFreeMarker().getTemplate(Templates.CHAT_ROOM);                                            
+            Template plantilla = Configuration.getInstance().getFreeMarker().getTemplate(Templates.CHAT_ROOM);
             plantilla.process(paramentrosPlantilla, response.getWriter());
         } catch (TemplateException ex) {
             Logger.getLogger(SalaChatServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-   
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -78,9 +78,9 @@ public class SalaChatServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
-        request.getSession().setAttribute("token", request.getParameter("token"));
-               
+        //define el token del usuario en session
+        request.getSession().setAttribute(Constantes.TOKEN, request.getParameter(Constantes.TOKEN));
+
     }
 
     /**

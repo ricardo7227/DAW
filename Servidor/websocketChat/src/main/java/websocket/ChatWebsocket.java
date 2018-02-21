@@ -5,13 +5,19 @@
  */
 package websocket;
 
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 import javax.websocket.EndpointConfig;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
+import utilidades.Constantes;
+import utilidades.IdTokenVerifierAndParser;
+import utilidades.Mensajes;
 
 /**
  *
@@ -28,6 +34,26 @@ public class ChatWebsocket {
         this.wsSession = session;
         this.httpSession = (HttpSession) config.getUserProperties()
                 .get(HttpSession.class.getName());
+        String idToken = (String) httpSession.getAttribute(Constantes.TOKEN);
+
+        if (idToken != null) {
+            try {
+                GoogleIdToken.Payload payLoad = IdTokenVerifierAndParser.getPayload(idToken);
+                String name = (String) payLoad.get(Constantes.NAME);
+                wsSession.getUserProperties().put(Constantes.NAME, name);
+                wsSession.getBasicRemote().sendText(String.format(Mensajes.BIENVENIDA_USER, name));
+
+            } catch (Exception ex) {
+                Logger.getLogger(ChatWebsocket.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            try {
+                wsSession.close();
+            } catch (IOException ex) {
+                Logger.getLogger(ChatWebsocket.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         // si es con query string
         //user = session.getRequestParameterMap().get("user").get(0);
 
@@ -40,7 +66,6 @@ public class ChatWebsocket {
 //            session.getUserProperties().put("login",
 //                    "NO");
 //        }
-
 //        try {
 //          if ! login ok 
 //            session.close();

@@ -8,5 +8,6 @@ mailFrom: dawcrud@gmail.com
 smtpServer: smtp.gmail.com
 smtpPort: 587
 mailPass: nohay2sin3
+googleClientId: 548370054429-f59e7h4lpkq9ba1q43oegpl88lv7roa2.apps.googleusercontent.com
 ##1hora
 timeToValidate: 1

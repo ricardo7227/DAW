@@ -13,4 +13,8 @@ public class Constantes {
     //ENCODE
     public static final String DEFAULT_ENCODING = "UTF-8";
     public static final String CONTENT_TYPE = "text/html; charset=UTF-8";
+    //google
+    public static final String TOKEN = "token";
+    public static final String NAME = "name";
+    
 }

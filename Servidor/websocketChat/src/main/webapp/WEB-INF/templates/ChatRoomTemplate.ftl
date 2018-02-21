@@ -49,7 +49,7 @@
                     <div class="col-md-6">
                         <form class="">
                             <div class="form-group"> <label for="exampleInputEmail1">Chat</label>
-                                <br> <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Se esta comentando..."></textarea> </div>
+                                <br> <textarea class="form-control" id="textarea_chat" rows="10" placeholder="Se esta comentando..."></textarea> </div>
                             <div class="form-group"> <small id="emailHelp" class="form-text text-muted">Filtra los mensajes por fechas</small> <label for="exampleInputEmail1">Fecha Inicial</label>
                                 <input type="date" class="form-control" id="exampleInputEmail1" placeholder="">
                                 <div class="form-group"> <label for="exampleInputEmail1">Fecha Final</label>
@@ -105,6 +105,8 @@
                //$('body').append(form);
                //form.submit();
                    llamada(idToken);
+                       
+                           
                }
                function llamada(token) {
                  $.ajax({
@@ -117,6 +119,7 @@
                     success: function (result) {
                         
                         console.log("Respuesta Server");
+                        conectar();
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {                        
                         console.log(XMLHttpRequest + textStatus + errorThrown);
