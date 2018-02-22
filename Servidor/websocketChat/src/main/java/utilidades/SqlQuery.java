@@ -10,7 +10,7 @@ package utilidades;
  * @author Gato
  */
 public class SqlQuery {
-    
+
     //USERS
     public static String SELECT_USER_BY_NAME_EMAIL = "SELECT * FROM USERS WHERE NOMBRE = ? AND EMAIL = ?";
     public static String SELECT_USER_BY_NAME_EMAIL_CODIGO_ACTIVACION = "SELECT * FROM USERS WHERE NOMBRE = ? AND EMAIL = ? AND CODIGO_ACTIVACION = ?";
@@ -19,5 +19,8 @@ public class SqlQuery {
     public static String SELECT_USER_BY_EMAIL = "SELECT * FROM USERS WHERE EMAIL = ?";
     public static String INSERT_USER = "INSERT INTO USERS (NOMBRE, PASSWORD, CODIGO_ACTIVACION, FECHA_ACTIVACION, EMAIL) VALUES(?,?,?,?,?)";
     public static String UPDATE_USER_ACTIVO_ON = "UPDATE USERS SET ACTIVO = 1 WHERE ID = ?";
-    
+
+    //CANALES    
+    public static String INSERT_CANAL = "INSERT INTO `canales` (`id`, `nombre`, `admin`, `clave`) VALUES (NULL, ?, ?, ?);";
+
 }

@@ -18,8 +18,7 @@ public class Constantes {
     public static final String TOKEN = "token";
     public static final String NAME = "name";
     public static final String GOOGLE = "google";
-    
-    
+
     //Servlets
     public static final String ACTION = "ACTION";
 
@@ -42,9 +41,11 @@ public class Constantes {
     public static final String NOMBRE_USER = "nombre_user";
 
     //CANALES
+    public static final String CANALES = "canales";
     public static final String ADMIN = "admin";
     public static final String CLAVE = "clave";
-
+    //CANALES-USERS
+    public static final String CANALES_USERS = "canales_users";
     //CANALES USERS
     public static final String USER = "user";
 

@@ -5,6 +5,8 @@
  */
 package model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import java.sql.Date;
 
 /**
@@ -14,30 +16,41 @@ import java.sql.Date;
 public class Message {
 
     private long id;
-    private int tipo;
-    private String contenido;
-    private long canal;
+    @SerializedName("contenido")
+    @Expose
+    private String mensaje;
+    @SerializedName("fecha")
+    @Expose
     private Date fecha;
-    private long user;
+    @SerializedName("destino")
+    @Expose
+    private long id_canal;
+    private String nombre_user;
+    @SerializedName("tipo")
+    @Expose
+    private int tipo;
+    @SerializedName("guardar")
+    @Expose
     private boolean guardar;
 
-    public Message(long id, int tipo, String contenido, long canal, Date fecha, long user, boolean guardar) {
+    public Message() {
+    }
+
+    public Message(long id, String mensaje, Date fecha, long id_canal, String nombre_user, int tipo, boolean guardar) {
         this.id = id;
-        this.tipo = tipo;
-        this.contenido = contenido;
-        this.canal = canal;
+        this.mensaje = mensaje;
         this.fecha = fecha;
-        this.user = user;
+        this.id_canal = id_canal;
+        this.nombre_user = nombre_user;
+        this.tipo = tipo;
         this.guardar = guardar;
     }
 
-    public Message(int tipo, long user) {
+    public Message(String mensaje, Date fecha, String nombre_user, int tipo) {
+        this.mensaje = mensaje;
+        this.fecha = fecha;
+        this.nombre_user = nombre_user;
         this.tipo = tipo;
-        this.user = user;
-    }
-    
-
-    public Message() {
     }
 
     public long getId() {
@@ -48,28 +61,12 @@ public class Message {
         this.id = id;
     }
 
-    public int getTipo() {
-        return tipo;
+    public String getMensaje() {
+        return mensaje;
     }
 
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getContenido() {
-        return contenido;
-    }
-
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
-    }
-
-    public long getCanal() {
-        return canal;
-    }
-
-    public void setCanal(long canal) {
-        this.canal = canal;
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 
     public Date getFecha() {
@@ -80,12 +77,28 @@ public class Message {
         this.fecha = fecha;
     }
 
-    public long getUser() {
-        return user;
+    public long getId_canal() {
+        return id_canal;
     }
 
-    public void setUser(long user) {
-        this.user = user;
+    public void setId_canal(long id_canal) {
+        this.id_canal = id_canal;
+    }
+
+    public String getNombre_user() {
+        return nombre_user;
+    }
+
+    public void setNombre_user(String nombre_user) {
+        this.nombre_user = nombre_user;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
     }
 
     public boolean isGuardar() {

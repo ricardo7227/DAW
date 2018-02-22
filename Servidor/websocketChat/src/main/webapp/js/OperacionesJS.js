@@ -4,12 +4,21 @@
  * and open the template in the editor.
  */
 $("#talk").click(crearMensaje);
+$("#create_channel").click(crearCanal);
 function crearMensaje() {
     var mensaje = $("#textarea_talk").val();
     var destino = "canal1";
-     
+
     var guardar = false;
     var msjObj = new Mensaje(MensajeTipo.TEXTO, mensaje, destino, new Date(), usuario, guardar);
+    hablar(JSON.stringify(msjObj));
+}
+function crearCanal() {
+    var mensaje = $("#new_channel_name").val();
+    var destino = "canal1";
+
+    var guardar = false;
+    var msjObj = new Mensaje(MensajeTipo.ADD_CANAL, mensaje, destino, new Date(), usuario, guardar);
     hablar(JSON.stringify(msjObj));
 }
 //ENUMS MENSAJE TIPO

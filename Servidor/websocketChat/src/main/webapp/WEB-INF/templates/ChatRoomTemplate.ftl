@@ -34,8 +34,8 @@
                                 <button type="submit" class="btn btn-primary">Subscripción</button>
                                 </div>
                             <div class="form-group"> <label for="exampleInputEmail1">Nuevo Canal</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="InfinityDiscution"> <small id="emailHelp" class="form-text text-muted">Crea tu propio canal para charlar</small>
-                                <button type="submit" class="btn btn-primary">Crear</button>
+                                <input type="text" class="form-control" id="new_channel_name" aria-describedby="emailHelp" placeholder="InfinityDiscution"> <small id="emailHelp" class="form-text text-muted">Crea tu propio canal para charlar</small>
+                                <button type="button" id="create_channel" class="btn btn-primary">Crear</button>
                                 </div>
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input"> <label for="exampleInputPassword1">Guardar Mensajes</label> </div>

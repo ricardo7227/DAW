@@ -102,8 +102,10 @@ function onMessage(evt) {
         var respuesta = JSON.parse(evt.data);
         if (respuesta.tipo == MensajeTipo.CONFIG) {
             usuario = respuesta.user;//TODO pasar todo a JSON
+
         }
-        writeToScreen("RECEIVED (text): " + evt.data);
+        writeToScreen(buildMessageFromServer(respuesta));
+        //writeToScreen("RECEIVED (text): " + evt.data);
     } else {
         writeToScreen("RECEIVED (binary): " + evt.data);
     }
@@ -119,4 +121,8 @@ function writeToScreen(message) {
     chat_flow.animate({
         scrollTop: chat_flow[0].scrollHeight - chat_flow.height()
     }, 1000);
+}
+
+function buildMessageFromServer(msjObj) {
+    return  msjObj.fecha + ": \n " + msjObj.nombre_user + ": " + msjObj.mensaje;
 }
