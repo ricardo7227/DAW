@@ -5,6 +5,9 @@
  */
 package model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  *
  * @author Gato
@@ -12,8 +15,12 @@ package model;
 public class Canal {
 
     private long id;
+    @SerializedName("canal")
+    @Expose
     private String nombre;
     private String admin;
+    @SerializedName("password")
+    @Expose
     private String clave;
 
     public Canal() {

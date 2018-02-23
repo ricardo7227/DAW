@@ -22,5 +22,6 @@ public class SqlQuery {
 
     //CANALES    
     public static String INSERT_CANAL = "INSERT INTO `canales` (`id`, `nombre`, `admin`, `clave`) VALUES (NULL, ?, ?, ?);";
+    public static String SELECT_CANALES_BY_NAME_USER = "SELECT canales.id,canales.nombre,canales.admin FROM canales_users,canales WHERE canales_users.id_canal = canales.id AND canales_users.user = ?";
 
 }

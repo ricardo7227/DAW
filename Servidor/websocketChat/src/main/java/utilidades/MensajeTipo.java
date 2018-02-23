@@ -9,6 +9,9 @@ package utilidades;
  *
  * @author Gato
  */
-public enum MensajeTipo {
-    TEXTO, ADD_CANAL, REQUEST_PERMISO, GIVE_PERMISO, GET_CANALES, GET_MENSAJES,CONFIG
+public class MensajeTipo {
+
+    public  enum Tipo {
+        TEXTO, ADD_CANAL, REQUEST_PERMISO, GIVE_PERMISO, GET_CANALES, GET_MENSAJES, CONFIG
+    }
 }

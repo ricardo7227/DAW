@@ -5,17 +5,27 @@
  */
 package dao;
 
+import com.fasterxml.jackson.databind.deser.impl.BeanPropertyMap;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import model.Canal;
 import model.CanalesUsers;
+import model.User;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 import utilidades.Constantes;
+import utilidades.SqlQuery;
 import websocket.ChatWebsocket;
 
 /**
@@ -73,6 +83,29 @@ public class CanalesDAO {
         }
 
         return canalesUser;
+    }
+
+    public List<Canal> getCanalesJDBCTemplate(String usuario) {
+
+        JdbcTemplate jtm = new JdbcTemplate(
+                DBConnection.getInstance().getDataSource());
+        List<Canal> canales = null;
+        Object[] params = new Object[]{usuario};
+
+        String resultadoQuery = jtm.query(SqlQuery.SELECT_CANALES_BY_NAME_USER, params, new ResultSetExtractor<String>() {
+            @Override
+            public String extractData(ResultSet rs) throws SQLException, DataAccessException {
+                return rs.next() ? rs.getString(Constantes.NOMBRE) : null;
+            }
+        });
+
+        if (resultadoQuery != null) {
+
+            canales = jtm.query(SqlQuery.SELECT_CANALES_BY_NAME_USER, params,
+                    new BeanPropertyRowMapper(Canal.class));
+        }
+
+        return canales;
     }
 
 }

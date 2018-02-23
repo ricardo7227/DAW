@@ -28,8 +28,8 @@
                 <div class="row">
                     <div class="col-md-6">
                         <form class="">
-                            <div class="form-group"> <label for="exampleInputCanales1">Canales</label> <select class="form-control">
-                                    <option>canal 1</option>
+                            <div class="form-group"> <label for="exampleInputCanales1">Canales</label> <select class="form-control" id="canales_disponibles">
+                                    <option > </option>
                                     </select>
                                 <button type="submit" class="btn btn-primary">Subscripción</button>
                                 </div>

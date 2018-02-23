@@ -100,9 +100,17 @@ function onClose() {
 function onMessage(evt) {
     if (typeof evt.data == "string") {
         var respuesta = JSON.parse(evt.data);
-        if (respuesta.tipo == MensajeTipo.CONFIG) {
-            usuario = respuesta.user;//TODO pasar todo a JSON
+        switch (respuesta.tipo) {
+            case MensajeTipo.CONFIG:
+                usuario = respuesta.user;//TODO pasar todo a JSON    
+                break;
+            case MensajeTipo.GET_CANALES:
+                setCanalesFromServer(respuesta);
+                break;
 
+            default:
+
+                break;
         }
         writeToScreen(buildMessageFromServer(respuesta));
         //writeToScreen("RECEIVED (text): " + evt.data);
@@ -124,5 +132,14 @@ function writeToScreen(message) {
 }
 
 function buildMessageFromServer(msjObj) {
-    return  msjObj.fecha + ": \n " + msjObj.nombre_user + ": " + msjObj.mensaje;
+    return  msjObj.fecha + ": \n " + msjObj.nombre_user + ": " + msjObj.contenido;
+}
+function setCanalesFromServer(canales) {
+    var lista_canales = JSON.parse(canales.contenido);
+
+    lista_canales.forEach(function (elem) {
+        var select = "<option>" + elem.canal + "</option>";
+        $("#canales_disponibles").append(select);
+        console.log(elem);
+    });
 }

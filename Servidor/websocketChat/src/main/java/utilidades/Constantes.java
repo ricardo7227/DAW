@@ -18,6 +18,10 @@ public class Constantes {
     public static final String TOKEN = "token";
     public static final String NAME = "name";
     public static final String GOOGLE = "google";
+    
+    //Format DATE
+    public static final String JS_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+    public static final String DATE_FORMAT_HHMMSS = "HH:mm:ss";
 
     //Servlets
     public static final String ACTION = "ACTION";
@@ -48,5 +52,7 @@ public class Constantes {
     public static final String CANALES_USERS = "canales_users";
     //CANALES USERS
     public static final String USER = "user";
+    
+    
 
 }

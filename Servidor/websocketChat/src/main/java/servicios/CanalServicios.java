@@ -6,6 +6,7 @@
 package servicios;
 
 import dao.CanalesDAO;
+import java.util.List;
 import model.Canal;
 import model.CanalesUsers;
 import websocket.ChatWebsocket;
@@ -27,6 +28,11 @@ public class CanalServicios {
     public CanalesUsers addUserToCanal(CanalesUsers canalesUsers) {
         CanalesDAO dao = new CanalesDAO();
         return dao.addUserToCanalJDBCTemplate(canalesUsers);
+    }
+
+    public List<Canal> getCanales(String user) {
+        CanalesDAO dao = new CanalesDAO();
+        return dao.getCanalesJDBCTemplate(user);
     }
 
 }//fin clase
