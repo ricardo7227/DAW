@@ -26,21 +26,27 @@
         <div class="py-5">
             <div class="container">
                 <div class="row">
+                    <div class="col-md-12" id="response_from_server">
+                        </div>
+                    </div>
+                <div class="row">
                     <div class="col-md-6">
                         <form class="">
                             <div class="form-group"> <label for="exampleInputCanales1">Canales</label> <select class="form-control" id="canales_disponibles">
-                                    <option > </option>
+                                    <option disabled selected value> -- Únete a un canal de chat -- </option>                                    
                                     </select>
-                                <button type="submit" class="btn btn-primary">Subscripción</button>
+                                <button type="button" class="btn btn-primary" id="subscribe_to_channel">Subscripción</button>
                                 </div>
                             <div class="form-group"> <label for="exampleInputEmail1">Nuevo Canal</label>
-                                <input type="text" class="form-control" id="new_channel_name" aria-describedby="emailHelp" placeholder="InfinityDiscution"> <small id="emailHelp" class="form-text text-muted">Crea tu propio canal para charlar</small>
+                                <input type="text" class="form-control" id="new_channel_name" aria-describedby="emailHelp" placeholder="InfinityDiscution">
+                                <input type="password" class="form-control" id="new_channel_pass" aria-describedby="emailHelp" placeholder="InfinityPassword">
+                                <small id="emailHelp" class="form-text text-muted">Crea tu propio canal para charlar</small>
                                 <button type="button" id="create_channel" class="btn btn-primary">Crear</button>
                                 </div>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input"> <label for="exampleInputPassword1">Guardar Mensajes</label> </div>
-                            <div class="form-group"> <label for="exampleInputEmail1">Canales Disponibles</label> <select class="form-control">
-                                    <option>canal 1</option>
+                                <input type="checkbox" class="form-check-input" id="save_message"> <label for="exampleInputPassword1">Guardar Mensajes</label> </div>
+                            <div class="form-group"> <label for="exampleInputEmail1">Canales Disponibles</label> <select class="form-control" id="mis_canales_disponibles">
+                                    <option disabled selected value> -- Tus canales disponibles -- </option>
                                     </select> <textarea class="form-control" id="textarea_talk" rows="3" placeholder="Habla..."></textarea> <small id="emailHelp" class="form-text text-muted">Selecciona un canal y Habla</small>
                                 <button type="button" id="talk" class="btn btn-primary">Talk</button>
                                 </div>

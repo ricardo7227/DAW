@@ -9,6 +9,7 @@ import dao.CanalesDAO;
 import java.util.List;
 import model.Canal;
 import model.CanalesUsers;
+import model.Message;
 import websocket.ChatWebsocket;
 
 /**
@@ -27,12 +28,30 @@ public class CanalServicios {
 
     public CanalesUsers addUserToCanal(CanalesUsers canalesUsers) {
         CanalesDAO dao = new CanalesDAO();
-        return dao.addUserToCanalJDBCTemplate(canalesUsers);
+        return dao.addUserToChannelJDBCTemplate(canalesUsers);
     }
 
-    public List<Canal> getCanales(String user) {
+    public List<Canal> getCanalesByUser(String user) {
         CanalesDAO dao = new CanalesDAO();
-        return dao.getCanalesJDBCTemplate(user);
+        return dao.getCanalesByUserJDBCTemplate(user);
     }
 
+    public List<Canal> getCanales() {
+        CanalesDAO dao = new CanalesDAO();
+        return dao.getCanalesJDBCTemplate();
+    }
+    public Canal getChannelOwner(Message message) {
+        CanalesDAO dao = new CanalesDAO();
+        return dao.getChannelOwnerByIDChannelJDBCTemplate(message);
+    }
+
+    public boolean isSubscribeToChannel(List<Canal> canales,Message message){
+        boolean isSubscribe = false;
+        for (Canal canal : canales) {
+            if (canal.getId() == message.getId_canal()) {
+                isSubscribe = true;
+            }
+        }
+        return isSubscribe;
+    }
 }//fin clase

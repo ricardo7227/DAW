@@ -11,7 +11,7 @@ package utilidades;
  */
 public class MensajeTipo {
 
-    public  enum Tipo {
-        TEXTO, ADD_CANAL, REQUEST_PERMISO, GIVE_PERMISO, GET_CANALES, GET_MENSAJES, CONFIG
+    public enum Tipo {
+        TEXTO, ADD_CANAL, REQUEST_PERMISO, GIVE_PERMISO, GET_CANALES, GET_MENSAJES, CONFIG, SERVER_INFO, DECLINE_ACCESS
     }
 }

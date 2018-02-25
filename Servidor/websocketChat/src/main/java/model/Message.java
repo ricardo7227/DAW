@@ -21,10 +21,12 @@ public class Message {
     private String mensaje;
     @SerializedName("fecha")
     @Expose
-    private Date fecha;
+    private Date fecha;    
     @SerializedName("destino")
     @Expose
     private long id_canal;
+    @SerializedName("user")
+    @Expose
     private String nombre_user;
     @SerializedName("tipo")
     @Expose
@@ -52,6 +54,19 @@ public class Message {
         this.nombre_user = nombre_user;
         this.tipo = tipo;
     }
+
+    public Message(String mensaje, String nombre_user, int tipo) {
+        this.mensaje = mensaje;
+        this.nombre_user = nombre_user;
+        this.tipo = tipo;
+        this.fecha = new java.sql.Date(new java.util.Date().getTime());
+    }
+
+    public Message( int tipo,String mensaje) {
+        this.mensaje = mensaje;
+        this.tipo = tipo;
+    }
+    
 
     public long getId() {
         return id;

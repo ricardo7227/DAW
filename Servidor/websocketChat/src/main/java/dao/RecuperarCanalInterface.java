@@ -11,6 +11,6 @@ import model.Canal;
  *
  * @author Gato
  */
-public interface RecuperarCanal {
-    void getCanal(Canal canal);
+public interface RecuperarCanalInterface {
+    void addNewChannelToChat(Canal canal);
 }

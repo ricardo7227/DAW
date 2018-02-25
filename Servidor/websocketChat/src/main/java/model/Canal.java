@@ -14,6 +14,8 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Canal {
 
+    @SerializedName("id")
+    @Expose
     private long id;
     @SerializedName("canal")
     @Expose
@@ -24,6 +26,19 @@ public class Canal {
     private String clave;
 
     public Canal() {
+    }
+
+    public Canal(String admin) {
+        this.admin = admin;
+    }
+
+    public Canal(long id) {
+        this.id = id;
+    }
+
+    public Canal(long id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
     }
 
     public Canal(long id, String nombre, String admin, String clave) {

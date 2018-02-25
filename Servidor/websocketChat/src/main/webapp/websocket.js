@@ -43,7 +43,13 @@ console.log("Connecting to " + wsUri);
 
 var websocket;
 
-var usuario;
+var usuario; //Tras el login, defino el nombre de usuario
+
+
+var lista_canalesDB; //Tras el login, cargo todos los canales disponibles
+
+var request_permiso_channel;//id del canal, que un usuario pide permiso
+var request_permiso_user;//nombre del usuario que pide permiso
 
 
 
@@ -67,12 +73,7 @@ function conectar() {
 
 function hablar(mensaje) {
     console.log("mensaje: " + mensaje);
-    var object = new Object();
-//    object.destino = destino.value;
-//    object.mensaje = myField.value;
-//    //websocket.send(JSON.stringify(object));
     websocket.send(mensaje);
-    //writeToScreen("SENT (text): " + myField.value);
 }
 
 function echoBinary() {
@@ -103,16 +104,50 @@ function onMessage(evt) {
         switch (respuesta.tipo) {
             case MensajeTipo.CONFIG:
                 usuario = respuesta.user;//TODO pasar todo a JSON    
+                writeToScreen(buildMessageFromServer(respuesta));
                 break;
             case MensajeTipo.GET_CANALES:
-                setCanalesFromServer(respuesta);
+                if (typeof respuesta.user == "undefined") {
+                    setCanalesFromServer("#canales_disponibles", respuesta);
+                } else {
+                    setCanalesFromServer("#mis_canales_disponibles", respuesta);
+                }
+                break;
+            case MensajeTipo.ADD_CANAL:
+
+                if (usuario == respuesta.user) {
+                    setCanalesFromServer("#mis_canales_disponibles", respuesta);
+                    setCanalesFromServer("#canales_disponibles", respuesta);
+                } else {
+                    setCanalesFromServer("#canales_disponibles", respuesta);
+
+                }
+
+                break;
+            case MensajeTipo.SERVER_INFO:
+                crearMensajeResponseServer("success", respuesta, 5000);
+                break;
+            case MensajeTipo.TEXTO:
+                writeToScreen(buildMessageFromServerToChannel(respuesta, getNameChannel(lista_canalesDB, respuesta)));
+                break;
+            case MensajeTipo.REQUEST_PERMISO:
+                respuesta.contenido = buildRequestBox(respuesta);
+                createModalResponse(respuesta);
+                $('#request_permiso_modal').modal('show');
+                break;
+            case MensajeTipo.GIVE_PERMISO:
+
+                crearMensajeResponseServer("success", respuesta, 5000);
+                break;
+            case MensajeTipo.DECLINE_ACCESS:
+                crearMensajeResponseServer("dark", respuesta, 5000);
                 break;
 
             default:
 
                 break;
         }
-        writeToScreen(buildMessageFromServer(respuesta));
+
         //writeToScreen("RECEIVED (text): " + evt.data);
     } else {
         writeToScreen("RECEIVED (binary): " + evt.data);
@@ -132,14 +167,38 @@ function writeToScreen(message) {
 }
 
 function buildMessageFromServer(msjObj) {
-    return  msjObj.fecha + ": \n " + msjObj.nombre_user + ": " + msjObj.contenido;
+    return  msjObj.fecha + ":\n " + msjObj.user + ": " + msjObj.contenido;
 }
-function setCanalesFromServer(canales) {
-    var lista_canales = JSON.parse(canales.contenido);
+function buildMessageFromServerToChannel(msjObj, canal) {
+    return  msjObj.fecha + "::" + canal + " \n " + msjObj.user + ": " + msjObj.contenido;
+}
 
-    lista_canales.forEach(function (elem) {
-        var select = "<option>" + elem.canal + "</option>";
-        $("#canales_disponibles").append(select);
-        console.log(elem);
-    });
+function setCanalesFromServer(objetivo, canales) {
+    if (typeof lista_canalesDB == "undefined") {
+        lista_canalesDB = JSON.parse(canales.contenido);
+    }
+
+    var lista_canales = JSON.parse(canales.contenido);
+    if (Array.isArray(lista_canales)) {
+        lista_canales.forEach(function (elem) {
+            addSelect(objetivo, elem);
+        });
+    } else {
+        addSelect(objetivo, lista_canales);
+    }
 }
+function addSelect(objetivo, elem) {
+    var r;
+    if (typeof elem.canal == "undefined") {
+        var ms = new Object();
+        ms.destino = elem.id;
+        ms.id = elem.id;
+        ms.canal = getNameChannel(lista_canalesDB, ms);
+        r = addSelect(objetivo, ms);
+    } else {
+        var select = "<option value='" + elem.id + "'>" + elem.canal + "</option>";
+        $(objetivo).append(select);
+    }
+    return r;
+}
+
