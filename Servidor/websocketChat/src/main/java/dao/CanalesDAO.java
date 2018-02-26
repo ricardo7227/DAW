@@ -130,5 +130,15 @@ public class CanalesDAO {
         
         return canales;
     }
+    public List<Canal> getNotMyChannelsJDBCTemplate(String username) {
+        
+        JdbcTemplate jtm = new JdbcTemplate(
+                DBConnection.getInstance().getDataSource());
+        Object[] params = new Object[]{username};
+        List<Canal> canales = jtm.query(SqlQuery.SELECT_ALL_NOT_MY_CHANNELS, params,
+                new BeanPropertyRowMapper(Canal.class));
+        
+        return canales;
+    }
     
 }//fin clase

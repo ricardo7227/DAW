@@ -39,14 +39,14 @@ public class MensajesDAO {
         return message;
     }
 
-    public List<Message> getMessagesByIDChannelAndDatesJDBCTemplate(RangoMensajes rango) {
+    public List<Message> getMessagesByDatesJDBCTemplate(RangoMensajes rango) {
 
         JdbcTemplate jtm = new JdbcTemplate(
                 DBConnection.getInstance().getDataSource());
         List<Message> channels = null;
-        Object[] params = new Object[]{rango.getFecha1(), rango.getFecha2(), rango.getId_canal()};
+        Object[] params = new Object[]{rango.getFecha1(), rango.getFecha2()};
 
-        channels = jtm.query(SqlQuery.SELECT_MENSAJES_BY_ID_CHANNEL_AND_DATE, params,
+        channels = jtm.query(SqlQuery.SELECT_MENSAJES_BY_DATES, params,
                 new BeanPropertyRowMapper(Message.class));
 
         return channels;

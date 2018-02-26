@@ -24,9 +24,9 @@ public class MensajesServicios {
         return dao.insertMessageJDBCTemplate(message);
     }
 
-    public List<Message> getMessagesByIdChannelAndDates(RangoMensajes rango) {
+    public List<Message> getMessagesByDates(RangoMensajes rango) {
         MensajesDAO dao = new MensajesDAO();
-        return dao.getMessagesByIDChannelAndDatesJDBCTemplate(rango);
+        return dao.getMessagesByDatesJDBCTemplate(rango);
     }
 
 }//fin clase

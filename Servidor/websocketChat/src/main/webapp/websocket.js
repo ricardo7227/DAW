@@ -103,12 +103,19 @@ function onMessage(evt) {
         var respuesta = JSON.parse(evt.data);
         switch (respuesta.tipo) {
             case MensajeTipo.CONFIG:
-                usuario = respuesta.user;//TODO pasar todo a JSON    
-                writeToScreen(buildMessageFromServer(respuesta));
+
+                if (typeof respuesta.user == "undefined") {
+                    setAllCanalesFromServer(respuesta);
+                } else {
+                    writeToScreen(buildMessageFromServer(respuesta));
+                    usuario = respuesta.user;
+                }
                 break;
             case MensajeTipo.GET_CANALES:
                 if (typeof respuesta.user == "undefined") {
                     setCanalesFromServer("#canales_disponibles", respuesta);
+
+
                 } else {
                     setCanalesFromServer("#mis_canales_disponibles", respuesta);
                 }
@@ -117,11 +124,14 @@ function onMessage(evt) {
 
                 if (usuario == respuesta.user) {
                     setCanalesFromServer("#mis_canales_disponibles", respuesta);
-                    setCanalesFromServer("#canales_disponibles", respuesta);
+                    
+                    //setCanalesFromServer("#canales_disponibles", respuesta);
+
                 } else {
                     setCanalesFromServer("#canales_disponibles", respuesta);
 
                 }
+                lista_canalesDB.push(JSON.parse(respuesta.contenido));
 
                 break;
             case MensajeTipo.SERVER_INFO:
@@ -173,10 +183,13 @@ function buildMessageFromServerToChannel(msjObj, canal) {
     return  msjObj.fecha + "::" + canal + " \n " + msjObj.user + ": " + msjObj.contenido;
 }
 
-function setCanalesFromServer(objetivo, canales) {
+function setAllCanalesFromServer(canales) {
     if (typeof lista_canalesDB == "undefined") {
         lista_canalesDB = JSON.parse(canales.contenido);
     }
+}
+function setCanalesFromServer(objetivo, canales) {
+
 
     var lista_canales = JSON.parse(canales.contenido);
     if (Array.isArray(lista_canales)) {

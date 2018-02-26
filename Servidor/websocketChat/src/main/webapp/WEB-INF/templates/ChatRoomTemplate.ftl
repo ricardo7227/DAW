@@ -57,9 +57,9 @@
                             <div class="form-group"> <label for="exampleInputEmail1">Chat</label>
                                 <br> <textarea class="form-control" id="textarea_chat" rows="10" placeholder="Se esta comentando..." disabled></textarea> </div>
                             <div class="form-group"> <small id="emailHelp" class="form-text text-muted">Filtra los mensajes por fechas</small> <label for="exampleInputEmail1">Fecha Inicial</label>
-                                <input type="date" class="form-control" id="exampleInputEmail1" placeholder="">
+                                <input type="date" class="form-control" id="fecha1" placeholder="">
                                 <div class="form-group"> <label for="exampleInputEmail1">Fecha Final</label>
-                                    <input type="date" class="form-control" id="exampleInputEmail1" placeholder=""> </div>
+                                    <input type="date" class="form-control" id="fecha2" placeholder=""> </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Cargar Mensajes</button>
                                     </div>

@@ -31,6 +31,7 @@ import utilidades.Mensajes;
 import dao.RecuperarCanalInterface;
 import javax.websocket.EncodeException;
 import model.CanalesUsers;
+import model.RangoMensajes;
 import servicios.MensajesServicios;
 
 /**
@@ -70,8 +71,10 @@ public class ChatWebsocket implements RecuperarCanalInterface {
                 Message mensajeBienvenida = null;
                 Message mensajeGetCanalesUser = null;
                 Message mensajeGetCanales = null;
+                Message mensajeGetAllCanales = null;
                 List<Canal> canalesCliente = null;
                 List<Canal> canales = null;
+                List<Canal> allCanales = null;
                 if (user != null) {
                     wsSession.getUserProperties().put(Constantes.ID, user.getId());
                     wsSession.getUserProperties().put(Constantes.NAME, user.getNombre());
@@ -81,16 +84,19 @@ public class ChatWebsocket implements RecuperarCanalInterface {
                     
                     canalesCliente = canalServicios.getCanalesByUser(username);
                     wsSession.getUserProperties().put(Constantes.CANALES_USERS, canalesCliente);
-                    canales = canalServicios.getCanales();
+                    canales = canalServicios.getNotMyChannels(username);
+                    allCanales = canalServicios.getCanales();
                     java.sql.Date fecha = new java.sql.Date(new Date().getTime());
                     mensajeGetCanalesUser = new Message(gson.toJson(canalesCliente), fecha, username, Tipo.GET_CANALES.ordinal());
-                    mensajeGetCanales = new Message(gson.toJson(canales), fecha, null, Tipo.GET_CANALES.ordinal());//TODO - corregir solo se envía los canales no aubs
+                    mensajeGetCanales = new Message(gson.toJson(canales), fecha, null, Tipo.GET_CANALES.ordinal());
+                    mensajeGetAllCanales = new Message(gson.toJson(allCanales), null, null, Tipo.CONFIG.ordinal());
                     mensajeBienvenida = new Message(String.format(Mensajes.BIENVENIDA_USER, username), fecha, username, Tipo.CONFIG.ordinal());
                     
                 }
                 
                 wsSession.getBasicRemote().sendText(gson.toJson(mensajeBienvenida));
                 wsSession.getBasicRemote().sendText(gson.toJson(mensajeGetCanales));
+                wsSession.getBasicRemote().sendText(gson.toJson(mensajeGetAllCanales));
                 wsSession.getBasicRemote().sendText(gson.toJson(mensajeGetCanalesUser));
                 
             } catch (Exception ex) {
@@ -138,12 +144,13 @@ public class ChatWebsocket implements RecuperarCanalInterface {
                 canal.setAdmin(username);
                 if (new CanalServicios().insertCanal(canal, this) != null) {
                     int tipo = Tipo.SERVER_INFO.ordinal();
+                    setNewChannelToSession(mensaje);
                     sendMessageToAllUser(new Message(tipo, String.format(Mensajes.NUEVO_CANAL_EN_CHAT, canal.getNombre())));
                 }
                 break;
             case TEXTO:
                 sendMessageToMySubscriptionChannel(mensaje);
-                if (mensaje.isGuardar()) {//TODO - todos los pueden guardar?
+                if (mensaje.isGuardar()) {
                     new MensajesServicios().saveMessageToDatabase(mensaje);
                 }
                 
@@ -162,9 +169,13 @@ public class ChatWebsocket implements RecuperarCanalInterface {
                 break;
             case GET_CANALES:
                 //Cualquiera puede cargar mensajes
-                //TODO - El rango de selección es por fechas y canal?
+                //TODO - El rango de selección es por fechas 
                 break;
             case GET_MENSAJES:
+                String rango = mensaje.getMensaje();
+                RangoMensajes rangoMensajes = gson.fromJson(rango, RangoMensajes.class);
+                rangoMensajes.setUser(mensaje.getNombre_user());
+                List<Message> mensajes = new MensajesServicios().getMessagesByDates(rangoMensajes);
                 
                 break;
             case CONFIG:

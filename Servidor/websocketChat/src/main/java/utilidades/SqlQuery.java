@@ -24,9 +24,10 @@ public class SqlQuery {
     public static String INSERT_CANAL = "INSERT INTO `canales` (`id`, `nombre`, `admin`, `clave`) VALUES (NULL, ?, ?, ?);";
     public static String SELECT_CANALES_BY_NAME_USER = "SELECT canales.id,canales.nombre,canales.admin FROM canales_users,canales WHERE canales_users.id_canal = canales.id AND canales_users.user = ?";
     public static String SELECT_ALL_CANALES = "SELECT canales.id,canales.nombre,canales.admin FROM canales_users,canales WHERE canales_users.id_canal = canales.id GROUP BY canales.id";
+    public static String SELECT_ALL_NOT_MY_CHANNELS = "SELECT canales.id,canales.nombre,canales.admin FROM `canales` WHERE  id NOT IN (SELECT id_canal FROM canales_users WHERE canales_users.user = ?)";
     public static String SELECT_CHANNEL_OWNER = "SELECT canales.id,canales.nombre,canales.admin FROM canales_users,canales WHERE canales_users.id_canal = canales.id AND canales.id = ?";
 
     //MENSAJES
     //SELECT * FROM `mensajes` WHERE id_canal = 9
-    public static String SELECT_MENSAJES_BY_ID_CHANNEL_AND_DATE = "SELECT * FROM `mensajes` WHERE fecha > ? AND fecha < ? AND id_canal = ?";
+    public static String SELECT_MENSAJES_BY_DATES = "SELECT * FROM `mensajes` WHERE fecha > ? AND fecha < ?  AND id_canal IN (SELECT id_canal FROM canales_users WHERE canales_users.user = ?)";
 }

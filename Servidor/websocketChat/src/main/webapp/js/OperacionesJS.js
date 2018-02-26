@@ -13,7 +13,7 @@ function crearMensaje() {
     var mensaje = $("#textarea_talk").val();
     var destino = $("#mis_canales_disponibles").val();
 
-    var guardar = ($("#save_message").val() == "on") ? true : false;
+    var guardar = $("#save_message").prop('checked');
     var msjObj = new Mensaje(MensajeTipo.TEXTO, mensaje, destino, new Date(), usuario, guardar);
     hablar(JSON.stringify(msjObj));
 }
@@ -31,6 +31,15 @@ function subscribeToChannel() {
     var mensaje = null;
     var guardar = false;
     var msjObj = new Mensaje(MensajeTipo.REQUEST_PERMISO, mensaje, destino, new Date(), usuario, guardar);
+    hablar(JSON.stringify(msjObj));
+}
+function getMessagesByDates() {
+    var destino = $("#canales_disponibles").val();
+    var fecha_1 = $("#fecha1").val();
+    var fecha_2 = $("#fecha2").val();
+    var rango = {fecha1: fecha_1, fecha2: fecha_2};
+    var guardar = false;
+    var msjObj = new Mensaje(MensajeTipo.GET_MENSAJES, JSON.stringify(rango), destino, new Date(), usuario, guardar);
     hablar(JSON.stringify(msjObj));
 }
 function giveAccessToChannel() {
@@ -75,7 +84,7 @@ function crearMensajeResponseServer(alert_type, mensaje, tiempo) {
 function createModalResponse(mensaje) {
     var response = mensaje.contenido;
     $("#response_from_server").html(response);
-    //$(response).appendTo("#response_from_server").show("slow");
+    
 
 }
 

@@ -5,6 +5,8 @@
  */
 package model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import java.sql.Date;
 
 /**
@@ -13,25 +15,29 @@ import java.sql.Date;
  */
 public class RangoMensajes {
 
-    private long id_canal;
+    private String user;
+    @SerializedName("fecha1")
+    @Expose
     private Date fecha1;
+    @SerializedName("fecha2")
+    @Expose
     private Date fecha2;
-
-    public RangoMensajes(long id_canal, Date fecha1, Date fecha2) {
-        this.id_canal = id_canal;
-        this.fecha1 = fecha1;
-        this.fecha2 = fecha2;
-    }
 
     public RangoMensajes() {
     }
 
-    public long getId_canal() {
-        return id_canal;
+    public RangoMensajes(String user, Date fecha1, Date fecha2) {
+        this.user = user;
+        this.fecha1 = fecha1;
+        this.fecha2 = fecha2;
     }
 
-    public void setId_canal(long id_canal) {
-        this.id_canal = id_canal;
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public Date getFecha1() {

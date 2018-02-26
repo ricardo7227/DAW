@@ -40,6 +40,10 @@ public class CanalServicios {
         CanalesDAO dao = new CanalesDAO();
         return dao.getCanalesJDBCTemplate();
     }
+    public List<Canal> getNotMyChannels(String username) {
+        CanalesDAO dao = new CanalesDAO();
+        return dao.getNotMyChannelsJDBCTemplate(username);
+    }
     public Canal getChannelOwner(Message message) {
         CanalesDAO dao = new CanalesDAO();
         return dao.getChannelOwnerByIDChannelJDBCTemplate(message);
