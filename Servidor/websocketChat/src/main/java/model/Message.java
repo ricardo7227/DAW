@@ -7,7 +7,7 @@ package model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -21,7 +21,7 @@ public class Message {
     private String mensaje;
     @SerializedName("fecha")
     @Expose
-    private Date fecha;    
+    private Timestamp fecha;
     @SerializedName("destino")
     @Expose
     private long id_canal;
@@ -38,7 +38,7 @@ public class Message {
     public Message() {
     }
 
-    public Message(long id, String mensaje, Date fecha, long id_canal, String nombre_user, int tipo, boolean guardar) {
+    public Message(long id, String mensaje, Timestamp fecha, long id_canal, String nombre_user, int tipo, boolean guardar) {
         this.id = id;
         this.mensaje = mensaje;
         this.fecha = fecha;
@@ -48,7 +48,7 @@ public class Message {
         this.guardar = guardar;
     }
 
-    public Message(String mensaje, Date fecha, String nombre_user, int tipo) {
+    public Message(String mensaje, Timestamp fecha, String nombre_user, int tipo) {
         this.mensaje = mensaje;
         this.fecha = fecha;
         this.nombre_user = nombre_user;
@@ -59,14 +59,13 @@ public class Message {
         this.mensaje = mensaje;
         this.nombre_user = nombre_user;
         this.tipo = tipo;
-        this.fecha = new java.sql.Date(new java.util.Date().getTime());
+        this.fecha = new java.sql.Timestamp(new java.util.Date().getTime());
     }
 
-    public Message( int tipo,String mensaje) {
+    public Message(int tipo, String mensaje) {
         this.mensaje = mensaje;
         this.tipo = tipo;
     }
-    
 
     public long getId() {
         return id;
@@ -84,11 +83,11 @@ public class Message {
         this.mensaje = mensaje;
     }
 
-    public Date getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 

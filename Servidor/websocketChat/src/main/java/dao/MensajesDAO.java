@@ -44,7 +44,7 @@ public class MensajesDAO {
         JdbcTemplate jtm = new JdbcTemplate(
                 DBConnection.getInstance().getDataSource());
         List<Message> channels = null;
-        Object[] params = new Object[]{rango.getFecha1(), rango.getFecha2()};
+        Object[] params = new Object[]{rango.getFecha1(), rango.getFecha2(), rango.getUser()};
 
         channels = jtm.query(SqlQuery.SELECT_MENSAJES_BY_DATES, params,
                 new BeanPropertyRowMapper(Message.class));

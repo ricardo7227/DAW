@@ -124,8 +124,7 @@ function onMessage(evt) {
 
                 if (usuario == respuesta.user) {
                     setCanalesFromServer("#mis_canales_disponibles", respuesta);
-                    
-                    //setCanalesFromServer("#canales_disponibles", respuesta);
+
 
                 } else {
                     setCanalesFromServer("#canales_disponibles", respuesta);
@@ -152,7 +151,10 @@ function onMessage(evt) {
             case MensajeTipo.DECLINE_ACCESS:
                 crearMensajeResponseServer("dark", respuesta, 5000);
                 break;
-
+            case MensajeTipo.GET_MENSAJES:
+                var mens = JSON.parse(respuesta.contenido);
+                loadMessages(mens);
+                break;
             default:
 
                 break;

@@ -61,7 +61,7 @@
                                 <div class="form-group"> <label for="exampleInputEmail1">Fecha Final</label>
                                     <input type="date" class="form-control" id="fecha2" placeholder=""> </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Cargar Mensajes</button>
+                                    <button type="button" id="retrieve_messages" class="btn btn-primary">Cargar Mensajes</button>
                                     </div>
                                 </div>
                             </form>

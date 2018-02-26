@@ -6,6 +6,7 @@
 $("#talk").click(crearMensaje);
 $("#create_channel").click(crearCanal);
 $("#subscribe_to_channel").click(subscribeToChannel);
+$("#retrieve_messages").click(getMessagesByDates);
 $("#response_from_server").on("click", "#give_access_user", giveAccessToChannel);
 $("#response_from_server").on("click", "#decline_access_user", declineAccessToChannel);
 
@@ -84,7 +85,7 @@ function crearMensajeResponseServer(alert_type, mensaje, tiempo) {
 function createModalResponse(mensaje) {
     var response = mensaje.contenido;
     $("#response_from_server").html(response);
-    
+
 
 }
 
@@ -129,6 +130,11 @@ function buildRequestBox(mensaje) {
 
 
     return code;
+}
+function loadMessages(mensajes) {
+    mensajes.forEach(function (elem) {
+        writeToScreen(buildMessageFromServerToChannel(elem, getNameChannel(lista_canalesDB, elem)));
+    });
 }
 
 
