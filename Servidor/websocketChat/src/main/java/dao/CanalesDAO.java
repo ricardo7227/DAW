@@ -56,8 +56,7 @@ public class CanalesDAO {
 
                     parameters.put(Constantes.ID_CANAL, canalTemp.getId());
                     parameters.put(Constantes.USER, canal.getAdmin());
-                    jdbcInsert2.execute(parameters);
-                    canalTemp.setClave(null);
+                    jdbcInsert2.execute(parameters);                    
                     chatWebsocket.addNewChannelToChat(canalTemp);
 
                 } catch (DataAccessException e) {

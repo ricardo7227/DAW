@@ -7,8 +7,11 @@ $("#talk").click(crearMensaje);
 $("#create_channel").click(crearCanal);
 $("#subscribe_to_channel").click(subscribeToChannel);
 $("#retrieve_messages").click(getMessagesByDates);
+$("#launch_login").click(launchLogin);
 $("#response_from_server").on("click", "#give_access_user", giveAccessToChannel);
 $("#response_from_server").on("click", "#decline_access_user", declineAccessToChannel);
+$("#response_from_server").on("click", "#button_login", requestLogin);
+$("#response_from_server").on("click", "#button_registro", requestRegistro);
 
 function crearMensaje() {
     var mensaje = $("#textarea_talk").val();
@@ -132,6 +135,62 @@ function buildRequestBox(mensaje) {
             '</div>';
 
 
+    return code;
+}
+function buildLoginRequestBox(mensaje) {
+    //request_permiso_channel = mensaje.destino;
+    //request_permiso_user = mensaje.user;
+    var cabecera = "Login o Registro";
+    var okTextLogin = "Dar Acceso";
+    var noTextLogin = "Denegar";
+    var code = '<div class="modal fade" tabindex="-1" role="dialog" id="request_login_modal">' +
+            '<div class="modal-dialog" role="document">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<h5 class="modal-title">' + cabecera + '</h5>' +
+            '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+            '<span aria-hidden="true">&times;</span>' +
+            '</button>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<p>Login</p>' +
+            '<form action="">' +
+            ' <div class="form-group">' +
+            '<label for="exampleInputEmail1">Nombre de Usuario</label>' +
+            '<input type="text" class="form-control" name="NOMBRE" id="user_login" aria-describedby="emailHelp" placeholder="Username">' +
+            '</div>' +
+            '<div class="form-group">' +
+            '<label for="exampleInputPassword1">Contraseña</label>' +
+            '<input type="password" class="form-control" name="PASSWORD" id="password_login" placeholder="Password">' +
+            '</div>' +
+            '</form>' +
+            '</div>' +
+            '<div class="modal-footer">' +
+            '<button type="button" class="btn btn-primary" name="ACTION" data-dismiss="modal" value="LOGIN" id="button_login">Login</button>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<p>Registro</p>' +
+            '<form>' +
+            '<div class="form-group">' +
+            '<label for="exampleInputEmail1">Nombre de Usuario</label>' +
+            '<input type="text" class="form-control" name="NOMBRE" id="user_registro" aria-describedby="emailHelp" placeholder="Username" required >                                    ' +
+            '</div>' +
+            '<div class="form-group">' +
+            '<label for="exampleInputEmail1">Email:</label>' +
+            '<input type="email" class="form-control" name="EMAIL" id="email_registro" aria-describedby="emailHelp" placeholder="user@gmail.com" required>                                    ' +
+            '</div>' +
+            '<div class="form-group">' +
+            '<label for="exampleInputPassword1">Contraseña</label>' +
+            '<input type="password" class="form-control" name="PASSWORD" id="password_registro" placeholder="Password">' +
+            '</div>' +
+            '</form>' +
+            '</div>' +
+            '<div class="modal-footer">' +
+            '<button type="button" class="btn btn-primary" name="ACTION" data-dismiss="modal" value="REGISTRAR" id="button_registro">Registrar</button>   ' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
 
 
     return code;
@@ -140,6 +199,13 @@ function loadMessages(mensajes) {
     mensajes.forEach(function (elem) {
         writeToScreen(buildMessageFromServerToChannel(elem, getNameChannel(lista_canalesDB, elem)));
     });
+}
+
+function launchLogin() {
+    var respuesta = new Object();
+    respuesta.contenido = buildLoginRequestBox(respuesta);
+    createModalResponse(respuesta);
+    $('#request_login_modal').modal('show');
 }
 function getKeys(canalID) {
     var keys = new Object();
@@ -153,4 +219,50 @@ function getKeys(canalID) {
     return  keys;
 }
 
+function requestLogin() {
+    var user = $("#user_login").val();
+    var pass = $("#password_login").val();
+    $.ajax({
+        type: "POST",
+        url: "myChat",
+        data: {
+            NOMBRE: user,
+            PASSWORD: pass,
+            ACTION: "LOGIN"
+        },
+        success: function (result) {
+
+            console.log("Respuesta Server Login");
+            conectar();
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest + textStatus + errorThrown);
+        }
+    });
+}
+function requestRegistro() {
+    var user = $("#user_registro").val();
+    var email = $("#email_registro").val();
+    var pass = $("#password_registro").val();
+    $.ajax({
+        type: "POST",
+        url: "myChat",
+        data: {
+            NOMBRE: user,
+            EMAIL: email,
+            PASSWORD: pass,
+            ACTION: "REGISTRAR"
+        },
+        success: function (result) {
+            var respuesta = new Object();
+            respuesta.contenido = "Acabas de crear un nuevo usuario, ya puedes hacer Login";
+            crearMensajeResponseServer("success", respuesta, 5000);
+            console.log("Respuesta Server Registro");
+//            conectar();
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest + textStatus + errorThrown);
+        }
+    });
+}
 

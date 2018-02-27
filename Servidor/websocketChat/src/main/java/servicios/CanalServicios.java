@@ -40,20 +40,24 @@ public class CanalServicios {
         CanalesDAO dao = new CanalesDAO();
         return dao.getCanalesJDBCTemplate();
     }
+
     public List<Canal> getNotMyChannels(String username) {
         CanalesDAO dao = new CanalesDAO();
         return dao.getNotMyChannelsJDBCTemplate(username);
     }
+
     public Canal getChannelOwner(Message message) {
         CanalesDAO dao = new CanalesDAO();
         return dao.getChannelOwnerByIDChannelJDBCTemplate(message);
     }
 
-    public boolean isSubscribeToChannel(List<Canal> canales,Message message){
+    public boolean isSubscribeToChannel(List<Canal> canales, Message message) {
         boolean isSubscribe = false;
-        for (Canal canal : canales) {
-            if (canal.getId() == message.getId_canal()) {
-                isSubscribe = true;
+        if (canales != null) {
+            for (Canal canal : canales) {
+                if (canal.getId() == message.getId_canal()) {
+                    isSubscribe = true;
+                }
             }
         }
         return isSubscribe;

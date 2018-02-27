@@ -145,7 +145,7 @@ function onMessage(evt) {
             case MensajeTipo.REQUEST_PERMISO:
                 respuesta.contenido = buildRequestBox(respuesta);
                 createModalResponse(respuesta);
-                $('#request_permiso_modal').modal('show');
+                $('#request_permiso_modal').modal('show');                                
                 break;
             case MensajeTipo.GIVE_PERMISO:
 

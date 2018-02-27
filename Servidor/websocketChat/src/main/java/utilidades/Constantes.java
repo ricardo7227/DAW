@@ -37,6 +37,12 @@ public class Constantes {
     public static final String CODIGO_ACTIVACION = "CODIGO_ACTIVACION";
     public static final String FECHA_ACTIVACION = "FECHA_ACTIVACION";
 
+    //LOGIN
+    public static final String LOGIN = "LOGIN";
+    public static final String LOGIN_GOOGLE = "LOGIN_GOOGLE";
+    public static final String LOGIN_ON = "LOGIN_ON";
+    public static final String REGISTRAR = "REGISTRAR";
+
     //MENSAJES
     public static final String MENSAJES = "mensajes";
     public static final String MENSAJE = "mensaje";

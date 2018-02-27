@@ -5,107 +5,41 @@
  */
 package servicios;
 
-import config.Configuration;
+
 import dao.UsersDAO;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.Instant;
-import model.User;
 import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.User;
+
 import utilidades.Constantes;
-import utilidades.PasswordHash;
-import utilidades.UtilsRandom;
+
 
 /**
  *
  * @author Gato
  */
-public class RegistroServicios {
-
-    public RegistroServicios() {
+public class LoginServicios {
+    
+    public LoginServicios() {
     }
-
-    public User getDuplicateUser(User user) {
-        UsersDAO dao = new UsersDAO();
-
-        return (user.getNombre() != null && user.getEmail() != null) ? dao.getDuplicateUserJDBCTemplate(user) : null;
-    }
-
-    public User insertUser(User user) {
-        UsersDAO dao = new UsersDAO();
-        return dao.insertUserJDBCTemplate(user) ;
-    }
-
-    public boolean thisUserExist(User user) {
-
-        return getDuplicateUser(user) != null;
-    }
-
-    public boolean userReadyToWorkInsert(User user) {
-
-        return user.getNombre() != null && user.getPassword() != null && user.getEmail() != null;
-    }
-
-    public boolean userReadyToWorkValidate(User user) {
-
-        return user.getNombre() != null && user.getEmail() != null && user.getCodigo_activacion() != null;
-    }
-
+    
     public boolean userReadyToWorkLogin(User user) {
-
+        
         return user.getNombre() != null && user.getPassword() != null;
     }
-
-    public User checkCredentials(User usuario) {
-        UsersDAO dao = new UsersDAO();
-        return dao.selectIdValidateUserJDBCTemplate(usuario);
-    }
-
-    public boolean isOnTimeValidEmail(User usuario) {
-
-        long time = timeElapsed(usuario.getFecha_activacion());
-
-        return time <= Configuration.getInstance().getTimeToValidate();
-
-    }
-    public User generatePasswordAndActivationCode(User usuario) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        
-        usuario.setPassword(PasswordHash.getInstance().createHash(usuario.getPassword()));
-        usuario.setCodigo_activacion(UtilsRandom.randomAlphaNumeric(ThreadLocalRandom.current().nextInt(20)));
-        usuario.setFecha_activacion(new Date(new java.util.Date().getTime()));
-        
-        return usuario;
-    }
-
-    private long timeElapsed(Date timeOfRegister) {
-
-        return Duration.between(new java.util.Date(timeOfRegister.getTime()).toInstant(), Instant.now()).toHours();
-
-    }
-
-    public boolean activateAccount(User usuario) {
-        UsersDAO dao = new UsersDAO();
-        return dao.validateUserByIdJDBCTemplate(usuario) > 0;
-    }
-
+                               
+    
     public User selectLoginUser(User usuario) {
         UsersDAO dao = new UsersDAO();
-
+        
         return dao.getLoginUserJDBCTemplate(usuario);
     }
-
-    /**
-     *
-     * @param parametros
-     * @return User
-     */
+    
+      
     public User tratarParametro(Map<String, String[]> parametros) {
         User usuario = null;
         if (parametros != null && !parametros.isEmpty()) {
@@ -129,20 +63,22 @@ public class RegistroServicios {
                 usuario.setPassword(parametros.get(Constantes.PASSWORD)[0]);
             }
             if (parametros.get(Constantes.FECHA_ACTIVACION) != null && !parametros.get(Constantes.FECHA_ACTIVACION)[0].isEmpty()) {
-
+                
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 java.util.Date parseDate = null;
                 try {
                     parseDate = dateFormat.parse(parametros.get(Constantes.FECHA_ACTIVACION)[0]);
                     usuario.setFecha_activacion(new Date(parseDate.getTime()));
                 } catch (ParseException ex) {
-                    Logger.getLogger(RegistroServicios.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LoginServicios.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-
+            
         }
         return usuario;
-
+        
     }
-
+    
+    
+    
 }//fin clase

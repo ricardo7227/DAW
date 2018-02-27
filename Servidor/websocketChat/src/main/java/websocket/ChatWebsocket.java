@@ -57,58 +57,29 @@ public class ChatWebsocket implements RecuperarCanalInterface {
         this.httpSession = (HttpSession) config.getUserProperties()
                 .get(HttpSession.class.getName());
         String idToken = (String) httpSession.getAttribute(Constantes.TOKEN);
-        RegistroServicios servicios = new RegistroServicios();
+        User userLogin = (User) httpSession.getAttribute(Constantes.LOGIN_ON);
+
         if (idToken != null) {
             try {
                 GoogleIdToken.Payload payLoad = IdTokenVerifierAndParser.getPayload(idToken);
-                username = (String) payLoad.get(Constantes.NAME);
+                String userG = (String) payLoad.get(Constantes.NAME);
                 String email = (String) payLoad.get(Constantes.EMAIL.toLowerCase());
 
-                User user = new User(username, Constantes.GOOGLE, email);
+                User user = new User(userG, Constantes.GOOGLE, email);
 
-                if (servicios.getDuplicateUser(user) == null) {
-                    user = servicios.insertUser(user);
-                } else {
-                    user = servicios.selectLoginUser(user);
-                }
-
-                Gson gson = new GsonBuilder().setDateFormat(Constantes.DATE_FORMAT_HHMMSS).create();
-
-                Message mensajeBienvenida = null;
-                Message mensajeGetCanalesUser = null;
-                Message mensajeGetCanales = null;
-                Message mensajeGetAllCanales = null;
-                List<Canal> canalesCliente = null;
-                List<Canal> canales = null;
-                List<Canal> allCanales = null;
-                if (user != null) {
-                    wsSession.getUserProperties().put(Constantes.ID, user.getId());
-                    wsSession.getUserProperties().put(Constantes.NAME, user.getNombre());
-                    wsSession.getUserProperties().put(Constantes.EMAIL, user.getEmail());
-
-                    CanalServicios canalServicios = new CanalServicios();
-
-                    canalesCliente = canalServicios.getCanalesByUser(username);
-                    wsSession.getUserProperties().put(Constantes.CANALES_USERS, canalesCliente);
-                    canales = canalServicios.getNotMyChannels(username);
-                    allCanales = canalServicios.getCanales();
-                    java.sql.Timestamp fecha = new java.sql.Timestamp(new Date().getTime());
-                    mensajeGetCanalesUser = new Message(gson.toJson(canalesCliente), fecha, username, Tipo.GET_CANALES.ordinal());
-                    mensajeGetCanales = new Message(gson.toJson(canales), fecha, null, Tipo.GET_CANALES.ordinal());
-                    mensajeGetAllCanales = new Message(gson.toJson(allCanales), null, null, Tipo.CONFIG.ordinal());
-                    mensajeBienvenida = new Message(String.format(Mensajes.BIENVENIDA_USER, username), fecha, username, Tipo.CONFIG.ordinal());
-
-                }
-
-                wsSession.getBasicRemote().sendText(gson.toJson(mensajeBienvenida));
-                wsSession.getBasicRemote().sendText(gson.toJson(mensajeGetCanales));
-                wsSession.getBasicRemote().sendText(gson.toJson(mensajeGetAllCanales));
-                wsSession.getBasicRemote().sendText(gson.toJson(mensajeGetCanalesUser));
+                setupLogin(user);
 
             } catch (Exception ex) {
-                Logger.getLogger(ChatWebsocket.class.getName()).log(Level.SEVERE, null, ex);
+                try {
+                    wsSession.close();
+                    Logger.getLogger(ChatWebsocket.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex1) {
+                    Logger.getLogger(ChatWebsocket.class.getName()).log(Level.SEVERE, null, ex1);
+                }
             }
 
+        } else if (idToken == null && userLogin != null) {
+            setupLogin(userLogin);
         } else {
             try {
                 wsSession.close();
@@ -173,7 +144,7 @@ public class ChatWebsocket implements RecuperarCanalInterface {
                 }
                 break;
             case GET_CANALES:
-                
+
                 break;
             case GET_MENSAJES:
                 String rango = mensaje.getMensaje();
@@ -193,7 +164,6 @@ public class ChatWebsocket implements RecuperarCanalInterface {
 
         }
 
-        // sendMessageToAllUser(mensaje);
     }
 
     @Override
@@ -257,5 +227,52 @@ public class ChatWebsocket implements RecuperarCanalInterface {
         }
     }
 
-   
+    private void setupLogin(User user) {
+
+        try {
+            RegistroServicios servicios = new RegistroServicios();
+            if (servicios.getDuplicateUser(user) == null) {
+                user = servicios.insertUser(user);
+            } else {
+                user = servicios.selectLoginUser(user);
+            }
+
+            Gson gson = new GsonBuilder().setDateFormat(Constantes.DATE_FORMAT_HHMMSS).create();
+
+            Message mensajeBienvenida = null;
+            Message mensajeGetCanalesUser = null;
+            Message mensajeGetCanales = null;
+            Message mensajeGetAllCanales = null;
+            List<Canal> canalesCliente = null;
+            List<Canal> canales = null;
+            List<Canal> allCanales = null;
+            if (user != null) {
+                username = user.getNombre();
+                wsSession.getUserProperties().put(Constantes.ID, user.getId());
+                wsSession.getUserProperties().put(Constantes.NAME, user.getNombre());
+                wsSession.getUserProperties().put(Constantes.EMAIL, user.getEmail());
+
+                CanalServicios canalServicios = new CanalServicios();
+
+                canalesCliente = canalServicios.getCanalesByUser(username);
+                wsSession.getUserProperties().put(Constantes.CANALES_USERS, canalesCliente);
+                canales = canalServicios.getNotMyChannels(username);
+                allCanales = canalServicios.getCanales();
+                java.sql.Timestamp fecha = new java.sql.Timestamp(new Date().getTime());
+                mensajeGetCanalesUser = new Message(gson.toJson(canalesCliente), fecha, username, Tipo.GET_CANALES.ordinal());
+                mensajeGetCanales = new Message(gson.toJson(canales), fecha, null, Tipo.GET_CANALES.ordinal());
+                mensajeGetAllCanales = new Message(gson.toJson(allCanales), null, null, Tipo.CONFIG.ordinal());
+                mensajeBienvenida = new Message(String.format(Mensajes.BIENVENIDA_USER, username), fecha, username, Tipo.CONFIG.ordinal());
+
+            }
+
+            wsSession.getBasicRemote().sendText(gson.toJson(mensajeBienvenida));
+            wsSession.getBasicRemote().sendText(gson.toJson(mensajeGetCanales));
+            wsSession.getBasicRemote().sendText(gson.toJson(mensajeGetAllCanales));
+            wsSession.getBasicRemote().sendText(gson.toJson(mensajeGetCanalesUser));
+        } catch (IOException ex) {
+            Logger.getLogger(ChatWebsocket.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }//fin clase
