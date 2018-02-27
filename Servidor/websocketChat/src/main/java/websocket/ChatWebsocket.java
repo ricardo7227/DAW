@@ -32,6 +32,8 @@ import dao.RecuperarCanalInterface;
 import java.text.DateFormat;
 import javax.websocket.EncodeException;
 import model.CanalesUsers;
+import model.MessageDecoder;
+import model.MessageEncoder;
 import model.RangoMensajes;
 import servicios.MensajesServicios;
 
@@ -39,7 +41,10 @@ import servicios.MensajesServicios;
  *
  * @author daw
  */
-@ServerEndpoint(value = "/chat", configurator = GetHttpSessionConfigurator.class)
+@ServerEndpoint(value = "/chat",
+        configurator = GetHttpSessionConfigurator.class,
+        decoders = MessageDecoder.class,
+        encoders = MessageEncoder.class)
 public class ChatWebsocket implements RecuperarCanalInterface {
 
     private Session wsSession;
@@ -132,10 +137,9 @@ public class ChatWebsocket implements RecuperarCanalInterface {
     }
 
     @OnMessage
-    public void echo(String msg) throws IOException {
+    public void echo(Message mensaje) throws IOException {
 
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setDateFormat(Constantes.JS_DATE_FORMAT).create();
-        Message mensaje = gson.fromJson(msg, Message.class);
 
         Tipo messageType = Tipo.values()[mensaje.getTipo()];
         switch (messageType) {
@@ -169,8 +173,7 @@ public class ChatWebsocket implements RecuperarCanalInterface {
                 }
                 break;
             case GET_CANALES:
-                //Cualquiera puede cargar mensajes
-                //TODO - El rango de selección es por fechas 
+                
                 break;
             case GET_MENSAJES:
                 String rango = mensaje.getMensaje();
@@ -207,28 +210,38 @@ public class ChatWebsocket implements RecuperarCanalInterface {
     }
 
     private void sendMessageToAllUser(Message ms) throws IOException {
-        Gson gson = new GsonBuilder().setDateFormat(Constantes.DATE_FORMAT_HHMMSS).create();
         for (Session s : wsSession.getOpenSessions()) {
-            s.getBasicRemote().sendText(gson.toJson(ms));
+            try {
+                s.getBasicRemote().sendObject(ms);
+            } catch (EncodeException ex) {
+                Logger.getLogger(ChatWebsocket.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
     private void sendRequestToOwner(Canal canal, Message message) throws IOException {
-        Gson gson = new GsonBuilder().setDateFormat(Constantes.DATE_FORMAT_HHMMSS).create();
+
         for (Session s : wsSession.getOpenSessions()) {
             if (s.getUserProperties().get(Constantes.NAME).equals(canal.getAdmin())) {
-                s.getBasicRemote().sendText(gson.toJson(message));
+                try {
+                    s.getBasicRemote().sendObject(message);
+                } catch (EncodeException ex) {
+                    Logger.getLogger(ChatWebsocket.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
         }
     }
 
     private void sendMessageToMySubscriptionChannel(Message ms) throws IOException {
-        Gson gson = new GsonBuilder().setDateFormat(Constantes.DATE_FORMAT_HHMMSS).create();
         CanalServicios canalServicios = new CanalServicios();
         for (Session s : wsSession.getOpenSessions()) {
             if (canalServicios.isSubscribeToChannel((List<Canal>) s.getUserProperties().get(Constantes.CANALES_USERS), ms)) {
-                s.getBasicRemote().sendText(gson.toJson(ms));
+                try {
+                    s.getBasicRemote().sendObject(ms);
+                } catch (EncodeException ex) {
+                    Logger.getLogger(ChatWebsocket.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
         }
@@ -244,10 +257,5 @@ public class ChatWebsocket implements RecuperarCanalInterface {
         }
     }
 
-    private void sendObjectToAllUser(Object ms) throws EncodeException, IOException {
-        for (Session s : wsSession.getOpenSessions()) {
-            String user = (String) s.getUserProperties().get(Constantes.NAME);
-            s.getBasicRemote().sendObject(ms);
-        }
-    }
+   
 }//fin clase

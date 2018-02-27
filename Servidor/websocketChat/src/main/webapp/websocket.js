@@ -69,7 +69,10 @@ function conectar() {
         onClose(evt);
     };
 }
-
+//encriptación
+var iterationCount = 1000;
+var keySize = 128;
+var aesUtil = new AesUtil(keySize, iterationCount);
 
 function hablar(mensaje) {
     console.log("mensaje: " + mensaje);
@@ -182,7 +185,12 @@ function buildMessageFromServer(msjObj) {
     return  msjObj.fecha + ":\n " + msjObj.user + ": " + msjObj.contenido;
 }
 function buildMessageFromServerToChannel(msjObj, canal) {
-    return  msjObj.fecha + "::" + canal + " \n " + msjObj.user + ": " + msjObj.contenido;
+    var texto = msjObj.contenido;
+    var keys = getKeys(msjObj.destino);
+    if (typeof keys.salt != "undefined") {
+        texto = aesUtil.decrypt(keys.salt, keys.iv, keys.password, msjObj.contenido);
+    }
+    return  msjObj.fecha + "::" + canal + " \n " + msjObj.user + ": " + texto;
 }
 
 function setAllCanalesFromServer(canales) {

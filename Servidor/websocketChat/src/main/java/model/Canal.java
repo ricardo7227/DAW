@@ -24,6 +24,12 @@ public class Canal {
     @SerializedName("password")
     @Expose
     private String clave;
+    @SerializedName("salt")
+    @Expose
+    private String salt;
+    @SerializedName("iv")
+    @Expose
+    private String iv;
 
     public Canal() {
     }
@@ -78,6 +84,22 @@ public class Canal {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getIv() {
+        return iv;
+    }
+
+    public void setIv(String iv) {
+        this.iv = iv;
     }
 
 }//fin clase

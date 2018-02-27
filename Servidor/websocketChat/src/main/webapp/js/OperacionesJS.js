@@ -13,7 +13,10 @@ $("#response_from_server").on("click", "#decline_access_user", declineAccessToCh
 function crearMensaje() {
     var mensaje = $("#textarea_talk").val();
     var destino = $("#mis_canales_disponibles").val();
-
+    var keys = getKeys(destino);
+    if (typeof keys.salt != "undefined") {
+        mensaje = aesUtil.encrypt(keys.salt, keys.iv, keys.password, mensaje);
+    }
     var guardar = $("#save_message").prop('checked');
     var msjObj = new Mensaje(MensajeTipo.TEXTO, mensaje, destino, new Date(), usuario, guardar);
     hablar(JSON.stringify(msjObj));
@@ -22,7 +25,9 @@ function crearCanal() {
     var canal = $("#new_channel_name").val();
     var password = $("#new_channel_pass").val();
     var destino = 1;
-    var newCanal = {password: password, canal: canal};
+    var iv = CryptoJS.lib.WordArray.random(128 / 8).toString(CryptoJS.enc.Hex);
+    var salt = CryptoJS.lib.WordArray.random(128 / 8).toString(CryptoJS.enc.Hex);
+    var newCanal = {password: password, canal: canal, salt: salt, iv: iv};
     var guardar = false;
     var msjObj = new Mensaje(MensajeTipo.ADD_CANAL, JSON.stringify(newCanal), destino, new Date(), usuario, guardar);
     hablar(JSON.stringify(msjObj));
@@ -135,6 +140,17 @@ function loadMessages(mensajes) {
     mensajes.forEach(function (elem) {
         writeToScreen(buildMessageFromServerToChannel(elem, getNameChannel(lista_canalesDB, elem)));
     });
+}
+function getKeys(canalID) {
+    var keys = new Object();
+    lista_canalesDB.forEach(function (elem) {
+        if (elem.id == canalID) {
+            keys.salt = elem.salt;
+            keys.iv = elem.iv;
+            keys.password = elem.password;
+        }
+    });
+    return  keys;
 }
 
 

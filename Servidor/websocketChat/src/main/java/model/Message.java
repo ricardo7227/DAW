@@ -18,52 +18,61 @@ public class Message {
     private long id;
     @SerializedName("contenido")
     @Expose
-    private String mensaje;
+    private String contenido;
     @SerializedName("fecha")
     @Expose
     private Timestamp fecha;
     @SerializedName("destino")
     @Expose
-    private long id_canal;
+    private long destino;
     @SerializedName("user")
     @Expose
-    private String nombre_user;
+    private String user;
     @SerializedName("tipo")
     @Expose
     private int tipo;
     @SerializedName("guardar")
     @Expose
     private boolean guardar;
+    @SerializedName("key")
+    @Expose
+    private String key;
+    @SerializedName("iv")
+    @Expose
+    private String iv;
+    @SerializedName("salt")
+    @Expose
+    private String salt;
 
     public Message() {
     }
 
     public Message(long id, String mensaje, Timestamp fecha, long id_canal, String nombre_user, int tipo, boolean guardar) {
         this.id = id;
-        this.mensaje = mensaje;
+        this.contenido = mensaje;
         this.fecha = fecha;
-        this.id_canal = id_canal;
-        this.nombre_user = nombre_user;
+        this.destino = id_canal;
+        this.user = nombre_user;
         this.tipo = tipo;
         this.guardar = guardar;
     }
 
     public Message(String mensaje, Timestamp fecha, String nombre_user, int tipo) {
-        this.mensaje = mensaje;
+        this.contenido = mensaje;
         this.fecha = fecha;
-        this.nombre_user = nombre_user;
+        this.user = nombre_user;
         this.tipo = tipo;
     }
 
     public Message(String mensaje, String nombre_user, int tipo) {
-        this.mensaje = mensaje;
-        this.nombre_user = nombre_user;
+        this.contenido = mensaje;
+        this.user = nombre_user;
         this.tipo = tipo;
         this.fecha = new java.sql.Timestamp(new java.util.Date().getTime());
     }
 
     public Message(int tipo, String mensaje) {
-        this.mensaje = mensaje;
+        this.contenido = mensaje;
         this.tipo = tipo;
     }
 
@@ -76,11 +85,11 @@ public class Message {
     }
 
     public String getMensaje() {
-        return mensaje;
+        return contenido;
     }
 
     public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+        this.contenido = mensaje;
     }
 
     public Timestamp getFecha() {
@@ -92,19 +101,19 @@ public class Message {
     }
 
     public long getId_canal() {
-        return id_canal;
+        return destino;
     }
 
     public void setId_canal(long id_canal) {
-        this.id_canal = id_canal;
+        this.destino = id_canal;
     }
 
     public String getNombre_user() {
-        return nombre_user;
+        return user;
     }
 
     public void setNombre_user(String nombre_user) {
-        this.nombre_user = nombre_user;
+        this.user = nombre_user;
     }
 
     public int getTipo() {
@@ -121,6 +130,30 @@ public class Message {
 
     public void setGuardar(boolean guardar) {
         this.guardar = guardar;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getIv() {
+        return iv;
+    }
+
+    public void setIv(String iv) {
+        this.iv = iv;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
 }//fin clase
