@@ -90,7 +90,7 @@ public class SalaChatServlet extends HttpServlet {
             Map<String, String[]> parametros = request.getParameterMap();
             LoginServicios servicios = new LoginServicios();
             User usuario = servicios.tratarParametro(parametros);
-
+//TODO revisar el login - falla con usuarios que no existen o erroneos
             HttpSession session = request.getSession();
 
             if (action != null && !action.isEmpty()) {

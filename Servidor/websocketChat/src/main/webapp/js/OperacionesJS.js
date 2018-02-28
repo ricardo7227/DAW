@@ -265,4 +265,29 @@ function requestRegistro() {
         }
     });
 }
+function heCerrado() {
+    var user = $("#user_registro").val();
+    var email = $("#email_registro").val();
+    var pass = $("#password_registro").val();
+    $.ajax({
+        type: "POST",
+        url: "controlRoom",
+        data: {
+            NOMBRE: user,
+            EMAIL: email,
+            PASSWORD: pass,
+            ACTION: "REGISTRAR"
+        },
+        success: function (result) {
+            var respuesta = new Object();
+            respuesta.contenido = "Acabas de crear un nuevo usuario, ya puedes hacer Login";
+            crearMensajeResponseServer("success", respuesta, 5000);
+            console.log("Respuesta Server Registro");
+//            conectar();
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest + textStatus + errorThrown);
+        }
+    });
+}
 

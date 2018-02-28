@@ -97,7 +97,7 @@ function onOpen() {
     //websocket.send(idToken);
 }
 function onClose() {
-
+    heCerrado();
     writeToScreen("Server close conection");
 }
 

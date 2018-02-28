@@ -60,5 +60,10 @@ public class Constantes {
     public static final String CANALES_USERS = "canales_users";
     //CANALES USERS
     public static final String USER = "user";
+    
+    //Constantes Template
+    public static final String USERS_ONLINE = "users_online";
+    public static final String USERS_OFFLINE = "users_offline";
+    public static final String CHANNELS = "channels";
 
 }

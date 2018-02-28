@@ -13,5 +13,6 @@ package utilidades;
 public class Templates {
 
     public static String CHAT_ROOM = "ChatRoomTemplate.ftl";
+    public static String CONTROL_ROOM = "ControlRoomTemplate.ftl";
 
 }

@@ -30,11 +30,17 @@ import utilidades.MensajeTipo.Tipo;
 import utilidades.Mensajes;
 import dao.RecuperarCanalInterface;
 import java.text.DateFormat;
+import java.util.ArrayList;
+import javax.websocket.CloseReason;
 import javax.websocket.EncodeException;
+import javax.websocket.OnClose;
+import javax.websocket.OnError;
+import model.CanalUser;
 import model.CanalesUsers;
 import model.MessageDecoder;
 import model.MessageEncoder;
 import model.RangoMensajes;
+import servicios.AdminServicios;
 import servicios.MensajesServicios;
 
 /**
@@ -164,6 +170,18 @@ public class ChatWebsocket implements RecuperarCanalInterface {
 
         }
 
+       
+    }   
+
+    @OnClose
+    public void onClose(Session ss, CloseReason re) {
+        re.getReasonPhrase();
+        AdminServicios.getInstance().eraseUserOnline((User) httpSession.getAttribute(Constantes.LOGIN_ON));
+    }
+
+    @OnError
+    public void onError(Session ss, Throwable re) {
+        re.getCause();
     }
 
     @Override
@@ -173,6 +191,12 @@ public class ChatWebsocket implements RecuperarCanalInterface {
             String newChannel = gson.toJson(canal);
             Message mensaje = new Message(newChannel, new java.sql.Timestamp(new Date().getTime()), username, Tipo.ADD_CANAL.ordinal());
             sendMessageToAllUser(mensaje);
+            
+            //Agregamos el canal al servicio de administración
+            CanalUser canalUserControl = new CanalUser(canal.getId(), canal.getNombre(), username, username);
+            List<CanalUser> listCanal = new ArrayList<>();
+            listCanal.add(canalUserControl);
+            AdminServicios.getInstance().addNewChannel(listCanal);
         } catch (IOException ex) {
             Logger.getLogger(ChatWebsocket.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -236,6 +260,8 @@ public class ChatWebsocket implements RecuperarCanalInterface {
             } else {
                 user = servicios.selectLoginUser(user);
             }
+            httpSession.setAttribute(Constantes.LOGIN_ON, user);
+            AdminServicios.getInstance().setOnlineUser(user);
 
             Gson gson = new GsonBuilder().setDateFormat(Constantes.DATE_FORMAT_HHMMSS).create();
 

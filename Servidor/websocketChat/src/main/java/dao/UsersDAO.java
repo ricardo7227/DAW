@@ -5,24 +5,21 @@
  */
 package dao;
 
-import com.pushtorefresh.javac_warning_annotation.Warning;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import model.Asignatura;
+import model.Canal;
+import model.CanalUser;
 import model.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallback;
-import org.springframework.transaction.support.TransactionTemplate;
 import utilidades.Constantes;
 import utilidades.SqlQuery;
 
@@ -172,32 +169,27 @@ public class UsersDAO {
 
         return rowsAffected;
     }
-/***
- * Una forma de realizar transacciones
- * @param as 
- */
-    @Warning("En desarrollo")
-    public void transaction(final Asignatura as) {
-        TransactionTemplate template = new TransactionTemplate(new DataSourceTransactionManager(DBConnection.getInstance().getDataSource()));
 
-        final JdbcTemplate jtm = new JdbcTemplate(
+    public List<User> getUsersJDBCTemplate() {
+
+        JdbcTemplate jtm = new JdbcTemplate(
                 DBConnection.getInstance().getDataSource());
 
-        template.execute(new TransactionCallback<Integer>() {
-            @Override
-            public Integer doInTransaction(TransactionStatus ts) {
-                try {
-                    
-                    //Object[] params = new Object[]{as.getNombre(), as.getCurso(), as.getCiclo()};
-                    //jtm.update(SqlQuery.INSERT_ASIGNATURA, params);
-                } catch (DataAccessException e) {
-                    ts.setRollbackOnly();
-                }
-                return 0;
+        List<User> users = jtm.query(SqlQuery.SELECT_ALL_USERS,
+                new BeanPropertyRowMapper(User.class));
 
-            }
-        });
+        return users;
+    }
 
+    public List<CanalUser> getUsersbyChannelsJDBCTemplate(Canal canal) {
+
+        JdbcTemplate jtm = new JdbcTemplate(
+                DBConnection.getInstance().getDataSource());
+        Object[] params = new Object[]{canal.getNombre()};
+        List<CanalUser> users = jtm.query(SqlQuery.SELECT_USERS_BY_CHANNEL, params,
+                new BeanPropertyRowMapper(CanalUser.class));
+
+        return users;
     }
 
 }//fin clase

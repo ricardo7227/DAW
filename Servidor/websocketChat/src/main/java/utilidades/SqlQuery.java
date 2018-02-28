@@ -13,12 +13,14 @@ public class SqlQuery {
 
     //USERS
     public static String SELECT_USER_BY_NAME_EMAIL = "SELECT * FROM USERS WHERE NOMBRE = ? AND EMAIL = ?";
+    public static String SELECT_ALL_USERS = "SELECT * FROM USERS";
     public static String SELECT_USER_BY_NAME_EMAIL_CODIGO_ACTIVACION = "SELECT * FROM USERS WHERE NOMBRE = ? AND EMAIL = ? AND CODIGO_ACTIVACION = ?";
     public static String SELECT_USER_BY_NAME = "SELECT * FROM USERS WHERE NOMBRE = ?";
     public static String SELECT_USER_BY_NAME_PASSWORD = "SELECT * FROM USERS WHERE NOMBRE = ? AND PASSWORD = ?";
     public static String SELECT_USER_BY_EMAIL = "SELECT * FROM USERS WHERE EMAIL = ?";
     public static String INSERT_USER = "INSERT INTO USERS (NOMBRE, PASSWORD, CODIGO_ACTIVACION, FECHA_ACTIVACION, EMAIL) VALUES(?,?,?,?,?)";
     public static String UPDATE_USER_ACTIVO_ON = "UPDATE USERS SET ACTIVO = 1 WHERE ID = ?";
+    public static String SELECT_USERS_BY_CHANNEL = "SELECT canales_users.id_canal,canales.nombre, canales.admin,canales_users.user FROM `canales_users` , canales WHERE canales_users.id_canal = canales.id AND canales.nombre = ?";
 
     //CANALES    
     public static String INSERT_CANAL = "INSERT INTO `canales` (`id`, `nombre`, `admin`, `clave`) VALUES (NULL, ?, ?, ?);";
@@ -27,7 +29,6 @@ public class SqlQuery {
     public static String SELECT_ALL_NOT_MY_CHANNELS = "SELECT canales.id,canales.nombre,canales.admin FROM `canales` WHERE  id NOT IN (SELECT id_canal FROM canales_users WHERE canales_users.user = ?)";
     public static String SELECT_CHANNEL_OWNER = "SELECT canales.id,canales.nombre,canales.admin FROM canales_users,canales WHERE canales_users.id_canal = canales.id AND canales.id = ?";
 
-    //MENSAJES
-    //SELECT * FROM `mensajes` WHERE id_canal = 9
+    //MENSAJES   
     public static String SELECT_MENSAJES_BY_DATES = "SELECT * FROM `mensajes` WHERE fecha > ? AND fecha < ?  AND id_canal IN (SELECT id_canal FROM canales_users WHERE canales_users.user = ?)";
 }

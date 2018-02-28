@@ -5,21 +5,31 @@
  */
 package servlet;
 
+import config.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.CanalUser;
 import model.User;
+import servicios.AdminServicios;
 import utilidades.Constantes;
+import utilidades.Templates;
 
 /**
  *
  * @author daw
  */
 @WebServlet(name = "SalaControl", urlPatterns = {"/controlRoom"})
-public class SalaControl extends HttpServlet{
+public class SalaControlServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,12 +43,29 @@ public class SalaControl extends HttpServlet{
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        User user = (User) request.getSession().getAttribute(Constantes.LOGIN_ON);
-        if (user != null) {
+        try {
+            User user = (User) request.getSession().getAttribute(Constantes.LOGIN_ON);
+            HashMap paramentrosPlantilla = new HashMap();
+            List<User> usuariosOn = null;
+            List<User> usuariosOff = null;
+            List<List<CanalUser>> canales = null;
+            if (user != null) {
+                usuariosOn = AdminServicios.getInstance().getListOnlineUsers();
+                usuariosOff = AdminServicios.getInstance().getOfflineUsers();
+                canales = AdminServicios.getInstance().getChannels();
+
+            } else {
+                //tienes que estar logueado
+            }
+
+            paramentrosPlantilla.put(Constantes.USERS_ONLINE, usuariosOn);
+            paramentrosPlantilla.put(Constantes.USERS_OFFLINE, usuariosOff);
+            paramentrosPlantilla.put(Constantes.CHANNELS, canales);
             
-            
-        } else {
-            //tienes que estar logueado
+            Template plantilla = Configuration.getInstance().getFreeMarker().getTemplate(Templates.CONTROL_ROOM);
+            plantilla.process(paramentrosPlantilla, response.getWriter());
+        } catch (TemplateException ex) {
+            Logger.getLogger(SalaChatServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
