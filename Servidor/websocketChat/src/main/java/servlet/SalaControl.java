@@ -11,13 +11,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.User;
+import utilidades.Constantes;
 
 /**
  *
  * @author daw
  */
 @WebServlet(name = "SalaControl", urlPatterns = {"/controlRoom"})
-public class SalaControl extends HttpServlet {
+public class SalaControl extends HttpServlet{
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,12 +32,17 @@ public class SalaControl extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
-        
-        
+
+        User user = (User) request.getSession().getAttribute(Constantes.LOGIN_ON);
+        if (user != null) {
+            
+            
+        } else {
+            //tienes que estar logueado
+        }
+
     }
 
-    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
