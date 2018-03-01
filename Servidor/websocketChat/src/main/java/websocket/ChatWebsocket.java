@@ -93,24 +93,7 @@ public class ChatWebsocket implements RecuperarCanalInterface {
                 Logger.getLogger(ChatWebsocket.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        // si es con query string
-        //user = session.getRequestParameterMap().get("user").get(0);
 
-//        session.getUserProperties().put("user",
-//                user);
-//        if (!user.equals("google")) {
-//            session.getUserProperties().put("login",
-//                    "OK");
-//        } else {
-//            session.getUserProperties().put("login",
-//                    "NO");
-//        }
-//        try {
-//          if ! login ok 
-//            session.close();
-//        } catch (IOException ex) {
-//            Logger.getLogger(ChatEndPoint.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 
     @OnMessage
@@ -170,8 +153,7 @@ public class ChatWebsocket implements RecuperarCanalInterface {
 
         }
 
-       
-    }   
+    }
 
     @OnClose
     public void onClose(Session ss, CloseReason re) {
@@ -191,7 +173,7 @@ public class ChatWebsocket implements RecuperarCanalInterface {
             String newChannel = gson.toJson(canal);
             Message mensaje = new Message(newChannel, new java.sql.Timestamp(new Date().getTime()), username, Tipo.ADD_CANAL.ordinal());
             sendMessageToAllUser(mensaje);
-            
+
             //Agregamos el canal al servicio de administración
             CanalUser canalUserControl = new CanalUser(canal.getId(), canal.getNombre(), username, username);
             List<CanalUser> listCanal = new ArrayList<>();
@@ -296,6 +278,9 @@ public class ChatWebsocket implements RecuperarCanalInterface {
             wsSession.getBasicRemote().sendText(gson.toJson(mensajeGetCanales));
             wsSession.getBasicRemote().sendText(gson.toJson(mensajeGetAllCanales));
             wsSession.getBasicRemote().sendText(gson.toJson(mensajeGetCanalesUser));
+
+            //Avisamos del nuevo usuario conectado
+            sendMessageToAllUser(new Message(String.format(Mensajes.NUEVO_USUARIO_EN_CHAT, username), username, Tipo.TEXTO.ordinal()));
         } catch (IOException ex) {
             Logger.getLogger(ChatWebsocket.class.getName()).log(Level.SEVERE, null, ex);
         }
