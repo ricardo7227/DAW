@@ -70,6 +70,13 @@ public class Message {
         this.tipo = tipo;
         this.fecha = new java.sql.Timestamp(new java.util.Date().getTime());
     }
+    public Message(String mensaje, String nombre_user, int tipo,int destino) {
+        this.contenido = mensaje;
+        this.user = nombre_user;
+        this.tipo = tipo;
+        this.fecha = new java.sql.Timestamp(new java.util.Date().getTime());
+        this.destino = destino;
+    }
 
     public Message(int tipo, String mensaje) {
         this.contenido = mensaje;

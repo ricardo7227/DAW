@@ -13,6 +13,8 @@ import model.CanalUser;
 import model.User;
 
 /**
+ * Esta clase se encarga de controlar, todos los usuarios conectados, no
+ * conectados y los usuarios subscritos a diferentes canales
  *
  * @author Gato
  */
@@ -70,8 +72,8 @@ public class AdminServicios {
         }
         return canales;
     }
-    
-    public void addNewChannel(List<CanalUser> canalUsers){
+
+    public void addNewChannel(List<CanalUser> canalUsers) {
         if (canales != null) {
             canales.add(canalUsers);
         }

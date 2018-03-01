@@ -50,7 +50,6 @@ public class SalaChatServlet extends HttpServlet {
         try {
 
             HashMap paramentrosPlantilla = new HashMap();
-            //paramentrosPlantilla.put(Constantes.LOGIN_ON, usuario);
 
             Template plantilla = Configuration.getInstance().getFreeMarker().getTemplate(Templates.CHAT_ROOM);
             plantilla.process(paramentrosPlantilla, response.getWriter());
@@ -90,7 +89,7 @@ public class SalaChatServlet extends HttpServlet {
             Map<String, String[]> parametros = request.getParameterMap();
             LoginServicios servicios = new LoginServicios();
             User usuario = servicios.tratarParametro(parametros);
-//TODO revisar el login - falla con usuarios que no existen o erroneos
+
             HttpSession session = request.getSession();
 
             if (action != null && !action.isEmpty()) {
@@ -106,7 +105,6 @@ public class SalaChatServlet extends HttpServlet {
                                     if (PasswordHash.getInstance().validatePassword(passwordFromClient, usuario.getPassword())) {
 
                                         session.setAttribute(Constantes.LOGIN_ON, usuario);
-                                        //session.setAttribute(Constantes.LEVEL_ACCESS, levelAccessUser);
 
                                     } else {
                                         //messageToUser = Constantes.MESSAGE_USER_LOGIN_FAIL_PASSWORD;
@@ -135,8 +133,6 @@ public class SalaChatServlet extends HttpServlet {
                         if (!serviciosResgistro.thisUserExist(userActivate)) {
 
                             if (serviciosResgistro.userReadyToWorkInsert(userActivate)) {
-
-                                usuario = serviciosResgistro.generatePasswordAndActivationCode(userActivate);
 
                                 if (serviciosResgistro.insertUser(userActivate) != null) {
 

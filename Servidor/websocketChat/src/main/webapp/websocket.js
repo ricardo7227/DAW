@@ -83,7 +83,7 @@ function hablar(mensaje) {
 function onOpen() {
     console.log("onOpen");
     writeToScreen("CONNECTED");
-    //websocket.send(idToken);
+
 }
 function onClose() {
     heCerrado();
@@ -134,7 +134,7 @@ function onMessage(evt) {
             case MensajeTipo.REQUEST_PERMISO:
                 respuesta.contenido = buildRequestBox(respuesta);
                 createModalResponse(respuesta);
-                $('#request_permiso_modal').modal('show');                                
+                $('#request_permiso_modal').modal('show');
                 break;
             case MensajeTipo.GIVE_PERMISO:
 
@@ -152,9 +152,7 @@ function onMessage(evt) {
                 break;
         }
 
-        //writeToScreen("RECEIVED (text): " + evt.data);
-    } else {
-        writeToScreen("RECEIVED (binary): " + evt.data);
+
     }
 }
 
@@ -179,13 +177,16 @@ function buildMessageFromServerToChannel(msjObj, canal) {
     if (typeof keys.salt != "undefined") {
         texto = aesUtil.decrypt(keys.salt, keys.iv, keys.password, msjObj.contenido);
     }
-    return  msjObj.fecha + "::" + canal + " \n " + msjObj.user + ": " + texto;
+    return  msjObj.fecha + ":" + "┬┴┬┴┤" + canal + "├┬┴┬┴  \n " + msjObj.user + ": " + texto;
 }
 
 function setAllCanalesFromServer(canales) {
     if (typeof lista_canalesDB == "undefined") {
         lista_canalesDB = JSON.parse(canales.contenido);
     }
+    $(".g-signin2").hide("slow");
+    $("#launch_login").hide("slow");
+    $("#logout").show("slow");
 }
 function setCanalesFromServer(objetivo, canales) {
 

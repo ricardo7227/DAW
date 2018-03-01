@@ -8,6 +8,8 @@ $("#create_channel").click(crearCanal);
 $("#subscribe_to_channel").click(subscribeToChannel);
 $("#retrieve_messages").click(getMessagesByDates);
 $("#launch_login").click(launchLogin);
+$("#logout").click(cerrarSession);
+$("#logout").hide();
 $("#response_from_server").on("click", "#give_access_user", giveAccessToChannel);
 $("#response_from_server").on("click", "#decline_access_user", declineAccessToChannel);
 $("#response_from_server").on("click", "#button_login", requestLogin);
@@ -16,6 +18,8 @@ $("#response_from_server").on("click", "#button_registro", requestRegistro);
 function crearMensaje() {
     var mensaje = $("#textarea_talk").val();
     var destino = $("#mis_canales_disponibles").val();
+    destino = parseInt(destino);
+    destino = (isNaN(destino)) ? 64 : destino;
     var keys = getKeys(destino);
     if (typeof keys.salt != "undefined") {
         mensaje = aesUtil.encrypt(keys.salt, keys.iv, keys.password, mensaje);
@@ -138,11 +142,9 @@ function buildRequestBox(mensaje) {
     return code;
 }
 function buildLoginRequestBox(mensaje) {
-    //request_permiso_channel = mensaje.destino;
-    //request_permiso_user = mensaje.user;
+   
     var cabecera = "Login o Registro";
-    var okTextLogin = "Dar Acceso";
-    var noTextLogin = "Denegar";
+    
     var code = '<div class="modal fade" tabindex="-1" role="dialog" id="request_login_modal">' +
             '<div class="modal-dialog" role="document">' +
             '<div class="modal-content">' +
@@ -280,14 +282,28 @@ function heCerrado() {
         },
         success: function (result) {
             var respuesta = new Object();
-            respuesta.contenido = "Acabas de crear un nuevo usuario, ya puedes hacer Login";
-            crearMensajeResponseServer("success", respuesta, 5000);
+            respuesta.contenido = " Conexión Cerrada";
+            crearMensajeResponseServer("info", respuesta, 5000);
             console.log("Respuesta Server Registro");
-//            conectar();
+
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log(XMLHttpRequest + textStatus + errorThrown);
         }
     });
+}
+function cerrarSession() {
+    websocket.close();
+    $("#logout").hide("slow");
+    $(".g-signin2").show("slow");
+    $("#launch_login").show("slow");
+
+    $('#mis_canales_disponibles option').each(function () {
+
+        $(this).remove();
+
+    });
+
+
 }
 

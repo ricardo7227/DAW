@@ -40,7 +40,7 @@ public class RegistroServicios {
 
     public User insertUser(User user) {
         UsersDAO dao = new UsersDAO();
-        return dao.insertUserJDBCTemplate(user) ;
+        return dao.insertUserJDBCTemplate(user);
     }
 
     public boolean thisUserExist(User user) {
@@ -75,12 +75,13 @@ public class RegistroServicios {
         return time <= Configuration.getInstance().getTimeToValidate();
 
     }
+
     public User generatePasswordAndActivationCode(User usuario) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        
+
         usuario.setPassword(PasswordHash.getInstance().createHash(usuario.getPassword()));
         usuario.setCodigo_activacion(UtilsRandom.randomAlphaNumeric(ThreadLocalRandom.current().nextInt(20)));
         usuario.setFecha_activacion(new Date(new java.util.Date().getTime()));
-        
+
         return usuario;
     }
 

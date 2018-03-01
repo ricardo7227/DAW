@@ -5,7 +5,6 @@
  */
 package servicios;
 
-
 import dao.UsersDAO;
 import java.sql.Date;
 import java.text.ParseException;
@@ -17,29 +16,26 @@ import model.User;
 
 import utilidades.Constantes;
 
-
 /**
  *
  * @author Gato
  */
 public class LoginServicios {
-    
+
     public LoginServicios() {
     }
-    
+
     public boolean userReadyToWorkLogin(User user) {
-        
+
         return user.getNombre() != null && user.getPassword() != null;
     }
-                               
-    
+
     public User selectLoginUser(User usuario) {
         UsersDAO dao = new UsersDAO();
-        
+
         return dao.getLoginUserJDBCTemplate(usuario);
     }
-    
-      
+
     public User tratarParametro(Map<String, String[]> parametros) {
         User usuario = null;
         if (parametros != null && !parametros.isEmpty()) {
@@ -63,7 +59,7 @@ public class LoginServicios {
                 usuario.setPassword(parametros.get(Constantes.PASSWORD)[0]);
             }
             if (parametros.get(Constantes.FECHA_ACTIVACION) != null && !parametros.get(Constantes.FECHA_ACTIVACION)[0].isEmpty()) {
-                
+
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 java.util.Date parseDate = null;
                 try {
@@ -73,12 +69,10 @@ public class LoginServicios {
                     Logger.getLogger(LoginServicios.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         }
         return usuario;
-        
+
     }
-    
-    
-    
+
 }//fin clase

@@ -24,6 +24,8 @@
                         </ul>
                     <a  id="launch_login" class="btn navbar-btn ml-2 text-white btn-secondary"><i class="fa d-inline fa-lg fa-user-circle-o"></i>LOGIN
                         <br> </a>                    
+                    <a  id="logout" class="btn navbar-btn ml-2 text-dark btn-light"><i class="fa d-inline fa-lg fa-user-circle-o"></i>LOGOUT
+                        <br> </a>                    
                     </div>               
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>                                   
                 </div>
@@ -113,8 +115,7 @@
                                      '<input type="text" name="id_token" value="' +
                                       googleUser.getAuthResponse().id_token + '" />' +
                                                                            '</form>');
-               //$('body').append(form);
-               //form.submit();
+               
                    llamada(idToken);
                        
                            
@@ -137,7 +138,7 @@
                     }
              });
                }
-            </script>
+            </script>        
         <script language="javascript" type="text/javascript" src="websocket.js"></script>
         <script type="text/javascript" src="js/OperacionesJS.js"></script>
         </body>

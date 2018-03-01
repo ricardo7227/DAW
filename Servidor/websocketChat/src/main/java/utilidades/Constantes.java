@@ -42,6 +42,7 @@ public class Constantes {
     public static final String LOGIN_GOOGLE = "LOGIN_GOOGLE";
     public static final String LOGIN_ON = "LOGIN_ON";
     public static final String REGISTRAR = "REGISTRAR";
+    public static final String OK = "login_ok";
 
     //MENSAJES
     public static final String MENSAJES = "mensajes";

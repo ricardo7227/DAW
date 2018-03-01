@@ -30,5 +30,5 @@ public class SqlQuery {
     public static String SELECT_CHANNEL_OWNER = "SELECT canales.id,canales.nombre,canales.admin FROM canales_users,canales WHERE canales_users.id_canal = canales.id AND canales.id = ?";
 
     //MENSAJES   
-    public static String SELECT_MENSAJES_BY_DATES = "SELECT * FROM `mensajes` WHERE fecha > ? AND fecha < ?  AND id_canal IN (SELECT id_canal FROM canales_users WHERE canales_users.user = ?)";
+    public static String SELECT_MENSAJES_BY_DATES = "SELECT * FROM `mensajes` WHERE fecha >= ? AND fecha <= ?  AND id_canal IN (SELECT id_canal FROM canales_users WHERE canales_users.user = ?)";
 }

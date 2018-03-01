@@ -44,24 +44,21 @@ public class SalaControlServlet extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            User user = (User) request.getSession().getAttribute(Constantes.LOGIN_ON);
             HashMap paramentrosPlantilla = new HashMap();
             List<User> usuariosOn = null;
             List<User> usuariosOff = null;
             List<List<CanalUser>> canales = null;
-            if (user != null) {
+            if (request.getSession().getAttribute(Constantes.LOGIN) != null) {
                 usuariosOn = AdminServicios.getInstance().getListOnlineUsers();
                 usuariosOff = AdminServicios.getInstance().getOfflineUsers();
                 canales = AdminServicios.getInstance().getChannels();
 
-            } else {
-                //tienes que estar logueado
             }
 
             paramentrosPlantilla.put(Constantes.USERS_ONLINE, usuariosOn);
             paramentrosPlantilla.put(Constantes.USERS_OFFLINE, usuariosOff);
             paramentrosPlantilla.put(Constantes.CHANNELS, canales);
-            
+
             Template plantilla = Configuration.getInstance().getFreeMarker().getTemplate(Templates.CONTROL_ROOM);
             plantilla.process(paramentrosPlantilla, response.getWriter());
         } catch (TemplateException ex) {
