@@ -10,28 +10,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <#include "/libreria.ftl">
         <style>
-            .dont-break-out {//TODO implementar en less
+            .dont-break-out {
 
-                             /* These are technically the same, but use both */
-                             overflow-wrap: break-word;
-                             word-wrap: break-word;
+                /* These are technically the same, but use both */
+                overflow-wrap: break-word;
+                word-wrap: break-word;
 
-                             -ms-word-break: break-all;
-                             /* This is the dangerous one in WebKit, as it breaks things wherever */
-                             word-break: break-all;
-                             /* Instead use this non-standard one: */
-                             word-break: break-word;
+                -ms-word-break: break-all;
+                /* This is the dangerous one in WebKit, as it breaks things wherever */
+                word-break: break-all;
+                /* Instead use this non-standard one: */
+                word-break: break-word;
 
-                             /* Adds a hyphen where the word breaks, if supported (No Blink) */
-                             -ms-hyphens: auto;
-                             -moz-hyphens: auto;
-                             -webkit-hyphens: auto;
-                             hyphens: auto;
+                /* Adds a hyphen where the word breaks, if supported (No Blink) */
+                -ms-hyphens: auto;
+                -moz-hyphens: auto;
+                -webkit-hyphens: auto;
+                hyphens: auto;
 
             }
             </style>
         </head>
     <body>
+        <div id="response_from_server" ></div>
+        
         <div class="row">
             <div class="container">
                 <div class="row justify-content-center">
@@ -164,18 +166,18 @@
             </form>
 
 
-<!-- Modal -->
+
         <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Tus datos están correctos? Creamos la cuenta?</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Tus datos son correctos? Creamos la cuenta?</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                     <div class="modal-body dont-break-out">
-                        <p>Datos a que vamos a enviar:</p>
+                        <p>Datos que vamos a enviar:</p>
                         <p>
                             <span id="modal_body_confirm"/>
                             </p>
@@ -189,34 +191,14 @@
             </div>
 
 
-<!-- Modal -->
-        <div class="modal fade" id="response_modal_server" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="response_modal_label_server">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    <div class="modal-body dont-break-out">
-                        <div id="response_modal_body_div_server">
-                            <p>
-                                <span id="response_modal_body_span_server"/>
-                                </p>
+        
 
-                            </div>
-                        </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>                        
-                        </div>
-                    </div>
-                </div>
-            </div>
         <script>
             var end_point_apertura_cuentas = "/AppBancaria/aperturaCuentas";
-            <#include "/js/apertura_cuentas.js">
+            
+                
             </script>
+        <script language="javascript" type="text/javascript" src="js/apertura_cuentas.js"></script>
 
         </body>
     </html>
