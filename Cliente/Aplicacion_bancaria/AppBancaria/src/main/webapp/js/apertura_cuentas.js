@@ -4,6 +4,7 @@ var array_datos_ocultables = new Array("#datos_dni_1", "#datos_cliente_1", "#new
 var array_formularios = new Array("check_num_cuenta_form", "check_dni_titular_form", "check_datos_titular_form", "check_dni_titular_form_2", "check_datos_titular_form_2", "check_importe_form");
 var array_botones = new Array("#num_cuenta_sub", "#dni_titular_sub", "#dni_titular_sub_2");
 $(document).ready(function () {
+
     $("#datos_dni_1").hide();
     $("#datos_cliente_1").hide();
     $("#new_titular").hide();
@@ -12,39 +13,7 @@ $(document).ready(function () {
     $("#importe").hide();
     $("#crear_cuenta").hide();
 
-    $("#ncuenta_input").keyup(function (ob) {
-        var elem_input_val = $("#ncuenta_input").get(0);
-        input_num_cuenta = ob.currentTarget.value;
-        if (!isNaN(input_num_cuenta)) {
-
-            if (isNumCuentaComplete(input_num_cuenta)) {
-                elem_input_val.setCustomValidity("");
-
-                if (isValidNumCuenta(input_num_cuenta)) {
-                    $("#datos_dni_1").show("slow");
-                    if (callNumCuentaAjax(input_num_cuenta, "check_number")) {
-                        //TODO define el numero en el form  
-                    }
-
-                } else {
-                    elem_input_val.setCustomValidity("Número de Cuenta inválido");
-                    $("#datos_dni_1").hide("slow");
-                }
-
-            } else {
-                $("#datos_dni_1").hide("slow");
-                elem_input_val.setCustomValidity("Faltan " + (10 - input_num_cuenta.length) + " dígitos");
-            }
-
-
-        } else {
-            elem_input_val.setCustomValidity("Número no válido");
-        }
-
-
-        $("#num_cuenta_sub").click();
-
-    });//fin ncuenta input
+    comprobarNcuentaInput();
 
     introducirDatosDNI("dni_input", "datos_cliente_1", "dni_titular_sub", "response_dni_span", "response_dni", "check_datos_titular_form");
 
@@ -146,16 +115,53 @@ $("#check_importe_form").submit(function (e) {
     }
 
 });
+
+
 //envío de datos para crear la nueva cuenta
 $("#confirm_create_new_account").click(function () {
     sendNewAccount(json_peticion_new_cuenta);
     $('#exampleModalLong').modal('hide');
+
     //var array_datos_ocultables = new Array("#datos_dni_1", "#datos_cliente_1", "#new_titular", "#datos_dni_2", "#datos_cliente_2", "#importe", "#crear_cuenta");
     var array_datos_ocultables = new Array("#datos_dni_1", "#datos_cliente_1", "#new_titular", "#datos_dni_2", "#datos_cliente_2");
     showHideCampos(array_datos_ocultables, "ocultar");
 });
 
+function comprobarNcuentaInput() {
+    $("#ncuenta_input").keyup(function (ob) {
+        var elem_input_val = $("#ncuenta_input").get(0);
+        input_num_cuenta = ob.currentTarget.value;
+        if (!isNaN(input_num_cuenta)) {
 
+            if (isNumCuentaComplete(input_num_cuenta)) {
+                elem_input_val.setCustomValidity("");
+
+                if (isValidNumCuenta(input_num_cuenta)) {
+                    $("#datos_dni_1").show("slow");
+                    if (callNumCuentaAjax(input_num_cuenta, "check_number")) {
+                        //TODO define el numero en el form  
+                    }
+
+                } else {
+                    elem_input_val.setCustomValidity("Número de Cuenta inválido");
+                    $("#datos_dni_1").hide("slow");
+                }
+
+            } else {
+                $("#datos_dni_1").hide("slow");
+                elem_input_val.setCustomValidity("Faltan " + (10 - input_num_cuenta.length) + " dígitos");
+            }
+
+
+        } else {
+            elem_input_val.setCustomValidity("Número no válido");
+        }
+
+
+        $("#num_cuenta_sub").click();
+
+    });//fin ncuenta input
+}
 
 function sendNewAccount(json_new_account) {//TODO - confeccionar llamada
     $.ajax({
@@ -166,11 +172,11 @@ function sendNewAccount(json_new_account) {//TODO - confeccionar llamada
             datos: JSON.stringify(json_new_account)
         },
         success: function (result) {
+
             if (result != "null") {
                 var resp = JSON.parse(result);
-                $('#response_modal_server').modal('show');
-                cambiarTextoResp("#response_modal_label_server", resp.code, 1000 * 60 * 60);
-                cambiarTextoResp("#response_modal_body_span_server", resp.description, 1000 * 60 * 60);
+                responseModalServer(resp);
+
                 cambiarStatusAlert(".modal-body", "alert-success");
                 cleanAllForms(array_formularios);
                 disableAllForm(array_formularios, false);
@@ -180,16 +186,50 @@ function sendNewAccount(json_new_account) {//TODO - confeccionar llamada
 
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
+
             var resp = JSON.parse(XMLHttpRequest.responseText);
-            $('#response_modal_server').modal('show');
-            cambiarTextoResp("#response_modal_label_server", resp.code, 1000 * 60 * 60);
-            cambiarTextoResp("#response_modal_body_span_server", resp.description, 1000 * 60 * 60);
+            responseModalServer(resp);
             cambiarStatusAlert(".modal-body", "alert-danger");
             showHideCampos(array_datos_ocultables, "mostrar");
             console.log(XMLHttpRequest, textStatus, errorThrown);
 
         }
     });
+}
+///new
+function createModalResponse(code) {
+    $("#response_from_server").html(code);
+
+}
+function responseModalServer(response) {
+    createModalResponse(buildRequestBox(response));
+    $('#request_response_modal').modal('show');
+}
+
+function buildRequestBox(response) {
+    var cabecera = response.code;
+    var okText = "OK";
+    var code = '<div class="modal fade" tabindex="-1" role="dialog" id="request_response_modal">' +
+            '<div class="modal-dialog" role="document">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<h5 class="modal-title">' + cabecera + '</h5>' +
+            '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+            '<span aria-hidden="true">&times;</span>' +
+            '</button>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<p>' + response.description + '</p>' +
+            '</div>' +
+            '<div class="modal-footer">' +
+            '<button type="button" class="btn btn-primary" data-dismiss="modal" id="ok_response">' + okText + '</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+
+
+    return code;
 }
 
 function getValidRandomValue() {
