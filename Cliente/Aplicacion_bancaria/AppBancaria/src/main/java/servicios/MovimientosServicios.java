@@ -30,7 +30,11 @@ public class MovimientosServicios {
         MovimientosDAO dao = new MovimientosDAO();
         return dao.getMovimientosJDBCTemplate(mf);
     }
-    
+
+    public Movimiento insertMovimiento(Movimiento movimiento) {
+        MovimientosDAO dao = new MovimientosDAO();
+        return dao.insertMovimientoJDBCTemplate(movimiento);
+    }
 
     public MovimientosFechas tratarParametros(Map<String, String[]> parametros) {
         MovimientosFechas movimientos = null;
@@ -68,5 +72,5 @@ public class MovimientosServicios {
         return movimientos;
 
     }
-    
+
 }

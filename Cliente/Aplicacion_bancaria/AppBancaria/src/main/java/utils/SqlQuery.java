@@ -65,10 +65,12 @@ public class SqlQuery {
     //Cuentas
     public static String SELECT_CUENTA_BY_ID = "SELECT cu_ncu,cu_dn1,cu_dn2,cu_sal  FROM `cuentas` WHERE `cu_ncu` = ?";
     public static String INSERT_CUENTA = "INSERT INTO `cuentas` (`cu_ncu`, `cu_dn1`, `cu_dn2`, `cu_sal`) VALUES (?, ?, ?, ?);";
+    public static String UPDATE_CUENTA_SALDO = "UPDATE `cuentas` SET `cu_sal` = cu_sal + ? WHERE `cuentas`.`cu_ncu` = ?";
 
     //Clientes
     public static String SELECT_CLIENTE_BY_ID = "SELECT * FROM `clientes` WHERE cl_dni = ?";
     public static String DELETE_CLIENTE_BY_ID = "DELETE FROM `clientes` WHERE `clientes`.`cl_dni` = ?";
+    public static String UPDATE_CLIENTE_SALDO_BY_DNI = "UPDATE `clientes` SET `cl_fcl` = CURRENT_DATE(), `cl_sal` = cl_sal + ? WHERE `clientes`.`cl_dni` = ?";
     public static String UPDATE_CLIENTE_BY_ID_SALDO_N_CUENTAS = "UPDATE `clientes` SET `cl_fcl` = CURRENT_DATE(), `cl_ncu` = cl_ncu+1, `cl_sal` = cl_sal + ? WHERE `clientes`.`cl_dni` = ?";
     public static String UPDATE_CLIENTE_BY_ID_SALDO_N_CUENTAS_MINUS = "UPDATE `clientes` SET `cl_fcl` = CURRENT_DATE(), `cl_ncu` = cl_ncu-1, `cl_sal` = cl_sal - ? WHERE `clientes`.`cl_dni` = ?";
     public static String INSERT_CLIENTE = "INSERT INTO `clientes` (`cl_dni`, `cl_nom`, `cl_dir`, `cl_tel`, `cl_ema`, `cl_fna`, `cl_fcl`, `cl_ncu`, `cl_sal`) "

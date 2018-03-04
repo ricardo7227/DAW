@@ -17,7 +17,7 @@ import utilidades.validacion.InterfaceValidator.Required;
 public class Cliente {
 
     @SerializedName("dni")
-    @Expose   
+    @Expose
     @Required
     private String cl_dni;
     @SerializedName("nombre")
@@ -39,7 +39,7 @@ public class Cliente {
     @SerializedName("fecha_nacimiento")
     @Expose
     @Required
-    private Date cl_fna;    
+    private Date cl_fna;
     private Date cl_fcl;
     private int cl_ncu;
     private float cl_sal;
@@ -57,6 +57,10 @@ public class Cliente {
     }
 
     public Cliente() {
+    }
+
+    public Cliente(String cl_dni) {
+        this.cl_dni = cl_dni;
     }
 
     public String getCl_dni() {

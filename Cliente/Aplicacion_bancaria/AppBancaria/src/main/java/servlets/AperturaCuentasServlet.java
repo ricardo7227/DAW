@@ -7,13 +7,10 @@ package servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.http.HttpStatusCodes;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import config.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -30,8 +27,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import servicios.ClientesServicios;
 import servicios.CuentasServicios;
-import servicios.ValidadorServicios;
 import utils.Constantes;
+import utils.Mensajes;
 import utils.Templates;
 
 /**
@@ -147,22 +144,22 @@ public class AperturaCuentasServlet extends HttpServlet {
                                 newCuenta = cuentasServicios.createNewAccount(newCuenta, clientes);
 
                             } else {
-                                respuesta = new GenericResponse(HttpStatusCodes.STATUS_CODE_BAD_REQUEST, Constantes.MSJ_APERTURA_CUENTA_CAMPOS_FAIL);
+                                respuesta = new GenericResponse(HttpStatusCodes.STATUS_CODE_BAD_REQUEST, Mensajes.MSJ_APERTURA_CUENTA_CAMPOS_FAIL);
                                 response.setStatus(HttpStatusCodes.STATUS_CODE_BAD_REQUEST);
                             }
 
                         } else {
-                            respuesta = new GenericResponse(HttpStatusCodes.STATUS_CODE_BAD_REQUEST, Constantes.MSJ_APERTURA_CUENTA_N_ERRONEO);
+                            respuesta = new GenericResponse(HttpStatusCodes.STATUS_CODE_BAD_REQUEST, Mensajes.MSJ_APERTURA_CUENTA_N_ERRONEO);
                             response.setStatus(HttpStatusCodes.STATUS_CODE_BAD_REQUEST);
                         }
                     }
 
                     if (newCuenta == null && respuesta == null) {
-                        respuesta = new GenericResponse(HttpStatusCodes.STATUS_CODE_SERVER_ERROR, Constantes.MSJ_APERTURA_CUENTA_SERVIDOR_FAIL);
+                        respuesta = new GenericResponse(HttpStatusCodes.STATUS_CODE_SERVER_ERROR, Mensajes.MSJ_APERTURA_CUENTA_SERVIDOR_FAIL);
                         response.setStatus(HttpStatusCodes.STATUS_CODE_SERVER_ERROR);
 
                     } else if (newCuenta != null && respuesta == null) {
-                        respuesta = new GenericResponse(HttpStatusCodes.STATUS_CODE_OK, Constantes.MSJ_APERTURA_CUENTA_OK);
+                        respuesta = new GenericResponse(HttpStatusCodes.STATUS_CODE_OK, Mensajes.MSJ_APERTURA_CUENTA_OK);
                     }
                     mapper.writeValue(response.getOutputStream(), respuesta);
 

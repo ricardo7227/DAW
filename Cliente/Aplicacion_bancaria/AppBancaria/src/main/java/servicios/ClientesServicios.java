@@ -126,10 +126,16 @@ public class ClientesServicios {
         return (plus) ? dao.updateSaldoAndNCuentasPlusJDBCTemplate(cliente) : dao.updateSaldoAndNCuentasMinusJDBCTemplate(cliente);
     }
 
+    public Cliente updateSaldo(Cliente cliente) {
+        ClientesDAO dao = new ClientesDAO();
+        return dao.updateSaldoByDNIJDBCTemplate(cliente);
+    }
+
     public Cliente insertCliente(Cliente cliente) {
         ClientesDAO dao = new ClientesDAO();
         return dao.insertClienteJDBCTemplate(cliente);
     }
+
     public int deleteCliente(Cliente cliente) {
         ClientesDAO dao = new ClientesDAO();
         return dao.deleteClienteJDBCTemplate(cliente);
@@ -174,6 +180,17 @@ public class ClientesServicios {
             }
         }
         return clientes;
+    }
+
+    public boolean updateSaldoClientes(List<Cliente> clientes) {
+        boolean isFinish = false;
+        for (Cliente cliente : clientes) {
+
+            if (updateSaldo(cliente) != null) {
+                isFinish = true;
+            }
+        }
+        return isFinish;
     }
 
 }//fin clase

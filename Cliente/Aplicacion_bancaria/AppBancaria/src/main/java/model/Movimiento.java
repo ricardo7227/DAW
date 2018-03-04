@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.Date;
+import utilidades.validacion.InterfaceValidator.Required;
 
 /**
  *
@@ -13,10 +14,13 @@ import java.sql.Date;
  */
 public class Movimiento {
 
+    @Required
     private long mo_ncu;
     private Date mo_fec;
     private String mo_hor;
+    @Required
     private String mo_des;
+    @Required
     private long mo_imp;
 
     public Movimiento(long mo_ncu, Date mo_fec, String mo_hor, String mo_des, long mo_imp) {

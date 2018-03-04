@@ -36,6 +36,11 @@ public class CuentasServicios {
         return dao.insertCuentaJDBCTemplate(cuenta);
     }
 
+    public Cuenta updateSaldo(Cuenta cuenta) {
+        CuentasDAO dao = new CuentasDAO();
+        return dao.updateSaldoJDBCTemplate(cuenta);
+    }
+
     public boolean comprobarNumCuenta(String numCuenta) {
         boolean cuentaValida = false;
         if (numCuenta != null && !numCuenta.isEmpty() && numCuenta.length() == 10) {
@@ -121,7 +126,7 @@ public class CuentasServicios {
                 dni1 = cliente.getCl_dni();
                 saldo = cliente.getCl_sal();
             } else {
-                dni2 = cliente.getCl_dni();                
+                dni2 = cliente.getCl_dni();
             }
 
         }
@@ -148,7 +153,7 @@ public class CuentasServicios {
     }
 
     /**
-     * Actualiza en DB la lista de clientes o inserta sini existen.
+     * Actualiza en DB la lista de clientes o inserta sino existen.
      *
      * @param clientes
      * @param clientesServicios
@@ -164,7 +169,7 @@ public class CuentasServicios {
 
                 if (!aumentar) {//quitar datos de cliente
 
-                    if (clienteDB.getCl_ncu() > 1) {//más de una cuenta -> quitamos quitamos cuenta y saldo
+                    if (clienteDB.getCl_ncu() > 1) {//más de una cuenta ->  quitamos cuenta y saldo
 
                         if (clientesServicios.updateSaldoAndNcuentas(cliente, aumentar) != null) {
                             isClientFinish = true;

@@ -5,16 +5,11 @@
  */
 package dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import model.Movimiento;
 import model.MovimientosFechas;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
-import utils.Constantes;
 import utils.SqlQuery;
 
 /**
@@ -45,18 +40,30 @@ public class MovimientosDAO {
 //
 //        return movimientos;
 //    }
-    
     public List<Movimiento> getMovimientosJDBCTemplate(MovimientosFechas movimientosFechas) {
 
         String sql = SqlQuery.SELECT_MOVIMIENTOS_BY_CUENTA_AND_FECHAS;
         Object[] rangoMovimientos = new Object[]{movimientosFechas.getId_cuenta(),
             movimientosFechas.getFecha_inicio(), movimientosFechas.getFecha_fin()};
-        
+
         List<Movimiento> customers = new JdbcTemplate(
                 DBConnection.getInstance().getDataSource()).query(sql, rangoMovimientos,
                 new BeanPropertyRowMapper(Movimiento.class));
 
         return customers;
     }
+
+    public Movimiento insertMovimientoJDBCTemplate(Movimiento movimiento) {
+
+        JdbcTemplate jtm = new JdbcTemplate(
+                DBConnection.getInstance().getDataSource());
+        Object[] paramsMovimiento = new Object[]{movimiento.getMo_ncu(), movimiento.getMo_des(), movimiento.getMo_imp()};
+        int rowAffected = jtm.update(SqlQuery.INSERT_MOVIMIENTOS, paramsMovimiento);
+        if (rowAffected == 0) {
+            movimiento = null;
+        }
+
+        return movimiento;
+    }//fin
 
 }

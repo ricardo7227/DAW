@@ -84,11 +84,7 @@ public class Constantes {
     public static final String N_CUENTA = "n_cuenta";
     public static final String TITULARES = "titulares";
 
-    public static final String MSJ_APERTURA_CUENTA = "Nueva Cuenta Abierta";
-    public static final String MSJ_APERTURA_CUENTA_N_ERRONEO = "El número de cuenta solicitado es inválido, porque ya esta asignado";
-    public static final String MSJ_APERTURA_CUENTA_CAMPOS_FAIL = "El cliente/s no relleno todos los campos, o utiliza el mismo DNI para dos clientes distintos";
-    public static final String MSJ_APERTURA_CUENTA_SERVIDOR_FAIL = "Tenemos problemas registrando la nueva cuenta en el servidor, inténtalo más tarde";
-    public static final String MSJ_APERTURA_CUENTA_OK = "Cuenta Creada Satisfactoriamente";
+    
 
     //ajax
     public static final String CHECK_NUM_CUENTA = "check_num_cuenta";

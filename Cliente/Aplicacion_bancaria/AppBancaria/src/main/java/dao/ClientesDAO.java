@@ -8,7 +8,6 @@ package dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Cliente;
-import model.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -51,7 +50,9 @@ public class ClientesDAO {
     }
 
     /**
-     * Actualiza el saldo y n de cuentas de un cliente y recupera los nuevos valores
+     * Actualiza el saldo y n de cuentas de un cliente y recupera los nuevos
+     * valores
+     *
      * @param cliente
      * @return cliente o null
      */
@@ -66,8 +67,8 @@ public class ClientesDAO {
             clienteDB = getNumClienteJDBCTemplate(cliente);
         }
         return clienteDB;
-    }    
-    
+    }
+
     public Cliente updateSaldoAndNCuentasMinusJDBCTemplate(Cliente cliente) {
         Cliente clienteDB = null;
         JdbcTemplate jtm = new JdbcTemplate(
@@ -80,22 +81,35 @@ public class ClientesDAO {
         }
         return clienteDB;
     }
-    public int deleteClienteJDBCTemplate(Cliente cliente) {
-        
+
+    public Cliente updateSaldoByDNIJDBCTemplate(Cliente cliente) {
+        Cliente clienteDB = null;
         JdbcTemplate jtm = new JdbcTemplate(
                 DBConnection.getInstance().getDataSource());
-        Object[] cli = new Object[]{ cliente.getCl_dni()};
+        Object[] cli = new Object[]{cliente.getCl_sal(), cliente.getCl_dni()};
+        int rowsAffected = jtm.update(SqlQuery.UPDATE_CLIENTE_SALDO_BY_DNI, cli);
+
+        if (rowsAffected > 0) {
+            clienteDB = getNumClienteJDBCTemplate(cliente);
+        }
+        return clienteDB;
+    }
+
+    public int deleteClienteJDBCTemplate(Cliente cliente) {
+
+        JdbcTemplate jtm = new JdbcTemplate(
+                DBConnection.getInstance().getDataSource());
+        Object[] cli = new Object[]{cliente.getCl_dni()};
         int rowsAffected = jtm.update(SqlQuery.DELETE_CLIENTE_BY_ID, cli);
 
-        
         return rowsAffected;
     }
-    
+
     public Cliente insertClienteJDBCTemplate(Cliente cliente) {
         Cliente clienteDB = null;
         JdbcTemplate jtm = new JdbcTemplate(
                 DBConnection.getInstance().getDataSource());
-        Object[] cli = new Object[]{cliente.getCl_dni(),cliente.getCl_nom(),cliente.getCl_dir(),cliente.getCl_tel(),cliente.getCl_ema(),cliente.getCl_fna(),cliente.getCl_sal()};
+        Object[] cli = new Object[]{cliente.getCl_dni(), cliente.getCl_nom(), cliente.getCl_dir(), cliente.getCl_tel(), cliente.getCl_ema(), cliente.getCl_fna(), cliente.getCl_sal()};
         int rowsAffected = jtm.update(SqlQuery.INSERT_CLIENTE, cli);
 
         if (rowsAffected > 0) {
