@@ -83,6 +83,8 @@ public class Constantes {
     public static final String FECHA_FIN = "fecha_fin";
     public static final String N_CUENTA = "n_cuenta";
     public static final String TITULARES = "titulares";
+    
+    public static final String NEW_MOVIMIENTO = "new_movimiento";
 
     
 

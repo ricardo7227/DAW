@@ -72,6 +72,27 @@ public class MovimientosServicios {
         return movimientos;
 
     }
-    
+
+    public Movimiento tratarParametrosMovimiento(Map<String, String[]> parametros) {
+        Movimiento movimiento = null;
+        if (parametros != null && !parametros.isEmpty()) {
+            movimiento = new Movimiento();
+
+            if (parametros.get(Constantes.MOV_NUM_CUENTA) != null && !parametros.get(Constantes.MOV_NUM_CUENTA)[0].isEmpty()) {
+                movimiento.setMo_ncu(Long.valueOf(parametros.get(Constantes.MOV_NUM_CUENTA)[0]));
+            }
+
+            if (parametros.get(Constantes.MOV_DESCRIP) != null && !parametros.get(Constantes.MOV_DESCRIP)[0].isEmpty()) {
+                movimiento.setMo_des(parametros.get(Constantes.MOV_DESCRIP)[0]);
+            }
+
+            if (parametros.get(Constantes.MOV_IMPORTE) != null && !parametros.get(Constantes.MOV_IMPORTE)[0].isEmpty()) {
+                movimiento.setMo_imp(Long.valueOf(parametros.get(Constantes.MOV_IMPORTE)[0]));
+
+            }
+        }
+        return movimiento;
+
+    }
 
 }

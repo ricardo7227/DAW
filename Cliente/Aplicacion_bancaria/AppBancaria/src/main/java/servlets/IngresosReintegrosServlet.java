@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import config.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,11 +23,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Cliente;
 import model.Cuenta;
+import model.GenericResponse;
 import model.Movimiento;
+import org.apache.http.HttpStatus;
 import servicios.ClientesServicios;
 import servicios.CuentasServicios;
 import servicios.MovimientosServicios;
+import servicios.ValidadorServicios;
 import utils.Constantes;
+import utils.Mensajes;
 import utils.Templates;
 
 /**
@@ -89,27 +95,48 @@ public class IngresosReintegrosServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
+        Map<String, String[]> parametros = request.getParameterMap();
         String action = request.getParameter(Constantes.ACTION_TEMPLATE);
         if (action != null && !action.isEmpty()) {
             switch (action) {
-                case "newMovimiento":
-                    //TODO comprobación en servidor
-                    Movimiento movimiento = new Movimiento();
-                    long nCuenta = 123456789;
-                    Cuenta cuenta = new CuentasServicios().getCuenta(new Cuenta(nCuenta));
-                    List<Cliente> clientes = new ArrayList<>();
-                    ClientesServicios clientesServicios = new ClientesServicios();
-                    Cliente titular1 = clientesServicios.getCliente(new Cliente(cuenta.getCu_dn1()));
-                    clientes.add(titular1);
-                    if (cuenta.getCu_dn2() != null) {
-                        clientes.add(clientesServicios.getCliente(new Cliente(cuenta.getCu_dn2())));
-                    }
-                    //importe de la operación
-                    cuenta.setCu_sal(movimiento.getMo_imp());
-                    cuenta = new CuentasServicios().updateSaldo(cuenta);
-                    if (new ClientesServicios().updateSaldoClientes(clientes) && cuenta != null) {//actualiza el saldo de los clientes
-                        new MovimientosServicios().insertMovimiento(movimiento);
+                
+                case Constantes.NEW_MOVIMIENTO:
+
+                    MovimientosServicios movimientosServicios = new MovimientosServicios();                    
+                    CuentasServicios cuentasServicios = new CuentasServicios();
+
+                    ValidadorServicios validar = new ValidadorServicios();
+
+                    Movimiento movimiento = movimientosServicios.tratarParametrosMovimiento(parametros);
+
+                    if (validar.validateModel(movimiento)) {
+                        if (cuentasServicios.comprobarNumCuenta(String.valueOf(movimiento.getMo_ncu()))) {
+                            long nCuenta = movimiento.getMo_ncu();
+                            Cuenta cuenta = cuentasServicios.getCuenta(new Cuenta(nCuenta));
+                            
+                            List<Cliente> clientes = new ArrayList<>();
+                            ClientesServicios clientesServicios = new ClientesServicios();
+                            Cliente titular1 = clientesServicios.getCliente(new Cliente(cuenta.getCu_dn1()));
+                            clientes.add(titular1);
+                            if (cuenta.getCu_dn2() != null) {
+                                clientes.add(clientesServicios.getCliente(new Cliente(cuenta.getCu_dn2())));
+                            }
+                            //importe de la operación
+                            cuenta.setCu_sal(movimiento.getMo_imp());
+                            cuenta = cuentasServicios.updateSaldo(cuenta);
+                            if (new ClientesServicios().updateSaldoClientes(clientes) && cuenta != null) {//actualiza el saldo de los clientes
+                                ObjectMapper mapper = new ObjectMapper();
+                                movimientosServicios.insertMovimiento(movimiento);
+                                
+                                mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_ACCEPTED, Mensajes.MSJ_MOVIMIENTO_CREADO));
+                                
+                            } else {
+                                //cuenta invalida
+                            }
+                        }
+
+                    } else {
+                        //campos incompletos
                     }
 
                     break;

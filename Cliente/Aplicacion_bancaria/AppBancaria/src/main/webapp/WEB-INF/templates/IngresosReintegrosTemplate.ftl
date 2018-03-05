@@ -44,7 +44,7 @@
                                 <input type="text" class="form-control" placeholder="Tranferencia/Pagos/Remesas..."> <small class="form-text text-muted">Escribe un concepto de la operación</small> </div>
                             <div class="form-group m-1"> <label class="">Importe</label>
                                 <input type="text" class="form-control" placeholder="500"> </div>
-                            <button type="submit" class="btn btn-secondary btn-sm d-flex align-self-center" data-toggle="modal">Realizar Operación</button>
+                            <button type="button" class="btn btn-secondary btn-sm d-flex align-self-center" id="crear_movimiento" data-toggle="modal">Realizar Operación</button>
                             </form>
                         </div>
                     </div>

@@ -79,6 +79,40 @@ function comprobarNumCuentaAjax(num_cuenta) {
         }
     });
 }
+function createMovimiento(movimiento) {//TODO - hacer llamada crear movimiento
+    $.ajax({
+        type: "POST",
+        url: end_point_movimientos,
+        data: {
+            mo_ncu: movimiento.mo_ncu,
+            mo_des: movimiento.mo_des,
+            mo_imp: movimiento.mo_imp,
+            ACTION: "new_movimiento"
+        },
+        success: function (result) {
+            if (result === "null") {
+                cambiarTextoRespuesta("#dialog_span", "No existe el número de cuenta en base de datos");
+                cambiarStatusAlert("#alert_type", "alert-warning");
+                $("#ver_movimientos").hide("slow");
+            } else {
+
+                var resp = JSON.parse(result);
+               // mostrarDatosCuenta(resp);
+                //$("#num_cuenta_fec").val(resp.cu_ncu);
+                cambiarTextoRespuesta("#dialog_span", "Número de Cuenta correcto");
+                cambiarStatusAlert("#alert_type", "alert-success");
+            }
+
+
+            console.log("Respuesta Server");
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            cambiarTextoRespuesta("#dialog_span", "Tenemos problemas en el Servidor, inténtalo otra vez");
+            cambiarStatusAlert("#alert_type", "alert-danger");
+            console.log(XMLHttpRequest + textStatus + errorThrown);
+        }
+    });
+}
 function cambiarTextoRespuesta(objetivo, texto) {
     $(objetivo).text(texto);
     $("#response_client_js").show("slow");
