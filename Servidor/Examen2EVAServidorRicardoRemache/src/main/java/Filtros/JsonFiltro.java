@@ -54,9 +54,8 @@ public class JsonFiltro implements Filter {
 
         String user = request.getParameter(Constantes.USER);
         String caja = request.getParameter(Constantes.CAJA);
+        String operacion = request.getParameter(Constantes.OPERACION);
 
-
-        
         PermisosDAO serviciosPermisos = new PermisosDAO();
         int codeResponse = HttpStatus.SC_ACCEPTED;
 //        
@@ -67,8 +66,8 @@ public class JsonFiltro implements Filter {
             User a = mapper.readValue(user, new TypeReference<User>() {
             });
 
+            // ((HttpServletRequest) request).getSession().setAttribute(Constantes.LOG_OPERACIONES, new LogUser(a.getName(), "usuarios", new Date()));
             if (method.equalsIgnoreCase(Constantes.PUT)) {
-                                
 
                 request.setAttribute(Constantes.USER, a);
 
@@ -91,25 +90,13 @@ public class JsonFiltro implements Filter {
             if (serviciosPermisos.checkUser(u)) {
 
                 request.setAttribute(Constantes.USER, u);
+                request.setAttribute(Constantes.OPERACION, operacion);
+                request.setAttribute(Constantes.CAJA, caj);
 
-                if (method.equalsIgnoreCase(Constantes.PUT)) {
-
-                    request.setAttribute(Constantes.CAJA, caj);
-
-                } else if (method.equalsIgnoreCase(Constantes.POST)) {
-
-                    request.setAttribute(Constantes.CAJA, caj);
-
-                } else if (method.equalsIgnoreCase(Constantes.DELETE)) {
-
-                    request.setAttribute(Constantes.CAJA, caj);
-
-                }
             } else {
                 codeResponse = HttpStatus.SC_BAD_REQUEST;
             }
         }
-
 
         if (codeResponse != HttpStatus.SC_ACCEPTED) {
             request.setAttribute(Constantes.JSON, new GenericResponse(codeResponse, Mensajes.faltanCampos));

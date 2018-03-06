@@ -34,15 +34,29 @@ public class CajasAPIServlet extends HttpServlet {
 
         User user = (User) req.getAttribute(Constantes.USER);
         Caja caja = (Caja) req.getAttribute(Constantes.CAJA);
-        if (user != null && caja != null) {
-            if (!servicios.insertCaja(user, caja)) {
-                resp.setStatus(HttpStatus.SC_INTERNAL_SERVER_ERROR);
-                req.setAttribute(Constantes.JSON,
-                        new GenericResponse(HttpStatus.SC_INTERNAL_SERVER_ERROR, Mensajes.messageQueryCajaInsertedFail));
-            }
-            else {
-                resp.setStatus(HttpStatus.SC_CREATED);
-                req.setAttribute(Constantes.JSON, caja);
+        String operacion = (String) req.getAttribute(Constantes.OPERACION);
+
+        if (operacion != null) {
+
+            switch (operacion) {
+                case Constantes.ADD_CAJA:
+
+                    if (user != null && caja != null) {
+                        if (!servicios.insertCaja(user, caja)) {
+                            resp.setStatus(HttpStatus.SC_INTERNAL_SERVER_ERROR);
+                            req.setAttribute(Constantes.JSON,
+                                    new GenericResponse(HttpStatus.SC_INTERNAL_SERVER_ERROR, Mensajes.messageQueryCajaInsertedFail));
+                        } else {
+                            resp.setStatus(HttpStatus.SC_CREATED);
+                            req.setAttribute(Constantes.JSON, caja);
+                        }
+
+                    }
+
+                    break;
+                case Constantes.ADD_COSAS:
+
+                    break;
             }
 
         }
@@ -65,9 +79,25 @@ public class CajasAPIServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         User user = (User) request.getAttribute(Constantes.USER);
-        request.setAttribute(Constantes.JSON, servicios.getAllCajasByUser(user));
+        Caja caja = (Caja) request.getAttribute(Constantes.CAJA);
+        String operacion = (String) request.getAttribute(Constantes.OPERACION);
+
+        if (operacion != null) {
+            switch (operacion) {
+                case Constantes.LIST_CAJAS:
+                    request.setAttribute(Constantes.JSON, servicios.getAllCajasByUser(user));
+                    break;
+
+                case Constantes.LIST_COSAS:
+
+                    request.setAttribute(Constantes.JSON, servicios.getCosasByCaja(caja));
+                    break;
+
+            }
+
+        }
 
     }
 
@@ -82,7 +112,6 @@ public class CajasAPIServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
 
     }
 

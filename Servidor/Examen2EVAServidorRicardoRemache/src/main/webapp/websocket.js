@@ -38,18 +38,12 @@
  * holder.
  */
 
-var wsUri = "ws://localhost:8080/Examen2EVA/logOperaciones";
+var wsUri = "ws://localhost:8080/Examen2EVAServidorRicardoRemache/logOperaciones";
 console.log("Connecting to " + wsUri);
 
 var websocket;
 
-var usuario; //Tras el login, defino el nombre de usuario
 
-
-var lista_canalesDB; //Tras el login, cargo todos los canales disponibles
-
-var request_permiso_channel;//id del canal, que un usuario pide permiso
-var request_permiso_user;//nombre del usuario que pide permiso
 
 conectar();
 
@@ -71,7 +65,11 @@ function conectar() {
 }
 
 
-function hablar(mensaje) {
+function hablar() {
+    var mensaje = new Object();
+    mensaje.usuario = "Admin";
+    mensaje.operacion = "consulta datos";
+    mensaje.fecha = new Date();
     console.log("mensaje: " + mensaje);
     websocket.send(mensaje);
 }
@@ -83,71 +81,14 @@ function onOpen() {
 
 }
 function onClose() {
-    heCerrado();
+
     writeToScreen("Server close conection");
 }
 
 function onMessage(evt) {
     if (typeof evt.data == "string") {
         var respuesta = JSON.parse(evt.data);
-        switch (respuesta.tipo) {
-            case MensajeTipo.CONFIG:
-
-                if (typeof respuesta.user == "undefined") {
-                    setAllCanalesFromServer(respuesta);
-                } else {
-                    writeToScreen(buildMessageFromServer(respuesta));
-                    usuario = respuesta.user;
-                }
-                break;
-            case MensajeTipo.GET_CANALES:
-                if (typeof respuesta.user == "undefined") {
-                    setCanalesFromServer("#canales_disponibles", respuesta);
-
-
-                } else {
-                    setCanalesFromServer("#mis_canales_disponibles", respuesta);
-                }
-                break;
-            case MensajeTipo.ADD_CANAL:
-
-                if (usuario == respuesta.user) {
-                    setCanalesFromServer("#mis_canales_disponibles", respuesta);
-
-
-                } else {
-                    setCanalesFromServer("#canales_disponibles", respuesta);
-
-                }
-                lista_canalesDB.push(JSON.parse(respuesta.contenido));
-
-                break;
-            case MensajeTipo.SERVER_INFO:
-                crearMensajeResponseServer("success", respuesta, 5000);
-                break;
-            case MensajeTipo.TEXTO:
-                writeToScreen(buildMessageFromServerToChannel(respuesta, getNameChannel(lista_canalesDB, respuesta)));
-                break;
-            case MensajeTipo.REQUEST_PERMISO:
-                respuesta.contenido = buildRequestBox(respuesta);
-                createModalResponse(respuesta);
-                $('#request_permiso_modal').modal('show');
-                break;
-            case MensajeTipo.GIVE_PERMISO:
-
-                crearMensajeResponseServer("success", respuesta, 5000);
-                break;
-            case MensajeTipo.DECLINE_ACCESS:
-                crearMensajeResponseServer("dark", respuesta, 5000);
-                break;
-            case MensajeTipo.GET_MENSAJES:
-                var mens = JSON.parse(respuesta.contenido);
-                loadMessages(mens);
-                break;
-            default:
-
-                break;
-        }
+        writeToScreen(buildMessageFromServer(respuesta));
 
 
     }
@@ -166,49 +107,10 @@ function writeToScreen(message) {
 }
 
 function buildMessageFromServer(msjObj) {
-    return  msjObj.fecha + ":\n " + msjObj.user + ": " + msjObj.contenido;
-}
-function buildMessageFromServerToChannel(msjObj, canal) {
-    var texto = msjObj.contenido;
-    var keys = getKeys(msjObj.destino);
-    if (typeof keys.salt != "undefined") {
-        texto = aesUtil.decrypt(keys.salt, keys.iv, keys.password, msjObj.contenido);
-    }
-    return  msjObj.fecha + ":" + "┬┴┬┴┤" + canal + "├┬┴┬┴  \n " + msjObj.user + ": " + texto;
+    return  msjObj.fecha + ": " + msjObj.usuario + ": " + msjObj.operacion;
 }
 
-function setAllCanalesFromServer(canales) {
-    if (typeof lista_canalesDB == "undefined") {
-        lista_canalesDB = JSON.parse(canales.contenido);
-    }
-    $(".g-signin2").hide("slow");
-    $("#launch_login").hide("slow");
-    $("#logout").show("slow");
-}
-function setCanalesFromServer(objetivo, canales) {
+setInterval(hablar,5000);
 
 
-    var lista_canales = JSON.parse(canales.contenido);
-    if (Array.isArray(lista_canales)) {
-        lista_canales.forEach(function (elem) {
-            addSelect(objetivo, elem);
-        });
-    } else {
-        addSelect(objetivo, lista_canales);
-    }
-}
-function addSelect(objetivo, elem) {
-    var r;
-    if (typeof elem.canal == "undefined") {
-        var ms = new Object();
-        ms.destino = elem.id;
-        ms.id = elem.id;
-        ms.canal = getNameChannel(lista_canalesDB, ms);
-        r = addSelect(objetivo, ms);
-    } else {
-        var select = "<option value='" + elem.id + "'>" + elem.canal + "</option>";
-        $(objetivo).append(select);
-    }
-    return r;
-}
 

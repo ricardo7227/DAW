@@ -6,11 +6,11 @@
 
 <%@page import="utils.Constantes"%>
 
-<%@page import="model.Alumno"%>
+
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
-<jsp:useBean id="cons" class="utils.UrlsPaths" scope="session"/>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
 <!DOCTYPE html>

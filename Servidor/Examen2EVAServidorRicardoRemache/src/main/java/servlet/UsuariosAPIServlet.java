@@ -62,7 +62,7 @@ public class UsuariosAPIServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-
+       
         request.setAttribute(Constantes.JSON, usuariosServicios.getAllUsers());
 
     }

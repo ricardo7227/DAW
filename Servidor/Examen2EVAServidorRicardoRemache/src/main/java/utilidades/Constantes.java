@@ -22,6 +22,15 @@ public class Constantes {
     public static final String DELETE = "DELETE";
     public static final String DELETE_FORCE = "delete_force";
     
+    public static final String LIST_CAJAS = "list_cajas";
+    public static final String LIST_COSAS = "list_cosas";
+    public static final String ADD_CAJA = "ADD_CAJA";
+    public static final String ADD_COSAS ="ADD_COSAS";
+    
+    
+    public static final String LOG_OPERACIONES = "log_op";
+    public static final String DATE_FORMAT = "yyyy-MM-dd-HH:mm:ss";
+    public static String OPERACION = "operacion";
     
     
     
