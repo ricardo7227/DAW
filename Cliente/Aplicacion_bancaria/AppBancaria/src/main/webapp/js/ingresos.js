@@ -5,7 +5,11 @@
  */
 
 var input_num_cuenta;
+
+
 $(document).ready(function () {
+
+    $("#crear_movimiento").click(createMovimiento);
 
     $("#input_ncuenta").keyup(function (ob) {
         var elem_input_val = $("#input_ncuenta").get(0);
@@ -16,7 +20,7 @@ $(document).ready(function () {
                 elem_input_val.setCustomValidity("");
 
                 if (isValidNumCuenta(input_num_cuenta)) {
-                   // $("#ver_movimientos").show("slow");
+                    // $("#ver_movimientos").show("slow");
                     comprobarNumCuentaAjax(input_num_cuenta);
 
                 } else {
@@ -59,11 +63,11 @@ function comprobarNumCuentaAjax(num_cuenta) {
             if (result === "null") {
                 cambiarTextoRespuesta("#dialog_span", "No existe el número de cuenta en base de datos");
                 cambiarStatusAlert("#alert_type", "alert-warning");
-                $("#ver_movimientos").hide("slow");
+                //$("#ver_movimientos").hide("slow");
             } else {
 
                 var resp = JSON.parse(result);
-               // mostrarDatosCuenta(resp);
+                // mostrarDatosCuenta(resp);
                 //$("#num_cuenta_fec").val(resp.cu_ncu);
                 cambiarTextoRespuesta("#dialog_span", "Número de Cuenta correcto");
                 cambiarStatusAlert("#alert_type", "alert-success");
@@ -79,10 +83,16 @@ function comprobarNumCuentaAjax(num_cuenta) {
         }
     });
 }
-function createMovimiento(movimiento) {//TODO - hacer llamada crear movimiento
+function createMovimiento() {//TODO - hacer llamada crear movimiento
+    var movimiento = new Object();
+    movimiento.mo_ncu = $("#input_ncuenta").val();
+    movimiento.mo_des = $("#input_descripcion").val();
+    movimiento.mo_imp = $("#input_importe").val();
+
+
     $.ajax({
         type: "POST",
-        url: end_point_movimientos,
+        url: end_point_operaciones,
         data: {
             mo_ncu: movimiento.mo_ncu,
             mo_des: movimiento.mo_des,
@@ -91,15 +101,13 @@ function createMovimiento(movimiento) {//TODO - hacer llamada crear movimiento
         },
         success: function (result) {
             if (result === "null") {
-                cambiarTextoRespuesta("#dialog_span", "No existe el número de cuenta en base de datos");
+                cambiarTextoRespuesta("#dialog_span", "Fallo agregando registros a la base de datos");
                 cambiarStatusAlert("#alert_type", "alert-warning");
-                $("#ver_movimientos").hide("slow");
+                
             } else {
 
-                var resp = JSON.parse(result);
-               // mostrarDatosCuenta(resp);
-                //$("#num_cuenta_fec").val(resp.cu_ncu);
-                cambiarTextoRespuesta("#dialog_span", "Número de Cuenta correcto");
+                var resp = JSON.parse(result);                
+                cambiarTextoRespuesta("#dialog_span", resp.description);
                 cambiarStatusAlert("#alert_type", "alert-success");
             }
 

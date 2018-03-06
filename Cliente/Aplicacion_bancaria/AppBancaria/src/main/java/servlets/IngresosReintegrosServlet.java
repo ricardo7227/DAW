@@ -94,7 +94,7 @@ public class IngresosReintegrosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       // processRequest(request, response);
         Map<String, String[]> parametros = request.getParameterMap();
         String action = request.getParameter(Constantes.ACTION_TEMPLATE);
         if (action != null && !action.isEmpty()) {

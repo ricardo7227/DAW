@@ -41,9 +41,9 @@
                     <div class="col-md-10">
                         <form class="flex-row d-flex justify-content-start align-self-center">
                             <div class="form-group d-flex flex-column justify-content-around w-100 m-1"> <label class="">Descripción</label>
-                                <input type="text" class="form-control" placeholder="Tranferencia/Pagos/Remesas..."> <small class="form-text text-muted">Escribe un concepto de la operación</small> </div>
+                                <input type="text" id="input_descripcion" class="form-control" placeholder="Tranferencia/Pagos/Remesas..."> <small class="form-text text-muted">Escribe un concepto de la operación</small> </div>
                             <div class="form-group m-1"> <label class="">Importe</label>
-                                <input type="text" class="form-control" placeholder="500"> </div>
+                                <input type="text" id="input_importe" class="form-control" placeholder="500"> </div>
                             <button type="button" class="btn btn-secondary btn-sm d-flex align-self-center" id="crear_movimiento" data-toggle="modal">Realizar Operación</button>
                             </form>
                         </div>
