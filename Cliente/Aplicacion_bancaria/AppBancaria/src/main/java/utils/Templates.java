@@ -10,7 +10,7 @@ package utils;
  * @author daw
  */
 public class Templates {
-
+    public static final String INDEX_TEMPLATE = "index.ftl";
     public static String MOVIMIENTOS = "movimientosTemplate.ftl";
     public static String APERTURA_CUENTAS = "aperturaCuentasTemplate.ftl";
     public static String INGRESOS_REINTEGROS_TEMPLATE = "IngresosReintegrosTemplate.ftl";

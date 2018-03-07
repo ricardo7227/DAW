@@ -32,6 +32,7 @@
             </style>
         </head>
     <body>
+        <#include "/MenuAppTemplate.ftl">
         <div id="response_from_server" ></div>
         
         <div class="row">

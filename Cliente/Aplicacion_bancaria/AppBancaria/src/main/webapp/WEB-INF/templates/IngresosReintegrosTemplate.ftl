@@ -9,6 +9,8 @@
     
 
     <body class="">
+        
+        <#include "/MenuAppTemplate.ftl">
         <div id="response_from_server" ></div>
         <div class="py-4">
             <div class="container">

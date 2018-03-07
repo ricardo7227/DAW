@@ -7,6 +7,9 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.Cliente;
 import model.Cuenta;
 import model.Movimiento;
 import org.springframework.dao.DataAccessException;
@@ -99,4 +102,66 @@ public class CuentasDAO {
         }
         return clienteDB;
     }
+
+    public Cuenta deleteCuentaJDBCTemplate(final Cuenta cuenta) {
+        Cuenta cuentaDB = null;
+        
+        TransactionTemplate template = new TransactionTemplate(new DataSourceTransactionManager(DBConnection.getInstance().getDataSource()));
+
+        final JdbcTemplate jtm = new JdbcTemplate(
+                DBConnection.getInstance().getDataSource());
+
+        int resultTrans = template.execute(new TransactionCallback<Integer>() {
+            @Override
+            public Integer doInTransaction(TransactionStatus ts) {
+                int rowsAffectedCuenta = 0;
+                try {
+
+                    List<Cliente> clientes = new ArrayList<>();
+
+                    Object[] dniCliente1 = new Object[]{cuenta.getCu_dn1()};
+                    Cliente cliente1 = (Cliente) jtm.queryForObject(SqlQuery.SELECT_CLIENTE_BY_ID, dniCliente1,//funciona siempre que exista un dato en la base de datos
+                            new BeanPropertyRowMapper(Cliente.class));
+                    clientes.add(cliente1);
+
+                    if (cuenta.getCu_dn2() != null) {
+                        Object[] dniCliente2 = new Object[]{cuenta.getCu_dn2()};
+                        Cliente cliente2 = (Cliente) jtm.queryForObject(SqlQuery.SELECT_CLIENTE_BY_ID, dniCliente2,//funciona siempre que exista un dato en la base de datos
+                                new BeanPropertyRowMapper(Cliente.class));
+                        clientes.add(cliente2);
+                    }
+
+                    for (Cliente cliente : clientes) {
+                        cliente.setCl_sal(cuenta.getCu_sal());
+                        if (cliente.getCl_ncu() == 1) {
+                            //eliminar cliente
+                            Object[] cli = new Object[]{cliente.getCl_dni()};
+                            int rowsAffected = jtm.update(SqlQuery.DELETE_CLIENTE_BY_ID, cli);
+
+                        } else {
+                            //restar nºcuentas
+                            Object[] cli = new Object[]{cliente.getCl_sal(), cliente.getCl_dni()};
+                            int rowsAffected = jtm.update(SqlQuery.UPDATE_CLIENTE_BY_ID_SALDO_N_CUENTAS_MINUS, cli);
+
+                        }
+                    }//fin for
+                    
+                    Object[] paramsMovimiento = new Object[]{cuenta.getCu_ncu()};
+                    int rowAffected = jtm.update(SqlQuery.DELETE_MOVIMIENTOS_BY_NCUENTA, paramsMovimiento);
+
+                    rowsAffectedCuenta = jtm.update(SqlQuery.DELETE_CUENTA, paramsMovimiento);
+
+                } catch (DataAccessException e) {
+                    ts.setRollbackOnly();
+                }
+                return rowsAffectedCuenta;
+
+            }
+        });
+        if (resultTrans == 0) {
+            cuentaDB = getNumCuentaJDBCTemplate(cuenta);
+        }
+        return cuentaDB;
+    }
+
 }//fin clase

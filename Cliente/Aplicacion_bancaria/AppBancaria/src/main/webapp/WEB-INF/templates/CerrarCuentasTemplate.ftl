@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://v40.pingendo.com/assets/4.0.0/default/theme.css" type="text/css"> </head>
 
     <body>
+        <#include "/MenuAppTemplate.ftl">
         <div class="py-4">
             <div class="container">
                 <div class="row">

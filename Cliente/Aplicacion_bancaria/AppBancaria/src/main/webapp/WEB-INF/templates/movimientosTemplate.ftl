@@ -10,6 +10,7 @@
         <#include "/libreria.ftl">
         </head>
     <body>
+        <#include "/MenuAppTemplate.ftl">
         <div class="row">    
             <div class="container">                       
                 <div class="row justify-content-center">    

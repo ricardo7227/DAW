@@ -42,7 +42,7 @@ public class Constantes {
     public static final String OFFSET = "offset";
     public static final String MESSAGE_TO_USER_OUT_OF_RANGE = "No tienes Acceso al Contenido";
     public static final String MESSAGE_TO_USER = "messageToUser";
-    public static final String INDEX_TEMPLATE = "index.ftl";
+    
     public static final String LEVEL_ACCESS = "levelAccess";
 
     public static final String DEFAULT_ENCODING = "UTF-8";

@@ -25,6 +25,7 @@ import model.User;
 import servicios.LoginServicios;
 import utils.Constantes;
 import utils.PasswordHash;
+import utils.Templates;
 import utils.UrlsPaths;
 
 /**
@@ -105,7 +106,7 @@ public class LoginServlet extends HttpServlet {
                 freeMarker.setSharedVariable(Constantes.LEVEL_ACCESS, levelAccessUser);
             }
 
-            Template plantilla = freeMarker.getTemplate(Constantes.INDEX_TEMPLATE);
+            Template plantilla = freeMarker.getTemplate(Templates.INDEX_TEMPLATE);
             plantilla.process(paramentrosPlantilla, response.getWriter());
         } catch (TemplateException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);

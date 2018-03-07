@@ -96,7 +96,7 @@ public class CerrarCuentasServlet extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
 
         if (new CuentasServicios().comprobarNumCuenta(String.valueOf(cuenta.getCu_ncu()))) {
-            if (new CuentasServicios().deleteCompleteCuenta(cuenta) != null) {
+            if (new CuentasServicios().deleteCompleteCuenta(cuenta) == null) {
                 mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_ACCEPTED, String.format(Mensajes.MSJ_CUENTA_CERRADA, cuenta.getCu_ncu())));
             } else {
 

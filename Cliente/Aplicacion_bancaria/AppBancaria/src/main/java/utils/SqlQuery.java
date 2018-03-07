@@ -60,13 +60,14 @@ public class SqlQuery {
     //Movimientos
     public static String SELECT_MOVIMIENTOS_BY_CUENTA_AND_FECHAS = "SELECT *  FROM `movimientos` WHERE `mo_ncu` = ? AND `mo_fec` BETWEEN ? AND ?";
     public static String SELECT_MOVIMIENTOS = "SELECT *  FROM `movimientos`";
-    public static String DELETE_MOVIMIENTOS_BY_NCUENTA = "DELETE FROM movimientos WHERE mo_ncu IN (SELECT mo_ncu FROM `movimientos` WHERE mo_ncu = ?)";
+    public static String DELETE_MOVIMIENTOS_BY_NCUENTA = "DELETE FROM movimientos WHERE mo_ncu = ? ";
     public static String INSERT_MOVIMIENTOS = "INSERT INTO `movimientos` (`mo_ncu`, `mo_fec`, `mo_hor`, `mo_des`, `mo_imp`)"
             + " VALUES (?, CURRENT_DATE(), DATE_FORMAT(CURRENT_TIME(), \"%H%i%s\"), ?, ?);";
     //Cuentas
     public static String SELECT_CUENTA_BY_ID = "SELECT cu_ncu,cu_dn1,cu_dn2,cu_sal  FROM `cuentas` WHERE `cu_ncu` = ?";
     public static String INSERT_CUENTA = "INSERT INTO `cuentas` (`cu_ncu`, `cu_dn1`, `cu_dn2`, `cu_sal`) VALUES (?, ?, ?, ?);";
     public static String UPDATE_CUENTA_SALDO = "UPDATE `cuentas` SET `cu_sal` = cu_sal + ? WHERE `cuentas`.`cu_ncu` = ?";
+    public static String DELETE_CUENTA = "DELETE FROM cuentas WHERE cuentas.cu_ncu = ?";
 
     //Clientes
     public static String SELECT_CLIENTE_BY_ID = "SELECT * FROM `clientes` WHERE cl_dni = ?";
