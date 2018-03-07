@@ -1,31 +1,19 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-$("#crear_movimiento").click(createMovimiento);
+$("#cerrar_cuenta").click(cerrarCuenta);
 
-
-function createMovimiento() {//TODO - hacer llamada crear movimiento
-    var movimiento = new Object();
-    movimiento.mo_ncu = $("#input_ncuenta").val();
-    movimiento.mo_des = $("#input_descripcion").val();
-    movimiento.mo_imp = $("#input_importe").val();
-
+function cerrarCuenta() {
+    var cuenta = new Object();
+    cuenta.cu_ncu = $("#input_ncuenta").val();
 
     $.ajax({
         type: "POST",
-        url: end_point_operaciones,
+        url: end_point_cerrar_cuentas,
         data: {
-            mo_ncu: movimiento.mo_ncu,
-            mo_des: movimiento.mo_des,
-            mo_imp: movimiento.mo_imp,
-            ACTION: "new_movimiento"
+            n_cuenta: cuenta.cu_ncu
         },
         success: function (result) {
             if (result === "null") {
-                cambiarTextoRespuesta("#dialog_span", "Fallo agregando registros a la base de datos");
+                cambiarTextoRespuesta("#dialog_span", "Fallo eliminando la cuenta de base de datos");
                 cambiarStatusAlert("#alert_type", "alert-warning");
 
             } else {
@@ -45,4 +33,3 @@ function createMovimiento() {//TODO - hacer llamada crear movimiento
         }
     });
 }
-

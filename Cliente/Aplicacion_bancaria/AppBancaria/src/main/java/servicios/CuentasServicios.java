@@ -5,11 +5,15 @@
  */
 package servicios;
 
+import dao.ClientesDAO;
 import dao.CuentasDAO;
+import dao.MovimientosDAO;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import model.Cliente;
 import model.Cuenta;
+import model.Movimiento;
 import utils.Constantes;
 
 /**
@@ -199,4 +203,33 @@ public class CuentasServicios {
         }
         return isClientFinish;
     }
+
+    public Movimiento deleteCompleteCuenta(Cuenta cuenta) {
+
+        Cuenta cuentaDB = new CuentasDAO().getNumCuentaJDBCTemplate(cuenta);
+
+        List<Cliente> clientes = new ArrayList<>();
+        ClientesDAO serviciosClientes = new ClientesDAO();
+
+        Cliente cliente1 = serviciosClientes.getNumClienteJDBCTemplate(new Cliente(String.valueOf(cuentaDB.getCu_dn1())));
+        clientes.add(cliente1);
+        if (cuentaDB.getCu_dn2() == null) {
+            Cliente cliente2 = serviciosClientes.getNumClienteJDBCTemplate(new Cliente(String.valueOf(cuentaDB.getCu_dn2())));
+            clientes.add(cliente2);
+        }
+
+        for (Cliente cliente : clientes) {
+            if (cliente.getCl_ncu() == 1) {
+                //eliminar cliente
+                serviciosClientes.deleteClienteJDBCTemplate(cliente);
+            } else {
+                //restar nºcuentas
+                serviciosClientes.updateSaldoAndNCuentasMinusJDBCTemplate(cliente);
+
+            }
+        }
+        return new MovimientosDAO().deleteMovimientoJDBCTemplate(new Movimiento(cliente1.getCl_ncu()));
+        //buscar nºcuenta en movimientos y borrar        
+    }
+
 }//fin clase

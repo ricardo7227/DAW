@@ -66,4 +66,17 @@ public class MovimientosDAO {
         return movimiento;
     }//fin
 
+    public Movimiento deleteMovimientoJDBCTemplate(Movimiento movimiento) {
+
+        JdbcTemplate jtm = new JdbcTemplate(
+                DBConnection.getInstance().getDataSource());
+        Object[] paramsMovimiento = new Object[]{movimiento.getMo_ncu()};
+        int rowAffected = jtm.update(SqlQuery.DELETE_MOVIMIENTOS_BY_NCUENTA, paramsMovimiento);
+        if (rowAffected == 0) {
+            movimiento = null;
+        }
+
+        return movimiento;
+    }//fin
+
 }

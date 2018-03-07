@@ -37,6 +37,10 @@ public class Movimiento {
         this.mo_imp = mo_imp;
     }
 
+    public Movimiento(long mo_ncu) {
+        this.mo_ncu = mo_ncu;
+    }
+
     public Movimiento() {
     }
 

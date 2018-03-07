@@ -14,5 +14,6 @@ public class Templates {
     public static String MOVIMIENTOS = "movimientosTemplate.ftl";
     public static String APERTURA_CUENTAS = "aperturaCuentasTemplate.ftl";
     public static String INGRESOS_REINTEGROS_TEMPLATE = "IngresosReintegrosTemplate.ftl";
+    public static String CERRAR_CUENTAS_TEMPLATE = "CerrarCuentasTemplate.ftl";
 
 }

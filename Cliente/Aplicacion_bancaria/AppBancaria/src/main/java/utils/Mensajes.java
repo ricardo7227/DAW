@@ -18,4 +18,8 @@ public class Mensajes {
     public static final String MSJ_APERTURA_CUENTA_OK = "Cuenta Creada Satisfactoriamente";
     
     public static final String MSJ_MOVIMIENTO_CREADO = "Movimiento agregado a nuestros registros";
+    public static final String MSJ_CUENTA_CERRADA = "Cuenta: %s eliminada correctamente";
+    public static final String MSJ_CUENTA_CERRADA_FAIL = "Fallo eliminando la cuenta: %s";
+    
+    public static final String MSJ_NUM_CUENTA_ERRONEA = "Número de cuenta: %s erróneo";
 }

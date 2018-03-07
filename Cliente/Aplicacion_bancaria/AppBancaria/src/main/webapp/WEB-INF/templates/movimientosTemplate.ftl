@@ -31,7 +31,7 @@
                         <h6>Nº Cuenta : <span id="num_cuenta_db"></span></h6>
                         <h6>Titular/s : <span id="titular_cuenta_db"></span></h6>
                         <h6>Saldo : <span id="saldo_cuenta_db"></span></h6>
-                        
+
                         </div>
 
                     <div class="col-sm-12">    
@@ -71,9 +71,7 @@
             </div>
 
 
-        <script>
-            var end_point_movimientos = "/AppBancaria/movimientosServlet";
-            <#include "/js/movimientos.js">
-            </script>
+      
+        <script language="javascript" type="text/javascript" src="js/movimientos.js"></script>
         </body>
     </html>

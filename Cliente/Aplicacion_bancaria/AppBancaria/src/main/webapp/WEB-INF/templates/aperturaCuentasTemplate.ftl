@@ -193,11 +193,7 @@
 
         
 
-        <script>
-            var end_point_apertura_cuentas = "/AppBancaria/aperturaCuentas";
-            
-                
-            </script>
+        
         <script language="javascript" type="text/javascript" src="js/apertura_cuentas.js"></script>
 
         </body>
