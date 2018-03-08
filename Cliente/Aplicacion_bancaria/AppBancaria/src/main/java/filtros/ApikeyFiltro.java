@@ -93,6 +93,7 @@ public class ApikeyFiltro implements Filter {
             Apikey apikeyDB = servicios.checkApikey(apikey_request);
             if (apikeyDB != null) {
                 if (!servicios.checkLimitApikey(apikeyDB)) {
+                    request.setAttribute(Constantes.CLIENT_NAME, apikeyDB.getClient_name());
                     chain.doFilter(request, response);
                 } else {
                     ((HttpServletResponse) response).setStatus(HttpStatus.SC_FORBIDDEN);

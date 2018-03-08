@@ -5,17 +5,26 @@
  */
 package servicios;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.MovimientosDAO;
+import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletResponse;
+import model.Cliente;
+import model.Cuenta;
+import model.GenericResponse;
 import model.Movimiento;
 import model.MovimientosFechas;
+import org.apache.http.HttpStatus;
 import utils.Constantes;
+import utils.Mensajes;
 
 /**
  *
@@ -93,6 +102,56 @@ public class MovimientosServicios {
         }
         return movimiento;
 
+    }
+
+    public void registrarNuevoMovimiento(Movimiento movimiento, HttpServletResponse response) throws IOException {
+
+        CuentasServicios cuentasServicios = new CuentasServicios();
+
+        ValidadorServicios validar = new ValidadorServicios();
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        if (validar.validateModel(movimiento)) {
+            if (cuentasServicios.comprobarNumCuenta(String.valueOf(movimiento.getMo_ncu()))) {
+                long nCuenta = movimiento.getMo_ncu();
+                Cuenta cuenta = cuentasServicios.getCuenta(new Cuenta(nCuenta));
+
+                List<Cliente> clientes = new ArrayList<>();
+                ClientesServicios clientesServicios = new ClientesServicios();
+                Cliente titular1 = clientesServicios.getCliente(new Cliente(cuenta.getCu_dn1()));
+                clientes.add(titular1);
+                if (cuenta.getCu_dn2() != null) {
+                    clientes.add(clientesServicios.getCliente(new Cliente(cuenta.getCu_dn2())));
+                }
+                //importe de la operación
+                cuenta.setCu_sal(movimiento.getMo_imp());
+                cuenta = cuentasServicios.updateSaldo(cuenta);
+
+                if (new ClientesServicios().updateSaldoClientes(clientes) && cuenta != null) {//actualiza el saldo de los clientes
+
+                    insertMovimiento(movimiento);
+
+                    mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_ACCEPTED, Mensajes.MSJ_MOVIMIENTO_CREADO));
+
+                } else {
+                    //cuenta invalida
+                    response.setStatus(HttpStatus.SC_BAD_REQUEST);
+                    mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_BAD_REQUEST, String.format(Mensajes.MSJ_CUENTA_INVALIDA, movimiento.getMo_ncu())));
+
+                }
+            } else {
+                //cuenta invalida
+                response.setStatus(HttpStatus.SC_BAD_REQUEST);
+                mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_BAD_REQUEST, String.format(Mensajes.MSJ_CUENTA_INVALIDA, movimiento.getMo_ncu())));
+            }
+
+        } else {
+            //campos incompletos
+            response.setStatus(HttpStatus.SC_BAD_REQUEST);
+            mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_BAD_REQUEST, Mensajes.MSJ_MOVIMIENTO_CAMPOS_INCOMPLETOS));
+
+        }
     }
 
 }

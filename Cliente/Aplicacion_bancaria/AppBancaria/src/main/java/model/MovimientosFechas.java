@@ -6,14 +6,18 @@
 package model;
 
 import java.sql.Date;
+import utilidades.validacion.InterfaceValidator.Required;
 
 /**
  *
  * @author daw
  */
 public class MovimientosFechas {
+    @Required
     private long id_cuenta;
+    @Required
     private Date fecha_inicio;
+    @Required
     private Date fecha_fin;
 
     public MovimientosFechas(long id_cuenta, Date fecha_inicio, Date fecha_fin) {

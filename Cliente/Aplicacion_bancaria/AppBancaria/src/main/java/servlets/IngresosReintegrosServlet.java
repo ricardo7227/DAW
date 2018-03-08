@@ -55,15 +55,15 @@ public class IngresosReintegrosServlet extends HttpServlet {
         try {
             freemarker.template.Configuration freeMarker = Configuration.getInstance().getFreeMarker();
             String messageToUser = null;
-
+            
             HashMap paramentrosPlantilla = new HashMap();
             if (messageToUser != null) {
                 paramentrosPlantilla.put(Constantes.MESSAGE_TO_USER, messageToUser);
             }
-
+            
             Template plantilla = freeMarker.getTemplate(Templates.INGRESOS_REINTEGROS_TEMPLATE);
             plantilla.process(paramentrosPlantilla, response.getWriter());
-
+            
         } catch (TemplateException ex) {
             Logger.getLogger(MovimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -99,59 +99,15 @@ public class IngresosReintegrosServlet extends HttpServlet {
         String action = request.getParameter(Constantes.ACTION_TEMPLATE);
         if (action != null && !action.isEmpty()) {
             switch (action) {
-
+                
                 case Constantes.NEW_MOVIMIENTO:
-
-                    MovimientosServicios movimientosServicios = new MovimientosServicios();
-                    CuentasServicios cuentasServicios = new CuentasServicios();
-
-                    ValidadorServicios validar = new ValidadorServicios();
-
-                    Movimiento movimiento = movimientosServicios.tratarParametrosMovimiento(parametros);
-
-                    ObjectMapper mapper = new ObjectMapper();
-
-                    if (validar.validateModel(movimiento)) {
-                        if (cuentasServicios.comprobarNumCuenta(String.valueOf(movimiento.getMo_ncu()))) {
-                            long nCuenta = movimiento.getMo_ncu();
-                            Cuenta cuenta = cuentasServicios.getCuenta(new Cuenta(nCuenta));
-
-                            List<Cliente> clientes = new ArrayList<>();
-                            ClientesServicios clientesServicios = new ClientesServicios();
-                            Cliente titular1 = clientesServicios.getCliente(new Cliente(cuenta.getCu_dn1()));
-                            clientes.add(titular1);
-                            if (cuenta.getCu_dn2() != null) {
-                                clientes.add(clientesServicios.getCliente(new Cliente(cuenta.getCu_dn2())));
-                            }
-                            //importe de la operación
-                            cuenta.setCu_sal(movimiento.getMo_imp());
-                            cuenta = cuentasServicios.updateSaldo(cuenta);
-
-                            if (new ClientesServicios().updateSaldoClientes(clientes) && cuenta != null) {//actualiza el saldo de los clientes
-
-                                movimientosServicios.insertMovimiento(movimiento);
-
-                                mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_ACCEPTED, Mensajes.MSJ_MOVIMIENTO_CREADO));
-
-                            } else {
-                                //cuenta invalida
-                                response.setStatus(HttpStatus.SC_BAD_REQUEST);
-                                mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_BAD_REQUEST, String.format(Mensajes.MSJ_CUENTA_INVALIDA, movimiento.getMo_ncu())));
-
-                            }
-                        }
-
-                    } else {
-                        //campos incompletos
-                        response.setStatus(HttpStatus.SC_BAD_REQUEST);
-                        mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_BAD_REQUEST, Mensajes.MSJ_MOVIMIENTO_CAMPOS_INCOMPLETOS));
-
-                    }
-
+                     Movimiento movimiento = new MovimientosServicios().tratarParametrosMovimiento(parametros);
+                    new MovimientosServicios().registrarNuevoMovimiento(movimiento, response);
+                    
                     break;
             }
         }
-
+        
     }
 
     /**

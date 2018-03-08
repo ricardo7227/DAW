@@ -13,6 +13,7 @@ import java.sql.Date;
  */
 public class Apikey {
     public long id;
+    public String client_name;
     public String apikey;
     public long num_peticiones;
     public Date fecha_ultima_peticion;
@@ -33,6 +34,14 @@ public class Apikey {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getClient_name() {
+        return client_name;
+    }
+
+    public void setClient_name(String client_name) {
+        this.client_name = client_name;
     }
 
     public String getApikey() {

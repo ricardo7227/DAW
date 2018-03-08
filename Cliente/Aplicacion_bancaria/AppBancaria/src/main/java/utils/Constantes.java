@@ -9,7 +9,7 @@ package utils;
  *
  * @author oscar
  */
-public class Constantes {
+    public class Constantes {
 
     public static String alumnosList = "alumnosList";
     public static String asignaturasList = "asignaturasList";
@@ -85,6 +85,8 @@ public class Constantes {
     public static final String TITULARES = "titulares";
     
     public static final String NEW_MOVIMIENTO = "new_movimiento";
+    public static final String RECIBO = "recibo";
+    public static final String GET_MOVIMIENTOS = "get_movimientos";
 
     
 
@@ -159,11 +161,13 @@ public class Constantes {
     public static final String NUM_PETICIONES = "NUM_PETICIONES";
     public static final String FECHA_ULTIMA_PETICION = "FECHA_ULTIMA_PETICION";
     public static final String FECHA = "FECHA";
+    public static final String CLIENT_NAME = "CLIENT_NAME";
     
      public static final String JSON = "json";
      
      public static final String APIKEY_REQUEST = "apikey";
      public static final String MOVIMIENTO = "movimiento";
+     public static final String RANGO = "rango";
      public static final String OPERACION = "operacion";
      
 
