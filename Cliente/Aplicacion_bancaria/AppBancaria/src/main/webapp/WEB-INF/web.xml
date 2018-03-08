@@ -13,6 +13,17 @@
         <filter-name>EncodeUTF8</filter-name>
         <url-pattern />
     </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>ApikeyFiltro</filter-name>
+        <url-pattern />
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>JsonFiltro</filter-name>
+        <url-pattern />
+    </filter-mapping>
+
+
     <filter-mapping>
         <filter-name>AlumnosF</filter-name>
         <url-pattern />

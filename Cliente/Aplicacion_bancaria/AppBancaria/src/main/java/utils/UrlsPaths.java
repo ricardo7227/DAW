@@ -33,5 +33,10 @@ public class UrlsPaths {
     public static final String TAREAS_PROFESOR = "/secure/profe/tareas-profesor";
     public static final String RECUPERAR_PASSWORD = "/recuperar";
     public static final String CAMBIAR_PASSWORD = "/cambiar-password";
+    
+    public static final String APIKEY_FILTRO = "/rest/*";
+    public static final String JSON_FILTRO = "/rest/*";
+    
+    
 
 }//fin clase

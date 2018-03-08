@@ -78,4 +78,11 @@ public class SqlQuery {
     public static String INSERT_CLIENTE = "INSERT INTO `clientes` (`cl_dni`, `cl_nom`, `cl_dir`, `cl_tel`, `cl_ema`, `cl_fna`, `cl_fcl`, `cl_ncu`, `cl_sal`) "
             + "VALUES (?, ?, ?, ?, ?, ?, CURRENT_DATE(),'1',?);";
 
+    
+    //APIKEY
+    public static String SELECT_APIKEY = "SELECT * FROM `APIKEY` WHERE APIKEY.APIKEY = ?";
+    public static String SELECT_CURRENT_DATE_DB = "SELECT CURRENT_DATE() AS \"FECHA\"";
+    public static String UPDATE_COUNTER_APIKEY_BY_ID = "UPDATE `APIKEY` SET `NUM_PETICIONES` = NUM_PETICIONES + 1, `FECHA_ULTIMA_PETICION` = CURRENT_TIME() WHERE `APIKEY`.`ID` = ?";
+    public static String RESET_COUNTER_APIKEY_BY_ID = "UPDATE `APIKEY` SET `NUM_PETICIONES` = 0, `FECHA_ULTIMA_PETICION` = CURRENT_TIME() WHERE `APIKEY`.`ID` = ?";
+    public static String SELECT_NUM_PETICIONES_BY_ID = "SELECT NUM_PETICIONES FROM APIKEY WHERE APIKEY.ID = ?";
 }

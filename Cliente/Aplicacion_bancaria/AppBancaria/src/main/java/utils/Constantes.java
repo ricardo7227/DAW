@@ -153,5 +153,18 @@ public class Constantes {
     public static final String MESSAGE_USER_NEW_PASSWORD_WRONG = "No hemos podido cambiar la contraseña, intentalo otra vez";
     public static final String MESSAGE_USER_PASSWORD_FAIL = "Contraseña Actual Errónea";
     public static final String EMAIL_SUBJECT_NEW_PASSWORD = "CRUD:  %s - Nueva Contraseña";
+    
+    //COLUMNAS APIKEY    
+    public static final String APIKEY = "APIKEY";    
+    public static final String NUM_PETICIONES = "NUM_PETICIONES";
+    public static final String FECHA_ULTIMA_PETICION = "FECHA_ULTIMA_PETICION";
+    public static final String FECHA = "FECHA";
+    
+     public static final String JSON = "json";
+     
+     public static final String APIKEY_REQUEST = "apikey";
+     public static final String MOVIMIENTO = "movimiento";
+     public static final String OPERACION = "operacion";
+     
 
 }

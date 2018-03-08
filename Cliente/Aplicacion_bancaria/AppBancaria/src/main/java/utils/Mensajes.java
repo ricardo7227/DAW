@@ -18,8 +18,15 @@ public class Mensajes {
     public static final String MSJ_APERTURA_CUENTA_OK = "Cuenta Creada Satisfactoriamente";
     
     public static final String MSJ_MOVIMIENTO_CREADO = "Movimiento agregado a nuestros registros";
+    public static final String MSJ_MOVIMIENTO_CAMPOS_INCOMPLETOS = "No has introducido todos los campos necesarios para registrar un movimiento";
+    public static final String MSJ_CUENTA_INVALIDA = "La cuenta nº %s es inválida";
     public static final String MSJ_CUENTA_CERRADA = "Cuenta: %s eliminada correctamente";
     public static final String MSJ_CUENTA_CERRADA_FAIL = "Fallo eliminando la cuenta: %s";
     
     public static final String MSJ_NUM_CUENTA_ERRONEA = "Número de cuenta: %s erróneo";
+    
+    public static String SUPERADO_LIMITES_PETICIONES = "Has superado el límite de peticiones diarias";
+    public static String FALTA_API_KEY = "No tienes una Apikey válida";
+    public static String FALTAN_CAMPOS = "Faltan campos en el objeto";
+    
 }

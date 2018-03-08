@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import utils.Constantes;
+import utils.Templates;
 import utils.UrlsPaths;
 
 /**
@@ -84,7 +85,7 @@ public class UrlService {
         try {
             HashMap paramentrosPlantilla = new HashMap();
             paramentrosPlantilla.put(Constantes.MESSAGE_TO_USER, Constantes.MESSAGE_TO_USER_OUT_OF_RANGE);
-            Template plantilla = Configuration.getInstance().getFreeMarker().getTemplate(Constantes.INDEX_TEMPLATE);
+            Template plantilla = Configuration.getInstance().getFreeMarker().getTemplate(Templates.INDEX_TEMPLATE);
             plantilla.process(paramentrosPlantilla, response.getWriter());
         } catch (IOException ex) {
             Logger.getLogger(UrlService.class.getName()).log(Level.SEVERE, null, ex);

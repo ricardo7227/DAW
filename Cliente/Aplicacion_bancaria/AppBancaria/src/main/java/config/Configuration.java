@@ -26,6 +26,7 @@ public class Configuration {
     private String smtpPort;
     private String mailPass;
     private int timeToValidate;
+    private int numMaxPeticiones;
 
     private freemarker.template.Configuration freeMarker;
 
@@ -153,5 +154,14 @@ public class Configuration {
     public void setTimeToValidate(int timeToValidate) {
         this.timeToValidate = timeToValidate;
     }
+
+    public int getNumMaxPeticiones() {
+        return numMaxPeticiones;
+    }
+
+    public void setNumMaxPeticiones(int numMaxPeticiones) {
+        this.numMaxPeticiones = numMaxPeticiones;
+    }
+    
 
 }//fin clase

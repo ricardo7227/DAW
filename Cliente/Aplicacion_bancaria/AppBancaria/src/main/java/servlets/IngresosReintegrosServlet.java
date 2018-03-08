@@ -94,26 +94,28 @@ public class IngresosReintegrosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // processRequest(request, response);
+        
         Map<String, String[]> parametros = request.getParameterMap();
         String action = request.getParameter(Constantes.ACTION_TEMPLATE);
         if (action != null && !action.isEmpty()) {
             switch (action) {
-                
+
                 case Constantes.NEW_MOVIMIENTO:
 
-                    MovimientosServicios movimientosServicios = new MovimientosServicios();                    
+                    MovimientosServicios movimientosServicios = new MovimientosServicios();
                     CuentasServicios cuentasServicios = new CuentasServicios();
 
                     ValidadorServicios validar = new ValidadorServicios();
 
                     Movimiento movimiento = movimientosServicios.tratarParametrosMovimiento(parametros);
 
+                    ObjectMapper mapper = new ObjectMapper();
+
                     if (validar.validateModel(movimiento)) {
                         if (cuentasServicios.comprobarNumCuenta(String.valueOf(movimiento.getMo_ncu()))) {
                             long nCuenta = movimiento.getMo_ncu();
                             Cuenta cuenta = cuentasServicios.getCuenta(new Cuenta(nCuenta));
-                            
+
                             List<Cliente> clientes = new ArrayList<>();
                             ClientesServicios clientesServicios = new ClientesServicios();
                             Cliente titular1 = clientesServicios.getCliente(new Cliente(cuenta.getCu_dn1()));
@@ -124,19 +126,26 @@ public class IngresosReintegrosServlet extends HttpServlet {
                             //importe de la operación
                             cuenta.setCu_sal(movimiento.getMo_imp());
                             cuenta = cuentasServicios.updateSaldo(cuenta);
+
                             if (new ClientesServicios().updateSaldoClientes(clientes) && cuenta != null) {//actualiza el saldo de los clientes
-                                ObjectMapper mapper = new ObjectMapper();
+
                                 movimientosServicios.insertMovimiento(movimiento);
-                                
+
                                 mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_ACCEPTED, Mensajes.MSJ_MOVIMIENTO_CREADO));
-                                
+
                             } else {
                                 //cuenta invalida
+                                response.setStatus(HttpStatus.SC_BAD_REQUEST);
+                                mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_BAD_REQUEST, String.format(Mensajes.MSJ_CUENTA_INVALIDA, movimiento.getMo_ncu())));
+
                             }
                         }
 
                     } else {
                         //campos incompletos
+                        response.setStatus(HttpStatus.SC_BAD_REQUEST);
+                        mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_BAD_REQUEST, Mensajes.MSJ_MOVIMIENTO_CAMPOS_INCOMPLETOS));
+
                     }
 
                     break;

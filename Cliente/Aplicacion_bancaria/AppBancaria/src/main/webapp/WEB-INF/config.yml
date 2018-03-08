@@ -10,3 +10,4 @@ smtpPort: 587
 mailPass: nohay2sin3
 ##1hora
 timeToValidate: 1
+numMaxPeticiones: 1000

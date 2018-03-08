@@ -99,13 +99,14 @@ public class CerrarCuentasServlet extends HttpServlet {
             if (new CuentasServicios().deleteCompleteCuenta(cuenta) == null) {
                 mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_ACCEPTED, String.format(Mensajes.MSJ_CUENTA_CERRADA, cuenta.getCu_ncu())));
             } else {
-
+                response.setStatus(HttpStatus.SC_INTERNAL_SERVER_ERROR);
                 mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_INTERNAL_SERVER_ERROR, String.format(Mensajes.MSJ_CUENTA_CERRADA_FAIL, cuenta.getCu_ncu())));
                 //no borramos
             }
         } else {
             //numero de cuenta erroneo
             mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_BAD_REQUEST, String.format(Mensajes.MSJ_NUM_CUENTA_ERRONEA, cuenta.getCu_ncu())));
+            response.setStatus(HttpStatus.SC_BAD_REQUEST);
         }
 
     }
