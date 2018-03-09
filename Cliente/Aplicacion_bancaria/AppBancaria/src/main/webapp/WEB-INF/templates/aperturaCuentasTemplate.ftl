@@ -195,7 +195,7 @@
         
 
         
-        <script language="javascript" type="text/javascript" src="js/apertura_cuentas.js"></script>
+        <script language="javascript" type="text/javascript" src="../js/apertura_cuentas.js"></script>
 
         </body>
     </html>

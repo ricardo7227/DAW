@@ -18,28 +18,6 @@ import utils.SqlQuery;
  */
 public class MovimientosDAO {
 
-//    public Movimiento getMovimientosJDBCTemplate(MovimientosFechas movimientosFechas) {
-//
-//        JdbcTemplate jtm = new JdbcTemplate(
-//                DBConnection.getInstance().getDataSource());
-//        Movimiento movimientos = null;
-//        Object[] rangoMovimientos = new Object[]{movimientosFechas.getId_cuenta(),
-//            movimientosFechas.getFecha_inicio(), movimientosFechas.getFecha_fin()};
-//
-//        String resultadoQuery = jtm.query(SqlQuery.SELECT_MOVIMIENTOS_BY_CUENTA_AND_FECHAS, rangoMovimientos, new ResultSetExtractor<String>() {
-//            @Override
-//            public String extractData(ResultSet rs) throws SQLException, DataAccessException {
-//                return rs.next() ? rs.getString(Constantes.MOV_NUM_CUENTA) : null;
-//            }
-//        });
-//
-//        if (resultadoQuery != null) {
-//            movimientos = (Movimiento) jtm.queryForObject(SqlQuery.SELECT_MOVIMIENTOS_BY_CUENTA_AND_FECHAS, rangoMovimientos,//funciona siempre que exista un dato en la base de datos
-//                    new BeanPropertyRowMapper(Movimiento.class));
-//        }
-//
-//        return movimientos;
-//    }
     public List<Movimiento> getMovimientosJDBCTemplate(MovimientosFechas movimientosFechas) {
 
         String sql = SqlQuery.SELECT_MOVIMIENTOS_BY_CUENTA_AND_FECHAS;

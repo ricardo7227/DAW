@@ -28,5 +28,6 @@ public class Mensajes {
     public static String SUPERADO_LIMITES_PETICIONES = "Has superado el límite de peticiones diarias";
     public static String FALTA_API_KEY = "No tienes una Apikey válida";
     public static String FALTAN_CAMPOS = "Faltan campos en el objeto";
+    public static String OBJETO_MAL_FORMADO = "Lo que envias, no es legible para nosotros, mira el objeto que envías";
     
 }

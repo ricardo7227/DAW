@@ -4,7 +4,7 @@ namespace api;
 
 use api\ApikeyClient;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ClientException;
 use utilidades\Constantes;
 use utilidades\EndPoints;
 use function GuzzleHttp\json_decode;
@@ -46,13 +46,11 @@ class OperacionesApi {
                     'operacion' => 'get_movimientos'
             ]]);
             $respuesta = json_decode($response->getBody());
-        } catch (RequestException $e) {
+        } catch (ClientException $e) {
             if ($e->getCode() == Constantes::CodeBadRequest) {
-                preg_match_all('/\{(.*?)\}/', $e->getMessage(), $respuestaError);
-                $respuesta = json_decode($respuestaError[0][0]);
+                $respuesta = json_decode($e->getResponse()->getBody()->getContents());
             }
         } finally {
-
             return $respuesta;
         }
     }
@@ -65,10 +63,9 @@ class OperacionesApi {
                     'operacion' => 'recibo'
             ]]);
             $respuesta = json_decode($response->getBody());
-        } catch (RequestException $e) {
+         } catch (ClientException $e) {
             if ($e->getCode() == Constantes::CodeBadRequest) {
-                preg_match_all('/\{(.*?)\}/', $e->getMessage(), $respuestaError);
-                $respuesta = json_decode($respuestaError[0][0]);
+                $respuesta = json_decode($e->getResponse()->getBody()->getContents());
             }
         } finally {
 

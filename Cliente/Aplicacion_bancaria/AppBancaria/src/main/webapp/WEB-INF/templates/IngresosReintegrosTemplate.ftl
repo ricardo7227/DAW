@@ -65,7 +65,7 @@
 
    
     <#include "/libreria.ftl">
-    <script language="javascript" type="text/javascript" src="js/ingresos.js"></script>    
+    <script language="javascript" type="text/javascript" src="../js/ingresos.js"></script>    
     
     </body>
 

@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
             String messageToUser = null;
             LoginServicios servicios = new LoginServicios();
             User usuario = servicios.tratarParametro(parametros);
-            long levelAccessUser = -1;
+            
             freemarker.template.Configuration freeMarker = Configuration.getInstance().getFreeMarker();
             HttpSession session = request.getSession();
 
@@ -69,9 +69,9 @@ public class LoginServlet extends HttpServlet {
 
                                     if (PasswordHash.getInstance().validatePassword(passwordFromClient, usuario.getPassword())) {
 
-                                        //levelAccessUser = servicios.getIdTipoPermiso(usuario.getId());
+                                        
                                         session.setAttribute(Constantes.LOGIN_ON, usuario);
-                                        session.setAttribute(Constantes.LEVEL_ACCESS, levelAccessUser);
+                                        
 
                                     } else {
                                         messageToUser = Constantes.MESSAGE_USER_LOGIN_FAIL_PASSWORD;
@@ -103,16 +103,12 @@ public class LoginServlet extends HttpServlet {
             if (session.getAttribute(Constantes.LOGIN_ON) != null && usuario != null) {
                 paramentrosPlantilla.put(Constantes.LOGIN_ON, usuario);
                 freeMarker.setSharedVariable(Constantes.LOGIN_ON, usuario);
-                freeMarker.setSharedVariable(Constantes.LEVEL_ACCESS, levelAccessUser);
+                
             }
 
             Template plantilla = freeMarker.getTemplate(Templates.INDEX_TEMPLATE);
             plantilla.process(paramentrosPlantilla, response.getWriter());
-        } catch (TemplateException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvalidKeySpecException ex) {
+        } catch (TemplateException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 

@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -18,23 +20,22 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.GenericResponse;
 import model.Movimiento;
 import model.MovimientosFechas;
 import org.apache.http.HttpStatus;
-import servicios.ApikeyServicios;
 import servicios.ValidadorServicios;
 import utils.Constantes;
 import utils.Mensajes;
+import utils.NamesFilters;
 import static utils.UrlsPaths.JSON_FILTRO;
 
 /**
  *
  * @author daw
  */
-@WebFilter(filterName = "JsonFiltro", urlPatterns = {JSON_FILTRO})
+@WebFilter(filterName = NamesFilters.JSON_FILTRO, urlPatterns = {JSON_FILTRO})
 public class JsonFiltro implements Filter {
 
     private static final boolean debug = true;
@@ -48,7 +49,7 @@ public class JsonFiltro implements Filter {
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
-            throws IOException, ServletException {
+            throws ServletException {
         if (debug) {
             log("JsonFiltro:DoBeforeProcessing");
         }
@@ -59,45 +60,55 @@ public class JsonFiltro implements Filter {
         String operacion = request.getParameter(Constantes.OPERACION);
 
         int codeResponse = HttpStatus.SC_ACCEPTED;
+        GenericResponse respuestaError = null;
 
-        
         if (operacion != null) {
 
             switch (operacion) {
                 case Constantes.RECIBO:
 
                     if (movimiento != null && !movimiento.isEmpty()) {
-                        Movimiento newMovimiento = mapper.readValue(movimiento, new TypeReference<Movimiento>() {
-                        });
-                        if (new ValidadorServicios().validateModel(newMovimiento)) {
-                            newMovimiento.setMo_des(request.getAttribute(Constantes.CLIENT_NAME) + ": " + newMovimiento.getMo_des());
-                            request.setAttribute(Constantes.MOVIMIENTO, newMovimiento);
-                        } else {
+                        try {
+                            Movimiento newMovimiento = mapper.readValue(movimiento, new TypeReference<Movimiento>() {
+                            });
+                            if (new ValidadorServicios().validateModel(newMovimiento)) {
+                                newMovimiento.setMo_des(request.getAttribute(Constantes.CLIENT_NAME) + ": " + newMovimiento.getMo_des());
+                                request.setAttribute(Constantes.MOVIMIENTO, newMovimiento);
+                            } else {
+                                codeResponse = HttpStatus.SC_BAD_REQUEST;
+
+                            }
+                        } catch (IOException ex) {
                             codeResponse = HttpStatus.SC_BAD_REQUEST;
-                            ((HttpServletResponse) response).setStatus(codeResponse);
+                            respuestaError = new GenericResponse(codeResponse, Mensajes.OBJETO_MAL_FORMADO);
+                            Logger.getLogger(JsonFiltro.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
                     } else {
                         codeResponse = HttpStatus.SC_BAD_REQUEST;
-                        ((HttpServletResponse) response).setStatus(codeResponse);
+
                     }
 
                     break;
 
                 case Constantes.GET_MOVIMIENTOS:
                     if (rango != null && !rango.isEmpty()) {
-                        MovimientosFechas rangoMovimientos = mapper.readValue(rango, new TypeReference<MovimientosFechas>() {
-                        });
-                        if (new ValidadorServicios().validateModel(rangoMovimientos)) {                            
-                            request.setAttribute(Constantes.RANGO, rangoMovimientos);
-                        } else {
+                        try {
+                            MovimientosFechas rangoMovimientos = mapper.readValue(rango, new TypeReference<MovimientosFechas>() {
+                            });
+                            if (new ValidadorServicios().validateModel(rangoMovimientos)) {
+                                request.setAttribute(Constantes.RANGO, rangoMovimientos);
+                            } else {
+                                codeResponse = HttpStatus.SC_BAD_REQUEST;
+                            }
+                        } catch (IOException ex) {//error de Formación
                             codeResponse = HttpStatus.SC_BAD_REQUEST;
-                            ((HttpServletResponse) response).setStatus(codeResponse);
+                            respuestaError = new GenericResponse(codeResponse, Mensajes.OBJETO_MAL_FORMADO);
+                            Logger.getLogger(JsonFiltro.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
                     } else {
                         codeResponse = HttpStatus.SC_BAD_REQUEST;
-                        ((HttpServletResponse) response).setStatus(codeResponse);
                     }
 
                     break;
@@ -105,12 +116,17 @@ public class JsonFiltro implements Filter {
 
         } else {
             codeResponse = HttpStatus.SC_BAD_REQUEST;
-            ((HttpServletResponse) response).setStatus(codeResponse);
         }
 
         if (codeResponse != HttpStatus.SC_ACCEPTED) {
-            request.setAttribute(Constantes.JSON, new GenericResponse(codeResponse, Mensajes.FALTAN_CAMPOS));
+            if (respuestaError != null) {
+                request.setAttribute(Constantes.JSON, respuestaError);
+            } else {
+                request.setAttribute(Constantes.JSON, new GenericResponse(codeResponse, Mensajes.FALTAN_CAMPOS));
+            }
+
         }
+        ((HttpServletResponse) response).setStatus(codeResponse);
 
     }
 

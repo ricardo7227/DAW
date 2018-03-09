@@ -26,12 +26,13 @@ import servicios.CuentasServicios;
 import servicios.MovimientosServicios;
 import utils.Constantes;
 import utils.Templates;
+import utils.UrlsPaths;
 
 /**
  *
  * @author daw
  */
-@WebServlet(name = "MovimientosServlet", urlPatterns = {"/movimientosServlet"})
+@WebServlet(name = "MovimientosServlet", urlPatterns = {UrlsPaths.MOVIMIENTOS})
 public class MovimientosServlet extends HttpServlet {
 
     /**

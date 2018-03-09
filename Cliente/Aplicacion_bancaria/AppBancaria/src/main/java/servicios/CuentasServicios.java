@@ -5,15 +5,11 @@
  */
 package servicios;
 
-import dao.ClientesDAO;
 import dao.CuentasDAO;
-import dao.MovimientosDAO;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import model.Cliente;
 import model.Cuenta;
-import model.Movimiento;
 import utils.Constantes;
 
 /**
@@ -87,28 +83,7 @@ public class CuentasServicios {
         Cuenta cuenta = null;
         if (parametros != null && !parametros.isEmpty()) {
             cuenta = new Cuenta();
-//            if (parametros.get(Constantes.FECHA_INI) != null && !parametros.get(Constantes.FECHA_INI)[0].isEmpty()) {
-//
-//                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//                java.util.Date parseDate = null;
-//                try {
-//                    parseDate = dateFormat.parse(parametros.get(Constantes.FECHA_INI)[0]);
-//                    cuenta.setFecha_inicio(new Date(parseDate.getTime()));
-//                } catch (ParseException ex) {
-//                    Logger.getLogger(MovimientosServicios.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//            if (parametros.get(Constantes.FECHA_FIN) != null && !parametros.get(Constantes.FECHA_FIN)[0].isEmpty()) {
-//
-//                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//                java.util.Date parseDate = null;
-//                try {
-//                    parseDate = dateFormat.parse(parametros.get(Constantes.FECHA_FIN)[0]);
-//                    cuenta.setFecha_fin(new Date(parseDate.getTime()));
-//                } catch (ParseException ex) {
-//                    Logger.getLogger(MovimientosServicios.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
+
             if (parametros.get(Constantes.N_CUENTA) != null && !parametros.get(Constantes.N_CUENTA)[0].isEmpty()) {
 
                 cuenta.setCu_ncu(Long.valueOf(parametros.get(Constantes.N_CUENTA)[0]));

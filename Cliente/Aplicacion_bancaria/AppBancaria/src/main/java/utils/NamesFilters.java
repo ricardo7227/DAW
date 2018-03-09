@@ -12,10 +12,10 @@ package utils;
 public class NamesFilters {
     
     public static final String FILTRO_ENCODE = "EncodeUTF8";
-    public static final String FILTRO_ALUMNO = "AlumnosF";
-    public static final String FILTRO_PROFE = "ProfesoresF";
-    public static final String FILTRO_ADMIN = "AdministradoresF";
-    public static final String FILTRO_SUPER = "SuperF";
-    public static final String FILTRO_CAMBIAR_PASS = "CambiarPassF";
+    public static final String APIKEY_FILTRO = "ApikeyFiltro";
+    public static final String JSON_FILTRO = "JsonFiltro";
+    public static final String LOGIN_FILTRO = "LoginFiltro";
+    
+   
     
 }

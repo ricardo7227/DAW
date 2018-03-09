@@ -73,6 +73,6 @@
 
 
       
-        <script language="javascript" type="text/javascript" src="js/movimientos.js"></script>
+        <script language="javascript" type="text/javascript" src="../js/movimientos.js"></script>
         </body>
     </html>

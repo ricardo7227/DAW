@@ -54,7 +54,7 @@
 
 
     <#include "/libreria.ftl">
-    <script language="javascript" type="text/javascript" src="js/CerrarCuentas.js"></script>    
+    <script language="javascript" type="text/javascript" src="../js/CerrarCuentas.js"></script>    
     </body>
 
 </html>

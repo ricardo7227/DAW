@@ -9,15 +9,15 @@ crossorigin="anonymous"></script>
 
 <script>                        
     var contexto_app = "/AppBancaria/";
-            var end_point_movimientos = contexto_app +"movimientosServlet";                
-                var end_point_operaciones = contexto_app +"operaciones";            
-                    var end_point_apertura_cuentas = contexto_app +"aperturaCuentas";
-                    var end_point_cerrar_cuentas = contexto_app +"cerrarCuenta";
+            var end_point_movimientos = contexto_app +"secure/movimientos";                
+                var end_point_operaciones = contexto_app +"secure/reintegros";            
+                    var end_point_apertura_cuentas = contexto_app +"secure/apertura-cuentas";
+                    var end_point_cerrar_cuentas = contexto_app +"secure/cerrar-cuentas";
     </script>
 
-<script language="javascript" type="text/javascript" src="js/Utilidades.js"></script>
-<script language="javascript" type="text/javascript" src="js/Cliente.js"></script>
-<script language="javascript" type="text/javascript" src="js/ComprobarCuentas.js"></script>
+<script language="javascript" type="text/javascript" src="../js/Utilidades.js"></script>
+<script language="javascript" type="text/javascript" src="../js/Cliente.js"></script>
+<script language="javascript" type="text/javascript" src="../js/ComprobarCuentas.js"></script>
 
-<link rel="stylesheet/less" type="text/css" href="less/lessman.less" />
+<link rel="stylesheet/less" type="text/css" href="../less/lessman.less" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.0/less.min.js" ></script>

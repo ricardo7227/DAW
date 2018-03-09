@@ -30,12 +30,13 @@ import servicios.CuentasServicios;
 import utils.Constantes;
 import utils.Mensajes;
 import utils.Templates;
+import utils.UrlsPaths;
 
 /**
  *
  * @author daw
  */
-@WebServlet(name = "AperturaCuentasServlet", urlPatterns = {"/aperturaCuentas"})
+@WebServlet(name = "AperturaCuentasServlet", urlPatterns = {UrlsPaths.APERTURA_CUENTAS})
 public class AperturaCuentasServlet extends HttpServlet {
 
     /**

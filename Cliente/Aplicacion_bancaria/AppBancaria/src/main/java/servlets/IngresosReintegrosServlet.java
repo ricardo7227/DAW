@@ -5,14 +5,11 @@
  */
 package servlets;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import config.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,24 +18,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Cliente;
-import model.Cuenta;
-import model.GenericResponse;
 import model.Movimiento;
-import org.apache.http.HttpStatus;
-import servicios.ClientesServicios;
-import servicios.CuentasServicios;
 import servicios.MovimientosServicios;
-import servicios.ValidadorServicios;
 import utils.Constantes;
-import utils.Mensajes;
 import utils.Templates;
+import utils.UrlsPaths;
 
 /**
  *
  * @author Gato
  */
-@WebServlet(name = "IngresosReintegrosServlet", urlPatterns = {"/operaciones"})
+@WebServlet(name = "IngresosReintegrosServlet", urlPatterns = {UrlsPaths.REINTEGROS})
 public class IngresosReintegrosServlet extends HttpServlet {
 
     /**

@@ -26,12 +26,13 @@ import servicios.CuentasServicios;
 import utils.Constantes;
 import utils.Mensajes;
 import utils.Templates;
+import utils.UrlsPaths;
 
 /**
  *
  * @author daw
  */
-@WebServlet(name = "CerrarCuentasServlet", urlPatterns = {"/cerrarCuenta"})
+@WebServlet(name = "CerrarCuentasServlet", urlPatterns = {UrlsPaths.CERRAR_CUENTAS})
 public class CerrarCuentasServlet extends HttpServlet {
 
     /**

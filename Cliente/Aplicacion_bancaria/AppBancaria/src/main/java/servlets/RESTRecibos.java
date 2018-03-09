@@ -21,12 +21,13 @@ import servicios.CuentasServicios;
 import servicios.MovimientosServicios;
 import utils.Constantes;
 import utils.Mensajes;
+import utils.UrlsPaths;
 
 /**
  *
  * @author Gato
  */
-@WebServlet(name = "RESTRecibos", urlPatterns = {"/rest/operacion"})
+@WebServlet(name = "RESTRecibos", urlPatterns = {UrlsPaths.RECIBOS})
 public class RESTRecibos extends HttpServlet {
 
     /**
@@ -40,30 +41,32 @@ public class RESTRecibos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CuentasServicios cuentasServicios = new CuentasServicios();
-        MovimientosServicios servicios = new MovimientosServicios();
-        MovimientosFechas mf = (MovimientosFechas) request.getAttribute(Constantes.RANGO);
-ObjectMapper mapper = new ObjectMapper();
-        if (cuentasServicios.comprobarNumCuenta(String.valueOf(mf.getId_cuenta()))) {
+        if (response.getStatus() == HttpStatus.SC_ACCEPTED) {
+            CuentasServicios cuentasServicios = new CuentasServicios();
+            MovimientosServicios servicios = new MovimientosServicios();
+            MovimientosFechas mf = (MovimientosFechas) request.getAttribute(Constantes.RANGO);
+            ObjectMapper mapper = new ObjectMapper();
+            if (cuentasServicios.comprobarNumCuenta(String.valueOf(mf.getId_cuenta()))) {
 
-            List<Movimiento> listaMovimientos = servicios.getAllMovimientosByRango(mf);
+                List<Movimiento> listaMovimientos = servicios.getAllMovimientosByRango(mf);
 
-            
-            mapper.writeValue(response.getOutputStream(), listaMovimientos);
+                mapper.writeValue(response.getOutputStream(), listaMovimientos);
 
-        }else{
-        response.setStatus(HttpStatus.SC_BAD_REQUEST);
-            mapper.writeValue(response.getOutputStream(), new GenericResponse(HttpStatus.SC_BAD_REQUEST, String.format(Mensajes.MSJ_CUENTA_INVALIDA, mf.getId_cuenta())));
+            } else {
+                response.setStatus(HttpStatus.SC_BAD_REQUEST);
+                mapper.writeValue(response.getOutputStream(), new GenericResponse(HttpStatus.SC_BAD_REQUEST, String.format(Mensajes.MSJ_CUENTA_INVALIDA, mf.getId_cuenta())));
+            }
+
         }
     }
 
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (response.getStatus() == HttpStatus.SC_ACCEPTED) {
+            Movimiento movimiento = (Movimiento) request.getAttribute(Constantes.MOVIMIENTO);
 
-        Movimiento movimiento = (Movimiento) request.getAttribute(Constantes.MOVIMIENTO);
-
-        new MovimientosServicios().registrarNuevoMovimiento(movimiento, response);
-
+            new MovimientosServicios().registrarNuevoMovimiento(movimiento, response);
+        }
     }
 
     /**

@@ -116,30 +116,37 @@ public class MovimientosServicios {
             if (cuentasServicios.comprobarNumCuenta(String.valueOf(movimiento.getMo_ncu()))) {
                 long nCuenta = movimiento.getMo_ncu();
                 Cuenta cuenta = cuentasServicios.getCuenta(new Cuenta(nCuenta));
+                if (cuenta != null) {
 
-                List<Cliente> clientes = new ArrayList<>();
-                ClientesServicios clientesServicios = new ClientesServicios();
-                Cliente titular1 = clientesServicios.getCliente(new Cliente(cuenta.getCu_dn1()));
-                clientes.add(titular1);
-                if (cuenta.getCu_dn2() != null) {
-                    clientes.add(clientesServicios.getCliente(new Cliente(cuenta.getCu_dn2())));
-                }
-                //importe de la operación
-                cuenta.setCu_sal(movimiento.getMo_imp());
-                cuenta = cuentasServicios.updateSaldo(cuenta);
+                    List<Cliente> clientes = new ArrayList<>();
+                    ClientesServicios clientesServicios = new ClientesServicios();
+                    Cliente titular1 = clientesServicios.getCliente(new Cliente(cuenta.getCu_dn1()));
+                    clientes.add(titular1);
+                    if (cuenta.getCu_dn2() != null) {
+                        clientes.add(clientesServicios.getCliente(new Cliente(cuenta.getCu_dn2())));
+                    }
+                    //importe de la operación
+                    cuenta.setCu_sal(movimiento.getMo_imp());
+                    cuenta = cuentasServicios.updateSaldo(cuenta);
 
-                if (new ClientesServicios().updateSaldoClientes(clientes) && cuenta != null) {//actualiza el saldo de los clientes
+                    if (new ClientesServicios().updateSaldoClientes(clientes) && cuenta != null) {//actualiza el saldo de los clientes
 
-                    insertMovimiento(movimiento);
+                        insertMovimiento(movimiento);
 
-                    mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_ACCEPTED, Mensajes.MSJ_MOVIMIENTO_CREADO));
+                        mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_ACCEPTED, Mensajes.MSJ_MOVIMIENTO_CREADO));
 
+                    } else {
+                        //cuenta invalida
+                        response.setStatus(HttpStatus.SC_BAD_REQUEST);
+                        mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_BAD_REQUEST, String.format(Mensajes.MSJ_CUENTA_INVALIDA, movimiento.getMo_ncu())));
+
+                    }
                 } else {
-                    //cuenta invalida
                     response.setStatus(HttpStatus.SC_BAD_REQUEST);
                     mapper.writeValue(response.getWriter(), new GenericResponse(HttpStatus.SC_BAD_REQUEST, String.format(Mensajes.MSJ_CUENTA_INVALIDA, movimiento.getMo_ncu())));
 
                 }
+
             } else {
                 //cuenta invalida
                 response.setStatus(HttpStatus.SC_BAD_REQUEST);

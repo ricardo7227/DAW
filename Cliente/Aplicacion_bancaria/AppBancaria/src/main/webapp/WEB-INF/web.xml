@@ -22,28 +22,7 @@
         <filter-name>JsonFiltro</filter-name>
         <url-pattern />
     </filter-mapping>
-
-
-    <filter-mapping>
-        <filter-name>AlumnosF</filter-name>
-        <url-pattern />
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>ProfesoresF</filter-name>
-        <url-pattern />
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>AdministradoresF</filter-name>
-        <url-pattern />
-    </filter-mapping>  
-    <filter-mapping>
-        <filter-name>SuperF</filter-name>
-        <url-pattern />
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>CambiarPassF</filter-name>
-        <url-pattern />
-    </filter-mapping>
+    
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>

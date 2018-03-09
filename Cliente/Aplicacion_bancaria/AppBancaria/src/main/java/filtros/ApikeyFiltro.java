@@ -25,13 +25,14 @@ import org.apache.http.HttpStatus;
 import servicios.ApikeyServicios;
 import utils.Constantes;
 import utils.Mensajes;
+import utils.NamesFilters;
 import static utils.UrlsPaths.APIKEY_FILTRO;
 
 /**
  *
  * @author Gato
  */
-@WebFilter(filterName = "ApikeyFiltro", urlPatterns = {APIKEY_FILTRO})
+@WebFilter(filterName = NamesFilters.APIKEY_FILTRO, urlPatterns = {APIKEY_FILTRO})
 public class ApikeyFiltro implements Filter {
 
     private static final boolean debug = true;
