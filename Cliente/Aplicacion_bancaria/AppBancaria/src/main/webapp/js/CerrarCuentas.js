@@ -1,9 +1,41 @@
 
-$("#cerrar_cuenta").click(cerrarCuenta);
+$("#cerrar_cuenta").click(validarFormularios);
+$("#build_modal").on("click", "#ok_modal", cerrarCuenta);
+
+var cuenta = new Object();
+
+function validarFormularios() {
+
+
+    var formNcuenta = $("#check_num_cuenta_form");
+
+    formNcuenta.validate({
+        rules: {
+            input_ncuenta: "required"
+        },
+        messages: {
+            input_ncuenta: "Introduce un número de cuenta válido"
+        }
+    });
+
+
+    if (formNcuenta.valid()) {
+        //rellenamos el objeto
+        cuenta.cu_ncu = $("#input_ncuenta").val();
+
+        var jsonToSend = new Object();
+        jsonToSend.titulo = "Cuidado, cambio irreversible?";
+        jsonToSend.cuerpo = "Quieres cerrar la cuenta: " + cuenta.cu_ncu + " ?";
+        console.log(jsonToSend);
+        createAndLaunchModalView(jsonToSend);
+    }
+
+
+}
 
 function cerrarCuenta() {
-    var cuenta = new Object();
-    cuenta.cu_ncu = $("#input_ncuenta").val();
+
+
 
     $.ajax({
         type: "POST",

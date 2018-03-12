@@ -58,7 +58,7 @@ $("#check_importe_form").submit(function (e) {
     var pendientes = "";
     var importe = $("#importe_input").val();
     createDivSpan("#response_importe", "response_importe_extra", "response_importe_span_extra");
-    if (importe === "" || isNaN(importe) || importe == 0) {
+    if (importe === "" || isNaN(importe) || importe <= 0) {
         pendientes = " Formato del saldo de apertura erróneo ";
     } else {
         var saldo = $("#importe_input").val();
@@ -102,7 +102,7 @@ $("#check_importe_form").submit(function (e) {
         cambiarStatusAlert("#response_importe_extra", "alert-danger");
     } else {
         //enviar json
-        json_peticion_new_cuenta = {//TODO - controlar vacios y envio de JSON
+        json_peticion_new_cuenta = {
             "n_cuenta": n_cuenta,
             "titulares": lista_titulares,
             "cl_sal": saldo
@@ -122,7 +122,7 @@ $("#confirm_create_new_account").click(function () {
     sendNewAccount(json_peticion_new_cuenta);
     $('#exampleModalLong').modal('hide');
 
-    //var array_datos_ocultables = new Array("#datos_dni_1", "#datos_cliente_1", "#new_titular", "#datos_dni_2", "#datos_cliente_2", "#importe", "#crear_cuenta");
+    
     var array_datos_ocultables = new Array("#datos_dni_1", "#datos_cliente_1", "#new_titular", "#datos_dni_2", "#datos_cliente_2");
     showHideCampos(array_datos_ocultables, "ocultar");
 });

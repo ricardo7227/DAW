@@ -4,12 +4,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-        <link rel="stylesheet" href="https://v40.pingendo.com/assets/4.0.0/default/theme.css" type="text/css"> </head>
-    
+
+        </head>
 
     <body class="">
-        
+
         <#include "/MenuAppTemplate.ftl">
         <div id="response_from_server" ></div>
         <div class="py-4">
@@ -37,16 +36,16 @@
                     <div class="col-md-2" >
                         <form class="" id="check_num_cuenta_form">
                             <div class="form-group m-1" > <label>Nº Cuenta</label>
-                                <input type="text" id="input_ncuenta" class="form-control" placeholder="123456789" maxlength="10"> <small class="form-text text-muted">Introduce un número de cuenta válido y existente.&nbsp;</small> </div>
+                                <input type="text" name="input_ncuenta" id="input_ncuenta" class="form-control" placeholder="123456789" maxlength="10" required> <small class="form-text text-muted">Introduce un número de cuenta válido y existente.&nbsp;</small> </div>
                             <input type="submit" name="num_cuenta_sub" id="input_ncuenta_sub" style="display: none;"/>
                             </form>
                         </div>
                     <div class="col-md-10">
-                        <form class="flex-row d-flex justify-content-start align-self-center">
+                        <form class="flex-row d-flex justify-content-start align-self-center" id="cuerpo_ing_rei_form">
                             <div class="form-group d-flex flex-column justify-content-around w-100 m-1"> <label class="">Descripción</label>
-                                <input type="text" id="input_descripcion" class="form-control" placeholder="Tranferencia/Pagos/Remesas..."> <small class="form-text text-muted">Escribe un concepto de la operación</small> </div>
+                                <input type="text" id="input_descripcion" name="input_descripcion" class="form-control" placeholder="Tranferencia/Pagos/Remesas..." required> <small class="form-text text-muted">Escribe un concepto de la operación</small> </div>
                             <div class="form-group m-1"> <label class="">Importe</label>
-                                <input type="text" id="input_importe" class="form-control" placeholder="500"> </div>
+                                <input type="text" name="input_importe" id="input_importe" class="form-control" placeholder="500" required> </div>
                             <button type="button" class="btn btn-secondary btn-sm d-flex align-self-center" id="crear_movimiento" data-toggle="modal">Realizar Operación</button>
                             </form>
                         </div>
@@ -63,10 +62,10 @@
         <img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16">
         </pingendo>
 
-   
-    <#include "/libreria.ftl">
     <script language="javascript" type="text/javascript" src="../js/ingresos.js"></script>    
-    
+    <#include "/libreria.ftl">
+
+
     </body>
 
 </html>

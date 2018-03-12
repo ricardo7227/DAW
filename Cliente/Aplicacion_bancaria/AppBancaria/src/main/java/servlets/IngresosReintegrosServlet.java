@@ -45,15 +45,15 @@ public class IngresosReintegrosServlet extends HttpServlet {
         try {
             freemarker.template.Configuration freeMarker = Configuration.getInstance().getFreeMarker();
             String messageToUser = null;
-            
+
             HashMap paramentrosPlantilla = new HashMap();
             if (messageToUser != null) {
                 paramentrosPlantilla.put(Constantes.MESSAGE_TO_USER, messageToUser);
             }
-            
+
             Template plantilla = freeMarker.getTemplate(Templates.INGRESOS_REINTEGROS_TEMPLATE);
             plantilla.process(paramentrosPlantilla, response.getWriter());
-            
+
         } catch (TemplateException ex) {
             Logger.getLogger(MovimientosServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -84,20 +84,21 @@ public class IngresosReintegrosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Map<String, String[]> parametros = request.getParameterMap();
         String action = request.getParameter(Constantes.ACTION_TEMPLATE);
         if (action != null && !action.isEmpty()) {
             switch (action) {
-                
+
                 case Constantes.NEW_MOVIMIENTO:
-                     Movimiento movimiento = new MovimientosServicios().tratarParametrosMovimiento(parametros);
-                    new MovimientosServicios().registrarNuevoMovimiento(movimiento, response);
-                    
+                    MovimientosServicios movimientosServicios = new MovimientosServicios();
+                    Movimiento movimiento = movimientosServicios.tratarParametrosMovimiento(parametros);
+                    movimientosServicios.registrarNuevoMovimiento(movimiento, response);
+
                     break;
             }
         }
-        
+
     }
 
     /**

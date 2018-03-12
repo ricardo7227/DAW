@@ -34,7 +34,7 @@
                     <div class="col-md-12">
                         <form class="" id="check_num_cuenta_form">
                             <div class="form-group m-1"> <label>Nº Cuenta</label>
-                                <input type="text" class="form-control"  id="input_ncuenta" placeholder="123456789" maxlength="10"> <small class="form-text text-muted">Introduce un número de cuenta válido y existente.&nbsp;</small> </div>
+                                <input type="text" class="form-control" name="input_ncuenta" id="input_ncuenta" placeholder="123456789" maxlength="10" required> <small class="form-text text-muted">Introduce un número de cuenta válido y existente.&nbsp;</small> </div>
                             <input type="submit" name="num_cuenta_sub" id="input_ncuenta_sub" style="display: none;"/>
                             <button type="button" id="cerrar_cuenta" class="btn btn-secondary btn-sm d-flex align-self-center" data-toggle="modal">Cerrar Cuenta</button>
                             </form>

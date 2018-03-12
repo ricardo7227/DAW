@@ -121,15 +121,18 @@ public class MovimientosServicios {
                     List<Cliente> clientes = new ArrayList<>();
                     ClientesServicios clientesServicios = new ClientesServicios();
                     Cliente titular1 = clientesServicios.getCliente(new Cliente(cuenta.getCu_dn1()));
+                    titular1.setCl_sal(movimiento.getMo_imp());
                     clientes.add(titular1);
                     if (cuenta.getCu_dn2() != null) {
-                        clientes.add(clientesServicios.getCliente(new Cliente(cuenta.getCu_dn2())));
+                        Cliente cliente = clientesServicios.getCliente(new Cliente(cuenta.getCu_dn2()));
+                        cliente.setCl_sal(movimiento.getMo_imp());
+                        clientes.add(cliente);
                     }
                     //importe de la operación
                     cuenta.setCu_sal(movimiento.getMo_imp());
                     cuenta = cuentasServicios.updateSaldo(cuenta);
 
-                    if (new ClientesServicios().updateSaldoClientes(clientes) && cuenta != null) {//actualiza el saldo de los clientes
+                    if (clientesServicios.updateSaldoClientes(clientes) && cuenta != null) {//actualiza el saldo de los clientes
 
                         insertMovimiento(movimiento);
 

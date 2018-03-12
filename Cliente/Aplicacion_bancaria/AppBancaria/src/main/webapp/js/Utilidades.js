@@ -97,3 +97,41 @@ function showHideCampos(array_campos, opcion) {
         }
     }
 }
+
+//crear vista modal de confirmación
+
+function injectModalInPage(code) {
+    $("#build_modal").html(code);
+
+}
+function createAndLaunchModalView(genericObject) {
+    injectModalInPage(buildCodeModal(genericObject));
+    $('#request_modal').modal('show');
+}
+
+function buildCodeModal(genericObject) {
+    var cabecera = genericObject.titulo;
+    var okText = "OK";
+    var code = '<div class="modal fade" tabindex="-1" role="dialog" id="request_modal">' +
+            '<div class="modal-dialog" role="document">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<h5 class="modal-title">' + cabecera + '</h5>' +
+            '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+            '<span aria-hidden="true">&times;</span>' +
+            '</button>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<p>' + genericObject.cuerpo + '</p>' +
+            '</div>' +
+            '<div class="modal-footer">' +            
+            '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>' +
+            '<button type="button" class="btn btn-primary" data-dismiss="modal" id="ok_modal">' + okText + '</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+
+
+    return code;
+}
