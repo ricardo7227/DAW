@@ -11,6 +11,8 @@ import config.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -122,6 +124,8 @@ public class AperturaCuentasServlet extends HttpServlet {
                         clienteDB = clientesServicios.getCliente(cliente);
 
                     }
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                    mapper.setDateFormat(df);
                     mapper.writeValue(response.getOutputStream(), clienteDB);
 
                     break;

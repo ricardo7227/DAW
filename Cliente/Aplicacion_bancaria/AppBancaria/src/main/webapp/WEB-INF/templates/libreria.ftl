@@ -14,7 +14,7 @@ crossorigin="anonymous"></script>
 
 
 <script>                        
-    var contexto_app = "/";
+    var contexto_app = "/AppBancaria/";
             var end_point_movimientos = contexto_app +"secure/movimientos";                
                 var end_point_operaciones = contexto_app +"secure/reintegros";            
                     var end_point_apertura_cuentas = contexto_app +"secure/apertura-cuentas";
