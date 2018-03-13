@@ -10,6 +10,8 @@ import config.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -46,7 +48,7 @@ public class MovimientosServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         try {
             freemarker.template.Configuration freeMarker = Configuration.getInstance().getFreeMarker();
             String messageToUser = null;
@@ -114,7 +116,8 @@ public class MovimientosServlet extends HttpServlet {
                     if (cuentasServicios.comprobarNumCuenta(String.valueOf(mf.getId_cuenta()))) {
 
                         List<Movimiento> listaMovimientos = servicios.getAllMovimientosByRango(mf);
-
+                        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                        mapper.setDateFormat(df);
                         mapper.writeValue(response.getOutputStream(), listaMovimientos);
                     }
 
