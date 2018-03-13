@@ -133,7 +133,8 @@ public class SalaChatServlet extends HttpServlet {
                         if (!serviciosResgistro.thisUserExist(userActivate)) {
 
                             if (serviciosResgistro.userReadyToWorkInsert(userActivate)) {
-
+                                userActivate = serviciosResgistro.generatePasswordAndActivationCode(userActivate);
+                                
                                 if (serviciosResgistro.insertUser(userActivate) != null) {
 
                                 } else {

@@ -1,5 +1,5 @@
 <#assign charset="UTF-8">
-<#assign title="CRUD - JAVA">
+<#assign title="AppBancaria">
 <!DOCTYPE html>
 <html>
     <head>

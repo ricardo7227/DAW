@@ -15,7 +15,7 @@
             <div class="container">                       
                 <div class="row justify-content-center">    
 
-                    <div class="col-sm-5">  
+                    <div class="col-sm-12 py-2">  
                         <h4>Lista de movimientos</h4>
                         </div>                    
                     </div>

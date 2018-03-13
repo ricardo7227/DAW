@@ -9,28 +9,42 @@ and open the template in the editor.
 */
 //variables
 @color-titulo: #2d4a77;
-@color-fondo: #e0ecff;
+@color-fondo: #E8F5FE;
+@color-linea: #88CEFA;
+@fuente: 'Mina', sans-serif;;
+@img_fondo: url('https://i.imgur.com/rHqtJL3.png');
 @aumentar-fuente: 95%;
 
 //extends
 .row {
-	&:extend(.justify-content-center);
-	font-size: @aumentar-fuente;
-	
+    &:extend(.justify-content-center);
+    font-size: @aumentar-fuente;
+    .bordered();
+
 }
 .justify-content-center{
-	background-color:@color-fondo;
+    background-color:@color-fondo;
 }
-h4{
-	color: @color-titulo;
+h4{        
+    color: @color-titulo;
 }
 .bordered {
-  border-top: dotted 1px black;
-  border-bottom: solid 2px black;
+    border: dotted 1px @color-linea;    
 }
 
 //mixins
 .mixin-class{
-	.bordered();
-	.row;
+    .bordered();
+    .row;
+}
+.info_text{
+    font-family: @fuente;
+}
+body{
+    background-size:cover;                
+    background: @img_fondo center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }

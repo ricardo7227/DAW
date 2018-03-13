@@ -34,22 +34,29 @@
     <body>
         <#include "/MenuAppTemplate.ftl">
         <div id="response_from_server" ></div>
-        
+
         <div class="row">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-sm-5">
+                    <div class="col-sm-12 py-2">
                         <h4>
                             Apertura de Cuentas
-                            </h4>
+                            </h4>                                               
                         </div>
                     </div>
                 </div>
             </div>
         <div class="row justify-content-center">
+            <div class="col-sm-8">
+                <div class="info_text py-4">
+                    Para crear una nueva cuenta, por favor rellena todos los campos con los datos del cliente.
+                    </div>
+                </div>
+            </div>
+        <div class="row justify-content-center">            
             <div class="col-sm-4">
 
-                <form id="check_num_cuenta_form" action="">
+                <form id="check_num_cuenta_form" action="">                    
                     Nº Cuenta:<input id="ncuenta_input" maxlength="10" required="" type="text" value="" />
                     <button type="submit" name="num_cuenta_sub" id="num_cuenta_sub" value="ncuenta" style="display: none;"></button>
                     </form>
@@ -192,9 +199,9 @@
             </div>
 
 
-        
 
-        
+
+
         <script language="javascript" type="text/javascript" src="../js/apertura_cuentas.js"></script>
 
         </body>
