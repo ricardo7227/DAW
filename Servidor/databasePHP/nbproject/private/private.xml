@@ -2,14 +2,8 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="profesor">
-            <file>file:/home/daw/Documentos/Servidor/databasePHP/notas.php</file>
-            <file>file:/home/daw/Documentos/Servidor/databasePHP/alumnosVista.php</file>
-            <file>file:/home/daw/Documentos/Servidor/databasePHP/alumnos.php</file>
-            <file>file:/home/daw/Documentos/Servidor/databasePHP/asignaturasVista.php</file>
-            <file>file:/home/daw/Documentos/Servidor/databasePHP/asignaturas.php</file>
-        </group>
         <group/>
         <group name="alumno"/>
+        <group name="profesor"/>
     </open-files>
 </project-private>
