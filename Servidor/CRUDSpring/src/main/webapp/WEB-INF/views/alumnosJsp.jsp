@@ -35,15 +35,14 @@
         </style>        
         <script>
             function cargarAlumno(id, nombre, fecha_nacimiento, mayor_edad) {
-                document.getElementById("id").value = id;
-                document.getElementById("nombre").value = nombre;
-                document.getElementById("fecha_nacimiento").value = fecha_nacimiento;
-
-                if (mayor_edad === true) {
-                    document.getElementById("mayor_edad_true").checked = true;
-                } else {
-                    document.getElementById("mayor_edad_false").checked = true;
-                }
+            document.getElementById("id").value = id;
+            document.getElementById("nombre").value = nombre;
+            document.getElementById("fecha_nacimiento").value = fecha_nacimiento;
+            if (mayor_edad === true) {
+            document.getElementById("mayor_edad_true").checked = true;
+            } else {
+            document.getElementById("mayor_edad_false").checked = true;
+            }
             }
 
         </script>
@@ -55,7 +54,7 @@
     <body>
         <div class="container">
             <a href="alumnos">alumnos</a>
-           
+
         </div>
         <c:if test="${not empty alumnoResult}">
             <form action="alumnos">
@@ -86,9 +85,9 @@
                         <c:set var="nombre" value="${alumno.nombre}"/>
 
                         <button id="cargarAlumno" onClick="
-                cargarAlumno(${alumno.id},
-                        '${fn:escapeXml(fn:replace(nombre,"'","\\'"))}'
-                        , '${alumno.fecha_nacimiento}',
+            cargarAlumno(${alumno.id},
+                    '${fn:escapeXml(fn:replace(nombre,"'","\\'"))}'
+                    , '${alumno.fecha_nacimiento}',
                                 ${alumno.mayor_edad})">Cargar</button>
                     </td>
                     <td contenteditable="true">
@@ -116,7 +115,7 @@
             <input type="submit" name="action" value="DELETE">
         </form> 
 
-        <form:form action="addAlumno" method="post" modelAttribute="alumno">
+        <form:form action="addAlumno" method="post" modelAttribute="alumno"  name="search-theme-form" >
             <table>
                 <tr>
                     <td>Nombre:</td>
@@ -154,11 +153,25 @@
         </p>
 
         <script>
+            function chgAction(action_name)
+                    {
+                    if (action_name == "INSERT") {
+                    document.search - theme - form.action = "/";
+                    }
+                    else if (action_name == "UPDATE") {
+                    document.search - theme - form.action = "/BBB";
+                    }
+                    else if (action_name == "DELETE") {
+                    document.search - theme - form.action = "/CCC";
+                    }
+                    }
+
+
             if (document.getElementById("fecha_nacimiento").type !== "date") { //if browser doesn't support input type="date", initialize date picker widget:
-                $(function () {
-                    // Find any date inputs and override their functionality
-                    $('input[type="date"]').datepicker({dateFormat: 'yy-mm-dd'});
-                });
+            $(function () {
+            // Find any date inputs and override their functionality
+            $('input[type="date"]').datepicker({dateFormat: 'yy-mm-dd'});
+            });
             }
 
         </script>
